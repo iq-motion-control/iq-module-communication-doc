@@ -1,0 +1,26 @@
+********************************
+Vertiq 8108 150KV | Speed Module
+********************************
+
+.. sidebar:: Vertiq 8108 150KV
+
+    .. image:: ../_static/Vertiq8108.png
+        :alt: Vertiq 8108 150KV
+
+The IQ Vertiq 8108 150KV is built for high performance commercial UAV and robotic applications. Its default firmware is the **Speed Firmware**.
+This extremely compact, lightweight module is designed for roboticists with strict space and 
+weight requirements. With position sensing and advanced calibration and control algorithms, 
+we're able to drive the motor in a way that increases efficiency, torque output, and 
+responsiveness. IQ motors also output advanced telemetry for motor and vehicle health monitoring.
+
+.. :download:`[TODO] Not Yet Available <>` 
+
+.. note:: 
+
+    The Vertiq 8108 150KV currently only supports the Speed Firmware
+
+.. include:: speed.rst
+
+.. .. include:: stepdir.rst
+.. .. include:: servo.rst
+    
