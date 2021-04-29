@@ -576,7 +576,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;propeller_motor_control&quot;</span><span class="p">,</span> <span class="s2">&quot;ctrl_velocity&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Supplies 5V to motor</span>
 </pre></div>
@@ -812,7 +812,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;brushless_drive&quot;</span><span class="p">,</span> <span class="s2">&quot;drive_spin_volts&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># Spins motor at 5 volts</span>
 </pre></div>
@@ -1205,7 +1205,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;buzzer_control&quot;</span><span class="p">,</span> <span class="s2">&quot;hz&quot;</span><span class="p">,</span> <span class="mi">440</span><span class="p">)</span>         <span class="c1"># A4</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;buzzer_control&quot;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span>     <span class="c1"># Max Volume</span>
@@ -1386,7 +1386,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;esc_propeller_input_parser&quot;</span><span class="p">,</span> <span class="s2">&quot;velocity_max&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># Set max Velocity to 1000rad/s</span>
 </pre></div>
@@ -1554,7 +1554,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;hobby_input&quot;</span><span class="p">,</span> <span class="s2">&quot;allowed_protocols&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># Set the protocol to MultiShot</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;hobby_input&quot;</span><span class="p">,</span> <span class="s2">&quot;allowed_protocols&quot;</span><span class="p">)</span>     <span class="c1"># Save the protocol</span>
@@ -1683,7 +1683,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;persistent_memory&quot;</span><span class="p">,</span> <span class="s2">&quot;revert_to_default&quot;</span><span class="p">)</span>  <span class="c1"># erases saved values except for factory defaults</span>
 </pre></div>
@@ -1820,7 +1820,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">volts</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;power_monitor&quot;</span><span class="p">,</span> <span class="s2">&quot;volts&quot;</span><span class="p">)</span>  <span class="c1"># returns the input voltage to module</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Voltage coming into module: </span><span class="si">{</span><span class="n">volts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2046,7 +2046,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;serial_interface&quot;</span><span class="p">,</span> <span class="s2">&quot;baud_rate&quot;</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span>  <span class="c1"># change baud rate to 9600</span>
 </pre></div>
@@ -2178,7 +2178,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">FW</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;system_control&quot;</span><span class="p">,</span> <span class="s2">&quot;firmware_version&quot;</span><span class="p">)</span>  <span class="c1"># Firmware Version Number</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Firmware: </span><span class="si">{</span><span class="n">FW</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2441,7 +2441,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_estimator&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">)</span>  <span class="c1"># Estimated Motor Temperature</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Motor Temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2610,7 +2610,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_monitor_uc&quot;</span><span class="p">,</span> <span class="s2">&quot;uc_temp&quot;</span><span class="p">)</span>  <span class="c1"># Internal UC Temperature</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Internal UC temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2784,13 +2784,13 @@ All messages use the standard Get/Set/Save functions.</p>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>   <span class="c1"># Servo Firmware uses this client</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>   <span class="c1"># Servo Firmware uses this client</span>
 
 <span class="c1"># Set the trajectory for the motor to complete 1 full rotation</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;multi_turn_angle_control&quot;</span><span class="p">,</span> <span class="s2">&quot;trajectory_angular_displacement&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
 <span class="c1"># Sets trajectory duration for 2 seconds</span>
-<span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;multi_turn_angle_control&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;multi_turn_angle_control&quot;</span><span class="p">,</span> <span class="s2">&quot;trajectory_duration&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3108,7 +3108,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;brushless_drive&quot;</span><span class="p">,</span> <span class="s2">&quot;drive_spin_volts&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># Spins motor at 5 volts</span>
 </pre></div>
@@ -3496,7 +3496,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;anticogging&quot;</span><span class="p">,</span> <span class="s2">&quot;is_enabled&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Turns on Anticogging</span>
 </pre></div>
@@ -3669,7 +3669,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;buzzer_control&quot;</span><span class="p">,</span> <span class="s2">&quot;hz&quot;</span><span class="p">,</span> <span class="mi">440</span><span class="p">)</span>         <span class="c1"># A4</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;buzzer_control&quot;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span>     <span class="c1"># Max Volume</span>
@@ -3847,7 +3847,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;hobby_input&quot;</span><span class="p">,</span> <span class="s2">&quot;allowed_protocols&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># Set the protocol to MultiShot</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;hobby_input&quot;</span><span class="p">,</span> <span class="s2">&quot;allowed_protocols&quot;</span><span class="p">)</span>     <span class="c1"># Save the protocol</span>
@@ -3976,7 +3976,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;persistent_memory&quot;</span><span class="p">,</span> <span class="s2">&quot;revert_to_default&quot;</span><span class="p">)</span>  <span class="c1"># erases saved values except for factory defaults</span>
 </pre></div>
@@ -4113,7 +4113,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">volts</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;power_monitor&quot;</span><span class="p">,</span> <span class="s2">&quot;volts&quot;</span><span class="p">)</span>  <span class="c1"># returns the input voltage to module</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Voltage coming into module: </span><span class="si">{</span><span class="n">volts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -4339,7 +4339,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;serial_interface&quot;</span><span class="p">,</span> <span class="s2">&quot;baud_rate&quot;</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span>  <span class="c1"># change baud rate to 9600</span>
 </pre></div>
@@ -4473,7 +4473,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
 
 <span class="c1"># Set Servo Limits</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;servo_input_parser&quot;</span><span class="p">,</span> <span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>             <span class="c1"># Position Control Mode</span>
@@ -4627,7 +4627,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">FW</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;system_control&quot;</span><span class="p">,</span> <span class="s2">&quot;firmware_version&quot;</span><span class="p">)</span>  <span class="c1"># Firmware Version Number</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Firmware: </span><span class="si">{</span><span class="n">FW</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -4890,7 +4890,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_estimator&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">)</span>  <span class="c1"># Estimated Motor Temperature</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Motor Temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -5059,7 +5059,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_monitor_uc&quot;</span><span class="p">,</span> <span class="s2">&quot;uc_temp&quot;</span><span class="p">)</span>  <span class="c1"># Internal UC Temperature</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Internal UC temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -5233,13 +5233,13 @@ All messages use the standard Get/Set/Save functions.</p>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>   <span class="c1"># Servo Firmware uses this client</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>   <span class="c1"># Servo Firmware uses this client</span>
 
 <span class="c1"># Set the trajectory for the motor to complete 1 full rotation</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;multi_turn_angle_control&quot;</span><span class="p">,</span> <span class="s2">&quot;trajectory_angular_displacement&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
 <span class="c1"># Sets trajectory duration for 2 seconds</span>
-<span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;multi_turn_angle_control&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;multi_turn_angle_control&quot;</span><span class="p">,</span> <span class="s2">&quot;trajectory_duration&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5557,7 +5557,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;brushless_drive&quot;</span><span class="p">,</span> <span class="s2">&quot;drive_spin_volts&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># Spins motor at 5 volts</span>
 </pre></div>
@@ -5945,7 +5945,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;anticogging&quot;</span><span class="p">,</span> <span class="s2">&quot;is_enabled&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Turns on Anticogging</span>
 </pre></div>
@@ -6118,7 +6118,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;buzzer_control&quot;</span><span class="p">,</span> <span class="s2">&quot;hz&quot;</span><span class="p">,</span> <span class="mi">440</span><span class="p">)</span>         <span class="c1"># A4</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;buzzer_control&quot;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span>     <span class="c1"># Max Volume</span>
@@ -6291,7 +6291,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;persistent_memory&quot;</span><span class="p">,</span> <span class="s2">&quot;revert_to_default&quot;</span><span class="p">)</span>  <span class="c1"># erases saved values except for factory defaults</span>
 </pre></div>
@@ -6428,7 +6428,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">volts</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;power_monitor&quot;</span><span class="p">,</span> <span class="s2">&quot;volts&quot;</span><span class="p">)</span>  <span class="c1"># returns the input voltage to module</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Voltage coming into module: </span><span class="si">{</span><span class="n">volts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -6654,7 +6654,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;serial_interface&quot;</span><span class="p">,</span> <span class="s2">&quot;baud_rate&quot;</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span>  <span class="c1"># change baud rate to 9600</span>
 </pre></div>
@@ -6787,7 +6787,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;stepdir&quot;</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;stepdir&quot;</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;step_direction_input&quot;</span><span class="p">,</span> <span class="s2">&quot;angle_step&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">65536</span><span class="p">))</span>  <span class="c1"># Set min step angle</span>
 </pre></div>
@@ -6926,7 +6926,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">FW</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;system_control&quot;</span><span class="p">,</span> <span class="s2">&quot;firmware_version&quot;</span><span class="p">)</span>  <span class="c1"># Firmware Version Number</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Firmware: </span><span class="si">{</span><span class="n">FW</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -7189,7 +7189,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_estimator&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">)</span>  <span class="c1"># Estimated Motor Temperature</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Motor Temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -7358,7 +7358,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_monitor_uc&quot;</span><span class="p">,</span> <span class="s2">&quot;uc_temp&quot;</span><span class="p">)</span>  <span class="c1"># Internal UC Temperature</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Internal UC temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>

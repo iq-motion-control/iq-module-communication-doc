@@ -104,7 +104,7 @@ A minimal working example for the Temperature Monitor Microcontroller Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = vertiq2306(com, 0)
+    vertiq = iq.vertiq2306(com, 0)
     
     temp = vertiq.get("temperature_monitor_uc", "uc_temp")  # Internal UC Temperature
     print(f"Internal UC temperature: {temp}")
