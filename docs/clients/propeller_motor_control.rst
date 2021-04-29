@@ -105,7 +105,7 @@ A minimal working example for the Propeller Motor Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = vertiq2306(com, 0)
+    vertiq = iq.vertiq2306(com, 0)
     
     vertiq.set("propeller_motor_control", "ctrl_velocity", 5)  # Supplies 5V to motor
 

@@ -93,7 +93,7 @@ A minimal working example for the Persistent Memory Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = vertiq2306(com, 0)
+    vertiq = iq.vertiq2306(com, 0)
     
     vertiq.set("persistent_memory", "revert_to_default")  # erases saved values except for factory defaults
 

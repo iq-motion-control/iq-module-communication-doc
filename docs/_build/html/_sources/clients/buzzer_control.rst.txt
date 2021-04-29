@@ -106,7 +106,7 @@ A minimal working example for the Buzzer Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = vertiq2306(com, 0)
+    vertiq = iq.vertiq2306(com, 0)
     
     vertiq.set("buzzer_control", "hz", 440)         # A4
     vertiq.set("buzzer_control", "volume", 127)     # Max Volume

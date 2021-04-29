@@ -256,7 +256,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
 
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;anticogging&quot;</span><span class="p">,</span> <span class="s2">&quot;is_enabled&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Turns on Anticogging</span>
 </pre></div>

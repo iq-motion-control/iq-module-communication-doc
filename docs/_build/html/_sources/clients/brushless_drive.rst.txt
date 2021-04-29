@@ -95,7 +95,7 @@ A minimal working example for the BrushlessDriveClient is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = vertiq2306(com, 0)
+    vertiq = iq.vertiq2306(com, 0)
     
     vertiq.set("brushless_drive", "drive_spin_volts", 5) # Spins motor at 5 volts
 

@@ -106,13 +106,13 @@ A minimal working example for the Multi-Turn Angle Control Client is:
     import math
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = vertiq2306(com, 0, firmware="servo")   # Servo Firmware uses this client
+    vertiq = iq.vertiq2306(com, 0, firmware="servo")   # Servo Firmware uses this client
     
     # Set the trajectory for the motor to complete 1 full rotation
     vertiq.set("multi_turn_angle_control", "trajectory_angular_displacement", 2*math.pi)
 
     # Sets trajectory duration for 2 seconds
-    vertiq.set("multi_turn_angle_control", "duration", 2)  
+    vertiq.set("multi_turn_angle_control", "trajectory_duration", 2)  
 
 
 Message Table
