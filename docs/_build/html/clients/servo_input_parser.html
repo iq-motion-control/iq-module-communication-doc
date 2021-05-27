@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/vertiq_2306_2200.html">Vertiq 2306 2200KV | Speed Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/vertiq_2306_220.html">Vertiq 2306 220KV | Position Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/vertiq_8108_150.html">Vertiq 8108 150KV | Speed Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/fortiq.html">Fortiq M42BLS | Servo Module</a></li>
 </ul>
 
             
@@ -260,7 +261,7 @@ All messages use the standard Get/Set/Save functions.</p>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
-<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
+<span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
 
 <span class="c1"># Set Servo Limits</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;servo_input_parser&quot;</span><span class="p">,</span> <span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>             <span class="c1"># Position Control Mode</span>

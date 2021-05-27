@@ -98,8 +98,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#communicating-with-motor-controller">Communicating With Motor Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#creating-a-vertiq-module">Creating a Vertiq Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#choosing-the-firmware-for-the-vertiq-module">Choosing the firmware for the Vertiq Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#load-new-clients-on-top-of-your-vertiq-module">Load new clients on top of your Vertiq Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-fortiq-module">Creating a Fortiq Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-the-api-to-match-the-module-firmware">Changing the API to match the module Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-new-clients-on-top-of-your-module">Load new clients on top of your Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-a-base-module-containing-only-essential-clients">Create a Base Module containing only essential clients</a></li>
 </ul>
 </li>
@@ -112,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/vertiq_2306_2200.html">Vertiq 2306 2200KV | Speed Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/vertiq_2306_220.html">Vertiq 2306 220KV | Position Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/vertiq_8108_150.html">Vertiq 8108 150KV | Speed Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/fortiq.html">Fortiq M42BLS | Servo Module</a></li>
 </ul>
 
             
@@ -212,7 +214,7 @@ or similar and depends on the device. The default serial baud rate for the motor
 <div class="section" id="communicating-with-motor-controller">
 <h2>Communicating With Motor Controller<a class="headerlink" href="#communicating-with-motor-controller" title="Permalink to this headline">¶</a></h2>
 <p>Python interacts with the motor controller via IQ Module Objects. Currently IQ Python API
-supports 2 motors: Vertiq 2306 &amp; Vertiq 8108</p>
+supports 3 types of motors: Vertiq 2306, Vertiq 8108, and Fortiq M42BLS</p>
 <div class="section" id="creating-a-vertiq-module">
 <h3>Creating a Vertiq Module<a class="headerlink" href="#creating-a-vertiq-module" title="Permalink to this headline">¶</a></h3>
 <p>Here’s how you create a Vertiq Module:</p>
@@ -221,20 +223,73 @@ supports 2 motors: Vertiq 2306 &amp; Vertiq 8108</p>
 <span class="n">serial_port</span> <span class="o">=</span> <span class="s2">&quot;/dev/ttyUSB0&quot;</span> <span class="c1"># Machine dependent</span>
 <span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="n">serial_port</span><span class="p">)</span>
 
-<span class="c1"># Create a vertiq2306 module with default firmware settings (&quot;speed&quot;)</span>
+<span class="c1"># Create a Vertiq2306 module with default firmware settings (&quot;speed&quot;)</span>
 <span class="n">vertiq2306</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># Create a vertiq8108 module with default firmware settings (&quot;speed&quot;)</span>
+<span class="c1"># Create a Vertiq8108 module with default firmware settings (&quot;speed&quot;)</span>
 <span class="n">vertiq8108</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="choosing-the-firmware-for-the-vertiq-module">
-<h3>Choosing the firmware for the Vertiq Module<a class="headerlink" href="#choosing-the-firmware-for-the-vertiq-module" title="Permalink to this headline">¶</a></h3>
-<p>If you have flashed different firmware onto the module, then you’ll need to reflect that change in the API as well.</p>
+<div class="section" id="creating-a-fortiq-module">
+<h3>Creating a Fortiq Module<a class="headerlink" href="#creating-a-fortiq-module" title="Permalink to this headline">¶</a></h3>
+<p>Here’s how you create a Vertiq Module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iqmotion</span> <span class="k">as</span> <span class="nn">iq</span>
+
+<span class="n">serial_port</span> <span class="o">=</span> <span class="s2">&quot;/dev/ttyUSB0&quot;</span> <span class="c1"># Machine dependent</span>
+<span class="n">com</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">SerialCommunicator</span><span class="p">(</span><span class="n">serial_port</span><span class="p">)</span>
+
+<span class="c1"># Create a Vertiq2306 module with default firmware settings (&quot;speed&quot;)</span>
+<span class="n">fortiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Fortiq</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Create a Vertiq8108 module with default firmware settings (&quot;speed&quot;)</span>
+<span class="n">fortiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Fortiq</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-api-to-match-the-module-firmware">
+<h3>Changing the API to match the module Firmware<a class="headerlink" href="#changing-the-api-to-match-the-module-firmware" title="Permalink to this headline">¶</a></h3>
+<p>Each module comes loaded with default firmware.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 36%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Default Firmware</p></th>
+<th class="head"><p>API Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Vertiq2306 2200Kv</p></td>
+<td><p>Speed</p></td>
+<td><p>Speed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vertiq2306 220Kv</p></td>
+<td><p>Servo</p></td>
+<td><p>Speed**</p></td>
+</tr>
+<tr class="row-even"><td><p>Vertiq8108 150Kv</p></td>
+<td><p>Speed</p></td>
+<td><p>Speed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fortiq</p></td>
+<td><p>Servo</p></td>
+<td><p>Servo</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you own a Vertiq2306 220Kv, you will have to change the firmware style on the API to make servo calls to the Module.</p>
+<p>** The Vertiq2306 220Kv is a Position Module which comes loaded with Servo Firmware as a default.</p>
+</div>
+<p>If your module has non-default firmware, you’ll need to reflect that change in the API as well. Here’s how you can do that:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>The Vertiq2306 currently supports:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">firmware</span> <span class="pre">=</span> <span class="pre">[&quot;stepdir&quot;,</span> <span class="pre">&quot;speed&quot;,</span> <span class="pre">&quot;servo&quot;]</span></code></p>
+<dt>The Vertiq2306 currently supports:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">firmware</span> <span class="pre">=</span> <span class="pre">[&quot;speed&quot;,</span> <span class="pre">&quot;stepdir&quot;,</span> <span class="pre">&quot;servo&quot;]</span></code></p>
 </dd>
 </dl>
 </li>
@@ -243,22 +298,30 @@ supports 2 motors: Vertiq 2306 &amp; Vertiq 8108</p>
 </dd>
 </dl>
 </li>
+<li><dl class="simple">
+<dt>The Fortiq currently supports:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">firmware</span> <span class="pre">=</span> <span class="pre">[</span> <span class="pre">&quot;servo&quot;,</span> <span class="pre">&quot;stepdir&quot;,</span> <span class="pre">&quot;speed&quot;]</span></code></p>
+</dd>
+</dl>
+</li>
 </ul>
 <p>Here’s how you change the firmware in the API:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a vertiq module with different firmare settings</span>
-<span class="n">vertiq2306</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;stepdir&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a vertiq module with different firmare style</span>
+<span class="n">vertiq2306</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;servo&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a fortiq module with different firmware style</span>
+<span class="n">fortiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Fortiq</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">firmware</span><span class="o">=</span><span class="s2">&quot;stepdir&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="load-new-clients-on-top-of-your-vertiq-module">
-<h3>Load new clients on top of your Vertiq Module<a class="headerlink" href="#load-new-clients-on-top-of-your-vertiq-module" title="Permalink to this headline">¶</a></h3>
-<p>To add clients on top of a Vertiq2306 or Vertiq8108,
+<div class="section" id="load-new-clients-on-top-of-your-module">
+<h3>Load new clients on top of your Module<a class="headerlink" href="#load-new-clients-on-top-of-your-module" title="Permalink to this headline">¶</a></h3>
+<p>To add clients on top of a Vertiq2306, Vertiq8108, or Fortiq,
 create a folder that holds all of your custom client json
 files and pass the folder name to the module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This folder should contain custom client jsons</span>
 <span class="n">clients_path</span> <span class="o">=</span> <span class="s2">&quot;clients/&quot;</span>
 
-<span class="n">vertiq2306</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">clients_path</span><span class="o">=</span><span class="n">clients_path</span><span class="p">)</span>
+<span class="n">vertiq2306</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq2306</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">clients_path</span><span class="o">=</span><span class="n">clients_path</span><span class="p">)</span>
 <span class="n">vertiq2306</span><span class="o">.</span><span class="n">list_clients</span><span class="p">()</span> <span class="c1"># Displays loaded clients for the module</span>
 </pre></div>
 </div>
@@ -267,7 +330,7 @@ files and pass the folder name to the module.</p>
 <h3>Create a Base Module containing only essential clients<a class="headerlink" href="#create-a-base-module-containing-only-essential-clients" title="Permalink to this headline">¶</a></h3>
 <p>A Base Module is a module that contains all the essentials
 clients needed to interact with a motor. It does not have any
-control modules so it’s a blank slate.</p>
+control modules so consider it a blank slate.</p>
 <p>To start with a base module and add clients on top,
 create a folder that holds all of your custom client
 json files and pass the folder name to the module.</p>
@@ -286,14 +349,14 @@ json files and pass the folder name to the module.</p>
 motor controller.</p>
 <p><strong>To form a</strong> <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>message:</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">module.get(&quot;client&quot;,</span> <span class="pre">&quot;client_entry&quot;)</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">uc_temp</span> <span class="o">=</span> <span class="n">vertiq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_monitor_uc&quot;</span><span class="p">,</span> <span class="s2">&quot;uc_temp&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The temperature of the UC is </span><span class="si">{</span><span class="n">uc_temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>To form a</strong> <code class="docutils literal notranslate"><span class="pre">set</span></code> <strong>message with a value:</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">module.set(&quot;client&quot;,</span> <span class="pre">&quot;client_entry&quot;,</span> <span class="pre">value)</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">volts</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Set motor power to 5 Volts</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;propeller_motor_control&quot;</span><span class="p">,</span> <span class="s2">&quot;ctrl_volts&quot;</span><span class="p">,</span> <span class="n">volts</span><span class="p">)</span>
@@ -301,7 +364,7 @@ motor controller.</p>
 </div>
 <p><strong>To form a</strong> <code class="docutils literal notranslate"><span class="pre">set</span></code> <strong>message with no value:</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">module.set(&quot;client&quot;,</span> <span class="pre">&quot;client_entry&quot;)</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Reboots motor with saved values</span>
 <span class="n">vertiq</span> <span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;system_control&quot;</span><span class="p">,</span> <span class="s2">&quot;reboot_program&quot;</span><span class="p">)</span>
@@ -310,7 +373,7 @@ motor controller.</p>
 <p><strong>Finally, to form a</strong> <code class="docutils literal notranslate"><span class="pre">save</span></code> <strong>message, use</strong></p>
 <p>Saves the client and client entry values already set on the module</p>
 <p><code class="docutils literal notranslate"><span class="pre">module.save(&quot;client&quot;,</span> <span class="pre">&quot;client_entry&quot;)</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertiq</span> <span class="o">=</span> <span class="n">iq</span><span class="o">.</span><span class="n">Vertiq8108</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;propeller_motor_control&quot;</span><span class="p">,</span> <span class="s2">&quot;velocity_kp&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">vertiq</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;propeller_motor_control&quot;</span><span class="p">,</span> <span class="s2">&quot;velocity_kp&quot;</span><span class="p">)</span>
 </pre></div>

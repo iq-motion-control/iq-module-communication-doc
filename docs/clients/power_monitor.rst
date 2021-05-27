@@ -102,7 +102,7 @@ A minimal working example for the Power Monitor Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    vertiq = iq.Vertiq2306(com, 0)
     
     volts = vertiq.get("power_monitor", "volts")  # returns the input voltage to module
     print(f"Voltage coming into module: {volts}")

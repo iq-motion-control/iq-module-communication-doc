@@ -35,7 +35,7 @@ Communicating With Motor Controller
 ===================================
 
 Python interacts with the motor controller via IQ Module Objects. Currently IQ Python API 
-supports 2 motors: Vertiq 2306 & Vertiq 8108
+supports 3 types of motors: Vertiq 2306, Vertiq 8108, and Fortiq M42BLS
 
 Creating a Vertiq Module
 ------------------------
@@ -49,34 +49,77 @@ Here's how you create a Vertiq Module:
     serial_port = "/dev/ttyUSB0" # Machine dependent
     com = iq.SerialCommunicator(serial_port)
 
-    # Create a vertiq2306 module with default firmware settings ("speed")
+    # Create a Vertiq2306 module with default firmware settings ("speed")
     vertiq2306 = iq.Vertiq2306(com, 0)
 
-    # Create a vertiq8108 module with default firmware settings ("speed")
+    # Create a Vertiq8108 module with default firmware settings ("speed")
     vertiq8108 = iq.Vertiq8108(com, 0) 
 
-Choosing the firmware for the Vertiq Module
--------------------------------------------
+Creating a Fortiq Module
+------------------------
 
-If you have flashed different firmware onto the module, then you'll need to reflect that change in the API as well.  
+Here's how you create a Vertiq Module:  
+
+.. code-block:: python
+
+    import iqmotion as iq
+
+    serial_port = "/dev/ttyUSB0" # Machine dependent
+    com = iq.SerialCommunicator(serial_port)
+
+    # Create a Vertiq2306 module with default firmware settings ("speed")
+    fortiq = iq.Fortiq(com, 0)
+
+    # Create a Vertiq8108 module with default firmware settings ("speed")
+    fortiq = iq.Fortiq(com, 0) 
+
+Changing the API to match the module Firmware
+---------------------------------------------
+
+Each module comes loaded with default firmware.
+
++-------------------+------------------+-------------+
+|       Module      | Default Firmware | API Default |
++===================+==================+=============+
+| Vertiq2306 2200Kv |       Speed      | Speed       |
++-------------------+------------------+-------------+
+| Vertiq2306 220Kv  |       Servo      | Speed**     |
++-------------------+------------------+-------------+
+| Vertiq8108 150Kv  |       Speed      | Speed       |
++-------------------+------------------+-------------+
+| Fortiq            |       Servo      | Servo       |
++-------------------+------------------+-------------+
+
+.. note:: 
+        If you own a Vertiq2306 220Kv, you will have to change the firmware style on the API to make servo calls to the Module.
+
+        ** The Vertiq2306 220Kv is a Position Module which comes loaded with Servo Firmware as a default.
+
+If your module has non-default firmware, you'll need to reflect that change in the API as well. Here's how you can do that:  
     
 * The Vertiq2306 currently supports:  
-    ``firmware = ["stepdir", "speed", "servo"]``
+    ``firmware = ["speed", "stepdir", "servo"]``
 
 * The Vertiq8108 currently supports:  
     ``firmware = ["speed"]``
+
+* The Fortiq currently supports:  
+    ``firmware = [ "servo", "stepdir", "speed"]``
 
 Here's how you change the firmware in the API:
 
 .. code-block:: python
 
-    # Create a vertiq module with different firmare settings
-    vertiq2306 = iq.vertiq2306(com, 0, firmware="stepdir") 
+    # Create a vertiq module with different firmare style
+    vertiq2306 = iq.Vertiq2306(com, 0, firmware="servo") 
 
-Load new clients on top of your Vertiq Module
----------------------------------------------
+    # Create a fortiq module with different firmware style
+    fortiq = iq.Fortiq(com, 0, firmware="stepdir") 
 
-To add clients on top of a Vertiq2306 or Vertiq8108, 
+Load new clients on top of your Module
+---------------------------------------
+
+To add clients on top of a Vertiq2306, Vertiq8108, or Fortiq,  
 create a folder that holds all of your custom client json 
 files and pass the folder name to the module.
 
@@ -85,7 +128,7 @@ files and pass the folder name to the module.
     # This folder should contain custom client jsons
     clients_path = "clients/" 
 
-    vertiq2306 = iq.vertiq2306(com, 0, clients_path=clients_path)
+    vertiq2306 = iq.Vertiq2306(com, 0, clients_path=clients_path)
     vertiq2306.list_clients() # Displays loaded clients for the module
 
 
@@ -94,7 +137,7 @@ Create a Base Module containing only essential clients
 
 A Base Module is a module that contains all the essentials 
 clients needed to interact with a motor. It does not have any 
-control modules so it's a blank slate.
+control modules so consider it a blank slate.
 
 To start with a base module and add clients on top, 
 create a folder that holds all of your custom client 
@@ -120,7 +163,7 @@ motor controller.
 
 .. code-block:: python
 
-    vertiq = iq.vertiq8108(com, 0)
+    vertiq = iq.Vertiq8108(com, 0)
     uc_temp = vertiq.get("temperature_monitor_uc", "uc_temp")
     print(f"The temperature of the UC is {uc_temp}")
 
@@ -131,7 +174,7 @@ motor controller.
 
 .. code-block:: python
 
-    vertiq = iq.vertiq8108(com, 0)
+    vertiq = iq.Vertiq8108(com, 0)
 
     volts = 5  # Set motor power to 5 Volts 
     vertiq.set("propeller_motor_control", "ctrl_volts", volts)
@@ -142,7 +185,7 @@ motor controller.
 
 .. code-block:: python
 
-    vertiq = iq.vertiq8108(com, 0)
+    vertiq = iq.Vertiq8108(com, 0)
 
     # Reboots motor with saved values
     vertiq .set("system_control", "reboot_program")
@@ -156,7 +199,7 @@ Saves the client and client entry values already set on the module
 
 .. code-block:: python
 
-    vertiq = iq.vertiq8108(com, 0)
+    vertiq = iq.Vertiq8108(com, 0)
     vertiq.set("propeller_motor_control", "velocity_kp", 10)
     vertiq.save("propeller_motor_control", "velocity_kp")
 

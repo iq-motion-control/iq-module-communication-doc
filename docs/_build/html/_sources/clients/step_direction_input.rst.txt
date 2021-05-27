@@ -104,7 +104,7 @@ A minimal working example for the Step Direction Input Client is:
     import math
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0, firmware="stepdir")
+    vertiq = iq.Vertiq2306(com, 0, firmware="stepdir")
     
     vertiq.set("step_direction_input", "angle_step", (2*math.pi)/65536))  # Set min step angle
     

@@ -97,7 +97,7 @@ A minimal working example for the Hobby Input Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    vertiq = iq.Vertiq2306(com, 0)
     
     vertiq.set("hobby_input", "allowed_protocols", 4)   # Set the protocol to MultiShot
     vertiq.save("hobby_input", "allowed_protocols")     # Save the protocol 

@@ -19,6 +19,7 @@
    modules/vertiq_2306_2200
    modules/vertiq_2306_220
    modules/vertiq_8108_150
+   modules/fortiq
 
 
 

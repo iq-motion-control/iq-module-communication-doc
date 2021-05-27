@@ -100,7 +100,7 @@ A minimal working example for the Temperature Estimator Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    vertiq = iq.Vertiq2306(com, 0)
     
     temp = vertiq.get("temperature_estimator", "temp")  # Estimated Motor Temperature
     print(f"Estimated Motor Temperature: {temp}")

@@ -103,7 +103,7 @@ A minimal working example for the System Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    vertiq = iq.Vertiq2306(com, 0)
     
     FW = vertiq.get("system_control", "firmware_version")  # Firmware Version Number
     print(f"Firmware: {FW}")

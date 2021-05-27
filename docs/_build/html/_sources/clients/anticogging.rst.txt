@@ -100,7 +100,7 @@ A minimal working example for the Anticogging Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0, firmware="servo")
+    vertiq = iq.Vertiq2306(com, 0, firmware="servo")
     
     vertiq.set("anticogging", "is_enabled", 1)  # Turns on Anticogging
 
