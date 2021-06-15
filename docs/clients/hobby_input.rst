@@ -93,14 +93,15 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Hobby Input Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("hobby_input", "allowed_protocols", 4)   # Set the protocol to MultiShot
-    vertiq.save("hobby_input", "allowed_protocols")     # Save the protocol 
+    |variable_name|.set("hobby_input", "allowed_protocols", 4)   # Set the protocol to MultiShot
+    |variable_name|.save("hobby_input", "allowed_protocols")     # Save the protocol 
 
 
 Message Table

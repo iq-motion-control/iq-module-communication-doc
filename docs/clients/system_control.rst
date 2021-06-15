@@ -99,13 +99,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the System Control Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    FW = vertiq.get("system_control", "firmware_version")  # Firmware Version Number
+    FW = |variable_name|.get("system_control", "firmware_version")  # Firmware Version Number
     print(f"Firmware: {FW}")
 
 Message Table

@@ -96,13 +96,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Temperature Estimator Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    temp = vertiq.get("temperature_estimator", "temp")  # Estimated Motor Temperature
+    temp = |variable_name|.get("temperature_estimator", "temp")  # Estimated Motor Temperature
     print(f"Estimated Motor Temperature: {temp}")
 
 Message Table

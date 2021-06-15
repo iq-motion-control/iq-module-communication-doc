@@ -19,6 +19,10 @@ responsiveness. IQ motors also output advanced telemetry for motor and vehicle h
 
     The Vertiq 8108 150KV currently only supports the Speed Firmware
 
+.. |module_name| Replace:: Vertiq8108
+.. |variable_name| Replace:: vertiq
+
+.. |module_firmware| unicode:: 0xA0
 .. include:: speed.rst
 
 .. .. include:: stepdir.rst

@@ -100,13 +100,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Temperature Monitor Microcontroller Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    temp = vertiq.get("temperature_monitor_uc", "uc_temp")  # Internal UC Temperature
+    temp = |variable_name|.get("temperature_monitor_uc", "uc_temp")  # Internal UC Temperature
     print(f"Internal UC temperature: {temp}")
 
 Message Table

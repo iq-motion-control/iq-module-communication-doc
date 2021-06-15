@@ -100,22 +100,23 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Servo Input Parser Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
     import math
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0, firmware="servo")
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
     # Set Servo Limits
-    vertiq.set("servo_input_parser", "mode", 3)             # Position Control Mode 
-    vertiq.set("servo_input_parser", "unit_min", -math.pi)  # Min position: -pi
-    vertiq.set("servo_input_parser", "unit_max", math.pi)   # Max position:  pi  
+    |variable_name|.set("servo_input_parser", "mode", 3)             # Position Control Mode 
+    |variable_name|.set("servo_input_parser", "unit_min", -math.pi)  # Min position: -pi
+    |variable_name|.set("servo_input_parser", "unit_max", math.pi)   # Max position:  pi  
 
     # Save Servo Limits
-    vertiq.save("servo_input_parser", "mode")
-    vertiq.save("servo_input_parser", "unit_min")
-    vertiq.save("servo_input_parser", "unit_max") 
+    |variable_name|.save("servo_input_parser", "mode")
+    |variable_name|.save("servo_input_parser", "unit_min")
+    |variable_name|.save("servo_input_parser", "unit_max") 
     
 Message Table
 ~~~~~~~~~~~~~

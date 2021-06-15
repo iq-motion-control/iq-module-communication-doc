@@ -96,13 +96,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the ESC Propeller Input Parser Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("esc_propeller_input_parser", "velocity_max", 1000) # Set max Velocity to 1000rad/s
+    |variable_name|.set("esc_propeller_input_parser", "velocity_max", 1000) # Set max Velocity to 1000rad/s
 
 Message Table
 ~~~~~~~~~~~~~

@@ -1,10 +1,8 @@
 Servo Firmware
 ==============
 
+.. Variables
 
-.. .. toctree::
-..     :caption: Clients
-..     :hidden:
 
 
 .. include:: ../clients/multi_turn_angle_control.rst

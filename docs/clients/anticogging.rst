@@ -96,13 +96,15 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Anticogging Client is:
 
 .. code-block:: python
+    :substitutions:
 
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0, firmware="servo")
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("anticogging", "is_enabled", 1)  # Turns on Anticogging
+    |variable_name|.set("anticogging", "is_enabled", 1)  # Turns on Anticogging
+
 
 Message Table
 ~~~~~~~~~~~~~

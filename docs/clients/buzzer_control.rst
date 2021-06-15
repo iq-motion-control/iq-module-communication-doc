@@ -102,16 +102,17 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Buzzer Control Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("buzzer_control", "hz", 440)         # A4
-    vertiq.set("buzzer_control", "volume", 127)     # Max Volume
-    vertiq.set("buzzer_control", "duration", 1000)  # 1000ms
-    vertiq.set("buzzer_control", "ctrl_note")       # Start the Note
+    |variable_name|.set("buzzer_control", "hz", 440)         # A4
+    |variable_name|.set("buzzer_control", "volume", 127)     # Max Volume
+    |variable_name|.set("buzzer_control", "duration", 1000)  # 1000ms
+    |variable_name|.set("buzzer_control", "ctrl_note")       # Start the Note
 
 Message Table
 ~~~~~~~~~~~~~

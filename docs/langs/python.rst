@@ -31,8 +31,8 @@ Replace the ``COM PORT`` string with the port string for your serial device (FTD
 this string has the form ’COM1’, ’COM2’, etc. In a Unix based OS, this string has the form ’/dev/ttyUSB0’
 or similar and depends on the device. The default serial baud rate for the motor controller is 115200.
 
-Communicating With Motor Controller
-===================================
+Creating a Module
+=================
 
 Python interacts with the motor controller via IQ Module Objects. Currently IQ Python API 
 supports 3 types of motors: Vertiq 2306, Vertiq 8108, and Fortiq M42BLS
@@ -73,67 +73,8 @@ Here's how you create a Vertiq Module:
     # Create a Vertiq8108 module with default firmware settings ("speed")
     fortiq = iq.Fortiq(com, 0) 
 
-Changing the API to match the module Firmware
----------------------------------------------
-
-Each module comes loaded with default firmware.
-
-+-------------------+------------------+-------------+
-|       Module      | Default Firmware | API Default |
-+===================+==================+=============+
-| Vertiq2306 2200Kv |       Speed      | Speed       |
-+-------------------+------------------+-------------+
-| Vertiq2306 220Kv  |       Servo      | Speed**     |
-+-------------------+------------------+-------------+
-| Vertiq8108 150Kv  |       Speed      | Speed       |
-+-------------------+------------------+-------------+
-| Fortiq            |       Servo      | Servo       |
-+-------------------+------------------+-------------+
-
-.. note:: 
-        If you own a Vertiq2306 220Kv, you will have to change the firmware style on the API to make servo calls to the Module.
-
-        ** The Vertiq2306 220Kv is a Position Module which comes loaded with Servo Firmware as a default.
-
-If your module has non-default firmware, you'll need to reflect that change in the API as well. Here's how you can do that:  
-    
-* The Vertiq2306 currently supports:  
-    ``firmware = ["speed", "stepdir", "servo"]``
-
-* The Vertiq8108 currently supports:  
-    ``firmware = ["speed"]``
-
-* The Fortiq currently supports:  
-    ``firmware = [ "servo", "stepdir", "speed"]``
-
-Here's how you change the firmware in the API:
-
-.. code-block:: python
-
-    # Create a vertiq module with different firmare style
-    vertiq2306 = iq.Vertiq2306(com, 0, firmware="servo") 
-
-    # Create a fortiq module with different firmware style
-    fortiq = iq.Fortiq(com, 0, firmware="stepdir") 
-
-Load new clients on top of your Module
----------------------------------------
-
-To add clients on top of a Vertiq2306, Vertiq8108, or Fortiq,  
-create a folder that holds all of your custom client json 
-files and pass the folder name to the module.
-
-.. code-block:: python
-    
-    # This folder should contain custom client jsons
-    clients_path = "clients/" 
-
-    vertiq2306 = iq.Vertiq2306(com, 0, clients_path=clients_path)
-    vertiq2306.list_clients() # Displays loaded clients for the module
-
-
-Create a Base Module containing only essential clients
-------------------------------------------------------
+Create a Base Module 
+--------------------
 
 A Base Module is a module that contains all the essentials 
 clients needed to interact with a motor. It does not have any 
@@ -151,8 +92,113 @@ json files and pass the folder name to the module.
     FlyDronePro = iq.BaseIqModule(com, 0, clients_path=clients_path)
     FlyDronePro.list_clients() # Displays loaded clients for the module
 
-Modifying Motor Controller Clients with Get/Set/Save
-====================================================
+
+API Options
+===========
+
+.. contents:: 
+    :local:
+
+Changing the API firmware to match the Firmware
+-----------------------------------------------
+
+Each module comes loaded with default firmware.
+
++----------------+----------------------+---------------------+---------------------+-----------+
+| Firmware Style | `Vertiq2306 2200Kv`_ | `Vertiq2306 220Kv`_ | `Vertiq8108 150Kv`_ | `Fortiq`_ |
++================+======================+=====================+=====================+===========+
+| ="speed"       | DEFAULT              | x                   | DEFAULT             | x         |
++----------------+----------------------+---------------------+---------------------+-----------+
+| ="servo"       | x                    | DEFAULT             |                     | DEFAULT   |
++----------------+----------------------+---------------------+---------------------+-----------+
+| ="stepdir"     | x                    | x                   |                     | x         |
++----------------+----------------------+---------------------+---------------------+-----------+
+
+
+.. note:: 
+        The Vertiq2306 220Kv and Vertiq2306 2200Kv share the same API call. However the 220Kv was designed as a servo motor 
+        while the 2200Kv was designed as a speed motor.
+        
+        The API call to Vertiq2306 defaults to speed, therefore if using a 220Kv module, you need to specify `firmware="servo"`
+
+Example of changing the API firmware:
+
+.. code-block:: python
+
+    # Create a vertiq module for the 220Kv Module
+    vertiq2306 = iq.Vertiq2306(com, 0, firmware="servo") 
+
+    # Create API Fortiq Module intended for a Fortiq with Speed Firmware
+    fortiq = iq.Fortiq(com, 0, firmware="speed") 
+
+Available Firmware to Download
+------------------------------
+
+.. _Vertiq2306 2200Kv: https://www.iq-control.com/vertiq-2306-2200kv
+.. _Vertiq2306 220Kv: https://www.iq-control.com/vertiq-2306-220kv
+.. _Fortiq: https://www.iq-control.com/fortiq-bls42
+.. _Vertiq8108 150Kv: https://www.iq-control.com/vertiq-8108-150kv
+
++----------------------+------------------------------+------------------------------------------+
+|        Module        | Standard on Motor Controller |          API Default Selection           |
++======================+==============================+==========================================+
+| `Vertiq2306 2200Kv`_ | Speed                        | iq.Vertiq2306(com, 0)                    |
++----------------------+------------------------------+------------------------------------------+
+| `Vertiq2306 220Kv`_  | Servo                        | iq.Vertiq2306(com, 0, firmware="servo")* |
++----------------------+------------------------------+------------------------------------------+
+| `Vertiq8108 150Kv`_  | Speed                        | iq.Vertiq8108(com, 0)                    |
++----------------------+------------------------------+------------------------------------------+
+| `Fortiq`_            | Servo                        | iq.Fortiq(com, 0)                        |
++----------------------+------------------------------+------------------------------------------+
+
+
+Adding New Clients to your IQModule
+-----------------------------------
+
+There are 2 options avaiable for adding extra clients
+
+ 
+1.  clients_path {str: directory path}: 
+
+    Create a folder that holds all of your custom client json 
+    files and pass the folder name to the module.
+
+    Note: this option will add every client entry in the folder
+
+    .. code-block:: python
+
+        import iqmotion as iq
+        import os
+
+        # extra_clients = <dirname to client jsons>
+        path_to_clients = os.path.join(os.path.dirname(__file__), ("extra_clients"))
+
+        com = iq.SerialCommunicator("/dev/ttyUSB0")
+        fortiq = iq.Fortiq(com, 0, clients_path=path_to_clients)
+        fortiq.list_clients()
+        
+    
+2.  extra_clients {list: [dir path, dir path, ...]}:
+
+    Contains a list of paths to each cleint entry you want to include
+    Note: you need to pass in an absolute paths
+
+    .. code-block:: python
+
+        import iqmotion as iq
+        import os
+
+        # extra_clients = <dirname to client jsons>
+        anticogging = os.path.join(os.path.dirname(__file__), ("extra_clients/anticogging.json"))
+        buzzer = os.path.join(os.path.dirname(__file__), ("extra_clients/buzzer_control.json"))
+        extra_clients = [anticogging, buzzer]
+
+        com = iq.SerialCommunicator("/dev/ttyUSB0")
+        fortiq = iq.Fortiq(com, 0, extra_clients=extra_clients)
+        fortiq.list_clients()
+
+Using Get/Set/Save Commands
+===========================
 
 Each module is capable of forming packets to send ``get, set, and save`` messages to a
 motor controller. 

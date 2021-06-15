@@ -89,13 +89,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Persistent Memory Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.Vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("persistent_memory", "revert_to_default")  # erases saved values except for factory defaults
+    |variable_name|.set("persistent_memory", "revert_to_default")  # erases saved values except for factory defaults
 
 
 Message Table
