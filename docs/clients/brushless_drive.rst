@@ -91,13 +91,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the BrushlessDriveClient is:
 
 .. code-block:: Python
+    :substitutions:
 
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("brushless_drive", "drive_spin_volts", 5) # Spins motor at 5 volts
+    |variable_name|.set("brushless_drive", "drive_spin_volts", 5) # Spins motor at 5 volts
 
 Message Table
 ~~~~~~~~~~~~~

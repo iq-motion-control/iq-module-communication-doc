@@ -117,13 +117,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Serial Interface Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("serial_interface", "baud_rate", 9600)  # change baud rate to 9600
+    |variable_name|.set("serial_interface", "baud_rate", 9600)  # change baud rate to 9600
 
 Message Table
 ~~~~~~~~~~~~~

@@ -32,7 +32,14 @@ above controllers can be used by the user.
     * Servo Firmware
     * Step Direction Firmware
 
+.. |module_name| Replace:: Vertiq2306
+.. |variable_name| Replace:: vertiq
 
+.. |module_firmware| unicode:: 0xA0
 .. include:: speed.rst
+
+.. |module_firmware| Replace:: , firmware="servo"
 .. include:: servo.rst
+
+.. |module_firmware| Replace:: , firmware="stepdir"
 .. include:: stepdir.rst

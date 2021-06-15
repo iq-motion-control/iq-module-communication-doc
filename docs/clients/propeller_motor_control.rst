@@ -101,13 +101,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Propeller Motor Control Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("propeller_motor_control", "ctrl_velocity", 5)  # Supplies 5V to motor
+    |variable_name|.set("propeller_motor_control", "ctrl_velocity", 5)  # Supplies 5V to motor
 
 
 Message Table

@@ -99,14 +99,15 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Step Direction Input Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
     import math
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0, firmware="stepdir")
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    vertiq.set("step_direction_input", "angle_step", (2*math.pi)/65536))  # Set min step angle
+    |variable_name|.set("step_direction_input", "angle_step", (2*math.pi)/65536))  # Set min step angle
     
 Message Table
 ~~~~~~~~~~~~~

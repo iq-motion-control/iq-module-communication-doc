@@ -32,7 +32,15 @@ communication overhead from the application controller.
     * Step Direction Firmware
     * Speed Firmware
 
+.. |module_name| Replace:: Vertiq2306
+.. |variable_name| Replace:: vertiq
+
+.. |module_firmware| Replace:: , firmware="servo"
 .. include:: servo.rst
+
+.. |module_firmware| Replace:: , firmware="stepdir"
 .. include:: stepdir.rst
+
+.. |module_firmware| Replace:: , firmware="speed"
 .. include:: speed.rst
     

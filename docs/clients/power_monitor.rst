@@ -98,13 +98,14 @@ All messages use the standard Get/Set/Save functions.
 A minimal working example for the Power Monitor Client is:
 
 .. code-block:: Python
-
+    :substitutions:
+    
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    vertiq = iq.vertiq2306(com, 0)
+    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
-    volts = vertiq.get("power_monitor", "volts")  # returns the input voltage to module
+    volts = |variable_name|.get("power_monitor", "volts")  # returns the input voltage to module
     print(f"Voltage coming into module: {volts}")
 
 Message Table
