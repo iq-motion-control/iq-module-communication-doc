@@ -43,9 +43,9 @@ We currently support 4 different languages for controlling your IqModule:
 * C++
 * Matlab
 
-The intention of these guides is to teach you how to quickly commuinicate with an IQModule using our API.
+The intention of these guides is to teach you how to quickly communicate with an IQModule using our API.
 
-You may proceed with a `Getting Started` guide or you can continue reading along to understand how to get the most out of this documentation.
+You may proceed with a `Getting Started` guide on the left
 
 
 Reporting Documentation Issues
