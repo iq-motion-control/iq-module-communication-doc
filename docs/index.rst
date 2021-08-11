@@ -32,11 +32,11 @@
    intro
 
 
-Welcome to the IQMotion Serial API Guide
-========================================
+Welcome to the IQ Motion Control Serial API Guide
+=================================================
 
-This guide is meant to help you get the most out of your IqModule. 
-We currently support 4 different languages for controlling your IqModule:
+This guide is meant to help you get the most out of your IQModule. 
+We currently support 4 different languages for controlling your IQModule:
 
 * Python
 * Arduino 
@@ -44,7 +44,6 @@ We currently support 4 different languages for controlling your IqModule:
 * Matlab
 
 The intention of these guides is to teach you how to quickly communicate with an IQModule using our API.
-
 You may proceed with a `Getting Started` guide on the left
 
 
