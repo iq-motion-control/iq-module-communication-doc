@@ -1,6 +1,6 @@
-**********
-Matlab API
-**********
+***************************
+Getting Started with Matlab
+***************************
 
 
 The Matlab libraries contain everything required to open a serial port, send and receive messages on that

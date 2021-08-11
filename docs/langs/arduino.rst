@@ -1,6 +1,6 @@
-***********
-Arduino API
-***********
+****************************
+Getting Started with Arduino
+****************************
 
 The Arduino libraries allow simple ``get/set/save`` access to all parameters on the modules, which includes the
 various control methods to make the modules spin. Please see the official Arduino library installation guide at
