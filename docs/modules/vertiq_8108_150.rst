@@ -13,7 +13,7 @@ weight requirements. With position sensing and advanced calibration and control 
 we're able to drive the motor in a way that increases efficiency, torque output, and 
 responsiveness. IQ motors also output advanced telemetry for motor and vehicle health monitoring.
 
-.. :download:`[TODO] Not Yet Available <>` 
+:download:`Vertiq 8108 Datasheet <../_static/Vertiq8108_150Kv_module_datasheet.pdf>` 
 
 .. note:: 
 
@@ -23,7 +23,7 @@ responsiveness. IQ motors also output advanced telemetry for motor and vehicle h
 .. |variable_name| Replace:: vertiq
 
 .. |module_firmware| unicode:: 0xA0
-.. include:: speed.rst
+.. include:: speed8108.rst
 
 .. .. include:: stepdir.rst
 .. .. include:: servo.rst

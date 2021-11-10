@@ -114,6 +114,8 @@ Message Table
 
 Type ID 58 | Step Direction Input
 
+.. rst-class:: tight-table
+
 +--------+------------+----------------+-----------+------+--------------------------+
 | Sub ID | Short Name |     Access     | Data Type | Unit |           Note           |
 +========+============+================+===========+======+==========================+

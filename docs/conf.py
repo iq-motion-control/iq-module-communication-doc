@@ -22,7 +22,7 @@ copyright = '2021, IQ Motion Control'
 author = 'Malik B. Parker'
 
 # The full version, including alpha/beta/rc tags
-release = '0.11.7'
+release = '0.11.11'
 
 
 # -- General configuration ---------------------------------------------------
@@ -65,5 +65,5 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
+html_css_files = ['css/custom.css']
 html_logo = "_static/IQClear.png"
