@@ -10,7 +10,7 @@ Module Communication”.  A .zip of the library can also be found at http://iq-c
 To use the IQ Module Communication library, you must include the library header file (done automatically
 by Arduino if you use their Sketch →Include Library →IQ Module Communication), by typing
 
-``#include <iq_module_communicaiton.hpp>``
+``#include <iq_module_communication.hpp>``
 
 Next make an IqSerial object. You have two options. Use the default constructor to use the default
 Serial (also called Serial0) on Arduino by typing 
