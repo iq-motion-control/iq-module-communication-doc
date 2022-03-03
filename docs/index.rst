@@ -31,8 +31,12 @@
 
    intro
 
+.. toctree::
+   :caption: Tutorials
 
-Welcome to the IQ Motion Control Serial API Guide
+   tutorials/testing_with_control_center
+
+Welcome to the IQ Motion Control Documentation
 =================================================
 
 This guide is meant to help you get the most out of your IQModule. 
