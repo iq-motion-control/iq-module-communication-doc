@@ -43,7 +43,7 @@ name of this new serial port. In Windows you can see this under Device Manager->
 The image below shows an example where the connected USB-to-UART converter shows up as COM3. This
 port will be used later when connecting with the Control Center
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/windows_device_manager_com.jpg
+.. figure:: ../_static/tutorial_images/control_center_tutorial/windows_device_manager_com.JPG
     :align: center
     :alt: COM Port in Device Manager
 
