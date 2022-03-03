@@ -120,7 +120,7 @@ If the connection is succesful, the Control Center will display "Motor Connected
 in the top left and the Information section will be populated with information about the connectd motor. The image
 below shows an example of what the Control Center will look like when connecting to a Vertiq 8108.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/connected_control_center.jpg
+.. figure:: ../_static/tutorial_images/control_center_tutorial/connected_control_center.JPG
     :align: center
     :alt: Control Center Connected to 8108
 
@@ -150,7 +150,7 @@ but only 2 that matter for this example:
 The figure below shows what your General tab should look like after setting the parameters. Some of your default settings may be slightly different on a 
 2306, but that is fine:
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_general.jpg
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_general.JPG
     :align: center
     :alt: General Tab Settings
 
@@ -169,7 +169,7 @@ There are only 2 that we are interested in for this example:
 The figure below shows what your Tuning tab should look like after setting the parameters. Some of your default settings may be slightly different on a 
 2306, but that is fine:
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_tuning.jpg
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_tuning.JPG
     :align: center
     :alt: Tuning Tab Settings
 
@@ -199,7 +199,7 @@ Click on "Select Firmware Binary", and select the binary you downloaded. Make su
 bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. The motor should restart and play its 5 beep startup song. An 
 example of the Control Center after a successful flash is shown below.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flash.jpg
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flash.JPG
     :align: center
     :alt: Successful Flash
 
