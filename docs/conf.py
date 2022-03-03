@@ -22,7 +22,7 @@ copyright = '2022, IQ Motion Control'
 author = 'Malik B. Parker & Fred Kummer'
 
 # The full version, including alpha/beta/rc tags
-release = '0.11.7'
+release = '0.12.0'
 
 
 # -- General configuration ---------------------------------------------------
