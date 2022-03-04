@@ -32,6 +32,7 @@
    intro
 
 .. toctree::
+   :hidden:
    :caption: Tutorials
 
    tutorials/testing_with_control_center

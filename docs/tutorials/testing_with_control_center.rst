@@ -37,7 +37,8 @@ To communicate with the motor using IQ Control Center, you will need:
 * Wires or a cable to connect your USB-to-UART converter to the motor's communication pins
 * A battery or power supply to connect to your motor
 
-First, plug your USB-to-UART converter into your computer, and install any drivers if necessary.
+First, plug your USB-to-UART converter into your computer, and install any drivers if necessary 
+(refer to the manufacturers documentation for your USB-to-UART converter).
 If installed correctly, a new serial port should be avaiable on your PC. Take note of the
 name of this new serial port. In Windows you can see this under Device Manager->Ports (COM & LPT).
 The image below shows an example where the connected USB-to-UART converter shows up as COM3. This
@@ -53,11 +54,22 @@ Then, connect your cable or wires from the USB-to-UART converter to the appropri
 on your motor. See the "Electrical Interface" sections in the datasheets linked above for details
 on what each pin or pad on your motor is. 
 
-Now you can connect power to your motor. Refer to the "Electrical Specifcations" and
+Now you can connect power to your motor. Refer to the "Electrical Specifications" and
 "Electrical Interface" sections of the appropriate datasheet above for information on the
 correct voltages and connectors to use with each type of motor. When you power the motor
 on, you should hear 5 beeps. This indicates the motor has powered on successfully and is ready
 to connect to. Now we can set up the Control Center.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 800px; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/tutorial_images/control_center_tutorial/8108_startup_sound.mp4" type="video/mp4"></video>
 
 Installing the Control Center
 ==============================
@@ -69,7 +81,7 @@ Download the appropriate zip file for your operating system, then extract and ru
 Click "Next" on the first screen, then select a directory to install the Control Center in. The default
 directory is usually fine unless you are an advanced user.
 
-On the"Select Components screen, leave "IQ Control Center" checked, and click "Next". 
+On the "Select Components" screen, leave "IQ Control Center" checked, and click "Next". 
 Accept the License Agreement, and click "Next" on the License Agreement and Start Menu 
 Shortcuts screen. Then click "Install", and wait for the installation to complete. Click
 "Finish" after the installation completes. The IQ Control Center should now be installed,
@@ -102,7 +114,7 @@ with colored boxes in the figure above and are described below:
   our products. The serial port is determined by the name of the serial port used by your USB-to-UART converter,
   see the `Hardware Setup`_ section for more details on how to determine that port name.
 * The :gold:`Display` section displays information, configuration parameters, and controls relevant to your current
-  tab. When you change tabs the controls and information shown here will change. This is where the majority of your 
+  tab. When you change tabs, the controls and information shown here will change. This is where the majority of your 
   interactions with a connected motor will take place.
 * The :purple:`Log` section displays information about the Control Center that can be useful for understanding what 
   state the Control Center is in and debugging connection problems. Check here if you are having connection issues
@@ -116,7 +128,7 @@ in the top right of the Control Center, leave the baud rate at 115200 bps and fr
 the serial port that corresponds with your USB-to-UART converter. Then click "Connect", and wait several
 seconds for the Control Center to connect to the motor.
 
-If the connection is succesful, the Control Center will display "Motor Connected Sucessfully" in the Log section
+If the connection is succesful, the Control Center will display "Motor Connected Successfully" in the Log section
 in the top left and the Information section will be populated with information about the connectd motor. The image
 below shows an example of what the Control Center will look like when connecting to a Vertiq 8108.
 
@@ -126,25 +138,53 @@ below shows an example of what the Control Center will look like when connecting
 
     Control Center Connected to Vertiq 8108
 
+Updating Firmware
+=================
+If you do need to update the motor firmware, you can do it through the Control Center. First download the firmware binary you want to update to, and then open the Firmware tab. 
+Click on "Select Firmware Binary", and select the binary you downloaded. Make sure you are connected to the motor, and then hit "Flash". The motor should disconnect, and a progress
+bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. The motor should restart and play its 5 beep startup song. An 
+example of the Control Center after a successful flash is shown below.
+
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flash.JPG
+    :align: center
+    :alt: Successful Flash
+
+    Control Center After Flashing
+
 Spinning the Motor
 ==================
+.. warning:: Before setting any parameters, ensure that the motor does NOT have a propeller attached and
+     is held in place securely. If the motor accelerates rapidly, it will "jump" if unsecured and a spinning propeller could be extremely dangerous to anyone nearby.
+
 Now that we are connected, it's time to spin the motor. But first, we need to use the Control Center
 to configure the motor. Specifically, we are going to configure the motor to operate in Voltage mode 
-with a safe voltage limit for tesing, and to use counter-clockwise as its positive direction.
+with a safe voltage limit for testing, and to use counter-clockwise as its positive direction.
 
 First, click on the General tab. To set a parameter, enter the value you want in the dropdown or text box, and then
-click the downward facing arrow sybmol to the right of the parameter. **If the parameter has an asterisk next to it
-after changing the value, then you have not saved that value onto the motor yet**. There are several configuration parameters here, 
-but only 2 that matter for this example:
+click the downward facing set arrow to the right of the parameter. **If the parameter has an asterisk next to it
+after changing the value, then you have not saved that value onto the motor yet**. See the note below for more detailed information on
+the controls for setting parameters.
 
-* **Mode**: For this example set the Mode to **Voltage**. This determines how the motor interprets setpoint commands it gets, i.e. when commanded to go 
+.. note:: Each parameter has controls and visual indicators that allow you to interact with it. These controls are highlighted here. The :purple:`asterisk` indicates that
+    you have changed the value of the paramter in control center but have not actually set that new value on the motor. The :red:`refresh button` refreshes the current value
+    of the parameter from the motor, so it can be used to check that a parameter was actually set to what you expect. The :blue:`set arrow` sets and saves the value of the
+    parameter selected in Control Center onto the motor. After clicking this, the asterisk should disappear. The :green:`information button` provides some brief information
+    on the purpose and usage of a parameter.
+
+    .. image:: ../_static/tutorial_images/control_center_tutorial/colored_parameter_controls.png
+        :align: center
+        :alt: Parameter Controls
+
+There are several configuration parameters here, but only 2 that matter for this example:
+
+* **Mode**: For this example, set the Mode to **Voltage**. This determines how the motor interprets setpoint commands it gets, i.e. when commanded to go 
   to a 50% setpoint, what does that mean? If you are using our IQUART protocol with one of our communication 
   libraries to directly command a specific voltage or velocity to the motor, this doesn't matter because you
   are explicitly telling the motor what to do. But often when integrating with flight controllers over other 
   protocols (such as DSHOT or PWM), the motor will receive commands that simply tell it to go to a certain percentage throttle. 
   The Mode parameter determines if we consider those percentage commands to be telling us to go to a specific velocity, a 
   specific voltage, or a fraction of our input voltage. 
-* **Direction**: For this example set the Direction to **2D Counter Clockwise**. This sets what direction the motor considers to be the positive direction. 
+* **Direction**: For this example, set the Direction to **2D Counter Clockwise**. This sets what direction the motor considers to be the positive direction. 
   When given a positive voltage, the motor will spin this way. The use of 2D or 3D should match the "FC 2D/3D Mode" parameter, which defaults to 2D.
 
 The figure below shows what your General tab should look like after setting the parameters. Some of your default settings may be slightly different on a 
@@ -160,7 +200,7 @@ Now, we can move onto the Tuning tab. This also has a large number of parameters
 There are only 2 that we are interested in for this example:
 
 * **Max Volts**: Set this to **5V**. This parameter sets the maximum voltage the motor will use when in Voltage mode. Voltage mode interprets setpoints
-  as a value between 0V and this maximum voltage, so if your maximum voltage is set to 5V, then a 50% setpoint will set the motor to spin with 2.5V. 5V 
+  as a value between 0V and this maximum voltage. If your maximum voltage is set to 5V, then a 50% setpoint will set the motor to spin with 2.5V. 5V 
   is used here because it is a fairly safe low voltage for testing, but the motor can handle much more.
 * **Timeout**: Set this to **1.5s**. This parameter determines how long the motor will wait to receive a command before timing out. When the motor times 
   out, it will stop spinning and repeatedly beep 3 times. This is a safety feature to stop the motor if the controller is not communicating. The Control
@@ -175,8 +215,9 @@ The figure below shows what your Tuning tab should look like after setting the p
 
     Tuning Tab Settings
 
-Now at long last we can make the motor spin. Open the Testing tab, and scroll down to the bottom. **Before using any of the test parameters, ensure that
-the motor is held in place securely. If the motor accelerates rapidly, it will "jump" if unsecured.** At the bottom of the tab you should see 5 important testing parameters:
+.. warning:: Double check that the motor is secured and there is no propeller attached before applying any of these testing parameters.
+
+Now at long last we can make the motor spin. Open the Testing tab, and scroll down to the bottom. At the bottom of the tab you should see 5 important testing parameters:
 
 * **Coast**: This commands the motor to coast, which means that the motor allows its rotor to slowly decelerate and come to a stop. It is a safe way 
   to stop the motor when testing, since it does not cause the motor to rapidly decelerate.
@@ -191,16 +232,3 @@ the motor is held in place securely. If the motor accelerates rapidly, it will "
 Try out some of these parameters and observe how the motor spins. For example, try setting the Voltage to 2.5V, then set the ESC Input to 0.5. You should observe the motor
 staying at the same speed. You can repeat this with 5.0V and a 1.0 ESC input. The motor is now set up for basic testing with the Control Center. For integrating with a flight controller,
 more setup is needed, refer to the flight controller tutorials for details.
-
-Updating Firmware
-=================
-If you do need to update the motor firmware, you can do it through the Control Center. First download the firmware binary you want to update to, and then open the Firmware tab. 
-Click on "Select Firmware Binary", and select the binary you downloaded. Make sure you are connected to the motor, and then hit "Flash". The motor should disconnect, and a progress
-bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. The motor should restart and play its 5 beep startup song. An 
-example of the Control Center after a successful flash is shown below.
-
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flash.JPG
-    :align: center
-    :alt: Successful Flash
-
-    Control Center After Flashing
