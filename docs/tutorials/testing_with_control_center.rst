@@ -66,7 +66,7 @@ to connect to. Now we can set up the Control Center.
     .center_vid {   margin-left: auto;
                     margin-right: auto;
                     display: block;
-                    width: 800px; 
+                    width: 75%; 
                 }
     </style>
     <video class='center_vid' controls><source src="../_static/tutorial_images/control_center_tutorial/8108_startup_sound.mp4" type="video/mp4"></video>
