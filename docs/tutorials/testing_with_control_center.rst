@@ -1,9 +1,9 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-*****************************************************
-Getting Started with Motors Using IQ Control Center
-*****************************************************
+*********************************************************
+Getting Started with Speed Motors Using IQ Control Center
+*********************************************************
 
 The easiest way to get started with any IQ Motor is with the IQ Control Center. 
 The IQ Control Center is a simple application that allows you to configure and test
@@ -14,9 +14,9 @@ the IQ Control Center. It will outline how to setup the necessary hardware and s
 provide a brief introduction to the Control Center, and teach you how to peform some basic
 tests on the motor with the Control Center.
 
-This tutorial is applicable for both the **Vertiq 2306** and the **Vertiq 8108**. Though
-they are different sizes and have some differences in parameters, the process of testing
-them with the Control Center and the majority of their configuration parameters are the same.
+**This tutorial is applicable for both the Vertiq 2306 and the Vertiq 8108, but only when 
+using the Speed firmware. If you are using the position firmware, some of the parameters discussed here
+will not be available.**
 
 Motor Datasheets
 ===================
@@ -132,6 +132,9 @@ If the connection is succesful, the Control Center will display "Motor Connected
 in the top left and the Information section will be populated with information about the connectd motor. The image
 below shows an example of what the Control Center will look like when connecting to a Vertiq 8108.
 
+.. warning:: Before proceeding any further, check that the firmware style indicates this motor is using speed firmware.
+    This tutorial is only intended for speed firmware, and not for position firmware.
+
 .. figure:: ../_static/tutorial_images/control_center_tutorial/connected_control_center.JPG
     :align: center
     :alt: Control Center Connected to 8108
@@ -187,8 +190,9 @@ There are several configuration parameters here, but only 2 that matter for this
 * **Direction**: For this example, set the Direction to **2D Counter Clockwise**. This sets what direction the motor considers to be the positive direction. 
   When given a positive voltage, the motor will spin this way. The use of 2D or 3D should match the "FC 2D/3D Mode" parameter, which defaults to 2D.
 
-The figure below shows what your General tab should look like after setting the parameters. Some of your default settings may be slightly different on a 
-2306, but that is fine:
+The figure below shows what your General tab should look like after setting the parameters.**Note that you may have more or less parameters than are shown here if you are
+on a different firmware style or a more updated version. Some of your default settings may also be slightly different. That is fine, these images are only meant as a guide
+for the important parameters.**
 
 .. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_general.JPG
     :align: center
