@@ -1,6 +1,8 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. _control_center_tutorial:
+
 *********************************************************
 Getting Started with Speed Motors Using IQ Control Center
 *********************************************************

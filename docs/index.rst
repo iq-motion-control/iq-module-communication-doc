@@ -36,6 +36,7 @@
    :caption: Tutorials
 
    tutorials/testing_with_control_center
+   tutorials/pwm_control_flight_controller
 
 Welcome to the IQ Motion Control Documentation
 =================================================
