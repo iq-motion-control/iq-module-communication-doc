@@ -70,8 +70,8 @@ A picture of the full setup connected to a flight controller is shown below.
 
     Full Hardware Setup
 
-Firmware and Software Setup
-===========================
+Firmware and Software Versions
+==============================
 
 This tutorial was written for IQ Control Center version 1.2.5. It should also be applicable to future versions of the Control Center, but there
 may be some slight differences in the number of parameters available on tabs or the exact names of parameters and settings. The version of you Control Center
@@ -281,13 +281,13 @@ Reboot your flight controller to make sure the new parameters take effect. The i
 
     Important ArduCopter DSHOT Parameters in Mission Planner
 
-Re-Configuring DSHOT Outputs
-############################
-.. note:: Only needed on some flight controlllers
+Re-Configuring ArduCopter DSHOT Outputs
+#######################################
+.. note:: Only needed on some flight controlllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on which
 
 Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
 The reason for this and the types of flight controllers it affects are discussed in `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
-and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`. This issue applies to the Pixhawk that was used for this tutorial, and also
+and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`_. This issue applies to the Pixhawk that was used for this tutorial, and also
 applies to the popular Cube Orange flight controller.
 
 The MAIN outputs of these flight controllers can put out PWM, but not DSHOT. One way to check for this issue is to check the "Messages" section of the "Data" tab in Mission Planner on reboot.
@@ -385,9 +385,9 @@ QGroundControl follow the steps below.
 
     QGroundControl Airframe Setup
 
-Setting PWM Parameters
-**********************
-There are several parameters that need to be set properly to make sure the flight controller can communicate with your motor. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
+Setting PX4 PWM Parameters
+**************************
+There are several parameters that need to be set properly to make sure the flight controller can communicate with your motor using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
 "Parameters". Use the Search bar to look for the following parameters, and set them to the correct values if necessary:
 
 * **PWM_MAIN_MIN = 1000** 
@@ -404,6 +404,44 @@ There are several parameters that need to be set properly to make sure the fligh
 
 Then reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
 
+Setting PX4 DSHOT Parameters
+****************************
+There is only one parameter that needs to be set properly to make sure the flight controller can communicate with your motor using DSHOT. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
+"Parameters". Use the Search bar to look for the following parameter, and set it to the correct value:
+  
+* **DSHOT_CONFIG = DShot600**
+  
+  * This sets the flight controller to use DSHOT600, which matches the speed we set on the motor.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/px4_dshot_config.JPG
+    :align: center
+
+    DSHOT_CONFIG Parameter set for DSHOT600
+  
+Then reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+
+Re-Configuring PX4 DSHOT Outputs
+################################
+.. note:: Only needed on some flight controlllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on which
+
+Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
+The reason for this and the types of flight controllers it affects are discussed in the `PX4 DSHOT documentation <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ . 
+This issue applies to the Pixhawk that was used for this tutorial, and also applies to the popular Cube Orange flight controller. 
+Essentially, The MAIN outputs of these flight controllers can put out PWM, but not DSHOT. 
+
+If your flight controller is affected by this, **move the signal and ground wires from MAIN 1 OUT to AUX 1 OUT**, as shown in `Re-Configuring ArduCopter DSHOT Outputs`_.
+
+PX4 provides a fairly easy way to get around this. Changing the SYS_USE_IO parameter to 0 forces the AUX ports to act as if they were MAIN ports. See the PX4 documentation linked above for more details
+on this and how it affects using other ports with an airframe. If you have a flight controller affected by this issue, **set SYS_USE_IO = 0 to use the AUX ports instead of the MAIN ports**.
+The figure below shows how the parameter should be configured.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/px4_sys_use_io.JPG
+    :align: center
+
+    SYS_USE_IO Set to Re-Configure AUX Outputs as MAIN Outputs
+
+Then reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+
 Testing the Motor with QGroundControl
 *************************************
 .. warning:: Double check that the motor is secured and there is no propeller attached before performing any testing.
@@ -416,7 +454,15 @@ Now we can use the motor testing tools in QGroundControl to confirm that the fli
 4. Power up the motor, wait for it to complete the startup song.
 5. Enable the motor sliders with the toggle underneath the sliders.
 6. Move the Motor 1 slider bar just slightly above its start position, to give the motor a throttle command near 0%. The motor should play its two note arming song, and may spin slowly.
-7. Move the Motor 1 slider around, and observer how the motor changes speed. After each move of the slider the motor should spin for the timeout duration (1.5s) and then stop spinning and timeout until the next command.
+   
+   * On DSHOT, the motor will disarm and play its disarming song after this command ends. You will need to send another low throttle command to re-arm it if you want it to spin again
+  
+7. Move the Motor 1 slider around, and observe how the motor changes speed. 
+
+    * For PWM, After each move of the slider the motor should spin for the timeout duration (1.5s) and then stop spinning and timeout until the next command.
+    * For DSHOT, you cannot go straight to a high throttle level, as the motor will disarm after each command, and only re-arms on a throttle command close to 0%. So for DSHOT testing 
+      start by sending a low level throttle command to arm the motor, and before that command ends and the motor disarms, send another higher throttle command. The motor will never timeout
+      since DSHOT disarms the motor after each test.
 
 The figure below demonstrates what the Motor tab should look like in QGroundControl when running a test.
 
@@ -425,7 +471,7 @@ The figure below demonstrates what the Motor tab should look like in QGroundCont
 
     QGroundControl Motor Testing
 
-See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner,, which demonstrates what sounds you should expect from the motor and it successfully
+See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner, which demonstrates what sounds you should expect from the motor and it successfully
 spinning with a flight controller.
 
 Successful Test Videos
