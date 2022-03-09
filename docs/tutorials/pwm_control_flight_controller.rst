@@ -37,7 +37,8 @@ the setup, where white is the signal wire and black is the ground wire.
 
 .. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use the AUX 1 output instead of the MAIN 1 output**. This is
     because not all outputs on all flight controllers support using DSHOT. See the `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
-    section of the Arducopter DSHOT setup instructions for more details. Refer to your flight controllers documentation for details on what protocols its outputs support.
+    section of the Arducopter DSHOT setup instructions and the `PX4 DSHOT documentation <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ for more details. 
+    Refer to your flight controllers documentation for details on what protocols its outputs support.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/flight_controller_wires.jpg
     :align: center
@@ -46,7 +47,8 @@ the setup, where white is the signal wire and black is the ground wire.
 
     Connection to Flight Controller (White = Signal, Black = Ground)
 
-.. warning:: TODO: Maybe we should include a 2306 connection picture as well
+When connecting a 2306 to a flight controller, the Host TX/PWM input (typically a white wire), should be connected to the signal pin of the flight controller output, and the ground input (typically a black wire)
+should be connected to the ground pin of the input. See the 2306 setup picture below.
 
 For more detail on why these connections are used and for similar connection info on the 2306, refer to the pinouts from the modules' datasheet below.
 
@@ -62,13 +64,20 @@ For more detail on why these connections are used and for similar connection inf
 
     2306 Pinout
 
-A picture of the full setup connected to a flight controller is shown below.
+Pictures of the full setup for an 8108 or a 2306 connected to a flight controller are shown below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/hardware_setup.jpg
     :align: center
     :width: 50%
 
-    Full Hardware Setup
+    Full 8108 Hardware Setup
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/2306_hardware_setup.jpg
+    :align: center
+    :width: 50%
+
+    Full 2306 Hardware Setup
+
 
 Firmware and Software Versions
 ==============================
@@ -82,17 +91,25 @@ can be seen in the Information tab, as shown in the image below. For more inform
 
     Control Center Version
 
-For firmware, this tutorial was tested with a Vertiq 8108 using speed firmware version 3. Future firmware versions should also be compatiable, but ensure that your 8108 is on at least
-version 3 when following this tutorial. You can check for updated firmware under the `Products <https://www.iq-control.com/products>`_ section of the IQ Motion Control website.  You can
-check the firmware version and style on your motor by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
-For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`.
+
+For motor firmware, you can check the firmware version and style on your motor by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
+For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.iq-control.com/products>`_ section of the IQ Motion Control website.  
+
+For the Vertiq 8108, this tutorial was tested with an 8108 using speed firmware version 3. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
+version 3 when following this tutorial. 
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/8108_fw_version.JPG
     :align: center
 
     8108 Firmware Version
-    
-.. warning:: TODO: Test with the 2306 as well and add version here
+
+For the Vertiq 2306, this tutorial was tested with a 2306 using speed firmware version 24. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
+version 24 when following this tutorial. 
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/2306_fw_version.JPG
+    :align: center
+
+    2306 Firmware Version
 
 Reverting to Defaults (Optional)
 ================================
@@ -117,9 +134,6 @@ Motor Configuration
 
 Now that the motor is setup, we can begin configuring it with Control Center for PWM control. The General tab and the Tuning tab are the only ones with parameters that need to be configured.
 If you are unfamiliar with setting parameters through the Control Center, refer to :ref:`control_center_tutorial`.
-
-.. warning:: TODO: Test with the 2306 as well
-
 
 General Tab
 ***********
@@ -303,7 +317,7 @@ a DSHOT compatible output.
 You need to move the motor output from a MAIN output to an AUX output. In this case, we will move from MAIN OUT 1 to AUX OUT 1. The physical connection of the signal and ground wire to the flight 
 controller is shown below.
 
-.. figure:: ../_static/tutorial_images/pwm_flight_controller/dshot_aux.JPG
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/dshot_aux.jpg
     :align: center
     :width: 60%
 
