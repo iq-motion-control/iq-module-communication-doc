@@ -227,7 +227,7 @@ Setting ArduCopter PWM Parameters
 *********************************
 .. note:: This section should only be used if you want to use the PWM protocol to control the motors. Otherwise, continue to `Setting ArduCopter DSHOT Parameters`_ below
 
-There are several parameters that need to be set properly to make sure the flight controller can communicate with the motor. Connect to your flight controller with Mission Planner, select "Config" from
+There are several parameters that need to be set properly to make sure the flight controller can communicate with the motor using PWM. Connect to your flight controller with Mission Planner, select "Config" from
 the top toolbar, and then select "Full Parameter List" from the sidebar. On the right of the parameter list is a search box you can use to search for each parameter. Confirm that
 the following parameters are set to the proper value and change them if necessary:
 
@@ -245,7 +245,7 @@ the following parameters are set to the proper value and change them if necessar
   
 * **SERVO_DSHOT_ESC = 0**
   
-  * This disables DSHOT commands. DSHOT is a different hobby protocol, which we do not want running currently.
+  * This disables DSHOT commands. DSHOT is a different hobby protocol,  and we don't want it trying to send any commands
   
 Reboot your flight controller to make sure the new parameters take effect. The important parameters and their proper values in the Mission Planner parameter list are shown in the figure below.
 
@@ -258,6 +258,73 @@ Setting ArduCopter DSHOT Parameters
 ***********************************
 .. note:: This section should only be used if you want to use the DSHOT protocol to control the motors. Otherwise, use `Setting ArduCopter PWM Parameters`_ above
 
+ArduCopter needs to be configured properly to use DSHOT as its protocol for controllign the motors. To set these parameters, connect to your flight controller and select "Full Parameter List" under the "Config"
+section of Mission Planner. Search for the parameters listed below and make sure they are set to the appropriate values:
+
+* **MOT_PWM_TYPE = 6**
+  
+  * This selects the output PWM Type. 6 Sets it DSHOT600. See the ArduCopter documentation for more details
+
+* **SERVO_DSHOT_ESC = 0**
+  
+  * This controls what type of additonal ESC commands will be sent from the flight controller. These additional commands include things like beeping, LED control, and other potentially useful but non-essential
+    extra commands that can be sent over DSHOT. But this does not need to be enabled in order to send the motor throttle commands over DSHOT, so we are leaving it disabled for simplicity. See the ArduCopter documentation for more details
+  
+* **SERVO_DSHOT_RATE = 0**
+  
+  * This sets the output rate for DSHOT outputs. Leaving it at 0 leaves the output rate at 1 kHz. See the ArduCopter documentation for more details
+
+Reboot your flight controller to make sure the new parameters take effect. The important parameters and their proper values in the Mission Planner parameter list are shown in the figure below.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_dshot_params.JPG
+    :align: center
+
+    Important ArduCopter DSHOT Parameters in Mission Planner
+
+Re-Configuring DSHOT Outputs
+############################
+.. note:: Only needed on some flight controlllers
+
+Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
+The reason for this and the types of flight controllers it affects are discussed in `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
+and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`. This issue applies to the Pixhawk that was used for this tutorial, and also
+applies to the popular Cube Orange flight controller.
+
+The MAIN outputs of these flight controllers can put out PWM, but not DSHOT. One way to check for this issue is to check the "Messages" section of the "Data" tab in Mission Planner on reboot.
+This will display what kinds of protocols are actually going to be output on each pin based on the configuration. Set your flight controller for DSHOT as discussed above, reboot it, connect to it,
+and check the "Messages" section. If you see a message like the one below that lists "RCOut: PWM 1-12", that means your outputs are only going to put out PWM still, and you need to move the motor to
+a DSHOT compatible output.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_messages_pwm.JPG
+    :align: center
+
+    Message Showing Outputs are PWM Only
+
+You need to move the motor output from a MAIN output to an AUX output. In this case, we will move from MAIN OUT 1 to AUX OUT 1. The physical connection of the signal and ground wire to the flight 
+controller is shown below.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/dshot_aux.JPG
+    :align: center
+    :width: 60%
+
+    Connecting to AUX 1 OUT
+
+Next, you need to tell ArduCopter to use AUX 1 as the output for Motor 1 on your vehicle, instead of the default of MAIN 1. ArduCopter uses SERVOX_FUNCTION variables to assign a function to each
+output. For the Pixhawk, AUX 1 is controlled by SERVO9_FUNCTION. **Set SERVO9_FUNCTION = 33 to output the throttle commands for Motor 1 on AUX 1.** See the ArduCopter documentation for details on what
+settings to use for different functions. The figure below shows the proper setting for this parameter.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_servo9.JPG
+    :align: center
+
+    Setting AUX 1 as the Motor 1 Output
+
+Reboot the flight controller and connect to it again. This time in the "Messages" section you should see that RCOUT also has DS600 on its outputs, as shown below.
+
+.. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_messages_dshot.JPG
+    :align: center
+
+    Message Showing Outputs Are Using DSHOT
+
 Testing the Motor with Mission Planner
 **************************************
 .. warning:: Double check that the motor is secured and there is no propeller attached before performing any testing.
@@ -268,12 +335,23 @@ Now we can use Mission Planner's built-in motor testing tools to make sure the f
 2. Select "Setup" from the top toolbar, and then expand "Optional Hardware" on the sidebar
 3. Select "Motor Test" from the "Optional Hardware" options.
 4. Power on the motor and wait for it to complete its startup song.
-5. Arm your safety switch if you have one. The motor should play its two-note arming song as the flight controller starts sending 0% throttle commands, but it should not start spinning.
-6. Set the "Throttle %" to 5% and the "Duration" to 5s
+5. Arm your safety switch if you have one.
+   
+  * If using PWM, the motor should play its two-note arming song as the flight controller starts sending 0% throttle commands once the safety switch is armed
+  * On DSHOT, the motor will not arm yet.
+  
+6. Set the "Throttle %" to 3% and the "Duration" to 5s, and click "Test All Motors" 
 7. The motor should spin slowly for 5 seconds, and then stop.
+   
+  * On PWM, the motor will spin and stop without any additional arming or disarming noises
+  * On DSHOT, the motor will arm when you send the command, spin for the duration, and then stop and disarm again, since DSHOT sends a specific disarm command at the end of the test.
+   
 8. Try some other throttle levels to see the motor running at different speeds
+   
+  * For DSHOT, you cannot go straight to a high throttle level, as the motor will disarm after each command, and only re-arms on a throttle command close to 0%. So for DSHOT testing
+    increase the duration and send a low level throttle command to arm the motor, and before that command ends and the motor disarms, send another higher throttle command.  
 
-See the `Successful Test Video`_ section below for a video of this whole process, which demonstrates what sounds you should expect from the motor and it successfully
+See the `Successful Test Videos`_ section below for a video of this whole process, which demonstrates what sounds you should expect from the motor and it successfully
 spinning with Arducopter and Mission Planner.
 
 PX4 and QGroundControl Configuration and Testing
@@ -347,12 +425,15 @@ The figure below demonstrates what the Motor tab should look like in QGroundCont
 
     QGroundControl Motor Testing
 
-See the `Successful Test Video`_ section below for a video of a similar test process using ArduCopter and Mission Planner,, which demonstrates what sounds you should expect from the motor and it successfully
+See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner,, which demonstrates what sounds you should expect from the motor and it successfully
 spinning with a flight controller.
 
-Successful Test Video
-=====================
-The video below demonstrates the motor being successfully controlled with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning and the
+Successful Test Videos
+======================
+
+PWM Test
+********
+The video below demonstrates the motor being successfully controlled using PWM with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning and the
 arming song after the safety switch is armed.
 
 .. raw:: html
@@ -365,3 +446,19 @@ arming song after the safety switch is armed.
                 }
     </style>
     <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/mp_motor_test.mp4" type="video/mp4"></video>
+
+DSHOT Test
+**********
+The video below demonstrates the motor being successfully controlled using PWM with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning
+and the arming and disarming songs during testing. The motor disarms after each test, so it needs to be re-armed with a low throttle command before testing higher throttles.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/mp_dshot_test.mp4" type="video/mp4"></video>
