@@ -25,11 +25,11 @@ Hardware Setup
 This example uses a Vertiq 8108 as the motor and a Pix32 from Holybro as the flight controller. Since this tutorial is
 focused only on the motor, the only additional perpheral we are using along with the flight controller is a safety switch.
 
-The 8108 is powered through its XT-60 connector from a benchtop power supply. If using a 2306, you must supply power directly to its power and ground wires directly 
+The 8108 is powered through its XT-60 connector from a benchtop power supply. If using a 2306, you must supply power directly to its power and ground wires 
 as it does not include an XT-60 socket. When setting the configuration parameters on the motor through Control Center, it is connected to a PC with a USB-to-UART converter. 
 For more details on how to use the Control Center with a motor, refer to :ref:`control_center_tutorial`.
 
-When testing it with the flight controller the 8108 is connected to the controller with two female-to-female jumper wires connecting to the 
+When testing with the flight controller, the 8108 is connected to the controller with two female-to-female jumper wires connecting to the 
 Main Out 1 pins of the Pix32. The exact position or labeling of the output pins on your flight controller is likely to be different
 if you are not using the Pix32, refer to your flight controller documentation. The signal output pin of Main Out 1 is connected to the top pin of
 the 8108, and the ground pin of Main Out 1 is connected to the communication ground of the 8108. The images below shows the wires connected to
@@ -48,9 +48,9 @@ the setup, where white is the signal wire and black is the ground wire.
     Connection to Flight Controller (White = Signal, Black = Ground)
 
 When connecting a 2306 to a flight controller, the Host TX/PWM input (typically a white wire), should be connected to the signal pin of the flight controller output, and the ground input (typically a black wire)
-should be connected to the ground pin of the input. See the 2306 setup picture below.
+should be connected to the ground pin of the output. See the 2306 setup picture below.
 
-For more detail on why these connections are used and for similar connection info on the 2306, refer to the pinouts from the modules' datasheet below.
+For more detail on why these connections are used, refer to the pinouts from the modules' datasheet below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/8108_pinout.JPG
     :align: center
@@ -132,7 +132,7 @@ Motor Configuration
 .. warning:: Before setting any parameters, ensure that the motor does NOT have a propeller attached and
      is held in place securely. If the motor accelerates rapidly, it will "jump" if unsecured and a spinning propeller could be extremely dangerous to anyone nearby.
 
-Now that the motor is setup, we can begin configuring it with Control Center for PWM control. The General tab and the Tuning tab are the only ones with parameters that need to be configured.
+Now that the motor is setup, we can begin configuring it with Control Center. The General tab and the Tuning tab are the only ones with parameters that need to be configured.
 If you are unfamiliar with setting parameters through the Control Center, refer to :ref:`control_center_tutorial`.
 
 General Tab
@@ -210,7 +210,7 @@ Testing the Motor
 .. warning:: Double check that the motor is secured and there is no propeller attached before performing any testing.
 
 To test that motor is configured to spin and take throtle commands from the flight controller, open the Testing tab. The ESC Input parameter simulates the motor receiving a 
-throttle command, so it is the best way to test if the motor is ready to connect with the flight controller. **Make sure the motor is secure before, attempting to spin it, as
+throttle command, so it is the best way to test if the motor is ready to connect with the flight controller. **Make sure the motor is secure before attempting to spin it, as
 it will "jump" if unsecured**. Set the ESC Input to 0.1. The motor should start spinning. Next, set the ESC Input to 0.2. Finally, The motor should start spinning more quickly. Check
 that the motor is spinning counter-clockwise. Finally, set the ESC Input to 0.6. The motor should speed up and continue spinning counter-clockwise. 
 
