@@ -114,7 +114,7 @@ version 24 when following this tutorial.
 Reverting to Defaults (Optional)
 ================================
 
-If you have previously used or set any configurations on the motor, it may be useful to revert it to tis default state before continuing with this tutorial. This ensures
+If you have previously used or set any configurations on the motor, it may be useful to revert it to its default state before continuing with this tutorial. This ensures
 that you start with a fresh motor and there should be no lingering issues from previous configurations.
 
 To reset the motor, first connect to it with Control Center. Then navigate to the Advanced tab, and click Yes when prompted if you are sure that you want to access the Advanced
@@ -130,7 +130,8 @@ For more information on how to connect to the motor in Control Center and to set
 Motor Configuration
 ===================
 .. warning:: Before setting any parameters, ensure that the motor does NOT have a propeller attached and
-     is held in place securely. If the motor accelerates rapidly, it will "jump" if unsecured and a spinning propeller could be extremely dangerous to anyone nearby.
+     is held in place securely. If the motor is unsecured it could move unexpectedly when it starts to spin. 
+     This could damage the motor, its connectors, or any nearby observers.
 
 Now that the motor is setup, we can begin configuring it with Control Center. The General tab and the Tuning tab are the only ones with parameters that need to be configured.
 If you are unfamiliar with setting parameters through the Control Center, refer to :ref:`control_center_tutorial`.
@@ -182,8 +183,9 @@ sections for both setups**:
   
   For this setup, you should **set this to Voltage mode**.
 
-* **Motor Direction**: Determines which direction the motor considers to be the positive direction. When in 2D mode, throttle commands make the motor spin in the positive direction, so this will determine which direction
-  the motor will spin in for this setup. The 2D/3D part of this setting should match what you have set in the "FC 2D/3D Mode" parameter. **Set this to 2D Counter Clockwise**.
+* **Motor Direction**: This sets what direction the motor considers to be the positive direction for throttle commands from a flight controller. 
+  So in 2D mode, like we are for this example, the motor will always spin this way on a throttle command.  The use of 2D or 3D should match the "FC 2D/3D Mode" parameter, 
+  which defaults to 2D. **Set this to 2D Counter Clockwise**. 
   
 Any other parameters in this tab can be safely left at their default values.
 
@@ -253,9 +255,9 @@ the following parameters are set to the proper value and change them if necessar
   
   * This sets the max PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us.
   
-* **MOT_PWM_MIN = 1000**
+* **MOT_PWM_MIN = 990**
   
-  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us.
+  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us, but setting this to 990us helps ensure the motor will not spin on a 0% throttle.
   
 * **SERVO_DSHOT_ESC = 0**
   
@@ -404,9 +406,9 @@ Setting PX4 PWM Parameters
 There are several parameters that need to be set properly to make sure the flight controller can communicate with your motor using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
 "Parameters". Use the Search bar to look for the following parameters, and set them to the correct values if necessary:
 
-* **PWM_MAIN_MIN = 1000** 
+* **PWM_MAIN_MIN = 990** 
   
-  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us.
+  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us, but setting this to 990us helps ensure the motor will not spin on a 0% throttle.
 
 * **PWM_MAIN_MAX = 2000**
   
@@ -494,7 +496,7 @@ Successful Test Videos
 PWM Test
 ********
 The video below demonstrates the motor being successfully controlled using PWM with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning and the
-arming song after the safety switch is armed.
+arming song after the safety switch is armed. **Note that in the video below the motor is secured with velcro on the bottom, be sure you also secure your motors before attempting to spin them.**
 
 .. raw:: html
 
@@ -505,12 +507,13 @@ arming song after the safety switch is armed.
                     width: 75%; 
                 }
     </style>
-    <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/mp_motor_test.mp4" type="video/mp4"></video>
+    <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/mp_pwm_test.mp4" type="video/mp4"></video>
 
 DSHOT Test
 **********
 The video below demonstrates the motor being successfully controlled using PWM with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning
-and the arming and disarming songs during testing. The motor disarms after each test, so it needs to be re-armed with a low throttle command before testing higher throttles.
+and the arming and disarming songs during testing. The motor disarms after each test, so it needs to be re-armed with a low throttle command before testing higher throttles. **Note that in 
+the video below the motor is secured with velcro on the bottom, be sure you also secure your motors before attempting to spin them.**
 
 .. raw:: html
 

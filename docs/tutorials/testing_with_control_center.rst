@@ -159,7 +159,8 @@ example of the Control Center after a successful flash is shown below.
 Spinning the Motor
 ==================
 .. warning:: Before setting any parameters, ensure that the motor does NOT have a propeller attached and
-     is held in place securely. If the motor accelerates rapidly, it will "jump" if unsecured and a spinning propeller could be extremely dangerous to anyone nearby.
+     is held in place securely. If the motor is unsecured it could move unexpectedly when it starts to spin. 
+     This could damage the motor, its connectors, or any nearby observers.
 
 Now that we are connected, it's time to spin the motor. But first, we need to use the Control Center
 to configure the motor. Specifically, we are going to configure the motor to operate in Voltage mode 
@@ -171,7 +172,7 @@ after changing the value, then you have not saved that value onto the motor yet*
 the controls for setting parameters.
 
 .. note:: Each parameter has controls and visual indicators that allow you to interact with it. These controls are highlighted here. The :purple:`asterisk` indicates that
-    you have changed the value of the paramter in control center but have not actually set that new value on the motor. The :red:`refresh button` refreshes the current value
+    you have changed the value of the parameter in control center but have not actually set that new value on the motor. The :red:`refresh button` refreshes the current value
     of the parameter from the motor, so it can be used to check that a parameter was actually set to what you expect. The :blue:`set arrow` sets and saves the value of the
     parameter selected in Control Center onto the motor. After clicking this, the asterisk should disappear. The :green:`information button` provides some brief information
     on the purpose and usage of a parameter.
@@ -189,8 +190,9 @@ There are several configuration parameters here, but only 2 that matter for this
   protocols (such as DSHOT or PWM), the motor will receive commands that simply tell it to go to a certain percentage throttle. 
   The Mode parameter determines if we consider those percentage commands to be telling us to go to a specific velocity, a 
   specific voltage, or a fraction of our input voltage. 
-* **Direction**: For this example, set the Direction to **2D Counter Clockwise**. This sets what direction the motor considers to be the positive direction. 
-  When given a positive voltage, the motor will spin this way. The use of 2D or 3D should match the "FC 2D/3D Mode" parameter, which defaults to 2D.
+* **Direction**: For this example, set the Direction to **2D Counter Clockwise**. This sets what direction the motor considers to be the positive direction for throttle commands from a flight controller. 
+  So in 2D mode, like we are for this example, the motor will always spin this way on a throttle command. So our motor will spin counter clockwise when controlled by the flight controller. 
+  The use of 2D or 3D should match the "FC 2D/3D Mode" parameter, which defaults to 2D.
 
 The figure below shows what your General tab should look like after setting the parameters.**Note that you may have more or less parameters than are shown here if you are
 on a different firmware style or a more updated version. Some of your default settings may also be slightly different. That is fine, these images are only meant as a guide
@@ -231,9 +233,9 @@ Now at long last we can make the motor spin. Open the Testing tab, and scroll do
   to 0.5 will send the motor a 50% throttle command. Since we are in Voltage mode, this will be interpreted as a percentage of the maximum voltage, which should be 5V. So setting 
   this to 0.5 should set the motor to the same speed as setting the Voltage parameter to 2.5V.
 * **PWM**: This tells the motor to spin with a percentage of its input voltage. For example, if your input voltage is 20V, and you set this parameter to 0.5, the motor will spin with
-  a 10V drive voltage, since 50% of 20V is 10V.
-* **Velocity**: This commands the motor to try and maintain a specific velocity in rad/s, using closed loop PID control.
-* **Voltage**: This commands the motor to a specific drive voltage. A positive voltage goes in the positive direction as set in the General tab.
+  a 10V drive voltage, since 50% of 20V is 10V. A positive PWM percentage always goes in the counter-clockwise direction, and a negative PWM percentage always goes clockwise.
+* **Velocity**: This commands the motor to try and maintain a specific velocity in rad/s, using closed loop PID control. A positive velocity always goes in the counter-clockwise direction, and a negative velocity always goes clockwise.
+* **Voltage**: This commands the motor to a specific drive voltage. A positive voltage always goes in the counter-clockwise direction, and a negative voltage always goes clockwise.
 
 Try out some of these parameters and observe how the motor spins. For example, try setting the Voltage to 2.5V, then set the ESC Input to 0.5. You should observe the motor
 staying at the same speed. You can repeat this with 5.0V and a 1.0 ESC input. The motor is now set up for basic testing with the Control Center. For integrating with a flight controller,
