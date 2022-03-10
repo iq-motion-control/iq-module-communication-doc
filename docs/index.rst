@@ -31,12 +31,27 @@
 
    intro
 
+.. toctree::
+   :hidden:
+   :caption: Tutorials
 
-Welcome to the IQ Motion Control Serial API Guide
+   tutorials/testing_with_control_center
+   tutorials/pwm_control_flight_controller
+
+Welcome to the IQ Motion Control Documentation
 =================================================
 
-This guide is meant to help you get the most out of your IQModule. 
-We currently support 4 different languages for controlling your IQModule:
+This documentation is meant to help you get the most out of your IQ Module. This includes APIs for our custom protocol, tutorial for setting up your modules, and
+examples of how to communicate with the modules.
+
+Setup Tutorials
+***************
+Detailed tutorials on how to setup and use your modules with our Control Center and flight controllers can be found in the `Tutorials` section on the sidebar to the left.
+
+Controlling Modules With IQ APIs
+********************************
+
+We currently support 4 different languages for controlling your IQ Module:
 
 * Python
 * Arduino 
@@ -49,7 +64,6 @@ You may proceed with a `Getting Started` guide on the left
 
 Reporting Documentation Issues
 ******************************
-
 We try our best to keep this documentation as clear, concise, and updated as possible.
 If you come across any typos, bugs in example code, confusing verbiage, or simply have a question on how to do something, 
 Please report it on our public github issues page!

@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Python API'
-copyright = '2021, IQ Motion Control'
-author = 'Malik B. Parker'
+project = 'IQ Motion Control API and Usage'
+copyright = '2022, IQ Motion Control'
+author = 'Malik B. Parker & Fred Kummer'
 
 # The full version, including alpha/beta/rc tags
-release = '0.11.7'
+release = '0.12.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -47,6 +47,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+#html_theme = "sphinx_rtd_theme" #"classic"
 html_theme = "sphinx_rtd_theme" #"classic"
 
 html_theme_options = {
@@ -67,3 +68,5 @@ html_theme_options = {
 html_static_path = ['_static']
 
 html_logo = "_static/IQClear.png"
+
+html_css_files = ['custom_width.css']
