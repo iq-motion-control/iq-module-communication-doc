@@ -82,7 +82,7 @@ Pictures of the full setup for an 8108 or a 2306 connected to a flight controlle
 Firmware and Software Versions
 ==============================
 
-This tutorial was written for IQ Control Center version 1.2.5. It should also be applicable to future versions of the Control Center, but there
+This tutorial was written for IQ Control Center version 1.2.6. It should also be applicable to future versions of the Control Center, but there
 may be some slight differences in the number of parameters available on tabs or the exact names of parameters and settings. The version of you Control Center
 can be seen in the Information tab, as shown in the image below. For more information on how to use the Control Center, refer to :ref:`control_center_tutorial`.
 
@@ -91,41 +91,57 @@ can be seen in the Information tab, as shown in the image below. For more inform
 
     Control Center Version
 
+.. warning:: Versions of the Control Center prior to 1.2.6 had bugs that made setting the hobby protocol correctly difficult. Ensure that you have upgraded to version 1.2.6 or later
+    before continuing with this setup.
+
 
 For motor firmware, you can check the firmware version and style on your motor by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
 For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.iq-control.com/products>`_ section of the IQ Motion Control website.  
 
-For the Vertiq 8108, this tutorial was tested with an 8108 using speed firmware version 3. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
-version 3 when following this tutorial. 
+For the Vertiq 8108, this tutorial was tested with an 8108 using speed firmware version 5. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
+version 5 when following this tutorial. 
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/8108_fw_version.JPG
     :align: center
 
     8108 Firmware Version
 
-For the Vertiq 2306, this tutorial was tested with a 2306 using speed firmware version 24. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
-version 24 when following this tutorial. 
+.. warning:: Versions of the 8108 firmware prior to version 5 had bugs that made calibrating and selecting the hobby protocol difficult. Ensure that you have upgraded to version 5 or later
+    before continuing with this setup.
+
+For the Vertiq 2306, this tutorial was tested with a 2306 using speed firmware version 26. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
+version 26 when following this tutorial. 
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/2306_fw_version.JPG
     :align: center
 
     2306 Firmware Version
 
+.. warning:: Versions of the 2306 firmware prior to version 26 had bugs that made calibrating and selecting the hobby protocol difficult. Ensure that you have upgraded to version 26 or later
+    before continuing with this setup.
+
 Reverting to Defaults (Optional)
 ================================
 
 If you have previously used or set any configurations on the motor, it may be useful to revert it to its default state before continuing with this tutorial. This ensures
-that you start with a fresh motor and there should be no lingering issues from previous configurations.
+that you start with a fresh motor and there should be no lingering issues from previous configurations. **Note that these instructions are only correct for Control Center
+version 1.2.6 and greater, Vertiq 8108 version 5 and greater, and Vertiq 2306 version 26 and greater. Earlier versions used a different factory defaulting workflow.**
 
 To reset the motor, first connect to it with Control Center. Then navigate to the Advanced tab, and click Yes when prompted if you are sure that you want to access the Advanced
-settings. Then, find the "Revert to Factory Defaults" configuration parameter and click the set arrow. The motor should reboot with factory default settings. 
-For more information on how to connect to the motor in Control Center and to set parameters, refer to :ref:`control_center_tutorial`. The figure below shows the
-"Revert to Factory Defaults" parameter that should be used.
+settings. 
+
+Scroll down until you see the the "Revert to Factory Default Key 1" and "Revert to Factory Default Key 2" parameters. These keys need to be set properly before the motor can be
+defaulted. This is meant to protect against unintentional defaulting. Set "Revert to Factory Default Key 1" to 12345678 and "Revert to Factory Default Key 2" to 11223344.
+This will prime the motor for defaulting. See the figure below for an example of setting these keys.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/revert.JPG
     :align: center
 
-    Revert to Factory Defaults Parameter
+    Revert to Factory Defaults Keys
+
+Then, find the "Revert to Factory Defaults" configuration parameter and click the set arrow. The motor should disconnect and reboot. When you re-connect, 
+it be have defaulted to its factory fresh state. For more information on how to connect to the motor in Control Center and to set parameters, refer 
+to :ref:`control_center_tutorial`. 
 
 Motor Configuration
 ===================
@@ -140,14 +156,14 @@ General Tab
 ***********
 First, there are a few parameters to set in the General tab. Not all of the parameters in this tab are important, and only the relevant ones are
 highlighted here. If a parameter is not mentioned, you can safely leave it at its default. The correct settings and purpose of each parameters are 
-described in greater detail below. The figure below provides a quick overview of what the settings in Control Center should look like when you're done, with
+described in greater detail below. The figure below provides a quick overview of what the settings in Control Center should look like when you're done setting up for PWM, with
 the important parameters indicated with a red dot. Note that the figure is from an 8108, you may have less total parameters in the General tab on a 2306, but the 
 important parameters should be the same between both sizes.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/pwm_general.JPG
     :align: center
 
-    General Configuration for PWM, Red Dots on Important Parameters (Communication should be OneShot125 for PWM, DSHOT1200 for DSHOT, see below for details on why)
+    General Configuration for PWM, Red Dots on Important Parameters
 
 The list below provides a description of the important parameters and details on what they should be set to. **Most paramaters are the same in PWM and DSHOT setups, but ones that differ have
 sections for both setups**:
@@ -159,13 +175,13 @@ sections for both setups**:
   depending on the flight controller. In those cases, it is best to set the motor to only listen for a specific type of protocol. For this reason, we will explicitly set the protocol to listen to in this setup. The proper value
   for this configuration depends on if you are using PWM or DSHOT
   
-  * **PWM Setup**: Counter-intuitively (due to a Control Center bug), you should set the Communication protocol to **OneShot125** to listen to PWM messages in version 1.2.5 of the Control Center. This may change in future versions. See the bug warning below for 
-    details.
-  * **DSHOT Setup**: Set this to **DSHOT1200**. This may seem confusing later, as we will set the flight controller to DSHOT600. See the bug warning below for details on why we need to do this.
+  * **PWM Setup**: Set the Communication protocol to **Standard PWM** to listen to PWM messages in version 1.2.6 and later of the Control Center. In Version 1.2.5 and earlier, you will need to select OneShot125
+    due to a Control Center bug. See the bug warning below for details.
+  * **DSHOT Setup**: Set this to **DSHOT600** in version 1.2.6 and later of the Control Center. In Version 1.2.5 and earlier, you will need to select DSHOT1200 due to a Control Center bug. See the bug warning below for details.
 
   .. warning:: **Known Bug:** In version 1.2.5 and earlier versions of the Control Center, there is a bug in the dropdown menu for the Communication parameter. The numbering for options besides Autodetect has been improperly configured.
       If you select a protocol from the list other than Autodetect, the motor will actually be listening for the next protocol up in the list instead of what you selected. So in order to listen for PWM, you should select OneShot125.
-      This will be addressed in future versions of the Control Center.
+      This is addressed in version 1.2.6 and later of the Control Center.
 
 * **FC 2D/3D Mode**: This parameter tells the motor if the flight controller wants it to operate in 2D mode (spinning in one direction) or 3D mode (able to spin in both directions). This depends on your flight controller, but for this 
   test setup, **set this to 2D mode**.
@@ -177,7 +193,9 @@ sections for both setups**:
   There are 3 modes:
 
   * PWM: This mode means that the motor will apply a fraction of the battery voltage as its drive voltage when given a setpoint. For example, if your battery voltage is 20V, and you send a 50% command, then the motor will apply a 10V drive voltage. 
-  * Despite the similar naming, this mode has nothing to do with using the Hobby PWM
+    
+    * Despite the similar naming, this mode has nothing to do with using the Hobby PWM Communication Protocol
+  
   * Voltage: This mode interprets the commands as a fraction of the maximum voltage set in the Tuning tab. So if your maximum voltage was set at 8V, and you sent a 25% throttle command, the motor would apply a drive voltage of 2V.
   * Velocity: This mode interprets the command as a fraction of the maximum velocity set in the Tuning tab. So if your maximum velocity was set at 100 rad/s, and you sent a 25% throttle command, the motor would try to spin at 25 rad/s.
   
