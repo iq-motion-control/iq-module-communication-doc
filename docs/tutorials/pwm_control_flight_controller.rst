@@ -1,6 +1,8 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. _hobby_fc_tutorial:
+
 ***********************************************
 PWM and DSHOT Control with a Flight Controller
 ***********************************************
