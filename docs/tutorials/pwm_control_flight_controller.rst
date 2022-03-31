@@ -83,7 +83,7 @@ Firmware and Software Versions
 ==============================
 
 This tutorial was written for IQ Control Center version 1.2.6. It should also be applicable to future versions of the Control Center, but there
-may be some slight differences in the number of parameters available on tabs or the exact names of parameters and settings. The version of you Control Center
+may be some slight differences in the number of parameters available on tabs or the exact names of parameters and settings. The version of your Control Center
 can be seen in the Information tab, as shown in the image below. For more information on how to use the Control Center, refer to :ref:`control_center_tutorial`.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_version.JPG
