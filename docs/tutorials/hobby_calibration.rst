@@ -8,7 +8,7 @@ Calibrating Modules With Analog Hobby Protocols
 ***********************************************
 
 IQ modules can be controlled with analog hobby protocols, such as PWM and OneShot. These protocols send throttle commands to the module using a square wave or pulse of variable duration,
-where the length of the wave determines the throttle input. For example, when using PWM, by default IQ modules interpret a pulse of 1000 us indicates as 0% throttle, and a pulse of 2000 us
+where the length of the wave determines the throttle input. For example, when using PWM, by default IQ modules interpret a pulse of 1000 us as 0% throttle, and a pulse of 2000 us
 as 100% throttle.
 
 However, the exact pulse duration used to represent the endpoints of the throttle range can vary between different controllers. One controller may consider 1000 us to 2000 us to be the 0%
