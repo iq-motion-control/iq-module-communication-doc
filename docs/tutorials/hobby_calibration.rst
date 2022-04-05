@@ -13,7 +13,11 @@ as 100% throttle.
 
 However, the exact pulse duration used to represent the endpoints of the throttle range can vary between different controllers. One controller may consider 1000 us to 2000 us to be the 0%
 to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control an IQ module, they must agree on this input range. In some instances you
-can edit the range used by the controllerm as discussed for Ardupilot and PX4 based flight controllers in this tutorial: :ref:`hobby_fc_tutorial`. 
+can edit the range used by the controller as discussed for Ardupilot and PX4 based flight controllers in this tutorial: :ref:`hobby_fc_tutorial`. 
+
+Another reason why calibration may be necessary is due to clock inaccuracies. Vertiq 2306 modules do not have an external crystal, which reduces the accuracy of their clock. This can lead
+to a 2306 measuring a pulse's duration differently than the controller, so they may not agree on exactly what throttle level is expected. Calibration allows the module and the controller to
+clarify what the endpoints for the throttle commands should be.
 
 Another option is to adjust the input range of the IQ module so that it matches the controller. This is commonly done on a range of ESCs, and is known as "calibration". This tutorial
 will cover the calibration process for an IQ module.
@@ -142,7 +146,7 @@ though the exact high and low durations may be different.
 Calibration With PX4 and QGroundControl Motor Test
 ==================================================
 As described in `Calibration With ArduCopter and Mission Planner Motor Test`_ above, typically you would use an RC transmitter to calibrate a module when connected to a flight controller.
-But just as with ArduCopter and Mission Planner, You can also use PX4 and QGroundControl to easily try out calibration without the need for any RC transmitter setup. All you need is your IQ 
+But just as with ArduCopter and Mission Planner, you can also use PX4 and QGroundControl to easily try out calibration without the need for any RC transmitter setup. All you need is your IQ 
 Module, a flight controller with PX4, and a computer with QGroundControl.
 
 First, follow the steps laid out in :ref:`hobby_fc_tutorial` for setting up your IQ module and PX4 flight controller to communicate with each other using PWM. Make sure to test
