@@ -27,9 +27,9 @@ get a better sense of what they can do and how the hardware is setup. The datash
 for all IQ modules can be found under the `Support <https://www.iq-control.com/support>`_
 section of our website, and individual links are provided below for convenience:
 
-* `Vertiq 2306 2200KV <https://www.iq-control.com/_files/ugd/d62b5b_b819dbedb42c4e368a99562635d89f35.pdf>`_
-* `Vertiq 2306 220KV <https://www.iq-control.com/_files/ugd/d62b5b_8988a96aad13470e89c57a63b011a05a.pdf>`_
-* `Vertiq 8108 150KV <https://www.iq-control.com/_files/ugd/d62b5b_c0d1c7cac2fa4a509e663b040c4dbf0d.pdf>`_
+* `Vertiq 2306 2200KV <https://static1.squarespace.com/static/62981f8ddf7dc07b7eed3f3f/t/63063670f72c060db8879052/1661351539244/Vertiq_23-06_2200kv_module_datasheet.pdf>`_
+* `Vertiq 2306 220KV <https://static1.squarespace.com/static/62981f8ddf7dc07b7eed3f3f/t/63066cb62767660deec6dadd/1661365431560/Vertiq_23-06_220kv_module_datasheet.pdf>`_
+* `Vertiq 8108 150KV <https://static1.squarespace.com/static/62981f8ddf7dc07b7eed3f3f/t/6306367b2b9a912706a32f22/1661351553848/Vertiq_81-08_150kv_module_datasheet.pdf>`_
 
 Hardware Setup
 ==============
