@@ -96,6 +96,8 @@ A minimal working example for the Persistent Memory Client is:
     com = iq.SerialCommunicator("/dev/ttyUSB0")
     |variable_name| = iq.|module_name|(com, 0|module_firmware|)
     
+    |variable_name|.set("persistent_memory", "factory_default_key_1", 12345678)  # Set first key before erasing calibration data
+    |variable_name|.set("persistent_memory", "factory_default_key_2", 11223344)  # Set second key before erasing calibration data
     |variable_name|.set("persistent_memory", "revert_to_default")  # erases saved values except for factory defaults
 
 
@@ -104,10 +106,15 @@ Message Table
 
 Type ID 11 | Persistent Memory
 
-+--------+-------------------+--------+-----------+------+----------------------------------------------------------------------------------------------+
-| Sub ID |    Short Name     | Access | Data Type | Unit |                                             Note                                             |
-+========+===================+========+===========+======+==============================================================================================+
-| 0      | erase             | set    |           |      | Erases all saved values including calibration data and product key.  Highly not recommended. |
-+--------+-------------------+--------+-----------+------+----------------------------------------------------------------------------------------------+
-| 1      | revert_to_default | set    |           |      | Erases all saved values except for those set in factory.                                     |
-+--------+-------------------+--------+-----------+------+----------------------------------------------------------------------------------------------+
++--------+-----------------------+--------+-----------+------+---------------------------------------------------------------------------------------------+
+| Sub ID | Short Name            | Access | Data Type | Unit | Note                                                                                        |
++========+=======================+========+===========+======+=============================================================================================+
+| 0      | erase                 | set    |           |      | Erases all saved values including calibration data and product key. Highly not recommended. |
++--------+-----------------------+--------+-----------+------+---------------------------------------------------------------------------------------------+
+| 1      | revert_to_default     | set    |           |      | Erases all saved values except for those set in factory.                                    |
++--------+-----------------------+--------+-----------+------+---------------------------------------------------------------------------------------------+
+| 2      | factory_default_key_1 | set    |           |      | Set 12345678 to perform erase or revert_to_default.                                         |
++--------+-----------------------+--------+-----------+------+---------------------------------------------------------------------------------------------+
+| 3      | factory_default_key_2 | set    |           |      | Set 11223344 to perform erase or revert_to_default.                                         |
++--------+-----------------------+--------+-----------+------+---------------------------------------------------------------------------------------------+
+
