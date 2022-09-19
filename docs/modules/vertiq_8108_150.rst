@@ -17,7 +17,10 @@ responsiveness. IQ motors also output advanced telemetry for motor and vehicle h
 
 .. note:: 
 
-    The Vertiq 8108 150KV currently only supports the Speed Firmware
+    While the default firmware for the Vertiq 2306 2200KV is the Speed Firmware, it also fully supports the following:
+    
+    * Servo Firmware
+    * Step Direction Firmware
 
 .. |module_name| Replace:: Vertiq8108
 .. |variable_name| Replace:: vertiq
@@ -25,6 +28,6 @@ responsiveness. IQ motors also output advanced telemetry for motor and vehicle h
 .. |module_firmware| unicode:: 0xA0
 .. include:: speed.rst
 
-.. .. include:: stepdir.rst
-.. .. include:: servo.rst
+.. include:: stepdir.rst
+.. include:: servo.rst
     
