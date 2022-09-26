@@ -28,9 +28,6 @@ responsiveness. IQ motors also output advanced telemetry for motor and vehicle h
 .. |module_firmware| unicode:: 0xA0
 .. include:: speed.rst
 
-.. |module_firmware| Replace:: , firmware="stepdir"
-.. include:: stepdir.rst
-
 .. |module_firmware| Replace:: , firmware="servo"
 .. include:: servo.rst
     
