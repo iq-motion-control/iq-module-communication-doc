@@ -58,6 +58,129 @@ To retrieve the most recent data, regardless of its freshness, use
 
 ``data = client_object.sub_object.get_reply()``
 
+.. _c-full-code-windows:
+
+Full C++ Code Example (Windows)
+====================================
+
+.. code-block:: c++
+
+    /*
+    * This example C++ program uses the Power Monitor client to retrieve the Voltage of a motor.
+    * The serial port setup for windows is based on the example provided by microsoft: 
+    *      https://learn.microsoft.com/en-us/windows/win32/devio/configuring-a-communications-resource
+    * 
+    * Name: voltage_test.cpp
+    * Last update: 9/28/2022 by Ben Quan
+    * Author: Ben Quan
+    */
+
+    #include <iostream>
+    #include <windows.h>
+    #include <tchar.h>
+
+    #include "inc/generic_interface.hpp"
+    #include "inc/client_communication.hpp"
+    #include "inc/power_monitor_client.hpp"
+
+    using namespace std;
+
+    HANDLE com_port; // Handler for COM port
+    TCHAR *pcCommPort = TEXT("COM4"); // Change COM4 to whichever port your motor is connected to 
+    GenericInterface com; // Interface used by com port to communicate with motor
+
+    PowerMonitorClient power(0); // Client endpoint for voltage reading
+
+    //  Send out any message data we have over the serial interface
+    int handle_com_tx(){
+        uint8_t packet_buf[64];
+        uint8_t length = 0;
+        DWORD bytes_written; 
+
+        // Get the packet from the com interface and place it into the packet buffer
+        if(com.GetTxBytes(packet_buf, length)){
+            WriteFile(com_port, packet_buf, length, &bytes_written, NULL);
+        }
+
+        return bytes_written;
+    }
+
+    // Grab any received data on the serial interface
+    int handle_com_rx(){
+        uint8_t recv_bytes[64];
+        DWORD dwBytesReceived; 
+
+        ReadFile(com_port, &recv_bytes, 64, &dwBytesReceived, 0);
+        com.SetRxBytes(recv_bytes, dwBytesReceived);
+
+        return dwBytesReceived;
+    }
+
+    // Hand off any received data to each module so they can handle it
+    void update_modules(){
+        // Temporary Pointer to the packet data location
+        uint8_t *packet_data;
+        uint8_t packet_length;
+
+        // Loads the packet data buffer with data receieved from the motor
+        while(com.PeekPacket(&packet_data, &packet_length)){
+            power.ReadMsg(packet_data, packet_length);
+            com.DropPacket();
+        }
+    }
+
+    // Handles communication with motor
+    void send_message_and_process_reply(){
+        handle_com_tx();
+        handle_com_rx();
+        update_modules();
+    }
+
+    // Sends the command to motor to get Voltage 
+    float get_voltage(){
+        power.volts_.get(com);
+        send_message_and_process_reply();
+        return power.volts_.get_reply();
+    }
+
+    int main(){
+        com_port = CreateFile( pcCommPort,
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,      //  must be opened with exclusive-access
+                        NULL,   //  default security attributes
+                        OPEN_EXISTING, //  must use OPEN_EXISTING
+                        0,      //  not overlapped I/O
+                        NULL ); //  hTemplate must be NULL for comm devices
+
+        cout << com_port << endl;
+
+        if (com_port== INVALID_HANDLE_VALUE)
+            cout <<"Error in opening serial port" << endl;
+        else
+            cout << "opening serial port successful" << endl;
+
+
+        DCB dcb = {0}; // Device-control block used to configure serial communications
+        dcb.DCBlength = sizeof(DCB);
+        GetCommState (com_port,&dcb);
+        dcb.BaudRate  = CBR_115200; // Set baud rate to 115200
+        dcb.ByteSize = 8;
+        SetCommState (com_port,&dcb);
+        
+        //Set up a read timeout
+        COMMTIMEOUTS timeouts; 
+        GetCommTimeouts(com_port, &timeouts);
+        timeouts.ReadIntervalTimeout = 5;
+        SetCommTimeouts(com_port, &timeouts);
+
+        // Get and print the current Voltage reading of the motor
+        float current_voltage = get_voltage();
+        cout << "voltage: " << to_string(current_voltage) << endl;
+
+        return 0;
+    }
+
+
 .. _c-full-code:
 
 Full C++ Code Example (w/ LibSerial)
