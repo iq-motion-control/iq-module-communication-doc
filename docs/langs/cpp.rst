@@ -79,9 +79,9 @@ Full C++ Code Example (Windows)
     #include <windows.h>
     #include <tchar.h>
 
-    #include "iq-communication/inc/generic_interface.hpp"
-    #include "iq-communication/inc/client_communication.hpp"
-    #include "iq-communication/inc/power_monitor_client.hpp"
+    #include "inc/generic_interface.hpp"
+    #include "inc/client_communication.hpp"
+    #include "inc/power_monitor_client.hpp"
 
     using namespace std;
 
