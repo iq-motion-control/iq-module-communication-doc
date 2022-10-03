@@ -98,7 +98,7 @@ can be seen in the Information tab, as shown in the image below. For more inform
 
 
 For motor firmware, you can check the firmware version and style on your motor by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
-For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.vertiq.co>`_ section of the Control website.  
+For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.vertiq.co>`_ section of the Vertiq website.  
 
 For the Vertiq 8108, this tutorial was tested with an 8108 using speed firmware version 5. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
 version 5 when following this tutorial. 

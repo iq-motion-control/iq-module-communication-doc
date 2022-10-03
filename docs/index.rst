@@ -59,7 +59,7 @@ We currently support 4 different languages for controlling your Vertiq Module:
 * C++
 * Matlab
 
-The intention of these guides is to teach you how to quickly communicate with an VertiqModule using our API.
+The intention of these guides is to teach you how to quickly communicate with a Vertiq Module using our API.
 You may proceed with a `Getting Started` guide on the left
 
 

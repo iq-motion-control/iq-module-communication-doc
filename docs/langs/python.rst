@@ -151,7 +151,7 @@ Download different firmware styles
 .. _Vertiq2306 2200Kv: https://www.vertiq.co/23-06-module
 .. _Vertiq2306 220Kv: https://www.vertiq.co/23-06-module
 .. _Fortiq: https://www.vertiq.co/fortiq-bls42
-.. _Vertiq8108 150Kv: https://www.vertiq.co/8108-module
+.. _Vertiq8108 150Kv: https://www.vertiq.co/81-08-module
 
 Each module comes loaded with default firmware. An 'x' marks if a module supports the firmware style.
 
