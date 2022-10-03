@@ -39,7 +39,7 @@
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration.rst
 
-Welcome to the IQ Motion Control Documentation
+Welcome to the Vertiq Documentation
 =================================================
 
 This documentation is meant to help you get the most out of your IQ Module. This includes APIs for our custom protocol, tutorial for setting up your modules, and
