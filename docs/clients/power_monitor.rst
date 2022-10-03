@@ -70,7 +70,7 @@ A minimal working example for the PowerMonitorClient is:
 Matlab
 ~~~~~~
 
-To use Power Monitor in Matlab, all IQ communication code must be included in your path. This allows
+To use Power Monitor in Matlab, all Vertiq communication code must be included in your path. This allows
 the creation of a PowerMonitorClient object. See Table 9 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 

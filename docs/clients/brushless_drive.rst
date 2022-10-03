@@ -64,7 +64,7 @@ A minimal working example for the BrushlessDriveClient is:
 Matlab
 ~~~~~~
 
-To use Brushless Drive Controller in Matlab, all IQ communication code must be included in your path.
+To use Brushless Drive Controller in Matlab, all Vertiq communication code must be included in your path.
 This allows the creation of a BrushlessDriveClient object. See Table 2 for available messages. All
 message strings use the Short Names. All messages use the standard ``Get/Set/Save`` functions.
 

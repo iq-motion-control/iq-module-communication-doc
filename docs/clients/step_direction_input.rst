@@ -70,7 +70,7 @@ A minimal working example for the StepDirectionInputClient is:
 Matlab
 ~~~~~~
 
-To use Step Direction in Matlab, all IQ communication code must be included in your path. This allows the
+To use Step Direction in Matlab, all Vertiq communication code must be included in your path. This allows the
 creation of a StepDirectionInputClient object. See Table 7 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 

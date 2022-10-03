@@ -189,7 +189,7 @@ Full C++ Code Example (w/ LibSerial)
 .. code-block:: c++
 
     /*
-    * IQ Motion Control read motor coil temperature.
+    * Vertiq read motor coil temperature.
     *
     * This code shows how to use Serial over USB to read the
     * motor coil temperature
@@ -315,14 +315,14 @@ Full Arduino Code Example (w/ Arduino Serial)
 
 The below is a complete example of a program using the Arduino programming environment. This
 example is to demonstrate how to use the clients, the GenericInterface class, and the transfer of data between
-the classes and the Arduino Serial class. Please note that IQ’s dedicated Arduino libraries streamline the
+the classes and the Arduino Serial class. Please note that Vertiq’s dedicated Arduino libraries streamline the
 data transfer process, thus, actual Arduino programming is simpler than the below example. Please see the
 Arduino documentation if you intend on using the Arduino programming environment.
     
 .. code-block:: Arduino
 
     /*
-    * IQ Motion Control spin and report demo.
+    * Vertiq spin and report demo.
     *
     * This code will command a motor to spin at various voltages and
     * simultaniously report the motor’s position and velocity over USB

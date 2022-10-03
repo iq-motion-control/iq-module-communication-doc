@@ -71,7 +71,7 @@ A minimal working example for the BuzzerControlClient is:
 Matlab
 ~~~~~~
 
-To use the Buzzer Contol in Matlab, all IQ communication code must be included in your path. This allows
+To use the Buzzer Contol in Matlab, all Vertiq communication code must be included in your path. This allows
 the creation of a BuzzerControlClient object. See Table 5 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 

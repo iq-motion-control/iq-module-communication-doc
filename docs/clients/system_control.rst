@@ -71,7 +71,7 @@ A minimal working example for the SystemControlClient is:
 Matlab
 ~~~~~~
 
-To use System Control in Matlab, all IQ communication code must be included in your path. This allows
+To use System Control in Matlab, all Vertiq communication code must be included in your path. This allows
 the creation of a SystemControlClient object. See Table 12 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 

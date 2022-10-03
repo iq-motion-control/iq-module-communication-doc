@@ -7,20 +7,20 @@
 Calibrating Modules With Analog Hobby Protocols
 ***********************************************
 
-IQ modules can be controlled with analog hobby protocols, such as PWM and OneShot. These protocols send throttle commands to the module using a square wave or pulse of variable duration,
-where the length of the wave determines the throttle input. For example, when using PWM, by default IQ modules interpret a pulse of 1000 us as 0% throttle, and a pulse of 2000 us
+Vertiq modules can be controlled with analog hobby protocols, such as PWM and OneShot. These protocols send throttle commands to the module using a square wave or pulse of variable duration,
+where the length of the wave determines the throttle input. For example, when using PWM, by default Vertiq modules interpret a pulse of 1000 us as 0% throttle, and a pulse of 2000 us
 as 100% throttle.
 
 However, the exact pulse duration used to represent the endpoints of the throttle range can vary between different controllers. One controller may consider 1000 us to 2000 us to be the 0%
-to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control an IQ module, they must agree on this input range. In some instances you
+to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control a Vertiq module, they must agree on this input range. In some instances you
 can edit the range used by the controller as discussed for Ardupilot and PX4 based flight controllers in this tutorial: :ref:`hobby_fc_tutorial`. 
 
 Another reason why calibration may be necessary is due to clock inaccuracies. Vertiq 2306 modules do not have an external crystal, which reduces the accuracy of their clock. This can lead
 to a 2306 measuring a pulse's duration differently than the controller, so they may not agree on exactly what throttle level is expected. Calibration allows the module and the controller to
 clarify what the endpoints for the throttle commands should be.
 
-Another option is to adjust the input range of the IQ module so that it matches the controller. This is commonly done on a range of ESCs, and is known as "calibration". This tutorial
-will cover the calibration process for an IQ module.
+Another option is to adjust the input range of the Vertiq module so that it matches the controller. This is commonly done on a range of ESCs, and is known as "calibration". This tutorial
+will cover the calibration process for a Vertiq module.
 
 Softare and Firmware Setup
 ==========================
@@ -107,9 +107,9 @@ Calibration With ArduCopter and Mission Planner Motor Test
 If you are using a flight controller with the motor, generally you will calibrate the flight controller using the RC transmitter you are using to interface with the flight controller. 
 The `Overview of Calibration Procedure`_ section above covers how you would move the throttle to run through the calibration process if your RC transmitter and flight controller are 
 set up. But, if you want an easy way to test out calibration without the need for an RC transmitter or if you don't use one at all, you can use the Motor Test functionality of ArduCopter
-to run through calibration with just a flight controller, an IQ module, and some wires to connect to them.
+to run through calibration with just a flight controller, a Vertiq module, and some wires to connect to them.
 
-First, follow the steps laid out in :ref:`hobby_fc_tutorial` for setting up your IQ module and Arducopter flight controller to communicate with each other using PWM. Make sure to test
+First, follow the steps laid out in :ref:`hobby_fc_tutorial` for setting up your Vertiq module and Arducopter flight controller to communicate with each other using PWM. Make sure to test
 that the flight controller can spin the module before proceeding. It is important to pay attention to the changing of the MOT_PWM_MIN and MOT_PWM_MAX parameters in the linked tutorial, 
 as if the MOT_PWM_MAX is too low, it may fail to trigger the module to start calibration. For example, if MOT_PWM_MAX is 1950 us, the calibration process may be difficult to start.
 
@@ -118,11 +118,11 @@ as if the MOT_PWM_MAX is too low, it may fail to trigger the module to start cal
 Now, if you don't already have it open, open Mission Planner and navigate to the Motor Test section under the Optional Hardware tab as covered in :ref:`hobby_fc_tutorial`. Then,
 follow these steps:
 
-    1. Power off the IQ module.
+    1. Power off the Vertiq module.
     2. Set the duration in Motor Test to 120s. The precise number here isn't critically important, this is just meant to hold each command for a long enough time to make it easy to manually change them.
     3. Set the Throttle % to 100%
     4. Click "Test All Motors" to start sending the 100% throttle commands
-    5. Power on the IQ Module, and wait for it to start playing the begin calibration song.
+    5. Power on the Vertiq Module, and wait for it to start playing the begin calibration song.
     6. Lower the Throttle% to 0% and click "Test All Motors". The motor song should switch to the calibration-in-progress song.
     7. Wait 5s, and then set the Throttle% to 50% and click "Test All Motors". The motor should stop playing the calibration-in-progress song, indicating it completed calibration.
     8. Lower the Throttle% to 0% and click "Test All Motors". Confirm that the motor plays the arming song.
@@ -146,10 +146,10 @@ though the exact high and low durations may be different.
 Calibration With PX4 and QGroundControl Motor Test
 ==================================================
 As described in `Calibration With ArduCopter and Mission Planner Motor Test`_ above, typically you would use an RC transmitter to calibrate a module when connected to a flight controller.
-But just as with ArduCopter and Mission Planner, you can also use PX4 and QGroundControl to easily try out calibration without the need for any RC transmitter setup. All you need is your IQ 
+But just as with ArduCopter and Mission Planner, you can also use PX4 and QGroundControl to easily try out calibration without the need for any RC transmitter setup. All you need is your Vertiq 
 Module, a flight controller with PX4, and a computer with QGroundControl.
 
-First, follow the steps laid out in :ref:`hobby_fc_tutorial` for setting up your IQ module and PX4 flight controller to communicate with each other using PWM. Make sure to test
+First, follow the steps laid out in :ref:`hobby_fc_tutorial` for setting up your Vertiq module and PX4 flight controller to communicate with each other using PWM. Make sure to test
 that the flight controller can spin the module before proceeding. It is important to pay attention to the changing of the PWM_MAIN_MIN and PWM_MAIN_MAX parameters in the linked tutorial, 
 as if the PWM_MAIN_MAX is too low, it may fail to trigger the module to start calibration. For example, if MOT_PWM_MAX is 1950 us, the calibration process may be difficult to start.
 
@@ -158,7 +158,7 @@ as if the PWM_MAIN_MAX is too low, it may fail to trigger the module to start ca
 Open QGroundControl, and wait for it to connect to your flight controller. Click on the Q in the upper-left corner, and the select "Analyze Tools". Then select "MAVLink Console".
 Then follow these steps:
 
-    1. Power on your IQ module.
+    1. Power on your Vertiq module.
     2. In the console, enter "motor_test test -p 100".
     3. The module will briefly play the begin calibration song, and then stop.
     4. In the console, enter "motor_test test -p 0"

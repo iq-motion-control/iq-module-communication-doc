@@ -65,7 +65,7 @@ A minimal working example for the HobbyInputClient is:
 Matlab
 ~~~~~~
 
-To use Hobby Input in Matlab, all IQ communication code must be included in your path. This allows the
+To use Hobby Input in Matlab, all Vertiq communication code must be included in your path. This allows the
 creation of a Hobby Input object. See Table 7 for available messages. All message strings use the Short
 Names. All messages use the standard Get/Set/Save functions.
 

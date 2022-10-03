@@ -83,7 +83,7 @@ A minimal working example for the SerialInterfaceClient is:
 Matlab
 ~~~~~~
 
-To use Serial Interface in Matlab, all IQ communication code must be included in your path. This allows
+To use Serial Interface in Matlab, all Vertiq communication code must be included in your path. This allows
 the creation of a SerialInterfaceClient object. See Table 8 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
