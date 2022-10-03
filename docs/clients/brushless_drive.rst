@@ -6,7 +6,7 @@ Brushless Drive is the low level driver of the motor’s phase voltage.
 Arduino
 ~~~~~~~
 
-To use Brushless Drive in Arduino, ensure iq module communication.hpp is included. This allows the creation of a BrushlessDriveClient object. 
+To use Brushless Drive in Arduino, ensure iq_module_communication.hpp is included. This allows the creation of a BrushlessDriveClient object. 
 See Table 3 for available messages. All message objects use the Short
 Name with a trailing underscore. All messages use the standard ``Get/Set/Save`` functions.
 

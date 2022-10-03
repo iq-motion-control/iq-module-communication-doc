@@ -8,7 +8,7 @@ smooths these values.
 Arduino
 ~~~~~~~
 
-To use Power Monitor in Arduino, ensure iq module communication.hpp is included. This allows the creation
+To use Power Monitor in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
 of a PowerMonitorClient object. See Table 9 for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 

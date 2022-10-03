@@ -9,7 +9,7 @@ as it is unrecoverable.
 Arduino
 ~~~~~~~
 
-To use the Anticogging in Arduino, ensure iq module communication.hpp is included. This allows the
+To use the Anticogging in Arduino, ensure iq_module_communication.hpp is included. This allows the
 creation of a AnticoggingClient object. See Table below for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 

@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'IQ Motion Control API and Usage'
-copyright = '2022, IQ Motion Control'
+project = 'Vertiq API and Usage'
+copyright = '2022, Vertiq'
 author = 'Malik B. Parker & Fred Kummer'
 
 # The full version, including alpha/beta/rc tags

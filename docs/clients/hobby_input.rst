@@ -9,7 +9,7 @@ values read by the Hobby Input are fed into a Parser object, such as the Servo P
 Arduino
 ~~~~~~~
 
-To use Hobby Input in Arduino, ensure iq module communication.hpp is included. This allows the creation
+To use Hobby Input in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
 of a HobbyInputClient object. See Table 7 for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 

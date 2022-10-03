@@ -9,7 +9,7 @@ rate in order to send a save. For this reason, the standard save function for th
 Arduino
 ~~~~~~~
 
-To use Serial Interface in Arduino, ensure iq module communication.hpp is included. This allows the creation
+To use Serial Interface in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
 of a SerialInterfaceClient object. See Table 8 for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
