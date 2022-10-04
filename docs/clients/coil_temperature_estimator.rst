@@ -121,7 +121,7 @@ Type ID 83 | Coil Temperature Estimator
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
 | 1      | t_alu         | get            | float     | degC              | The estimated temperature of the stator aluminum                                                             |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 2      | t_amb         | get, set, save | float     | degC              | The estimated temperature of the ambient air.  This is usually conservative.                                 |
+| 2      | t_amb         | get, set, save | float     | degC              | The estimated temperature of the ambient air. This is usually conservative.                                  |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
 | 3      | h_free_conv   | get, set, save | float     | W/K               | Free convection heat transfer coefficient used when the motor is not spinning                                |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
@@ -129,9 +129,9 @@ Type ID 83 | Coil Temperature Estimator
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
 | 5      | h_forced_conv | get            | float     | W/K               | The present calculated force heat transfer convection coefficient                                            |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 6      | c_coil        | get, set, save | float     | J/K               | Thermal heat capacitance/mass of the coils                                                                    |
+| 6      | c_coil        | get, set, save | float     | J/K               | Thermal heat capacitance/mass of the coils                                                                   |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 7      | h_conv_coeff  | get, set, save | float     | W/(K sqrt(rad/s)) | Forced convection coefficient calculation coefficient.  h_forced_conv = h_conv_coeff * sqrt(speed)            |
+| 7      | h_conv_coeff  | get, set, save | float     | W/(K sqrt(rad/s)) | Forced convection coefficient calculation coefficient. h_forced_conv = h_conv_coeff * sqrt(speed)            |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
 | 8      | otw           | get, set, save | float     | degC              | Over temperature warning. Derating of the motor begins at this temperature.                                  |
 +--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
