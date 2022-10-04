@@ -25,7 +25,7 @@ responsiveness. Vertiq motors also output advanced telemetry for motor and vehic
 .. |variable_name| Replace:: vertiq
 
 .. |module_firmware| unicode:: 0xA0
-.. include:: speed.rst
+.. include:: vertiq_8108_speed.rst
 
 .. |module_firmware| Replace:: , firmware="servo"
 .. include:: servo.rst
