@@ -7,7 +7,7 @@
 PWM and DSHOT Control with a Flight Controller
 ***********************************************
 
-This tutorial is meant to walk you through the process of doing basic setup and testing for controlling an IQ motor
+This tutorial is meant to walk you through the process of doing basic setup and testing for controlling a Vertiq motor
 with a flight controller. This covers only the basics of testing that the flight controller can make the motor spin
 with the appropriate protocol, not the setup of any additional flight controller peripherals like an RC controller
 or a GPS. This tutorial should take you from a totally fresh motor and flight controller, to a motor that can be controlled
@@ -98,7 +98,7 @@ can be seen in the Information tab, as shown in the image below. For more inform
 
 
 For motor firmware, you can check the firmware version and style on your motor by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
-For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.iq-control.com/products>`_ section of the IQ Motion Control website.  
+For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.vertiq.co>`_ section of the Vertiq website.  
 
 For the Vertiq 8108, this tutorial was tested with an 8108 using speed firmware version 5. Future firmware versions should also be compatible, but ensure that your 8108 is on at least
 version 5 when following this tutorial. 
@@ -273,11 +273,11 @@ the following parameters are set to the proper value and change them if necessar
   
 * **MOT_PWM_MAX = 2000**
   
-  * This sets the max PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us.
+  * This sets the max PWM value in microseconds that will be output to the motor. By default, Vertiq motors use a range of 1000us to 2000us.
   
 * **MOT_PWM_MIN = 990**
   
-  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us, but setting this to 990us helps ensure the motor will not spin on a 0% throttle.
+  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, Vertiq motors use a range of 1000us to 2000us, but setting this to 990us helps ensure the motor will not spin on a 0% throttle.
   
 * **SERVO_DSHOT_ESC = 0**
   
@@ -428,11 +428,11 @@ There are several parameters that need to be set properly to make sure the fligh
 
 * **PWM_MAIN_MIN = 990** 
   
-  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us, but setting this to 990us helps ensure the motor will not spin on a 0% throttle.
+  * This sets the minimum PWM value in microseconds that will be output to the motor. By default, Vertiq motors use a range of 1000us to 2000us, but setting this to 990us helps ensure the motor will not spin on a 0% throttle.
 
 * **PWM_MAIN_MAX = 2000**
   
-  *  This sets the max PWM value in microseconds that will be output to the motor. By default, IQ motors use a range of 1000us to 2000us.
+  *  This sets the max PWM value in microseconds that will be output to the motor. By default, Vertiq motors use a range of 1000us to 2000us.
   
 * **DSHOT_CONFIG = Disable (0)**
   

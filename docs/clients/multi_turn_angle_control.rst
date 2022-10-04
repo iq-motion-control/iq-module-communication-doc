@@ -9,7 +9,7 @@ seamless.
 Arduino
 ~~~~~~~
 
-To use Multi-turn Angle Controller in Arduino, ensure iq module communication.hpp is included. This
+To use Multi-turn Angle Controller in Arduino, ensure iq_module_communication.hpp is included. This
 allows the creation of a MultiTurnAngleControlClient object. See Table 2 for available messages. All
 message objects use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save
 functions.
@@ -73,7 +73,7 @@ A minimal working example for the MultiTurnAngleControlClient is:
 Matlab
 ~~~~~~
 
-To use Multi-turn Angle Controller in Matlab, all IQ communication code must be included in your path.
+To use Multi-turn Angle Controller in Matlab, all Vertiq communication code must be included in your path.
 This allows the creation of a MultiTurnAngleControlClient object. See Table 2 for available messages. All
 message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 

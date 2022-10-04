@@ -5,7 +5,7 @@ Getting Started with Arduino
 The Arduino libraries allow simple ``get/set/save`` access to all parameters on the modules, which includes the
 various control methods to make the modules spin. Please see the official Arduino library installation guide at
 https://www.arduino.cc/en/guide/libraries. Using the Library Manager is preferred. Search for “IQ
-Module Communication”.  A .zip of the library can also be found at http://iq-control.com/support.
+Module Communication”.  A .zip of the library can also be found at https://vertiq.co/support.
 
 To use the IQ Module Communication library, you must include the library header file (done automatically
 by Arduino if you use their Sketch →Include Library →IQ Module Communication), by typing

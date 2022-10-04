@@ -39,27 +39,27 @@
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration.rst
 
-Welcome to the IQ Motion Control Documentation
+Welcome to the Vertiq Documentation
 =================================================
 
-This documentation is meant to help you get the most out of your IQ Module. This includes APIs for our custom protocol, tutorial for setting up your modules, and
+This documentation is meant to help you get the most out of your Vertiq Module. This includes APIs for our custom protocol, tutorial for setting up your modules, and
 examples of how to communicate with the modules.
 
 Setup Tutorials
 ***************
 Detailed tutorials on how to setup and use your modules with our Control Center and flight controllers can be found in the `Tutorials` section on the sidebar to the left.
 
-Controlling Modules With IQ APIs
+Controlling Modules With Vertiq APIs
 ********************************
 
-We currently support 4 different languages for controlling your IQ Module:
+We currently support 4 different languages for controlling your Vertiq Module:
 
 * Python
 * Arduino 
 * C++
 * Matlab
 
-The intention of these guides is to teach you how to quickly communicate with an IQModule using our API.
+The intention of these guides is to teach you how to quickly communicate with a Vertiq Module using our API.
 You may proceed with a `Getting Started` guide on the left
 
 

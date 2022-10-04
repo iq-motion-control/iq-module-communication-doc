@@ -7,7 +7,7 @@ Vertiq 2306 2200KV | Speed Module
     .. image:: ../_static/IQ2306_2200kv.png
         :alt: Vertiq 2306 2200KV
 
-The IQ Vertiq 2306 2200KV is an integrated motor and
+The Vertiq 2306 2200KV is an integrated motor and
 controller with a wide range of velocity based applications. Its default firmware is the **Speed Firmware**. It has an open and closed loop controller
 designed primarily to drive propeller loads. Its performance is comparable to or better than other 2306
 sized motors and can operate at any speed between

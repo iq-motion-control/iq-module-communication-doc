@@ -43,7 +43,7 @@ The default serial baud rate for the motor controller is 115200.
 Creating a Module
 =================
 
-Python interacts with the motor controller via IQ Module Objects. Currently IQ Python API 
+Python interacts with the motor controller via Vertiq Module Objects. Currently Vertiq Python API 
 supports 3 types of motors: Vertiq 2306, Vertiq 8108, and Fortiq M42BLS
 
 Creating a Vertiq Module
@@ -148,10 +148,10 @@ API Options
 Download different firmware styles
 ----------------------------------
 
-.. _Vertiq2306 2200Kv: https://www.iq-control.com/vertiq-2306-2200kv
-.. _Vertiq2306 220Kv: https://www.iq-control.com/vertiq-2306-220kv
-.. _Fortiq: https://www.iq-control.com/fortiq-bls42
-.. _Vertiq8108 150Kv: https://www.iq-control.com/vertiq-8108-150kv
+.. _Vertiq2306 2200Kv: https://www.vertiq.co/23-06-module
+.. _Vertiq2306 220Kv: https://www.vertiq.co/23-06-module
+.. _Fortiq: https://www.vertiq.co/fortiq-bls42
+.. _Vertiq8108 150Kv: https://www.vertiq.co/81-08-module
 
 Each module comes loaded with default firmware. An 'x' marks if a module supports the firmware style.
 
@@ -187,7 +187,7 @@ Example of changing the API firmware:
     fortiq = iq.Fortiq(com, 0, firmware="stepdir") 
 
 
-Adding New Clients to your IQModule
+Adding New Clients to your Vertiq Module
 -----------------------------------
 
 There are 2 options avaiable for adding extra clients

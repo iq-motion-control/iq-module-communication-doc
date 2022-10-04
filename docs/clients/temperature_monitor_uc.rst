@@ -8,7 +8,7 @@ cutoff frequency and the temperature limits can be adjusted, though this is not 
 Arduino
 ~~~~~~~
 
-To use the Temperature Monitor Microcontroller in Arduino, ensure iq module communication.hpp is included. 
+To use the Temperature Monitor Microcontroller in Arduino, ensure iq_module_communication.hpp is included. 
 This allows the creation of a TemperatureMonitorUcClient object. See Table 10 for available
 messages. All message objects use the Short Name with a trailing underscore. All messages use the standard
 Get/Set/Save functions.
@@ -72,7 +72,7 @@ A minimal working example for the TemperatureMonitorUcClient is:
 Matlab
 ~~~~~~
 
-To use the Temperature Monitor Microcontroller client in Matlab, all IQ communication code must be
+To use the Temperature Monitor Microcontroller client in Matlab, all Vertiq communication code must be
 included in your path. This allows the creation of a TemperatureMonitorUcClient object. See Table 10 for
 available messages. All message strings use the Short Names. All messages use the standard Get/Set/Save
 functions.

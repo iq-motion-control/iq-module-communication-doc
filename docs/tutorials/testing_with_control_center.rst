@@ -7,9 +7,9 @@
 Getting Started with Speed Motors Using IQ Control Center
 *********************************************************
 
-The easiest way to get started with any IQ Motor is with the IQ Control Center. 
+The easiest way to get started with any Vertiq Motor is with the IQ Control Center. 
 The IQ Control Center is a simple application that allows you to configure and test
-an IQ Motor from your PC, without the need for a flight controller or specialized hardware.
+a Vertiq Motor from your PC, without the need for a flight controller or specialized hardware.
 
 This tutorial will take you through the process of getting started with a motor using
 the IQ Control Center. It will outline how to setup the necessary hardware and software,
@@ -24,7 +24,7 @@ Motor Datasheets
 ===================
 Before trying to use the motors, it is advised to read through their datasheets to
 get a better sense of what they can do and how the hardware is setup. The datasheets
-for all IQ modules can be found under the `Support <https://www.vertiq.co/support>`_
+for all Vertiq modules can be found under the `Support <https://www.vertiq.co>`_
 section of our website, and individual links are provided below for convenience:
 
 * `Vertiq 2306 2200KV <https://static1.squarespace.com/static/62981f8ddf7dc07b7eed3f3f/t/63063670f72c060db8879052/1661351539244/Vertiq_23-06_2200kv_module_datasheet.pdf>`_
@@ -110,7 +110,7 @@ with colored boxes in the figure above and are described below:
   When there is no motor connected, this only lists the Control Center version. When a motor is connected, this will
   also list its Firmware Version, Firmware Style, and Hardware Style. Check this information to make sure you are using 
   the proper hardware with the latest firmware. You can check for new firmware under the
-  `Products <https://www.vertiq.co/products>`_ section of our website.
+  `Products <https://www.vertiq.co>`_ section of our website.
 * The :blue:`Connection` section is used to connect to motors. You can select the baud rate and the serial port
   to use for the motor  you want to connect to. The default baud rate of 11520 bps should be used with all of
   our products. The serial port is determined by the name of the serial port used by your USB-to-UART converter,

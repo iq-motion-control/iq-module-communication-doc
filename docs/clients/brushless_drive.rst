@@ -6,7 +6,7 @@ Brushless Drive is the low level driver of the motor’s phase voltage.
 Arduino
 ~~~~~~~
 
-To use Brushless Drive in Arduino, ensure iq module communication.hpp is included. This allows the creation of a BrushlessDriveClient object. 
+To use Brushless Drive in Arduino, ensure iq_module_communication.hpp is included. This allows the creation of a BrushlessDriveClient object. 
 See Table 3 for available messages. All message objects use the Short
 Name with a trailing underscore. All messages use the standard ``Get/Set/Save`` functions.
 
@@ -64,7 +64,7 @@ A minimal working example for the BrushlessDriveClient is:
 Matlab
 ~~~~~~
 
-To use Brushless Drive Controller in Matlab, all IQ communication code must be included in your path.
+To use Brushless Drive Controller in Matlab, all Vertiq communication code must be included in your path.
 This allows the creation of a BrushlessDriveClient object. See Table 2 for available messages. All
 message strings use the Short Names. All messages use the standard ``Get/Set/Save`` functions.
 

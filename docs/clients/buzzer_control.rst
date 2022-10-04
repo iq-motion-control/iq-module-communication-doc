@@ -10,7 +10,7 @@ length by sending a ’duration’ command, and finally put the controller in no
 Arduino
 ~~~~~~~
 
-To use the Buzzer Control in Arduino, ensure iq module communication.hpp is included. This allows the
+To use the Buzzer Control in Arduino, ensure iq_module_communication.hpp is included. This allows the
 creation of a BuzzerControlClient object. See Table 5 for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
@@ -71,7 +71,7 @@ A minimal working example for the BuzzerControlClient is:
 Matlab
 ~~~~~~
 
-To use the Buzzer Contol in Matlab, all IQ communication code must be included in your path. This allows
+To use the Buzzer Contol in Matlab, all Vertiq communication code must be included in your path. This allows
 the creation of a BuzzerControlClient object. See Table 5 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 

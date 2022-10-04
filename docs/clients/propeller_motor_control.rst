@@ -17,7 +17,7 @@ controllers can be used by the user.
 Arduino
 ~~~~~~~
 
-To use Propeller Motor Controller in Arduino, ensure iq module communication.hpp is included. This allows
+To use Propeller Motor Controller in Arduino, ensure iq_module_communication.hpp is included. This allows
 the creation of a PropellerMotorControlClient object. See Table 2 for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
@@ -73,7 +73,7 @@ A minimal working example for the PropellerMotorControlClient is:
 Matlab
 ~~~~~~
 
-To use Propeller Motor Controller in Matlab, all IQ communication code must be included in your path.
+To use Propeller Motor Controller in Matlab, all Vertiq communication code must be included in your path.
 This allows the creation of a PropellerMotorControlClient object. See Table 2 for available messages. All
 message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 

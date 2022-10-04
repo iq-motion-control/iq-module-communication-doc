@@ -9,7 +9,7 @@ as it is unrecoverable.
 Arduino
 ~~~~~~~
 
-To use the Anticogging in Arduino, ensure iq module communication.hpp is included. This allows the
+To use the Anticogging in Arduino, ensure iq_module_communication.hpp is included. This allows the
 creation of a AnticoggingClient object. See Table below for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
@@ -69,7 +69,7 @@ A minimal working example for the AnticoggingClient is:
 Matlab
 ~~~~~~
 
-To use the Anticogging client in Matlab, all IQ communication code must be included in your path. This
+To use the Anticogging client in Matlab, all Vertiq communication code must be included in your path. This
 allows the creation of a AnticoggingClient object. See Table below for available messages. All message strings
 use the Short Names. All messages use the standard Get/Set/Save functions.
 

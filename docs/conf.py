@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'IQ Motion Control API and Usage'
-copyright = '2022, IQ Motion Control'
+project = 'Vertiq API and Usage'
+copyright = '2022, Vertiq'
 author = 'Malik B. Parker & Fred Kummer'
 
 # The full version, including alpha/beta/rc tags
@@ -67,6 +67,6 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_logo = "_static/IQClear.png"
+html_logo = "_static/VertiqClear.png"
 
 html_css_files = ['custom_width.css']

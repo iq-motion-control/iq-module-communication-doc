@@ -2,11 +2,11 @@
 UART Messaging
 ***************
 
-IQ uses a fully featured, serial based protocol for communicating with motor controllers. This communication
-protocol is broken into classes of related functionality. As such, IQ supplies libraries for communicating with
+Vertiq uses a fully featured, serial based protocol for communicating with motor controllers. This communication
+protocol is broken into classes of related functionality. As such, Vertiq supplies libraries for communicating with
 the motor controllers in various object-oriented languages.
 
-**The IQ-Motion API currently supports the following languages:**
+**The Vertiq API currently supports the following languages:**
 
 * Arduino
 * C++

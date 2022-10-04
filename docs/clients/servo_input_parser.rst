@@ -10,7 +10,7 @@ their units are interpreted based on the mapping.
 Arduino
 ~~~~~~~
 
-To use Servo Input Parser in Arduino, ensure iq module communication.hpp is included. This allows the
+To use Servo Input Parser in Arduino, ensure iq_module_communication.hpp is included. This allows the
 creation of a ServoInputParserClient object. See Table 6 for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
@@ -70,7 +70,7 @@ A minimal working example for the ServoInputParserClient is:
 Matlab
 ~~~~~~
 
-To use Servo Input Parser in Matlab, all IQ communication code must be included in your path. This allows
+To use Servo Input Parser in Matlab, all Vertiq communication code must be included in your path. This allows
 the creation of a ServoInputParserClient object. See Table 6 for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
