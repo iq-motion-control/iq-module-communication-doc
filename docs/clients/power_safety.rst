@@ -2,7 +2,7 @@
 Power Safety
 -------------
 
-The Power Safety protects the motor by checking various parameters in the motor, such as voltage and current, to make sure the values are within a specific range. If the values are above or below the thresholds, the motor will coast and locked down to prevent any commands from being processed. 
+The Power Safety protects the motor by checking various parameters in the motor, such as voltage and current, to make sure the values are within a specific range. If the values are above or below the thresholds, the motor will coast and lock down to prevent any commands from being processed. The motor will unlock once the parameters are back within the thresholds. 
 
 Arduino
 ~~~~~~~
