@@ -137,7 +137,7 @@ below shows an example of what the Control Center will look like when connecting
 .. warning:: Before proceeding any further, check that the firmware style indicates this motor is using speed firmware.
     This tutorial is only intended for speed firmware, and not for position firmware.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/connected_control_center.JPG
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_connected.JPG
     :align: center
     :alt: Control Center Connected to 8108
 
