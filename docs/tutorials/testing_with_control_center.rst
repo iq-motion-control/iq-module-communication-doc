@@ -133,7 +133,7 @@ seconds for the Control Center to connect to the motor.
 If the connection is succesful, the Control Center will display "Motor Connected Successfully" in the Log section
 in the top left and the Information section will be populated with information about the connectd motor. The image
 below shows an example of what the Control Center will look like when connecting to a Vertiq 8108. If the motor does not
-yet have a bootloader or upgrader, N/A is filled into respective version.
+yet have a bootloader or upgrader, N/A is filled into the respective version.
 
 .. warning:: Before proceeding any further, check that the firmware style indicates this motor is using speed firmware.
     This tutorial is only intended for speed firmware, and not for position firmware.
