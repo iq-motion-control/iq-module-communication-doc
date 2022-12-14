@@ -94,7 +94,7 @@ Control Center Overview
 When you first open the Control Center, you should see a screen similar to the image below,
 though without the colored highlighting.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/highlighted_control_center_overview.png
+.. figure:: ../_static/tutorial_images/control_center_tutorial/highlighted_control_center.png
     :align: center
     :alt: Control Center 
 
