@@ -160,7 +160,7 @@ The motor should restart and play its 5 beep startup song. An example of the Con
 
     All Possible Flash Options Presented When Using a Vertiq Supplied Archive
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flash.JPG
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flashing.JPG
     :align: center
     :alt: Successful Flash
 
