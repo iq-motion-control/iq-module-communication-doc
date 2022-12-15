@@ -146,9 +146,16 @@ yet have a bootloader or upgrader, N/A is filled into the respective version.
 
 Updating Firmware
 =================
-If you do need to update the motor firmware, you can do it through the Control Center. First, download the most recent firmware from vertiq.co, either .zip or .bin, then open the Firmware tab. 
+For Control Center versions below 1.3.0: 
+If you do need to update the motor firmware, you can do it through the Control Center. First download the firmware binary you want to update to, and then open the Firmware tab. 
+Click on “Select Firmware Binary”, and select the binary you downloaded. Make sure you are connected to the motor, and then hit “Flash”. 
+The motor should disconnect, and a progress bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. 
+The motor should restart and play its 5 beep startup song. An example of the Control Center after a successful flash is shown below.
+
+For Versions Above 1.3.0:
+If you do need to update the motor firmware, you can do it through the Control Center. First, download the most recent firmware from vertiq.co, either .bin or .zip (if available).
 Click on "Select Firmware (".bin" or ".zip")", and select the file or archive you downloaded. Make sure you are connected to the motor. 
-If you are using a binary file, you will see a warning message appear. If you select yes, you can select Flash. 
+If you are using a binary file, you will see button marked Flash appear. Click Flash to begin the update. 
 If you are using a zip archive (the preferred method), you will be presented with up to 4 options (see below) depending on the state of your motor: Flash Combined, Flash App, Flash
 Boot, and Flash Upgrade. Flash App updates only the application code, Flash Boot updates the proprietary bootloader, Flash Upgrade updates the proprietary upgrade firmware,
 and Flash Combined flashes all three sections. If you are unsure of what to select, please only select Flash Combined!
