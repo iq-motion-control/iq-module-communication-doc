@@ -146,7 +146,7 @@ yet have a bootloader or upgrader, N/A is filled into the respective version.
 
 Updating Firmware
 =================
-For Control Center versions below 1.3.0: 
+For Control Center Versions Below 1.3.0: 
 If you do need to update the motor firmware, you can do it through the Control Center. First download the firmware binary you want to update to, and then open the Firmware tab. 
 Click on “Select Firmware Binary”, and select the binary you downloaded. Make sure you are connected to the motor, and then hit “Flash”. 
 The motor should disconnect, and a progress bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. 
