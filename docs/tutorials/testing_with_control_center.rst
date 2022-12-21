@@ -94,7 +94,7 @@ Control Center Overview
 When you first open the Control Center, you should see a screen similar to the image below,
 though without the colored highlighting.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/highlighted_control_center_overview.png
+.. figure:: ../_static/tutorial_images/control_center_tutorial/highlighted_control_center.png
     :align: center
     :alt: Control Center 
 
@@ -108,9 +108,9 @@ with colored boxes in the figure above and are described below:
   functionality. We will cover some settings in these tabs in greater detail later.
 * The :green:`Information` section lists information about the Control Center and connected motor, if there is one.
   When there is no motor connected, this only lists the Control Center version. When a motor is connected, this will
-  also list its Firmware Version, Firmware Style, and Hardware Style. Check this information to make sure you are using 
-  the proper hardware with the latest firmware. You can check for new firmware under the
-  `Products <https://www.vertiq.co>`_ section of our website.
+  also list its Firmware Version, Firmware Style, Hardware Style, Bootloader Version, and Upgrader Version. 
+  Check this information to make sure you are using the proper hardware with the latest firmware. 
+  You can check for new firmware under the `Products <https://www.vertiq.co>`_ section of our website.
 * The :blue:`Connection` section is used to connect to motors. You can select the baud rate and the serial port
   to use for the motor  you want to connect to. The default baud rate of 11520 bps should be used with all of
   our products. The serial port is determined by the name of the serial port used by your USB-to-UART converter,
@@ -132,12 +132,13 @@ seconds for the Control Center to connect to the motor.
 
 If the connection is succesful, the Control Center will display "Motor Connected Successfully" in the Log section
 in the top left and the Information section will be populated with information about the connectd motor. The image
-below shows an example of what the Control Center will look like when connecting to a Vertiq 8108.
+below shows an example of what the Control Center will look like when connecting to a Vertiq 8108. If the motor does not
+yet have a bootloader or upgrader, N/A is filled into the respective version.
 
 .. warning:: Before proceeding any further, check that the firmware style indicates this motor is using speed firmware.
     This tutorial is only intended for speed firmware, and not for position firmware.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/connected_control_center.JPG
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_connected_.JPG
     :align: center
     :alt: Control Center Connected to 8108
 
@@ -145,16 +146,33 @@ below shows an example of what the Control Center will look like when connecting
 
 Updating Firmware
 =================
+For Control Center Versions Below 1.3.0: 
 If you do need to update the motor firmware, you can do it through the Control Center. First download the firmware binary you want to update to, and then open the Firmware tab. 
-Click on "Select Firmware Binary", and select the binary you downloaded. Make sure you are connected to the motor, and then hit "Flash". The motor should disconnect, and a progress
-bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. The motor should restart and play its 5 beep startup song. An 
-example of the Control Center after a successful flash is shown below.
+Click on “Select Firmware Binary”, and select the binary you downloaded. Make sure you are connected to the motor, and then hit “Flash”. 
+The motor should disconnect, and a progress bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. 
+The motor should restart and play its 5 beep startup song. An example of the Control Center after a successful flash is shown below.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flash.JPG
+For Versions Above 1.3.0:
+If you do need to update the motor firmware, you can do it through the Control Center. First, download the most recent firmware from vertiq.co, either .bin or .zip (if available).
+Click on "Select Firmware (".bin" or ".zip")", and select the file or archive you downloaded. Make sure you are connected to the motor. 
+If you are using a binary file, you will see button marked Flash appear. Click Flash to begin the update. 
+If you are using a zip archive (the preferred method), you will be presented with up to 4 options (see below) depending on the state of your motor: Flash Combined, Flash App, Flash
+Boot, and Flash Upgrade. Flash App updates only the application code, Flash Boot updates the proprietary bootloader, Flash Upgrade updates the proprietary upgrade firmware,
+and Flash Combined flashes all three sections. If you are unsure of what to select, please only select Flash Combined!
+After you select your flashing option, the motor should disconnect, and a progress bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. 
+The motor should restart and play its 5 beep startup song. An example of the Control Center during the flash process is shown below.
+
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_all_four_flash_options.JPG
+    :align: center
+    :alt: All Possible Flash Options 
+
+    All Possible Flash Options Presented When Using a Vertiq Supplied Archive
+
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flashing.JPG
     :align: center
     :alt: Successful Flash
 
-    Control Center After Flashing
+    Control Center During Flashing
 
 Spinning the Motor
 ==================
@@ -240,3 +258,22 @@ Now at long last we can make the motor spin. Open the Testing tab, and scroll do
 Try out some of these parameters and observe how the motor spins. For example, try setting the Voltage to 2.5V, then set the ESC Input to 0.5. You should observe the motor
 staying at the same speed. You can repeat this with 5.0V and a 1.0 ESC input. The motor is now set up for basic testing with the Control Center. For integrating with a flight controller,
 more setup is needed, refer to the flight controller tutorials for details.
+
+Recovery Mode
+==================
+
+In the event that your module enters Recovery Mode, the Control Center can be used to recover it. If you believe your motor is in Recovery Mode, simply attempt
+to connect the motor to the Control Center using the steps above. If the device is, in fact, in Recovery Mode, you will receive a message confirmation. Following 
+the message prompt allows you to safely flash your motor using the same steps outlined above, taking it out of Recovery Mode.
+
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_recovery_popup.JPG
+    :align: center
+    :alt: Recovery Message
+
+    Recovery Mode Message
+
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_recovery_tab.JPG
+    :align: center
+    :alt: Recovery Tab
+
+    Recovery Mode Tab
