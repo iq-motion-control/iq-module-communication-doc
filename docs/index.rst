@@ -39,6 +39,17 @@
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration.rst
 
+.. toctree::
+   :hidden:
+   :caption: Feature Reference Manual
+
+   manual/manual_intro
+   manual/manual_iquart
+   manual/manual_dronecan
+   manual/manual_hobby
+   manual/manual_throttle
+   manual/manual_advanced_arming
+
 Welcome to the Vertiq Documentation
 =================================================
 

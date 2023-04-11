@@ -1,3 +1,5 @@
+.. _uart_messaging:
+
 ***************
 UART Messaging
 ***************
@@ -40,7 +42,6 @@ of four values: ”get” = 0, ”set” = 1, ”save” = 2, ”reply” = 3. �
 the response from a ”get”, usually with a value loaded into –data–.
 
 
-**Table currently Missing**
 Table 1: Message Packetization
 
 +----------+------+--------+------+-----------+------------+--------+------+------+
