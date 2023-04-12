@@ -17,6 +17,10 @@ The :ref:`arming_module_support` section below details which Vertiq Advanced Spe
 
 Module Support
 ===============
+
+Speed Modules
+**************
+
 .. table:: Module Support for Advanced Arming
 
 	+-------------+------------------------------------+
@@ -27,6 +31,22 @@ Module Support
 	| Vertiq 4006 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
 	| Vertiq 2306 | .. centered:: |:white_check_mark:| |
+	+-------------+------------------------------------+
+
+Servo Modules
+**************
+Servo modules do not support Advanced Arming features.
+
+.. table:: Servo Module Support for Advanced Arming
+
+	+-------------+------------------------------------+
+	| Module      | Advanced Arming Support            |
+	+-------------+------------------------------------+
+	| Vertiq 8108 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+	| Vertiq 4006 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+	| Vertiq 2306 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+
 
 Armed States

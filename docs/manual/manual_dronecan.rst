@@ -12,9 +12,11 @@ and Ardupilot flight controllers. Refere to the `DroneCAN documentation <https:/
 
 Module Support
 ===============
-.. warning:: TODO for development: Should this have both Speed Module Support and Servo Module Suppot as separate tables? For example, DroneCAN is supported on the speed 8108 but not the servo
 
-.. table:: Module Support for DroneCAN
+Speed Modules
+**************
+
+.. table:: Speed Module Support for DroneCAN
 
 	+-------------+------------------------------------+
 	| Module      | DroneCAN Support                   |
@@ -22,6 +24,22 @@ Module Support
 	| Vertiq 8108 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
 	| Vertiq 4006 | .. centered:: |:white_check_mark:| |
+	+-------------+------------------------------------+
+	| Vertiq 2306 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+
+Servo Modules
+**************
+Servo modules do not support DroneCAN, as shown in the table below.
+
+.. table:: Servo Module Support for DroneCAN
+
+	+-------------+------------------------------------+
+	| Module      | DroneCAN Support                   |
+	+-------------+------------------------------------+
+	| Vertiq 8108 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+	| Vertiq 4006 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+
 	| Vertiq 2306 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+
@@ -41,13 +59,11 @@ the `Vertiq DroneCAN Setup Guide with PX4 <https://www.vertiq.co/s/Preliminary-V
 
 Arming and Arming Bypass
 ================================
-.. warning:: TODO for development: Review links and references in this section are meant to link to other sections when done
-
-DroneCAN can use the same advanced arming procedure as all other throttle sources. The details of this arming procedure are covered in the :red:`Advanced Arming` section.
+DroneCAN can use the same advanced arming procedure as all other throttle sources. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
 
 Older versions of the firmware for Vertiq modules did not include support for arming over DroneCAN. To maintain backwards compatibility, it is possible for users to toggle 
-arming integration with DroneCAN on or off. This is called “arming bypass”. When Vertiq modules have arming bypass turned on for DroneCAN they will spin on any :red:`DroneCAN throttle command`, 
-regardless of armed state. Additionally, when arming bypass is on DroneCAN throttle commands will not cause :red:`arming or disarming transitions`. 
+arming integration with DroneCAN on or off. This is called “arming bypass”. When Vertiq modules have arming bypass turned on for DroneCAN they will spin on any :ref:`DroneCAN throttle command <throttle_sources_dronecan>`, 
+regardless of armed state. Additionally, when arming bypass is on DroneCAN throttle commands will not cause :ref:`arming or disarming transitions <arming_state_transitions>`. 
 The advanced arming features are completely ignored by DroneCAN when the arming bypass is on.
 
 Arming bypass for DroneCAN can be controlled with the *DroneCAN Bypass Arming* parameter in the Advanced tab of the IQ Control Center, as shown below. When this parameter is set to *Bypass Arming*, 

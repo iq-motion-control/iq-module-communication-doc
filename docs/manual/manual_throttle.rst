@@ -11,7 +11,13 @@ provides greater detail on what exactly a throttle command is and how Vertiq mod
 
 Module Support
 ===============
-.. table:: Module Support for Throttle Commands and Modes
+The throttle parsing and modes described here apply to speed modules. While servo modules can also receive commands to spin, they are not considered 
+throttle commands for the purposes of this documentation. Controlling servos will be covered in a separate section.
+
+Speed Modules
+**************
+
+.. table:: Speed Module Support for Throttle Commands and Modes
 
 	+-------------+------------------------------------+
 	| Module      | Throttle Support                   |
@@ -21,6 +27,23 @@ Module Support
 	| Vertiq 4006 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
 	| Vertiq 2306 | .. centered:: |:white_check_mark:| |
+	+-------------+------------------------------------+
+
+Servo Modules
+**************
+Servo modules do not support the throttle parsing and modes described in this section of the documentation, documentation for servo module parsing will be provided in a
+separate section.
+
+.. table:: Servo Module Support for Throttle Commands and Modes
+
+	+-------------+------------------------------------+
+	| Module      | Throttle Support                   |
+	+-------------+------------------------------------+
+	| Vertiq 8108 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+	| Vertiq 4006 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+	| Vertiq 2306 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+
 
 .. _throttle_def:
@@ -58,6 +81,8 @@ Note that the range for inputs to this entry is only 0 to 1, but the definition 
 The full range of -100% to 100% throttle commands can be sent to this entry, but not directly as a -100% to 100% value. Instead, depending on the configuration 
 of your module the 0 to 1 value that this entry accepts will be re-mapped to the full -1 to 1 range. This entry uses the same mapping as the hobby protocols. 
 For more details on how this mapping works and how to configure it, see the :red:`Mapping to Throttle` section.
+
+.. _throttle_sources_dronecan:
 
 DroneCAN
 *********

@@ -14,7 +14,11 @@ disarm when a timeout occurs, to leave them in a safe state following a timeout.
 
 Module Support
 ===============
-.. table:: Module Support for Configurable Timeout
+
+Speed Modules
+**************
+
+.. table:: Speed Module Support for Configurable Timeout
 
 	+-------------+------------------------------------+
 	| Module      | Configurable Timeout Support       |
@@ -25,6 +29,24 @@ Module Support
 	+-------------+------------------------------------+
 	| Vertiq 2306 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
+
+Servo Modules
+**************
+Servo modules do not support the full range of configurable timeout features described in this section. They do support a timeout, and the period of the timeout is configurable.
+The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. They will always 
+continuously play the timeout song when they timeout.
+
+.. table:: Servo Module Support for Configurable Timeout
+
+	+-------------+------------------------------------+-------------------------------------------------------------------------+
+	| Module      | Configurable Timeout Support       | Notes                                                                   |
+	+-------------+------------------------------------+-------------------------------------------------------------------------+
+	| Vertiq 8108 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	+-------------+------------------------------------+-------------------------------------------------------------------------+
+	| Vertiq 4006 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	+-------------+------------------------------------+-------------------------------------------------------------------------+
+	| Vertiq 2306 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	+-------------+------------------------------------+-------------------------------------------------------------------------+
 
 Configuring Timeout
 ====================

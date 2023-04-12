@@ -13,7 +13,11 @@ once it reaches the stow position. Note that incoming commands can cause interru
 
 Module Support
 ===============
-.. table:: Module Support for Stow Position
+
+Speed Modules
+**************
+
+.. table:: Speed Module Support for Stow Position
 
 	+-------------+------------------------------------+
 	| Module      | Stow Position Support              |
@@ -21,6 +25,24 @@ Module Support
 	| Vertiq 8108 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
 	| Vertiq 4006 | .. centered:: |:white_check_mark:| |
+	+-------------+------------------------------------+
+	| Vertiq 2306 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+
+Servo Modules
+**************
+Servo modules do not support stow as a separate feature. Rather, they are intended to primarily serve as position modules, so controlling them to move to any desired
+position is a natural part of their base functionality. The stow position feature is useful on speed modules primarily as a way to easily allow integrating 
+moving to a single stow position with a flight controller. So the stow specific features described in this portion of the documentation are not relevant for servo modules.
+
+.. table:: Servo Module Support for Stow Position
+
+	+-------------+------------------------------------+
+	| Module      | Stow Position Support              |
+	+-------------+------------------------------------+
+	| Vertiq 8108 | .. centered:: |:x:|                |
+	+-------------+------------------------------------+
+	| Vertiq 4006 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+
 	| Vertiq 2306 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+

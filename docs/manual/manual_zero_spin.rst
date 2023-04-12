@@ -18,7 +18,11 @@ in the :ref:`interaction_with_advanced_arming` section.
 
 Module Support
 ===============
-.. table:: Module Support for Configurable Zero Spin Throttle
+
+Speed Modules
+**************
+
+.. table:: Speed Module Support for Configurable Zero Spin Throttle
 
 	+-------------+-----------------------------------------+
 	| Module      | Configurable Zero Spin Throttle Support |
@@ -29,6 +33,22 @@ Module Support
 	+-------------+-----------------------------------------+
 	| Vertiq 2306 | .. centered:: |:white_check_mark:|      |
 	+-------------+-----------------------------------------+
+
+Servo Modules
+**************
+Servo modules do not support the configurable zero spin throttle feature.
+
+.. table:: Servo Module Support for Configurable Zero Spin Throttle
+
+	+-------------+---------------------------------------------------+
+	| Module      | Configurable Zero Spin Throttle Support           |
+	+-------------+---------------------------------------------------+
+	| Vertiq 8108 | .. centered:: |:x:|                               |
+	+-------------+---------------------------------------------------+
+	| Vertiq 4006 | .. centered:: |:x:|                               |
+	+-------------+---------------------------------------------------+
+	| Vertiq 2306 | .. centered:: |:x:|                               |
+	+-------------+---------------------------------------------------+
 
 .. _applied_spin_percentage:
 
