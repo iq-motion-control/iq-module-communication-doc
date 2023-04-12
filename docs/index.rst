@@ -50,6 +50,8 @@
    manual/manual_throttle
    manual/manual_advanced_arming
    manual/manual_stow
+   manual/manual_timeout
+   manual/manual_zero_spin
 
 Welcome to the Vertiq Documentation
 =================================================

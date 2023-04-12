@@ -14,7 +14,7 @@ Module Support
 .. table:: Module Support for Throttle Commands and Modes
 
 	+-------------+------------------------------------+
-	| Module      | IQUART Support                     |
+	| Module      | Throttle Support                   |
 	+-------------+------------------------------------+
 	| Vertiq 8108 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
@@ -78,6 +78,8 @@ Similarly to the :ref:`throttle_iquart_ref` throttle command, these commands onl
 to 100%. The full range of -100% to 100% throttle commands can be sent by hobby protocols, but not directly as a -1 to 1 value. Instead, depending on the 
 configuration of your module the 0.0 to 1.0 value that hobby protocols send will be re-mapped to the full -100% to 100% range. For more details on how this mapping 
 works and how to configure it, see the :red:`Mapping to Throttle` section.
+
+.. _throttle_mode_maximums_directions:
 
 Mode, Maximums and Direction
 ==============================

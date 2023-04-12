@@ -20,7 +20,7 @@ Module Support
 .. table:: Module Support for Advanced Arming
 
 	+-------------+------------------------------------+
-	| Module      | IQUART Support                     |
+	| Module      | Advanced Arming Support            |
 	+-------------+------------------------------------+
 	| Vertiq 8108 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+

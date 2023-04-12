@@ -16,7 +16,7 @@ Module Support
 .. table:: Module Support for Stow Position
 
 	+-------------+------------------------------------+
-	| Module      | DroneCAN Support                   |
+	| Module      | Stow Position Support              |
 	+-------------+------------------------------------+
 	| Vertiq 8108 | .. centered:: |:white_check_mark:| |
 	+-------------+------------------------------------+
