@@ -11,7 +11,7 @@ and to configure specific behaviors to occur at armed state transitions. Modules
 The configurable behaviors on armed state transitions allow users to easily integrate advanced behaviors into their setup just by controlling the throttle messages they send, 
 simplifying flight controller integration. 
 
-The :ref:`arming_module_support` section below details which Vertiq Advanced Speed modules currently support.
+The :ref:`arming_module_support` section below details which Vertiq Advanced Speed modules currently support advanced arming.
 
 .. _arming_module_support:
 

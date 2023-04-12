@@ -49,6 +49,7 @@
    manual/manual_hobby
    manual/manual_throttle
    manual/manual_advanced_arming
+   manual/manual_stow
 
 Welcome to the Vertiq Documentation
 =================================================
