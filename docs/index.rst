@@ -52,6 +52,7 @@
    manual/manual_stow
    manual/manual_timeout
    manual/manual_zero_spin
+   manual/manual_appendix
 
 Welcome to the Vertiq Documentation
 =================================================

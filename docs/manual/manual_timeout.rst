@@ -44,6 +44,8 @@ a timeout will trigger. See the :ref:`triggering_timeout` section for more infor
 
     Timeout Parameter in IQ Control Center
 
+.. _timeout_behavior:
+
 Timeout Behavior
 *****************
 On modules that support it (see :ref:`timeout_module_support` above), the behavior of the module when a timeout occurs can be configured. If a module does not support 
