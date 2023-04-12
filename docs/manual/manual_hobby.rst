@@ -28,6 +28,8 @@ Module Support
 Supported Hobby Protocols
 ==========================
 
+.. _hobby_standard_pwm:
+
 Standard PWM
 *************
 Standard PWM refers to a very commonly used analog protocol that uses a 1000 microsecond to 2000 microsecond pulse to send throttle commands. This pulse encodes a number 
@@ -36,6 +38,8 @@ depends on the configurations of the module. Refer to the :red:`Mapping to Throt
 
 These endpoints can be calibrated to change how incoming pulse widths are interpreted, e.g. you could calibrate 1200 microseconds to map to 0.0 and 2000 microseconds to map to 1.0 instead. See 
 the `Analog Protocol Calibration`_ section for more details on calibration.
+
+.. _hobby_dshot:
 
 DSHOT
 ******

@@ -37,6 +37,8 @@ Flight Controller Integration
 For guidance on integrating Vertiq modules with flight controllers using DroneCAN, see 
 the `Vertiq DroneCAN Setup Guide with PX4 <https://www.vertiq.co/s/Preliminary-Vertiq-DroneCAN-aka-UAVCANv0-Setup-Guide-with-PX4.pdf>`_ on Vertiq’s website.
 
+.. _dronecan_arming_and_bypass:
+
 Arming and Arming Bypass
 ================================
 .. warning:: TODO for development: Review links and references in this section are meant to link to other sections when done
