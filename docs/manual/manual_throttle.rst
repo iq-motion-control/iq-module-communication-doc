@@ -9,6 +9,9 @@ Throttle Commands and Modes
 Vertiq modules can receive throttle commands from a variety of sources, and interpret them differently based on the module's configurations. The following section
 provides greater detail on what exactly a throttle command is and how Vertiq modules interpret them.
 
+Note that generally a module needs to be :ref:`armed <manual_advanced_arming>` in order to spin when it receives a throttle command. Refer to the :ref:`manual_advanced_arming` section 
+for more information on arming.
+
 Module Support
 ===============
 The throttle parsing and modes described here apply to speed modules. While servo modules can also receive commands to spin, they are not considered 
@@ -53,13 +56,10 @@ Throttle Definition
 This section defines what is meant by a “throttle command” in the rest of this document. **A throttle command is a command that can come from a variety of different sources 
 that encodes a value from 100% to -100%. The magnitude of this percentage controls how quickly the module should spin, and the sign indicates the direction of the spin.**
 
-.. error:: TODO for dev: Should we clarify this stuff with anything about applied spin percentage? Does it not necessarily fit in smoothly with the zero spin stuff without it? Maybe at least a note or warning or something?
-    Should we also mention that it won't spin without arming? 
-
 The exact drive voltage/speed and direction that a throttle command commands depends on how the module is configured by the user. A throttle command of 100% will command 
 the module to spin at 100% of whatever the maximum set by its mode is, and in the direction set by its direction configuration. 
 A throttle command of -100% will command the module to spin at 100% of whatever the maximum set by its mode is in the opposite direction of its direction configuration. 
-The details of these configurations are covered in the :red:`Mode, Maximums, and Direction` section.
+The details of these configurations are covered in the :ref:`throttle_mode_maximums_directions` section. 
 
 .. _throttle_sources:
 
@@ -69,7 +69,7 @@ There are currently three different types of throttle sources for a Vertiq modul
 communication protocols that can send throttle commands to a Vertiq module. Each source uses different messages and mappings to send its throttle commands, 
 as covered in the sections below. 
 
-The Vertiq module identifies and tracks what source an incoming throttle command comes from, which is relevant for the :red:`Armed Throttle Source Lockout` feature.
+The Vertiq module identifies and tracks what source an incoming throttle command comes from, which is relevant for the :ref:`armed_throttle_source_lockout` feature.
 
 .. _throttle_iquart_ref:
 
@@ -77,10 +77,10 @@ IQUART
 *******
 The `raw_value <https://iqmotion.readthedocs.io/en/latest/modules/vertiq_8108_150.html#id15>`_ entry of the ESC Propeller Input Parser client can be used to send a throttle command over IQUART. 
 
-Note that the range for inputs to this entry is only 0 to 1, but the definition of a throttle command previously described includes commands from -100% to 100%. 
+Note that the range for inputs to this entry is only 0.0 to 1.0, but the definition of a throttle command previously described includes commands from -100% to 100%. 
 The full range of -100% to 100% throttle commands can be sent to this entry, but not directly as a -100% to 100% value. Instead, depending on the configuration 
-of your module the 0 to 1 value that this entry accepts will be re-mapped to the full -1 to 1 range. This entry uses the same mapping as the hobby protocols. 
-For more details on how this mapping works and how to configure it, see the :red:`Mapping to Throttle` section.
+of your module the 0.0 to 1.0 value that this entry accepts will be re-mapped to the full -1 to 1 range. This entry uses the same mapping as the hobby protocols. 
+For more details on how this mapping works and how to configure it, see the :ref:`throttle_mapping` section.
 
 .. _throttle_sources_dronecan:
 
@@ -92,17 +92,16 @@ on the DroneCAN bus, with each one intended for one module. These raw commands a
 To convert these raw commands to a throttle command, simply divide the value by 8192. For example, a raw command of -8192 corresponds to a 
 throttle command of -100%, and a raw command of 4096 corresponds to a throttle command of 50%.
 
-
 Hobby Protocols
 ****************
-The :ref:`manual_hobby` section above covers in more detail how each hobby protocol communicates with Vertiq modules. Generally, each type of hobby protocol 
-sends a command that encodes a number from 0.0 to 1.0. For example, Standard PWM sends a pulse from 1000 microseconds to 2000 microseconds, where 1000 microseconds 
+The :ref:`manual_hobby` section covers in more detail how each hobby protocol communicates with Vertiq modules. Generally, each type of hobby protocol 
+sends a command that encodes a number from 0.0 to 1.0. For example, :ref:`Standard PWM <hobby_standard_pwm>` sends a pulse from 1000 microseconds to 2000 microseconds, where 1000 microseconds 
 corresponds to a 0.0 and 2000 microseconds corresponds to a 1.0.
 
 Similarly to the :ref:`throttle_iquart_ref` throttle command, these commands only encode a range from 0.0 to 1.0, while a throttle command should be able to cover a range from -100% 
 to 100%. The full range of -100% to 100% throttle commands can be sent by hobby protocols, but not directly as a -1 to 1 value. Instead, depending on the 
 configuration of your module the 0.0 to 1.0 value that hobby protocols send will be re-mapped to the full -100% to 100% range. For more details on how this mapping 
-works and how to configure it, see the :red:`Mapping to Throttle` section.
+works and how to configure it, see the :ref:`throttle_mapping` section.
 
 .. _throttle_mode_maximums_directions:
 
@@ -112,6 +111,11 @@ To fully understand how a Vertiq module will interpret a throttle command, there
 The definition of a throttle command is covered in the :ref:`throttle_def` section, 
 
 For a tutorial walking through setting these parameters up in more detail, see the :ref:`control_center_tutorial` and :ref:`hobby_fc_tutorial` tutorials.
+
+.. note:: The descriptions in this section of how a module will spin in response to a throttle command assume that the zero spin throttle is left at its default setting, where a 0% throttle 
+    command is the zero spin throttle. The exact rate at which a module spins in response to a throttle command may differ from the descriptions in the following sections if the 
+    zero spin throttle has been configured differently. For more information on how the module's response to throttle commands will change, see the :ref:`manual_zero_spin` section.
+    These descriptions also assume that the module has already :ref:`armed <manual_advanced_arming>` before spinning.
 
 .. _throttle_mode:
 
@@ -129,14 +133,12 @@ The mode of the module can be controlled using the *Mode* parameter in the Gener
 
     Mode Parameter in IQ Control Center
 
-.. error:: Review the sections below where we say certain commands will cause cetain spins. May want to mention zero spin throttle or arming in there or before there? They would affect spinning
-
 PWM
 ####
 Throttle commands will be interpreted as commanding a percentage of the module’s supply voltage in this mode. E.g. a 50% throttle command will command the module to 
 apply 50% of its supply voltage as its drive voltage. If the module were powered with a 24V supply, that 50% command would result in a drive voltage of 12V. 
 
-Note that if using a battery, as the battery drains the meaning of commands in this mode will change with. For example, if the supply voltage in the previous example 
+Note that if using a battery, as the battery drains the meaning of commands in this mode will change with it. For example, if the supply voltage in the previous example 
 dipped to 23V, a 50% command would now result in a drive voltage of 11.5V.
 
 .. _throttle_voltage_mode:
@@ -172,8 +174,6 @@ maximum voltage is set to 24V, a 100% throttle command will cause the module to 
 Any throttle command less than 100% will be scaled between 0 and the maximum. If the module is in Voltage mode, and its maximum voltage is set to 24V 
 then a 50% throttle command will cause the module to apply a drive voltage of 12V.
 
-.. error:: Review the sections below where we say certain commands will cause cetain spins. May want to mention zero spin throttle or arming in there or before there? They would affect spinning
-
 Maximum Voltage
 ################
 The maximum voltage is used when the module is configured to use :ref:`throttle_voltage_mode` mode. The maximum voltage can be configured using the *Max Volts* parameter under 
@@ -202,8 +202,6 @@ tab in IQ Control Center, as shown below.
 
 Direction
 **********
-.. error:: Review where we say certain commands will cause cetain spins. May want to mention zero spin throttle or arming in there or before there? They would affect spinning
-
 Another important configuration to consider before controlling a Vertiq module is the module’s spin direction. Throttle commands can be from -100% to 100%, 
 and the sign indicates the intended spin direction. Users can configure what direction a positive throttle command should be interpreted as by configuring 
 the direction of the module.
@@ -213,7 +211,7 @@ command and counterclockwise when it receives a negative throttle command. When 
 when it receives a positive throttle command and clockwise when it receives a negative throttle command.
 
 For example, if the module’s direction is set to clockwise and a 50% throttle command is received, the module will spin at 50% of its maximum value in 
-the clockwise direction. If a -%50 throttle command is received, the module will spin at 50% of its maximum value in the counterclockwise direction.
+the clockwise direction. If a -50% throttle command is received, the module will spin at 50% of its maximum value in the counterclockwise direction.
 
 The direction can be set using the *Motor Direction* parameter in the General tab of the IQ Control Center as shown below. Note that this parameter specifies 
 whether the module is 2D or 3D as well as if the direction is clockwise or counterclockwise. The 2D and 3D selection is not important for determining what 
@@ -233,7 +231,7 @@ Mapping to Throttle
 ==============================
 
 As mentioned in the :ref:`throttle_sources` section above some throttle sources, namely IQUART and hobby protocols, send their throttle commands as a number from 0.0 to 1.0, 
-which then must be mapped onto the full -100% to 100% range that a throttle command can take. This 0 to 1 number is referred to in the rest of this section as the “raw value”. 
+which then must be mapped onto the full -100% to 100% range that a throttle command can take. This 0.0 to 1.0 number is referred to in the rest of this section as the “raw value”. 
 Note this is not the case for DroneCAN, these mappings are not necessary for DroneCAN throttles as they are sent with explicit signs.
 
 The exact nature of this mapping depends on how the Vertiq module is configured. Specifically it depends on how the *FC 2D/3D Mode* and the *Direction* parameters 
@@ -274,7 +272,7 @@ More explicitly, the simple equation below details how to convert from a raw val
 
     Raw Value to Throttle Command Mapping Equation (FC Mode = 2D, Motor Direction = 2D)
 
-For example, a raw value of 0.5 will map to a throttle command of 50%, a raw value of 0 will map to a throttle command of 0%, and a raw value of 1 will map to a throttle 
+For example, a raw value of 0.5 will map to a throttle command of 50%, a raw value of 0.0 will map to a throttle command of 0%, and a raw value of 1.0 will map to a throttle 
 command of 100%. 
 
 The graph below illustrates this mapping. The X-axis is a raw value, and the Y-axis is the corresponding throttle command percentage.
@@ -295,7 +293,7 @@ This configuration produces exactly the same results as the :ref:`throttle_2d_2d
 FC Mode = 2D, Motor Direction = 3D
 ************************************
 This configuration allows the raw value to map to both negative and positive throttle commands, by splitting the raw value range into negative and positive halves. 
-A raw value from 0 to 0.5 maps to a throttle command of -100% to 0%, and a raw value from 0.5 to 1 maps to a throttle command of 0% to 100%. This means that a 
+A raw value from 0.0 to 0.5 maps to a throttle command of -100% to 0%, and a raw value from 0.5 to 1.0 maps to a throttle command of 0% to 100%. This means that a 
 module can be made to spin in both directions with this configuration.
 
 The equation below summarizes how to convert from a raw value to a throttle command percentage with this setup.
@@ -323,7 +321,7 @@ FC Mode = 3D, Motor Direction = 3D
 ************************************
 This configuration allows the raw value to map to both negative and positive throttle commands, by splitting the raw value range into negative and positive halves. 
 Unlike the configuration covered in the :ref:`throttle_2d_3d_mapping` section above, the mapping from raw value to throttle command is not a continuous 
-linear function, but a piecewise function. A raw value from 0 to 0.5 maps to a throttle command of 0% to -100%. A raw value from 0.5 to 1 maps to a throttle 
+linear function, but a piecewise function. A raw value from 0.0 to 0.5 maps to a throttle command of 0% to -100%. A raw value from 0.5 to 1.0 maps to a throttle 
 command of 0% to 100%. This means that a module can be made to spin in both directions with this configuration.
 
 The equation below summarizes how to convert from a raw value to a throttle command percentage with this setup.

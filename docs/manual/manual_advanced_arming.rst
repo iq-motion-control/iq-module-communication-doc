@@ -11,7 +11,7 @@ and to configure specific behaviors to occur at armed state transitions. Modules
 The configurable behaviors on armed state transitions allow users to easily integrate advanced behaviors into their setup just by controlling the throttle messages they send, 
 simplifying flight controller integration. 
 
-The :ref:`arming_module_support` section below details which Vertiq Advanced Speed modules currently support advanced arming.
+The :ref:`arming_module_support` section below details which Vertiq modules currently support advanced arming.
 
 .. _arming_module_support:
 
@@ -53,8 +53,8 @@ Armed States
 ===============
 Modules can be in one of two armed states at any time:
 
-* **Armed**: In this state, the module will spin when it receives a :ref:`throttle command <manual_throttle>`, so it is not safe to be near a module with an attached propeller when the module is armed.
-* **Disarmed**: In this state, the module will NOT spin when it receives a :ref:`throttle command <manual_throttle>`. If using IQUART to control the modules, it is still possible that the module can be commanded to spin by other commands, such as by setting the “ctrl_volts” of the Propeller Motor Controller client. Because of this, if you are using IQUART messages besides the typical throttle commands to control the motor you should approach it with caution even when it is disarmed. 
+* **Armed**: In this state the module will spin when it receives a :ref:`throttle command <manual_throttle>`, so it is not safe to be near a module with an attached propeller when the module is armed.
+* **Disarmed**: In this state the module will NOT spin when it receives a :ref:`throttle command <manual_throttle>`. If using IQUART to control the modules it is still possible that the module can be commanded to spin by other commands, such as by setting the “ctrl_volts” of the Propeller Motor Controller client. Because of this, if you are using IQUART messages besides the typical throttle commands to control the motor you should approach it with caution even when it is disarmed. 
 
 The process of transitioning between armed states is covered in the :ref:`arming_state_transitions` section.
 
@@ -67,7 +67,7 @@ motor from disarmed to armed to begin spinning again following a reboot.
 
 Armed Throttle Source Lockout
 ==============================
-**When armed, the module will always choose one throttle source as its armed throttle source, and reject incoming throttle commands from all other throttle sources.** 
+**When armed the module will always choose one throttle source as its armed throttle source, and reject incoming throttle commands from all other throttle sources.** 
 For an explanation on what is a throttle source, see the :ref:`throttle_sources` section. These rejected throttle commands will not affect how the module is spinning 
 and will not trigger disarming transitions. For example, if DroneCAN was the armed throttle source, throttle commands received over DroneCAN would be treated 
 normally, and throttle commands received over Hobby PWM would be rejected.
@@ -129,7 +129,7 @@ is set to 0.1. Any throttle command between 10% and 30% is an arming throttle.
 
     Example Arming Throttle Region
 
-**There is a separate parameter that determines whether the arming throttle region exists at all. The *Arm On Throttle* parameter, shown below in 
+**There is a separate parameter that determines whether the arming throttle region exists at all. The** *Arm On Throttle* **parameter, shown below in 
 IQ Control Center, allows users to toggle the arming throttle region on or off completely.** If this parameter is set to *Do Not Arm on Throttle*, 
 then there is no arming throttle region and throttles cannot cause an arming transition. Otherwise, arming throttles can be used as previously described.
 
@@ -385,15 +385,15 @@ when arming manually.** This parameter can be set in IQ Control Center under the
     Manual Arming Throttle Source Parameter in IQ Control Center
 
 When the module is armed manually, it will use the *Manual Arming Throttle Source* as its armed throttle source. **That means that it will only listen to throttle 
-commands from the specified source for spinning and disarming while it is armed.** For example, if you had the *Manual Arming Throttle Source* set to *DroneCAN*, 
+commands from the specified source for spinning and disarming when it is armed manually.** For example, if you had the *Manual Arming Throttle Source* set to *DroneCAN* and manually armed the module,
 then any throttle commands from DroneCAN would be accepted, but any sent over :ref:`hobby_standard_pwm` would be rejected. **It is essential to set the** *Manual Arming Throttle Source*
 **before attempting to arm manually.**
 
 Timeout
 ********
 Timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout. Note that 
-whether the module performs its disarming behavior or not on a timeout depends on the timeout feature configurations. See the :red:`Timeout` section, specifically the 
-:red:`Timeout Meaning` subsection, for more information.
+whether the module performs its disarming behavior or not on a timeout depends on the timeout feature configurations. See the :ref:`manual_timeout` section, specifically the 
+:ref:`timeout_meaning` subsection, for more information.
 
 Always Armed
 *************

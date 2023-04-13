@@ -126,6 +126,8 @@ These options can all be configured through IQ Control Center through the *Timeo
 
     Timeout Song Playback Option Parameter in Control Center
 
+.. _timeout_meaning:
+
 Timeout Meaning
 *****************
 Some users may wish to intentionally cause timeouts to trigger a disarming process on their module. To accommodate this behavior, it is possible to configure a 

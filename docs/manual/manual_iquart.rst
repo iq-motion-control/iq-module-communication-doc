@@ -12,7 +12,7 @@ sections of the Vertiq documentation.
 
 Module Support
 ===============
-All Vertiq modules support IQUART, as sumamrized in the tables below.
+All Vertiq modules support IQUART, as summarized in the tables below.
 
 Speed Modules
 **************

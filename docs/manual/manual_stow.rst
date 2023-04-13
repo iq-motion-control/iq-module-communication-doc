@@ -52,9 +52,10 @@ moving to a single stow position with a flight controller. So the stow specific 
 Stow Process Overview
 ======================
 When a module moves to its stow position, regardles of the reason for the stow, it follows a series of steps to stow properly. First it begins either accelerating or decelerating
-in order to reach its stow position with its user-configrued :red:`stow acceleration`. So if the module was still before, it will begin moving, but if it was spinning rapdily, it will
-keep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then choose whether it should try to actively :red:`hold that position` or 
-coast itself, meaning that the module will not be driving itself and can spin freely. If the module is :red:`interrupted` at any time during the stow process, it will stop trying to stow.
+in order to reach its stow position with its user-configrued :ref:`stow acceleration <stow_movement_parameters>`. So if the module was still before, it will begin moving, but if it was 
+spinning rapdily, it willkeep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then choose whether it should try to 
+actively :ref:`hold that position <stow_holding_position>` or coast itself, meaning that the module will not be driving itself and can spin freely. If the module is :ref:`interrupted <interrupting_stow>` at any time during 
+the stow process, it will stop trying to stow.
 
 The diagram below gives a brief overview of how the stow position feature transitions between different states based on its configuration and how 
 it can be interrupted at any point in the process.
@@ -105,6 +106,8 @@ This parameter can be configured under the General tab of the IQ Control Center,
     :alt: Hold Stow Parameter
 
     Hold Stow Parameter in IQ Control Center
+
+.. _stow_movement_parameters:
 
 Stow Movement Parameters
 **************************
@@ -228,10 +231,10 @@ feature interacts with disarming.
 
 Stow on Timeout
 ****************
-Modules that support :red:`configurable timeout behavior` can set their :red:`timeout behavior` to trigger a stow. This means that when a timeout occurs, the module will move to its 
+Modules that support :ref:`configurable timeout behavior <timeout_module_support>` can set their :ref:`timeout behavior <timeout_behavior>` to trigger a stow. This means that when a timeout occurs, the module will move to its 
 stow position. 
 
-Refer to the :red:`Timeout Behavior` section for more information on how to configure this behavior and the specifics of how the stow feature interacts with timeouts.
+Refer to the :ref:`timeout_behavior` section for more information on how to configure this behavior and the specifics of how the stow feature interacts with timeouts.
 
 .. _stow_holding_position:
 
