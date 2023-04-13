@@ -97,7 +97,7 @@ modules with Control Center or interacting with them using the Vertiq APIs.
 **Because the connector is shared between hobby protocols and serial communication, only one of them can be active at any time.** On startup, the module will 
 look for valid messages of either the currently configured hobby protocol or the Vertiq serial protocol. **When it detects the first valid message of 
 either type, it will lock-on to that type of communication, and stop listening for any other types of messages on that physical interface. This behavior is slightly different 
-when using the *Autodetect* setting for the *Communication* parameter, see the note below.** Also note that for modules that support DroneCAN, DroneCAN uses a separate 
+when using the** *Autodetect* **setting for the** *Communication* **parameter, see the note below.** Also note that for modules that support DroneCAN, DroneCAN uses a separate 
 physical interface from hobby protocols and serial communication, so DroneCAN communication can still be used when using hobby protocols.
 
 .. note:: When using *Autodetect* as the setting for the module's *Communication* parameter, the module will not recognize incoming hobby protocol messages as valid until it
