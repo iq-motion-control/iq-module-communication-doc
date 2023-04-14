@@ -103,6 +103,9 @@ The frequency that this message is published at is determined by the :ref:`drone
 Refer to the `uavcan.equipment.device.Temperature section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#temperature>`_ in the specification 
 for more details
 
+
+.. _dronecan_messages_raw_command:
+
 uavcan.equipment.esc.RawCommand (Data Type ID = 1030)
 ######################################################
 Used to control the speed and direction of the motor. This message should be sent from the flight controller to the motors. The payload consists of a list of up to 20 values, 
@@ -184,6 +187,8 @@ This parameter defines the Node ID of the module on the UAVCAN network. This ID 
 the same Node ID. ID 0 is typically reserved for the flight controller. A reboot is typically required after changing this parameter for the device to use the new Node ID on the network.
 
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
+
+.. _dronecan_bitrate_parameter:
 
 Bitrate
 ########
