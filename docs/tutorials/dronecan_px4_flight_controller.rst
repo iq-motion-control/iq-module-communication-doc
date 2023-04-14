@@ -18,8 +18,9 @@ on how to set them up.
 
 Bitrate
 ********
-Currently on Vertiq modules, the bitrate for DroneCAN defaults to 500000 bit/s. It is possible to change this bitrate through the IQ Control Center as shown below, or through a 
-:ref:`DroneCAN configuration parameter <dronecan_bitrate_parameter>`. Whatever the bitrate on the module is set to must match the bitrate of the flight controller.
+Currently on Vertiq modules, the bitrate for DroneCAN defaults to 500000 bit/s. It is possible to change this bitrate using the *DroneCAN Bitrate* parameter in 
+IQ Control Center as shown below, or through a :ref:`DroneCAN configuration parameter <dronecan_bitrate_parameter>`. Whatever the bitrate on the module is set 
+to must match the bitrate of the flight controller.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_bitrate.png
     :align: center
