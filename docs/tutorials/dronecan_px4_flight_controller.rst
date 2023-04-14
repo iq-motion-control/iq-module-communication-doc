@@ -22,7 +22,7 @@ Currently on Vertiq modules, the bitrate for DroneCAN defaults to 500000 bit/s. 
 IQ Control Center as shown below, or through a :ref:`DroneCAN configuration parameter <dronecan_bitrate_parameter>`. Whatever the bitrate on the module is set 
 to must match the bitrate of the flight controller.
 
-.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_bitrate.png
+.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_bitrate_parameter.png
     :align: center
     :width: 60%
     :alt: DroneCAN Bitrate
@@ -82,7 +82,7 @@ ESC index of each module should be set to the appropriate value for its position
 
 You can change the ESC Index of a module through the Control Center using *ESC Index* under the General tab, as shown below.
 
-.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_esc_index.png
+.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_esc_index_parameter.png
     :align: center
     :width: 60%
     :alt: DroneCAN ESC Index
@@ -225,7 +225,7 @@ For this example, only 1 motor was used during testing, with an ESC index of 0. 
 If you prefer to interact directly with PX4 parameters, the functions can be assigned using the *UAVCAN_EC_FUNCX* parameters. An example of setting *UAVCAN_EC_FUNC1* is shown 
 in the image below.
 
-.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/px4_uavcan_ec_func1_parameter.png
+.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/px4_uavcan_ec_func1_parameter_qgc.png
     :align: center
     :width: 60%
     :alt: UAVCAN_EC_FUNC1 Parameter
