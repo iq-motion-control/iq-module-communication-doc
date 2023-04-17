@@ -53,6 +53,8 @@
    manual/manual_timeout
    manual/manual_zero_spin
    manual/manual_appendix
+   manual/manual_canopen
+   manual/manual_adc_interface
 
 Welcome to the Vertiq Documentation
 =================================================
@@ -65,7 +67,7 @@ Setup Tutorials
 Detailed tutorials on how to setup and use your modules with our Control Center and flight controllers can be found in the `Tutorials` section on the sidebar to the left.
 
 Controlling Modules With Vertiq APIs
-********************************
+**************************************
 
 We currently support 4 different languages for controlling your Vertiq Module:
 
