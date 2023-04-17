@@ -53,10 +53,8 @@ CANOpen Frame
 
 CANOpen uses only the standard CAN frame for communication, where the CAN-ID is split into a 4 bit function code, and a 7 bit node id:
 
-.. image:: ../_static/manual_images/fortiq/canopen/can_packet.png
-
-.. image:: ../_static/manual_images/fortiq/canopen/can_id.png
-	:width: 350
+.. image:: ../_static/manual_images/fortiq/canopen/canopen_standard_frame.png
+	:height: 500
 
 The possible function codes are summarized below: 
 
