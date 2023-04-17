@@ -6,7 +6,7 @@
 ***********************************************
 CANOpen
 ***********************************************
-Vertiq's CANOpen implementation is based on the CAN in Automation (CiA) 301 standard. All Vertiq modules connect to the CANBUS as a Slave Node with a bitrate of 500kbps. The bitrate is fixed.
+Vertiq's CANOpen implementation is based on the CAN in Automation (CiA) `301 standard <https://www.can-cia.org/groups/specifications/>`_. All Vertiq modules connect to the CAN bus as a slave node with a bitrate of 500kbps. The bitrate is fixed.
 
 Module Support
 ================

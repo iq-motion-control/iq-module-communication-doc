@@ -4,7 +4,7 @@
 .. _manual_high_power_pwm_:
 
 ********************************************
-Vertiq High Power PWM Output Interface
+High Power PWM Output Interface
 ********************************************
 
 Module Support
@@ -15,7 +15,7 @@ Speed Modules
 .. table:: Speed Module Support for High Power PWM Output
 
 	+-------------+------------------------------------+
-	| Module      | User ADC Support                   |
+	| Module      | User High Power Output Support     |
 	+-------------+------------------------------------+
 	| Vertiq 8108 | .. centered:: |:x:|                |
 	+-------------+------------------------------------+
@@ -30,7 +30,7 @@ Servo Modules
 .. table:: Servo Module Support for High Power PWM Output
 
 	+-----------------+------------------------------------------+
-	| Module          | User ADC Support                         |
+	| Module          | User High Power Output Support           |
 	+-----------------+------------------------------------------+
 	| Vertiq 8108     | .. centered:: |:x:|                      |
 	+-----------------+------------------------------------------+
@@ -86,6 +86,10 @@ The IQ Control Center provides the easiest way to interact with your module’s 
 Vertiq Python API - PWM Interface
 ===================================
 
+.. note::
+	Please note that the following *ADC Interface* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
+
+
 Vertiq’s PWM interface can also be accessed through Vertiq’s Python API. Through the API you gain read/write access to the PWM parameters duty cycle, frequency, and mode. Please note, only mode and frequency are savable values. To use the API, please use the following steps:
 
 #. Set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
@@ -116,12 +120,12 @@ PWM Interface Entry Summary
 
 .. table:: *pwm_interface* Entries
 
-+---------------+-----------------+----------+
-| Entry Name    | Access          | Format   |
-+---------------+-----------------+----------+  
-| pwm_frequency | Read/Write/Save | uint32   |
-+---------------+-----------------+----------+
-| pwm_mode      | Read/Write/Save | uint8    |
-+---------------+-----------------+----------+
-| duty_cycle    | Read/Write      | uint8    |
-+---------------+-----------------+----------+
+	+---------------+-----------------+----------+
+	| Entry Name    | Access          | Format   |
+	+---------------+-----------------+----------+  
+	| pwm_frequency | Read/Write/Save | uint32   |
+	+---------------+-----------------+----------+
+	| pwm_mode      | Read/Write/Save | uint8    |
+	+---------------+-----------------+----------+
+	| duty_cycle    | Read/Write      | uint8    |
+	+---------------+-----------------+----------+
