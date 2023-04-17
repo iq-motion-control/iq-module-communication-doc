@@ -7,10 +7,6 @@
 ADC Interface
 ***********************************************
 
-Vertiq's ADC Interface provides access to an application-blind, on-board Analog to Digital Converter (ADC). The ADC can handle voltages from 0.0V to 3.6V with a 12-bit resolution. 
-
-The ADC interface provides read-only access to both the voltage read and the raw ADC value.
-
 Module Support
 ================
 
@@ -48,9 +44,16 @@ Servo Modules
 	| Vertiq Fortiq42 | .. centered:: |:white_check_mark:|       |
 	+-----------------+------------------------------------------+
 
+Description
+=============
+Vertiq's ADC Interface provides access to an application-blind, on-board Analog to Digital Converter (ADC). The ADC can handle voltages from 0.0V to 3.6V with a 12-bit resolution. 
 
+The ADC interface provides read-only access to both the voltage read and the raw ADC value.
+
+Usage
+========
 IQ Control Center
-==================
+**********************
 The IQ Control Center provides the easiest way to test reading the voltage input on your module's ADC. To do so:
 
 #. Open IQ Control Center. If you have not installed the program, please follow the instructions in `Getting Started with Speed Motors Using IQ Control Center <https://iqmotion.readthedocs.io/en/latest/tutorials/testing_with_control_center.html>`_. 
@@ -69,7 +72,7 @@ The IQ Control Center provides the easiest way to test reading the voltage input
 
 
 Vertiq Python API - ADC Interface
-===================================
+*************************************
 .. note::
 	Please note that the following *ADC Interface* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
