@@ -174,6 +174,8 @@ The motor should restart and play its 5 beep startup song. An example of the Con
 
     Control Center During Flashing
 
+.. _control_center_tutorial_spinning_motor:
+
 Spinning the Motor
 ==================
 .. warning:: Before setting any parameters, ensure that the motor does NOT have a propeller attached and

@@ -1,3 +1,5 @@
+.. _getting_started_python_api:
+
 ***************************
 Getting Started with Python
 ***************************

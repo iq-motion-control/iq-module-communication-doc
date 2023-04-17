@@ -9,6 +9,7 @@ sphinx-rtd-theme = "*"
 sphinx-substitution-extensions = "*"
 docutils = "*"
 esbonio = "*"
+sphinxemoji = "*"
 
 [dev-packages]
 
