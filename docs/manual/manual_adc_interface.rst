@@ -13,6 +13,9 @@ The ADC interface provides read-only access to both the voltage read and the raw
 
 Module Support
 ================
+
+The user ADC interface is supported by only the Fortiq-42 modules.
+
 Speed Modules
 **************
 
@@ -54,11 +57,11 @@ The IQ Control Center provides the easiest way to test reading the voltage input
 
 #. Connect your module to IQ Control Center
 
-#. Select the *Testing Tab* on the left side:
+#. Select the Testing Tab on the left side:
 	
 	.. image:: ../_static/manual_images/fortiq/other/control_center_testing.png
 
-#. Scroll down in the *Testing Tab* until you find Read ADC Voltage 
+#. Scroll down in the Testing Tab until you find *Read ADC Voltage*
 
 	.. image:: ../_static/manual_images/fortiq/adc/read_adc_tab.png
 

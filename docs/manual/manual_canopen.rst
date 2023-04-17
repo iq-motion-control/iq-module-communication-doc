@@ -152,8 +152,8 @@ In order to interact with Vertiq specific parameters for motor control, you must
 
 The *Access Column* specifies how each object dictionary entry may be accessed. All spin control parameters are read/write accessible via the Service Data Object (SDO) protocol. The real time variables *Observed Angle* and *Observed Velocity* are read only accessible through either SDO or the Process Data Object (PDO) Protocol. To interact via PDO, you must have a CANOpen node capable of creating a SYNC message. Only after reception of a SYNC message will the observed angle and velocities be read via PDO. 
 
-Node ID
-********
+Node ID and Layer Setting Services (LSS)
+*****************************************
 All Fortiq modules default to a CANOpen Node-ID of 1. This value is user settable via the Layer Setting Services (LSS) protocol. Node ID changes via LSS will be saved to persistent memory, meaning you must only change the value once in your initial system setup. 
 
 Please refer to `this document <https://us.nanotec.com/products/manual/PD4E_CANopen_EN/bus%252Fcan%252Flss.html?cHash=0bd15c1cd3340dfc546f95e5c1f85a12>`_ for further LSS service instructions.
