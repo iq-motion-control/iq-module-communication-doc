@@ -56,6 +56,7 @@
    manual/manual_adc_interface
    manual/manual_high_power_pwm_output
    manual/manual_gpio_interface
+   manual/manual_step_direction
    manual/manual_appendix
 
 Welcome to the Vertiq Documentation
