@@ -1,6 +1,9 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. |arrow_pic| image:: ../_static/manual_images/fortiq/other/down_arrow_button.png
+
+
 .. _manual_high_power_pwm_:
 
 ********************************************
@@ -9,6 +12,9 @@ High Power PWM Output Interface
 
 Module Support
 ================
+
+The user high power PWM output interface is supported by only the Fortiq-42 modules.
+
 Speed Modules
 **************
 
@@ -44,7 +50,7 @@ Servo Modules
 Description
 ===============
 
-Vertiq's High Power PWM Output interface provides access to a PWM output driver with read/write accessibility to the frequency, duty cycle, and mode. At the hardware level, this driver is an **open-drain MOSFET without an internal pull up resistor**. The mode parameter determines which portion of the PWM cycle the duty cycle represents, high or low, and is dependent on your application’s hardware setup.
+Vertiq's high power PWM output interface provides access to a PWM output driver with read/write accessibility to the frequency, duty cycle, and mode. At the hardware level, this driver is an **open-drain MOSFET without an internal pull up resistor**. The mode parameter determines which portion of the PWM cycle the duty cycle represents, high or low, and is dependent on your application’s hardware setup.
 
 In the first mode, writing 75 has the following output:
 
@@ -55,25 +61,25 @@ In the second, writing 75 has the following output:
 	.. image:: ../_static/manual_images/fortiq/pwm/pwm_mode_1.png
 
 
+Usage
+========
 Initial High Power PWM Output Setup and Testing with IQ Control Center
-==========================================================================
+******************************************************************************
 The IQ Control Center provides the easiest way to interact with your module’s PWM peripheral. To do so: 
 
 #. Open IQ Control Center. If you have not installed the program, please follow the instructions in `Getting Started with Speed Motors Using IQ Control Center <https://iqmotion.readthedocs.io/en/latest/tutorials/testing_with_control_center.html>`_. 
 
 #. Connect your module to IQ Control Center
 
-#. Select the *Testing Tab* on the left side:
+#. Select the Testing Tab on the left side:
 	
 	.. image:: ../_static/manual_images/fortiq/other/control_center_testing.png
 
-#. Scroll down in the *Testing Tab* until you find Read ADC Voltage 
+#. Scroll down in the Testing Tab until you find *PWM Output Duty Cycle*
 
 	.. image:: ../_static/manual_images/fortiq/pwm/pwm_testing_tab.png
 
-#. To change the value, either type in your desired value, or use the arrows
-
-.. |arrow_pic| image:: ../_static/manual_images/fortiq/other/down_arrow_button.png
+#. To change a value, either type in your desired value, or use the arrows
 
 #. To save the value to the module click the set arrow icon |arrow_pic|.
 
@@ -84,10 +90,10 @@ The IQ Control Center provides the easiest way to interact with your module’s 
 	By changing the PWM duty cycle, you should see the LED change intensity.
 
 Vertiq Python API - PWM Interface
-===================================
+****************************************
 
 .. note::
-	Please note that the following *ADC Interface* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
+	Please note that the following *PWM output interface* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
 
 Vertiq’s PWM interface can also be accessed through Vertiq’s Python API. Through the API you gain read/write access to the PWM parameters duty cycle, frequency, and mode. Please note, only mode and frequency are savable values. To use the API, please use the following steps:
