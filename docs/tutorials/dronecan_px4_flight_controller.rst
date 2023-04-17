@@ -6,7 +6,7 @@
 ****************************************************
 DroneCAN Integration with a PX4 Flight Controller
 ****************************************************
-This document provides a general procedure for integrating a Vertiq module with a PX4 flight controller using DroneCAN, also known as UAVCANv0. 
+This document provides a general procedure for integrating a Vertiq module with a PX4 flight controller using DroneCAN, also known as UAVCANv0 or UAVCAN. 
 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
 Vertiq modules, refer to the :ref:`manual_dronecan` section of the Feature Reference Manual.
@@ -39,8 +39,8 @@ the module are still accurate for DroneCAN.
 
 Node ID
 ********
-The next important setting is the node ID. This is the ID the motor will use to identify itself on the DroneCAN bus. **The node ID must be unique for each module, and none of the 
-module’s should use the same node ID as the flight controller.** Typically PX4 flight controllers will use node ID 1 by default, so it is best to avoid that ID, and ID 0 is reserved. You should 
+The node ID is a number the motor will use to identify itself on the DroneCAN bus. **The node ID must be unique for each module, and none of the 
+modules should use the same node ID as the flight controller.** Typically PX4 flight controllers will use node ID 1 by default, so it is best to avoid that ID, and ID 0 is reserved. You should 
 assign the node ID of each module to some unique value from 2 to 127. By default, the node ID of a Vertiq module is set to 99.
 
 **Note that the PX4 documentation mentions dynamic node ID allocation with DroneCAN. Vertiq modules do not currently support dynamic node ID allocation, you must configure a 
@@ -61,9 +61,9 @@ before a change to the node ID will take effect.
 ESC Index
 **********
 The ESC index determines the index of the value in a :ref:`uavcan.equipment.esc.RawCommand <dronecan_messages_raw_command>` message the motor will listen to. To be able to control each motor 
-individually, each motor should have a unique ESC index. By default, the ESC index of Veriq modules is set to 0.
+individually, each motor should have a unique ESC index. By default, the ESC index of Vertiq modules is set to 0.
 
-**Vertiq modules do not currently support automatic ESC enumeration, it is necessary to manually assign a node ID to each module on the bus.** Unlike the node IDs, it is not necessary to 
+**Vertiq modules do not currently support automatic ESC enumeration, it is necessary to manually assign an ESC index to each module on the bus.** Unlike the node IDs, it is not necessary to 
 reboot the module for a change to the ESC index to take effect.
 
 The `PX4 documentation <https://docs.px4.io/v1.11/en/peripherals/uavcan_escs.html#esc-setup>`_ provides some details on how to set up the ESC indices to integrate properly with your 
@@ -91,7 +91,7 @@ You can change the ESC Index of a module through the Control Center using *ESC I
 
 Arming
 *******
-Vertiq modules can use :ref:`Advanced Arming <manual_advanced_arming>` with DroneCAN, to improve safety and allow for configurable disarming behaviors. To see if your module 
+Vertiq modules can use :ref:`Advanced Arming <manual_advanced_arming>` with DroneCAN to improve safety and allow for configurable disarming behaviors. To see if your module 
 supports Advanced Arming, refer to the :ref:`Module Support section under Advanced Arming <arming_module_support>`. When using arming, modules must arm before they can spin.
 The default settings for Vertiq modules generally allow them to arm when they receive throttle commands between 0% and 7.5%, and by default PX4 sends 0% commands when it is
 disarmed. So the default settings on Vertiq modules should allow them to arm immediately when they are connected to a properly configured flight controller on a DroneCAN bus. 
@@ -116,8 +116,8 @@ Flight Controller Configuration
     on v1.13.2 or earlier, be aware that when you update your flight controller your integration process may have to change slightly.
 
 Once the motor is configured and the CAN bus is set up properly, the flight controller needs to be configured. The configurations discussed here were performed on a 
-`Pixhawk 4 <https://docs.px4.io/v1.11/en/flight_controller/pixhawk4.html>`_ using PX4 v1.13.3 with QGroundControl. The image below shows the firmware version used when 
-developing this tutorial in QGroundControl.
+`Pixhawk 4 <https://docs.px4.io/v1.11/en/flight_controller/pixhawk4.html>`_ using PX4 v1.13.3 with `QGroundControl <http://qgroundcontrol.com/>`_. The image below shows the 
+firmware version used when developing this tutorial in QGroundControl.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_fw_version.png
     :align: center
@@ -201,7 +201,7 @@ in the image below.
 In the Actuators tab, in the Actuator Outputs section, select the UAVCAN tab. This view allows you to configure important DroneCAN parameters on the flight controller, including enabling 
 DroneCAN and configuring the bitrate. The previous sections have already covered that part of the setup process, so there should be no need to change those.
 
-The important settings to change here are the functions assigned to the ESCs. This view shows a list of ESCs, with a function, a minimum, and maximum shown for each. This determines
+The important settings to change here are the functions assigned to the ESCs. This view shows a list of ESCs with a function, a minimum, and maximum shown for each. This determines
 which :ref:`ESC index <dronecan_px4_tutorial_esc_index>` corresponds to which motor on the airframe. Note that the ESC indices start from 0, while the ESC and motor numbers listed
 in QGroundControl start from 1. So ESC 1 in QGroundControl corresponds to the module with an ESC index of 0. In the ESC list on the actuators tab, you must set the function corresponding
 to each ESC index to the appropriate motor.
@@ -213,7 +213,7 @@ For the module you want to be motor 2, set its ESC index to be 1, and set ESC 2 
 .. note:: Depdending on your modules :ref:`arming <manual_advanced_arming>` configurations, you may hear the module play its arming song when you
     set the function for its ESC, if the module is connected to the bus. See the note in :ref:`dronecan_px4_fc_configuration` for more details on this.
 
-For this example, only 1 motor was used during testing, with an ESC index of 0. The image below shows how the actuator tab was set up to accomodate this
+For this example, only 1 motor was used during testing, with an ESC index of 0. The image below shows how the actuator tab was set up to accomodate this.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/px4_dronecan_actuator_tab_esc_function_example.png
     :align: center
@@ -237,12 +237,12 @@ the default minimum and maximum are fine and should not need to be changed.
 
 Other Configurations
 *********************
+One other parameter of note is UAVCAN_NODE_ID. This sets the flight controller's node ID. Generally, this can be left at its default of 1 as long as none of the 
+modules on the bus have a node ID of 1.
+
 There are various other configurations available under the UAVCAN section of Parameters, but none of them are essential for using DroneCAN with a Vertiq module. 
 Refer to the `PX4 parameter reference documentation <https://docs.px4.io/main/en/advanced_config/parameter_reference.html>`_ for more information on each of these parameters, 
 they may be useful in some applications.
-
-One other parameter of note is UAVCAN_NODE_ID. This sets the flight controllers' node ID. Generally, this can be left at its default of 1 as long as none of the 
-modules on the bus have a node ID of 1.
 
 Testing
 ========
@@ -326,9 +326,9 @@ is powered on and is connected to the flight controller’s CAN bus. The image b
 Check Node Status
 ##################
 The status of the online nodes can be checked using the MAVLink console. This will indicate if the modules are successfully connected to the DroneCAN bus. Enter “uavcan status” into 
-the console to check on the status of the connected DroneCAN nodes. This will print out data about the flight controller’s DroneCAN status. The most interesting section is the listing 
-of “Online nodes”. This should include information on all of the nodes connected to the flight controller, with their assigned node IDs and status. All of the nodes should report they 
-are “OK” and “OPERATIONAL”. The code block below shows an example of using the "uavcan_status" command where two modules are connected to the flight controller, with node ID 5 and 127::
+the console to check on the status of the connected DroneCAN nodes. This will print out data about the flight controller’s DroneCAN status. Of note is the listing 
+of “Online nodes.” This should include information on all of the nodes connected to the flight controller, with their assigned node IDs and status. All of the nodes should report they 
+are “OK” and “OPERATIONAL.” The code block below shows an example of using the "uavcan_status" command where two modules are connected to the flight controller, with node ID 5 and 127::
 
     uavcan status
     Pool allocator status:
@@ -401,8 +401,11 @@ Test Throttle
 Older PX4 Firmware (v1.13.2 and earlier)
 -----------------------------------------
 It is also possible to test spinning the module in this console using the motor_test command. Typing “motor_test -h” in the console will provide help on how to use the command. 
-As a basic example, to spin the motor with an ESC index of 1 at 20% of its maximum, you could use the command “motor_test test -m 1 -p 20”. The image below shows some 
-examples of using the motor_test command.
+As a basic example, to spin the motor with an ESC index of 1 at 20% of its maximum, you could use the command:: 
+
+    motor_test test -m 1 -p 20
+
+The image below shows some examples of using the motor_test command.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/mavlink_console_motor_test.png
     :align: center
@@ -441,9 +444,9 @@ of the help for the actuator_test command, as well as this example command::
 Virtual Joysticks
 ******************
 For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html>`_ in PX4 can be used to control connected 
-modules while the flight controller is connected to a computer. Enable the virtual joysticks as detailed in the PX4 documentation, and ensure that all Vertiq modules are powered 
-on and connected to the CAN bus.
+modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html#enable-the-thumbsticks>`_ 
+as detailed in the PX4 documentation, and ensure that all Vertiq modules are powered on and connected to the CAN bus.
 
-Return to the home screen of PX4. If the flight controller is fully setup, it should say “Ready To Fly”. Lower the virtual throttle joystick to the bottom, click on where it 
+Return to the home screen of PX4. If the flight controller is fully setup, it should say “Ready To Fly.” Lower the virtual throttle joystick to the bottom, click on where it 
 says “Ready To Fly”, and arm the flight controller using the Arm button. Moving the virtual joysticks should cause the modules to respond as the flight controller begins 
 sending commands. Switching to Manual mode may simplify this testing.

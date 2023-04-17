@@ -48,16 +48,17 @@ Servo modules do not support DroneCAN, as shown in the table below.
 
 Standard DroneCAN Support
 ================================
-This section details the standard DroneCAN messages supported across all Vertiq DroneCAN modules currently. The structure and contents of these messages are defined by the 
-DroneCAN specification, this section just provides details on how exactly Vertiq modules support them and some supplementary information. 
+This section details the standard DroneCAN messages supported across all Vertiq DroneCAN modules. The structure and contents of these messages are defined by the 
+DroneCAN specification. This section just provides details on how exactly Vertiq modules support them and some supplementary information. 
 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For a full listing of all standard messages 
 specified by DroneCAN, see the `List of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/>`_ in the DroneCAN specification.
 
 Broadcast Messages
 ********************
-These are broadcast messages that are sent to or from the motors. Since they are broadcast, there is no response message sent. These messages typically make up the majority of 
-communication on the bus during operation.
+These are `broadcast messages <https://dronecan.github.io/Specification/2._Basic_concepts/#message-broadcasting>`_ that are sent to or from the motors. Broadcast messages are not intended
+for any specific node on the bus, data is simply transferred over the bus and is available for any node that is interested. Since they are broadcast, 
+there is no response message sent. These messages typically make up the majority of communication on the bus during operation.
 
 uavcan.protocol.NodeStatus (Data Type ID = 341)
 ################################################
@@ -78,7 +79,7 @@ This message is published periodically and provides telemetry updates on the sta
 * **Error Count**: This is a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
 * **Voltage**: The input voltage to the motor in volts
 * **Current**: The current draw of the motor in amps
-* **Temperature**: The temperature of the motors coils in Kelvin
+* **Temperature**: The temperature of the motor's coils in Kelvin
 * **RPM**: The current speed of the motor in RPM
 * **Power Rating Percentage**: The PWM duty cycle percentage being applied to the motor, from 0% to 100%. Maximum power draw occurs at 100% duty cycle
 * **ESC Index**: The ESC index of the motor that is broadcasting this update
@@ -86,7 +87,7 @@ This message is published periodically and provides telemetry updates on the sta
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
 Refer to the `uavcan.equipment.esc.Status section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#status-2>`_ in the specification 
-for more details
+for more details.
 
 .. _dronecan_support_device_temperature:
 
@@ -96,13 +97,12 @@ This message is published periodically and provides updates on the temperature o
 
 * **Device ID**: The ESC index of the motor sending this broadcast
 * **Temperature**: The temperature of the microcontroller in Kelvin. Note that this is different from the temperature in the ESC status message, as that is the temperature of the coils.
-* **Error Flags**: Indicates if the motor is overheating
+* **Error Flags**: Indicates if the motor is overheating with the standard ERROR_FLAG_OVERHEATING flag. See the `error flag definitions <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#temperature>`_ on the DroneCAN documentation.
 
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
 Refer to the `uavcan.equipment.device.Temperature section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#temperature>`_ in the specification 
-for more details
-
+for more details.
 
 .. _dronecan_messages_raw_command:
 
@@ -129,24 +129,26 @@ software and hardware version of the node, and the name of the node. For Vertiq 
 Refer to the `uavcan.protocol.GetNodeInfo section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#getnodeinfo>`_ in the specification 
 for more details
 
+.. _dronecan_getset:
+
 uavcan.protocol.param.GetSet (Data Type ID = 11)
 ##################################################
 Used to get or set the value of a configuration parameter using either the index or the name of the parameter. The configuration parameters currently available on standard 
-Vertiq modules are listed in the :ref:`dronecan_configuration_parameters` section below. The request message should contain the index of the parameter or the name of the parameter depending 
-on how you are accessing it, and it should contain a value to set the parameter to if you are setting it. **Parameter indices are not guaranteed to remain consistent across 
-firmware versions. Indices should only be used for parameter discovery, when accessing the parameter directly it is recommended to always use the name**
+Vertiq modules are listed in the :ref:`dronecan_configuration_parameters` section below. The request message should contain the index or name of the parameter 
+(depending on how you are accessing it), and if performing a set operation, should contain the value to set to the parameter. **Parameter indices are not guaranteed to remain consistent across 
+firmware versions. Indices should only be used for parameter discovery, when accessing the parameter directly it is recommended to always use the name.**
 
-The response message will contain the value of the parameter, information about its default, minimum, and maximum values, and the name of the parameter.
+The response message will contain the value of the parameter, information about its default, minimum, and maximum values (if applicable), and the name of the parameter.
 
 Refer to the `uavcan.protocol.param.GetSet section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#getset>`_ in the specification 
-for more details
+for more details.
 
 uavcan.protocol.RestartNode (Data Type ID = 5)
 ###############################################
-This request has one field, its “magic number”. This field is an unsigned 40 bit integer. The magic number is used to identify that this is an intentional restart request, 
+This request has one field, its “magic number.” This field is an unsigned 40 bit integer. The magic number is used to identify that this is an intentional restart request, 
 and we have also extended it to allow for two different types of reboots. One magic number performs a normal reboot that simply restarts into the normal application firmware, 
-and the other reboots the device into the ST bootloader, which allows it to be programmed with new firmware. The reboot-into-bootloader can be useful for firmware updates. 
-The numbers for each are:
+and the other reboots the device into the `ST bootloader <https://www.st.com/resource/en/application_note/cd00167594-stm32-microcontroller-system-memory-boot-mode-stmicroelectronics.pdf>`_, 
+which allows it to be programmed with new firmware. The numbers for each are:
 
 * Normal Reboot Magic Number = 0xACCE551B1E
 * Reboot to Bootloader Magic Number = 0xBEEFCAFE
@@ -171,6 +173,8 @@ specification for more details.
 
 Configuration Parameters
 **************************
+Configuration parameters are parameters that can configure the behavior of a Vertiq module and are available to read and modify over DroneCAN. The :ref:`uavcan.protocol.param.GetSet <dronecan_getset>` 
+request can be used to access configuration parameters. The sections below cover the stadard configuration parameters available on Vertiq modules.
 
 Node ID
 ########
@@ -183,8 +187,8 @@ Node ID
 	| uavcan_node_id | Integer  |
 	+----------------+----------+
 
-This parameter defines the Node ID of the module on the UAVCAN network. This ID is how the node identifies itself when sending and receiving messages. No two nodes should have 
-the same Node ID. ID 0 is typically reserved for the flight controller. A reboot is typically required after changing this parameter for the device to use the new Node ID on the network.
+This parameter defines the node ID of the module on the UAVCAN network. This ID is how the node identifies itself when sending and receiving messages. No two nodes should have 
+the same node ID. ID 0 is typically reserved for the flight controller. A reboot is typically required after changing this parameter for the device to use the new node ID on the network.
 
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
 
@@ -201,8 +205,7 @@ Bitrate
 	+----------------+----------+
 
 This parameter determines the DroneCAN bitrate that the module will use in bit/s. This parameter takes effect immediately when changed, so if this is changed it 
-will most likely be necessary to reconnect to the bus as at the new bitrate to continue communicating with the module. Note that most Vertiq modules do not currently 
-support this parameter, support will be added in future releases. If this parameter is not supported, the module’s bitrate is fixed at 500000 bit/s.
+will most likely be necessary to reconnect to the bus as at the new bitrate to continue communicating with the module.
 
 ESC Index
 ##########
@@ -238,7 +241,7 @@ Descriptions of each behavior and the integer value of the Zero Behavior paramet
 corresponding to them are given below:
 
 * **Coast (Value = 0)**: The module will stop trying to drive the motor, releasing control and letting it simply coast to a stop.
-* **Brake (Value = 1)**: The motor will brake to stop itself, so the motor will stop suddenly on a zero setpoint instead of coasting gently to a stop. After stopping, it will then coast.
+* **Brake (Value = 1)**: The motor will stop suddenly on a zero setpoint instead of coasting gently to a stop. After stopping, it will then coast.
 * **Normal Controller (Value = 2)**: The normal controller continues to run, and will try to drive the motor at 0% throttle. This can cause vibrating or twitching in velocity mode if the PID gains are high.
 
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
@@ -316,7 +319,7 @@ This parameter is available on modules that support :ref:`manual_stow_position`.
 Flight Controller Integration
 ================================
 For guidance on integrating Vertiq modules with flight controllers using DroneCAN, see 
-the `Vertiq DroneCAN Setup Guide with PX4 <https://www.vertiq.co/s/Preliminary-Vertiq-DroneCAN-aka-UAVCANv0-Setup-Guide-with-PX4.pdf>`_ on Vertiq’s website.
+the :ref:`dronecan_fc_tutorial` tutorial.
 
 .. _dronecan_arming_and_bypass:
 
