@@ -34,10 +34,12 @@ The distance traveled on each received step pulse is defined by the *Step Angle 
 	Unlike :ref:`manual_hobby`, while using Step/Direction control with a Fortiq-42 module, serial communication through IQUART remains available. 
 
 .. note::
-	By using step/dir firmware, the motor can only be controlled via step/dir instructions. Attempts to spin, stop, or otherwise control the motor via other protocols will fail. You can still communicate with the module via IQUART or CANOpen (if available), but cannot control the module. Hobby protocols are disabled when using step/dir firmware.
+	By using step/dir firmware, the motor can only be controlled via step/dir signals. Attempts to spin, stop, or otherwise control the motor via other protocols will fail. You can still communicate with the module via IQUART or CANOpen (if available), but cannot control the module. Hobby protocols are disabled when using step/dir firmware.
 
+Usage
+==========
 IQ Control Center
-==================
+********************
 The IQ Control Center provides the easiest way to configure step/direction control on your module. To do so:
 
 #. Open IQ Control Center. If you have not installed the program, please follow the instructions in `Getting Started with Speed Motors Using IQ Control Center <https://iqmotion.readthedocs.io/en/latest/tutorials/testing_with_control_center.html>`_. 
@@ -49,7 +51,7 @@ The IQ Control Center provides the easiest way to configure step/direction contr
 #. To configure the step size, adjust the *Step angle* parameter
 
 Vertiq Python API - Step/Direction Interface
-==============================================
+************************************************
 .. note::
 	Please note that the following *step/dir* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
