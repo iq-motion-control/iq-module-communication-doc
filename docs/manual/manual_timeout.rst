@@ -8,7 +8,7 @@ Timeout
 ***********************************************
 Vertiq modules support a timeout that will trigger if they do not receive a new command within a configurable period of time when they are spinning. 
 This is intended primarily as a safety feature, to safely stop the module if communication is lost while the module is spinning. Modules will also always 
-disarm when a timeout occurs, to leave them in a safe state following a timeout.
+disarm when a timeout occurs, leaving them in a safe state following a timeout.
 
 .. _timeout_module_support:
 
@@ -33,8 +33,7 @@ Speed Modules
 Servo Modules
 **************
 Servo modules do not support the full range of configurable timeout features described in this section. They do support a timeout, and the period of the timeout is configurable.
-The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. They will always 
-continuously play the timeout song when they timeout.
+The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. Servo modules will always coast when they timeout.
 
 .. table:: Servo Module Support for Configurable Timeout
 
@@ -70,9 +69,9 @@ a timeout will trigger. See the :ref:`triggering_timeout` section for more infor
 
 Timeout Behavior
 *****************
-On modules that support it (see :ref:`timeout_module_support` above), the behavior of the module when a timeout occurs can be configured. If a module does not support 
-configurable timeout behavior, it will always coast and then play its timeout song continuously when a timeout occurs. **Also, the module will always disarm 
-on a timeout if it was previously armed.**
+On modules that support it (see :ref:`timeout_module_support` above), the module's timeout behavior is configurable. If a speed module does not support 
+configurable timeout behavior, it will always coast and then play its timeout song continuously when a timeout occurs. **Also, the speed module will always disarm 
+on a timeout if it was previously armed.** On a servo module, the module will coast on a timeout and not play any timeout song.
 
 On modules with configurable timeout behavior, modules follow a multi-step timeout process when a timeout occurs, similar to the 
 :ref:`process that occurs when disarming <advanced_disarming_behavior>`.
@@ -81,8 +80,8 @@ On modules with configurable timeout behavior, modules follow a multi-step timeo
 specified by its playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the timeout song, 
 and what final state it ends up in after playing the song are all configurable by the user. 
 
-The image below attempts to summarize this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
-actively try to stop the module by driving it with 0V, or starting a stow. When the module is :ref:`stopped <appendix_stop_detection>`, the timeout song will play according to 
+The image below summarizes this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
+actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <appendix_stop_detection>`, the timeout song will play according to 
 its playback option. After the song finishes, the motor will either coast, brake, or execute whatever final behavior is specified by the :ref:`stow position <manual_stow_position>` 
 feature. Each of these stages and the options at each stage are shown in the image below.
 
@@ -93,7 +92,7 @@ feature. Each of these stages and the options at each stage are shown in the ima
 
     Summary of Timeout Process and Options
 
-Note that not every combination of the options is possible, e.g. stopping with coast and then ending up in a final state of brake is not an option. The timeout behavior determines how the module will try to come to a stop and what that final drive mode will be.There are 4 options:
+Note that not every combination of the options is possible, e.g. stopping with coast and then ending up in a final state of brake is not an option. The timeout behavior determines how the module will try to come to a stop and what that final drive mode will be. There are 4 options:
 
 * **Coast**: The module will coast itself when a timeout occurs. This means it will spin freely and let drag and friction slow it down. After the song, its final state will be to  remain coasting.
 * **0V to Coast**: The module will drive itself to 0V when a timeout occurs, actively trying to come to rapid stop. After the song, its final state will be to coast.

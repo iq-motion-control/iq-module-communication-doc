@@ -64,7 +64,7 @@ DSHOT
 ******
 DSHOT is a digital protocol that is gaining in popularity and is supported by a wide range of flight controllers. It makes it possible to quickly send throttle commands to ESCs 
 as well as a host of other special messages. The specification for DSHOT is fairly complex, but a good overview can be found in the `“D-SHOT - The Missing Handbook” article from 
-Chris Landa <https://brushlesswhoop.com/dshot-and-bidirectional-dshot/>`_ . Similarly to Standard PWM, the 11 bit throttle command included in a DSHOT message is interpreted by a Vertiq module as encoding a number from 0.0 to 1.0. 
+Chris Landa <https://brushlesswhoop.com/dshot-and-bidirectional-dshot/>`_. Similarly to Standard PWM, the 11 bit throttle command included in a DSHOT message is interpreted by a Vertiq module as encoding a number from 0.0 to 1.0. 
 Exactly how Vertiq modules convert this number into a throttle command depends on the configurations of the module. Refer to the :ref:`throttle_mapping` section for 
 more details on that mapping in speed modules and the :ref:`throttle_def` section for more details on how a throttle command is defined by speed modules.
 
@@ -92,7 +92,7 @@ the :ref:`throttle_def` section for more details on how a speed module defines a
 Interaction with Serial Communication
 ======================================
 The connector used for inputting hobby protocols on Vertiq modules is also used for serial communication. Serial communication is used for connecting to the 
-modules with Control Center or interacting with them using the Vertiq APIs. 
+modules with IQ Control Center or interacting with them using the Vertiq APIs. 
 
 **Because the connector is shared between hobby protocols and serial communication, only one of them can be active at any time.** On startup, the module will 
 look for valid messages of either the currently configured hobby protocol or the Vertiq serial protocol. **When it detects the first valid message of 
@@ -106,9 +106,9 @@ physical interface from hobby protocols and serial communication, so DroneCAN co
     setting for the *Communication* parameter, the first hobby protocol message will trigger the lock-on. If you know which hobby protocol you want to control the module with,
     it is recommended to explicitly set the module to use that hobby protocol and avoid using the *Autodetect* setting.
 
-For example if after startup a DSHOT message is the first thing sent to the module, and the module is not set to use *Autodetect* (see the note above), it will then only listen for 
+For example, if after startup a DSHOT message is the first thing sent to the module, and the module is not set to use *Autodetect* (see the note above), it will then only listen for 
 additional DSHOT messages, ignoring any serial communication. The module must be rebooted before you can switch which protocol it will listen to. **This means that you cannot connect to 
-the Control Center after controlling the module with a hobby protocol unless you reboot, and vice versa.** 
+the IQ Control Center after controlling the module with a hobby protocol unless you reboot, and vice versa.** 
 
 Module Configuration
 ======================

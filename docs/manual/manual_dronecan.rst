@@ -8,7 +8,7 @@ DroneCAN
 ***********************************************
 
 DroneCAN (previously known as UAVCAN or UAVCANv0), is an open protocol for communication over a CAN bus. DroneCAN is supported by both PX4
-and Ardupilot flight controllers. Refere to the `DroneCAN documentation <https://dronecan.github.io/>`_ for more information on the protcol and the standard.
+and Ardupilot flight controllers. Refer to the `DroneCAN documentation <https://dronecan.github.io/>`_ for more information on the protcol and the standard.
 
 Module Support
 ===============
@@ -324,10 +324,10 @@ Arming and Arming Bypass
 ================================
 DroneCAN can use the same advanced arming procedure as all other throttle sources. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
 
-Older versions of the firmware for Vertiq modules did not include support for arming over DroneCAN. To maintain backwards compatibility, it is possible for users to toggle 
+Older Vertiq firmware does not include support for arming over DroneCAN. To maintain backwards compatibility, it is possible for users to toggle 
 arming integration with DroneCAN on or off. This is called “arming bypass”. When Vertiq modules have arming bypass turned on for DroneCAN they will spin on any :ref:`DroneCAN throttle command <throttle_sources_dronecan>`, 
 regardless of armed state. Additionally, when arming bypass is on DroneCAN throttle commands will not cause :ref:`arming or disarming transitions <arming_state_transitions>`. 
-The advanced arming features are completely ignored by DroneCAN when the arming bypass is on.
+The :ref:`advanced arming <manual_advanced_arming>` features are completely ignored by DroneCAN when the arming bypass is on.
 
 Arming bypass for DroneCAN can be controlled with the *DroneCAN Bypass Arming* parameter in the Advanced tab of the IQ Control Center, as shown below. When this parameter is set to *Bypass Arming*, 
 arming bypass is on for DroneCAN, and when it is set to *Normal Arming*, DroneCAN will use the advanced arming feature like all other throttle sources.
