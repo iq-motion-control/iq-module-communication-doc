@@ -6,7 +6,6 @@
 ***********************************************
 CANOpen
 ***********************************************
-Vertiq's CANOpen implementation is based on the CAN in Automation (CiA) `301 standard <https://www.can-cia.org/groups/specifications/>`_. All Vertiq modules connect to the CAN bus as a slave node with a bitrate of 500kbps. The bitrate is fixed.
 
 Module Support
 ================
@@ -45,11 +44,57 @@ Servo Modules
 
 CANOpen Implementation
 =======================
-Vertiq supports standard message objects EMCY, PDO, SDO, NMT, as well as LSS. 
+Vertiq's CANOpen implementation is based on the CAN in Automation (CiA) `301 standard <https://www.can-cia.org/groups/specifications/>`_. All Vertiq modules connect to the CAN bus as a slave node with a bitrate of 500kbps. The bitrate is fixed. 
+
+Vertiq supports standard message objects Emergency (EMCY), Process Data Object (PDO), Service Data Object (SDO), Network Management (NMT), as well as Layer Setting Services (LSS). 
+
+CANOpen Frame
+***************
+
+CANOpen uses only the standard CAN frame for communication, where the CAN-ID is split into a 4 bit function code, and a 7 bit node id:
+
+.. image:: ../_static/manual_images/fortiq/canopen/can_packet.png
+
+.. image:: ../_static/manual_images/fortiq/canopen/can_id.png
+	:width: 350
+
+The possible function codes are summarized below: 
+
+.. image:: ../_static/manual_images/fortiq/canopen/function_codes.png
+
+The *Resulting CAN-IDs* column represents the possible values for the resulting 11 bit CAN-ID from the combination of the function code and the node id.
+
+Emergency Data Object Type (EMCY)
+************************************
+The emergency object is responsible for reporting internal CANOpen Node errors. There are several predefined Error Codes in the CANOpen standard. A summary of these errors can be found `here <https://www.ni.com/docs/en-US/bundle/ni-industrial-communications-canopen/page/canopenhelp/canopen_emergencies_emcy.html>`_. 
+
+Process Data Objects (PDO)
+*********************************
+The PDO service provides a method to request and receive real time data. PDO data transfers are unidirectional, meaning that a full data transfer is only completed in one direction. Vertiq's implementation of PDO objects requries a master node that can create, and periodically transmit, `SYNC messages <https://www.can-cia.org/can-knowledge/canopen-fd/sync-protocol/>`_. On reception of the SYNC message, the Vertiq node will send back both the current observed angle and velocity as a concatinated 8 Byte value. The first 4 Bytes represent the observed angle, and the last 4 represent the observed velocity. 
+
+Service Data Objects (SDO)
+****************************
+The SDO service provides read/write access to a CANOpen node's Object Dictionary entries (see :ref:`Object Dictionary`). This is the simplest way to send information between nodes. One node starts a request to either upload or download (read or write) information from another node's OD, and the receiving node responds with either the requested data, or a conformation that the data write data was received and stored properly. SDO communication is the method by which motor control is acheived on Vertiq modules. 
+
+The following is a high level description of an information request from OD entry 0x2000. For more information on the SDO specification, see the `301 standard <https://www.can-cia.org/groups/specifications/>`_.
+
+.. image:: ../_static/manual_images/fortiq/canopen/sdo_get.png
+
+.. _Object Dictionary: 
+
+Network Management (NMT)
+**********************************
+The NMT service is responsible for running the overall CANOpen state machine. Its state is reported in each producer heartbeat sent by the node. More information on the NMT service can be found `on the CiA website <https://www.can-cia.org/can-knowledge/canopen/network-management/#:~:text=The%20CANopen%20NMT%20state%20machine,state%2C%20and%20a%20Stopped%20state.>`_. 
 
 Object Dictionary
 ******************
-Vertiq’s manufacturer specific Object Dictionary objects are described in the following table:
+
+The Object Dictionary (OD) is the core data storage method in CANOpen. The CANOpen standard defines the following index structure for the locations of various forms of data:
+
+	.. image:: ../_static/manual_images/fortiq/canopen/od_definition.png
+		:height: 500
+
+In order to interact with Vertiq specific parameters for motor control, you must interact with the entries beginning at 0x2000. Vertiq’s manufacturer specific Object Dictionary objects are described in the following table:
 
 .. table:: Vertiq Manufacturer Specific Object Dictionary
 
@@ -109,8 +154,6 @@ Vertiq’s manufacturer specific Object Dictionary objects are described in the 
 
 The *Access Column* specifies how each object dictionary entry may be accessed. All spin control parameters are read/write accessible via the Service Data Object (SDO) protocol. The real time variables *Observed Angle* and *Observed Velocity* are read only accessible through either SDO or the Process Data Object (PDO) Protocol. To interact via PDO, you must have a CANOpen node capable of creating a SYNC message. Only after reception of a SYNC message will the observed angle and velocities be read via PDO. 
 
-In the 32-bit value received on a PDO transfer, the first 4 Bytes represent the observed angle, and the last 4 represent the observed velocity. 
-
 Node ID
 ********
 All Fortiq modules default to a CANOpen Node-ID of 1. This value is user settable via the Layer Setting Services (LSS) protocol. Node ID changes via LSS will be saved to persistent memory, meaning you must only change the value once in your initial system setup. 
@@ -155,6 +198,7 @@ Spinning your Module
 #. Connect your motor(s) to the CANBUS as in the diagram below, and power it/them on
 	
 	.. image:: ../_static/manual_images/fortiq/canopen/canopen_circuit.png
+		:height: 400
 
 #. Open the Object Editor tab from the Module list, and select Open Dict. 
 	
@@ -167,6 +211,7 @@ Spinning your Module
 #. From the Object Dictionary, double click controlVelocity, it will open in the Object Editor
 
 	.. image:: ../_static/manual_images/fortiq/canopen/kickdrive_open_od.png
+		:height: 400
 
 #. Double Click the Value/Editor box put 10 (set up to set the velocity to 10 rad/sec)
 
