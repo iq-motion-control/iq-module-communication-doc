@@ -47,12 +47,12 @@ Servo Modules
 
 
 IQ Control Center
-*******************
+==================
 The IQ Control Center provides the easiest way to test reading the voltage input on your module's ADC. To do so:
 
 #. Open IQ Control Center. If you have not installed the program, please follow the instructions in `Getting Started with Speed Motors Using IQ Control Center <https://iqmotion.readthedocs.io/en/latest/tutorials/testing_with_control_center.html>`_. 
 
-#. Connect your module
+#. Connect your module to IQ Control Center
 
 #. Select the *Testing Tab* on the left side:
 	
@@ -66,7 +66,10 @@ The IQ Control Center provides the easiest way to test reading the voltage input
 
 
 Vertiq Python API - ADC Interface
-**********************************
+===================================
+.. note::
+	Please note that the following *ADC Interface* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
+
 The ADC interface can also be accessed through Vertiq’s Python API. Through the API you gain read access to both the ADC’s read voltage and raw ADC value. To use the API, please use the following steps:
 
 #. Set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_

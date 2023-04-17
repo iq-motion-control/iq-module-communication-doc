@@ -55,6 +55,7 @@
    manual/manual_appendix
    manual/manual_canopen
    manual/manual_adc_interface
+   manual/manual_high_power_pwm_output
 
 Welcome to the Vertiq Documentation
 =================================================
