@@ -201,6 +201,8 @@ When this parameter is set, the module will immediately begin the process of mov
 
     Trigger Stow Parameter in the IQ Control Center
 
+.. _trigger_manual_stow_dronecan:
+
 DroneCAN
 #########
 The “motor_stowed” configuration parameter can be used to command the module to stow and release the module if it is holding a stow. This parameter both 
@@ -252,6 +254,8 @@ Stow Status Reporting
 =======================
 The current stow status and the result of a previous stow attempt are reported by the module. This can be useful for checking if a stow is currently on-going 
 or if the previous stow completed successfully.
+
+.. _stow_status:
 
 Stow Status
 ************

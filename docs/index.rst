@@ -38,6 +38,7 @@
    tutorials/testing_with_control_center
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration.rst
+   tutorials/dronecan_px4_flight_controller
 
 .. toctree::
    :hidden:
@@ -65,7 +66,7 @@ Setup Tutorials
 Detailed tutorials on how to setup and use your modules with our Control Center and flight controllers can be found in the `Tutorials` section on the sidebar to the left.
 
 Controlling Modules With Vertiq APIs
-********************************
+**************************************
 
 We currently support 4 different languages for controlling your Vertiq Module:
 

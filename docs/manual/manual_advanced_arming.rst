@@ -329,6 +329,8 @@ flight controllers as it requires modifying them to send the arm and disarm comm
 
 Before attempting to arm manually, be sure to refer to :ref:`manual_arming_throttle_source` for information on how to set the *Manual Arming Throttle Source* appropriately.
 
+.. _arming_user_command_dronecan:
+
 DroneCAN
 #########
 The “motor_armed” configuration parameter can be used to query and control the module’s armed state over DroneCAN. Setting this parameter to 0 will trigger a 
