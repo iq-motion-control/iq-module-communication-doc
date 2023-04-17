@@ -188,7 +188,7 @@ Node ID
 	+----------------+----------+
 
 This parameter defines the node ID of the module on the UAVCAN network. This ID is how the node identifies itself when sending and receiving messages. No two nodes should have 
-the same node ID. ID 0 is reserved by the DroneCAN standard for unconfigurd modules. A reboot is typically required after changing this parameter for the device to use the new node ID on the network.
+the same node ID. ID 0 is reserved by the DroneCAN standard for unconfigured modules. A reboot is typically required after changing this parameter for the device to use the new node ID on the network.
 
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
 
