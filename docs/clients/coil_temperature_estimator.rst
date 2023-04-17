@@ -1,5 +1,5 @@
 Coil Temperature Estimator
----------------------
+--------------------------
 
 The Coil Temperature Estimator is a convection and conduction based thermal model to estimate the temperature
 of motor coils when they are not directly sensed.  The temperature is used to derate the motor if the 
