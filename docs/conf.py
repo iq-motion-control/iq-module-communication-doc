@@ -31,7 +31,8 @@ release = '0.12.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions =  ["sphinx_rtd_theme"]
-extensions += ['sphinx-prompt', 'sphinx_substitution_extensions']
+# extensions += ['sphinx-prompt', 'sphinx_substitution_extensions']
+extensions += ['sphinx-prompt', 'sphinx_substitution_extensions', 'sphinxemoji.sphinxemoji']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -69,4 +70,4 @@ html_static_path = ['_static']
 
 html_logo = "_static/VertiqClear.png"
 
-html_css_files = ['custom_width.css']
+html_css_files = ['custom_width.css', 'bottom_caption.css']

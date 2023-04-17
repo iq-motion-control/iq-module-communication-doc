@@ -145,6 +145,8 @@ Then, find the "Revert to Factory Defaults" configuration parameter and click th
 it be have defaulted to its factory fresh state. For more information on how to connect to the motor in Control Center and to set parameters, refer 
 to :ref:`control_center_tutorial`. 
 
+.. _hobby_fc_tutorial_motor_configuration:
+
 Motor Configuration
 ===================
 .. warning:: Before setting any parameters, ensure that the motor does NOT have a propeller attached and
