@@ -32,8 +32,9 @@ Speed Modules
 Servo Modules
 **************
 Servo modules do not support stow as a separate feature. Rather, they are intended to primarily serve as position modules, so controlling them to move to any desired
-position is a natural part of their base functionality. The stow position feature is useful on speed modules primarily as a way to easily allow integrating 
-moving to a single stow position with a flight controller. So the stow specific features described in this portion of the documentation are not relevant for servo modules.
+position is a natural part of their base functionality. Trajectory commands can be used to achieve a similar behavior to stow on any servo module. 
+The stow position feature is useful on speed modules primarily as a way to easily allow integrating moving to a single stow position with a flight controller. So the 
+stow specific features described in this portion of the documentation are not relevant for servo modules.
 
 .. table:: Servo Module Support for Stow Position
 
@@ -51,14 +52,14 @@ moving to a single stow position with a flight controller. So the stow specific 
 
 Stow Process Overview
 ======================
-When a module moves to its stow position, regardles of the reason for the stow, it follows a series of steps to stow properly. First it begins either accelerating or decelerating
+When a module moves to its stow position, regardles of the reason for the stow, it follows a series of steps to stow properly. First, it begins either accelerating or decelerating
 in order to reach its stow position with its user-configrued :ref:`stow acceleration <stow_movement_parameters>`. So if the module was still before, it will begin moving, but if it was 
-spinning rapdily, it willkeep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then choose whether it should try to 
+spinning rapdily, it will keep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then choose whether it should try to 
 actively :ref:`hold that position <stow_holding_position>` or coast itself, meaning that the module will not be driving itself and can spin freely. If the module is :ref:`interrupted <interrupting_stow>` at any time during 
 the stow process, it will stop trying to stow.
 
-The diagram below gives a brief overview of how the stow position feature transitions between different states based on its configuration and how 
-it can be interrupted at any point in the process.
+The diagram below summarizes the stow position feature's state transitions. Note that the stow process may be interrupted at any time, and that certain state transitions are 
+configuration dependent.
 
 .. figure:: ../_static/manual_images/stow/stow_process_diagram.png
     :align: center
@@ -160,7 +161,7 @@ Configuring the Zero Angle
 ===========================
 It is possible for users to configure the zero angle of a Vertiq module to any position. There are two approaches to changing the zero angle:
 
-#. Modify the zero angle directly, increasing or decreasing it by the desired number of radians.
+#. Modify the zero angle directly, setting it to any desired number of radians.
 #. Move the module to the desired position and use the zero angle sampling function to automatically set this new position as the zero angle.
 
 Both of these methods are supported by the IQ Control Center. For the first method, simply change the :ref:`Stow Zero Angle <stow_angle_parameters>` parameter. It can be 
@@ -170,14 +171,14 @@ The second method makes it possible to simply move the module to the position yo
 
 #. Move your module into the desired zero angle. Having a propeller attached to the module may make it easier to determine if you are in the desired orientation.
 #. Connect to the module with the IQ Control Center, and open the General tab.
-#. Click the set arrow on the :ref:`Sample Zero Angle <stow_angle_parameters>` entry in the IQ Control Center. This will automatically set the current angle as the zero angle. 
+#. Click the :ref:`set arrow <control_center_tutorial_spinning_motor>` on the :ref:`Sample Zero Angle <stow_angle_parameters>` entry in the IQ Control Center. This will automatically set the current angle as the zero angle. 
 
 To test if the zero angle is set correctly, use the :ref:`Trigger Stow <trigger_manual_stow_iquart>` entry in the Control Center. This commands the module to the stow position. 
 Try moving the module to a different position, and then triggering the stow to confirm the module is moving to the expected position.
 
 Triggering Stow
 =================
-There are multiple possible ways to trigger the module to move into the stow position. Each of these methods are covered in the section below.
+There are multiple possible ways to trigger the module to move into the stow position. Each of these methods is covered in the section below.
 
 All of these methods will cause the module to attempt to move into the stow position, following the procedure outlined in the :ref:`stow_process_overview` section.
 
@@ -199,6 +200,8 @@ When this parameter is set, the module will immediately begin the process of mov
     :alt: Trigger Stow Parameter
 
     Trigger Stow Parameter in the IQ Control Center
+
+.. _trigger_manual_stow_dronecan:
 
 DroneCAN
 #########
@@ -252,6 +255,8 @@ Stow Status Reporting
 The current stow status and the result of a previous stow attempt are reported by the module. This can be useful for checking if a stow is currently on-going 
 or if the previous stow completed successfully.
 
+.. _stow_status:
+
 Stow Status
 ************
 The stow status reports on the current state of the stowing feature on the module. When the status is queried, an integer will be returned that indicates the state. 
@@ -261,7 +266,7 @@ Possible states are:
 * **In Progress (Stow Status = 1)**: A move to the stow position is in progress but the module has not yet reached its stow position.
 * **Holding (Stow Status = 2)**: The module is actively holding its stow position. See the :ref:`stow_holding_position` section for more information.
 
-The stow status can be queried over IQUART using the “stow_status” entry of the “stow_user_interface” client. It can also be queried over DroneCAN using 
+The stow status can be queried over IQUART using the “stow_status” entry of the “stow_user_interface” client in the API. It can also be queried over DroneCAN using 
 the “stow_status” configuration parameter, as shown below in the DroneCAN GUI Tool at index 7.
 
 .. figure:: ../_static/manual_images/stow/stow_status_dronecan_parameter.png
@@ -282,7 +287,7 @@ The stow result reports on how the previous stow attempt ended. When the result 
 * **Interrupted (Stow Result = 2)**: The previous stow attempt was interrupted before completing. See :ref:`interrupting_stow` for details on stow interruptions.
 * **Error (Stow Result = 3)**: An unexpected error occurred during the previous stow attempt.
 
-The stow result can be queried over IQUART using the “stow_result” entry of the “stow_user_interface” client. It can also be queried over DroneCAN using 
+The stow result can be queried over IQUART using the “stow_result” entry of the “stow_user_interface” client in the API. It can also be queried over DroneCAN using 
 the “stow_result” configuration parameter, as shown below in the DroneCAN GUI Tool at index 8.
 
 .. figure:: ../_static/manual_images/stow/stow_result_dronecan_parameter.png
@@ -296,7 +301,7 @@ the “stow_result” configuration parameter, as shown below in the DroneCAN GU
 
 Interrupting Stow
 ===================
-While a stow is in progress, if any other commands come in that control the spinning state of the module the stow will be interrupted. When interrupted, 
+While a stow is in progress, any received commands that control the spinning state of the module will interrupt the stow. When interrupted, 
 the ongoing stow is canceled and the stow feature is reset so that it will be ready when stow is triggered again. If an interruption occurs, the stow result 
 will reflect that as detailed in the :ref:`stow_result` section.
 

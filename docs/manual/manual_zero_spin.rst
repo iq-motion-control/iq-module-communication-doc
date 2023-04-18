@@ -36,7 +36,6 @@ Speed Modules
 
 Servo Modules
 **************
-Servo modules do not support the configurable zero spin throttle feature.
 
 .. table:: Servo Module Support for Configurable Zero Spin Throttle
 
@@ -54,11 +53,11 @@ Servo modules do not support the configurable zero spin throttle feature.
 
 Applied Spin Percentage Definition
 ===================================
-A useful concept to define when discussing the configurable zero spin throttle feature is “applied spin percentage”. This is distinct from the throttle command 
+A useful concept to define when discussing the configurable zero spin throttle feature is “applied spin percentage.” This is distinct from the throttle command 
 discussed in other sections.
 
 The applied spin percentage determines at what percentage of its maximum drive voltage/speed, which are determined by the modules configuration as detailed in 
-the :ref:`throttle_mode_maximums_directions` settings, a module will spin at. For example, if the module is in voltage mode and its maximum velocity is 100 rad/s and the applied spin 
+the :ref:`throttle_mode_maximums_directions` settings, a module will spin. For example, if the module is in voltage mode and its maximum velocity is 100 rad/s and the applied spin 
 percentage resulting from a throttle command is 50%, then the module will spin at 50 rad/s.
 
 Typically, the throttle command and the applied spin percentage are the same. This is why this concept was not needed up to this point. However, when the zero spin 
@@ -144,8 +143,8 @@ shown in the figure above. The image below shows this setup in the IQ Control Ce
 
     Zero Spin Throttle Region Configurations for Example
 
-Assume that the module is already armed and will not disarm on any throttle commands, so incoming throttle commands can make the module spin. To help be as concrete 
-as possible with this example, assume that the module is configured for velocity mode with a maximum velocity of 100 rad/s, and a clockwise direction. See 
+Assume that the module is already armed and will not disarm on any throttle commands, so incoming throttle commands can make the module spin.
+For simplicity, assume that the module is configured for velocity mode with a maximum velocity of 100 rad/s, and a clockwise direction. See 
 the :ref:`throttle_mode_maximums_directions` section for more information on those configurations.
 
 The list below details a series of sequential throttle commands, and how the module will respond to each one given the configuration detailed above:
