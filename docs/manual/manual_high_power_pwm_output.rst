@@ -55,10 +55,12 @@ Vertiq's high power PWM output interface provides access to a PWM output driver 
 In the first mode, writing 75 has the following output:
 
 	.. image:: ../_static/manual_images/fortiq/pwm/pwm_mode_2.png
+		:width: 650
 
 In the second, writing 75 has the following output: 
 
 	.. image:: ../_static/manual_images/fortiq/pwm/pwm_mode_1.png
+		:width: 650
 
 
 Usage
@@ -98,7 +100,7 @@ Vertiq Python API - PWM Interface
 
 Vertiq’s PWM interface can also be accessed through Vertiq’s Python API. Through the API you gain read/write access to the PWM parameters duty cycle, frequency, and mode. Please note, only mode and frequency are savable values. To use the API, please use the following steps:
 
-#. Set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
+#. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
 
 #. After completing the walkthrough, you can interact with the *pwm_interface* client
 
@@ -121,8 +123,8 @@ Vertiq’s PWM interface can also be accessed through Vertiq’s Python API. Thr
 		fortiq.save("pwm_interface", "pwm_mode")
 
 
-PWM Interface Entry Summary
-******************************
+PWM Interface - Entry Summary
+********************************
 
 .. table:: *pwm_interface* Entries
 
