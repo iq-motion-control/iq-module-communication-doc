@@ -55,23 +55,11 @@ Vertiq Python API - Step/Direction Interface
 .. note::
 	Please note that the following *step/dir* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
-The step/direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, and is summarized by the following table:
-	
-	.. table:: Step/Direction Input Client 
+The step/direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, summarized in :ref:`step_dir_entries`.
 
-		+-----------------+------------------+--------+------------------------------------------------------------------+
-		| Entry           | Access           | Format | Description                                                      |
-		+-----------------+------------------+--------+------------------------------------------------------------------+
-		|angle            | Read             | Float  | The module's current position in radians                         |
-		+-----------------+------------------+--------+------------------------------------------------------------------+
-		|angle_step       | Read/Write/Save  | Float  | The distance, in radians, to rotate on each received step signal |
-		+-----------------+------------------+--------+------------------------------------------------------------------+
+#. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
 
-
-
-#. Set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
-
-#. After completing the walkthrough, you can interact with the *step_direction_input* client described above
+#. After completing the walkthrough, you can interact with the *step_direction_input* client
 
 #. To read a value
 
@@ -108,3 +96,17 @@ The step/direction interface can also be accessed through Vertiq’s Python API'
 	.. code-block::
 		
 		fortiq.save("step_direction_input", "angle_step")
+
+.. _step_dir_entries:
+
+Step/Direction Client - Entry Summary
+-------------------------------------------------
+	.. table:: Step/Direction Input Client 
+
+		+-----------------+------------------+--------+------------------------------------------------------------------+
+		| Entry           | Access           | Format | Description                                                      |
+		+-----------------+------------------+--------+------------------------------------------------------------------+
+		|angle            | Read             | Float  | The module's current position in radians                         |
+		+-----------------+------------------+--------+------------------------------------------------------------------+
+		|angle_step       | Read/Write/Save  | Float  | The distance, in radians, to rotate on each received step signal |
+		+-----------------+------------------+--------+------------------------------------------------------------------+

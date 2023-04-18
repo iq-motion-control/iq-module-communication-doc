@@ -124,7 +124,7 @@ Vertiq’s PWM interface can also be accessed through Vertiq’s Python API. Thr
 
 
 PWM Interface - Entry Summary
-********************************
+------------------------------------
 
 .. table:: *pwm_interface* Entries
 
