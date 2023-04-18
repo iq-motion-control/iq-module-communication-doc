@@ -53,12 +53,29 @@ All pins set as an input can read the input value, and all pins set to output ca
 Registered GPIO Access
 =======================
 The GPIO registers use one-hot encoding to specify which GPIO to affect. All registers excluding the Input Values (read only) have Read/Write/Save permissions. 
-
 As an example, to set the bottom 3 GPIOs to output using Push-Pull, and output high on GPIO 3: set *GPIO Mode* to 7, set *PP/OD* to 0, and *Output Values* to 4.
 
 The GPIO registers are summarized below:
+	
+	.. table:: GPIO Registers
+		:widths: 16 20 20 20 20 20 20 20 20 6 50
+		:class: tight-table
 
-    .. image:: ../_static/manual_images/fortiq/gpio/gpio_registers.png
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+		| Register Name | Bit 7            | Bit 6            | Bit 5            | Bit 4            | Bit 3            | Bit 2            | Bit 1            | Bit 0            | Access | Description                                                                                                                                                                       |
+		+===============+==================+==================+==================+==================+==================+==================+==================+==================+========+===================================================================================================================================================================================+
+		| GPIO Mode     | GPIO 8 Mode      | GPIO 7 Mode      | GPIO 6 Mode      | GPIO 5 Mode      | GPIO 4 Mode      | GPIO 3 Mode      | GPIO 2 Mode      | GPIO 1 Mode      | R/W/S  | Sets the GPIO pin to a specified mode, input or output. 0 indicates input, 1 indicates output                                                                                     |
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+		| Input Values  | GPIO 8 Input     | GPIO 7 Input     | GPIO 6 Input     | GPIO 5 Input     | GPIO 4 Input     | GPIO 3 Input     | GPIO 2 Input     | GPIO1 Input      | RO     | A read only value that indicates the value of each input pin when set to input mode                                                                                               |
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+		| Output Values | GPIO 8 Ouput     | GPIO 7 Ouput     | GPIO 6 Ouput     | GPIO 5 Ouput     | GPIO 4 Ouput     | GPIO 3 Ouput     | GPIO 2 Ouput     | GPIO 1 Ouput     | R/W/S  | The value to send/being sent on an output GPIO line                                                                                                                               |
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+		| Use Pull      | GPIO 8 Use Pull  | GPIO 7 Use Pull  | GPIO 6 Use Pull  | GPIO 5 Use Pull  | GPIO 4 Use Pull  | GPIO 3 Use Pull  | GPIO 2 Use Pull  | GPIO 1 Use Pull  | R/W/S  | Determines whether or not to use the internal pull-up or pull-down resistor on input mode. If 0, use no pull, if 1 use the pull type specified by the corresponding Pull Type bit |
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+		| Pull Type     | GPIO 8 Pull Type | GPIO 7 Pull Type | GPIO 6 Pull Type | GPIO 5 Pull Type | GPIO 4 Pull Type | GPIO 3 Pull Type | GPIO 2 Pull Type | GPIO 1 Pull Type | R/W/S  | Determines the type to use on an input pin, if Use Pull is set high. 0 indicates pull down, 1 indicates pull up.                                                                  |
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+		| PP/OD         | GPIO 8 PP/OD     | GPIO 7 PP/OD     | GPIO 6 PP/OD     | GPIO 5 PP/OD     | GPIO 4 PP/OD     | GPIO 3 PP/OD     | GPIO 2 PP/OD     | GPIO 1 PP/OD     | R/W/S  | Determines the output mode, push-pull or open-drain. 0 indicates push-pull, 1 indicates open-drain                                                                                |
+		+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 Addressable GPIO Access
