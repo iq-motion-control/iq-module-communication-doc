@@ -9,6 +9,9 @@ CANOpen
 
 Module Support
 ================
+
+CANOpen is supported by only the Fortiq-42 modules.
+
 Speed Modules
 **************
 
@@ -51,11 +54,15 @@ Vertiq supports standard message objects Emergency (EMCY), Process Data Object (
 CANOpen Frame
 ***************
 
-CANOpen uses only the standard CAN frame for communication, where the CAN-ID is split into a 4 bit function code, and a 7 bit node id:
+CANOpen uses only the standard 11-bit CAN-ID CAN frame for communication. CANOpen splits the CAN-ID into a 4 bit function code, and a 7 bit node id:
 
-.. image:: ../_static/manual_images/fortiq/canopen/canopen_standard_frame.png
+.. figure:: ../_static/manual_images/fortiq/canopen/canopen_standard_frame.png
 	:height: 500
 
+	CANOpen frame with all values representing number of bits
+
+Function Codes (Command IDs)
+------------------------------
 The possible function codes are summarized below: 
 
 .. image:: ../_static/manual_images/fortiq/canopen/function_codes.png
@@ -64,25 +71,25 @@ The *Resulting CAN-IDs* column represents the possible values for the resulting 
 
 Emergency Data Object Type (EMCY)
 ************************************
-The emergency object is responsible for reporting internal CANOpen Node errors. There are several predefined Error Codes in the CANOpen standard. A summary of these errors can be found `here <https://www.ni.com/docs/en-US/bundle/ni-industrial-communications-canopen/page/canopenhelp/canopen_emergencies_emcy.html>`_. 
+The emergency object is responsible for reporting internal CANOpen node errors. There are several predefined error codes in the CANOpen standard. A summary of these errors can be found `here <https://www.ni.com/docs/en-US/bundle/ni-industrial-communications-canopen/page/canopenhelp/canopen_emergencies_emcy.html>`_. 
 
 Process Data Objects (PDO)
 *********************************
-The PDO service provides a method to request and receive real time data. PDO data transfers are unidirectional, meaning that a full data transfer is only completed in one direction. Vertiq's implementation of PDO objects requries a master node that can create, and periodically transmit, `SYNC messages <https://www.can-cia.org/can-knowledge/canopen-fd/sync-protocol/>`_. On reception of the SYNC message, the Vertiq node will send back both the current observed angle and velocity as a concatinated 8 Byte value. The first 4 Bytes represent the observed angle, and the last 4 represent the observed velocity. 
+The PDO service provides a method to request and receive real time data. PDO data transfers are unidirectional, meaning that a full data transfer is only completed in one direction. Vertiq's implementation of PDO objects requries a master node that can create, and periodically transmit, `SYNC messages <https://www.can-cia.org/can-knowledge/canopen-fd/sync-protocol/>`_. On reception of the SYNC message, the Vertiq node will send back both the current observed angle and velocity as a concatinated 8 Byte value. The first 4 Bytes represent the observed angle, and the last 4 represent the observed velocity. Both observed angle and velocity are float values. 
 
 Service Data Objects (SDO)
 ****************************
-The SDO service provides read/write access to a CANOpen node's Object Dictionary entries (see :ref:`Object Dictionary`). This is the simplest way to send information between nodes. One node starts a request to either upload or download (read or write) information from another node's OD, and the receiving node responds with either the requested data, or a conformation that the data write data was received and stored properly. SDO communication is the method by which motor control is acheived on Vertiq modules. 
+The SDO service provides read/write access to a CANOpen node's Object Dictionary (OD) entries (see :ref:`Object Dictionary`). This is the simplest way to send information between nodes. One node starts a request to either upload or download (read or write) information from another node's OD, and the receiving node responds with either the requested data, or a confirmation that the write data was received and stored properly. SDO communication is the method by which motor control is acheived on Vertiq modules. 
 
 The following is a high level description of an information request from OD entry 0x2000. For more information on the SDO specification, see the `301 standard <https://www.can-cia.org/groups/specifications/>`_.
 
 .. image:: ../_static/manual_images/fortiq/canopen/sdo_get.png
 
-.. _Object Dictionary: 
-
 Network Management (NMT)
 **********************************
 The NMT service is responsible for running the overall CANOpen state machine. Its state is reported in each producer heartbeat sent by the node. More information on the NMT service can be found `on the CiA website <https://www.can-cia.org/can-knowledge/canopen/network-management/#:~:text=The%20CANopen%20NMT%20state%20machine,state%2C%20and%20a%20Stopped%20state.>`_. 
+
+.. _Object Dictionary: 
 
 Object Dictionary
 ******************
@@ -90,9 +97,13 @@ Object Dictionary
 The Object Dictionary (OD) is the core data storage method in CANOpen. The CANOpen standard defines the following index structure for the locations of various forms of data:
 
 	.. image:: ../_static/manual_images/fortiq/canopen/od_definition.png
-		:height: 500
+		:height: 400
 
-In order to interact with Vertiq specific parameters for motor control, you must interact with the entries beginning at 0x2000. Vertiq’s manufacturer specific Object Dictionary objects are described in the following table:
+OD entries can be single variables, arrays of a single data type, or records with any number of different data types. All OD entries have an *index* in the dictionary, and arrays and records have additional *sub-indices* to access specific entries within the structure. The index and sub-index are the main methods of accessing an OD entry through SDO and PDO communication.
+
+Vertiq Manufacturer Specific Object Dictionary
+---------------------------------------------------
+In order to interact with Vertiq specific parameters for motor control, you must interact with the entries beginning at 0x2000 (manufacturer-specific profile area). Vertiq’s manufacturer specific Object Dictionary objects are described in the following table:
 
 .. table:: Vertiq Manufacturer Specific Object Dictionary
 
@@ -150,20 +161,20 @@ In order to interact with Vertiq specific parameters for motor control, you must
 	|          | 0x00              | Observed Velocity   | rad / s   | float     | SDO/PDO RO | The current observed velocity                                        |
 	+----------+-------------------+---------------------+-----------+-----------+------------+----------------------------------------------------------------------+
 
-The *Access Column* specifies how each object dictionary entry may be accessed. All spin control parameters are read/write accessible via the Service Data Object (SDO) protocol. The real time variables *Observed Angle* and *Observed Velocity* are read only accessible through either SDO or the Process Data Object (PDO) Protocol. To interact via PDO, you must have a CANOpen node capable of creating a SYNC message. Only after reception of a SYNC message will the observed angle and velocities be read via PDO. 
+The *Access Column* specifies how each object dictionary entry may be accessed. All spin control parameters are read/write accessible via the Service Data Object (SDO) protocol. The real time variables *Observed Angle* and *Observed Velocity* are read only accessible through either SDO or the Process Data Object (PDO) Protocol. To interact via PDO, you must have a secondary CANOpen node capable of creating SYNC messages. Only after reception of a SYNC message will the observed angle and velocity be read via PDO. 
 
 Node ID and Layer Setting Services (LSS)
 *****************************************
 All Fortiq modules default to a CANOpen Node-ID of 1. This value is user settable via the Layer Setting Services (LSS) protocol. Node ID changes via LSS will be saved to persistent memory, meaning you must only change the value once in your initial system setup. 
 
-Please refer to `this document <https://us.nanotec.com/products/manual/PD4E_CANopen_EN/bus%252Fcan%252Flss.html?cHash=0bd15c1cd3340dfc546f95e5c1f85a12>`_ for further LSS service instructions.
+Please refer to `this document <https://us.nanotec.com/products/manual/PD4E_CANopen_EN/bus%252Fcan%252Flss.html?cHash=0bd15c1cd3340dfc546f95e5c1f85a12>`_ for further details on Layer Setting Services.
 
 Please note, in order to change your Node-ID, the motor must be in LSS configuration mode, all LSS commands contain 8 bytes of data, and Node ID is not part of the COB-ID.
 
 Sample CANOpen Project with Fullmo Kickdrive
 =============================================
 
-The following are images and descriptions of a project in `Fullmo Kickdrive <https://kickdrive.de/en/index.htm>`_. Fullmo Kickdrive is used to connect with a `PCAN-USB interface <https://www.peak-system.com/PCAN-USB.199.0.html?&L=1>`_ to a CANBUS with 1 or more connected Fortiq motors. 
+The following are images and descriptions of a project in `Fullmo Kickdrive <https://kickdrive.de/en/index.htm>`_. Fullmo Kickdrive is used to connect with a `PCAN-USB interface <https://www.peak-system.com/PCAN-USB.199.0.html?&L=1>`_ to a CAN bus with 1 or more connected Vertiq modules. 
 
 .. _Spinning your Module:
 
@@ -206,34 +217,34 @@ Spinning your Module
 
 #. Set Node ID to 1 (or your current Node ID)
 
-#. From the Object Dictionary, double click controlVelocity, it will open in the Object Editor
+#. From the Object Dictionary, double click *controlVelocity*, it will open in the Object Editor
 
 	.. image:: ../_static/manual_images/fortiq/canopen/kickdrive_open_od.png
 		:height: 400
 
-#. Double Click the Value/Editor box put 10 (set up to set the velocity to 10 rad/sec)
+#. Double click the Value/Editor box put 10 (set up to set the velocity to 10 rad/sec)
 
 #. Deselect the box, and reselect the whole entry so that it turns blue
 
 #. Select Write, and your motor should begin to spin
 	
-#. To stop your motor, click the drop-down on stopCommand, and double click Coast
+#. To stop your motor, click the drop-down on *stopCommand*, and double click *Coast*
 
-#. Set Coast to 1, and click Write
+#. Set *Coast* to 1, and click Write
 
 Changing your Node-ID
 ***********************
 
-In order to change your module's Node-ID please first follow steps 1-8 from :ref:`Spinning your Module` to connect to the CANBUS
+In order to change your module's Node-ID please first follow steps 1-8 from :ref:`Spinning your Module` to connect to the CAN bus
 
 .. note::
-	If you are connecting more than one module to the CANOpen bus, and desire independent control of each, you must set unique Node-IDs. To set unique Node-IDs, you must complete the following steps for **one motor** at a time. Connecting multiple modules to the bus and performing these steps will change both nodes' Node-ID to the same value.
+	If you are connecting more than one module to the CANOpen bus, and desire independent control of each, you must set unique Node-IDs. To set unique Node-IDs, you must complete the following steps for **one module** at a time. Connecting multiple modules to the bus and performing these steps will change both nodes' Node-ID to the same value.
 
 #. Open *CAN Sender*
 	
 	.. image:: ../_static/manual_images/fortiq/canopen/kickdrive_cansender.png
 
-#. Replace the default program with the following (a script to set a Node ID to 5), and enter your desired nodeId
+#. Replace the default program with the following (a script to set a Node ID to 5), and enter your desired *nodeId*
 
 	.. code-block::
 
