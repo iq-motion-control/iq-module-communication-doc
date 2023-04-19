@@ -25,7 +25,7 @@ A minimal working example for the StoppingHandlerClient is:
     #include <iq_module_communication.hpp>
     
     IqSerial ser(Serial2);
-    StoppingHandlerClient tmp(0);
+    StoppingHandlerClient stoppingHandler(0);
     
     void setup() {
         ser.begin();
@@ -34,9 +34,9 @@ A minimal working example for the StoppingHandlerClient is:
     }
     
     void loop() {
-        float temperature = 0.0f;
-        if(ser.get(tmp.t_coil_, temperature))
-        Serial.println(temperature);
+        float stoppedSpeed = 0.0f;
+        if(ser.get(stoppingHandler.stopped_speed_, stoppedSpeed))
+        Serial.println(stoppedSpeed);
     }
 
 C++
@@ -67,6 +67,7 @@ A minimal working example for the StoppingHandlerClient is:
         // Use the Temperature Estimator Client
         temp_client.stopped_speed_.get(com)
 
+        // Insert code for interfacing with hardware here  
     }
 
 Matlab
@@ -83,15 +84,15 @@ A minimal working example for the StoppingHandlerClient is:
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
     % Make a StoppingHandlerClient object with obj_id 0
-    tes = StoppingHandlerClient(’com’,com);
+    stoppingHandler = StoppingHandlerClient(’com’,com);
     % Use the StoppingHandlerClient object
-    coil_temp = tes.get(’t_coil’);
+    stoppedSpeed = stoppingHandler.get(’stopped_speed’);
 
 Python
 ~~~~~~
 
 To use the Stopping Handler Client in Python, include ``iqmotion`` and create a module that has the Stopping Handler Client within it's firmware. 
-See the table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Stopping Handler Client is:

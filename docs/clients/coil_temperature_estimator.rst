@@ -13,7 +13,7 @@ Arduino
 ~~~~~~~
 
 To use the Coil Temperature Estimator in Arduino, ensure coil_temperature_estimator_client.hpp is included. This
-allows the creation of a CoilTemperatureEstimatorClient object. See Table 11 for available messages. All
+allows the creation of a CoilTemperatureEstimatorClient object. See the Message Table below for available messages. All
 message objects use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save
 functions.
 
@@ -42,7 +42,7 @@ C++
 ~~~
 
 To use the Coil Temperature Estimator client in C++, include coil_temperature_estimator_client.hpp. This allows the
-creation of a CoilTemperatureEstimator object. See Table 11 for available messages. All message objects
+creation of a CoilTemperatureEstimator object. See the Message Table below for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the TemperatureEstimatorClient is:
@@ -75,7 +75,7 @@ Matlab
 ~~~~~~
 
 To use the Coil Temperature Estimator client in Matlab, all Vertiq communication code must be included in your
-path. This allows the creation of a CoilTemperatureEstimatorClient object. See Table 11 for available messages.
+path. This allows the creation of a CoilTemperatureEstimatorClient object. See the Message Table below for available messages.
 All message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the CoilTemperatureEstimatorClient is:
@@ -93,7 +93,7 @@ Python
 ~~~~~~
 
 To use the Coil Temperature Estimator Client in Python, include ``iqmotion`` and create a module that has the Coil Temperature Estimator Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Temperature Estimator Client is:

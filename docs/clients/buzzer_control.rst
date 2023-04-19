@@ -11,7 +11,7 @@ Arduino
 ~~~~~~~
 
 To use the Buzzer Control in Arduino, ensure iq_module_communication.hpp is included. This allows the
-creation of a BuzzerControlClient object. See Table 5 for available messages. All message objects use the
+creation of a BuzzerControlClient object. See the Message Table below for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the BuzzerControlClient is:
@@ -39,7 +39,7 @@ C++
 ~~~
 
 To use the Buzzer Control in C++, include buzzer control client.hpp. This allows the creation of a 
-BuzzerControlClient object. See Table 5 for available messages. All message objects use the Short Name with a
+BuzzerControlClient object. See the Message Table below for available messages. All message objects use the Short Name with a
 trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the BuzzerControlClient is:
@@ -72,7 +72,7 @@ Matlab
 ~~~~~~
 
 To use the Buzzer Contol in Matlab, all Vertiq communication code must be included in your path. This allows
-the creation of a BuzzerControlClient object. See Table 5 for available messages. All message strings use
+the creation of a BuzzerControlClient object. See the Message Table below for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the BuzzerControlClient is:

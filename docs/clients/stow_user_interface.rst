@@ -13,7 +13,7 @@ Arduino
 To use the Stow User Interface in Arduino, ensure stow_user_interface_client.hpp is included. This
 allows the creation of a StowUserInterfaceClient object. See the Message Table below for available messages. All
 message objects use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save
-functions, except sample_zero and stow.
+functions.
 
 A minimal working example for the StowUserInterfaceClient is:
 
@@ -22,7 +22,7 @@ A minimal working example for the StowUserInterfaceClient is:
     #include <iq_module_communication.hpp>
     
     IqSerial ser(Serial2);
-    StowUserInterfaceClient tmp(0);
+    StowUserInterfaceClient stowUserInterface(0);
     
     void setup() {
         ser.begin();
@@ -31,9 +31,9 @@ A minimal working example for the StowUserInterfaceClient is:
     }
     
     void loop() {
-        float temperature = 0.0f;
-        if(ser.get(tmp.t_coil_, temperature))
-        Serial.println(temperature);
+        float zeroAngle = 0.0f;
+        if(ser.get(stowUserInterface.zero_angle_, zeroAngle))
+        Serial.println(zeroAngle);
     }
 
 C++
@@ -41,7 +41,7 @@ C++
 
 To use the Stow User Interface client in C++, include stow_user_interface_client.hpp. This allows the
 creation of a StowUserInterface object. See the Message Table below for available messages. All message objects
-use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions, except sample_zero and stow.
+use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the StowUserInterfaceClient is:
 
@@ -59,14 +59,12 @@ A minimal working example for the StowUserInterfaceClient is:
         GenericInterface com;
 
         // Make a Temperature Estimator object with obj_id 0
-        StowUserInterfaceClient temp_client(0);
+        StowUserInterfaceClient stowUserInterface(0);
 
         // Use the Temperature Estimator Client
-        temp_client.zero_angle_.get(com)
+        stowUserInterface.zero_angle_.get(com)
 
         // [Insert code for interfacing with hardware here]
-
-        // temp = temp_client.temp_.get_reply();
     }
 
 Matlab
@@ -74,7 +72,7 @@ Matlab
 
 To use the Stow User Interface client in Matlab, all Vertiq communication code must be included in your
 path. This allows the creation of a StowUserInterfaceClient object. See the Message Table below for available messages.
-All message strings use the Short Names. All messages use the standard Get/Set/Save functions, except sample_zero and stow.
+All message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the StowUserInterfaceClient is:
 
@@ -83,16 +81,16 @@ A minimal working example for the StowUserInterfaceClient is:
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
     % Make a StowUserInterfaceClient object with obj_id 0
-    tes = StowUserInterfaceClient(’com’,com);
+    stowUserInterface = StowUserInterfaceClient(’com’,com);
     % Use the StowUserInterfaceClient object
-    coil_temp = tes.get(’t_coil’);
+    zeroAngle = stowUserInterface.get(’zero_angle’);
 
 Python
 ~~~~~~
 
 To use the Stow User Interface Client in Python, include ``iqmotion`` and create a module that has the Stow User Interface Client within it's firmware. 
-See the table below for available messages. All message strings use the Short Names. 
-All messages use the standard Get/Set/Save functions, except sample_zero and stow.
+See the Message Table below for available messages. All message strings use the Short Names. 
+All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Stow User Interface Client is:
 
@@ -112,38 +110,36 @@ Message Table
 
 Type ID 85 | Stow User Interface
 
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Sub ID | Short Name          | Access         | Data Type | Unit              | Note                                                                                                                                                                                            |
-+========+=====================+================+===========+===================+=================================================================================================================================================================================================+
-| 0      | zero_angle          | get, set, save | float     | rad               | The anglular position that the module considers as its 'zero' position.                                                                                                                         |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 1      | target_angle        | get, set, save | float     | rad               | The angular postion of the stow postition with reference to the zero angle.                                                                                                                     |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 2      | target_acceleration | get, set, save | float     | .. math:: rad/s^2 | The maximum acceleration allowed when moving to the stow position.                                                                                                                              |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 3      | sample_zero         | set            |           |                   | Sets the module's current postiion as the zero angle.                                                                                                                                           |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 4      | stow                | set            |           |                   |                                                                                                                                                                                                 |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 5      | stow_kp             | get, set, save | float     | V/rad             | The proportional gain to use in the closed loop position controller moving the module to the stow position. A higher gain can lead to a more accurate position, but can also cause oscillation. |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 6      | stow_ki             | get, set, save | float     | V/(rad*s)         | The integral gain to use in the closed loop position controller moving the module to the stow position.                                                                                         |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 7      | stow_kd             | get, set, save | float     | V/(rad*s)         | The differential gain to use in the closed loop position controller moving the module to the stow position.                                                                                     |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 8      | hold_stow           | get, set, save | uint8     |                   | If True, module will actively hold the stole angle once it is reached. If False, the module will coast.                                                                                         |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 9      | stow_status         | get, set, save | uint8     |                   | The current state of stowing. See row below for each state:                                                                                                                                     |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-||       ||                    ||               ||          ||                  || 0 = Idle: No stowing happening and module is ready for new commands.                                                                                                                           |
-||       ||                    ||               ||          ||                  || 1 = In Progress: A move to the stow position is in progress but the module has not reached its stow postition yet.                                                                             |
-||       ||                    ||               ||          ||                  || 2 = In Progress: A move to the stow position is in progress but the module has not reached its stow postition yet.                                                                             |
-||       ||                    ||               ||          ||                  || 3 = Holding: The module is actively holding its stow postion.                                                                                                                                  |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 10     | stow_result         | get, set, save | uint8     |                   | The result of how the previous stow attempt ended. See row below for each possible result:                                                                                                      |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-||       ||                    ||               ||          ||                  || 0 = No Result: No previous stow attempts. Default result after module reboot.                                                                                                                  |
-||       ||                    ||               ||          ||                  || 1 = Completed: The previous stow attempt successfully made it to its stow postion without issue.                                                                                               |
-||       ||                    ||               ||          ||                  || 2 = Interrupted: The previous stow attempt was interrupted before compeleting.                                                                                                                 |
-||       ||                    ||               ||          ||                  || 3 = Error: An unexpected error occurred during the previous stow attempt.                                                                                                                      |
-+--------+---------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Sub ID | Short Name          | Access          | Data Type | Unit              | Note                                                                                                                                                                                            |
++========+=====================+=================+===========+===================+=================================================================================================================================================================================================+
+| 0      | zero_angle          | get, set, save  | float     | rad               | The anglular position that the module considers as its 'zero' position.                                                                                                                         |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1      | target_angle        | get, set, save  | float     | rad               | The angular postion of the stow postition with reference to the zero angle.                                                                                                                     |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2      | target_acceleration | get, set, save  | float     | .. math:: rad/s^2 | The maximum acceleration allowed when moving to the stow position.                                                                                                                              |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 3      | sample_zero         | set             |           |                   | Sets the module's current postiion as the zero angle.                                                                                                                                           |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 4      | stow                | set             |           |                   |                                                                                                                                                                                                 |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 5      | stow_kp             | get, set, save  | float     | V/rad             | The proportional gain to use in the closed loop position controller moving the module to the stow position. A higher gain can lead to a more accurate position, but can also cause oscillation. |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 6      | stow_ki             | get, set, save  | float     | V/(rad*s)         | The integral gain to use in the closed loop position controller moving the module to the stow position.                                                                                         |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 7      | stow_kd             | get, set, save  | float     | V/(rad*s)         | The differential gain to use in the closed loop position controller moving the module to the stow position.                                                                                     |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 8      | hold_stow           | get, set, save  | uint8     |                   | If True, module will actively hold the stole angle once it is reached. If False, the module will coast.                                                                                         |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|| 9     || stow_status        || get, set, save || uint8    ||                  || The current state of stowing. See row below for each state:                                                                                                                                    |
+||       ||                    ||                ||          ||                  || 0 = Idle: No stowing happening and module is ready for new commands.                                                                                                                           |
+||       ||                    ||                ||          ||                  || 1 = In Progress: A move to the stow position is in progress but the module has not reached its stow postition yet.                                                                             |
+||       ||                    ||                ||          ||                  || 2 = In Progress: A move to the stow position is in progress but the module has not reached its stow postition yet.                                                                             |
+||       ||                    ||                ||          ||                  || 3 = Holding: The module is actively holding its stow postion.                                                                                                                                  |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|| 10    || stow_result        || get, set, save || uint8    ||                  || The result of how the previous stow attempt ended. See row below for each possible result:                                                                                                     |
+||       ||                    ||                ||          ||                  || 0 = No Result: No previous stow attempts. Default result after module reboot.                                                                                                                  |
+||       ||                    ||                ||          ||                  || 1 = Completed: The previous stow attempt successfully made it to its stow postion without issue.                                                                                               |
+||       ||                    ||                ||          ||                  || 2 = Interrupted: The previous stow attempt was interrupted before compeleting.                                                                                                                 |
+||       ||                    ||                ||          ||                  || 3 = Error: An unexpected error occurred during the previous stow attempt.                                                                                                                      |
++--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

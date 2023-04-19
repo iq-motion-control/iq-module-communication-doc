@@ -12,7 +12,7 @@ Arduino
 ~~~~~~~
 
 To use Step Direction Input in Arduino, ensure iq_module_communication.hpp is included. This allows the
-creation of a StepDirectionInputClient object. See Table 7 for available messages. All message objects use
+creation of a StepDirectionInputClient object. See the Message Table below for available messages. All message objects use
 the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the StepDirectionInputClient is:
@@ -37,7 +37,7 @@ C++
 ~~~
 
 To use Step Direction Input in C++, include step direction input.hpp. This allows the creation of a 
-StepDirectionInputClient object. See Table 7 for available messages. All message objects use the Short Name with
+StepDirectionInputClient object. See the Message Table below for available messages. All message objects use the Short Name with
 a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the StepDirectionInputClient is:
@@ -71,7 +71,7 @@ Matlab
 ~~~~~~
 
 To use Step Direction in Matlab, all Vertiq communication code must be included in your path. This allows the
-creation of a StepDirectionInputClient object. See Table 7 for available messages. All message strings use
+creation of a StepDirectionInputClient object. See the Message Table below for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the StepDirectionInputClient is:
@@ -93,7 +93,7 @@ Python
 ~~~~~~
 
 To use the Step Direction Input Client in Python, include ``iqmotion`` and create a module that has the Step Direction Input Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Step Direction Input Client is:

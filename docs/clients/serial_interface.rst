@@ -10,7 +10,7 @@ Arduino
 ~~~~~~~
 
 To use Serial Interface in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
-of a SerialInterfaceClient object. See Table 8 for available messages. All message objects use the Short Name
+of a SerialInterfaceClient object. See the Message Table below for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the SerialInterfaceClient is:
@@ -51,7 +51,7 @@ C++
 ~~~
 
 To use Serial Interface in C++, include serial interface client.hpp. This allows the 
-creation of a SerialInterfaceClient object. See Table 8 for available messages. All 
+creation of a SerialInterfaceClient object. See the Message Table below for available messages. All 
 message objects use the Short Name with a trailing underscore.
 
 A minimal working example for the SerialInterfaceClient is:
@@ -84,7 +84,7 @@ Matlab
 ~~~~~~
 
 To use Serial Interface in Matlab, all Vertiq communication code must be included in your path. This allows
-the creation of a SerialInterfaceClient object. See Table 8 for available messages. All message strings use
+the creation of a SerialInterfaceClient object. See the Message Table below for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the SerialInterfaceClient is:
@@ -111,7 +111,7 @@ Python
 ~~~~~~
 
 To use the Serial Interface Client in Python, include ``iqmotion`` and create a module that has the Serial Interface Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Serial Interface Client is:

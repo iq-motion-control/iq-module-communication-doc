@@ -11,7 +11,7 @@ Arduino
 ~~~~~~~
 
 To use Servo Input Parser in Arduino, ensure iq_module_communication.hpp is included. This allows the
-creation of a ServoInputParserClient object. See Table 6 for available messages. All message objects use the
+creation of a ServoInputParserClient object. See the Message Table below for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the ServoInputParserClient is:
@@ -36,7 +36,7 @@ C++
 ~~~
 
 To use Servo Input Parser in C++, include servo input parser client.hpp. This allows the creation of a
-ServoInputParserClient object. See Table 6 for available messages. All message objects use the Short Name
+ServoInputParserClient object. See the Message Table below for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the ServoInputParserClient is:
@@ -71,7 +71,7 @@ Matlab
 ~~~~~~
 
 To use Servo Input Parser in Matlab, all Vertiq communication code must be included in your path. This allows
-the creation of a ServoInputParserClient object. See Table 6 for available messages. All message strings use
+the creation of a ServoInputParserClient object. See the Message Table below for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the ServoInputParserClient is:
@@ -94,7 +94,7 @@ Python
 ~~~~~~
 
 To use the Servo Input Parser Client in Python, include ``iqmotion`` and create a module that has the Servo Input Parser Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Servo Input Parser Client is:

@@ -10,7 +10,7 @@ Arduino
 ~~~~~~~
 
 To use Hobby Input in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
-of a HobbyInputClient object. See Table 7 for available messages. All message objects use the Short Name
+of a HobbyInputClient object. See the Message Table below for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the HobbyInputClient is:
@@ -35,7 +35,7 @@ C++
 ~~~
 
 To use Hobby Input in C++, include hobby input client.hpp. This allows the creation of a HobbyInputClient
-object. See Table 7 for available messages. All message objects use the Short Name with a trailing underscore.
+object. See the Message Table below for available messages. All message objects use the Short Name with a trailing underscore.
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the HobbyInputClient is:
@@ -66,7 +66,7 @@ Matlab
 ~~~~~~
 
 To use Hobby Input in Matlab, all Vertiq communication code must be included in your path. This allows the
-creation of a Hobby Input object. See Table 7 for available messages. All message strings use the Short
+creation of a Hobby Input object. See the Message Table below for available messages. All message strings use the Short
 Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the HobbyInputClient is:
@@ -87,7 +87,7 @@ Python
 ~~~~~~
 
 To use the Hobby Input Client in Python, include ``iqmotion`` and create a module that has the Hobby Input Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Hobby Input Client is:

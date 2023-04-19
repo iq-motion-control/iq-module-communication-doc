@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "702c4cc9ca8d28318eb07d4b276ff394bb36a5e81662255f1bb35a8d4c53ff78"
+            "sha256": "bf09b739bb337ed09f6795f6ebc923d35380dea1e4092670affd331ae4e133da"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -194,11 +194,11 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:63ace321e24167d12fbb176b6015f4dbe06868c54a2af4f15849586afb9027fd",
-                "sha256:eb1a7933041f0f85c94cd130258df3fb0dec060ad8c1c9318892ef4192c47ce1"
+                "sha256:03ba783c3a2c69d751b109fc0c94a62c51f581b3d6acf8ed1331b6d5729321ff",
+                "sha256:7a8bdf1bc3a726297f5cfbc999e6e7ff6b4fa41b26bba4afc580448624460045"
             ],
             "markers": "python_version < '3.10'",
-            "version": "==6.4.1"
+            "version": "==6.5.0"
         },
         "jinja2": {
             "hashes": [
@@ -290,11 +290,11 @@
         },
         "pygments": {
             "hashes": [
-                "sha256:77a3299119af881904cd5ecd1ac6a66214b6e9bed1f2db16993b54adede64094",
-                "sha256:f7e36cffc4c517fbc252861b9a6e4644ca0e5abadf9a113c72d1358ad09b9500"
+                "sha256:8ace4d3c1dd481894b2005f560ead0f9f19ee64fe983366be1a21e171d12775c",
+                "sha256:db2db3deb4b4179f399a09054b023b6a586b76499d36965813c71aa8ed7b5fd1"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==2.15.0"
+            "version": "==2.15.1"
         },
         "pyspellchecker": {
             "hashes": [
@@ -334,6 +334,14 @@
             ],
             "index": "pypi",
             "version": "==6.1.3"
+        },
+        "sphinx-prompt": {
+            "hashes": [
+                "sha256:0ae92cdae0962896827e11880d3e2317b436491663e83a8289a9c9c1b7d758ae",
+                "sha256:a118fc1519f367dfffd73fbc34e1d905e38929dec6a3971518a331bf0689b0df"
+            ],
+            "index": "pypi",
+            "version": "==1.6.0"
         },
         "sphinx-rtd-theme": {
             "hashes": [
@@ -380,7 +388,7 @@
                 "sha256:1620739f04e36a2c779f1a131a2dfd49b2fd07351bf1968ced074365933abc7a",
                 "sha256:f936030d7d0147dd026a4f2b5a57343d233f1fc7b363f68b3d4f1cb0993878ae"
             ],
-            "markers": "python_version > '3'",
+            "markers": "python_version >= '3.1'",
             "version": "==4.1"
         },
         "sphinxcontrib-jsmath": {
