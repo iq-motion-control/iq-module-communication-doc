@@ -4,7 +4,7 @@
 .. _manual_adc_interface:
 
 ***********************************************
-ADC Interface
+Analog-to-Digital (ADC) Interface
 ***********************************************
 
 Module Support
@@ -46,7 +46,7 @@ Servo Modules
 
 Description
 =============
-Vertiq's ADC Interface provides access to an application-blind, on-board Analog to Digital Converter (ADC). The ADC handles voltages from 0.0V to 3.6V with a 12-bit resolution. 
+Vertiq's ADC Interface provides access to an on-board Analog to Digital Converter (ADC). An ADC makes it possible for your module to read input analog voltages. The ADC handles voltages from 0.0V to 3.3V with a 12-bit resolution. For example, if you input 1V to the ADC interface, reading the voltage would return 1V, and reading the "raw value" would return 1241 (:math:`\frac{V_{\text{in}} * 4096}{3.3}`). 
 
 The ADC interface provides read-only access to both the voltage read and the raw ADC value.
 
@@ -68,7 +68,7 @@ The IQ Control Center provides the easiest way to test reading the voltage input
 
 	.. image:: ../_static/manual_images/fortiq/adc/read_adc_tab.png
 
-#. Click the refresh button to read the ADC voltage keeping in mind that the ADC is limited to [0, 3.6]V
+#. Click the refresh button to read the ADC voltage keeping in mind that the ADC is limited to 0 to 3.3V
 
 
 Vertiq Python API - ADC Interface
@@ -76,7 +76,7 @@ Vertiq Python API - ADC Interface
 .. note::
 	Please note that the following *ADC Interface* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
-The ADC interface can also be accessed through Vertiq’s Python API. Through the API you gain read access to both the ADC’s read voltage and raw ADC value. To use the API, please use the following steps:
+The ADC interface can also be accessed through Vertiq’s Python API. Through the API you can read both the ADC’s read voltage and raw ADC value. To use the API, please use the following steps:
 
 #. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
 

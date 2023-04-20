@@ -25,7 +25,7 @@ Step/Direction Modules
 
 Description
 ============
-Step/Direction control is a two wire interface with two inputs: step and direction. On each received step pulse, the module will move a set radial distance in the direction specified by the direction line (clockwise or counter clockwise). 
+Step/Direction control is a two wire interface with two inputs: step and direction. On each low to high transition on the step line up to logic high, the module will move a set radial distance in the direction specified by the direction line. Setting the direction line high causes counter-clockwise movement, and setting the direction line low causes clockwise movement. More information on Step/Direction control can be found `here <https://www.probotix.com/downloads/step_and_direction_drives.pdf>`_. 
 
 The distance traveled on each received step pulse is defined by the *Step Angle Size* parameter. This value is user configurable. 
 
@@ -34,13 +34,13 @@ The distance traveled on each received step pulse is defined by the *Step Angle 
 	Unlike :ref:`manual_hobby`, while using Step/Direction control with a Fortiq-42 module, serial communication through IQUART remains available. 
 
 .. note::
-	By using step/dir firmware, the motor can only be controlled via step/dir signals. Attempts to spin, stop, or otherwise control the motor via other protocols will fail. You can still communicate with the module via IQUART or CANOpen (if available), but cannot control the module. Hobby protocols are disabled when using step/dir firmware.
+	By using Step/Direction firmware, the motor can only be controlled via Step/Direction signals. Attempts to spin, stop, or otherwise control the motor via other protocols will fail. You can still communicate with the module via IQUART or CANOpen (if available), but cannot control the module. Hobby protocols are disabled when using Step/Direction firmware.
 
 Usage
 ==========
 IQ Control Center
 ********************
-The IQ Control Center provides the easiest way to configure step/direction control on your module. To do so:
+The IQ Control Center provides the easiest way to configure Step/Direction control on your module. To do so:
 
 #. Open IQ Control Center. If you have not installed the program, please follow the instructions in `Getting Started with Speed Motors Using IQ Control Center <https://iqmotion.readthedocs.io/en/latest/tutorials/testing_with_control_center.html>`_. 
 
@@ -48,14 +48,16 @@ The IQ Control Center provides the easiest way to configure step/direction contr
 
 #. Click the General tab on the left side
 
-#. To configure the step size, adjust the *Step angle* parameter
+#. To configure the step size, adjust the *Step angle* parameter, which determines how far the motor should spin on each received step pulse
+
+.. image:: ../_static/manual_images/fortiq/other/step_angle.png
 
 Vertiq Python API - Step/Direction Interface
 ************************************************
 .. note::
-	Please note that the following *step/dir* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
+	Please note that the following *Step/Direction* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
-The step/direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, summarized in :ref:`step_dir_entries`.
+The Step/Direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, summarized in :ref:`step_dir_entries`.
 
 #. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
 

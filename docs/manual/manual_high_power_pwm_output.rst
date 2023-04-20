@@ -52,19 +52,27 @@ Description
 
 Vertiq's high power PWM output interface provides access to a PWM output driver with read/write accessibility to the frequency, duty cycle, and mode. At the hardware level, this driver is an **open-drain MOSFET without an internal pull up resistor**. The mode parameter determines which portion of the PWM cycle the duty cycle represents, high or low, and is dependent on your application’s hardware setup.
 
-In the first mode, writing 75 has the following output:
+Frequency is described in *Hz*. Frequency has a minimum of 1Hz and is limited to 5000Hz.  
 
-	.. image:: ../_static/manual_images/fortiq/pwm/pwm_mode_2.png
-		:width: 650
+As mentioned above, *mode*'s impact is hardware dependent. If, for example, you use the hardware setup described in :ref:`pwm_testing` , pulling up to V\ :sub:`power` \, mode will function as follows:
 
-In the second, writing 75 has the following output: 
+With mode set to 0, setting a *duty_cycle* of 75 has the following output:
 
 	.. image:: ../_static/manual_images/fortiq/pwm/pwm_mode_1.png
 		:width: 650
 
+With mode set to 1, setting a *duty_cycle* of 75 has the following output: 
+
+	.. image:: ../_static/manual_images/fortiq/pwm/pwm_mode_2.png
+		:width: 650
+
+Without pulling up to V\ :sub:`power` \, *mode* will have the opposite impact on the duty cycle. 
 
 Usage
 ========
+
+.. _pwm_testing:
+
 Initial High Power PWM Output Setup and Testing with IQ Control Center
 ******************************************************************************
 The IQ Control Center provides the easiest way to interact with your module’s PWM peripheral. To do so: 

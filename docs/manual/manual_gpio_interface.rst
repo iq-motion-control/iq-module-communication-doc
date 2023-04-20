@@ -46,18 +46,22 @@ Servo Modules
 
 Description
 ===============
-Vertiq’s GPIO interface provides a flexible method of interacting with a module’s user-specific GPIO pins. Each GPIO can be set to input or output, which can be switched on-the-fly, if desired. Each pin set as an input may choose whether or not to use an internal pull resistor (up or down), as well as the type of pull used. Each pin set as an output may choose whether to output in a Push-Pull or Open-Drain configuration. 
+Vertiq’s GPIO interface provides a flexible method of interacting with a module’s user-specific GPIO pins. Each GPIO can be set to input or output, which can be switched on-the-fly, if desired. Each pin set as an input may choose whether or not to use an `internal pull resistor (up or down) <https://eepower.com/resistor-guide/resistor-applications/pull-up-resistor-pull-down-resistor/#>`_, as well as the type of pull used. Each pin set as an output may choose whether to output in a `Push-Pull or Open-Drain configuration <https://ebics.net/the-difference-between-push-pull-output-and-open-drain-output-of-microcontroller-i-o-port/>`_. 
 
-All pins set as an input can read the input value, and all pins set to output can read, write, and save the outgoing value. Access to these behaviors can be done either through registered or addressable methods. Both registered and addressable interactions occur via IQUART commands, and will be covered more below. Vertiq's GPIO interface has flexibility to change any GPIO parameter via the registers or addressable format. Any savable value set through the IQ Control Center will be stored in the module’s persistent memory, and will be retained through resets and power-cycles. Using Vertiq’s Python API (see :ref:`Vertiq Python API - GPIO Interface`), values can be written without saving, written with saving, and read.
+All pins set as an input can read the input value, and all pins set to output can read, write, and save the outgoing value. Access to these behaviors is available through registered or addressable methods. Both registered and addressable interactions occur via IQUART commands, and will be covered more below. Vertiq's GPIO interface has flexibility to change any GPIO parameter via the registered or addressable format. Any savable value set through the IQ Control Center will be stored in the module’s persistent memory, and will be retained through resets and power-cycles. Using Vertiq’s Python API (see :ref:`Vertiq Python API - GPIO Interface`), values can be written, saved, and read.
 
 Registered GPIO Access
 =======================
-The GPIO registers use one-hot encoding to specify which GPIO to affect. All registers excluding the Input Values (read only) have Read/Write/Save permissions. 
+The GPIO registers encode each bit to one GPIO (ex. bit 3 corresponds with GPIO3). All registers excluding the *Input Values* (read only) have Read/Write/Save permissions. 
 
 .. note::
 	The number of GPIOs available is dependent on the module in use. See your module's documentation to learn more. Setting values to GPIOs that do not exist on your module will have no effect. 
 
-As an example, suppose your motor has 3 user accessible GPIOs. To set all 3 to outputs using Push-Pull configuration and output high on only GPIO 3: set *GPIO Mode* to 7, set *PP/OD* to 0, and *Output Values* to 4.
+As an example, suppose your motor has 3 user accessible GPIOs. To set all 3 to outputs using Push-Pull configuration and output high on only GPIO 3: 
+
+	#. Set *GPIO Mode* to 7
+	#. Set *PP/OD* to 0
+	#. Set *Output Values* to 4
 
 The GPIO registers are summarized below:
 	
@@ -86,6 +90,11 @@ Addressable GPIO Access
 ==========================
 User GPIOs allow for individual write access to each GPIO. Addressable access is a write only protocol. To set a value via addressable access, send one byte that represents the value to write as well as the GPIO to write to. The MSB represents the value, while the bottom 7 bits represent the GPIO number. For example, to set GPIO 3 to be an output, write 131\ :sub:`10` \ (0b10000011) to the *GPIO Addressable - Mode entry* (see :ref:`Initial GPIO Setup and Testing with IQ Control Center`)
 
++------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+
+| Bit 7            | Bit 6            | Bit 5            | Bit 4            | Bit 3            | Bit 2            | Bit 1            | Bit 0            |
++==================+==================+==================+==================+==================+==================+==================+==================+
+| Value to Set     |   Target GPIO Number 1 to your modules top-most GPIO Number                                                                        |
++------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 Usage
 ============
