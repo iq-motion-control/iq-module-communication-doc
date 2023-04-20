@@ -101,7 +101,7 @@ A minimal working example for the ESC Propeller Input Parser Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("esc_propeller_input_parser", "velocity_max", 1000) # Set max Velocity to 1000rad/s
 

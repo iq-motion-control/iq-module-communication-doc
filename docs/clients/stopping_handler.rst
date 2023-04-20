@@ -103,7 +103,7 @@ A minimal working example for the Stopping Handler Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     stopped_speed = |variable_name|.get("stopping_handler", "stopped_speed") 
     print(f"Stopped speed: {stopped_speed}")

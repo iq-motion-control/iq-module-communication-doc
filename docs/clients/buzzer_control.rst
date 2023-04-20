@@ -107,7 +107,7 @@ A minimal working example for the Buzzer Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("buzzer_control", "hz", 440)         # A4
     |variable_name|.set("buzzer_control", "volume", 127)     # Max Volume

@@ -100,7 +100,7 @@ A minimal working example for the Stow User Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     zero_angle = |variable_name|.get("stow_user_interface", "zero_angle") 
     print(f"Zero angle: {zero_angle}")
