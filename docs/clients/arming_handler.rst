@@ -1,4 +1,4 @@
-Arming Handler
+rming Handler
 --------------
 Vertiq Advanced Speed modules can support an advanced arming feature, 
 allowing the user to control the armed state of the module with throttle commands or manually 
@@ -52,7 +52,6 @@ A minimal working example for the ArmingHandlerClient is:
     #include "generic_interface.hpp"
     #include "arming_handler_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object

@@ -51,7 +51,6 @@ A minimal working example for the TemperatureEstimatorClient is:
     #include "generic_interface.hpp"
     #include "temperature_estimator_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object
@@ -64,8 +63,6 @@ A minimal working example for the TemperatureEstimatorClient is:
         temp_client.temp_.get(com)
 
         // [Insert code for interfacing with hardware here]
-
-        // temp = temp_client.temp_.get_reply();
     }
 
 Matlab
