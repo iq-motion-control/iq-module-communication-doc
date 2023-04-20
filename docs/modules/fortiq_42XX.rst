@@ -8,11 +8,11 @@ Fortiq 42XX | Servo Module
         :alt: Fortiq 42XX Family
 
 
-The IQ Fortiq 42XX module is designed for industrial and robotic applications that 
+The Fortiq 42XX module is designed for industrial and robotic applications that 
 require maximum torque, precision, and efficiency with minimal vibration. IQ's unique 
 hardware design and advanced calibration techniques has allowed us to create the most 
-compact and torque-dense industrial servomotor on the market. IQ is offering 4 versions 
-of the Fortiq 42XX.
+compact and torque-dense industrial servomotor on the market. Vertiq is offering 4 versions 
+of the Fortiq: **4125**, **4235**, **4255**, **4275**.
 
 .. note:: 
     The Fortiq has previously been named BLS42 and now they called Fortiq 42XX.   
