@@ -43,3 +43,6 @@ above controllers can be used by the user.
 
 .. |module_firmware| Replace:: , firmware="stepdir"
 .. include:: stepdir.rst
+
+.. |module_firmware| Replace:: , firmware="pulsing"
+.. include:: pulsing.rst

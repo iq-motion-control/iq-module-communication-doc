@@ -190,7 +190,7 @@ Example of changing the API firmware:
 
 
 Adding New Clients to your Vertiq Module
------------------------------------
+----------------------------------------
 
 There are 2 options avaiable for adding extra clients
 
