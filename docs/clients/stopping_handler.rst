@@ -2,13 +2,6 @@ Stopping Handler
 ----------------
 A Vertiq module is considered stopped when it has been below its stopping speed continuously for some stopping time. 
 Anytime the module’s velocity goes above the stopping speed, it will reset the countdown on the stopping time.
-Vertiq modules execute a disarming process when disarming in order to try and safely come to a stop 
-and indicate that a disarm occurred to the user. 
-This disarming process consists of 3 basic steps: 
-The module switches how it is driving itself in order to try and come to a stop, 
-plays its disarm song as specified by its playback option, and switches to its final drive state. 
-How the module tries to come to a stop, how many times it plays the disarm song, and what final state it ends up in after playing the song 
-are all configurable by the user.
 
 Arduino
 ~~~~~~~
