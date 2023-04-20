@@ -52,7 +52,6 @@ A minimal working example for the StowUserInterfaceClient is:
     #include "generic_interface.hpp"
     #include "stow_user_interface_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object

@@ -55,7 +55,6 @@ A minimal working example for the StoppingHandlerClient is:
     #include "generic_interface.hpp"
     #include "stopping_handler_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object
