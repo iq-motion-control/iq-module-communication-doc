@@ -1,4 +1,4 @@
-rming Handler
+Arming Handler
 --------------
 Vertiq Advanced Speed modules can support an advanced arming feature, 
 allowing the user to control the armed state of the module with throttle commands or manually 
