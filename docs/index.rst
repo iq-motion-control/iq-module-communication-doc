@@ -47,12 +47,17 @@
    manual/manual_intro
    manual/manual_iquart
    manual/manual_dronecan
+   manual/manual_canopen
    manual/manual_hobby
    manual/manual_throttle
    manual/manual_advanced_arming
    manual/manual_stow
    manual/manual_timeout
    manual/manual_zero_spin
+   manual/manual_adc_interface
+   manual/manual_high_power_pwm_output
+   manual/manual_gpio_interface
+   manual/manual_step_direction
    manual/manual_appendix
 
 Welcome to the Vertiq Documentation
