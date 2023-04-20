@@ -1,7 +1,11 @@
 PWM Interface
 ---------------
 
-**TODO**
+Vertiq's high power :ref:`PWM output interface <manual_high_power_pwm_>` provides access to a PWM output driver with read/write accessibility to the frequency, duty cycle, and mode.
+At the hardware level, this driver is an **open-drain MOSFET without an internal pull up resistor**. 
+The mode parameter determines which portion of the PWM cycle the duty cycle represents,
+high or low, and is dependent on your application’s hardware setup.
+
 
 Arduino
 ~~~~~~~
@@ -27,9 +31,9 @@ A minimal working example for the PwmInterfaceClient is:
     }
     
     void loop() {
-        int modeRegister = 0;
-        if(ser.get(pwmInterface.pwm_frequency_, modeRegister))
-        Serial.println(modeRegister);
+        int pwmFrequency = 0;
+        if(ser.get(pwmInterface.pwm_frequency_, pwmFrequency))
+        Serial.println(pwmFrequency);
     }
 
 C++
@@ -78,7 +82,7 @@ A minimal working example for the PwmInterfaceClient is:
     % Make a PwmInterfaceClient object with obj_id 0
     pwmInterface = PwmInterfaceClient(’com’,com);
     % Use the PwmInterfaceClient object
-    modeRegister = pwmInterface.get(’pwm_frequency’);
+    pwmFrequency = pwmInterface.get(’pwm_frequency’);
 
 Python
 ~~~~~~

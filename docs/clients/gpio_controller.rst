@@ -1,7 +1,14 @@
 GPIO Controller
 ---------------
 
-**TODO**
+Vertiq's :ref:`GPIO interface <manual_gpio_interface_>` provides a flexible method of interacting with a module’s user-specific GPIO pins.
+Each GPIO can be set to input or output, which can be switched on-the-fly, if desired. 
+Each pin set as an input may choose whether or not to use an 
+`internal pull resistor (up or down) <https://eepower.com/resistor-guide/resistor-applications/pull-up-resistor-pull-down-resistor/#>`_, 
+as well as the type of pull used. 
+Each pin set as an output may choose whether to output in a 
+`Push-Pull or Open-Drain configuration <https://ebics.net/the-difference-between-push-pull-output-and-open-drain-output-of-microcontroller-i-o-port/>`_.
+
 
 Arduino
 ~~~~~~~

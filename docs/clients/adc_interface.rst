@@ -1,7 +1,8 @@
 ADC Interface
 -------------
+Vertiq's :ref:`ADC Interface <manual_adc_interface>` provides access to an on-board Analog to Digital Converter (ADC). An ADC makes it possible for your module to read input analog voltages. The ADC handles voltages from 0.0V to 3.3V with a 12-bit resolution. For example, if you input 1V to the ADC interface, reading the voltage would return 1V, and reading the "raw value" would return 1241 (:math:`\frac{V_{\text{in}} * 4096}{3.3}`). 
 
-**TODO**
+The ADC interface provides read-only access to both the voltage read and the raw ADC value.
 
 Arduino
 ~~~~~~~
@@ -27,9 +28,9 @@ A minimal working example for the AdcInterfaceClient is:
     }
     
     void loop() {
-        float adc_voltage = 0.0f;
-        if(ser.get(adcInterface.adc_voltage_, adc_voltage))
-        Serial.println(adc_voltage);
+        float adcVoltage = 0.0f;
+        if(ser.get(adcInterface.adc_voltage_, adcVoltage))
+        Serial.println(adcVoltage);
     }
 
 C++
@@ -78,7 +79,7 @@ A minimal working example for the AdcInterfaceClient is:
     % Make a AdcInterfaceClient object with obj_id 0
     adcInterface = AdcInterfaceClient(’com’,com);
     % Use the AdcInterfaceClient object
-    adc_voltage = adcInterface.get(’adc_voltage’);
+    adcVoltage = adcInterface.get(’adc_voltage’);
 
 Python
 ~~~~~~
