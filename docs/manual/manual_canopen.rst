@@ -79,6 +79,7 @@ The PDO service provides a method to request and receive real time data. PDO dat
 
 .. image:: ../_static/manual_images/fortiq/canopen/rpdo.png
 
+Shown above is the standard synchronous PDO process. The master node is responsible for sending the *Sync object* shown by the diamond topped lines. Within the time alloted by the *Synchronous window length*, slave nodes send back the data stored in the mapped object directory entries. Using Vertiq modules as an example, on reception of the *Sync object*, the module will send back OD entries 0x2007 and 0x2008, observed angle and velocity. The objects returned by the slave node are illustrated as *Objects mapped into synchronous RPDO* in the image.
 
 Service Data Objects (SDO)
 ****************************

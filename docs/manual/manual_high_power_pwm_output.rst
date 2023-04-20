@@ -129,19 +129,3 @@ Vertiq’s PWM interface can also be accessed through Vertiq’s Python API. Thr
 	.. code-block::
 
 		fortiq.save("pwm_interface", "pwm_mode")
-
-
-PWM Interface - Entry Summary
-------------------------------------
-
-.. table:: *pwm_interface* Entries
-
-	+---------------+-----------------+----------+
-	| Entry Name    | Access          | Format   |
-	+---------------+-----------------+----------+  
-	| pwm_frequency | Read/Write/Save | uint32   |
-	+---------------+-----------------+----------+
-	| pwm_mode      | Read/Write/Save | uint8    |
-	+---------------+-----------------+----------+
-	| duty_cycle    | Read/Write      | uint8    |
-	+---------------+-----------------+----------+

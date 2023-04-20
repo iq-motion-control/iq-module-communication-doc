@@ -94,15 +94,3 @@ The ADC interface can also be accessed through Vertiq’s Python API. Through th
 
 		print(fortiq.get("adc_interface", "raw_value"))
 
-ADC Interface Client - Entry Summary
------------------------------------------
-.. table:: *adc_interface* Entries
-
-	+---------------+--------+----------+
-	| Entry Name    | Access | Format   |
-	+===============+========+==========+  
-	| adc_voltage   | Read   | float    |
-	+---------------+--------+----------+
-	| raw_value     | Read   | uint16   |
-	+---------------+--------+----------+
-

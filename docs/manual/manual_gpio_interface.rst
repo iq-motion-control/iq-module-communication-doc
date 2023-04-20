@@ -48,7 +48,7 @@ Description
 ===============
 Vertiq’s GPIO interface provides a flexible method of interacting with a module’s user-specific GPIO pins. Each GPIO can be set to input or output, which can be switched on-the-fly, if desired. Each pin set as an input may choose whether or not to use an `internal pull resistor (up or down) <https://eepower.com/resistor-guide/resistor-applications/pull-up-resistor-pull-down-resistor/#>`_, as well as the type of pull used. Each pin set as an output may choose whether to output in a `Push-Pull or Open-Drain configuration <https://ebics.net/the-difference-between-push-pull-output-and-open-drain-output-of-microcontroller-i-o-port/>`_. 
 
-All pins set as an input can read the input value, and all pins set to output can read, write, and save the outgoing value. Access to these behaviors is available through registered or addressable methods. Both registered and addressable interactions occur via IQUART commands, and will be covered more below. Vertiq's GPIO interface has flexibility to change any GPIO parameter via the registered or addressable format. Any savable value set through the IQ Control Center will be stored in the module’s persistent memory, and will be retained through resets and power-cycles. Using Vertiq’s Python API (see :ref:`Vertiq Python API - GPIO Interface`), values can be written, saved, and read.
+All pins set as an input can read the input value, and all pins set to output can read, write, and save the outgoing value. Access to these behaviors is available through registered or addressable methods. Both registered and addressable interactions occur via IQUART commands, and will be covered more below. Vertiq's GPIO interface has flexibility to change any GPIO parameter via the registered or addressable format. Any savable value set through the IQ Control Center will be stored in the module’s persistent memory, and will be retained through resets and power-cycles. Using Vertiq’s Python API, values can be written, saved, and read.
 
 Registered GPIO Access
 =======================
@@ -155,7 +155,7 @@ The GPIO interface can also be used through Vertiq’s Python API. To use the AP
 
 #. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
 
-#. After completing the walkthrough, you can interact with the *gpio_controller* client summarized in :ref:`gpio interface client` below
+#. After completing the walkthrough, you can interact with the *gpio_controller* client
 
 #. To read a value
 
@@ -193,34 +193,3 @@ The GPIO interface can also be used through Vertiq’s Python API. To use the AP
 		
 		fortiq.save("gpio_controller", "modes_register")
 
-.. _gpio interface client:
-
-GPIO Controller Client - Entry Summary
------------------------------------------
-.. table:: GPIO Controller Entries
-
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| Entry                            | Access          | Description                                                |
-	+==================================+=================+============================================================+
-	| modes_register                   | Read/Write/Save | Access to the GPIO Modes register                          |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| inputs_register                  | Read            | Access to the GPIO Inputs register                         |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| outputs_register                 | Read/Write/Save | Access to the GPIO Outputs register                        |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| use_pull_register                | Read/Write/Save | Access to the GPIO Use-Pull Register                       |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| pull_type_register               | Read/Write/Save | Access to the GPIO Pull Type Register                      |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| push_pull_register               | Read/Write/Save | Access to the GPIO PP/OD register                          |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| addressable_gpio_modes           | Write           | Addressable write access to a single GPIO's Mode           |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| addressable_outputs              | Write           | Addressable write access to a single GPIO's Output         |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| addressable_use_pull             | Write           | Addressable write access to a single GPIO's Use Pull Value |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| addressable_pull_type            | Write           | Addressable write access to a single GPIO's Pull Type      |
-	+----------------------------------+-----------------+------------------------------------------------------------+
-	| addressable_push_pull_open_drain | Write           | Addressable write access to a single GPIO's PP/OD Mode     |
-	+----------------------------------+-----------------+------------------------------------------------------------+

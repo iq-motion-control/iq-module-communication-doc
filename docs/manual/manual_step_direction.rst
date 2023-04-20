@@ -15,13 +15,13 @@ Step/Direction Modules
 
 .. table:: Step/Direction Modules
 
-	+-----------------+--------------------------------------------------+
-	| Module          |     Notes                                        |
-	+-----------------+--------------------------------------------------+
-	| Vertiq 2306     | Available by request only                        |
-	+-----------------+--------------------------------------------------+
-	| Vertiq Fortiq42 | Available only while using the step/dir firmware |
-	+-----------------+--------------------------------------------------+
+	+-----------------+--------------------------------------------------------+
+	| Module          |     Notes                                              |
+	+-----------------+--------------------------------------------------------+
+	| Vertiq 2306     | Available by request only                              |
+	+-----------------+--------------------------------------------------------+
+	| Vertiq Fortiq42 | Available only while using the Step/Direction firmware |
+	+-----------------+--------------------------------------------------------+
 
 Description
 ============
@@ -57,7 +57,7 @@ Vertiq Python API - Step/Direction Interface
 .. note::
 	Please note that the following *Step/Direction* testing was performed with a Fortiq-42 module. Your exact commands may change depending on the module in use.
 
-The Step/Direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, summarized in :ref:`step_dir_entries`.
+The Step/Direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, summarized in Vertiq's API documentation.
 
 #. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
 
@@ -99,16 +99,3 @@ The Step/Direction interface can also be accessed through Vertiq’s Python API'
 		
 		fortiq.save("step_direction_input", "angle_step")
 
-.. _step_dir_entries:
-
-Step/Direction Client - Entry Summary
--------------------------------------------------
-	.. table:: Step/Direction Input Client 
-
-		+-----------------+------------------+--------+------------------------------------------------------------------+
-		| Entry           | Access           | Format | Description                                                      |
-		+-----------------+------------------+--------+------------------------------------------------------------------+
-		|angle            | Read             | Float  | The module's current position in radians                         |
-		+-----------------+------------------+--------+------------------------------------------------------------------+
-		|angle_step       | Read/Write/Save  | Float  | The distance, in radians, to rotate on each received step signal |
-		+-----------------+------------------+--------+------------------------------------------------------------------+
