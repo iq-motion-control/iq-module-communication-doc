@@ -54,7 +54,6 @@ A minimal working example for the TemperatureEstimatorClient is:
     #include "generic_interface.hpp"
     #include "coil_temperature_estimator_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object
