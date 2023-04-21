@@ -93,7 +93,7 @@ A minimal working example for the MultiTurnAngleControlClient is:
 Python
 ~~~~~~
 
-To use the Multi-Turn Angle Control Client in Python, include ``iqmotion`` and create a module that has the Multi-Turn Angle Control Client within it's firmware. 
+To use the Multi-Turn Angle Control Client in Python, import ``iqmotion`` and create a module that has the Multi-Turn Angle Control Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 
 A minimal working example for the Multi-Turn Angle Control Client is:

@@ -91,7 +91,7 @@ A minimal working example for the CoilTemperatureEstimatorClient is:
 Python
 ~~~~~~
 
-To use the Coil Temperature Estimator Client in Python, include ``iqmotion`` and create a module that has the Coil Temperature Estimator Client within it's firmware. 
+To use the Coil Temperature Estimator Client in Python, import ``iqmotion`` and create a module that has the Coil Temperature Estimator Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

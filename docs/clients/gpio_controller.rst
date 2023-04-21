@@ -90,7 +90,7 @@ A minimal working example for the GpioControllerClient is:
 Python
 ~~~~~~
 
-To use the GPIO Controller Client in Python, include ``iqmotion`` and create a module that has the GPIO Controller Client within it's firmware. 
+To use the GPIO Controller Client in Python, import ``iqmotion`` and create a fortiq module. 
 See the table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

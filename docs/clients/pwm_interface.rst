@@ -87,7 +87,7 @@ A minimal working example for the PwmInterfaceClient is:
 Python
 ~~~~~~
 
-To use the PWM Interface Client in Python, include ``iqmotion`` and create a module that has the PWM Interface Client within it's firmware. 
+To use the PWM Interface Client in Python, import ``iqmotion`` and create a fortiq module. 
 See the table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

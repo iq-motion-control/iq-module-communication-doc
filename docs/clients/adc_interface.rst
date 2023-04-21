@@ -84,7 +84,7 @@ A minimal working example for the AdcInterfaceClient is:
 Python
 ~~~~~~
 
-To use the ADC Interface Client in Python, include ``iqmotion`` and create a module that has the ADC Interface Client within it's firmware. 
+To use the ADC Interface Client in Python, import ``iqmotion`` and create a fortiq module. 
 See the table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
@@ -106,10 +106,10 @@ Message Table
 
 Type ID 91 | ADC Interface
 
-+--------+-------------+--------+-----------+------+-------------------------------------------------------------------------------------------------------------------------+
-| Sub ID | Short Name  | Access | Data Type | Unit | Note                                                                                                                    |
-+========+=============+========+===========+======+=========================================================================================================================+
-| 0      | adc_voltage | get    | float     |      | Read only access to input analog voltage                                                                                |
-+--------+-------------+--------+-----------+------+-------------------------------------------------------------------------------------------------------------------------+
-| 1      | raw_value   | get    | uint16    |      | Read only access to raw ADC value. Ex: 1V to ADC interface would return 1241 (:math:`\frac{V_{\text{in}} * 4096}{3.3}`) |
-+--------+-------------+--------+-----------+------+-------------------------------------------------------------------------------------------------------------------------+
++--------+-------------+--------+-----------+-------+--------------------------------------------------------------------------------------------------------------------------+
+| Sub ID | Short Name  | Access | Data Type | Unit  | Note                                                                                                                     |
++========+=============+========+===========+=======+==========================================================================================================================+
+| 0      | adc_voltage | get    | float     | Volts | Read only access to input analog voltage                                                                                 |
++--------+-------------+--------+-----------+-------+--------------------------------------------------------------------------------------------------------------------------+
+| 1      | raw_value   | get    | uint16    |       | Read only access to raw ADC value. Ex: 1V to ADC interface would return 1241: (:math:`\frac{V_{\text{in}} * 4096}{3.3}`) |
++--------+-------------+--------+-----------+-------+--------------------------------------------------------------------------------------------------------------------------+

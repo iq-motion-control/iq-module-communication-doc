@@ -89,7 +89,7 @@ A minimal working example for the EscPropellerInputParserClient is:
 Python
 ~~~~~~
 
-To use the ESC Propeller Input Parser Client in Python, include ``iqmotion`` and create a module that has the ESC Propeller Input Parser Client within it's firmware. 
+To use the ESC Propeller Input Parser Client in Python, import ``iqmotion`` and create a module that has the ESC Propeller Input Parser Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

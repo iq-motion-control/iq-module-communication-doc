@@ -90,7 +90,7 @@ A minimal working example for the PowerSafetyClient is:
 Python
 ~~~~~~
 
-To use the Power Safety Client in Python, include ``iqmotion`` and create a module that has the Power Safety Client within it's firmware. 
+To use the Power Safety Client in Python, import ``iqmotion`` and create a module that has the Power Safety Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
