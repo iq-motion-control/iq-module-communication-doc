@@ -14,6 +14,7 @@ Pulsing Firmware
 .. include:: ../clients/power_monitor.rst
 .. include:: ../clients/power_safety.rst
 .. include:: ../clients/propeller_motor_control.rst
+.. include:: ../clients/pulsing_rectangular_input_parser.rst
 .. include:: ../clients/serial_interface.rst
 .. include:: ../clients/system_control.rst
 .. include:: ../clients/temperature_estimator.rst
