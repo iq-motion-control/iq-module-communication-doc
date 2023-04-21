@@ -11,7 +11,7 @@ Arduino
 ~~~~~~~
 
 To use System Control in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
-of a SystemControlClient object. See Table 12 for available messages. All message objects use the Short
+of a SystemControlClient object. See the Message Table below for available messages. All message objects use the Short
 Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the SystemControlClient is:
@@ -39,7 +39,7 @@ C++
 ~~~
 
 To use System Control in C++, include system control client.hpp. This allows the creation 
-of a SystemControlClient object. See Table 12 for available messages. All message objects use the Short Name with a
+of a SystemControlClient object. See the Message Table below for available messages. All message objects use the Short Name with a
 trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the SystemControlClient is:
@@ -72,7 +72,7 @@ Matlab
 ~~~~~~
 
 To use System Control in Matlab, all Vertiq communication code must be included in your path. This allows
-the creation of a SystemControlClient object. See Table 12 for available messages. All message strings use
+the creation of a SystemControlClient object. See the Message Table below for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the SystemControlClient is:
@@ -93,7 +93,7 @@ Python
 ~~~~~~
 
 To use the System Control Client in Python, include ``iqmotion`` and create a module that has the System Control Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the System Control Client is:
@@ -104,7 +104,7 @@ A minimal working example for the System Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     FW = |variable_name|.get("system_control", "firmware_version")  # Firmware Version Number
     print(f"Firmware: {FW}")

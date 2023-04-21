@@ -7,7 +7,7 @@ Arduino
 ~~~~~~~
 
 To use Brushless Drive in Arduino, ensure iq_module_communication.hpp is included. This allows the creation of a BrushlessDriveClient object. 
-See Table 3 for available messages. All message objects use the Short
+See the Message Table below for available messages. All message objects use the Short
 Name with a trailing underscore. All messages use the standard ``Get/Set/Save`` functions.
 
 A minimal working example for the BrushlessDriveClient is:
@@ -31,7 +31,7 @@ C++
 ~~~
 
 To use Brushless Drive in C++, include brushless drive client.hpp. This allows the creation of a ``BrushlessDriveClient`` object. 
-See Table 3 for available messages. All message objects use the Short Name with a trailing underscore. All messages use the standard ``Get/Set/Save`` functions.
+See the Message Table below for available messages. All message objects use the Short Name with a trailing underscore. All messages use the standard ``Get/Set/Save`` functions.
 
 A minimal working example for the BrushlessDriveClient is:
 
@@ -65,7 +65,7 @@ Matlab
 ~~~~~~
 
 To use Brushless Drive Controller in Matlab, all Vertiq communication code must be included in your path.
-This allows the creation of a BrushlessDriveClient object. See Table 2 for available messages. All
+This allows the creation of a BrushlessDriveClient object. See the Message Table below for available messages. All
 message strings use the Short Names. All messages use the standard ``Get/Set/Save`` functions.
 
 A minimal working example for the BrushlessDriveClient is:
@@ -85,7 +85,7 @@ Python
 ~~~~~~
 
 To use the Brushless Drive Client in Python, include ``iqmotion`` and create a module that has the Brushless Drive Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the BrushlessDriveClient is:
@@ -96,7 +96,7 @@ A minimal working example for the BrushlessDriveClient is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("brushless_drive", "drive_spin_volts", 5) # Spins motor at 5 volts
 

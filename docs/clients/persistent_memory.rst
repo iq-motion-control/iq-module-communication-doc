@@ -8,7 +8,7 @@ Arduino
 ~~~~~~~
 
 To use Persistent Memory in Arduino, ensure iq_module_communication.hpp is included. This allows the
-creation of a PersistentMemoryClient object. See Table 13 for available messages. All message objects use
+creation of a PersistentMemoryClient object. See the Message Table below for available messages. All message objects use
 the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PersistentMemoryClient is:
@@ -32,7 +32,7 @@ C++
 ~~~
 
 To use Persistent Memory in C++, include persistent memory client.hpp. This allows the creation of a
-PersistentMemoryClient object. See Table 13 for available messages. All message objects use the Short
+PersistentMemoryClient object. See the Message Table below for available messages. All message objects use the Short
 Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PersistentMemoryClient is:
@@ -62,7 +62,7 @@ Matlab
 ~~~~~~
 
 To use Persistent Memory in Matlab, all Vertiq communication code must be included in your path. This allows
-the creation of a PersistentMemoryClient object. See Table 13 for available messages. All message strings
+the creation of a PersistentMemoryClient object. See the Message Table below for available messages. All message strings
 use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PersistentMemoryClient is:
@@ -83,7 +83,7 @@ Python
 ~~~~~~
 
 To use the Persistent Memory Client in Python, include ``iqmotion`` and create a module that has the Persistent Memory Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Persistent Memory Client is:
@@ -94,7 +94,7 @@ A minimal working example for the Persistent Memory Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("persistent_memory", "factory_default_key_1", 12345678)  # Set first key before erasing calibration data
     |variable_name|.set("persistent_memory", "factory_default_key_2", 11223344)  # Set second key before erasing calibration data

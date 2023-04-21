@@ -10,7 +10,7 @@ Arduino
 ~~~~~~~
 
 To use the Anticogging in Arduino, ensure iq_module_communication.hpp is included. This allows the
-creation of a AnticoggingClient object. See Table below for available messages. All message objects use the
+creation of a AnticoggingClient object. See the Message Table below for available messages. All message objects use the
 Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the AnticoggingClient is:
@@ -40,7 +40,7 @@ C++
 ~~~
 
 To use the Anticogging client in C++, include anticogging client.hpp. This allows the creation of an 
-AnticoggingClient object. See Table below for available messages. All message objects use the Short Name with a
+AnticoggingClient object. See the Message Table below for available messages. All message objects use the Short Name with a
 trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the AnticoggingClient is:
@@ -70,7 +70,7 @@ Matlab
 ~~~~~~
 
 To use the Anticogging client in Matlab, all Vertiq communication code must be included in your path. This
-allows the creation of a AnticoggingClient object. See Table below for available messages. All message strings
+allows the creation of a AnticoggingClient object. See the Message Table below for available messages. All message strings
 use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the AnticoggingClient is:
@@ -90,7 +90,7 @@ Python
 ~~~~~~
 
 To use the Anticogging Client in Python, include ``iqmotion`` and create a module that has the Anticogging Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Anticogging Client is:
@@ -101,7 +101,7 @@ A minimal working example for the Anticogging Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("anticogging", "is_enabled", 1)  # Turns on Anticogging
 

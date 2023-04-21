@@ -10,7 +10,7 @@ Arduino
 ~~~~~~~
 
 To use ESC Propeller Input Parser in Arduino, ensure iq_module_communication.hpp is included. This
-allows the creation of a EscPropellerInputParserClient object. See Table 6 for available messages. All
+allows the creation of a EscPropellerInputParserClient object. See the Message Table below for available messages. All
 message objects use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the EscPropellerInputParserClient is:
@@ -38,7 +38,7 @@ C++
 ~~~
 
 To use ESC Propeller Input Parser in C++, include esc propeller input parser client.hpp. This allows the
-creation of a EscPropellerInputParserClient object. See Table 6 for available messages. All message objects
+creation of a EscPropellerInputParserClient object. See the Message Table below for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the EscPropellerInputParserClient is:
@@ -70,7 +70,7 @@ Matlab
 ~~~~~~
 
 To use ESC Propeller Input Parser in Matlab, all Vertiq communication code must be included in your path.
-This allows the creation of a EscPropellerInputParserClient object. See Table 6 for available messages. All
+This allows the creation of a EscPropellerInputParserClient object. See the Message Table below for available messages. All
 message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the EscPropellerInputParserClient is:
@@ -90,7 +90,7 @@ Python
 ~~~~~~
 
 To use the ESC Propeller Input Parser Client in Python, include ``iqmotion`` and create a module that has the ESC Propeller Input Parser Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the ESC Propeller Input Parser Client is:
@@ -101,7 +101,7 @@ A minimal working example for the ESC Propeller Input Parser Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("esc_propeller_input_parser", "velocity_max", 1000) # Set max Velocity to 1000rad/s
 
@@ -110,20 +110,26 @@ Message Table
 
 Type ID 60 | ESC Propeller Input Parser
 
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| Sub ID |  Short Name  |     Access     | Data Type | Unit  |                                                     Note                                                      |
-+========+==============+================+===========+=======+===============================================================================================================+
-| 0      | mode         | get, set, save | uint8     | enum  | 0 = PWM, 1 = Voltage, 2 = Velocity, 3 = Thrust                                                                |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| 1      | raw_value    | get, set       | float     | PU    | Input value [0, 1]                                                                                            |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| 2      | map          | get, set, save | uint8     | enum  | 0 = linear, 1 = sqrt                                                                                          |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| 3      | sign         | get, set, save | uint8     | enum  | 0 = unconfigured, 1 = signed positive, 2 = signed negative, 3 = unsigned positive, 4 = unsigned negative      |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| 4      | volts_max    | get, set, save | float     | V     | Maximum voltage to apply to motor, raw_value scaled to [-volts_max, volts_max] or [0, volts_max]              |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| 5      | velocity_max | get, set, save | float     | rad/s | Maximum angular velocity command, raw_value scaled to [-velocity_max, velocity_max] or [0, velocity_max]      |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
-| 6      | thrust_max   | get, set, save | float     | N     | Maximum thrust command (requires kt values), raw_value scaled to [-thrust_max, thrust_max] or [0, thrust_max] |
-+--------+--------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| Sub ID | Short Name          | Access         | Data Type | Unit  | Note                                                                                                          |
++========+=====================+================+===========+=======+===============================================================================================================+
+| 0      | mode                | get, set, save | uint8     | enum  | 0 = PWM, 1 = Voltage, 2 = Velocity, 3 = Thrust                                                                |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 1      | raw_value           | get, set       | float     | PU    | Input value [0, 1]                                                                                            |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 3      | sign                | get, set, save | uint8     | enum  | 0 = unconfigured, 1 = signed positive, 2 = signed negative, 3 = unsigned positive, 4 = unsigned negative      |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 4      | volts_max           | get, set, save | float     | V     | Maximum voltage to apply to motor, raw_value scaled to [-volts_max, volts_max] or [0, volts_max]              |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 5      | velocity_max        | get, set, save | float     | rad/s | Maximum angular velocity command, raw_value scaled to [-velocity_max, velocity_max] or [0, velocity_max]      |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 6      | thrust_max          | get, set, save | float     | N     | Maximum thrust command (requires kt values), raw_value scaled to [-thrust_max, thrust_max] or [0, thrust_max] |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 7      | safe_factor         | get, set, save | float     | PU    |                                                                                                               |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 8      | flip_negative       | get, set, save | uint8     | bool  |                                                                                                               |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 9      | zero_spin_throttle  | get, set, save | float     | %/100 |                                                                                                               |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+
+| 10     | zero_spin_tolerance | get, set, save | float     | %/100 |                                                                                                               |
++--------+---------------------+----------------+-----------+-------+---------------------------------------------------------------------------------------------------------------+

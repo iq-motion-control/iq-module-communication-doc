@@ -34,8 +34,3 @@ of the Fortiq M42BLS.
 
 .. |module_firmware| Replace:: , firmware="stepdir"
 .. include:: stepdir.rst
-
-.. |module_firmware| Replace:: , firmware="speed"
-.. include:: speed.rst
-
-    

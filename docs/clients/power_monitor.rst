@@ -9,7 +9,7 @@ Arduino
 ~~~~~~~
 
 To use Power Monitor in Arduino, ensure iq_module_communication.hpp is included. This allows the creation
-of a PowerMonitorClient object. See Table 9 for available messages. All message objects use the Short Name
+of a PowerMonitorClient object. See the Message Table below for available messages. All message objects use the Short Name
 with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PowerMonitorClient is:
@@ -40,7 +40,7 @@ C++
 ~~~
 
 To use Power Monitor in C++, include power monitor client.hpp. This allows the creation of a 
-PowerMonitorClient object. See Table 9 for available messages. All message objects use the Short Name with a trailing
+PowerMonitorClient object. See the Message Table below for available messages. All message objects use the Short Name with a trailing
 underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PowerMonitorClient is:
@@ -71,7 +71,7 @@ Matlab
 ~~~~~~
 
 To use Power Monitor in Matlab, all Vertiq communication code must be included in your path. This allows
-the creation of a PowerMonitorClient object. See Table 9 for available messages. All message strings use
+the creation of a PowerMonitorClient object. See the Message Table below for available messages. All message strings use
 the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PowerMonitorClient is:
@@ -92,7 +92,7 @@ Python
 ~~~~~~
 
 To use the Power Monitor Client in Python, include ``iqmotion`` and create a module that has the Power Monitor Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Power Monitor Client is:
@@ -103,7 +103,7 @@ A minimal working example for the Power Monitor Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     volts = |variable_name|.get("power_monitor", "volts")  # returns the input voltage to module
     print(f"Voltage coming into module: {volts}")

@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Vertiq API and Usage'
-copyright = '2022, Vertiq'
-author = 'Malik B. Parker & Fred Kummer'
+copyright = '2023, Vertiq'
+author = 'Ben Quan, Malik B. Parker, Fred Kummer'
 
 # The full version, including alpha/beta/rc tags
 release = '0.12.0'

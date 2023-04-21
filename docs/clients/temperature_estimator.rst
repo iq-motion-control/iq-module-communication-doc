@@ -10,7 +10,7 @@ Arduino
 ~~~~~~~
 
 To use the Temperature Estimator in Arduino, ensure iq_module_communication.hpp is included. This
-allows the creation of a TemperatureEstimatorClient object. See Table 11 for available messages. All
+allows the creation of a TemperatureEstimatorClient object. See the Message Table below for available messages. All
 message objects use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save
 functions.
 
@@ -39,7 +39,7 @@ C++
 ~~~
 
 To use the Temperature Estimator client in C++, include temperature estimator client.hpp. This allows the
-creation of a TemperatureEstimatorClient object. See Table 11 for available messages. All message objects
+creation of a TemperatureEstimatorClient object. See the Message Table below for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the TemperatureEstimatorClient is:
@@ -51,7 +51,6 @@ A minimal working example for the TemperatureEstimatorClient is:
     #include "generic_interface.hpp"
     #include "temperature_estimator_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object
@@ -64,15 +63,13 @@ A minimal working example for the TemperatureEstimatorClient is:
         temp_client.temp_.get(com)
 
         // [Insert code for interfacing with hardware here]
-
-        // temp = temp_client.temp_.get_reply();
     }
 
 Matlab
 ~~~~~~
 
 To use the Temperature Estimator client in Matlab, all Vertiq communication code must be included in your
-path. This allows the creation of a TemperatureEstimatorClient object. See Table 11 for available messages.
+path. This allows the creation of a TemperatureEstimatorClient object. See the Message Table below for available messages.
 All message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the TemperatureEstimatorClient is:
@@ -90,7 +87,7 @@ Python
 ~~~~~~
 
 To use the Temperature Estimator Client in Python, include ``iqmotion`` and create a module that has the Temperature Estimator Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Temperature Estimator Client is:
@@ -101,7 +98,7 @@ A minimal working example for the Temperature Estimator Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     temp = |variable_name|.get("temperature_estimator", "temp")  # Estimated Motor Temperature
     print(f"Estimated Motor Temperature: {temp}")

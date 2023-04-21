@@ -18,7 +18,7 @@ Arduino
 ~~~~~~~
 
 To use Propeller Motor Controller in Arduino, ensure iq_module_communication.hpp is included. This allows
-the creation of a PropellerMotorControlClient object. See Table 2 for available messages. All message objects
+the creation of a PropellerMotorControlClient object. See the Message Table below for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PropellerMotorControlMessaging is:
@@ -42,7 +42,7 @@ C++
 ~~~
 
 To use Propeller Motor Controller in C++, include propeller motor control client.hpp. This allows the
-creation of a PropellerMotorControlClient object. See Table 2 for available messages. All message objects
+creation of a PropellerMotorControlClient object. See the Message Table below for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PropellerMotorControlClient is:
@@ -74,7 +74,7 @@ Matlab
 ~~~~~~
 
 To use Propeller Motor Controller in Matlab, all Vertiq communication code must be included in your path.
-This allows the creation of a PropellerMotorControlClient object. See Table 2 for available messages. All
+This allows the creation of a PropellerMotorControlClient object. See the Message Table below for available messages. All
 message strings use the Short Names. All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the PropellerMotorControlClient is:
@@ -95,7 +95,7 @@ Python
 ~~~~~~
 
 To use the Propeller Motor Control Client in Python, include ``iqmotion`` and create a module that has the Propeller Motor Control Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Propeller Motor Control Client is:
@@ -106,7 +106,7 @@ A minimal working example for the Propeller Motor Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     |variable_name|.set("propeller_motor_control", "ctrl_velocity", 5)  # Supplies 5V to motor
 

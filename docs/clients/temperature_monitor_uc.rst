@@ -9,7 +9,7 @@ Arduino
 ~~~~~~~
 
 To use the Temperature Monitor Microcontroller in Arduino, ensure iq_module_communication.hpp is included. 
-This allows the creation of a TemperatureMonitorUcClient object. See Table 10 for available
+This allows the creation of a TemperatureMonitorUcClient object. See the Message Table below for available
 messages. All message objects use the Short Name with a trailing underscore. All messages use the standard
 Get/Set/Save functions.
 
@@ -38,7 +38,7 @@ C++
 ~~~
 
 To use the Temperature Monitor Microcontroller client in C++, include temperature monitor uc client.hpp.
-This allows the creation of a TemperatureMonitorUcClient object. See Table 10 for available messages. All
+This allows the creation of a TemperatureMonitorUcClient object. See the Message Table below for available messages. All
 message objects use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save
 functions.
 
@@ -73,7 +73,7 @@ Matlab
 ~~~~~~
 
 To use the Temperature Monitor Microcontroller client in Matlab, all Vertiq communication code must be
-included in your path. This allows the creation of a TemperatureMonitorUcClient object. See Table 10 for
+included in your path. This allows the creation of a TemperatureMonitorUcClient object. See the Message Table below for
 available messages. All message strings use the Short Names. All messages use the standard Get/Set/Save
 functions.
 
@@ -94,7 +94,7 @@ Python
 ~~~~~~
 
 To use the Temperature Monitor Microcontroller Client in Python, include ``iqmotion`` and create a module that has the Temperature Monitor Microcontroller Client within it's firmware. 
-See Table below for available messages. All message strings use the Short Names. 
+See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
 A minimal working example for the Temperature Monitor Microcontroller Client is:
@@ -105,7 +105,7 @@ A minimal working example for the Temperature Monitor Microcontroller Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0|module_firmware|)
+    |variable_name| = iq.|module_name|(com, 0)
     
     temp = |variable_name|.get("temperature_monitor_uc", "uc_temp")  # Internal UC Temperature
     print(f"Internal UC temperature: {temp}")
