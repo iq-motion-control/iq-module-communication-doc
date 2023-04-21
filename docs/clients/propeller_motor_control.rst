@@ -94,7 +94,7 @@ A minimal working example for the PropellerMotorControlClient is:
 Python
 ~~~~~~
 
-To use the Propeller Motor Control Client in Python, include ``iqmotion`` and create a module that has the Propeller Motor Control Client within it's firmware. 
+To use the Propeller Motor Control Client in Python, import ``iqmotion`` and create a module that has the Propeller Motor Control Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

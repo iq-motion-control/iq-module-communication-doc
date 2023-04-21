@@ -54,7 +54,6 @@ A minimal working example for the TemperatureEstimatorClient is:
     #include "generic_interface.hpp"
     #include "coil_temperature_estimator_client.hpp"
 
-    float temp;
 
     void main(){
         // Make a communication interface object
@@ -92,7 +91,7 @@ A minimal working example for the CoilTemperatureEstimatorClient is:
 Python
 ~~~~~~
 
-To use the Coil Temperature Estimator Client in Python, include ``iqmotion`` and create a module that has the Coil Temperature Estimator Client within it's firmware. 
+To use the Coil Temperature Estimator Client in Python, import ``iqmotion`` and create a module that has the Coil Temperature Estimator Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
@@ -114,35 +113,34 @@ Message Table
 
 Type ID 83 | Coil Temperature Estimator
 
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| Sub ID | Short Name    | Access         | Data Type | Unit              | Note                                                                                                         |
-+========+===============+================+===========+===================+==============================================================================================================+
-| 0      | t_coil        | get            | float     | degC              | The estimated temperature of the motor coils                                                                 |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 1      | t_alu         | get            | float     | degC              | The estimated temperature of the stator aluminum                                                             |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 2      | t_amb         | get, set, save | float     | degC              | The estimated temperature of the ambient air. This is usually conservative.                                  |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 3      | h_free_conv   | get, set, save | float     | W/K               | Free convection heat transfer coefficient used when the motor is not spinning                                |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 4      | h_coil_alu    | get, set, save | float     | W/K               | Conduction heat transfer coefficient between the coils and the stator aluminum                               |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 5      | h_forced_conv | get            | float     | W/K               | The present calculated force heat transfer convection coefficient                                            |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 6      | c_coil        | get, set, save | float     | J/K               | Thermal heat capacitance/mass of the coils                                                                   |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 7      | h_conv_coeff  | get, set, save | float     | W/(K sqrt(rad/s)) | Forced convection coefficient calculation coefficient. h_forced_conv = h_conv_coeff * sqrt(speed)            |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 8      | otw           | get, set, save | float     | degC              | Over temperature warning. Derating of the motor begins at this temperature.                                  |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 9      | otlo          | get, set, save | float     | degC              | Over temperature lock out. Derating of the motor end at this temperature, where the motor is fully disabled. |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 10     | derate        | get            | float     | PU                | Amount of derating applied to motor [0 1] where 1 is normal operation                                        |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 11     | q_joule       | get            | float     | W                 | Present heating power in coils                                                                               |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 12     | q_conv        | get            | float     | W                 | Present convective cooling power                                                                             |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-| 14     | q_cond        | get            | float     | W                 | Present conductive cooling power                                                                             |
-+--------+---------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------------------+
-
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| Sub ID | Short Name                   | Access         | Data Type | Unit | Note                                                                                                         |
++========+==============================+================+===========+======+==============================================================================================================+
+| 0      | t_coil                       | get            | float     | degC | The estimated temperature of the motor coils                                                                 |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 1      | t_alu                        | get            | float     | degC | The estimated temperature of the stator aluminum                                                             |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 2      | t_amb                        | get, set, save | float     | degC | The estimated temperature of the ambient air. This is usually conservative.                                  |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 3      | h_coil_amb_free_conv         | get, set, save | float     |      | Free convection heat transfer coefficient used when the motor is not spinning                                |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 4      | h_coil_stator_cond           | get, set, save | float     |      | Conduction heat transfer coefficient between the coils and the stator aluminum                               |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 5      | h_coil_amb_forced_conv       | get            | float     |      | The present calculated force heat transfer convection coefficient                                            |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 6      | c_coil                       | get, set, save | float     |      | Thermal heat capacitance/mass of the coils                                                                   |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 7      | h_coil_amb_forced_conv_coeff | get, set, save | float     |      | Forced convection coefficient calculation coefficient. h_forced_conv = h_conv_coeff * sqrt(speed)            |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 8      | otw                          | get, set, save | float     | degC | Over temperature warning. Derating of the motor begins at this temperature.                                  |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 9      | otlo                         | get, set, save | float     | degC | Over temperature lock out. Derating of the motor end at this temperature, where the motor is fully disabled. |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 10     | derate                       | get            | float     |      | Amount of derating applied to motor [0 1] where 1 is normal operation                                        |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 11     | q_coil_joule                 | get            | float     | W    | Present heating power in coils                                                                               |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 12     | q_coil_amb_conv              | get            | float     | W    | Present ambient convective cooling power                                                                     |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+
+| 13     | q_coil_stator_cond           | get            | float     | W    | Present stator conductive cooling power                                                                      |
++--------+------------------------------+----------------+-----------+------+--------------------------------------------------------------------------------------------------------------+

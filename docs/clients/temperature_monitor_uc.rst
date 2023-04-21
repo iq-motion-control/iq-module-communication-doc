@@ -93,7 +93,7 @@ A minimal working example for the TemperatureMonitorUcClient is:
 Python
 ~~~~~~
 
-To use the Temperature Monitor Microcontroller Client in Python, include ``iqmotion`` and create a module that has the Temperature Monitor Microcontroller Client within it's firmware. 
+To use the Temperature Monitor Microcontroller Client in Python, import ``iqmotion`` and create a module that has the Temperature Monitor Microcontroller Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

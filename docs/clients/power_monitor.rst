@@ -91,7 +91,7 @@ A minimal working example for the PowerMonitorClient is:
 Python
 ~~~~~~
 
-To use the Power Monitor Client in Python, include ``iqmotion`` and create a module that has the Power Monitor Client within it's firmware. 
+To use the Power Monitor Client in Python, import ``iqmotion`` and create a module that has the Power Monitor Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

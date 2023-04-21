@@ -1,7 +1,7 @@
 
 Stow User Interface
 -------------------
-The stow position feature allows a Vertiq module to return to a configurable position on a transition from armed to disarmed,
+The :ref:`Stow Position <manual_stow_position>` feature allows a Vertiq module to return to a configurable position on a transition from armed to disarmed,
 on timeouts, or when given an explicit command to stow. 
 This can be useful for holding propellers in an aerodynamic position, or preparing vehicles for storage.
 Users can control what this position is, when the module should attempt to move into the stow position, 
@@ -87,7 +87,7 @@ A minimal working example for the StowUserInterfaceClient is:
 Python
 ~~~~~~
 
-To use the Stow User Interface Client in Python, include ``iqmotion`` and create a module that has the Stow User Interface Client within it's firmware. 
+To use the Stow User Interface Client in Python, import ``iqmotion`` and create a module that has the Stow User Interface Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
@@ -120,7 +120,7 @@ Type ID 85 | Stow User Interface
 +--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 3      | sample_zero         | set             |           |                   | Sets the module's current postiion as the zero angle.                                                                                                                                           |
 +--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 4      | stow                | set             |           |                   |                                                                                                                                                                                                 |
+| 4      | stow                | set             |           |                   | Setting this triggers the module to stow.                                                                                                                                                       |
 +--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 5      | stow_kp             | get, set, save  | float     | V/rad             | The proportional gain to use in the closed loop position controller moving the module to the stow position. A higher gain can lead to a more accurate position, but can also cause oscillation. |
 +--------+---------------------+-----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
