@@ -87,7 +87,7 @@ A minimal working example for the ArmingHandlerClient is:
 Python
 ~~~~~~
 
-To use the Arming Handler Client in Python, include ``iqmotion`` and create a module that has the Arming Handler Client within it's firmware. 
+To use the Arming Handler Client in Python, import ``iqmotion`` and create a module that has the Arming Handler Client within its firmware. 
 See the table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

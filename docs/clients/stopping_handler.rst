@@ -83,7 +83,7 @@ A minimal working example for the StoppingHandlerClient is:
 Python
 ~~~~~~
 
-To use the Stopping Handler Client in Python, include ``iqmotion`` and create a module that has the Stopping Handler Client within it's firmware. 
+To use the Stopping Handler Client in Python, import ``iqmotion`` and create a module that has the Stopping Handler Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

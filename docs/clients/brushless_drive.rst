@@ -84,7 +84,7 @@ A minimal working example for the BrushlessDriveClient is:
 Python
 ~~~~~~
 
-To use the Brushless Drive Client in Python, include ``iqmotion`` and create a module that has the Brushless Drive Client within it's firmware. 
+To use the Brushless Drive Client in Python, import ``iqmotion`` and create a module that has the Brushless Drive Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

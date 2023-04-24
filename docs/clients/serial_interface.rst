@@ -110,7 +110,7 @@ A minimal working example for the SerialInterfaceClient is:
 Python
 ~~~~~~
 
-To use the Serial Interface Client in Python, include ``iqmotion`` and create a module that has the Serial Interface Client within it's firmware. 
+To use the Serial Interface Client in Python, import ``iqmotion`` and create a module that has the Serial Interface Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 

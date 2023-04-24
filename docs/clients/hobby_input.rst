@@ -86,7 +86,7 @@ A minimal working example for the HobbyInputClient is:
 Python
 ~~~~~~
 
-To use the Hobby Input Client in Python, include ``iqmotion`` and create a module that has the Hobby Input Client within it's firmware. 
+To use the Hobby Input Client in Python, import ``iqmotion`` and create a module that has the Hobby Input Client within its firmware. 
 See the Message Table below for available messages. All message strings use the Short Names. 
 All messages use the standard Get/Set/Save functions.
 
