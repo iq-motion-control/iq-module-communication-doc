@@ -1,6 +1,6 @@
 IQUART Flight Controller Interface
 ----------------------------------
-TODO
+This client is used to simplify communication between the flight controller and multiple modules that are connected to an IQUART bus.
 
 Arduino
 ~~~~~~~

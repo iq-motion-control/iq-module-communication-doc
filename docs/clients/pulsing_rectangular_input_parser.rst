@@ -1,6 +1,6 @@
 Pulsing Rectangular Input Parser
 --------------------------------
-TODO
+This client is used with pulsing modules to use the x and y coordinate commands from the flight controller and converts them into a format that can be used by the pulsing module.
 
 Arduino
 ~~~~~~~
