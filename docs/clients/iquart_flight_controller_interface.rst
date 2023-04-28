@@ -38,7 +38,10 @@ To use the IQUART Flight Controller Interface client in C++, include iquart_flig
 creation of an IQUartFlightControllerInterface object. See the Message Table below for available messages. All message objects
 use the Short Name with a trailing underscore. All messages use the standard Get/Set/Save functions.
 
-A minimal working example for the IQUartFlightControllerInterfaceClient is:
+.. include:: ../notes/IFCITelemetryData-struct.rst
+
+Simply create an ``IFCITelemetryData`` object to store the response from the telemetry endpoint.
+A minimal working example for the IQUartFlightControllerInterfaceClient using the telemetry endpoint is:
 
 .. include:: ../notes/c-full-code.rst
 
@@ -46,6 +49,7 @@ A minimal working example for the IQUartFlightControllerInterfaceClient is:
 
     #include "generic_interface.hpp"
     #include "iquart_flight_controller_interface_client.hpp"
+    #include <iostream>
 
     void main(){
         // Make a communication interface object
@@ -58,6 +62,18 @@ A minimal working example for the IQUartFlightControllerInterfaceClient is:
         iquartFlightControllerInterface.telemetry_.get(com)
 
         // Insert code for interfacing with hardware here  
+
+        // Store telemetry data in an IFCITelemetryData object
+        IFCITelemetryData telemtry = iquart_flight_controller_interface.telemetry_.get_reply()
+
+        // Examples on how to access each property of IFCITelemetryData
+        cout << "telemetry coil_temp: " << telemetry.coil_temp << endl;
+        cout << "telemetry consumption: " << telemetry.consumption << endl;
+        cout << "telemetry current: " << telemetry.current << endl;
+        cout << "telemetry mcu temp: " << telemetry.mcu_temp << endl;
+        cout << "telemetry speed: " << telemetry.speed << endl;
+        cout << "telemetry uptime: " << telemetry.uptime << endl;
+        cout << "telemetry voltage: " << telemetry.voltage << endl;
     }
 
 Matlab
@@ -103,10 +119,14 @@ Message Table
 
 Type ID 88 | IQUART Flight Controller Interface
 
-+--------+-----------------------+----------------+-----------+------+------+
-| Sub ID | Short Name            | Access         | Data Type | Unit | Note |
-+========+=======================+================+===========+======+======+
-| 0      | telemetry             | get            | uint8     |      |      |
-+--------+-----------------------+----------------+-----------+------+------+
-| 1      | pulsing_voltage_limit | get, set, save | float     |      |      |
-+--------+-----------------------+----------------+-----------+------+------+
++--------+--------------+----------------+-----------+------+-------------------------------------------------------------------------------------------------------------------+
+| Sub ID | Short Name   | Access         | Data Type | Unit | Note                                                                                                              |
++========+==============+================+===========+======+===================================================================================================================+
+| 1      | telemetry    | get            | uint8     |      | Returns 16 bytes of telemetry information. See the :ref:`IFCITelemetryData struct<ifcitelemetrydata_note>` notes. |
++--------+--------------+----------------+-----------+------+-------------------------------------------------------------------------------------------------------------------+
+| 2      | throttle_cvi | get, set, save | uint8     |      | The control value index for the throttle.                                                                         |
++--------+--------------+----------------+-----------+------+-------------------------------------------------------------------------------------------------------------------+
+| 3      | x_cvi        | get, set, save | uint8     |      | The control value index value for the x rectangular coordinate.                                                   |
++--------+--------------+----------------+-----------+------+-------------------------------------------------------------------------------------------------------------------+
+| 4      | y_cvi        | get, set, save | uint8     |      | The control value index value for the y rectangular coordinate.                                                   |
++--------+--------------+----------------+-----------+------+-------------------------------------------------------------------------------------------------------------------+
