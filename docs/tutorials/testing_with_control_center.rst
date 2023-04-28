@@ -171,13 +171,13 @@ Note that you may see as few as 1 options when using a zip archive, the number d
 After you select your flashing option, the motor should disconnect, and a progress bar at the bottom of the Control Center should start filling. When the progress bar is full, the flash is complete. 
 The motor should restart and play its 5 beep startup song. An example of the Control Center during the flash process is shown below.
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_all_four_flash_options.JPG
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_all_four_flash_options.PNG
     :align: center
     :alt: All Possible Flash Options 
 
     All Possible Flash Options Presented When Using a Vertiq Supplied Archive
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flashing.JPG
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_flashing.PNG
     :align: center
     :alt: Successful Flash
 
@@ -286,7 +286,7 @@ the message prompt allows you to safely flash your motor using the same steps ou
 
     Recovery Mode Message
 
-.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_recovery_tab.JPG
+.. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_recovery_tab.PNG
     :align: center
     :alt: Recovery Tab
 
