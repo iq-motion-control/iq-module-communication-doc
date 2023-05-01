@@ -1,6 +1,6 @@
 Voltage Superposition
 ---------------------
-TODO
+This client is used to set up and change settings related to Vertiq underactuated pulsing propellers.
 
 Arduino
 ~~~~~~~
