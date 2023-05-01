@@ -275,7 +275,7 @@ Now at long last you can make the module spin. Open the Testing tab, and scroll 
   to 0.5 will send the module a 50% throttle command with the configuration specified in this example. 
   **However, because this test is meant to simulate commands from a flight controller, it is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter will not 
   cause the module to spin until the module has armed.** By default Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So, to arm your module using the
-  *ESC Input* parameter, set the *ESC Input* to 0.05, to send a 5% throttle command, and click the set arrow 10 times. On the 10th time you click the set arrow, the module should play 
+  *ESC Input* parameter, set the *ESC Input* to 0.05 to send a 5% throttle command, and click the set arrow 10 times. On the 10th time you click the set arrow, the module should play 
   its 2 note arming song, and begin spinning. Now that the module is armed, any new throttle commands sent using the *ESC Input* parameter will change how it is spinning.
   For example, setting *ESC Input* to 0.5 should set the module to the same speed as setting the Voltage parameter to 2.5V. 
   This is because the module is in Voltage mode with a *Max Volts* of 5V, so a 50% throttle command will set the module to spin with a drive voltage of 2.5V.
