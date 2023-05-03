@@ -11,6 +11,7 @@ Speed Firmware
 .. include:: ../clients/coil_temperature_estimator.rst
 .. include:: ../clients/esc_propeller_input_parser.rst
 .. include:: ../clients/hobby_input.rst
+.. include:: ../clients/multi_turn_angle_control.rst
 .. include:: ../clients/persistent_memory.rst
 .. include:: ../clients/power_monitor.rst
 .. include:: ../clients/propeller_motor_control.rst
