@@ -10,11 +10,11 @@ PWM and DSHOT Control with a Flight Controller
 This tutorial is meant to walk you through the process of performing basic setup and testing for controlling a Vertiq module
 with a flight controller using :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>`. This tutorial covers only the basics of testing 
 that the flight controller can make the module spin with the appropriate protocol, not the setup of any additional flight controller peripherals like an RC controller
-or a GPS. This tutorial should take you from a totally fresh module and flight controller, to a module that can be controlled
+or a GPS. This tutorial takes you from a totally fresh module and flight controller, to a module that can be controlled
 with the :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>` protocols from the flight controller.
 
 This tutorial covers setup and testing on `ArduCopter <https://ardupilot.org/copter/>`_ using `Mission Planner <https://ardupilot.org/planner/>`_ and 
-`PX4 <https://px4.io/>`_ using `QGroundControl <http://qgroundcontrol.com/>`_. It covers using both the :ref:`Standard PWM <hobby_standard_pwm>` additonal :ref:`DSHOT <hobby_dshot>` 
+`PX4 <https://px4.io/>`_ using `QGroundControl <http://qgroundcontrol.com/>`_. It covers using both the :ref:`Standard PWM <hobby_standard_pwm>` additional :ref:`DSHOT <hobby_dshot>` 
 protocols, since the setup process is largely similar for both protocols. In the places where there are differences, the proper steps for both types of protocol are explained.
 
 These instructions are applicable to any Vertiq module using speed firmware. Though they have different form factors and some different configuration parameters available, 
@@ -24,7 +24,7 @@ but it is not specific to the 8108.
 Hardware Setup
 ==============
 This example uses a Vertiq 8108 and a Pix32 from Holybro as the flight controller. Since this tutorial is
-focused specifically on setting up the Vertiq module, the only additional perpheral that is used along with the flight controller is a safety switch.
+focused specifically on setting up the Vertiq module, the only additional peripheral that is used along with the flight controller is a safety switch.
 
 The Vertiq 8108 is powered through its XT-60 connector from a benchtop power supply. For more information on how to properly power your module, refer to its
 datasheet on the `Vertiq website <https://www.vertiq.co/>`_.
@@ -33,16 +33,16 @@ When setting the configuration parameters on the module through Control Center, 
 For more details on how to use the Control Center with a module, refer to :ref:`control_center_tutorial`.
 
 When testing with the flight controller, the pins of the 8108 must be connected to the
-appropriate output pins of the flight conroller. The exact position or labeling of the output pins on your flight controller will vary depending on the specific
-flight contoller you are using, refer to the flight controller's documentation for more information. The top pin of the 8108, shown below with a white wire attached to
+appropriate output pins of the flight controller. The exact position or labeling of the output pins on your flight controller will vary depending on the specific
+flight controller you are using, refer to the flight controller's documentation for more information. The top pin of the 8108, shown below with a white wire attached to
 it, should be connected to the signal output pin on your flight controller that is sending throttle commands. The bottom pin of the 8108 should be connected to ground. 
 For this specfic example using a Pix32, the signal pin was attached to MAIN OUT 1 on the Pix32 when using Standard PWM, and AUX OUT 1 when using DSHOT (see the warning below for more details on 
 DSHOT hardware setup).
 
-.. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use a different set of outputs than when using Standard PWM. These outputs maybe labeled as AUX or FMU PWM**. 
+.. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use a different set of outputs than when using Standard PWM. These outputs may be labeled as AUX or FMU PWM**. 
     This is because not all outputs on all flight controllers support using DSHOT. See the `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
     section of the Arducopter DSHOT setup instructions and the `PX4 DSHOT documentation <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ for more details. 
-    Refer to your flight controllers documentation for details on what protocols its outputs support.
+    Refer to your flight controller's documentation for details on what protocols its outputs support.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/flight_controller_wires.jpg
     :align: center
@@ -101,13 +101,13 @@ Reverting to Defaults (Optional)
 ================================
 
 If you have previously used or set any configurations on the module, it may be useful to revert it to its default state before continuing with this tutorial. This ensures
-that you start with a fresh module and there should be no lingering issues from previous configurations. **Note that these instructions are only correct for Control Center
+that you start with a fresh module, and there should be no lingering conflicts from previous configurations. **Note that these instructions are only correct for Control Center
 version 1.2.6 and greater. Earlier versions used a different factory defaulting workflow.**
 
 To reset the module, first connect to it with Control Center. Then navigate to the Advanced tab, and click Yes when prompted if you are sure that you want to access the Advanced
 settings. 
 
-Scroll down until you see the the *Revert to Factory Default Key 1* and *Revert to Factory Default Key 2* parameters. These keys need to be set properly before the module can be
+Scroll down until you see the *Revert to Factory Default Key 1* and *Revert to Factory Default Key 2* parameters. These keys need to be set properly before the module can be
 defaulted. This is meant to protect against unintentional defaulting. Set *Revert to Factory Default Key 1* to 12345678 and *Revert to Factory Default Key 2* to 11223344.
 This will prime the module for defaulting. See the figure below for an example of setting these keys.
 
@@ -117,7 +117,7 @@ This will prime the module for defaulting. See the figure below for an example o
     Revert to Factory Defaults Keys
 
 Then, find the *Revert to Factory Defaults* configuration parameter and click the set arrow. The module should disconnect and reboot. When you re-connect, 
-it should be defaulted to its factory fresh state. For more information on how to connect to the module in Control Center and to set parameters, refer 
+it should be in its factory fresh state. For more information on how to connect to the module in Control Center and to set parameters, refer 
 to :ref:`control_center_tutorial`. 
 
 .. _hobby_fc_tutorial_motor_configuration:
@@ -128,13 +128,13 @@ Module Configuration
      is held in place securely. If the module is unsecured it could move unexpectedly when it starts to spin. 
      This could damage the module, its connectors, or any nearby observers.
 
-Now that the module is setup, you can begin configuring it with Control Center. The General tab and the Tuning tab are the only tabs with parameters that need to be configured.
+Now that the module is set up, you can begin configuring it with Control Center. The General tab and the Tuning tab are the only tabs with parameters that need to be configured.
 If you are unfamiliar with setting parameters through the Control Center, refer to :ref:`control_center_tutorial`.
 
 General Tab
 ***********
 First, there are a few parameters to set in the General tab. Not all of the parameters in this tab are important, and only the relevant ones are
-highlighted here. If a parameter is not mentioned, you can safely leave it at its default. The correct settings and purpose of each parameters are 
+highlighted here. If a parameter is not mentioned, you can safely leave it at its default. The correct settings and purpose of each parameter is 
 described in detail in the sections below. **Most parameters are the same in Standard PWM and DSHOT setups, but ones that differ have sections for both setups**:
 
 Communication
@@ -142,8 +142,11 @@ Communication
 This parameter controls what type of :ref:`Hobby Protocols <manual_hobby>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
 which can be selected from the drop-down box. Once the module receives a command in its selected hobby protocol, it will only listen for that type of command until power cycled, so you will
 not be able to connect with Control Center until you power cycle the module. For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is reset. 
-If left in Autodetect mode, the module should listen for all of the supported Hobby protocols to try to determine which one you are using. The module can sometimes have trouble automatically discovering the protocol though 
-depending on the flight controller and how noisy the communication lines are. In those cases, it is best to set the module to only listen for a specific type of protocol. For this reason, we will explicitly set the hobby protocol 
+If left in Autodetect mode, the module should listen for all of the supported Hobby protocols to try to determine which one you are using. 
+
+
+The module may have difficulty automatically discovering the protocol, however, depending on the flight controller configurations and can be affected by noise on the communication lines.
+In those cases, it is best to set the module to only listen for a specific type of protocol. For this reason, we will explicitly set the hobby protocol 
 to use in this setup. The proper value for this configuration depends on if you are using :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>`:
 
   * **Standard PWM Setup**: Set *Communication* to *Standard PWM* to receive :ref:`Standard PWM <hobby_standard_pwm>` messages in version 1.2.6 and later of the Control Center. In Version 1.2.5 and earlier, you will need to select OneShot125
@@ -157,14 +160,14 @@ The image below shows what the *Communication* parameter should look like in Con
 
     Communication Parameter
 
-.. warning:: **Known Bug:** In version 1.2.5 and earlier versions of the Control Center, there is a bug in the dropdown menu for the Communication parameter. The numbering for options besides Autodetect was improperly configured.
+.. warning:: **Known Bug:** In versions 1.2.5 and earlier versions of the Control Center, there is a bug in the dropdown menu for the Communication parameter. The numbering for options besides Autodetect was improperly configured.
     If you select a protocol from the list other than Autodetect, the module will actually be listening for the next protocol up in the list instead of what you selected. So in order to listen for PWM, you should select OneShot125.
-    This is addressed in version 1.2.6 and later of the Control Center.
+    This is addressed in versions 1.2.6 and later of the Control Center.
 
 FC 2D/3D Mode
 ##############
-This parameter tells the module if the flight controller wants it to operate in 2D mode (spinning in one direction) or 3D mode (able to spin in both directions). For more detail on
-what exactly these modes and how to configure the module to spin in both directions when receiving throttle commands, see the :ref:`manual_throttle` section of the Feature Reference Manual.
+This parameter tells the module if the flight controller wants it to operate in 2D mode (spinning in one direction) or 3D mode (able to spin in both directions). For more details on 
+these modes and how to configure the module's spinning behaviors, see the :ref:`manual_throttle` section of the Feature Reference Manual.
 **For this tutorial, 2D mode will be used for the sake of simplicity**. Set the *FC 2D/3D Mode* parameter to *2D* as shown below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_fc_mode.png
@@ -184,12 +187,12 @@ The list below provides a brief introduction to each of the 3 possible modes:
     
     * Despite the similar naming, this mode has nothing to do with using the Standard PWM hobby protocol
   
-  * **Voltage**: This mode interprets the commands as a fraction of the maximum voltage set in the Tuning tab. So if your maximum voltage was set at 8V, and you sent a 25% throttle command, the module would apply a drive voltage of 2V.
-  * **Velocity**: This mode interprets the command as a fraction of the maximum velocity set in the Tuning tab. So if your maximum velocity was set at 100 rad/s, and you sent a 25% throttle command, the module would try to spin at 25 rad/s.
+  * **Voltage**: This mode interprets the commands as a fraction of the maximum voltage set in the Tuning tab. So, if your maximum voltage was set at 8V, and you sent a 25% throttle command, the module would apply a drive voltage of 2V.
+  * **Velocity**: This mode interprets the command as a fraction of the maximum velocity set in the Tuning tab. So, if your maximum velocity was set at 100 rad/s, and you sent a 25% throttle command, the module would try to spin at 25 rad/s.
 
 The meaning of this parameter is covered in greater detail in the :ref:`throttle_mode_maximums_directions` section of the Feature Reference Manual. 
 
-For this setup, you should **put the module in Voltage mode**. To do that, set the *Mode* parameter to *Voltage* in Control Center, as shown below.
+For this example, we will **put the module in Voltage mode**. To do this, set the *Mode* parameter to *Voltage* in Control Center, as shown below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_mode.png
     :align: center
@@ -212,13 +215,13 @@ For this example, the module should always spin **counter-clockwise**. To config
   
 Tuning Tab
 **********
-The Tuning tab also has parameters that must be set for this example. Similar to the General tab, the majority of the parameters on this tab are not relevant for this test setup and be can be left at their defaults.
-The sections below provide descriptions of the important parameters in the Tuning tab and details on what they should be set to. They are the same for both DSHOT and PWM setups.
+The Tuning tab also has parameters that must be set for this example. Similarly to the General tab, the majority of the parameters on this tab are not relevant for this test setup and can be left at their defaults.
+The sections below describe important Tuning tab parameters as well as their values for the case of this example. They are the same for both DSHOT and PWM setups.
 
 Max Volts
 ##########
 This parameter determines the maximum drive voltage of the module when operating in Voltage mode. All setpoints will be interpreted as a fraction of this maximum voltage. So if *Max Volts* is 24V, then a 50% 
-command will drive the module with 12V. To use Voltage mode, this needs to be set to the desired maximum. For safety reasons, *Max Volts* is **set to 10V** in Control Center for this test setup, as shown in the image below. 
+command will drive the module with 12V. To use Voltage mode, this needs to be set to the desired maximum. For safety reasons, *Max Volts* is **set to 10V** for this test setup, as shown in the image below. 
 This keeps the speed of the module relatively low. When using the module on an actual drone you will likely want to increase this to match your battery voltage. For more information on this parameter and
 the modes available on the module, refer to the :ref:`throttle_mode_maximums_directions` section of the Feature Reference Manual.
 
@@ -230,7 +233,7 @@ the modes available on the module, refer to the :ref:`throttle_mode_maximums_dir
 Timeout
 ########
 This determines the length of the module's timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below, 1s, it can be difficult to test with the Control Center. 
-So for this example the **timeout should be set to 1.5s**. To do this, set the *Timeout* paramete in Control Center to 1.5s, as shown in the image below. Depending on how frequently your flight controller sends throttle commands, 
+So for this example, the **timeout should be set to 1.5s**. To do this, set the *Timeout* parameter to 1.5s, as shown in the image below. Depending on how frequently your flight controller sends throttle commands, 
 you may want to decrease the timeout when using the modules on a drone. For more information on the timeout feature of Vertiq modules, refer to the :ref:`manual_timeout` section of the Feature Reference Manual.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_timeout.png
@@ -240,15 +243,15 @@ you may want to decrease the timeout when using the modules on a drone. For more
 
 Testing the Module
 *******************
-.. warning:: Double check that the module is secured and there is no propeller attached before performing any testing.
+.. warning:: Ensure that the module is secured and there is no propeller attached before performing any testing.
 
-To test that module is configured to spin and take throtle commands from the flight controller, open the Testing tab in Control Center and look for the *ESC Input* parameter. This parameter commands the module to spin in the same way 
-that a :ref:`hobby protocol <manual_hobby>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`., so it is the best way to test if 
+To test that the module is configured to spin and take throttle commands from the flight controller, open the Testing tab in Control Center and look for the *ESC Input* parameter. This parameter commands the module to spin in the same way 
+that a :ref:`hobby protocol <manual_hobby>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`, so it is the best way to test if 
 the module is ready to connect with the flight controller. So setting this to 0.5 will send the module a 50% throttle command with the configuration specified in this example. 
-**Make sure the module is secured before attempting to spin it, as it will "jump" if unsecured**. 
+**Make sure the module is secured before attempting to spin it, as it may move dangerously if unsecured**. 
 
-**However, because this test is meant to simulate commands from a flight controller, it is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter 
-will not cause the module to spin until the module has armed.** By default Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So to arm your module using the
+**However, because this test is meant to simulate commands from a flight controller, the** *ESC Input* **parameter is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter 
+will not cause the module to spin until the module has armed.** By default, Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So to arm your module using the
 *ESC Input* parameter, set the *ESC Input* to 0.05 to send a 5% throttle command as shown below, and click the set arrow 10 times. On the 10th time you click the set arrow, the module should play 
 its 2 note arming song, and begin spinning. 
 
