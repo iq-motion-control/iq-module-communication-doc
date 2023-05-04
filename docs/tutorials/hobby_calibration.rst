@@ -125,8 +125,8 @@ follow these steps:
 
     1. Power off the Vertiq module.
     2. Set the duration in Motor Test to 120s. The precise number here isn't critically important, this is just meant to hold each command for a long enough time to make it easy to manually change them.
-    3. Set the Throttle % to 100%
-    4. Click "Test All Motors" to start sending the 100% throttle commands
+    3. Set the Throttle % to 100%.
+    4. Click "Test All Motors" to start sending the 100% throttle commands.
     5. Power on the Vertiq Module, and wait for it to start playing the begin calibration song.
     6. Lower the Throttle % to 0% and click "Test All Motors". The module song should switch to the calibration-in-progress song.
     7. Wait 5s, and then set the Throttle % to 50% and click "Test All Motors". The module should stop playing the calibration-in-progress song, indicating it completed calibration.
