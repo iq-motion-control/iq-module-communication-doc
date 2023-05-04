@@ -22,7 +22,7 @@ speed firmware. If you are using position firmware, some of the parameters discu
 Module Datasheets
 ===================
 Before trying to use your module, we recommend that you read through its datasheet to
-understand their mechanical and electrical specifications. The datasheets
+understand its mechanical and electrical specifications. The datasheets
 for all Vertiq modules can be found under the appropriate product tab in the Products section of the `Vertiq website <https://www.vertiq.co/>`_.
 
 Hardware Setup
@@ -43,7 +43,7 @@ First, plug your USB-to-UART converter into your computer and install any necess
 If installed correctly, a new serial port should be available on your PC. Take note of the
 name of this new serial port. In Windows you can see this under Device Manager->Ports (COM & LPT).
 The image below shows an example where the connected USB-to-UART converter shows up as COM3. This
-port will be used later when connecting with the Control Center
+port will be used later when connecting with the Control Center.
 
 .. figure:: ../_static/tutorial_images/control_center_tutorial/windows_device_manager_com.JPG
     :align: center
