@@ -260,14 +260,14 @@ its 2 note arming song, and begin spinning.
 
     ESC Input Parameter For 5% Throttle Command
 
-Now that the module is armed, any new throttle commands sent using the *ESC Input* parameter will change how it is spinning.
+Now that the module is armed, any new throttle commands sent using the *ESC Input* parameter will change how it spins.
 For example, setting *ESC Input* to 0.1 should set the module to spin with a drive voltage of 1V. This is because the module is in Voltage mode with a *Max Volts* of 10V, so a 
 10% throttle command commands 1V. Confirm that the module is spinning counter-clockwise, matching the direction that was configured previously.
 
 For more information on how to configure the module to properly interpret throttle commands, see the :ref:`manual_throttle` section of the Feature Reference 
 Manual. For more information on arming and disarming the module, refer to the :ref:`manual_advanced_arming` section of the Feature Reference Manual.
 
-If the module is spinning as expected, set the *Coast* parameter to stop the module. Now, you can move on to setting up the flight controller.
+If the module is spinning as expected, set the *Coast* parameter to stop the module. With your module configured to spin, you must now set up your flight controller to send proper commands.
 
 Ardupilot and Mission Planner Configuration and Testing
 =======================================================
@@ -281,8 +281,8 @@ flight controller and module can communicate with no additional flight controlle
 
 Setting Frame Type
 ******************
-The first step is to provide ArduCopter with a frame type. On a real drone, this should match the physical layout of the drone, but for this test the specific frame you set is
-unimportant. To set the frame type, select "Setup" from the top bar in Mission Planner, and then expand "Mandatory Hardware" on the sidebar. Select "Frame Type", and a frame selection
+The first step is to provide ArduCopter with a frame type. On a fully assembled drone, this should match the drone's physical layout, but for this test the specific frame you set is
+unimportant. To set the frame type, select "Setup" from the top bar in Mission Planner, and then expand "Mandatory Hardware" on the sidebar. Select "Frame Type," and a frame selection
 screen should appear. This tutorial was tested with the "X" quadcopter frame, under the first frame option, as shown below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_frame.JPG
@@ -300,7 +300,7 @@ the following parameters are set to the proper values and change them if necessa
 
 * **MOT_PWM_TYPE = 0**
   
-  * This selects the output PWM Type. 0 Sets it to standard PWM. See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`_ for more details
+  * This selects the output PWM Type. 0 sets it to standard PWM. See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`_ for more details.
   
 * **MOT_PWM_MAX = 2000**
   
@@ -323,23 +323,23 @@ Reboot your flight controller to make sure the new parameters take effect. The i
 
 Setting ArduCopter DSHOT Parameters
 ***********************************
-.. note:: This section should only be used if you want to use the DSHOT protocol to control the modules. Otherwise, use `Setting ArduCopter PWM Parameters`_ above
+.. note:: This section should only be used if you want to use the DSHOT protocol to control the modules. Otherwise, use `Setting ArduCopter PWM Parameters`_ above.
 
 ArduCopter needs to be configured properly to use :ref:`DSHOT <hobby_dshot>` as its protocol for controlling the modules. To set these parameters, connect to your flight controller and select "Full Parameter List" under the "Config"
 section of Mission Planner. Search for the parameters listed below and make sure they are set to the appropriate values:
 
 * **MOT_PWM_TYPE = 6**
   
-  * This selects the output PWM Type. 6 Sets it DSHOT600. See the ArduCopter documentation for more details
+  * This selects the output PWM Type. 6 sets it to DSHOT600. See the ArduCopter documentation for more details.
 
 * **SERVO_DSHOT_ESC = 0**
   
-  * This controls what type of additonal ESC commands will be sent from the flight controller. These additional commands include things like beeping, LED control, and other potentially useful but non-essential
-    extra commands that can be sent over DSHOT. But this does not need to be enabled in order to send the module throttle commands over DSHOT, so we are leaving it disabled for simplicity. See the ArduCopter documentation for more details
+  * This controls what type of additional ESC commands will be sent from the flight controller. These additional commands include things like beeping, LED control, and other potentially useful but non-essential
+    extra commands that can be sent over DSHOT. This does not need to be enabled in order to send the module throttle commands over DSHOT, so we are leaving it disabled for simplicity. See the ArduCopter documentation for more details.
   
 * **SERVO_DSHOT_RATE = 0**
   
-  * This sets the output rate for DSHOT outputs. Leaving it at 0 leaves the output rate at 1 kHz. See the ArduCopter documentation for more details
+  * This sets the output rate for DSHOT outputs. Leaving it at 0 leaves the output rate at 1 kHz. See the ArduCopter documentation for more details.
 
 Reboot your flight controller to make sure the new parameters take effect. The important parameters and their proper values in the Mission Planner parameter list are shown in the figure below.
 
@@ -350,16 +350,16 @@ Reboot your flight controller to make sure the new parameters take effect. The i
 
 Re-Configuring ArduCopter DSHOT Outputs
 #######################################
-.. note:: Only needed on some flight controlllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on which
+.. note:: Only needed on some flight controllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on which
 
 Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
 The reason for this and the types of flight controllers it affects are discussed in `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
 and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`_. This issue applies to the Pix32 that was used for this tutorial, and also
 applies to the popular Cube Orange flight controller.
 
-For affected flight controllers their main outputs can put out PWM, but not DSHOT. One way to check for this issue is to check the "Messages" section of the "Data" tab in Mission Planner on reboot.
+For affected flight controllers, their main outputs can put out PWM, but not DSHOT. One way to check for this issue is to check the "Messages" section of the "Data" tab in Mission Planner on reboot.
 This will display what kinds of protocols are actually going to be output on each pin based on the configuration. Set your flight controller for DSHOT as discussed above, reboot it, connect to it,
-and check the "Messages" section. If you see a message like the one below that lists "RCOut: PWM 1-12", that means your flight controller outputs will still only output PWM, and you must connect the module to
+and check the "Messages" section. If you see a message like the one below that lists "RCOut: PWM 1-12," that means your flight controller outputs will still only output PWM, and you must connect the module to
 a DSHOT compatible output instead.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_messages_pwm.JPG
@@ -368,8 +368,8 @@ a DSHOT compatible output instead.
     Message Showing Outputs are PWM Only
 
 You need to move the module from a main output to an AUX output (these may also be labeled as FMU PWM outputs). For the Pix32 used to test this example, the module was moved from MAIN OUT 1 to AUX OUT 1. 
-Exactly which pins to use and how they are labeled will vary depnding on your flight controller, refer to the flight controller's documentation for more information. Newer Pixhawk models may label these
-outputs as FMU PWM OUT insetad of AUX OUT. The physical connection of the signal and ground wire to the flight controller for the Pix32 is shown below.
+Exactly which pins to use and how they are labeled will vary depending on your flight controller. Refer to the flight controller's documentation for more information. Newer Pixhawk models may label these
+outputs as FMU PWM OUT instead of AUX OUT. The physical connection of the signal and ground wire to the flight controller for the Pix32 is shown below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/dshot_aux.jpg
     :align: center
@@ -377,7 +377,7 @@ outputs as FMU PWM OUT insetad of AUX OUT. The physical connection of the signal
 
     Connecting to AUX OUT 1
 
-Next, you need to tell ArduCopter to use AUX OUT 1 or whatever the equivalent pin on your flight controller is as the output for Motor 1 on your vehicle. ArduCopter uses SERVOX_FUNCTION variables to assign a function to each
+Next, you need to tell ArduCopter to use AUX OUT 1 (or the equivalent pin on your flight controller) as the output for Motor 1 on your vehicle. ArduCopter uses SERVOX_FUNCTION variables to assign a function to each
 output. For the Pix32, AUX OUT 1 is controlled by SERVO9_FUNCTION. **Set SERVO9_FUNCTION = 33 to output the throttle commands for Motor 1 on AUX OUT 1.** See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`_ for details on what
 settings to use for different functions. The figure below shows the proper setting for this parameter to assign DSHOT to AUX OUT 1 on the Pix32.
 
@@ -395,8 +395,8 @@ Reboot the flight controller and connect to it again. This time in the "Messages
 
 Configuring the Safety Switch
 *******************************
-By default, ArduCopter will not allow you to test spinning your modules unless a safety switch attached to your flight controller is set. If you have a safety switch connected to your flight
-controller then you can move on to testing the module. **If you do not have a safety switch but would stil like to test your modules, this section will cover how to override the requirement 
+By default, ArduCopter will not allow you to test spinning your modules unless a safety switch attached to your flight controller is armed. If you have a safety switch connected to your flight
+controller, then you can move on to testing the module. **If you do not have a safety switch but would stil like to test your modules, this section will cover how to override the requirement 
 for a safety switch**.
 
 The `ArduCopter documentation <https://ardupilot.org/copter/docs/common-safety-switch-pixhawk.html>`_ provides details on how to configure the safety switch. To disable the switch,
@@ -416,8 +416,8 @@ Testing the Module with Mission Planner
 Now we can use Mission Planner's built-in motor testing tools to make sure the flight controller can control the module.
 
 1. Start with the module powered off, but connected to the flight controller.
-2. Select "Setup" from the top toolbar, and then expand "Optional Hardware" on the sidebar
-3. Select "Motor Test" from the "Optional Hardware" options, see the image below as an example of what the Motor Test screen should look like.
+2. Select "Setup" from the top toolbar, and then expand "Optional Hardware" on the sidebar.
+3. Select "Motor Test" from the "Optional Hardware" options. See the image below as an example of what the Motor Test screen should look like at this point.
 
   .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_motor_test.png
     :align: center
@@ -433,19 +433,19 @@ Now we can use Mission Planner's built-in motor testing tools to make sure the f
   * If using Standard PWM, the module should play its two-note arming song as the flight controller starts sending 0% throttle commands once the safety switch is armed
   * On DSHOT, the module will not arm yet.
   
-6. Set the "Throttle %" to 5% and the "Duration" to 5s, and click "Test All Motors" 
+6. Set the "Throttle %" to 5% and the "Duration" to 5s, and click "Test All Motors".
 7. The module should spin slowly for 5 seconds, and then stop.
    
   * On Standard PWM, the module will spin and stop without any additional arming or disarming noises
   * On DSHOT, the module will arm when you send the command, spin for the duration, and then stop and disarm again, since DSHOT sends a specific disarm command at the end of the test.
    
-8. Try some other throttle levels to see the module running at different speeds
+8. Try some other throttle levels to see the module running at different speeds.
    
-  * For DSHOT, you cannot go straight to a high throttle level, as the module will disarm after each command, and only re-arms on a throttle command close to 0%. So for DSHOT testing
+  * For DSHOT, you cannot command a high throttle level immediately as the module will disarm after each command, and only re-arms on a throttle command close to 0%. So for DSHOT testing,
     increase the duration and send a low level throttle command to arm the module, and before that command ends and the module disarms, send another higher throttle command.  
 
-See the `Successful Test Videos`_ section below for a video of this whole process, which demonstrates what sounds you should expect from the module and it successfully
-spinning with Arducopter and Mission Planner.
+See the `Successful Test Videos`_ section below for a video of this whole process. It demonstrates what sounds you should expect to hear from the module, as well as the module 
+successfully spinning with Arducopter and Mission Planner.
 
 PX4 and QGroundControl Configuration and Testing
 ================================================
@@ -456,7 +456,7 @@ See the `Hardware Setup`_ section for more details on the hardware and connectio
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_software.png
     :align: center
 
-    QGroundControl Sotfware Version Used for This Tutorial
+    QGroundControl Software Version Used for This Tutorial
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_firmware.png
     :align: center
@@ -465,14 +465,13 @@ See the `Hardware Setup`_ section for more details on the hardware and connectio
 
 Setting Frame Type
 ******************
-The first step is to choose an airframe. Normally this would be determined by the layout of your airframe, but since this is just a test with a single module,
-the exact airframe used isn't particularly important. For simplicity, this tutorial uses a Generic X Quadcopter, as shown in the figure below. To setup the airframe in 
-QGroundControl follow the steps below.
+The first step is to choose an airframe. Normally, this would be determined by the layout of your vehicle, but with only a single module, the exact airframe used isn't particularly important. 
+For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figure below. To setup the airframe in QGroundControl follow the steps below.
 
-* Click on the QGroundControl logo in the upper left of the interface, and select "Vehicle Setup"
-* Select "Airframe" from the sidebar
-* Scroll through the airframes until you find "Quadrotor X". Leave this set to "Generic Quadcopter", and click on the "Quadrotor X" box. It should be highlighted in yellow
-* Scroll back up and hit "Apply and Restart"
+* Click on the QGroundControl logo in the upper left of the interface, and select "Vehicle Setup".
+* Select "Airframe" from the sidebar.
+* Scroll through the airframes until you find "Quadrotor x". Leave this set to "Generic Quadcopter", and click on the "Quadrotor x" box. It should be highlighted in yellow.
+* Scroll back up and hit "Apply and Restart".
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_frame.JPG
     :align: center
@@ -481,8 +480,8 @@ QGroundControl follow the steps below.
 
 Setting PX4 PWM Parameters
 **************************
-There are several parameters that need to be set properly to make sure the flight controller can communicate with your module using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
-"Parameters". Use the Search bar to look for the following parameters, and set them to the correct values if necessary:
+Several parameters must be set properly to make sure the flight controller can communicate with your module using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
+"Parameters." Use the search bar to look for the following parameters, and set them to the correct values if necessary:
 
 * **PWM_MAIN_MIN = 990** 
   
@@ -504,19 +503,19 @@ There are several parameters that need to be set properly to make sure the fligh
 
 * **DSHOT_CONFIG = Disable (0)**
   
-  * This disables DSHOT from running, which allows normal PWM to run. This should be set to Disable by default, so most likely it will not be necessary to change it. See the image below to se what this parameter looks like in QGroundControl.
+  * This disables DSHOT from running, which allows normal PWM to run. This should be set to Disable by default, so most likely it will not be necessary to change it. See the image below to see what this parameter looks like in QGroundControl.
 
-  .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_dshot_config.png
+  .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_dshot_config.PNG
       :align: center
 
       DSHOT_CONFIG Parameter in QGroundControl
 
-Then reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+Reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
 
 Setting PX4 DSHOT Parameters
 ****************************
 There is only one parameter that needs to be set properly to make sure the flight controller can communicate with your module using DSHOT. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
-"Parameters". Use the Search bar to look for the following parameter, and set it to the correct value:
+"Parameters." Use the Search bar to look for the following parameter, and set it to the correct value:
   
 * **DSHOT_CONFIG = DShot600**
   
@@ -527,20 +526,20 @@ There is only one parameter that needs to be set properly to make sure the fligh
 
     DSHOT_CONFIG Parameter set for DSHOT600
   
-Then reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+Reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
 
 Re-Configuring PX4 DSHOT Outputs
 ################################
-.. note:: These steps are only needed on some flight controlllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on which
+.. note:: These steps are necessary on only some flight controllers. See the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on if your flight controller is included.
 
 Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
-The reason for this and the types of flight controllers it affects are discussed in the `PX4 DSHOT documentation <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ . 
+The reason for this and the affected flight controllers are discussed in the `PX4 DSHOT documentation <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_. 
 This issue applies to the Pix32 that was used for this tutorial, and also applies to the popular Cube Orange flight controller. 
-The main outputs of these flight controllers can put out PWM, but not DSHOT. 
+The main outputs of these flight controllers can output PWM, but not DSHOT. 
 
-If your flight controller is affected by this, **move the signal and ground wires from MAIN 1 OUT to AUX 1 OUT, or the equivalent for your flght controller hardware**, as shown in `Re-Configuring ArduCopter DSHOT Outputs`_.
+If your flight controller is affected by this, **move the signal and ground wires from MAIN 1 OUT to AUX 1 OUT, or the equivalent for your flight controller hardware**, as shown in `Re-Configuring ArduCopter DSHOT Outputs`_.
 
-PX4 provides a fairly easy way to get around this issue. Changing the SYS_USE_IO parameter to 0 forces the AUX or FMU PWM ports to act as if they were main ports. See the PX4 documentation linked above for more details
+PX4 provides a simple workaround for this issue. Changing the SYS_USE_IO parameter to 0 forces the AUX or FMU PWM ports to act as if they were main ports. See the PX4 documentation linked above for more details
 on this and how it affects using other ports with an airframe. If you have a flight controller affected by this issue, **set SYS_USE_IO = 0 to use the AUX or FMU PWM ports instead of the main ports**.
 The figure below shows how the parameter should be configured.
 
@@ -549,7 +548,7 @@ The figure below shows how the parameter should be configured.
 
     SYS_USE_IO Set to Re-Configure AUX Outputs as Main Outputs
 
-Then reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+Reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
 
 Testing the Module with QGroundControl
 ****************************************
@@ -557,19 +556,19 @@ Testing the Module with QGroundControl
 
 Now we can use the motor testing tools in QGroundControl to confirm that the flight controller can control the module.
 
-1. Power off the module, and connect it to the flight controller
-2. In QGroundControl under "Vehicle Setup", select the "Motors" section
+1. Power off the module, and connect it to the flight controller.
+2. In QGroundControl under "Vehicle Setup," select the "Motors" section.
 3. Arm the safety switch on your flight controller if necessary. 
-4. Power up the module, wait for it to complete the startup song.
+4. Turn on the module, and wait for it to complete the 5=beep startup song.
 5. Enable the module sliders with the toggle underneath the sliders.
-6. Move the Motor 1 slider bar just slightly above its start position, to give the module a throttle command near 0%. The module should play its two note arming song, and may spin slowly.
+6. Move the Motor 1 slider bar just slightly above its start position to give the module a throttle command near 0%. The module should play its two note arming song, and may spin slowly.
   
-    * For Standard PWM, After each move of the slider the module should spin for the timeout duration (1.5s) and then stop spinning and timeout until the next command. The timeout will cause
+    * For Standard PWM, after each move of the slider, the module will spin for the timeout duration (1.5s). After the timeout period. it will stop spinning and timeout until the next command. The timeout will cause
       the module to disarm. It will only re-arm on a throttle command close to 0%, so you cannot go straight to high throttle commands after the module times out. You should start by sending
       a low level throttle command to arm the module, and before that command ends and the module disarms, send another higher throttle command. 
       For more information on arming and disarming the module, refer to the :ref:`manual_advanced_arming` section of the Feature Reference Manual.
     * For DSHOT, you cannot go straight to a high throttle level, as the module will disarm after each command, and only re-arms on a throttle command close to 0%. Follow the procedure
-      outlined above for re-arming when using Standard PWM after the module disarms. The module will never timeout while testing with DSHOT, because DSHOT's explicit disarming prevents the timeout.
+      outlined above for re-arming when using Standard PWM after the module disarms. The module will never timeout while testing with DSHOT, due to DSHOT's explicit disarming procedure.
   
 7. Move the Motor 1 slider around, and observe how the module changes speed. 
 
@@ -580,8 +579,8 @@ The figure below demonstrates what the Motor tab should look like in QGroundCont
 
     QGroundControl Motor Testing
 
-See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner, which demonstrates what sounds you should expect from the module and it successfully
-spinning with a flight controller.
+See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner. The video demonstrates what sounds you should expect from the module, and it successfully
+spinning as controlled by a flight controller.
 
 Successful Test Videos
 ======================
