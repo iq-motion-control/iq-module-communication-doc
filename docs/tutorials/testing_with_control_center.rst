@@ -12,7 +12,7 @@ The IQ Control Center is a simple application that allows you to configure and t
 a Vertiq module from your PC, without the need for a flight controller or specialized hardware.
 
 This tutorial will take you through the process of getting started with a module using
-the IQ Control Center. It outlines how to setup the necessary hardware and software,
+the IQ Control Center. It outlines how to set up the necessary hardware and software,
 provides a brief introduction to the Control Center, and teaches you how to perform some basic
 tests on the module with the Control Center.
 

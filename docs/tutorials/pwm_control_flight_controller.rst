@@ -319,7 +319,7 @@ Reboot your flight controller to make sure the new parameters take effect. The i
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_pwm_params.JPG
     :align: center
 
-    Important ArduCopter Stanard PWM Parameters in Mission Planner
+    Important ArduCopter Standard PWM Parameters in Mission Planner
 
 Setting ArduCopter DSHOT Parameters
 ***********************************
