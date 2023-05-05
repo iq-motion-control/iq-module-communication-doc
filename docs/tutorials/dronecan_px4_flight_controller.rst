@@ -395,6 +395,8 @@ are “OK” and “OPERATIONAL.” The code block below shows an example of usi
     uavcan: cycle time: 49750 events, 2398095us elapsed, 48.20us avg, min 13us max 152183us 730.617us rms
     uavcan: cycle interval: 49750 events, 2701.02us avg, min 26us max 152824us 1225.585us rms
 
+.. _dronecan_px4_throttle_test_commands:
+
 Test Throttle
 ##############
 

@@ -77,6 +77,8 @@ DSHOT has various different speeds, currently Vertiq modules support:
 * DSHOT600
 * DSHOT1200
 
+.. _hobby_other_protocols:
+
 Additional Protocols
 *********************
 Vertiq modules also support several other less commonly used hobby protocols:
