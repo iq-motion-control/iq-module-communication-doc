@@ -14,6 +14,6 @@ Here is a description of the IFCITelemetryData struct:
         int16_t voltage;        // Supply voltage in centi-volts        
         int16_t current;        // Supply current in centi-amps
         int16_t consumption;    // Consumtion in mAh
-        int16_t speed;          // Velocity of the mtoor in rad/s
+        int16_t speed;          // Velocity of the motor in rad/s
         uint32_t uptime;        // Uptime in seconds 
     };
