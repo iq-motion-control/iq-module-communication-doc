@@ -49,6 +49,7 @@
    manual/manual_dronecan
    manual/manual_canopen
    manual/manual_hobby
+   manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming
    manual/manual_stow
