@@ -60,10 +60,15 @@ the telemetry sent is the same across all hobby protocols.
 Structure and Content
 ######################
 The structure and content of the ESC telemetry message available when using :ref:`Hobby Protocols <manual_hobby>` is based on the `telemetry
-of KISS and BLHeli ESCs <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_. There is one key difference between
-the telemetry sent by Vertiq modules and the KISS standard. The KISS standard specifies sending ERpm data in the telemetry message. ERpm data
+of KISS and BLHeli ESCs <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_. 
+
+**There is one key difference between the telemetry sent by Vertiq modules and the KISS standard. The KISS standard specifies sending ERpm data in the telemetry message. ERpm data
 must be converted into RPM using the number of poles of the motor to be useful. Vertiq modules directly send RPM data, which eliminates the
-need to perform any conversion.
+need to perform any conversion.**
+
+.. note:: If your flight controller expects to receive ERPM data from these telemetry messages, it may not interpret the RPM data sent by Vertiq modules correctly by default.
+    Additional configuration may be necessary on the flight controller to properly intepret the received RPM data as RPM and not as ERPM. Refer to your flight controller's 
+    documentation.
 
 The telemetry sent by Vertiq modules when using :ref:`Hobby Protocols <manual_hobby>` is specified in the table below. The message
 consists of 10 bytes:

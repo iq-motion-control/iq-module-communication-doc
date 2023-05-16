@@ -39,6 +39,7 @@
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration.rst
    tutorials/dronecan_px4_flight_controller
+   tutorials/flight_controller_telemetry_tutorial
 
 .. toctree::
    :hidden:
