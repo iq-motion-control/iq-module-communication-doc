@@ -87,13 +87,13 @@ A minimal working example for the IQUartFlightControllerInterfaceClient is:
 
 .. code-block:: Matlab
 
-%   % Make a communication interface object
-%   com = MessageInterface('COM18', 115200);
-%   % Make a IQUART Flight Controller Interface object with obj_id 0
-%   % IQUART Flight Controller Interface objects are always obj_id 0
-%   iquartFlightControllerInterface = IQUartFlightControllerInterfaceClient('com', com);
-%   % Use the IQUART Flight Controller Interface object
-%   throttleCvi= iquartFlightControllerInterface.get('throttle_cvi');
+    % Make a communication interface object
+    com = MessageInterface('COM18', 115200);
+    % Make a IQUART Flight Controller Interface object with obj_id 0
+    % IQUART Flight Controller Interface objects are always obj_id 0
+    iquartFlightControllerInterface = IQUartFlightControllerInterfaceClient('com', com);
+    % Use the IQUART Flight Controller Interface object
+    throttleCvi= iquartFlightControllerInterface.get('throttle_cvi');
 
 Python
 ~~~~~~
@@ -120,14 +120,14 @@ Message Table
 
 Type ID 88 | IQUART Flight Controller Interface
 
-+--------+--------------+----------------+-----------+-----------------+-------------------------------------------------------------------------------------------------------------------+
-| Sub ID | Short Name   | Access         | Data Type | Unit            | Note                                                                                                              |
-+========+==============+================+===========+=================+===================================================================================================================+
-| 1      | telemetry    | get            | uint8     | 16 Byte Array   | Returns 16 bytes of telemetry information. See the :ref:`IFCITelemetryData struct<ifcitelemetrydata_note>` notes. |
-+--------+--------------+----------------+-----------+-----------------+-------------------------------------------------------------------------------------------------------------------+
-| 2      | throttle_cvi | get, set, save | uint8     | Number [0, 255] | The control value index for the throttle.                                                                         |
-+--------+--------------+----------------+-----------+-----------------+-------------------------------------------------------------------------------------------------------------------+
-| 3      | x_cvi        | get, set, save | uint8     | Number [0, 255] | The control value index value for the x rectangular coordinate.                                                   |
-+--------+--------------+----------------+-----------+-----------------+-------------------------------------------------------------------------------------------------------------------+
-| 4      | y_cvi        | get, set, save | uint8     | Number [0, 255] | The control value index value for the y rectangular coordinate.                                                   |
-+--------+--------------+----------------+-----------+-----------------+-------------------------------------------------------------------------------------------------------------------+
++--------+--------------+----------------+-------------------------------------------------------------+----------------+-------------------------------------------------------------------------------------------------------------------+
+| Sub ID | Short Name   | Access         | Data Type                                                   | Unit           | Note                                                                                                              |
++========+==============+================+=============================================================+================+===================================================================================================================+
+| 1      | telemetry    | get            | See :ref:`IFCITelemetryData struct<ifcitelemetrydata_note>` | 16 Byte Array  | Returns 16 bytes of telemetry information. See the :ref:`IFCITelemetryData struct<ifcitelemetrydata_note>` notes. |
++--------+--------------+----------------+-------------------------------------------------------------+----------------+-------------------------------------------------------------------------------------------------------------------+
+| 2      | throttle_cvi | get, set, save | uint8                                                       | Index [0, 255] | The control value index for the throttle.                                                                         |
++--------+--------------+----------------+-------------------------------------------------------------+----------------+-------------------------------------------------------------------------------------------------------------------+
+| 3      | x_cvi        | get, set, save | uint8                                                       | Index [0, 255] | The control value index value for the x rectangular coordinate.                                                   |
++--------+--------------+----------------+-------------------------------------------------------------+----------------+-------------------------------------------------------------------------------------------------------------------+
+| 4      | y_cvi        | get, set, save | uint8                                                       | Index [0, 255] | The control value index value for the y rectangular coordinate.                                                   |
++--------+--------------+----------------+-------------------------------------------------------------+----------------+-------------------------------------------------------------------------------------------------------------------+
