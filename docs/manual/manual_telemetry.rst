@@ -189,6 +189,8 @@ Requesting Telemetry with Hobby Protocols
 The procedure for requesting a telemetry message when using :ref:`Hobby Protocols <manual_hobby>` varies depending on if you are using analog
 hobby protocols or DSHOT. The sections below detail these procedures.
 
+.. _telemetry_analog_request:
+
 Analog Hobby Protocols
 -----------------------
 Analog hobby protocols, most notably :ref:`Standard PWM <hobby_standard_pwm>` but also several :ref:`other protocols <hobby_other_protocols>`, send throttle commands by sending pulses

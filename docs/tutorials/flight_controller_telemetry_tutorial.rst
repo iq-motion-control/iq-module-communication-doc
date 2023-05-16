@@ -158,11 +158,37 @@ seen in the `PX4 code for DSHOT parsing <https://github.com/PX4/PX4-Autopilot/bl
 
     PX4 ERPM to RPM Conversion
 
-:red:`Finish discussing how to set MOT_POLE_COUNT`
+Because Vertiq modules send RPM instead of ERPM, this conversion is unnecessary, and actually leads to the flight controller calculating the incorrect RPM by default.
+However, there is a workaround available on PX4 that makes it possible for the flight controller to calculate the correct RPM when using Vertiq modules. 
 
-PWM Telemetry
-**************
-:red:`Should I even have a section here where I basically say "its not happening right now?"" Might be informative`
+The conversion includes the number of poles on the motor. By setting the number of poles to 200, the conversion simplifies down to multiplying the reported RPM by 1.
+This means that the received RPM is used without any conversion, which is what we want when using Vertiq modules. Becaus of this, it is recommended to set the MOT_POLE_COUNT 
+to 200, as shown below, when using DSHOT telemetry with a Vertiq module. This is not the actual number of poles in the module, but the actual number of poles is irrelevant
+when using telemetry with Vertiq modules since they report RPM instead of ERPM.
+
+.. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/px4_mot_pole_count_200.png
+    :align: center
+    :width: 60%
+    :alt: MOT_POLE_COUNT to Properly Calculate RPM
+
+    MOT_POLE_COUNT to Properly Calculate RPM
+
+Standard PWM Telemetry
+***********************
+Vertiq modules support sending ESC telemetry when using :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`other analog protocols <hobby_other_protocols>`
+as covered in the :ref:`ESC Telemetry <telemetry_analog_request>` section of the Feature Reference Manual. This telemetry is requested by sending a 
+:ref:`30 microsecond pulse <telemetry_analog_request>` to the module over the throttle line.  
+
+However, as of v1.13.3 PX4 flight controllers do not seem to support this method of requesting ESC telemetry according to the 
+`PX4 documentation <https://docs.px4.io/main/en/peripherals/esc_motors.html#pwm>`_. The relevant portion of the `PX4 documentation <https://docs.px4.io/main/en/peripherals/esc_motors.html#pwm>`_
+is reproduced below with the important sentence regarding ESC telemetry highlighted.
+
+.. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/px4_no_pwm_telemetry.png
+    :align: center
+    :width: 60%
+    :alt: PX4 Documentation on ESC Telemetry When Using Standard PWM
+
+    PX4 Documentation on ESC Telemetry When Using Standard PWM
 
 DroneCAN Telemetry
 ******************
