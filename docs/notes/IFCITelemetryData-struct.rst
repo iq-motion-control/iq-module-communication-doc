@@ -2,7 +2,7 @@
 
 **IFCITelemetryData Struct**
 
-The data returned by the telemetry endpoint contains 16 bytes. A struct called IFCITelemtryData is required to store this data.
+The data returned by the telemetry endpoint contains 16 bytes. A struct called IFCITelemetryData is required to store this data.
 Here is a description of the IFCITelemetryData struct:
 
 .. code-block:: c++
