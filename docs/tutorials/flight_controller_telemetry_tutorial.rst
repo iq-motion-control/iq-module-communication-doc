@@ -172,6 +172,8 @@ when using telemetry with Vertiq modules since they report RPM instead of ERPM.
     :alt: MOT_POLE_COUNT to Properly Calculate RPM
 
     MOT_POLE_COUNT to Properly Calculate RPM
+    
+After setting the MOT_POLE_COUNT to 200, the RPM values displayed in QGroundControl should be accurate.
 
 Standard PWM Telemetry
 ***********************
@@ -192,3 +194,26 @@ is reproduced below with the important sentence regarding ESC telemetry highligh
 
 DroneCAN Telemetry
 ******************
+First, follow the steps in the :ref:`tutorial for integrating a Vertiq module using DroneCAN with a PX4 flight controller <dronecan_fc_tutorial>`.
+After that tutorial, you should be able to control your module from the flight controller using DroneCAN. After completing that set up, no additional
+configuration of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
+section of the Feature Reference Manual, Vertiq modules constantly broadcast ESC telemetry messages on the DroneCAN bus when they are connected, and PX4
+flight controllers are able to accept those messages.
+
+The only additional configuration that may be useful is to adjust the :ref:`DroneCAN telemetry frequency <telemetry_dronecan_telemetry_frequency>` on
+your Vertiq module to change how frequently telemetry updates are broadcast.
+
+You can confirm that you are receiving ESC telemetry by using the `instrument panel <https://docs.qgroundcontrol.com/master/en/FlyView/FlyView.html#instrument_panel>`_ 
+in QGroundControl to display live ESC Status values. For the example shown below, the instrument panel was configured to show Rpm1, Voltage1, and Current1
+for ESCStatus, in order to show the RPM, Voltage, and Current values from the telemetry received from the module the flight controller considers Motor 1.
+If your module is powered and connected to the flight controller properly, live values for these data points should be shown in the instrument panel as shown below.
+
+.. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/px4_dronecan_instrument_panel.png
+    :align: center
+    :width: 40%
+    :alt: QGroundControl Instrument Panel Showing DroneCAN Telemetry
+
+    QGroundControl Instrument Panel Showing DroneCAN Telemetry
+
+There are no issues with conversion from ERPM to RPM, as there are when using DSHOT, when using DroneCAN. The DroneCAN standard specifies sending a signed
+RPM value, and Vertiq modules conform to this standard.
