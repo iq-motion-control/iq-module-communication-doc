@@ -116,9 +116,9 @@ power on your connected Vertiq module. Select the Status section in the DATA tab
 
     Live Telemetry Updates in Mission Planner
 
-To test telemetry when spinning, use the Motor Test tab to spin the module. The image below shows an example of spinning the module at 5% throttle for 200 seconds,
+To test telemetry when spinning, use the Motor Test tab to spin the module. **Before attempting to spin the
+module ensure that your module is secured and does not have a propeller attached.** The image below shows an example of spinning the module at 5% throttle for 200 seconds,
 which will keep the module spinning for an extended period, making it easier to check the telemetry.
-
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/mp_motor_test.png
     :align: center
@@ -202,7 +202,8 @@ as the module broadcasts its telemetry messages, as shown in the image below.
 
     DroneCAN Live Telemetry Updates in the Status Section of Mission Planner
 
-To see a non-zero RPM you can spin the module from Mission Planner using the Motor Test tab as shown below. 
+To see a non-zero RPM you can spin the module from Mission Planner using the Motor Test tab as shown below. **Before attempting to spin the
+module ensure that your module is secured and does not have a propeller attached.**
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/mp_motor_test.png
     :align: center
@@ -292,7 +293,7 @@ If your module is powered and connected to the flight controller properly, live 
     QGroundControl Instrument Panel Showing DSHOT Telemetry
 
 To see what the telemetry would look like when spinning, you can use the "motor_test" command in the MAVLink Console under Analyze Tools, as shown
-in the code block below.
+in the code block below. **Before attempting to spin the module ensure that your module is secured and does not have a propeller attached.**
 
 .. code::
 
