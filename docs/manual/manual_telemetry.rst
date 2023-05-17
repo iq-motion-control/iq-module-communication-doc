@@ -7,7 +7,7 @@
 ESC Telemetry
 ***********************************************
 Flight controllers, including flight controllers running `PX4 <https://px4.io/>`_ or `Ardupilot <https://ardupilot.org/>`_ firmware, often support receiving ESC telemetry messages from connected ESCs. These messages provide the flight controller with details
-about the state of the ESC and the motor or motors it is controlling. Vertiq modules support a range of these telemetry messages across different protocols. This section provides
+about the state of the ESC and the motor(s) it is controlling. Vertiq modules support a range of these telemetry messages across different protocols. This section provides
 details on the structure of the telemetry messages supported by Vertiq modules and how to use them.
 
 .. _telemetry_module_support:
@@ -19,6 +19,8 @@ Speed Modules
 **************
 
 .. table:: Speed Module Support for Telemetry
+	:widths: 8 8 20
+	:class: tight-table
 
 	+-------------+------------------------------------+---------------------------------------------------------------------------------------------------------------+
 	| Module      | Telemetry Support                  |Notes                                                                                                          |
@@ -34,6 +36,8 @@ Servo Modules
 **************
 
 .. table:: Servo Module Support for Configurable Timeout
+	:widths: 8 8 20
+	:class: tight-table
 
 	+-------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 	| Module      | Telemetry Support                  | Notes                                                                                                                                                                              |
@@ -47,7 +51,7 @@ Servo Modules
 
 Supported Telemetry
 =====================
-The structure of the supported telemetry messages and how to trigger them varies between different protocols. The sections below cover these details for different protocols.
+The structure and triggering of supported telemetry messages varies between different protocols. The sections below cover these details for different protocols.
 
 Hobby Protocols
 ****************
@@ -193,7 +197,7 @@ hobby protocols or DSHOT. The sections below detail these procedures.
 
 Analog Hobby Protocols
 -----------------------
-Analog hobby protocols, most notably :ref:`Standard PWM <hobby_standard_pwm>` but also several :ref:`other protocols <hobby_other_protocols>`, send throttle commands by sending pulses
+Analog hobby protocols, most notably :ref:`Standard PWM <hobby_standard_pwm>`, but also several :ref:`other protocols <hobby_other_protocols>`, send throttle commands by sending pulses
 of varying widths. **Vertiq modules allow users to request telemetry when using analog hobby protocols by sending a 30 microsecond pulse to the module instead of a throttle command.** This
 30 microsecond pulse should be sent in the same way as a typical throttle command pulse. A telemetry response will then be sent as a serial message from the module's telemetry pin.
 This is the same as the procedure outlined on the `KISS ESC telemetry standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
