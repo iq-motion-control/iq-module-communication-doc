@@ -1,6 +1,6 @@
-IQUART Flight Controller Interface
-----------------------------------
-This client is used to simplify communication between the flight controller and multiple modules that are connected to an IQUART bus.
+IQUART Flight Controller Interface (IFCI)
+-----------------------------------------
+This client is used to simplify communication between flight controllers and multiple modules connected to the IQUART bus.
 
 Arduino
 ~~~~~~~
@@ -64,7 +64,7 @@ A minimal working example for the IQUartFlightControllerInterfaceClient using th
         // Insert code for interfacing with hardware here  
 
         // Store telemetry data in an IFCITelemetryData object
-        IFCITelemetryData telemtry = iquart_flight_controller_interface.telemetry_.get_reply()
+        IFCITelemetryData telemetry = iquart_flight_controller_interface.telemetry_.get_reply()
 
         // Examples on how to access each property of IFCITelemetryData
         cout << "telemetry coil_temp: " << telemetry.coil_temp << endl;

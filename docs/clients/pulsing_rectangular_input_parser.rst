@@ -1,6 +1,6 @@
 Pulsing Rectangular Input Parser
 --------------------------------
-This client is used with pulsing modules to use the x and y coordinate commands from the flight controller and converts them into a format that can be used by the pulsing module.
+This pulsing module specific client is used to convert flight controller x/y coordinate commands into a format understood by pulsing modules.
 
 Arduino
 ~~~~~~~
@@ -103,10 +103,10 @@ Message Table
 
 Type ID 89 | Pulsing Rectangular Input Parser
 
-+--------+-----------------------+----------------+-----------+-------+---------------------------------------------------------------+
-| Sub ID | Short Name            | Access         | Data Type | Unit  | Note                                                          |
-+========+=======================+================+===========+=======+===============================================================+
-| 0      | pulsing_voltage_mode  | get, set, save | uint8     | enum  | 0 = Supply Voltage Mode, 1 = Voltage Limit Mode               |
-+--------+-----------------------+----------------+-----------+-------+---------------------------------------------------------------+
-| 1      | pulsing_voltage_limit | get, set, save | float     | Volts | Sets the max pulsing voltage limit when in Voltage Limit Mode |
-+--------+-----------------------+----------------+-----------+-------+---------------------------------------------------------------+
++--------+-----------------------+----------------+-----------+-------+---------------------------------------------------------------------+
+| Sub ID | Short Name            | Access         | Data Type | Unit  | Note                                                                |
++========+=======================+================+===========+=======+=====================================================================+
+| 0      | pulsing_voltage_mode  | get, set, save | uint8     | Enum  | 0 = Supply Voltage Mode, 1 = Voltage Limit Mode                     |
++--------+-----------------------+----------------+-----------+-------+---------------------------------------------------------------------+
+| 1      | pulsing_voltage_limit | get, set, save | float     | Volts | This sets the max pulsing voltage limit when in Voltage Limit Mode. |
++--------+-----------------------+----------------+-----------+-------+---------------------------------------------------------------------+
