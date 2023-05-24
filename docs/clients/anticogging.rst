@@ -81,10 +81,10 @@ A minimal working example for the AnticoggingClient is:
     com = MessageInterface(’COM18’,115200);
 
     % Make an AnticoggingClient object with obj_id 0
-    cog = AnticoggingClient(’com’,com);
+    Anticogging = AnticoggingClient(’com’,com);
 
     % Use the AnticoggingClient object
-    cog.set(’is_enabled’,1);    
+    Anticogging.set(’is_enabled’,1);    
 
 Python
 ~~~~~~

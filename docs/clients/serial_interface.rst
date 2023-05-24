@@ -95,17 +95,19 @@ A minimal working example for the SerialInterfaceClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a Serial Interface object with obj_id 0
-    serial_interface = SerialInterfaceClient(’com’,com);
+    SerialInterface = SerialInterfaceClient(’com’,com);
 
     % Use the Serial Interface object
-    old_baud = serial_interface.get(’baud_rate’); // should be 115200
-    serial_interface.set(’baud_rate’, 9600);
+    oldBaud = SerialInterface.get(’baud_rate’); // should be 115200
+    SerialInterface.set(’baud_rate’, 9600);
 
     % Note: the baud rate is now 9600. This com object uses 115200
     
     % Make a new com object at 9600 baud to continue communication
     com = MessageInterface(’COM18’,9600);
-    serial_interface = SerialInterfaceClient(’com’,com);
+    SerialInterface = SerialInterfaceClient(’com’,com);
+
+    newBaud = SerialInterface.get(’baud_rate’); // should be 9600 
     
 Python
 ~~~~~~

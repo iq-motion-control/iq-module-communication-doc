@@ -84,11 +84,11 @@ A minimal working example for the MultiTurnAngleControlClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a MultiTurnAngleControlClient object with obj_id 0
-    angle_ctrl = MultiTurnAngleControlClient(’com’,com);
+    MultiTurnAngleControl = MultiTurnAngleControlClient(’com’,com);
     
     % Use the MultiTurnAngleControlClient object
-    velocity_filtered = angle_ctrl.get(’obs_angular_displacement’);
-    angle_ctrl.set(’ctrl_angle’,0);
+    velocityFiltered = MultiTurnAngleControl.get(’obs_angular_displacement’);
+    MultiTurnAngleControl.set(’ctrl_angle’,0);
 
 Python
 ~~~~~~

@@ -81,14 +81,14 @@ A minimal working example for the ServoInputParserClient is:
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
     % Make a ServoInputParserClient object with obj_id 0
-    svo = ServoInputParserClient(’com’,com);
+    ServoInputParser = ServoInputParserClient(’com’,com);
     % Use the ServoInputParserClient object
-    svo.set(’mode’, 3); // Position control mode
-    svo.save(’mode’);
-    svo.set(’unit_min’, -pi);
-    svo.save(’unit_min’);
-    svo.set(’unit_max’, pi);
-    svo.save(’unit_max’);
+    ServoInputParser.set(’mode’, 3); // Position control mode
+    ServoInputParser.save(’mode’);
+    ServoInputParser.set(’unit_min’, -pi);
+    ServoInputParser.save(’unit_min’);
+    ServoInputParser.set(’unit_max’, pi);
+    ServoInputParser.save(’unit_max’);
 
 Python
 ~~~~~~

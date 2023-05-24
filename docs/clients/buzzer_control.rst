@@ -83,13 +83,13 @@ A minimal working example for the BuzzerControlClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a BuzzerControlClient object with obj_id 0
-    buz = BuzzerControlClient(’com’,com);
+    BuzzerControl = BuzzerControlClient(’com’,com);
     
     % Use the BuzzerControlClient object
-    buz.set(’hz’,440); % A4
-    buz.set(’volume’,127); % Max volume
-    buz.set(’duration’,500); % 500ms
-    buz.set(’ctrl_note’);
+    BuzzerControl.set(’hz’,440); % A4
+    BuzzerControl.set(’volume’,127); % Max volume
+    BuzzerControl.set(’duration’,500); % 500ms
+    BuzzerControl.set(’ctrl_note’);
 
 
 Python

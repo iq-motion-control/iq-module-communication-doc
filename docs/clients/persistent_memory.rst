@@ -73,10 +73,10 @@ A minimal working example for the PersistentMemoryClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a PersistentMemoryClient object with obj_id 0
-    mem = PersistentMemoryClient(’com’,com);
+    PersistentMemory = PersistentMemoryClient(’com’,com);
     
     % Use the PersistentMemoryClient object
-    mem.set(’revert_to_default’);
+    PersistentMemory.set(’revert_to_default’);
 
 
 Python

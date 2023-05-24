@@ -85,10 +85,10 @@ A minimal working example for the TemperatureMonitorUcClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make an TemperatureMonitorUcClient object with obj_id 0
-    tuc = TemperatureMonitorUcClient(’com’,com);
+    TemperatureMonitorUc = TemperatureMonitorUcClient(’com’,com);
     
     % Use the TemperatureMonitorUcClient object
-    uc_temp = tuc.get(’uc_temp’);
+    ucTemp = TemperatureMonitorUc.get(’uc_temp’);
 
 Python
 ~~~~~~

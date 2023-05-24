@@ -91,9 +91,9 @@ A minimal working example for the IQUartFlightControllerInterfaceClient is:
     com = MessageInterface('COM18', 115200);
     % Make a IQUART Flight Controller Interface object with obj_id 0
     % IQUART Flight Controller Interface objects are always obj_id 0
-    iquartFlightControllerInterface = IQUartFlightControllerInterfaceClient('com', com);
+    IquartFlightControllerInterface = IQUartFlightControllerInterfaceClient('com', com);
     % Use the IQUART Flight Controller Interface object
-    throttleCvi= iquartFlightControllerInterface.get('throttle_cvi');
+    throttleCvi= IquartFlightControllerInterface.get('throttle_cvi');
 
 Python
 ~~~~~~

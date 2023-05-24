@@ -85,10 +85,10 @@ A minimal working example for the PropellerMotorControlClient is:
     com = MessageInterface(’COM18’,115200);
 
     % Make a PropellerMotorControlClient object with obj_id 0
-    prop = PropellerMotorControlClient(’com’,com);
+    PropellerMotorControl = PropellerMotorControlClient(’com’,com);
 
     % Use the PropellerMotorControlClient object
-    prop.set(’ctrl_velocity’,100.0);
+    PropellerMotorControl.set(’ctrl_velocity’,100.0);
 
 
 Python

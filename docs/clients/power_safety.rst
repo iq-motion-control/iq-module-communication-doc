@@ -79,11 +79,12 @@ A minimal working example for the PowerSafetyClient is:
 
     % Make a communication interface object
     com = MessageInterface('COM18', 115200);
+
     % Make a Power Safety object with obj_id 0
-    % Power Safety objects are always obj_id 0
-    powerSafety = PowerSafetyClient('com', com);
+    PowerSafety = PowerSafetyClient('com', com);
+
     % Use the Power Safety object
-    faultNow = powerSafety.get('fault_now');
+    faultNow = PowerSafety.get('fault_now');
 
 
 Python

@@ -73,10 +73,12 @@ A minimal working example for the PulsingRectangularInputParserClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+    
     % Make a PulsingRectangularInputParserClient object with obj_id 0
-    pulsingRectangularInputParser = PulsingRectangularInputParserClient(’com’,com);
+    PulsingRectangularInputParser = PulsingRectangularInputParserClient(’com’,com);
+
     % Use the PulsingRectangularInputParserClient object
-    pulsingVoltageMode = pulsingRectangularInputParser.get(’pulsing_voltage_mode’);
+    pulsingVoltageMode = PulsingRectangularInputParser.get(’pulsing_voltage_mode’);
 
 Python
 ~~~~~~

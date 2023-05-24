@@ -83,9 +83,9 @@ A minimal working example for the GpioControllerClient is:
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
     % Make a GpioControllerClient object with obj_id 0
-    gpioController = GpioControllerClient(’com’,com);
+    GpioController = GpioControllerClient(’com’,com);
     % Use the GpioControllerClient object
-    modeRegister = gpioController.get(’mode_register’);
+    modeRegister = GpioController.get(’mode_register’);
 
 Python
 ~~~~~~

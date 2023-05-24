@@ -81,10 +81,10 @@ A minimal working example for the EscPropellerInputParserClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a EscPropellerInputParserClient object with obj_id 0
-    esc = EscPropellerInputParserClient(’com’,com);
+    EscPropellerInputParser = EscPropellerInputParserClient(’com’,com);
     
     % Use the EscPropellerInputParserClient object
-    esc.set(’velocity_max’,1000);
+    EscPropellerInputParser.set(’velocity_max’,1000);
 
 Python
 ~~~~~~

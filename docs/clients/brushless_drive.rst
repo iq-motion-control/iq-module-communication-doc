@@ -76,10 +76,10 @@ A minimal working example for the BrushlessDriveClient is:
     com = MessageInterface(’COM18’,115200);
 
     % Make a BrushlessDriveClient object with obj_id 0
-    drive = BrushlessDriveClient(’com’,com);
+    BrushlessDrive = BrushlessDriveClient(’com’,com);
 
     % Use the BrushlessDriveClient object
-    drive.set(’drive_spin_volts’,3.0);
+    BrushlessDrive.set(’drive_spin_volts’,3.0);
 
 Python
 ~~~~~~

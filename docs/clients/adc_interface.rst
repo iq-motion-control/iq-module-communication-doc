@@ -77,9 +77,9 @@ A minimal working example for the AdcInterfaceClient is:
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
     % Make a AdcInterfaceClient object with obj_id 0
-    adcInterface = AdcInterfaceClient(’com’,com);
+    AdcInterface = AdcInterfaceClient(’com’,com);
     % Use the AdcInterfaceClient object
-    adcVoltage = adcInterface.get(’adc_voltage’);
+    adcVoltage = AdcInterface.get(’adc_voltage’);
 
 Python
 ~~~~~~

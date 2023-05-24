@@ -80,9 +80,9 @@ A minimal working example for the ArmingHandlerClient is:
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
     % Make a ArmingHandlerClient object with obj_id 0
-    armingHandler = ArmingHandlerClient(’com’,com);
+    ArmingHandler = ArmingHandlerClient(’com’,com);
     % Use the ArmingHandlerClient object
-    alwaysArmed = armingHandler.get(’always_armed’);
+    alwaysArmed = ArmingHandler.get(’always_armed’);
 
 Python
 ~~~~~~

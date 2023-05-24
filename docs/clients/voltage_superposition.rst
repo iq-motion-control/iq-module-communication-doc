@@ -73,10 +73,12 @@ A minimal working example for the VoltageSuperpositionClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+
     % Make a VoltageSuperpositionClient object with obj_id 0
-    voltageSuperposition = VoltageSuperpositionClient(’com’,com);
+    VoltageSuperposition = VoltageSuperpositionClient(’com’,com);
+
     % Use the VoltageSuperpositionClient object
-    zeroAngle = voltageSuperposition.get(’zero_angle’);
+    zeroAngle = VoltageSuperposition.get(’zero_angle’);
 
 Python
 ~~~~~~

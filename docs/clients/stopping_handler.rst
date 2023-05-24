@@ -75,10 +75,12 @@ A minimal working example for the StoppingHandlerClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+
     % Make a StoppingHandlerClient object with obj_id 0
-    stoppingHandler = StoppingHandlerClient(’com’,com);
+    StoppingHandler = StoppingHandlerClient(’com’,com);
+
     % Use the StoppingHandlerClient object
-    stoppedSpeed = stoppingHandler.get(’stopped_speed’);
+    stoppedSpeed = StoppingHandler.get(’stopped_speed’);
 
 Python
 ~~~~~~

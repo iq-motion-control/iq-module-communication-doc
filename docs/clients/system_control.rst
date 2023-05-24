@@ -83,11 +83,10 @@ A minimal working example for the SystemControlClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a System Control object with obj_id 0
-    % System Control objects are always obj_id 0
-    system_control = SystemControlClient(’com’,com);
+    SystemControl = SystemControlClient(’com’,com);
     
     % Use the System Control object
-    time = system_control.get(’time’);
+    time = SystemControl.get(’time’);
 
 Python
 ~~~~~~

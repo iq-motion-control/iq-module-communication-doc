@@ -73,10 +73,12 @@ A minimal working example for the UavcanNodeClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+
     % Make a UavcanNodeClient object with obj_id 0
-    uavcanNode = UavcanNodeClient(’com’,com);
+    UavcanNode = UavcanNodeClient(’com’,com);
+
     % Use the UavcanNodeClient object
-    uavcanNodeId = uavcanNode.get(’uavcan_node_id’);
+    uavcanNodeId = UavcanNode.get(’uavcan_node_id’);
 
 Python
 ~~~~~~
