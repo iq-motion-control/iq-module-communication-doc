@@ -82,12 +82,12 @@ A minimal working example for the StepDirectionInputClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a MultiTurnAngleControlClient object with obj_id 0
-    step_dir = StepDirectionInputClient(’com’,com);
+    StepDirectionInput = StepDirectionInputClient(’com’,com);
     
     % Use the StepDirectionInputClient object
-    angle_step = step_dir.get(’angle_step’);
-    step_dir.set(’angle_step’,2*pi/65536);
-    step_dir.save(’angle_step’);
+    angleStep = step_dir.get(’angle_step’);
+    StepDirectionInput.set(’angleStep’,2*pi/65536);
+    StepDirectionInput.save(’angleStep’);
 
 Python
 ~~~~~~

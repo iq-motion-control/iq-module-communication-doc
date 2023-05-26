@@ -4,7 +4,7 @@ Vertiq 8108 150KV | Speed Module
 
 .. sidebar:: Vertiq 8108 150KV
 
-    .. image:: ../_static/Vertiq8108.png
+    .. image:: ../_static/Vertiq_8108_front.jpg
         :alt: Vertiq 8108 150KV
 
 The Vertiq 8108 150Kv is built for high performance commercial UAV and robotic applications. Its default firmware is the **Speed Firmware**.

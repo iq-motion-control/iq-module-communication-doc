@@ -81,10 +81,10 @@ A minimal working example for the EscPropellerInputParserClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a EscPropellerInputParserClient object with obj_id 0
-    esc = EscPropellerInputParserClient(’com’,com);
+    EscPropellerInputParser = EscPropellerInputParserClient(’com’,com);
     
     % Use the EscPropellerInputParserClient object
-    esc.set(’velocity_max’,1000);
+    EscPropellerInputParser.set(’velocity_max’,1000);
 
 Python
 ~~~~~~
@@ -129,7 +129,7 @@ Type ID 60 | ESC Propeller Input Parser
 +--------+---------------------+----------------+-----------+-------+-------------------------------------------------------------------------------------------------------------------------------------------+
 | 8      | flip_negative       | get, set, save | uint8     | bool  | Allows the FC and ESC to agree on the meaning of signals coming out of ESC                                                                |
 +--------+---------------------+----------------+-----------+-------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| 9      | zero_spin_throttle  | get, set, save | float     | %/100 | The throttle percentage defines what throttle command percentage the :ref:`zero spin throttle regions<zero_spin_throttle_regions>` begin. |
+| 9      | zero_spin_throttle  | get, set, save | float     | PU    | The throttle percentage defines what throttle command percentage the :ref:`zero spin throttle regions<zero_spin_throttle_regions>` begin. |
 +--------+---------------------+----------------+-----------+-------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| 10     | zero_spin_tolerance | get, set, save | float     | %/100 | Defines how far below the Zero Spin Throttle Percentage the zero spin throttle region will extend for positive throttle commands.         |
+| 10     | zero_spin_tolerance | get, set, save | float     | PU    | Defines how far below the Zero Spin Throttle Percentage the zero spin throttle region will extend for positive throttle commands.         |
 +--------+---------------------+----------------+-----------+-------+-------------------------------------------------------------------------------------------------------------------------------------------+

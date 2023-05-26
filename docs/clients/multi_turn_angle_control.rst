@@ -84,11 +84,11 @@ A minimal working example for the MultiTurnAngleControlClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a MultiTurnAngleControlClient object with obj_id 0
-    angle_ctrl = MultiTurnAngleControlClient(’com’,com);
+    MultiTurnAngleControl = MultiTurnAngleControlClient(’com’,com);
     
     % Use the MultiTurnAngleControlClient object
-    velocity_filtered = angle_ctrl.get(’obs_angular_displacement’);
-    angle_ctrl.set(’ctrl_angle’,0);
+    velocityFiltered = MultiTurnAngleControl.get(’obs_angular_displacement’);
+    MultiTurnAngleControl.set(’ctrl_angle’,0);
 
 Python
 ~~~~~~
@@ -140,7 +140,7 @@ Type ID 59 | Multi-turn Angle Controller
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
 | 8      | timeout                         | get, set, save | float     | s                 | The controller must receive a message within this time otherwise it is set to coast mode         |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
-| 9      | ctrl_pwm                        | get, set       | float     | pwm               | Spins motor with this throttle [-1, 1]                                                           |
+| 9      | ctrl_pwm                        | get, set       | float     | PWM               | Spins motor with this throttle [-1, 1]                                                           |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
 | 10     | ctrl_volts                      | get, set       | float     | V                 | Spins motor with this voltage                                                                    |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+

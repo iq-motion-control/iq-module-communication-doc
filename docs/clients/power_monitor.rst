@@ -82,10 +82,10 @@ A minimal working example for the PowerMonitorClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a PowerMontitorClient object with obj_id 0
-    pwr = PowerMontitorClient(’com’,com);
+    PowerMonitor = PowerMontitorClient(’com’,com);
     
     % Use the PowerMontitorClient object
-    volts = pwr.get(’volts’);
+    volts = PowerMonitor.get(’volts’);
 
 
 Python

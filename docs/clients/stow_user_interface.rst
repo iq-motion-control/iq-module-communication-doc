@@ -79,10 +79,12 @@ A minimal working example for the StowUserInterfaceClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+
     % Make a StowUserInterfaceClient object with obj_id 0
-    stowUserInterface = StowUserInterfaceClient(’com’,com);
+    StowUserInterface = StowUserInterfaceClient(’com’,com);
+
     % Use the StowUserInterfaceClient object
-    zeroAngle = stowUserInterface.get(’zero_angle’);
+    zeroAngle = StowUserInterface.get(’zero_angle’);
 
 Python
 ~~~~~~

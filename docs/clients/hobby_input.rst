@@ -77,11 +77,11 @@ A minimal working example for the HobbyInputClient is:
     com = MessageInterface(’COM18’,115200);
     
     % Make a HobbyInputClient object with obj_id 0
-    hin = HobbyInputClient(’com’,com);
+    HobbyInput = HobbyInputClient(’com’,com);
     
     % Use the EscPropellerInputParserClient object
-    hin.set(’allowed_protocols’,3);
-    hin.save(’allowed_protocols’);
+    HobbyInput.set(’allowed_protocols’,3);
+    HobbyInput.save(’allowed_protocols’);
 
 Python
 ~~~~~~

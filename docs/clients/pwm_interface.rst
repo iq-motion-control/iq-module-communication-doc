@@ -79,10 +79,12 @@ A minimal working example for the PwmInterfaceClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+
     % Make a PwmInterfaceClient object with obj_id 0
-    pwmInterface = PwmInterfaceClient(’com’,com);
+    PwmInterface = PwmInterfaceClient(’com’,com);
+
     % Use the PwmInterfaceClient object
-    pwmFrequency = pwmInterface.get(’pwm_frequency’);
+    pwmFrequency = PwmInterface.get(’pwm_frequency’);
 
 Python
 ~~~~~~

@@ -20,3 +20,4 @@ Speed Firmware
 .. include:: ../clients/stow_user_interface.rst
 .. include:: ../clients/system_control.rst
 .. include:: ../clients/temperature_monitor_uc.rst
+.. include:: ../clients/uavcan_node.rst

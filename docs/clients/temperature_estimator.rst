@@ -78,10 +78,12 @@ A minimal working example for the TemperatureEstimatorClient is:
 
     % Make a communication interface object
     com = MessageInterface(’COM18’,115200);
+
     % Make an TemperatureEstimatorClient object with obj_id 0
-    tes = TemperatureEstimatorClient(’com’,com);
+    TemperatureEstimator = TemperatureEstimatorClient(’com’,com);
+
     % Use the TemperatureEstimatorClient object
-    coil_temp = tes.get(’temp’);
+    coilTemp = TemperatureEstimator.get(’temp’);
 
 Python
 ~~~~~~
