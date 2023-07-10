@@ -101,7 +101,7 @@ A minimal working example for the PWM Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
     
     pwm_frequency = |variable_name|.get("pwm_interface", "pwm_frequency") 
     print(f"pwm frequency: {pwm_frequency}")

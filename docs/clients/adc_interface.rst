@@ -96,7 +96,7 @@ A minimal working example for the ADC Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
     
     adc_voltage = |variable_name|.get("adc_interface", "adc_voltage") 
     print(f"adc voltage : {adc_voltage}")
