@@ -106,7 +106,7 @@ A minimal working example for the Servo Input Parser Client is:
     import math
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
     
     # Set Servo Limits
     |variable_name|.set("servo_input_parser", "mode", 3)             # Position Control Mode 
