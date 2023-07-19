@@ -62,6 +62,7 @@
    manual/manual_gpio_interface
    manual/manual_step_direction
    manual/manual_ifci_control
+   manual/manual_underactuated_torque_correction
    manual/manual_appendix
 
 Welcome to the Vertiq Documentation
