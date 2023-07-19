@@ -35,4 +35,4 @@ Connect the (Vertiq 2306) to IQ Control  Center (using 921600 as baudrate). Go t
 
     Sampling Zero Angle
 
-With all of this set, the motor will now respond properly to X, Y and Throttle commands sent to it via packed control messages explained in :ref:`controlling_pulsing`.
+With all of this set, the motor will now respond properly to X, Y and Throttle commands sent to it via packed control messages explained in :ref:`controlling_ifci`. A final setup step is required that is aircraft dependent which is torque angle offset correction. This is explained in :ref:`Underactuated Propeller Torque Angle Correction<correcting_underactuated_torque>`.
