@@ -3,19 +3,43 @@
 
 .. _up12_installation_tutorial:
 
+.. |propeller_name| replace:: UP12
+.. |motor_name| replace:: Vertiq 2306
+
 ********************************
-Installing UP12 on a Vertiq 2306
+Installing |propeller_name| on a |motor_name|
 ********************************
-Picture of propeller with parts named
+.. figure:: ../_static/tutorial_images/up12_installation/annotated_propeller.png
+    :align: center
+    :width: 750
+    :alt: Annotated |propeller_name|
 
-To install the (UP12) on a (Vertiq 2306) module you must first remove the (main shoulder bolt) from the (adapter). Be sure not to lose the two washers on either side of the propeller hub. 
+    Annotated |propeller_name|
 
-Pic of (adapter removed from propeller hub)
+To install the |propeller_name| on a |motor_name| module you must first remove the (main shoulder bolt) from the (adapter). Be sure not to lose the two washers on either side of the propeller hub. 
 
-Use the M2x6 Screws to mount the (adapter) to the (Vertiq 2306).
+.. figure:: ../_static/tutorial_images/up12_installation/hub_removed.JPG
+    :align: center
+    :width: 500
+    :alt: Hub removed from adapter
 
-Pic of (adapter) mounted ot motor
+    Adapter and Hub Separated
+
+Use the M2x6 Screws to mount the (adapter) to the |motor_name|.
+
+.. figure:: ../_static/tutorial_images/up12_installation/adp_mounted.JPG
+    :align: center
+    :width: 500
+    :alt: Adapter mounted to motor
+
+    Adapter mounted to motor
 
 Re-attach the (propeller hub) to the (adapter). When tightening the (main shoulder bolt), continue tightening until the (hub) does not spin freely. Loosen the bolt ¼ turn at a time until it again spins freely. There should be very little axial play of the hub along the (main shoulder bolt).
 
-Pic of (UP12) attached to (Vertiq 2306)
+.. figure:: ../_static/tutorial_images/up12_installation/propeller.JPG
+    :align: center
+    :width: 500
+    :alt: |propeller_name| on |motor_name|
+
+    |propeller_name| on |motor_name|
+
