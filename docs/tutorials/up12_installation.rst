@@ -18,7 +18,7 @@ Installing |propeller_name| on a |motor_name|
 
 To install the |propeller_name| on a |motor_name| module you must first remove the (main shoulder bolt) from the (adapter). Be sure not to lose the two washers on either side of the propeller hub. 
 
-.. figure:: ../_static/tutorial_images/up12_installation/hub_removed.JPG
+.. figure:: ../_static/tutorial_images/up12_installation/hub_removed.jpg
     :align: center
     :width: 500
     :alt: Hub removed from adapter
@@ -27,7 +27,7 @@ To install the |propeller_name| on a |motor_name| module you must first remove t
 
 Use the M2x6 Screws to mount the (adapter) to the |motor_name|.
 
-.. figure:: ../_static/tutorial_images/up12_installation/adp_mounted.JPG
+.. figure:: ../_static/tutorial_images/up12_installation/adp_mounted.jpg
     :align: center
     :width: 500
     :alt: Adapter mounted to motor
@@ -36,7 +36,7 @@ Use the M2x6 Screws to mount the (adapter) to the |motor_name|.
 
 Re-attach the (propeller hub) to the (adapter). When tightening the (main shoulder bolt), continue tightening until the (hub) does not spin freely. Loosen the bolt ¼ turn at a time until it again spins freely. There should be very little axial play of the hub along the (main shoulder bolt).
 
-.. figure:: ../_static/tutorial_images/up12_installation/propeller.JPG
+.. figure:: ../_static/tutorial_images/up12_installation/propeller.jpg
     :align: center
     :width: 500
     :alt: |propeller_name| on |motor_name|
