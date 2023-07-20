@@ -12,8 +12,7 @@ Setting up the |motor_name| for the |propeller_name|
 
 The |motor_name| needs to have the appropriate firmware flashed as well as the appropriate settings applied to be able to use the |propeller_name| to create control torque. You can download the pulsing firmware for the |motor_name| here (firmware link). To flash the downloaded firmware use the instructions in :ref:`updating_firmware`.
 
-Once the firmware is flashed connect the motor to IQ Control Center and go to the general tab. Use the ‘Import’ button to load the defaults file from here:
-Link to defaults file
+Once the firmware is flashed connect the motor to IQ Control Center and go to the general tab. Use the ‘Import’ button to load the defaults file from here (Link to defaults file).
 
 Use the ‘Set’ button to save the settings from the defaults file onto the |motor_name|. This will set all the required settings as well as change the |motor_name|’s baud rate. Reboot the |motor_name|. Once rebooted, to reconnect to IQ Control Center you must set the baudrate to 921600.
 
@@ -26,7 +25,7 @@ Now the forward direction of the |motor_name| must be decided. Usually this is d
 
     Setting Aircraft Forward
 
-Connect the (Vertiq 2306) to IQ Control  Center (using 921600 as baudrate). Go to the ‘General’ tab and while the bolt is angled forwards select ‘Sample Pulsing Zero Angle’. This will tell the |motor_name| which direction is forward.
+Connect the |motor_name| to IQ Control  Center (using 921600 as baudrate). Go to the ‘General’ tab and while the bolt is angled forwards select ‘Sample Pulsing Zero Angle’. This will tell the |motor_name| which direction is forward.
 
 .. figure:: ../_static/tutorial_images/up12_initial_configuration/set_angle.png
     :align: center
