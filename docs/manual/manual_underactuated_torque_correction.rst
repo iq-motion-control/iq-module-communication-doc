@@ -10,7 +10,7 @@
 Underactuated Propeller Torque Angle Correction
 ***********************************************
 
-Underactuated propellers can vector force, torque, or a combination of the two. The flapping blades on the |propeller_name| vectors both a force and torque vector. These two vectors are coupled and always point the same direction relative to each other. In the case of the |propeller_name| they are approximately 82 degrees apart. This means that the torque vector and torque induced by the force vector happen at slightly different angles. Depending on the height of the propeller above the Center of Mass (CoM), the resulting torque will point in different directions. Some plots showing different heights above the center of mass show how the final torque direction and magnitude can change.
+Underactuated propellers can vector force, torque, or a combination of the two. The flapping blades on the |propeller_name| vectors both a force and torque vector. These two vectors are coupled, and always point the same direction relative to each other. In the case of the |propeller_name|, they are approximately 82° apart. This means that the torque vector and torque induced by the force vector happen at slightly different angles. Depending on the height of the propeller above the Center of Mass (CoM), the resulting torque will point in different directions. Some plots showing different heights above the center of mass show how the final torque direction and magnitude can change.
 
 .. figure:: ../_static/manual_images/pulsing_propeller/torque_angle_0.png
     :align: center
@@ -33,9 +33,9 @@ Underactuated propellers can vector force, torque, or a combination of the two. 
 
     CCW |propeller_name| 100mm above CoM
 
-The graphs show that as the propeller is moved higher above the CoM, the more the force contributes to the final torque. Therfore a correction factor must be introduced.
+The graphs show that as the propeller is moved higher above the CoM, the more the force contributes to the final torque. Therefore, a correction factor must be introduced.
 
-The defaults files for each underactuated propeller include calibrated a parameter called 'propeller_torque_offset_angle'. This parameter is found in the :ref:`Voltage Superposition Client<vsp_message_table>`. This default calibrated value assumes that the propeller is at the CoM of the aircraft. This is most likely incorrect for the vast majority of aircraft, but there is no standard height and most aircraft will be different. To correct for this the default calibrated parameter must be offset using the equation below:
+The defaults files for each underactuated propeller include a calibrated parameter called 'propeller_torque_offset_angle'. This parameter is found in the :ref:`Voltage Superposition Client<vsp_message_table>`, and assumes that the propeller is at the aircraft's CoM. This is most likely incorrect for most aircraft as there is no standardized rotor height. To correct for this, the default calibrated parameter must be offset using the equation below:
 
 .. math::
 
