@@ -10,9 +10,9 @@
 Setting up the |motor_name| for the |propeller_name|
 ****************************************************
 
-The |motor_name| needs to have the appropriate firmware flashed as well as the appropriate settings applied to be able to use the |propeller_name| to create control torque. You can download the pulsing firmware for the |motor_name| here (firmware link). To flash the downloaded firmware use the instructions in :ref:`updating_firmware`.
+The |motor_name| needs to have the appropriate firmware flashed as well as the appropriate settings applied to be able to use the |propeller_name| to create control torque. You can download the pulsing firmware for the |motor_name| on the `underactuated propeller page <https://www.vertiq.co/up12>`_. To flash the downloaded firmware use the instructions in :ref:`updating_firmware`.
 
-Once the firmware is flashed connect the motor to IQ Control Center and go to the general tab. Use the ‘Import’ button to load the defaults file from here (Link to defaults file).
+Once the firmware is flashed connect the motor to IQ Control Center and go to the general tab. Download the :download:`UP12 Custom Defaults File<../_static/defaults_files/custom_defaults_pulsing_12x4.json>`. Use the ‘Import’ button to load the defaults file into IQ Control Center.
 
 Use the ‘Set’ button to save the settings from the defaults file onto the |motor_name|. This will set all the required settings as well as change the |motor_name|’s baud rate. Reboot the |motor_name|. Once rebooted, to reconnect to IQ Control Center you must set the baudrate to 921600.
 

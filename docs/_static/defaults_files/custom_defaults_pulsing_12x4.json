@@ -1,0 +1,125 @@
+[
+    {
+        "descriptor": "general_pulsing-1",
+        "Entries": [
+            {
+                "descriptor": "Mode",
+                "value": 1
+            },
+            {
+                "descriptor": "Motor Direction",
+                "value": 3
+            },
+            {
+                "descriptor": "Pulsing Frequency",
+                "value": 1
+            },
+            {
+                "descriptor": "Pulsing Torque Angle",
+                "value": -2.6000001430511475
+            },
+            {
+                "descriptor": "Pulsing Voltage Mode",
+                "value": 1
+            },
+            {
+                "descriptor": "Pulsing Zero Angle",
+                "value": 0
+            },
+            {
+                "descriptor": "Throttle Control Value Index",
+                "value": 255
+            },
+            {
+                "descriptor": "X Control Value Index",
+                "value": 255
+            },
+            {
+                "descriptor": "Y Control Value Index",
+                "value": 255
+            }
+        ]
+    },
+    {
+        "descriptor": "tuning_pulsing-1",
+        "Entries": [
+            {
+                "descriptor": "Input Filter Cutoff",
+                "value": 1000
+            },
+            {
+                "descriptor": "Max Velocity",
+                "value": 500
+            },
+            {
+                "descriptor": "Max Volts",
+                "value": 4.0
+            },
+            {
+                "descriptor": "Pulsing Cutoff Velocity",
+                "value": 50
+            },
+            {
+                "descriptor": "Pulsing Phase Lead Time",
+                "value": -0.00408935546875
+            },
+            {
+                "descriptor": "Pulsing Polynomial Coefficient 0",
+                "value": -0.3347096025943756
+            },
+            {
+                "descriptor": "Pulsing Polynomial Coefficient 1",
+                "value": 0.005867665633559227
+            },
+            {
+                "descriptor": "Pulsing Polynomial Coefficient 2",
+                "value": -2.3491089450544678e-05
+            },
+            {
+                "descriptor": "Pulsing Polynomial Coefficient 3",
+                "value": 5.4303615826256646e-08
+            },
+            {
+                "descriptor": "Pulsing Voltage Limit",
+                "value": 4
+            },
+            {
+                "descriptor": "Timeout",
+                "value": 0.09999998658895493
+            },
+            {
+                "descriptor": "Velocity FF0",
+                "value": 0
+            },
+            {
+                "descriptor": "Velocity FF1",
+                "value": 0.00439453125
+            },
+            {
+                "descriptor": "Velocity FF2",
+                "value": 4.088506102561951e-06
+            },
+            {
+                "descriptor": "Velocity Kd",
+                "value": 0.0001983642578125
+            },
+            {
+                "descriptor": "Velocity Ki",
+                "value": 0.04998779296875
+            },
+            {
+                "descriptor": "Velocity Kp",
+                "value": 0.0019989013671875
+            }
+        ]
+    },
+    {
+        "descriptor": "advanced_pulsing-1",
+        "Entries": [
+            {
+                "descriptor": "UART Baud Rate",
+                "value": 921600
+            }
+        ]
+    }
+]
