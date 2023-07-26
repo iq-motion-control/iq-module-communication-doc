@@ -41,4 +41,4 @@ Connect the |motor_name| to IQ Control  Center (using 921600 as baud rate). Go t
 
     Sampling Zero Angle
 
-With all of this set, the module will now respond properly to X, Y and Throttle commands sent to it via packed control messages explained in :ref:`controlling_ifci`. The final step is to correct the propeller torque angle and described in :ref:`Underactuated Propeller Torque Angle Correction<correcting_underactuated_torque>`.
+The module will now respond properly to X, Y and Throttle commands sent to it via packed control messages as explained in :ref:`controlling_ifci`. The final step is to correct the propeller torque angle as described in :ref:`Underactuated Propeller Torque Angle Correction<correcting_underactuated_torque>`.

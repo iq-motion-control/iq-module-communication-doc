@@ -116,6 +116,7 @@ A minimal working example for the IQUART Flight Controller Interface Client is:
     print(f"Pulsing voltage mode: {telemetry}")
 
 .. _ifci_message_table:
+
 Message Table
 ~~~~~~~~~~~~~
 
