@@ -44,6 +44,10 @@
         "descriptor": "tuning_pulsing-1",
         "Entries": [
             {
+                "descriptor": "Convection Thermal Conductivity Coefficient",
+                "value": 0.012
+            },
+            {
                 "descriptor": "Input Filter Cutoff",
                 "value": 1000
             },
