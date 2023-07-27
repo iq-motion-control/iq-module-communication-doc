@@ -149,6 +149,8 @@ yet have a bootloader or upgrader, N/A is filled into the respective version.
 
     Control Center Connected to Vertiq 8108
 
+.. _updating_firmware:
+
 Updating Firmware
 =================
 For Control Center Versions Below 1.3.0: 

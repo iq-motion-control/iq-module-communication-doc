@@ -38,8 +38,10 @@
 
    tutorials/testing_with_control_center
    tutorials/pwm_control_flight_controller
-   tutorials/hobby_calibration.rst
+   tutorials/hobby_calibration
    tutorials/dronecan_px4_flight_controller
+   tutorials/up12_installation
+   tutorials/up12_initial_configuration
 
 .. toctree::
    :hidden:
@@ -59,6 +61,8 @@
    manual/manual_high_power_pwm_output
    manual/manual_gpio_interface
    manual/manual_step_direction
+   manual/manual_ifci_control
+   manual/manual_underactuated_torque_correction
    manual/manual_appendix
 
 Welcome to the Vertiq Documentation

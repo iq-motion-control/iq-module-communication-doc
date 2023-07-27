@@ -108,6 +108,8 @@ A minimal working example for the System Control Client is:
     FW = |variable_name|.get("system_control", "firmware_version")  # Firmware Version Number
     print(f"Firmware: {FW}")
 
+.. _sc_message_table:
+
 Message Table
 ~~~~~~~~~~~~~
 

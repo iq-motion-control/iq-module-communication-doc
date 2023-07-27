@@ -105,6 +105,8 @@ A minimal working example for the ESC Propeller Input Parser Client is:
     
     |variable_name|.set("esc_propeller_input_parser", "velocity_max", 1000) # Set max Velocity to 1000rad/s
 
+.. _epip_message_table:
+
 Message Table
 ~~~~~~~~~~~~~
 

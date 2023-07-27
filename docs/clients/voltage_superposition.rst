@@ -100,6 +100,7 @@ A minimal working example for the Voltage Superposition Client is:
     zero_angle= |variable_name|.get("voltage_superposition", "zero_angle") 
     print(f"Zero angle: {zero_angle}")
 
+.. _vsp_message_table:
 Message Table
 ~~~~~~~~~~~~~
 

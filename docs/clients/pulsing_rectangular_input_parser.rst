@@ -100,6 +100,8 @@ A minimal working example for the Pulsing Rectangular Input Parser Client is:
     pulsing_voltage_mode = |variable_name|.get("pulsing_rectangular_input_parser", "pulsing_voltage_mode") 
     print(f"Pulsing voltage mode: {pulsing_voltage_mode}")
 
+.. _prip_message_table:
+
 Message Table
 ~~~~~~~~~~~~~
 
