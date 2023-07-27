@@ -40,6 +40,7 @@
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration
    tutorials/dronecan_px4_flight_controller
+   tutorials/flight_controller_telemetry_tutorial
    tutorials/up12_installation
    tutorials/up12_initial_configuration
 
@@ -52,6 +53,7 @@
    manual/manual_dronecan
    manual/manual_canopen
    manual/manual_hobby
+   manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming
    manual/manual_stow
