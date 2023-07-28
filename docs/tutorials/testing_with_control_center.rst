@@ -142,6 +142,8 @@ yet have a bootloader or upgrader, N/A is filled into the respective version.
 
     Control Center Connected to Vertiq 8108
 
+.. _updating_firmware:
+
 Updating Firmware
 =================
 If you need to update the module's firmware, you can do so through the Control Center. Older versions of Control Center lack some of the firmware update features of more 
