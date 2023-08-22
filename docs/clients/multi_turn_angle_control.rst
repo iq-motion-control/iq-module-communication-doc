@@ -164,7 +164,7 @@ Type ID 59 | Multi-turn Angle Controller
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
 | 20     | trajectory_angular_velocity     | get, set       | float     | rad/s             | Final velocity of the trajectory. Defaults to 0.                                                 |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
-| 21     | trajectory_angular_acceleration | get, set       | float     | .. math:: rad/s^2 | Final acceleration of the trajectory. Defaults to 0.                                             |
+| 21     | trajectory_angular_acceleration | get, set       | float     | rad/s^2           | Final acceleration of the trajectory. Defaults to 0.                                             |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
 | 22     | trajectory_duration             | set            | float     | s                 | Duration of trajectory. Trajectory is executed or queued once this is sent.                      |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
@@ -172,13 +172,13 @@ Type ID 59 | Multi-turn Angle Controller
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
 | 24     | trajectory_linear_velocity      | get, set       | float     | m/s               | Final velocity of the trajectory. Defaults to 0.                                                 |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
-| 25     | trajectory_linear_acceleration  | get, set       | float     | .. math:: m/s^2   | Final acceleration of the trajectory. Defaults to 0.                                             |
+| 25     | trajectory_linear_acceleration  | get, set       | float     | m/s^2             | Final acceleration of the trajectory. Defaults to 0.                                             |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
-| 26     | trajectory_average_speed        | get, set       | float     | .. math:: m/s^2   | Average speed of a trajectory. Trajectory is executed or queued once this is sent. Must be $>0$. |
+| 26     | trajectory_average_speed        | get, set       | float     | rad/s             | Average speed of a trajectory. Trajectory is executed or queued once this is sent. Must be >0.   |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
-| 27     | trajectory_queue_mode           | get, set, save | int8      | .. math:: m/s^2   | append=0, overwrite=1                                                                            |
+| 27     | trajectory_queue_mode           | get, set, save | int8      | enum              | append=0, overwrite=1                                                                            |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
-| 29     | ff                              | get, set       | uint32    |                   | Feed forward term                                                                                |
+| 29     | ff                              | get, set       | uint32    | V                 | Feed forward term                                                                                |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
 | 30     | sample_zero_angle               | set            |           |                   | Sets the module's current postiion as the zero angle.                                            |
 +--------+---------------------------------+----------------+-----------+-------------------+--------------------------------------------------------------------------------------------------+
