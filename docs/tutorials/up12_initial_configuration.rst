@@ -18,7 +18,7 @@ Once the firmware is flashed, connect the module to IQ Control Center and go to 
     With firmwares older than V0.0.27 defaults for the UP12 were not included in the firmware and custom defaults needed to be flashed. To do this download the :download:`UP12 Custom Defaults File<../_static/defaults_files/custom_defaults_pulsing_12x4.json>`. Use the ‘Import’ button to load the defaults file into IQ Control Center.
     Use the ‘Set’ button to save the settings from the defaults file onto the |motor_name|. This will set all the required settings as well as change the |motor_name|’s baud rate. Reboot the |motor_name|. Once rebooted, to reconnect to IQ Control Center you must set the baud rate to 921600.
 
-We also recommend using a baudrate of 921600 to increase the throughput of the serial line. This can be done by going to the advanced tab in IQ Control Center and changing the baudrate setting.
+We also recommend using a baudrate of 921600 to increase the throughput of the serial line. This can be done by going to the ‘Advanced’ tab in IQ Control Center and changing the baudrate setting.
 
 .. figure:: ../_static/tutorial_images/up12_initial_configuration/baud_rate_change.png
     :align: center
