@@ -124,7 +124,7 @@ An invalid set of trajectory commands would be:
     #.  Command the duration to 10 s
     #.  Command the final displacement to 20
 
-Since the duration is given before the displacement. Sending this trajectory will have no effect, and your module will not rotate.
+Since the duration is given before the displacement, sending this trajectory will have no effect, and your module will not rotate.
 
 Trajectory command parameters are available through the :ref:`Multi Turn Angle Control Client <multi_turn_table>`, 
 and have the names all beginning with *trajectory_*, for example *trajectory_linear_displacement*.
