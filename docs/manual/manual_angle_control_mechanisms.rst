@@ -45,7 +45,6 @@ Control Displacement Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`. 
 
-In order to run the example below, you must change the serial_port parameter to match your module's connection. 
 This example illustrates the output of basic displacement commands. First, it sets the module to 0 radians of displacement, waits, 
 and then sets the displacement to :math:`\frac{\pi}{2}`, exactly as described in the drawing above.
 
