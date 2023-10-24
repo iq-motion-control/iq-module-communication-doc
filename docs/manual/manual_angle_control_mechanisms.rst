@@ -27,7 +27,7 @@ The module's *Control Displacement* is a direct input target **displacement** in
 radians ctrl_angle or output meters ctrl_linear_displacement (assuming meters_per_radian is non-zero. See :ref:`Angular v. Linear Control`). 
 
 A reminder that Control Angle defines a *displacement*, not a position, and is, in general, measured relative to the 
-module's *Zero Angle*. See :ref:`Setting Observed Displacement and its Relationship With Zero Angle` for more information.
+module's *Zero Angle*. See :ref:`Setting Observed Displacement and its Relationship with Zero Angle` for more information.
 
 The module will rotate to the controlled displacement at the speed defined by *Maximum Angular Speed*.
 
@@ -515,7 +515,7 @@ originally commanded, and are not modified by these limits.
 Zero Angle
 ++++++++++++++++++++++++++++
 The module's *Zero Angle* is the physical position to be treated as 0 radians of displacement 
-(assuming no explicit sets of *Observed Angular Displacement*. See :ref:`Setting Observed Displacement and its Relationship With Zero Angle`). 
+(assuming no explicit sets of *Observed Angular Displacement*. See :ref:`Setting Observed Displacement and its Relationship with Zero Angle`). 
 *Zero Angle* is a value bounded by [-:math:`\pi`, :math:`\pi`], giving a range of the entire circle around the module. Displacement is the 
 total distance (radial or linear) traveled away from *Zero Angle*. Displacement is not bounded by [-:math:`\pi`, :math:`\pi`], and can be any 32-bit float 
 value [±1.18e-38, ±3.4e38].
@@ -531,9 +531,9 @@ if you set *Zero Angle* to 0.28 rad, your *Observed Angular Displacement* will b
 
     Zero Angle and Angular Displacement
 
-.. _Setting Observed Displacement and its Relationship With Zero Angle:
+.. _Setting Observed Displacement and its Relationship with Zero Angle:
 
-Setting Observed Displacement and its Relationship With Zero Angle
+Setting Observed Displacement and its Relationship with Zero Angle
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 In general, *Observed Angular Displacement* and *Observed Linear Displacement* are defined as the total displacement measured 
@@ -547,9 +547,9 @@ the black line indicates the *Zero Angle* position, and the red line is the phys
 .. figure:: ../_static/manual_images/angle_control/zero_angle_and_obs_angle.png
     :align: center
     :scale: 90%
-    :alt: Setting Observed Displacement and its Relationship With Zero Angle
+    :alt: Setting Observed Displacement and its Relationship with Zero Angle
 
-    Setting Observed Displacement and its Relationship With Zero Angle
+    Setting Observed Displacement and its Relationship with Zero Angle
 
 In step 1, the module has just been turned on, and commanded to 0 displacement by setting *Control Angle* to 0. As expected, the observed 
 displacement is 0. Step 2 commands the module to 3.14 radians of displacement by setting *Control Angle* to 3.14, and the observed displacement 
