@@ -224,7 +224,7 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
         module.set("multi_turn_angle_control", "trajectory_duration", 20)
 
 #. Trajectory Queueing with Overwrite Mode
-    For this next example,  we change the queue mode to overwrite (1). Youlll see that only one trajectory is 
+    For this next example,  we change the queue mode to overwrite (1). You'll see that only one trajectory is 
     completed after the initial reset to 0 rad of displacement. 
 
     .. code-block:: python
