@@ -333,7 +333,7 @@ Radian to 0.5 rad and setting *Control Linear Displacement* to 0.5m.
 Additionally, you can configure *Meters Per Radian* to properly drive a gear box. With a 5:1 gear ratio, for example, you may change the 
 *Meters Per Radian* parameter found in :ref:`the Multi Turn Angle Control Client <multi_turn_table>` to 1/5. When you command Control Linear Displacement to 
 :math:`\frac{\pi}{5}` rad, you will see that the module completes :math:`\pi` revolutions where the output gear moves by :math:`\frac{\pi}{5}` rad. 
-The image below illustrates how this may work. The module is represented in black, the output shaft in purple, and the gears in red.
+The image below illustrates how this may work. The module is represented in black, the output shaft in purple, and an idler gear in red.
 
 .. figure:: ../_static/manual_images/angle_control/linear_displacement.png
     :align: center
