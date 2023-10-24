@@ -84,9 +84,9 @@ and then sets the displacement to :math:`\frac{\pi}{2}`, exactly as described in
 Control Trajectory
 ++++++++++++++++++++++++
 
-Vertiq servo modules' trajectory control is a method of position planning to provide a predetermined path from 
+All Vertiq servo modules' trajectory control is a method of position planning to provide a predetermined path from 
 position A to B over a period of time. All paths are generated in order to create minimum jerk trajectories. Trajectories are calculated based on the quintic function 
-:math:`x(t) =  a_0 + a_1t + a_2t^2+a_3t^3+a_4t^4+a_5t^5` in which the *a* constants are calculated based on the modules starting and ending time, 
+:math:`x(t) =  a_0 + a_1t + a_2t^2+a_3t^3+a_4t^4+a_5t^5` in which the *a* constants are calculated based on the module's starting and ending time, 
 displacement, velocity, and acceleration.
 
 In order to command a trajectory, you must command, in order, a minimum set of final displacement and an average velocity or 
