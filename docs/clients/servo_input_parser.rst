@@ -117,7 +117,9 @@ A minimal working example for the Servo Input Parser Client is:
     |variable_name|.save("servo_input_parser", "mode")
     |variable_name|.save("servo_input_parser", "unit_min")
     |variable_name|.save("servo_input_parser", "unit_max") 
-    
+
+.. _servo_input_parser_table:
+
 Message Table
 ~~~~~~~~~~~~~
 
