@@ -31,7 +31,7 @@ module's *Zero Angle*. See :ref:`Setting Observed Displacement and its Relations
 
 The module will rotate to the controlled displacement at the speed defined by *Maximum Angular Speed*.
 
-A basic of how your module will move during a displacement command is provided below. Note that
+A basic example of how your module will move during a displacement command is provided below. Note that
 positive displacement is measured in the counter-clockwise direction.
 
 .. figure:: ../_static/manual_images/angle_control/displacement_ex.png
