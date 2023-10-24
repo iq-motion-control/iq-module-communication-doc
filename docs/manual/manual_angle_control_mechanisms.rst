@@ -396,7 +396,7 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
 
 Maximum Angular Speed
 ++++++++++++++++++++++++++++
-Vertiq servo modules define a value called *Angular Max Speed* :ref:` in the Multi Turn Angle Control Client <multi_turn_table>` which is the maximum travel speed permitted during all commanded module motion. 
+Vertiq servo modules define a value called *Angular Max Speed* :ref:`in the Multi Turn Angle Control Client <multi_turn_table>` which is the maximum travel speed permitted during all commanded module motion. 
 All angle commands are bound by this value, and **will not** exceed it. *Angular Max Speed* is the angular speed at which the module will 
 attempt to complete Control Angle as well as Control Linear Displacement commands. For example, if *Angular Max Speed* is set to 50 rad/s, 
 then a Control Angle of 25 rad will take about 0.5 seconds. 
