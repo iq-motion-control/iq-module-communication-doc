@@ -96,13 +96,13 @@ Optional trajectory parameters include final velocity and acceleration. These mu
 
 Valid trajectories are described in the following examples:
     * Example 1
-        #. Command the final velocity to :math:`\frac{rad}{s}`
-        #. Command the final acceleration to 4 :math:`\frac{rad}{s^2}`
-        #. Command the final displacement to 20
+        #. Command the final velocity to :math:`8 \frac{rad}{s}`
+        #. Command the final acceleration to :math:`4 \frac{rad}{s^2}`
+        #. Command the final displacement to :math:`20 \text{rad}`
         #. Command the duration to 10 s
 
         Commanding this trajectory would cause the module to rotate to a displacement of 20 rad over a period of 10 seconds.
-        At the end of the trajectory, the module will have a velocity of 8 c accelerating at 4 :math:`\frac{rad}{s^2}`.
+        At the end of the trajectory, the module will have a velocity of :math:`8 \frac{rad}{s}` accelerating at :math:`4 \frac{rad}{s^2}`.
 
     * Example 2
         #. Command the final displacement to 26 rad
