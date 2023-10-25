@@ -12,8 +12,7 @@ Angle Based Control Mechanisms
 About Position Control
 ================================
 Vertiq's position control uses a closed loop PID controller in order to achieve a target position. There are two unique methods that we recommend for setting target displacements, Control Angle and Control Trajectory.
-Also available is a Control Velocity which is driven by our angle controller. More information about angle based velocity control can 
-be found <link to the velocity control page>. TODO: ADD ACTUAL LINK TO VELOCITY CONTROL WHEN IT EXISTS
+Also available is a Control Velocity which is driven by our angle controller. Information on angle based velocity control will be provided in an upcoming manual entry about velocity control.
 Position modules can also be controlled via duration based protocols such as 1-2ms PWM. These control mechanisms are explained below.
 
 ================================
@@ -24,12 +23,12 @@ Control Displacements
 ++++++++++++++++++++++++
 The module's *Control Displacement* is a direct input target **displacement** into the position PID controller.
 *Control Displacements* can be set through the :ref:`Multi Turn Angle Control Client <multi_turn_control_label>`, and can be set in either module
-radians ctrl_angle or output meters ctrl_linear_displacement (assuming meters_per_radian is non-zero. See :ref:`Angular v. Linear Control`). 
+radians *ctrl_angle* or output meters *ctrl_linear_displacement* (assuming meters_per_radian is non-zero. See :ref:`Angular v. Linear Control`). 
 
 A reminder that Control Angle defines a *displacement*, not a position, and is, in general, measured relative to the 
-module's *Zero Angle*. See :ref:`Setting Observed Displacement and its Relationship with Zero Angle` for more information.
+module's *Zero Angle*. See :ref:`Zero Angle` as well as :ref:`Setting Observed Displacement and its Relationship with Zero Angle` for more information.
 
-The module will rotate to the controlled displacement at the speed defined by *Maximum Angular Speed*.
+The module will rotate to the controlled displacement at the speed defined by :ref:`Maximum Angular Speed`.
 
 A basic example of how your module will move during a displacement command is provided below. Note that
 positive displacement is measured in the counter-clockwise direction.
@@ -84,7 +83,7 @@ and then sets the displacement to :math:`\frac{\pi}{2}`, exactly as described in
 Control Trajectory
 ++++++++++++++++++++++++
 
-All Vertiq servo modules' trajectory control is a method of position planning to provide a predetermined path from 
+All Vertiq servo modules support trajectory control, a method of position planning to provide a predetermined path from 
 position A to B over a period of time. All paths are generated in order to create minimum jerk trajectories. Trajectories are calculated based on the quintic function 
 :math:`x(t) =  a_0 + a_1t + a_2t^2+a_3t^3+a_4t^4+a_5t^5` in which the *a* constants are calculated based on the module's starting and ending time, 
 displacement, velocity, and acceleration.
@@ -271,9 +270,10 @@ based on the function :math:`\text{Raw Value} = \frac{\text{Signal Duration} - 1
 through *Servo Input Parser*, and based on the *mode* value inside of Servo Input Parser, the module may react with a 
 controlled PWM, Voltage, Velocity, or Position. This parameter can be chosen through the :ref:`Servo Input Parser's mode <servo_input_parser_table>`. 
 Depending on the mode, input signals are mapped directly as a control voltage, PWM, velocity, or position. 
-This guide will focus on only the Position mode. Other modes are covered more in <info about input parser stuff>.
+This guide will focus on only the Position mode. Other modes are covered more in an upcoming manual about our input parser clients.
 
-The minimum and maximum bounds of these controls are set by the *unit_min* and *unit_max* parameters. 
+The minimum and maximum bounds of these controls are set by the *unit_min* and *unit_max* parameters. The raw value is converted into a target
+parameter through the equation :math:`\text{unit_min} + (\text{raw_value} * (\text{unit_max} - \text{unit_min}))`.
 
 .. figure:: ../_static/manual_images/angle_control/servo_input_parser.png
     :align: center
@@ -394,12 +394,14 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
     | Angular Displacement:  3.14
     | Linear Displacement:  0.63
 
+.. _Maximum Angular Speed:
+
 Maximum Angular Speed
 ++++++++++++++++++++++++++++
 Vertiq servo modules define a value called *Angular Max Speed* :ref:`in the Multi Turn Angle Control Client <multi_turn_table>` which is the maximum travel speed permitted during all commanded module motion. 
 All angle commands are bound by this value, and **will not** exceed it. *Angular Max Speed* is the angular speed at which the module will 
 attempt to complete Control Angle as well as Control Linear Displacement commands. For example, if *Angular Max Speed* is set to 50 rad/s, 
-then a Control Angle of 25 rad will take about 0.5 seconds. 
+then a Control Angle of 25 rad will take about 0.5 seconds (assuming that the module starts at 0 rad of displacement). 
 
 In regards to Trajectory commands, the module remains bound by Angular Max Speed. Suppose you set a trajectory to move by 100 radians (from any starting point) 
 over 5 seconds. You'd expect an average velocity of around 20 rad/s. If, however, your Angular Max Speed is set to 10, your 
@@ -512,12 +514,14 @@ Notice that the module does not reach its destination until 10 seconds. The traj
 If you queue another trajectory, the original commanded trajectory will carry into the next trajectory. Trajectories still execute in the background as 
 originally commanded, and are not modified by these limits.
 
+.. _Zero Angle:
+
 Zero Angle
 ++++++++++++++++++++++++++++
 The module's *Zero Angle* is the physical position to be treated as 0 radians of displacement 
 (assuming no explicit sets of *Observed Angular Displacement*. See :ref:`Setting Observed Displacement and its Relationship with Zero Angle`). 
 *Zero Angle* is a value bounded by [-:math:`\pi`, :math:`\pi`], giving a range of the entire circle around the module. Displacement is the 
-total distance (radial or linear) traveled away from *Zero Angle*. Displacement is not bounded by [-:math:`\pi`, :math:`\pi`], and can be any 32-bit float 
+total distance (radial or linear) traveled away from *Zero Angle*. Displacement is not bounded by [-:math:`\pi`, :math:`\pi`], and can be any 32-bit floating point 
 value [±1.18e-38, ±3.4e38].
 
 For example, imagine your current *Zero Angle* is 0 rad. You then command your module to a *Control Angle* of 6.28 radians, 
@@ -611,7 +615,7 @@ The following demo produces the same steps as the example presented above in ord
 
     #Coast the module, and get Observed Angular Displacement
     module.set("multi_turn_angle_control", "ctrl_coast")
-    #Expect to see a value around PI\
+    #Expect to see a value around PI
     print(module.get("multi_turn_angle_control", "obs_angular_displacement"))
 
 You'll notice that each time we print the *Observed Angular Displacement*, the value is around 3.14. As described, the second setting of “obs_angular_displacement” to 0 supersedes the displacement 
