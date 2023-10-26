@@ -328,7 +328,7 @@ of the module.
      - .. image:: ../_static/manual_images/angle_control/lead_screw_example.png
 
 This movement could be accomplished by setting *Control Angular Displacement* to 1 rad, or by setting Meters Per 
-Radian to 0.5 rad and setting *Control Linear Displacement* to 0.5m.
+Radian to 0.5 and setting *Control Linear Displacement* to 0.5m.
 
 Additionally, you can configure *Meters Per Radian* to properly drive a gear box. With a 5:1 gear ratio, for example, you may change the 
 *Meters Per Radian* parameter found in :ref:`the Multi Turn Angle Control Client <multi_turn_table>` to 1/5. When you command Control Linear Displacement to 
