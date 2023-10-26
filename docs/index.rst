@@ -49,6 +49,7 @@
    :caption: Feature Reference Manual
 
    manual/manual_intro
+   manual/manual_angle_control_mechanisms
    manual/manual_iquart
    manual/manual_dronecan
    manual/manual_canopen

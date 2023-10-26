@@ -1,3 +1,5 @@
+.. _multi_turn_control_label:
+
 Multi Turn Angle Control
 ------------------------
 
@@ -113,6 +115,8 @@ A minimal working example for the Multi-Turn Angle Control Client is:
     # Sets trajectory duration for 2 seconds
     |variable_name|.set("multi_turn_angle_control", "trajectory_duration", 2)  
 
+
+.. _multi_turn_table:
 
 Message Table
 ~~~~~~~~~~~~~
