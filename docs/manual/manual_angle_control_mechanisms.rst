@@ -164,7 +164,7 @@ we finish the trajectory with a final velocity of 25 :math:`\frac{rad}{s}`, with
 
 
 Lastly, a trajectory with a displacement of 150 rad with a final velocity of 25 :math:`\frac{rad}{s}` and a final acceleration of 15 :math:`\frac{rad}{s^2}`. 
-As with all trajectories, the position takes a smooth route to its final displacement, and we once again at a final 
+As with all trajectories, the position takes a smooth route to its final displacement, and we once again finish at a final 
 velocity of 25 :math:`\frac{rad}{s}`. This time, we see a non-zero slope at the end of the velocity plot, and when measured, 
 find an acceleration of 15 :math:`\frac{rad}{s^2}`.
 
