@@ -11,7 +11,7 @@ Angle Based Control Mechanisms
 ================================
 About Position Control
 ================================
-Vertiq's position control uses a closed loop PID controller in order to achieve a target position. There are two unique methods that we recommend for setting target displacements, Control Angle and Control Trajectory.
+Vertiq's position control uses a closed loop PID controller in order to achieve a target displacement. There are two unique methods that we recommend for setting target displacements, Control Angle and Control Trajectory.
 Also available is a Control Velocity which is driven by our angle controller. Information on angle based velocity control will be provided in an upcoming manual entry about velocity control.
 Position modules can also be controlled via duration based protocols such as 1-2ms PWM. These control mechanisms are explained below.
 
