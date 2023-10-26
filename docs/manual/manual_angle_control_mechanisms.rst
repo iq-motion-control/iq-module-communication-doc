@@ -469,7 +469,7 @@ and revolve at a speed of 25 rad/s, this takes about 2 seconds.
     #Give it time to settle
     time.sleep(3)
 
-    #Set the control displacement to 0 rad
+    #Set the module to coast
     module.set("multi_turn_angle_control", "ctrl_coast")
 
 Trajectory and Maximum Angular Speed
