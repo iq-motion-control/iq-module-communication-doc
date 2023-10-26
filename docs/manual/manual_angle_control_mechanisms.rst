@@ -23,7 +23,7 @@ Control Displacements
 ++++++++++++++++++++++++
 The module's *Control Displacement* is a direct input target **displacement** into the position PID controller.
 *Control Displacements* can be set through the :ref:`Multi Turn Angle Control Client <multi_turn_control_label>`, and can be set in either module
-radians *ctrl_angle* or output meters *ctrl_linear_displacement* (assuming meters_per_radian is non-zero. See :ref:`Angular v. Linear Control`). 
+radians (*ctrl_angle*) or output meters (*ctrl_linear_displacement*) (assuming meters_per_radian is non-zero. See :ref:`Angular v. Linear Control`). 
 
 A reminder that Control Angle defines a *displacement*, not a position, and is, in general, measured relative to the 
 module's *Zero Angle*. See :ref:`Zero Angle` as well as :ref:`Setting Observed Displacement and its Relationship with Zero Angle` for more information.
