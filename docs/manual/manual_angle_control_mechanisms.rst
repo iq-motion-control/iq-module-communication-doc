@@ -622,6 +622,8 @@ You'll notice that each time we print the *Observed Angular Displacement*, the v
 reference set by zero angle. If the zero angle was the reference point for displacement, then the second “ctrl_angle” set would not result in any movement, 
 as the module would already be displaced by 3.14.
 
+.. _position_control_tuning:
+
 ================================
 Position Control Tuning
 ================================
