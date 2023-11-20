@@ -382,6 +382,29 @@ is multiplied by the reference velocity squared.
 .. figure:: ../_static/manual_images/velo_voltage_control/feed_forward_terms.png
     :align: center
     :scale: 90%
-    :alt: Open v. Closed Loop Control with Control Voltage v. Control Velocity v. Control PWM
+    :alt: Feed Forward Terms in PID Control
 
-    Open v. Closed Loop Control with Control Voltage v. Control Velocity v. Control PWM
+    Feed Forward Terms in Velocity PID Control
+
+Velocity Feed Forward 0
+--------------------------
+The 0th order feedforward for the velocity controller. The constant voltage offset. Generally not needed for propellers. Velocity FF0 has units of volts [:math:`V`].
+
+Velocity Feed Forward 1
+--------------------------
+The 1st order feedforward for the velocity controller. A linear voltage term, which compensates for friction and motor back EMF. We recommend keeping the default value. Velocity FF1 has units of volts per radian per second [:math:`\frac{V}{(\frac{rad}{s})}`].
+
+Velocity Feed Forward 2
+--------------------------
+The 2nd order feedforward of the velocity controller. Typically compensates for propeller drag. Velocity FF2 has units of volts per radian per second squared [:math:`\frac{V}{(\frac{rad}{s^2})}`].
+
+Full Velocity Controller
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Accounting for all feed forward and control options, our complete velocity controller is summarized by the following:
+
+.. figure:: ../_static/manual_images/velo_voltage_control/full_propeller_control_system.png
+    :align: center
+    :scale: 60%
+    :alt: Full Propeller Motor Controller
+
+    Full Propeller Motor Controller
