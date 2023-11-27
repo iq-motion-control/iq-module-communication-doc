@@ -4,9 +4,9 @@
 
 .. _manual_velocity_control_mechanisms:
 
-***********************************
-Velocity and Voltage Based Control
-***********************************
+****************************************************
+Velocity and Voltage Based Control Mechanisms
+****************************************************
 
 ===================================
 About Velocity and Voltage Control
@@ -16,7 +16,7 @@ regardless of firmware style (speed or servo), can be controlled via velocity an
 underlying implementation of control varies depending on the controllers available on your firmware. Both our 
 velocity and position controllers support three methods of setting velocity targets: Control Velocity, Control Voltage, 
 and Control PWM. All modules also support control via standard :ref:`Analog Hobby Protocols <manual_hobby>`, with options to map inputs to Control Velocity, Control Voltage, and Control PWM. The inputs are mapped by either the 
-:ref:`Propeller Input Parser <propeller_motor_control>` or :ref:`Servo Input Parser <servo_input_parser>`. Vertiq's speed modules 
+:ref:`ESC Propeller Input Parser <esc_propeller_input_parser>` or :ref:`Servo Input Parser <servo_input_parser>`. Vertiq's speed modules 
 larger than our 23XX family can also be driven with :ref:`DroneCAN <manual_dronecan>`. 
 
 =========================================
@@ -24,16 +24,18 @@ Velocity and Voltage Control Mechanisms
 =========================================
 Control Velocity
 +++++++++++++++++++++
-Velocity Control Through :ref:`Propeller Input Parser <propeller_motor_control>` v. :ref:`Multi Turn Angle Controller <multi_turn_control_label>`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Velocity Control Through :ref:`Propeller Motor Controller <propeller_motor_control>` v. :ref:`Multi Turn Angle Controller <multi_turn_control_label>`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 All *Control Velocity* commands use closed loop PID control in order to control either a target velocity or position. 
 The controllers available on each module are firmware dependent. In order to find what controllers are available with your 
 module and firmware, please see your module's page available on the left-hand side of this page.
 
-Our :ref:`Propeller Motor Controller <propeller_motor_control>`, available only while using *speed firmware*, uses a velocity PID controller in which the input target is 
+Our :ref:`Propeller Motor Controller <propeller_motor_control>`, available only while using speed firmware, uses a velocity PID controller in which the input target is 
 a velocity, and error is calculated on the difference between the module's actual velocity and the target. 
 This is the default controller used when the module receives commands through :ref:`Analog Hobby Protocols <manual_hobby>` or 
-:ref:`DroneCAN <manual_dronecan>`.
+:ref:`DroneCAN <manual_dronecan>`. An important note is that while Hobby and DroneCAN commands are passed into the Propeller Motor Controller, the 
+exact type of control depends on the configured *mode* parameter. Please refer to these linked pages in order to learn more about  
+Hobby and DroneCAN, and the *mode* parameter.
 
 .. figure:: ../_static/manual_images/velo_voltage_control/prop_motor_controller.png
     :align: center
@@ -42,7 +44,7 @@ This is the default controller used when the module receives commands through :r
 
     Propeller Motor Controller PID Loop
 
-Our :ref:`Multi Turn Angle Control Client <multi_turn_control_label>` (available on all servo firmware and on select speed firmware) is generally meant for angle based control, 
+Our :ref:`Multi Turn Angle Controller <multi_turn_control_label>` (available on all servo firmware and on select speed firmware) is generally meant for angle based control, 
 and is detailed more in our :ref:`Angle Control Mechanisms documentation <manual_angle_control_mechanisms>`. It can, however, also control the module's velocity, 
 with an important note that it always controls based on a target position. This means that when sent a velocity command, the *Multi Turn Angle Controller* 
 advances the displacement angle target at the commanded velocity.
@@ -54,9 +56,9 @@ advances the displacement angle target at the commanded velocity.
 
     Multi Turn Motor Controller PID Loop
 
-The nature of each of these PID loops results in the tuning of each control style to differ in the effect of changing the proportional, 
+Due to each PID controller's nature, each reacts differently to changes in the proportional, 
 integral, and derivative gains. An important distinction is that even when controlling the *Multi Turn Angle Controller* with a velocity, 
-the proportional gain relates to a positional error, the integral gain calculated by the positional error times time, and the derivative 
+the proportional gain relates to a positional error, the integral gain to the positional error times time, and the derivative 
 gain to velocity error. For the *Propeller Motor Controller*, proportional gain pertains to velocity error, integral to position, and derivative 
 to acceleration.  
 
@@ -71,8 +73,8 @@ radians per second. Once set, the module attempts to reach the target velocity. 
 
 .. _spin_with_speed_demo:
 
-Demo - Basic Velocity Spinning with Speed Firmware
----------------------------------------------------
+Demo - Basic Velocity Spinning with the Propeller Motor Controller
+--------------------------------------------------------------------
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
    
     .. note:: 
@@ -81,10 +83,10 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
     .. warning::
         Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
 
-This example illustrates a basic velocity command with a Vertiq speed module. We start by setting the module's 
+This example illustrates a basic velocity command with the Propeller Motor Controller. We start by setting the module's 
 :ref:`timeout period <manual_timeout>` to 5 seconds to ensure that we will continue to spin, even though we are not 
 continuously sending new commands. The module will continue for up to 5 seconds before stopping itself
-and performing its timeout behavior. Note that the longest sleep period in the script is 4 seconds, so we will not hit a timeout during this test. 
+and performing its :ref:`timeout behavior <timeout_behavior>`. Note that the longest sleep period in the script is 4 seconds, so we will not hit a timeout during this test. 
 Then, we set *ctrl_velocity* to :math:`25\frac{rad}{s}` which causes the module to start spinning at :math:`25\frac{rad}{s}`. After 4 seconds, we halt the module by putting it into 
 Coast, wait another 2 seconds, and perform the same steps, only this time spinning the module at :math:`-12.5\frac{rad}{s}`. Notice that the module spins in the 
 counterclockwise direction when commanded to a positive velocity, and the clockwise direction when commanded to a negative velocity. 
@@ -125,8 +127,8 @@ client also provides a unique velocity command, *Control Linear Velocity*. Contr
 the velocity of a driven output, for example a belt or lead screw. Information about angular and linear commands can be 
 found :ref:`here <Angular v. Linear Control>`.
 
-Demo - Basic Velocity Spinning with Servo Firmware
----------------------------------------------------
+Demo - Basic Velocity Spinning with the Multi Turn Angle Controller
+----------------------------------------------------------------------
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
    
     .. note:: 
@@ -135,7 +137,7 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
     .. warning::
         Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
 
-This example illustrates a basic velocity command with a Vertiq servo module. First, we set *ctrl_velocity* to :math:`25\frac{rad}{s}` which 
+This example illustrates a basic velocity command with the Multi Turn Angle Controller. First, we set *ctrl_velocity* to :math:`25\frac{rad}{s}` which 
 causes the module to start spinning. After 4 seconds, we halt the module by putting it into Coast, wait another 2 seconds, 
 and perform the same steps, only this time spinning the module at :math:`-12.5\frac{rad}{s}`. Notice that the module spins in the counterclockwise 
 direction when commanded to a positive velocity, and the clockwise direction when commanded to a negative velocity. This will always be the case. 
@@ -233,6 +235,10 @@ Demo - Spinning with Control Voltage
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
    
     .. note:: 
+        This example should work identically with either the Propeller Motor Controller or the Multi Turn Angle Controller. To 
+        test this, simply change "propeller_motor_control" to "multi_turn_angle_control" in each command.
+
+    .. note:: 
         You must set the ``serial_port`` parameter to the serial port connected to your module.
 
     .. warning::
@@ -279,7 +285,7 @@ A Control PWM command must be a value [-1, 1], and can be found as *ctrl_pwm* in
 :ref:`Propeller Motor Controller <prop_motor_control_table>` or :ref:`Multi Turn Angle Controller <multi_turn_table>` depending on your firmware's style. 
 The commanded PWM value is multiplied by the supply voltage in order to create the voltage sent to the module's drive. 
 
-For example, if your module is powered by a 15V supply, and you set a Control PWM of 0.1, you will see your module spin at a Control Voltage of 1.5V. 
+For example, if your module is powered by a 15V supply, and you set a Control PWM of 0.1, your module will apply a Control Voltage of 1.5V. 
 
 Our :ref:`system above <control_voltage_system>` expands to the following:
 
@@ -293,7 +299,10 @@ Our :ref:`system above <control_voltage_system>` expands to the following:
 Demo - Spinning with Control PWM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
-   
+    .. note:: 
+        This example should work identically with either the Propeller Motor Controller or the Multi Turn Angle Controller. To 
+        test this, simply change "propeller_motor_control" to "multi_turn_angle_control" in each command.
+        
     .. note:: 
         You must set the ``serial_port`` parameter to the serial port connected to your module.
 
