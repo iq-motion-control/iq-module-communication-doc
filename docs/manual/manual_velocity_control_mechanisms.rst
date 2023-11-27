@@ -235,7 +235,7 @@ Demo - Spinning with Control Voltage
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
    
     .. note:: 
-        This example should work identically with either the Propeller Motor Controller or the Multi Turn Angle Controller. To 
+        If your module only suppports the Multi Turn Angle Controller, this example should work identically as with the Propeller Motor Controller. To 
         test this, simply change "propeller_motor_control" to "multi_turn_angle_control" in each command.
 
     .. note:: 
@@ -300,9 +300,9 @@ Demo - Spinning with Control PWM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
     .. note:: 
-        This example should work identically with either the Propeller Motor Controller or the Multi Turn Angle Controller. To 
+        If your module only suppports the Multi Turn Angle Controller, this example should work identically as with the Propeller Motor Controller. To 
         test this, simply change "propeller_motor_control" to "multi_turn_angle_control" in each command.
-        
+
     .. note:: 
         You must set the ``serial_port`` parameter to the serial port connected to your module.
 
