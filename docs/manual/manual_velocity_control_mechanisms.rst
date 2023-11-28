@@ -33,8 +33,8 @@ module and firmware, please see your module's page available on the left-hand si
 Our :ref:`Propeller Motor Controller <propeller_motor_control>`, available only while using speed firmware, uses a velocity PID controller in which the input target is 
 a velocity, and error is calculated on the difference between the module's actual velocity and the target. 
 This is the default controller used when the module receives commands through :ref:`Analog Hobby Protocols <manual_hobby>` or 
-:ref:`DroneCAN <manual_dronecan>`. An important note is that while Hobby and DroneCAN commands are passed into the Propeller Motor Controller, the 
-exact type of control depends on the configured *mode* parameter. Please refer to these linked pages in order to learn more about  
+:ref:`DroneCAN <manual_dronecan>`. An important note is that while Hobby and DroneCAN commands are passed into the Propeller Motor Controller, whether 
+the module uses velocity control depends on the configured :ref:`mode <throttle_mode_maximums_directions>` parameter. Please refer to these linked pages in order to learn more about  
 Hobby and DroneCAN, and the *mode* parameter.
 
 .. figure:: ../_static/manual_images/velo_voltage_control/prop_motor_controller.png
@@ -58,7 +58,7 @@ advances the displacement angle target at the commanded velocity.
 
 Due to each PID controller's nature, each reacts differently to changes in the proportional, 
 integral, and derivative gains. An important distinction is that even when controlling the *Multi Turn Angle Controller* with a velocity, 
-the proportional gain relates to a positional error, the integral gain to the positional error times time, and the derivative 
+the proportional gain relates to a positional error, the integral gain to the positional error multiplied by time, and the derivative 
 gain to velocity error. For the *Propeller Motor Controller*, proportional gain pertains to velocity error, integral to position, and derivative 
 to acceleration.  
 
@@ -141,7 +141,7 @@ This example illustrates a basic velocity command with the Multi Turn Angle Cont
 causes the module to start spinning. After 4 seconds, we halt the module by putting it into Coast, wait another 2 seconds, 
 and perform the same steps, only this time spinning the module at :math:`-12.5\frac{rad}{s}`. Notice that the module spins in the counterclockwise 
 direction when commanded to a positive velocity, and the clockwise direction when commanded to a negative velocity. This will always be the case. 
-Also, notice that we did not set a new timeout value as we did with the :ref:`speed example <spin_with_speed_demo>`. By default, the Multi Turn Angle Controller, 
+Also, notice that we did not set a new timeout value as we did with the :ref:`Propeller Motor Controller example <spin_with_speed_demo>`. By default, the Multi Turn Angle Controller, 
 has a timeout period much higher than 4 seconds, so we do not worry about setting a new value here. 
 
     .. code-block:: python
@@ -287,14 +287,14 @@ The commanded PWM value is multiplied by the supply voltage in order to create t
 
 For example, if your module is powered by a 15V supply, and you set a Control PWM of 0.1, your module will apply a Control Voltage of 1.5V. 
 
-Our :ref:`system above <control_voltage_system>` expands to the following:
+Our :ref:`system above <control_voltage_system>` expands to the following, and represents the entirety of the Multi Turn Angle Control loop:
 
 .. figure:: ../_static/manual_images/velo_voltage_control/control_pwm.png
     :align: center
     :scale: 90%
     :alt: Open v. Closed Loop Control with Control Voltage v. Control Velocity v. Control PWM
 
-    Open v. Closed Loop Control with Control Voltage v. Control Velocity v. Control PWM
+    Open v. Closed Loop Control with Control Voltage v. Control Velocity v. Control PWM and Complete Multi Turn Angle Controller PID Loop
 
 Demo - Spinning with Control PWM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -361,8 +361,8 @@ As expected, the observed velocities in both cases are practically identical.
 
 Tuning Velocity Gains and Parameters
 +++++++++++++++++++++++++++++++++++++++
-PID Tuning
-~~~~~~~~~~~~~~~~
+Propeller Motor Control PID Tuning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 As mentioned :ref:`above <control_with_prop_motor_control>`, tuning the Propeller Motor Controller and Multi Turn Angle Controller differs due 
 to each controller's nature. For more information about tuning the Multi Turn Angle Controller please see :ref:`Position Control Tuning <position_control_tuning>`.
 
@@ -407,8 +407,8 @@ Velocity Feed Forward 2
 --------------------------
 The 2nd order feedforward of the velocity controller. Typically compensates for propeller drag. Velocity FF2 has units of volts per radian per second squared [:math:`\frac{V}{(\frac{rad}{s^2})}`].
 
-Full Velocity Controller
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Full Propeller Motor Controller
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Accounting for all feed forward and control options, our complete velocity controller is summarized by the following:
 
 .. figure:: ../_static/manual_images/velo_voltage_control/full_propeller_control_system.png
