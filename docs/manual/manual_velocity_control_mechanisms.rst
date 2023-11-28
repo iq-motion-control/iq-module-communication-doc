@@ -17,7 +17,16 @@ underlying implementation of control varies depending on the controllers availab
 velocity and position controllers support three methods of setting velocity targets: Control Velocity, Control Voltage, 
 and Control PWM. All modules also support control via standard :ref:`Analog Hobby Protocols <manual_hobby>`, with options to map inputs to Control Velocity, Control Voltage, and Control PWM. The inputs are mapped by either the 
 :ref:`ESC Propeller Input Parser <esc_propeller_input_parser>` or :ref:`Servo Input Parser <servo_input_parser>`. Vertiq's speed modules 
-larger than our 23XX family can also be driven with :ref:`DroneCAN <manual_dronecan>`. 
+larger than our 23XX family can also be driven with :ref:`DroneCAN <manual_dronecan>`.
+
+Throughout this document, we will build up to, and explain our two full controllers in regards to velocity and voltage control.
+These controllers are the :ref:`Propeller Motor Controller <propeller_motor_control>` (left) and :ref:`Multi Turn Angle Controller <multi_turn_control_label>` (right).
+
+.. list-table:: Full Propeller Motor Controller Left and Full Multi Turn Angle Controller Right
+    :class: borderless
+
+    * - .. figure:: ../_static/manual_images/velo_voltage_control/full_propeller_control_system.png
+      - .. figure:: ../_static/manual_images/velo_voltage_control/full_multi_turn_system.png
 
 =========================================
 Velocity and Voltage Control Mechanisms
