@@ -1,3 +1,6 @@
+
+.. _servo_input_parser:
+
 Servo Input Parser
 ------------------
 

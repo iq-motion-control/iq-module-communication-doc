@@ -1,3 +1,6 @@
+
+.. _propeller_motor_control:
+
 Propeller Motor Control
 -----------------------
 
@@ -113,6 +116,8 @@ A minimal working example for the Propeller Motor Control Client is:
 
 Message Table
 ~~~~~~~~~~~~~
+
+.. _prop_motor_control_table:
 
 Type ID 52 | Propeller Motor Controller
     .. table:: Propeller Motor Controller
