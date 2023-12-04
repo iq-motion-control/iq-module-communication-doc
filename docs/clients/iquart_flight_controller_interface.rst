@@ -110,7 +110,7 @@ A minimal working example for the IQUART Flight Controller Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.PulsingModule(com, 0)
     
     telemetry = |variable_name|.get("iquart_flight_controller_interface", "telemetry") 
     print(f"Pulsing voltage mode: {telemetry}")
