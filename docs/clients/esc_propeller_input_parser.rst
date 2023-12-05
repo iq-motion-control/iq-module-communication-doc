@@ -1,3 +1,6 @@
+
+.. _esc_propeller_input_parser:
+
 ESC Propeller Input Parser
 --------------------------
 
