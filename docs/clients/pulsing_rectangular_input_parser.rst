@@ -95,7 +95,7 @@ A minimal working example for the Pulsing Rectangular Input Parser Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing")
     
     pulsing_voltage_mode = |variable_name|.get("pulsing_rectangular_input_parser", "pulsing_voltage_mode") 
     print(f"Pulsing voltage mode: {pulsing_voltage_mode}")
