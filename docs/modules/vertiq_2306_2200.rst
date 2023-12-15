@@ -1,8 +1,8 @@
 *********************************
-Vertiq 2306 2200KV | Speed Module
+Vertiq 23-06 | Speed Module
 *********************************
 
-.. sidebar:: Vertiq 2306 2200KV
+.. sidebar:: Vertiq 23-06
 
     .. image:: ../_static/IQ2306_2200kv.png
         :alt: Vertiq 2306 2200KV

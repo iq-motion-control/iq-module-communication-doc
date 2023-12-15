@@ -1,5 +1,5 @@
 ********************************
-Fortiq 42XX | Servo Module
+Fortiq 42-XX | Servo Module
 ********************************
 
 .. sidebar:: Fortiq

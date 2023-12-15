@@ -1,5 +1,5 @@
 ********************************
-Vertiq 4006 | Speed Module
+Vertiq 40-06 | Speed Module
 ********************************
 
 .. sidebar:: Vertiq 4006

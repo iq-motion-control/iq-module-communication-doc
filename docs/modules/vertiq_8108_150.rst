@@ -1,8 +1,8 @@
 ********************************
-Vertiq 8108 150KV | Speed Module
+Vertiq 81-08 | Speed Module
 ********************************
 
-.. sidebar:: Vertiq 8108 150KV
+.. sidebar:: Vertiq 81-08
 
     .. image:: ../_static/Vertiq_8108_front.jpg
         :alt: Vertiq 8108 150KV
