@@ -29,7 +29,7 @@ Software and Firmware Setup
 To follow this tutorial, ensure that your **IQ Control Center is on version 1.2.6 or later**. Earlier versions lacked some of the calibration features that will be discussed. If you
 are unfamiliar with the Control Center, refer to :ref:`control_center_tutorial` for basic usage information. 
 
-If using a Vertiq 2306, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 8108, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
+If using a Vertiq 2306, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 81-08, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
 modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 4006, should calibrate correctly and have all relevant parameters with any version of the firmware.
 
 For this tutorial, you should set up your module to use the :ref:`Standard PWM <hobby_standard_pwm>` hobby protocol. Follow the instructions in :ref:`hobby_fc_tutorial` to set up your module for Standard PWM control
