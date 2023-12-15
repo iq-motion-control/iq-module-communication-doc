@@ -46,7 +46,7 @@ Creating a Module
 =================
 
 Python interacts with the motor controller via Vertiq Module Objects. Currently Vertiq Python API 
-supports 3 types of motors: Vertiq 2306, Vertiq 8108, and Fortiq M42BLS
+supports 3 types of motors: Vertiq 23-06, Vertiq 81-08, and Fortiq M42BLS
 
 Creating a Vertiq Module
 ------------------------
