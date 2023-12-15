@@ -14,7 +14,7 @@ data from the module.
 
 Module Hardware, Firmware, and Software Versions
 =================================================
-This tutorial was created with a Vertiq 8108 module on speed firmware version 0.0.7. This tutorial should be applicable to any Vertiq module
+This tutorial was created with a Vertiq 81-08 module on speed firmware version 0.0.7. This tutorial should be applicable to any Vertiq module
 that supports :ref:`ESC Telemetry <manual_telemetry>`. 
 
 IQ Control Center version 1.3.4 was used to create this tutorial. The image below summarizes this version information.
@@ -29,7 +29,7 @@ IQ Control Center version 1.3.4 was used to create this tutorial. The image belo
 Flight Controller Hardware
 ===========================
 This tutorial was created using a `Pixhawk 4 <https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk4.html>`_ flight controller. For receiving
-DSHOT telemetry, the TELEM2 port was configured as a serial port and connected to the Telemetry pin of the 8108. Refer to the datasheet for your module
+DSHOT telemetry, the TELEM2 port was configured as a serial port and connected to the Telemetry pin of the 81-08. Refer to the datasheet for your module
 to see how to connect for telemetry. TELEM2 was selected arbitrarily as the serial port to use for receiving ESC telemetry, any other available serial
 port on your flight controller could be used. Details on the pinouts of Pixhawk 4 ports can be found `here <https://cdn.shopify.com/s/files/1/0604/5905/7341/files/Pixhawk4-Pinouts.pdf>`_.
 

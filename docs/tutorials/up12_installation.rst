@@ -4,7 +4,7 @@
 .. _up12_installation_tutorial:
 
 .. |propeller_name| replace:: UP12
-.. |motor_name| replace:: Vertiq 2306
+.. |motor_name| replace:: Vertiq 23-06
 
 *********************************************
 Installing |propeller_name| on a |motor_name|

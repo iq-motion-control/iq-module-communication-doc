@@ -17,8 +17,8 @@ However, the exact pulse duration used to represent the endpoints of the throttl
 to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control a Vertiq module, they must agree on this input range. In some instances you
 can edit the range used by the controller as discussed for Ardupilot and PX4 based flight controllers in this tutorial: :ref:`hobby_fc_tutorial`. 
 
-Another reason why calibration may be necessary is due to clock inaccuracies. Vertiq 2306 modules do not have an external crystal, which reduces the accuracy of their clock. This can lead
-to a 2306 measuring a pulse's duration differently than the controller, so they may not agree on exactly what throttle level is expected. Calibration allows the module and the controller to
+Another reason why calibration may be necessary is due to clock inaccuracies. Vertiq 23-06 modules do not have an external crystal, which reduces the accuracy of their clock. This can lead
+to a 23-06 measuring a pulse's duration differently than the controller, so they may not agree on exactly what throttle level is expected. Calibration allows the module and the controller to
 clarify what the endpoints for the throttle commands should be.
 
 Another option is to adjust the input range of the Vertiq module so that it matches the controller. This is commonly done on a range of ESCs, and is known as "calibration." This tutorial
@@ -29,8 +29,8 @@ Software and Firmware Setup
 To follow this tutorial, ensure that your **IQ Control Center is on version 1.2.6 or later**. Earlier versions lacked some of the calibration features that will be discussed. If you
 are unfamiliar with the Control Center, refer to :ref:`control_center_tutorial` for basic usage information. 
 
-If using a Vertiq 2306, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 81-08, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
-modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 4006, should calibrate correctly and have all relevant parameters with any version of the firmware.
+If using a Vertiq 23-06, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 81-08, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
+modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 40-06, should calibrate correctly and have all relevant parameters with any version of the firmware.
 
 For this tutorial, you should set up your module to use the :ref:`Standard PWM <hobby_standard_pwm>` hobby protocol. Follow the instructions in :ref:`hobby_fc_tutorial` to set up your module for Standard PWM control
 using Control Center, and to connect your hardware to the module. That tutorial also covers how to set up some flight controllers for Standard PWM control.

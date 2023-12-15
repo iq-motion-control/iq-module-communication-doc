@@ -4,7 +4,7 @@
 .. _correcting_underactuated_torque:
 
 .. |propeller_name| replace:: UP12
-.. |motor_name| replace:: Vertiq 2306
+.. |motor_name| replace:: Vertiq 23-06
 
 ***********************************************
 Underactuated Propeller Torque Angle Correction
