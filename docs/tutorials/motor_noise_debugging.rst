@@ -7,18 +7,17 @@
 Communication Errors From Motor Noise
 ***********************************************
 
-Where does motor noise come from?
+Where Does Motor Noise Come From?
 ============================
 Electric motors produce torque through interactions between the motor’s permanent magnetic field and the electric current flowing through the motor’s wire windings. 
 The electric current in the motor’s windings produces a variable magnetic field that can be controlled to exert a force on the motor’s permanent magnets/magnetic field. 
-Current is directed through the motor’s wire windings by applying a voltage across the windings. The direction the current flows through the windings can be switched by 
+Current is directed through the motor’s windings by applying a voltage across the windings. The direction the current flows through the windings can be switched by 
 changing the voltage polarity across the windings. In a three phase brushless DC motor like those produced by Vertiq, the three windings are connected between each of the 
-three phases. Current is directed through the coils by applying either a positive voltage, zero/ground voltage, or by floating the phase by applying no voltage. The 
-process of directing the current through the coils of a three-phase motor is known as commutation.
+three phases. The process of directing the current through the coils of a three-phase motor is known as commutation.
 
 However, motors are not perfect or closed systems. The same switching voltages that occur during commutation to spin the motor may also cause electromagnetic interference 
 (EMI) in nearby electronic systems, including those used to drive and communicate with the motor. EMI originating from an electric motor is what we call motor noise. 
-EMI can be radiated, coupled, or conducted and can occur at different frequencies and their harmonics. Therefore, it is important to understand the source and impacts of 
+EMI can be radiated, coupled, or conducted and can occur at different frequencies and their harmonics. Therefore, it is important to understand the sources and impacts of 
 EMI when designing mitigation techniques. 
 
 This tutorial will address the mitigation of motor noise that couples to the motor’s body through stray capacitances in the motor itself. These stray capacitances are 
@@ -27,7 +26,7 @@ example, the frame of an unmanned vehicle. Similar frequencies may also be radia
 tend to be less significant and the same techniques can be used to mitigate them.  
 
 
-Why are internal ESCs more susceptible to noise?
+Why Are Internal ESCs More Susceptible To Noise?
 =================================
 Drones and similar vehicles using electric motors with integrated ESCs tend to have longer communication wire lengths than vehicles using external ESCs. This is because 
 external ESCs are typically installed close to a drone’s power distribution unit with the three phase power cables extending along the arm to the motor. Whereas a drone 
@@ -36,7 +35,7 @@ communication network’s susceptibility to EMI will increase the longer its wir
 communication buses on a vehicle utilizing motors with internal ESCs. 
 
 
-How to minimize noise on communication lines
+How To Minimize Noise On Communication Lines
 =====================================================
 One very important EMI consideration for any vehicle design using electric motors is how to mitigate or eliminate motor noise. This problem becomes especially apparent 
 on drone’s constructed with conductive frame materials such as carbon fiber. When an electric motor is mounted to a conductive frame with metal or conductive screws the 
@@ -80,8 +79,8 @@ Having multiple grounding points on a vehicle frame may cause the frame itself t
 Parasitic currents will flow when there is a voltage difference between two points that are nominally ground referenced and may exacerbate communication issues. Ground 
 loops are a problem typically found in applications with large cable lengths where small currents can produce large voltage offsets like the AC mains in buildings. Ground 
 loops may not be an observable problem on relatively smaller scales such as unmanned vehicle frames. However, if communication errors are occurring on a vehicle with 
-multiple frame grounding locations that do not occur when the frame is isolated or only has one connection to ground, ground loops may be the cause. When designing a v
-ehicle where it is necessary to ground the vehicle frame at multiple points, please consider the following to help keep the vehicle frame at a common potential:
+multiple frame grounding locations that do not occur when the frame is isolated or only has one connection to ground, ground loops may be the cause. When designing a 
+vehicle where it is necessary to ground the vehicle frame at multiple points, please consider the following to help keep the vehicle frame at a common potential:
 
 1. Make a frame ground connection point as close as possible to the power supply/battery ground.
 2. Make a frame ground connection point close to the power ground input of each electronic device on a communication bus.
