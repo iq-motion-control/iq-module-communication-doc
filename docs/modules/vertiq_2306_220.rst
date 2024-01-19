@@ -5,10 +5,10 @@ Vertiq 23-06 | Position Module
 .. sidebar:: Vertiq 23-06
 
     .. image:: ../_static/IQ2306_220kv.png
-        :alt: Vertiq 23-06 200KV
+        :alt: Vertiq 23-06 200Kv
     
 
-The Vertiq 23-06 220KV is an integrated motor
+The Vertiq 23-06 220Kv is an integrated motor
 and controller with a wide range of position based applications. Its default firmware is the **Servo Firmware**. Its performance is comparable to or better
 than other 23-06 sized (NEMA 11, 28mm stepper) motors and can operate at any speed between -4,800 and
 4800 RPM thanks to its sensored control. Its closedloop PID controller tracks targets across multiple revolutions, 
@@ -27,7 +27,7 @@ communication overhead from the application controller.
 
 .. note:: 
 
-    While the default firmware for the Vertiq 23-06 220KV is the Servo Firmware, it also fully supports the following:
+    While the default firmware for the Vertiq 23-06 220Kv is the Servo Firmware, it also fully supports the following:
     
     * Step Direction Firmware
     * Speed Firmware

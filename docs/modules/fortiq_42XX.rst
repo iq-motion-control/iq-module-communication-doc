@@ -12,7 +12,7 @@ The Fortiq 42-XX module is designed for industrial and robotic applications that
 require maximum torque, precision, and efficiency with minimal vibration. Our unique 
 hardware design and advanced calibration techniques have allowed us to create the most 
 compact and torque-dense industrial servomotor on the market. Vertiq offers 4 versions 
-of the Fortiq: **4125**, **4235**, **4255**, **4275**.
+of the Fortiq: **42-15**, **42-35**, **42-55**, **42-75**.
 
 .. note:: 
     The Fortiq has previously been named BLS42, but is now named Fortiq 42-XX.   

@@ -221,7 +221,7 @@ Control Voltage
 Setting a *Control Voltage* results in the same behavior in both the *Propeller Motor Controller* and *Multi Turn Angle Controller*. 
 Setting a Control Voltage is the same as directly setting the calculated output voltage from the PID controller. 
 An important note here is that commanding a voltage is essentially performing open loop velocity control in which the commanded voltage 
-is multiplied by your module's KV producing a velocity target. For example, with a module with a KV of 150, a voltage command of 
+is multiplied by your module's Kv producing a velocity target. For example, with a module with a Kv of 150, a voltage command of 
 2V would result (in the ideal case) in a rotational speed of :math:`300 \text{rpm}`, or :math:`31.41\frac{rad}{s}`. In reality, the output velocity will be close to, 
 but not exactly, :math:`31.41\frac{rad}{s}`. In general, the output velocity will be lower than expected due to drag.
 
