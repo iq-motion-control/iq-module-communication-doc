@@ -3,52 +3,59 @@
 
 .. _motor_noise_debugging:
 
-***********************************************
-Communication Errors From Motor Noise
-***********************************************
+***********************************************************************
+Understanding And Debugging Communication Errors From Motor Noise
+***********************************************************************
 
 Where Does Motor Noise Come From?
-============================
+======================================
 Electric motors produce torque through interactions between the motor’s permanent magnetic field and the electric current flowing through the motor’s wire windings. 
-The electric current in the motor’s windings produces a variable magnetic field that can be controlled to exert a force on the motor’s permanent magnets/magnetic field. 
+The electric current in the motor’s windings produces a variable magnetic field which can be controlled to exert a force on the motor’s permanent magnets/magnetic field. 
 Current is directed through the motor’s windings by applying a voltage across the windings. The direction the current flows through the windings can be switched by 
 changing the voltage polarity across the windings. In a three phase brushless DC motor like those produced by Vertiq, the three windings are connected between each of the 
-three phases. The process of directing the current through the coils of a three-phase motor is known as commutation.
+three phases as seen below in figure 1. The process of directing the current through the coils of a three-phase motor is known as commutation.
+
+.. figure:: ../_static/tutorial_images/motor_noise/simplified_phase_diagram.jpg
+    :align: center
+
+    Figure 1: Simplified Phase Diagram
 
 However, motors are not perfect or closed systems. The same switching voltages that occur during commutation to spin the motor may also cause electromagnetic interference 
 (EMI) in nearby electronic systems, including those used to drive and communicate with the motor. EMI originating from an electric motor is what we call motor noise. 
 EMI can be radiated, coupled, or conducted and can occur at different frequencies and their harmonics. Therefore, it is important to understand the sources and impacts of 
 EMI when designing mitigation techniques. 
 
-This tutorial will address the mitigation of motor noise that couples to the motor’s body through stray capacitances in the motor itself. These stray capacitances are 
-very small, typically in the picofarad range. However, they can cause significant problems for communication buses if they are conducted beyond the motor itself to, for 
-example, the frame of an unmanned vehicle. Similar frequencies may also be radiated from the motor and its coils, but the impacts of radiated noise on unmanned vehicles 
-tend to be less significant and the same techniques can be used to mitigate them.  
+This tutorial will address the mitigation of motor noise that couples to a motor’s body through stray capacitances inside the motor. Stray capacitance (also known as 
+parasitic capacitance) will exist  between two conductors that are physically close to each other and carry different potential voltages. The electric field between the 
+two conductors will store a small charge which creates an effective capacitance. Stray capacitances are typically in the picofarad range. Unfortunately, a few picofarads 
+is enough to couple a significant motor noise to the motor’s body. Noise coupled to a motor’s body can then be conducted to conduit carrying communications cables such as 
+a vehicle frame or drone arm. Motor noise may also be radiated from the motor and its coils, but the impacts of radiated noise on unmanned vehicle systems tend to be less 
+significant and the same techniques can be used to mitigate them.
 
 
 Why Are Internal ESCs More Susceptible To Noise?
-=================================
-Drones and similar vehicles using electric motors with integrated ESCs tend to have longer communication wire lengths than vehicles using external ESCs. This is because 
-external ESCs are typically installed close to a drone’s power distribution unit with the three phase power cables extending along the arm to the motor. Whereas a drone 
-utilizing motors with internal ESCs will have communications cables extending the entire length of the drone arm to the motor’s ESC connectors. Generally speaking, a 
-communication network’s susceptibility to EMI will increase the longer its wire lengths get. Therefore it is especially important to reduce EMI and build robust 
-communication buses on a vehicle utilizing motors with internal ESCs. 
+=====================================================
+Drones that utilize electric motors with integrated ESCs tend to have longer communication wire lengths than vehicles that use external ESCs. This is because external ESCs 
+are typically installed close to a drone’s power distribution unit to keep DC wire length short. Therefore, the communications buses only need to route the ESCs locations 
+and the three phase motor cabling will extend along the arm to reach the motor itself. Conversely, a drone utilizing motors with internal ESCs will have communications 
+cables extending the entire length of the drone arm to reach the motor. Generally speaking, a communication network’s susceptibility to EMI will increase the longer its 
+wire lengths get. Therefore, it is especially important to reduce EMI and build robust communication buses on a vehicle utilizing motors with internal ESCs. 
 
 
 How To Minimize Noise On Communication Lines
 =====================================================
-One very important EMI consideration for any vehicle design using electric motors is how to mitigate or eliminate motor noise. This problem becomes especially apparent 
-on drone’s constructed with conductive frame materials such as carbon fiber. When an electric motor is mounted to a conductive frame with metal or conductive screws the 
-motor body and vehicle frame will be electrically connected. In this scenario, it is likely that any motor noise that couples to the motor’s aluminum body via parasitic 
-capacitances will conduct onto the vehicle’s frame. A noisy vehicle frame can produce EMI that may cause dropped packets or communication failures on signal buses. An 
-example of AC coupled motor noise interfering with a CAN bus network can be seen below if figure 1 where channels two and three (pink and light blue) are CAN bus high 
-and low signals and channel four (blue) is measuring coupled noise on the carbon fiber drone arm that the CAN bus is routed through. Motor noise can be insulated from a 
-vehicle’s frame by mounting the motor using nylon or nonconductive spacers and/or screws.
+When an electric motor is mounted to a conductive frame with metal or conductive screws, the motor body and vehicle frame will be electrically connected. In this scenario, 
+it is likely that any motor noise that couples to the motor’s aluminum body via parasitic capacitances will conduct onto the vehicle’s frame. Communication buses that run 
+through or parallel to a noisy vehicle frame will be susceptible to the interference and may experience dropped packets or communication failures. The oscilloscope screen 
+capture below in figure 2 displays how motor noise that has been conducted onto a carbon fiber tube can interfere with signal buses that are routed through it. Channels 
+two and three (pink and light blue) display CAN bus high and low signals at a recessive voltage state. Channel four (blue) is measuring motor noise that has been conducted 
+on to a carbon fiber drone arm. One can clearly observe the motor noise interfering with the communication bus during each of the electrical transitions. Motor noise can 
+be insulated from a vehicle’s frame by mounting the motor using nylon or nonconductive spacers and/or screws.
 
 .. figure:: ../_static/tutorial_images/motor_noise/noise_diagram.PNG
     :align: center
 
-    Figure 1: Coupled Motor Noise 
+    Figure 2: Coupled Motor Noise 
 
 However, designers of heavy duty vehicles often want to avoid using non conductive plastic fasteners as they are relatively weaker mechanically and act as thermal 
 insulators. Fortunately, motor noise coupled to a motor’s body can also be eliminated or greatly diminished by connecting the motor body to power ground. It is common for 
@@ -92,7 +99,7 @@ vehicle where it is necessary to ground the vehicle frame at multiple points, pl
 Using multiple frame ground locations also introduces potential ground faults that one should consider protecting against. For example, if a ground power connection is 
 broken the ground current will have a return path through the vehicle frame. Special care should be taken to avoid turning a carbon fiber vehicle frame into a ground power 
 return bus. Carbon fiber is a bad material to use as a power bus because it has a relatively high resistivity compared to aluminum or copper. A material with a higher 
-resistivity will produce more waste heat at the same current load than a material with a lower resistivity. Put simply, intentionally conducting power ground through 
-standard carbon fiber at currents typically associated with drone motors may create a fire hazard. To prevent ground faults associated with cabling, cable harnesses should 
-be designed with mechanical features for use in a high vibration environment like a vehicle frame. Additionally, consider making redundant ground connections through a fuse 
-or polymeric positive temperature coefficient device (PTC) to prevent high current flows through a carbon fiber frame.
+resistivity will produce more waste heat at the same current load than a material with a lower resistivity. Therefore, conducting power ground through standard carbon 
+fiber at high operating currents may create a fire hazard. To prevent ground faults associated with cabling, cable harnesses should be designed with mechanical features 
+for use in a high vibration environment like a vehicle frame. Additionally, consider making redundant ground connections through a fuse or polymeric positive temperature 
+coefficient device (PTC) to prevent high current flows through a carbon fiber frame.
