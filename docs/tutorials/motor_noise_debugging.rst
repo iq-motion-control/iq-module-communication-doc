@@ -15,12 +15,12 @@ Current is directed through the motor’s windings by applying a voltage across 
 changing the voltage polarity across the windings. In a three phase brushless DC motor like those produced by Vertiq, the three windings are connected between each of the 
 three phases as seen below in figure 1. The process of directing the current through the coils of a three-phase motor is known as commutation.
 
-.. figure:: ../_static/tutorial_images/motor_noise/simplified_phase_diagram.jpg
+.. figure:: ../_static/tutorial_images/motor_noise/simplified_phase_diagram.png
     :align: center
 
     Figure 1: Simplified Phase Wiring Diagram
 
-However, motors are not perfect or closed systems. The same switching voltages that occur during commutation to spin the motor may also cause electromagnetic interference 
+However, motors are neither perfect nor closed systems. The same switching voltages that occur during commutation to spin the motor may also cause electromagnetic interference 
 (EMI) in nearby electronic systems, including those used to drive and communicate with the motor. EMI originating from an electric motor is what we call motor noise. 
 EMI can be radiated, coupled, or conducted and can occur at different frequencies and their harmonics. Therefore, it is important to understand the sources and impacts of 
 EMI when designing mitigation techniques. 
@@ -36,8 +36,9 @@ significant and the same techniques can be used to mitigate them.
 Why Are Internal ESCs More Susceptible To Noise?
 =====================================================
 Drones that utilize electric motors with integrated ESCs tend to have longer communication wire lengths than vehicles that use external ESCs. This is because external ESCs 
-are typically installed close to a drone’s power distribution unit to keep DC wire length short. Therefore, the communications buses only need to route the ESCs locations 
-and the three phase motor cabling will extend along the arm to reach the motor itself. A simplified diagram of a drone wired with external ESCs can be seen below if figure 2.
+are typically installed close to a drone’s power distribution unit to keep DC wire length short. Therefore, the communications buses only need to be routed to the ESC's 
+locations and the three phase motor cabling will extend along the arm to reach the motor itself. A simplified diagram of a drone wired with external ESCs can be seen below 
+in figure 2.
 
 .. figure:: ../_static/tutorial_images/motor_noise/external_esc_comms.png
     :align: center
@@ -90,22 +91,22 @@ Frame Grounding
 =====================================================
 
 Grounding Considerations
-*****************************************************
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Electronic enclosures and cases are commonly grounded at a single point close to the power supply ground to reduce EMI and improve user safety. This is an easily 
 applicable standard for a single motor with an integrated ESC where a mounting screw can be used to ground the motor chassis. Grounding through a mounting screw in the 
 motor itself is particularly effective in reducing motor noise as it provides a very low impedance path for coupled noise to drain back to ground.
 
 However, a vehicle with multiple motors will have multiple grounding points on its frame if the motors are not mounted using electrically isolating features. One must 
 also consider whether or not the other electronic devices mounted to the vehicle’s frame have their mounting positions tied to ground or potentially even a positive 
-voltage. Unfortunately, there is no one standard for electronic enclosure or PCB mounting hole grounding/isolation. Therefore, one should perform a continuity check b
-etween the power connectors and the enclosure/mounting position(s) of each device being mounted to a vehicle frame so that all power paths can be considered and short 
+voltage. Unfortunately, there is no one standard for electronic enclosure or PCB mounting hole grounding/isolation. Therefore, one should perform a continuity check 
+between the power connectors and the enclosure/mounting position(s) of each device being mounted to a vehicle frame so that all power paths can be considered and short 
 circuits can be avoided. 
 
 Grounding Schemes
-*****************************************************
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Power Supply Grounding
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+#####################################################
 
 The simplest grounding scheme is to connect the drone frame to ground at a single point near the power source ground, which will usually be near the center of a drone. 
 A simplified diagram of a drone using a power supply grounding scheme can be seen below in figure 6.
@@ -116,7 +117,7 @@ A simplified diagram of a drone using a power supply grounding scheme can be see
     Figure 6: Power Supply Grounding
 
 A scope image of a CAN bus utilizing a single point of grounding near the power distribution unit can be seen below in figure 7. Channels two and three (light blue and 
-pink) display CAN bus high and low signals, but this time a data transmission is occurring on the bus. Here we cam see how using the power supply grounding scheme on the 
+pink) display CAN bus high and low signals, but this time a data transmission is occurring on the bus. Here we can see how using the power supply grounding scheme on the 
 simulated drone frame has essentially removed the DC noise on channel 4 (dark blue). However, the AC spikes can still be observed due to the impedance of the carbon fiber 
 tube that separates the motor chassis and the frame’s centralized grounding point. The noise on channel 4 can also be seen to interfere with the CAN bus signals. 
 
@@ -130,7 +131,7 @@ location as the frame. Differential buses like CAN are designed to be resistant 
 scheme. However, if communication failures persist or design requirements can not tolerate the interference, one may need to consider locally grounding each motor body.  
 
 Motor Body Grounding
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+#####################################################
 
 Motor noise that has coupled to the motor body can be effectively eliminated by grounding the motor body to power ground. A simplified diagram of a drone using a motor 
 body grounding scheme can be seen below in figure 8. Please note that the simplified drone in figure 8 also has a grounding point near the power distribution unit. This 
@@ -143,7 +144,7 @@ voltage will be elaborated on later in this section.
     Figure 8: Motor Body Grounding
 
 An oscilloscope screen capture containing the simulated drone communication test results can be seen below in figure 9. The motor bodies in this test are internally 
-connected to ground via a PCB mourning screw. Once again, Channels 2 and 3 (light blue and pink) display a CAN bus with signals actively being transmitted and Channel 4 
+connected to ground via a PCB mounting screw. Once again, Channels 2 and 3 (light blue and pink) display a CAN bus with signals actively being transmitted and Channel 4 
 (dark blue)  is displaying the voltage on the carbon fiber frame. Here we can see a significant absence of motor noise on all channels. While the results of eliminating 
 motor noise by grounding the motor bodies are very encouraging, having multiple ground locations on a single vehicle frame introduces further design considerations.
 
@@ -172,7 +173,7 @@ common potential:
        ground cable. 
 
 Avoiding Frame Ground Faults
-*****************************************************
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 When designing a vehicle with a grounded frame or chassis, it is important to consider and protect against potential faults that would not occur if the frame was floating. 
 For example, if a cable carrying a positive voltage, such as the battery voltage, is damaged and makes contact with a grounded frame it will likely cause a vehicle wide 
