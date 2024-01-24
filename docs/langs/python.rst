@@ -46,7 +46,7 @@ Creating a Module
 =================
 
 Python interacts with the motor controller via Vertiq Module Objects. Currently Vertiq Python API 
-supports 3 types of motors: Vertiq 2306, Vertiq 8108, and Fortiq M42BLS
+supports 3 types of motors: Vertiq 23-06, Vertiq 81-08, and Fortiq M42BLS
 
 Creating a Vertiq Module
 ------------------------
@@ -173,10 +173,10 @@ Changing the firmware style
 ---------------------------
 
 .. note:: 
-        The Vertiq2306 220Kv and Vertiq2306 2200Kv share the same API call. However the 220Kv was designed as a servo motor 
+        The Vertiq 23-06 220Kv and Vertiq 23-06 2200Kv share the same API call. However the 220Kv was designed as a servo motor 
         while the 2200Kv was designed as a speed motor.
         
-        The API call to Vertiq2306 defaults to speed, therefore if using a 220Kv module, you need to specify `firmware="servo"`
+        The API call to Vertiq 23-06 defaults to speed, therefore if using a 220Kv module, you need to specify `firmware="servo"`
 
 Example of changing the API firmware:
 

@@ -1,13 +1,13 @@
 ********************************
-Vertiq 4006 | Speed Module
+Vertiq 40-06 | Speed Module
 ********************************
 
-.. sidebar:: Vertiq 4006
+.. sidebar:: Vertiq 40-06
 
     .. image:: ../_static/Vertiq4006.png
-        :alt: Vertiq 4006 
+        :alt: Vertiq 40-06 
 
-The Vertiq 4006 370Kv and 770Kv are built for high performance commercial UAV and robotic applications. By default, these modules use the **Speed Firmware**.
+The Vertiq 40-06 370Kv and 770Kv are built for high performance commercial UAV and robotic applications. By default, these modules use the **Speed Firmware**.
 With position sensing and advanced calibration and control algorithms, 
 we're able to drive the motor in a way that increases efficiency, torque output, and 
 responsiveness. Vertiq motors also output advanced telemetry for motor and vehicle health monitoring.
