@@ -5,7 +5,7 @@ Vertiq 23-06 | Position Module
 .. sidebar:: Vertiq 23-06
 
     .. image:: ../_static/IQ2306_220kv.png
-        :alt: Vertiq 23-06 200Kv
+        :alt: Vertiq 23-06 220Kv
     
 
 The Vertiq 23-06 220Kv is an integrated motor
