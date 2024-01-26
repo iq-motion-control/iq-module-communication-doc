@@ -28,7 +28,7 @@ EMI when designing mitigation techniques.
 This tutorial will address the mitigation of motor noise that couples to a motor’s body through stray capacitances inside the motor. Stray capacitance (also known as 
 parasitic capacitance) will exist  between two conductors that are physically close to each other and carry different potential voltages. The electric field between the 
 two conductors will store a small charge which creates an effective capacitance. Stray capacitances are typically in the picofarad range. Unfortunately, a few picofarads 
-is enough to couple a significant motor noise to the motor’s body. Noise coupled to a motor’s body can then be conducted to conduit carrying communications cables such as 
+is enough to couple a significant motor noise to the motor’s body. Noise coupled to a motor’s body can then be conducted to conduits carrying communications cables such as 
 a vehicle frame or drone arm. Motor noise may also be radiated from the motor and its coils, but the impacts of radiated noise on unmanned vehicle systems tend to be less 
 significant and the same techniques can be used to mitigate them.
 
@@ -36,7 +36,7 @@ significant and the same techniques can be used to mitigate them.
 Why Are Internal ESCs More Susceptible To Noise?
 =====================================================
 Drones that utilize electric motors with integrated ESCs tend to have longer communication wire lengths than vehicles that use external ESCs. This is because external ESCs 
-are typically installed close to a drone’s power distribution unit to keep DC wire length short. Therefore, the communications buses only need to be routed to the ESC's 
+are typically installed close to a drone’s power distribution unit to keep DC wire length short. Therefore, the communications buses only need to be routed to the ESCs' 
 locations and the three phase motor cabling will extend along the arm to reach the motor itself. A simplified diagram of a drone wired with external ESCs can be seen below 
 in figure 2.
 
@@ -63,7 +63,7 @@ capture below in figure 4 displays how motor noise that has been conducted onto 
 drone setup was used to capture the scope images in this document can be seen below in figure 5. In this example the carbon fiber tubes used to simulate drone arms are one 
 meter in length and electrically connected. 
 
-.. figure:: ../_static/tutorial_images/motor_noise/noise_diagram.PNG
+.. figure:: ../_static/tutorial_images/motor_noise/noise_diagram.png
     :align: center
 
     Figure 4: Coupled Motor Noise 
