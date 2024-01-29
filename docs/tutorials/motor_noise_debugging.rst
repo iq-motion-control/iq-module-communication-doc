@@ -28,14 +28,14 @@ EMI when designing mitigation techniques.
 This tutorial will address the mitigation of motor noise that couples to a motor’s body through stray capacitances inside the motor. Stray capacitance (also known as 
 parasitic capacitance) will exist  between two conductors that are physically close to each other and carry different potential voltages. The electric field between the 
 two conductors will store a small charge which creates an effective capacitance. Stray capacitances are typically in the picofarad range. Unfortunately, a few picofarads 
-is enough to couple a significant motor noise to the motor’s body. Noise coupled to a motor’s body can then be conducted to conduits carrying communications cables such as 
+is enough to couple significant motor noise to the motor’s body. Noise coupled to a motor’s body can then be conducted to conduits carrying communications cables such as 
 a vehicle frame or drone arm. Motor noise may also be radiated from the motor and its coils, but the impacts of radiated noise on unmanned vehicle systems tend to be less 
 significant and the same techniques can be used to mitigate them.
 
 
 Why Are Internal ESCs More Susceptible To Noise?
 =====================================================
-Drones that utilize electric motors with integrated ESCs tend to have longer communication wire lengths than vehicles that use external ESCs. This is because external ESCs 
+Drones that utilize electric motors with integrated ESCs tend to have longer communication wires than vehicles that use external ESCs. This is because external ESCs 
 are typically installed close to a drone’s power distribution unit to keep DC wire length short. Therefore, the communications buses only need to be routed to the ESCs' 
 locations and the three phase motor cabling will extend along the arm to reach the motor itself. A simplified diagram of a drone wired with external ESCs can be seen below 
 in figure 2.
@@ -82,7 +82,7 @@ How To Minimize Noise On Communication Lines
 =====================================================
 Motor noise can be insulated from a vehicle’s frame by mounting the motor using nylon or nonconductive spacers and/or screws.
 
-However, designers of heavy duty vehicles often want to avoid using non conductive plastic fasteners as they are mechanically weaker than metal or carbon fiber and act as 
+However, designers of heavy duty vehicles often want to avoid using nonconductive plastic fasteners as they are mechanically weaker than metal or carbon fiber and act as 
 thermal insulators. Fortunately, motor noise coupled to a motor’s body can also be eliminated or greatly diminished by connecting the motor body or vehicle frame to power 
 ground. Whether or not to ground a motor body and/or vehicle frame is a decision with many application specific considerations. Frame grounding will be discussed in greater 
 detail in the next section. 
