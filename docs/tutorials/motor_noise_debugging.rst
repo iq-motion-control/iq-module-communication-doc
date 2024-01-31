@@ -88,10 +88,10 @@ ground. Whether or not to ground a motor body and/or vehicle frame is a decision
 detail in the next section. 
 
 Frame Grounding
-=====================================================
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Grounding Considerations
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+#####################################################
 Electronic enclosures and cases are commonly grounded at a single point close to the power supply ground to reduce EMI and improve user safety. This is an easily 
 applicable standard for a single motor with an integrated ESC where a mounting screw can be used to ground the motor chassis. Grounding through a mounting screw in the 
 motor itself is particularly effective in reducing motor noise as it provides a very low impedance path for coupled noise to drain back to ground.
@@ -103,10 +103,10 @@ between the power connectors and the enclosure/mounting position(s) of each devi
 circuits can be avoided. 
 
 Grounding Schemes
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+#####################################################
 
 Power Supply Grounding
-#####################################################
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The simplest grounding scheme is to connect the drone frame to ground at a single point near the power source ground, which will usually be near the center of a drone. 
 A simplified diagram of a drone using a power supply grounding scheme can be seen below in figure 6.
@@ -131,7 +131,7 @@ location as the frame. Differential buses like CAN are designed to be resistant 
 scheme. However, if communication failures persist or design requirements can not tolerate the interference, one may need to consider locally grounding each motor body.  
 
 Motor Body Grounding
-#####################################################
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Motor noise that has coupled to the motor body can be effectively eliminated by grounding the motor body to power ground. A simplified diagram of a drone using a motor 
 body grounding scheme can be seen below in figure 8. Please note that the simplified drone in figure 8 also has a grounding point near the power distribution unit. This 
@@ -173,7 +173,7 @@ common potential:
        ground cable. 
 
 Avoiding Frame Ground Faults
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+#####################################################
 
 When designing a vehicle with a grounded frame or chassis, it is important to consider and protect against potential faults that would not occur if the frame was floating. 
 For example, if a cable carrying a positive voltage, such as the battery voltage, is damaged and makes contact with a grounded frame it will likely cause a vehicle wide 
