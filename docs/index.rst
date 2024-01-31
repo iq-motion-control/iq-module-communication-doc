@@ -43,6 +43,7 @@
    tutorials/flight_controller_telemetry_tutorial
    tutorials/up12_installation
    tutorials/up12_initial_configuration
+   tutorials/motor_noise_debugging
 
 .. toctree::
    :hidden:
