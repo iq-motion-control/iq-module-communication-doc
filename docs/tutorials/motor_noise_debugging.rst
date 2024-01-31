@@ -60,8 +60,8 @@ When an electric motor is mounted to a conductive frame with metal or conductive
 it is likely that any motor noise that couples to the motor’s aluminum body via parasitic capacitances will conduct onto the vehicle’s frame. Communication buses that run 
 through or parallel to a noisy vehicle frame will be susceptible to the interference and may experience dropped packets or communication failures. The oscilloscope screen 
 capture below in figure 4 displays how motor noise that has been conducted onto a carbon fiber tube can interfere with signal buses that are routed through it. A simulated 
-drone setup was used to capture the scope images in this document can be seen below in figure 5. In this example the carbon fiber tubes used to simulate drone arms are one 
-meter in length and electrically connected. 
+drone setup was used to capture the scope images in this document and can be seen below in figure 5. In this example the carbon fiber tubes used to simulate drone arms are 
+one meter in length and electrically connected. 
 
 .. figure:: ../_static/tutorial_images/motor_noise/noise_diagram.png
     :align: center
