@@ -18,24 +18,24 @@ This tutorial covers setup and testing on `ArduCopter <https://ardupilot.org/cop
 protocols, since the setup process is largely similar for both protocols. In the places where there are differences, the proper steps for both types of protocol are explained.
 
 These instructions are applicable to any Vertiq module using speed firmware. Though they have different form factors and some different configuration parameters available, 
-the configuration and setup for basic control with Standard PWM or DSHOT is the same for all Vertiq speed modules. This example uses a Vertiq 8108 for demonstration purposes, 
-but it is not specific to the 8108.
+the configuration and setup for basic control with Standard PWM or DSHOT is the same for all Vertiq speed modules. This example uses a Vertiq 81-08 for demonstration purposes, 
+but it is not specific to the 81-08.
 
 Hardware Setup
 ==============
-This example uses a Vertiq 8108 and a Pix32 from Holybro as the flight controller. Since this tutorial is
+This example uses a Vertiq 81-08 and a Pix32 from Holybro as the flight controller. Since this tutorial is
 focused specifically on setting up the Vertiq module, the only additional peripheral that is used along with the flight controller is a safety switch.
 
-The Vertiq 8108 is powered through its XT-60 connector from a benchtop power supply. For more information on how to properly power your module, refer to its
+The Vertiq 81-08 is powered through its XT-60 connector from a benchtop power supply. For more information on how to properly power your module, refer to its
 datasheet on the `Vertiq website <https://www.vertiq.co/>`_.
 
 When setting the configuration parameters on the module through Control Center, it should be connected to a PC with a USB-to-UART converter. 
 For more details on how to use the Control Center with a module, refer to :ref:`control_center_tutorial`.
 
-When testing with the flight controller, the pins of the 8108 must be connected to the
+When testing with the flight controller, the pins of the 81-08 must be connected to the
 appropriate output pins of the flight controller. The exact position or labeling of the output pins on your flight controller will vary depending on the specific
-flight controller you are using, refer to the flight controller's documentation for more information. The top pin of the 8108, shown below with a white wire attached to
-it, should be connected to the signal output pin on your flight controller that is sending throttle commands. The bottom pin of the 8108 should be connected to ground. 
+flight controller you are using, refer to the flight controller's documentation for more information. The top pin of the 81-08, shown below with a white wire attached to
+it, should be connected to the signal output pin on your flight controller that is sending throttle commands. The bottom pin of the 81-08 should be connected to ground. 
 For this specfic example using a Pix32, the signal pin was attached to MAIN OUT 1 on the Pix32 when using Standard PWM, and AUX OUT 1 when using DSHOT (see the warning below for more details on 
 DSHOT hardware setup).
 
@@ -51,21 +51,21 @@ DSHOT hardware setup).
 
     Connection to Flight Controller (White = Signal, Black = Ground)
 
-For more detail on why these connections are used with the 8108 in this example, refer to the pinout from the 8108 module's datasheet below.
+For more detail on why these connections are used with the 81-08 in this example, refer to the pinout from the 81-08 module's datasheet below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/8108_pinout.JPG
     :align: center
     :width: 50%
 
-    8108 Pinout
+    81-08 Pinout
 
-Pictures of the full setup with the 8108 connected to the Pix32 flight controller are shown below.
+Pictures of the full setup with the 81-08 connected to the Pix32 flight controller are shown below.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/hardware_setup.jpg
     :align: center
     :width: 50%
 
-    Full 8108 Hardware Setup
+    Full 81-08 Hardware Setup
 
 Firmware and Software Versions
 ==============================
@@ -86,15 +86,15 @@ can be seen in the Information tab, as shown in the image below. For more inform
 For module firmware, you can check the firmware version and style on your module by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
 For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.vertiq.co>`_ section of the Vertiq website.  
 
-For the Vertiq 8108, this tutorial was tested using speed firmware version 0.0.7. Future firmware versions should also be compatible, but if you are using an 8108 it is recommended that your 
-8108 is on at least version 0.0.7 when following this tutorial. The image below shows the firmware version of the module in Control Center.
+For the Vertiq 81-08, this tutorial was tested using speed firmware version 0.0.7. Future firmware versions should also be compatible, but if you are using an 81-08 it is recommended that your 
+81-08 is on at least version 0.0.7 when following this tutorial. The image below shows the firmware version of the module in Control Center.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/8108_fw_version.png
     :align: center
 
-    8108 Firmware Version
+    81-08 Firmware Version
 
-.. warning:: Versions of the 8108 firmware prior to version 0.0.5 had bugs that made calibrating and selecting the hobby protocol difficult. If you are using an 8108 and are trying to follow
+.. warning:: Versions of the 81-08 firmware prior to version 0.0.5 had bugs that made calibrating and selecting the hobby protocol difficult. If you are using an 81-08 and are trying to follow
   this tutorial with a firmware version older than 0.0.5, you may have difficulties selecting the hobby protocol.
 
 Reverting to Defaults (Optional)

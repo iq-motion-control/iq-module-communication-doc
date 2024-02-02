@@ -22,15 +22,15 @@ Speed Modules
 	:widths: 8 8 20
 	:class: tight-table
 
-	+-------------+------------------------------------+---------------------------------------------------------------------------------------------------------------+
-	| Module      | Telemetry Support                  |Notes                                                                                                          |
-	+-------------+------------------------------------+---------------------------------------------------------------------------------------------------------------+
-	| Vertiq 8108 | .. centered:: |:white_check_mark:| |                                                                                                               |
-	+-------------+------------------------------------+---------------------------------------------------------------------------------------------------------------+
-	| Vertiq 4006 | .. centered:: |:white_check_mark:| |                                                                                                               |
-	+-------------+------------------------------------+---------------------------------------------------------------------------------------------------------------+
-	| Vertiq 2306 | .. centered:: |:warning:|          | Vertiq 2306 modules do not support DroneCAN, so the DroneCAN telemetry described below does not apply to them.|
-	+-------------+------------------------------------+---------------------------------------------------------------------------------------------------------------+
+	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
+	| Module       | Telemetry Support                  |Notes                                                                                                           |
+	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
+	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |                                                                                                                |
+	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
+	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |                                                                                                                |
+	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
+	| Vertiq 23-06 | .. centered:: |:warning:|          | Vertiq 23-06 modules do not support DroneCAN, so the DroneCAN telemetry described below does not apply to them.|
+	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
 
 Servo Modules
 **************
@@ -39,15 +39,15 @@ Servo Modules
 	:widths: 8 8 20
 	:class: tight-table
 
-	+-------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Module      | Telemetry Support                  | Notes                                                                                                                                                                              |
-	+-------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 8108 | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+-------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 4006 | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+-------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 2306 | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+-------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+	| Module       | Telemetry Support                  | Notes                                                                                                                                                                              |
+	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+	| Vertiq 81-08 | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
+	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+	| Vertiq 40-06 | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
+	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+	| Vertiq 23-06 | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
+	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Supported Telemetry
 =====================
@@ -176,16 +176,16 @@ received units into more commonly used units.
 Hardware Setup
 ###############
 When using :ref:`Hobby Protocols <manual_hobby>` with a Vertiq module, one line is used to connect ground to the module, one line is used to send throttle commands,
-and one line can optionally be used to receive telemetry from the module. An example of this can be seen for the 8108 module in the image below. The pin marked as "PWM" 
+and one line can optionally be used to receive telemetry from the module. An example of this can be seen for the 81-08 module in the image below. The pin marked as "PWM" 
 is used to send throttle commands and telemetry requests to the module, and the pin marked as "Telemetry" is used by the module to send telemetry back to a flight controller.
 Refer to your module's datasheet for more details on how to set up the hardware on your module.
 
 .. figure:: ../_static/manual_images/telemetry/8108_connector_pins.png
     :align: center
     :width: 60%
-    :alt: Connector Pins on Vertiq 8108
+    :alt: Connector Pins on Vertiq 81-08
 
-    Hobby Protocol Pins on the Vertiq 8108 (PWM pin receives throttle commands, Telemetry pin sends telemetry messages)
+    Hobby Protocol Pins on the Vertiq 81-08 (PWM pin receives throttle commands, Telemetry pin sends telemetry messages)
 
 Telemetry messages are sent from the module as a serial message at the baud rate configured on the module, so the telemetry line from your module
 should be connected to a serial port set to the correct baud rate on your flight controller.

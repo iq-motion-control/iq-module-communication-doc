@@ -130,7 +130,7 @@ firmware version used when developing this tutorial in QGroundControl.
     you may hear your module play its arming song. When exactly the module arms will depend on how its :ref:`arming <manual_advanced_arming>` configurations are set up. By default,
     Vertiq modules typically will arm on 0% commands, and by default PX4 will send 0% commands to its connected ESCs over DroneCAN when it is disarmed. So it is likely when
     using the default arming configurations the module may arm as soon as the flight controller is properly configured. If your module is set to 
-    :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, which is currently the default for the Vertiq 8108, then it will never play its arming song 
+    :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, which is currently the default for the Vertiq 81-08, then it will never play its arming song 
     and does not need to arm to spin. 
 
 Enabling DroneCAN

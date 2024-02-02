@@ -1,13 +1,13 @@
 ********************************
-Vertiq 8108 150KV | Speed Module
+Vertiq 81-08 | Speed Module
 ********************************
 
-.. sidebar:: Vertiq 8108 150KV
+.. sidebar:: Vertiq 81-08
 
     .. image:: ../_static/Vertiq_8108_front.jpg
-        :alt: Vertiq 8108 150KV
+        :alt: Vertiq 81-08 150Kv
 
-The Vertiq 8108 150Kv is built for high performance commercial UAV and robotic applications. Its default firmware is the **Speed Firmware**.
+The Vertiq 81-08 150Kv is built for high performance commercial UAV and robotic applications. Its default firmware is the **Speed Firmware**.
 This extremely compact, lightweight module is designed for roboticists with strict space and 
 weight requirements. With position sensing and advanced calibration and control algorithms, 
 we're able to drive the motor in a way that increases efficiency, torque output, and 
@@ -17,7 +17,7 @@ responsiveness. Vertiq motors also output advanced telemetry for motor and vehic
 
 .. note:: 
 
-    While the default firmware for the Vertiq 8108 150KV is the Speed firmware, it also fully supports the following:
+    While the default firmware for the Vertiq 81-08 150Kv is the Speed firmware, it also fully supports the following:
     
     * Servo firmware
 

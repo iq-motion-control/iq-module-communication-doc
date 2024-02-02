@@ -16,7 +16,7 @@ the IQ Control Center. It outlines how to set up the necessary hardware and soft
 provides a brief introduction to the Control Center, and teaches you how to perform some basic
 tests on the module with the Control Center.
 
-**This tutorial was created using a Vertiq 8108 module on firmware version 0.0.7, and with Control Center version 1.3.4. However, this tutorial is applicable for any Vertiq module when using
+**This tutorial was created using a Vertiq 81-08 module on firmware version 0.0.7, and with Control Center version 1.3.4. However, this tutorial is applicable for any Vertiq module when using
 speed firmware. If you are using position firmware, some of the parameters discussed here will not be available.**
 
 Module Datasheets
@@ -130,7 +130,7 @@ seconds for the Control Center to connect to the module.
 
 If the connection is successful, the Control Center will display "Module Connected Successfully" in the Log section
 in the top left and the Information section will be populated with information about the connected module. The image
-below shows an example of what the Control Center will look like when connecting to a Vertiq 8108. If the module does not
+below shows an example of what the Control Center will look like when connecting to a Vertiq 81-08. If the module does not
 yet have a bootloader or upgrader, N/A is filled into the respective version.
 
 .. warning:: Before proceeding any further, check that the firmware style indicates this module is using speed firmware.
@@ -138,9 +138,9 @@ yet have a bootloader or upgrader, N/A is filled into the respective version.
 
 .. figure:: ../_static/tutorial_images/control_center_tutorial/control_center_connected.PNG
     :align: center
-    :alt: Control Center Connected to 8108
+    :alt: Control Center Connected to 81-08
 
-    Control Center Connected to Vertiq 8108
+    Control Center Connected to Vertiq 81-08
 
 .. _updating_firmware:
 
@@ -227,7 +227,7 @@ There are several configuration parameters here, but only 2 of importance for th
   So in 2D mode, as will be used in this example, the module will always spin this way on a throttle command. This means the module will spin counter clockwise when controlled by the flight controller. 
   For more details on how the module interprets throttle commands and how to configure the direction of the module, see the :ref:`manual_throttle` section of the Feature Reference Manual.
 
-The figure below shows what the relevant portion of the General tab should look like after setting the parameters on a Vertiq 8108 on firmware version 0.0.7. **Note that you may have more or fewer parameters than are shown here if you are
+The figure below shows what the relevant portion of the General tab should look like after setting the parameters on a Vertiq 81-08 on firmware version 0.0.7. **Note that you may have more or fewer parameters than are shown here if you are
 on a different firmware style or a more updated version. Some of your default settings may also be slightly different. That is fine, these images are only meant as a guide
 for the important parameters.**
 
@@ -235,7 +235,7 @@ for the important parameters.**
     :align: center
     :alt: General Tab Settings
 
-    General Tab Settings on Vertiq 8108 with Firmware Version 0.0.7
+    General Tab Settings on Vertiq 81-08 with Firmware Version 0.0.7
 
 Tuning Tab Configurations
 **************************
@@ -259,7 +259,7 @@ a different module, but only the *Max Volts* and *Timeout* parameters are import
     :align: center
     :alt: Tuning Tab Settings
 
-    Tuning Tab Settings on Vertiq 8108 with Firmware Version 0.0.7
+    Tuning Tab Settings on Vertiq 81-08 with Firmware Version 0.0.7
 
 .. warning:: Double check that the module is secured and there is no propeller attached before applying any of these testing parameters.
 
