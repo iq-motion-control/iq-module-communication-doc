@@ -4,7 +4,7 @@
 .. _client_reference_tables:
 
 ***********************************************
-Clients
+Client Table Reference
 ***********************************************
 Type ID 5 | System Control
     .. table:: System Control
@@ -339,7 +339,6 @@ Type ID 59 | Multi-turn Angle Controller
 		| 31     | zero_angle                      | get, set, save | float     | :math:`\text{rad}`                        | The encoder position the module considers to be 0 radians. Since this is an encoder position, zero_angle is constrained to [-pi, pi]. Unless obs_angular_displacement is set explicitly, this is the position regarded as 0 radians, and all displacements are measured in comparison to this point.                                               |
 		+--------+---------------------------------+----------------+-----------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 Type ID 60 | ESC Propeller Input Parser
     .. table:: ESC Propeller Input Parser
         :widths: 8 18 15 10 5 50
@@ -446,7 +445,6 @@ Type ID 71 | Anticogging
         | 4      | left_shift    | get, set, save | uint8     | :math:`* 2^x`                | Anticog multiplier.  Modification is not recommended.                                                     |
         +--------+---------------+----------------+-----------+------------------------------+-----------------------------------------------------------------------------------------------------------+
 
-
 Type ID 73 | Temperature Monitor Microcontroller
     .. table:: Temperature Monitor Microcontroller
         :widths: 8 18 15 10 5 50
@@ -511,7 +509,6 @@ Type ID 74 | Voltage Superposition
         | 16     | propeller_torque_offset_angle | get, set, save | float     | :math:`rad`                                    | This offsets where the pulse starts around the motor to allow for propeller mechanical properties.                                                                                       |
         +--------+-------------------------------+----------------+-----------+------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
         
-
 Type ID 76 | Hobby Input
     .. table:: Hobby Input
         :widths: 8 18 15 10 5 50
@@ -602,7 +599,6 @@ Type ID 80 | UAVCAN Node
         | 11     | bypass_arming          | get, set, save | uint8     | :math:`\text{Bool}`             | This setting allows the module to bypass arming with DroneCAN throttle messages. DroneCAN messages will not be impacted by the arming state, will not cause arming state transistions, and will use the zero behavior setting.                                                                                                         |
         +--------+------------------------+----------------+-----------+---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 Type ID 83 | Coil Temperature Estimator
     .. table:: Coil Temperature Estimator
         :widths: 8 18 15 10 5 50
@@ -640,7 +636,7 @@ Type ID 83 | Coil Temperature Estimator
         | 13     | q_coil_stator_cond           | get            | float     | :math:`W`         | This is the present stator conductive cooling power.                                                                          |
         +--------+------------------------------+----------------+-----------+-------------------+-------------------------------------------------------------------------------------------------------------------------------+
 
-Type ID 83 | Power Safety
+Type ID 84 | Power Safety
     .. table:: Power Safety
         :widths: 8 18 15 10 5 50
         :class: tight-table
