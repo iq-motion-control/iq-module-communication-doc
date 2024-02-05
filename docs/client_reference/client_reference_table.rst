@@ -8,6 +8,13 @@ Client Table Reference
 ***********************************************
 Type ID 5 | System Control
 ===========================
+
+System Control allows the user to perform low level tasks on the motor controller’s microcontroller and gather
+basic information. The motor’s uptime can be read and set, allowing for flexible timing and synchronizing.
+System Control also has a Module ID parameter, which allows motors to be bussed on a single serial line yet
+addressed uniquely. System Control is unique since its ID is always 0 even when the Module ID has been
+changed.
+
     .. table:: System Control
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -58,6 +65,10 @@ Type ID 5 | System Control
 
 Type ID 11 | Persistent Memory
 =================================================
+
+The Persistent Memory class controls the non-volatile memory. You can use this class to revert the motor
+to factory defaults.
+
     .. table:: Persistent Memory
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -76,6 +87,12 @@ Type ID 11 | Persistent Memory
 
 Type ID 16 | Serial Interface
 =================================================
+
+The Serial client allows the user to change settings related to the serial communication interface, namely
+the baud rate. The set function of the baud rate behaves as both a set then a save. This allows the user to
+set and save using the initial baud rate, rather than having to disconnect and reconnect using the new baud
+rate in order to send a save. For this reason, the standard save function for the baud rate is disabled.
+
     .. table:: Serial Interface
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -88,6 +105,9 @@ Type ID 16 | Serial Interface
 
 Type ID 50 | Brushless Drive
 =================================================
+
+Brushless Drive is the low level driver of the motor’s phase voltage.
+
     .. table:: Brushless Drive
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -212,6 +232,15 @@ Type ID 50 | Brushless Drive
 
 Type ID 52 | Propeller Motor Controller
 =================================================
+
+The Propeller Motor Controller is an open and closed loop controller designed to drive propeller loads. If
+given thrust coefficients, this controller can be commanded in units of thrust, seamlessly accepting values
+from flight controllers in their native units. An added benefit is the decoupling of flight controller gains
+from motor choice, propeller choice, battery level, and more. Thrust commands are fed into a PID velocity
+controller with a second order polynomial feed forward. This sits on top of a voltage controller, which
+compensates for varying input voltages. Finally, the core is a raw PWM controller. Any of the above
+controllers can be used by the user.
+
     .. table:: Propeller Motor Controller
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -262,6 +291,14 @@ Type ID 52 | Propeller Motor Controller
 
 Type ID 58 | Step Direction Input
 =================================================
+
+The Step Direction Input allows the module to accept commands normally used by stepper motor drivers.
+One signal line controls the direction of motor rotation, while each rising and falling edge of the other line
+advances the motor’s target angle by a user programmable amount. Steps can be as small as 1/65536th of a
+rotation (9.5874e-05 radians). Step sizes that are a multiple of 1/65536th of a rotation will be exact, while
+non-multiples will be floored to the nearest multiple. There is virtually no upper limit on the step size. Use
+negative step sizes if the direction of the motor is reversed from desired.
+
     .. table:: Step Direction Input
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -276,6 +313,12 @@ Type ID 58 | Step Direction Input
 
 Type ID 59 | Multi-turn Angle Controller
 =================================================
+
+The Multi-turn Angle Controller is a non-wrapping, PID, position controller. It is capable of storing angular
+to linear transmission information, mimicking a linear position controller. It also features a minimum jerk
+trajectory generator. The controller has a 32 trajectory buffer so that transitions between trajectories are
+seamless.
+
 	.. table:: Multi-turn Angle Controller
 		:widths: 8 18 15 10 5 60
 		:class: tight-table
@@ -348,6 +391,12 @@ Type ID 59 | Multi-turn Angle Controller
 
 Type ID 60 | ESC Propeller Input Parser
 =================================================
+
+The ESC Propeller Input Parser is an interface between the Propeller Motor Controller and the PWM based
+inputs like 1-2ms, OneShot, MultiShot, and DShot. This parser allows the user to control how ratiomatic
+values from the PWM input are translated. Inputs can be mapped to PWM control, voltage control, velocity
+control, and thrust control. Values can be interpreted as signed/unsigned and clockwise/counter clockwise.
+
     .. table:: ESC Propeller Input Parser
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -378,6 +427,13 @@ Type ID 60 | ESC Propeller Input Parser
 
 Type ID 61 | Buzzer Control
 =================================================
+
+The Buzzer Control handles all beeps and songs played by the motor. The controls mimic standard MIDI
+commands allowing simple translation from MIDI to Buzzer Control commands. The volume max parameter
+controls the absolute volume across all notes, measured in volts. To play a note on the buzzer, set the
+frequency by sending a ’hz’ command, set a relative volume by sending a ’volume’ command, set a note
+length by sending a ’duration’ command, and finally put the controller in note mode by sending ’ctrl note’.
+
     .. table:: Buzzer Control
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -404,6 +460,11 @@ Type ID 61 | Buzzer Control
 
 Type ID 69 | Power Monitor
 =================================================
+
+The Power Monitor measures the power coming into the module. It reports input voltage and current as
+well as calculates power and energy consumed. A built in low pass filter with adjustable cutoff frequency
+smooths these values.
+
     .. table:: Power Monitor
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -438,6 +499,12 @@ Type ID 69 | Power Monitor
 
 Type ID 71 | Anticogging
 =================================================
+
+Anticogging is the process of electronically canceling out cogging torque of a motor. Each motor is loaded
+with its unique cog information. This class allows enabling and disabling the anticogging process. Though
+this class can also manipulate the cog information it is not recommended to manipulate or erase this data
+as it is unrecoverable.
+
     .. table:: Anticogging
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -458,6 +525,11 @@ Type ID 71 | Anticogging
 
 Type ID 73 | Temperature Monitor Microcontroller
 =================================================
+
+The Temperature Monitor Microcontroller reads, filters, and reports the microcontroller’s internal temperature. 
+The temperature is used to derate the motor if the temperature rises into dangerous levels. The filter’s
+cutoff frequency and the temperature limits can be adjusted, though this is not recommended.
+
     .. table:: Temperature Monitor Microcontroller
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -480,6 +552,9 @@ Type ID 73 | Temperature Monitor Microcontroller
 
 Type ID 74 | Voltage Superposition
 =================================================
+
+This client is used to set up and change settings related to Vertiq underactuated pulsing propellers.
+
     .. table:: Voltage Superposition
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -524,6 +599,12 @@ Type ID 74 | Voltage Superposition
         
 Type ID 76 | Hobby Input
 =================================================
+
+The Hobby Input gives the module the ability to read in a variety of hobby communication protocols.
+Supported protocols are standard 1-2ms PWM, OneShot125, OneShot42, MultiShot, and DShot (150 -
+1200). The protocols are autodetected by default, but can be set to accept a single specific protocol. The
+values read by the Hobby Input are fed into a Parser object, such as the Servo Parser or the ESC Parser.
+
     .. table:: Hobby Input
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -546,6 +627,12 @@ Type ID 76 | Hobby Input
 
 Type ID 77 | Temperature Estimator
 =================================================
+
+The Temperature Estimator uses a conduction thermal model to estimate the temperature of components
+not directly sensed. In the motor modules the Temperature Estimator estimates the motor coil temperature.
+The temperature is used to derate the motor if the temperature rises into dangerous levels. The temperature
+limits can be adjusted, though this is not recommended.
+
     .. table:: Temperature Estimator
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -568,6 +655,13 @@ Type ID 77 | Temperature Estimator
 
 Type ID 78 | Servo Input Parser
 =================================================
+
+The Servo Input Parser is an interface between the Multi Turn Position Controller and the PWM based
+inputs like 1-2ms, OneShot, MultiShot, and DShot. This parser allows the user to control how ratiomatic
+values from the PWM input are translated. Inputs can be mapped to PWM control, voltage control, velocity
+control, and position control. Values are mapped between a minimum value and a maximum value, while
+their units are interpreted based on the mapping.
+
     .. table:: Servo Input Parser
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -584,6 +678,9 @@ Type ID 78 | Servo Input Parser
 
 Type ID 80 | UAVCAN Node
 =================================================
+
+This client is used to configure the DroneCAN interface on a Vertiq module.
+
     .. table:: UAVCAN Node
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -618,6 +715,14 @@ Type ID 80 | UAVCAN Node
 
 Type ID 83 | Coil Temperature Estimator
 =================================================
+
+The Coil Temperature Estimator is a convection and conduction based thermal model to estimate the temperature
+of motor coils when they are not directly sensed. The temperature is used to derate the motor if the 
+temperature rises into dangerous levels. The temperature limits can be adjusted, though this is not recommended.
+The convection coefficient should be tuned for the specific propeller used on the motor. A convection 
+coefficient for an average sized propeller for the given motor is loaded by default. Consider changing the
+convection coefficient if a relatively large or small propeller is used, or if extreme performance and accuracy are required. 
+
     .. table:: Coil Temperature Estimator
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -656,6 +761,9 @@ Type ID 83 | Coil Temperature Estimator
 
 Type ID 84 | Power Safety
 =================================================
+
+The Power Safety protects the motor by checking various parameters in the motor, such as voltage and current, to make sure the values are within a specific range. If the values are above or below the thresholds, the motor will coast and lock down to prevent any commands from being processed. The motor will unlock once the parameters are back within the thresholds. 
+
     .. table:: Power Safety
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -696,6 +804,13 @@ Type ID 84 | Power Safety
 
 Type ID 85 | Stow User Interface
 =================================================
+
+The :ref:`Stow Position <manual_stow_position>` feature allows a Vertiq module to return to a configurable position on a transition from armed to disarmed,
+on timeouts, or when given an explicit command to stow. 
+This can be useful for holding propellers in an aerodynamic position, or preparing vehicles for storage.
+Users can control what this position is, when the module should attempt to move into the stow position, 
+how aggressively it moves to the stow position, and the module’s behavior once it reaches the stow position.
+
     .. table:: Stow User Interface
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -737,6 +852,14 @@ Type ID 85 | Stow User Interface
 
 Type ID 86 | Arming Handler
 =================================================
+
+Vertiq Advanced Speed modules can support an :ref:`Advanced Arming <manual_advanced_arming>` feature, 
+allowing the user to control the armed state of the module with throttle commands or manually 
+and to configure specific behaviors to occur at armed state transitions. 
+Modules will not react to throttle messages until they have been armed, providing improved safety. 
+The configurable behaviors on armed state transitions allow users to easily integrate advanced behaviors into their setup 
+just by controlling the throttle messages they send, simplifying flight controller integration. 
+
     .. table:: Arming Handler
         :widths: 8 18 15 10 5 100
         :class: tight-table
@@ -782,6 +905,10 @@ Type ID 86 | Arming Handler
 
 Type ID 87 | Stopping Handler
 =================================================
+
+A Vertiq module is considered stopped when it has been below its stopping speed continuously for some stopping time. 
+Anytime the module’s velocity goes above the stopping speed, it will reset the countdown on the stopping time.
+
     .. table:: Stopping Handler
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -796,6 +923,9 @@ Type ID 87 | Stopping Handler
 
 Type ID 88 | IQUART Flight Controller Interface
 =================================================
+
+This client is used to simplify communication between flight controllers and multiple modules connected to the IQUART bus.
+
     .. table:: IQUART Flight Controller Interface
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -814,6 +944,9 @@ Type ID 88 | IQUART Flight Controller Interface
 
 Type ID 89 | Pulsing Rectangular Input Parser
 =================================================
+
+This pulsing module specific client is used to convert flight controller x/y coordinate commands into a format understood by pulsing modules.
+
     .. table:: Pulsing Rectangular Input Parser
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -828,6 +961,15 @@ Type ID 89 | Pulsing Rectangular Input Parser
 
 Type ID 90 | GPIO Controller
 =================================================
+
+Vertiq's :ref:`GPIO interface <manual_gpio_interface_>` provides a flexible method of interacting with a module’s user-specific GPIO pins.
+Each GPIO can be set to input or output, which can be switched on-the-fly, if desired. 
+Each pin set as an input may choose whether or not to use an 
+`internal pull resistor (up or down) <https://eepower.com/resistor-guide/resistor-applications/pull-up-resistor-pull-down-resistor/#>`_, 
+as well as the type of pull used. 
+Each pin set as an output may choose whether to output in a 
+`Push-Pull or Open-Drain configuration <https://ebics.net/the-difference-between-push-pull-output-and-open-drain-output-of-microcontroller-i-o-port/>`_.
+
     .. table:: GPIO Controller
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -860,6 +1002,11 @@ Type ID 90 | GPIO Controller
 
 Type ID 91 | ADC Interface
 =================================================
+
+Vertiq's :ref:`ADC Interface <manual_adc_interface>` provides access to an on-board Analog to Digital Converter (ADC). An ADC makes it possible for your module to read input analog voltages. The ADC handles voltages from 0.0V to 3.3V with a 12-bit resolution. For example, if you input 1V to the ADC interface, reading the voltage would return 1V, and reading the "raw value" would return 1241 (:math:`\frac{V_{\text{in}} * 4096}{3.3}`). 
+
+The ADC interface provides read-only access to both the voltage read and the raw ADC value.
+
     .. table:: ADC Interface
         :widths: 8 18 15 10 5 50
         :class: tight-table
@@ -874,6 +1021,12 @@ Type ID 91 | ADC Interface
 
 Type ID 92 | PWM Interface
 =================================================
+
+Vertiq's high power :ref:`PWM output interface <manual_high_power_pwm_>` provides access to a PWM output driver with read/write accessibility to the frequency, duty cycle, and mode.
+At the hardware level, this driver is an **open-drain MOSFET without an internal pull up resistor**. 
+The mode parameter determines which portion of the PWM cycle the duty cycle represents,
+high or low, and is dependent on your application’s hardware setup.
+
     .. table:: PWM Interface
         :widths: 8 18 15 10 5 50
         :class: tight-table
