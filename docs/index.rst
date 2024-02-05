@@ -70,6 +70,13 @@
    manual/manual_underactuated_torque_correction
    manual/manual_appendix
 
+.. toctree::
+   :hidden:
+   :caption: Client Table Reference
+
+   client_reference/client_reference_table
+
+
 Welcome to the Vertiq Documentation
 =================================================
 
