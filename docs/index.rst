@@ -72,7 +72,7 @@
 
 .. toctree::
    :hidden:
-   :caption: Client Table Reference
+   :caption: IQUART Client Table Reference
 
    client_reference/client_reference_table
 

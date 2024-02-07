@@ -1,10 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _client_reference_tables:
+.. _iquart_client_reference_tables:
 
 ***********************************************
-Client Table Reference
+IQUART Client Table Reference
 ***********************************************
 
 Type ID 5 | System Control
