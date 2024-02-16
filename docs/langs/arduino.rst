@@ -1,3 +1,5 @@
+.. _getting_started_arduino_api:
+
 ****************************
 Getting Started with Arduino
 ****************************

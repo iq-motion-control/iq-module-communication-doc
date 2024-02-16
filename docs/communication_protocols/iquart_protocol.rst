@@ -1,25 +1,64 @@
+.. include:: ../text_colors.rst
+.. toctree::
+
 .. _uart_messaging:
 
 ***************
-UART Messaging
+IQUART
 ***************
 
-Vertiq uses a fully featured, serial based protocol for communicating with motor controllers. This communication
+Vertiq uses a fully featured, serial based protocol for communicating with motor controllers known as "IQUART". This communication
 protocol is broken into classes of related functionality. As such, Vertiq supplies libraries for communicating with
 the motor controllers in various object-oriented languages.
 
-**The Vertiq API currently supports the following languages:**
+Module Support
+===============
+All Vertiq modules support IQUART, as summarized in the tables below.
 
-* Arduino
-* C++
-* Matlab
-* Python
+Speed Modules
+**************
+
+.. table:: Speed Module Support for IQUART
+
+	+--------------+------------------------------------+
+	| Module       | IQUART Support                     |
+	+--------------+------------------------------------+
+	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
+	+--------------+------------------------------------+
+	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
+	+--------------+------------------------------------+
+	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
+	+--------------+------------------------------------+
+
+Servo Modules
+**************
+
+.. table:: Servo Module Support for IQUART
+
+	+--------------+------------------------------------+
+	| Module       | IQUART Support                     |
+	+--------------+------------------------------------+
+	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
+	+--------------+------------------------------------+
+	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
+	+--------------+------------------------------------+
+	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
+	+--------------+------------------------------------+
+
+Language Support
+==================
+The Vertiq IQUART API currently supports the following languages:
+
+* :ref:`Arduino <getting_started_arduino_api>`
+* :ref:`C++ <getting_started_cpp_api>`
+* :ref:`Matlab <getting_started_matlab_api>`
+* :ref:`Python <getting_started_python_api>`
 
 Message Packetization
 =====================
 
 General Packets
-----------------
+****************
 Packets are structured such that a valid packet is identifiable even when surrounded by random bytes. The
 start byte (dec 85, hex 0x55, bin 0b01010101) indicates the start of a new packet. This particular start byte
 is simple to identify using an oscilloscope by its alternating 01 pattern. The ’length’ byte indicates length of
@@ -30,7 +69,7 @@ the common 64 byte buffer size for many serial protocols. Finally, a little-endi
 redundancy check on ’length’+’type’+’payload’ is appended. See Table 1 a visual representation.
 
 Standard Packets
-----------------
+*****************
 A common use for communication is to get values, set values, save values, and reply to a get request. The
 General Packet is used to make a Standard Packet capable of performing these four functions. The ’payload’
 segment of the General Packet is broken into three new segments: subType, obj/access, and ’data’. The
@@ -49,5 +88,3 @@ Table 1: Message Packetization
 +----------+------+--------+------+-----------+------------+--------+------+------+
 | Standard | 0x55 | Length | Type | subType   | obj/access | -data- | crcL | crcH |
 +----------+------+--------+------+-----------+------------+--------+------+------+
-
-

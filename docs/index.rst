@@ -30,7 +30,7 @@
    :caption: Messaging Protocols
    :hidden:
 
-   intro
+   communication_protocols/iquart_protocol
 
 .. toctree::
    :hidden:
