@@ -139,7 +139,7 @@ described in detail in the sections below. **Most parameters are the same in Sta
 
 Communication
 ##############
-This parameter controls what type of :ref:`Hobby Protocols <manual_hobby>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
+This parameter controls what type of :ref:`Hobby Protocols <hobby_protocol>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
 which can be selected from the drop-down box. Once the module receives a command in its selected hobby protocol, it will only listen for that type of command until power cycled, so you will
 not be able to connect with Control Center until you power cycle the module. For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is reset. 
 If left in Autodetect mode, the module should listen for all of the supported Hobby protocols to try to determine which one you are using. 
@@ -246,7 +246,7 @@ Testing the Module
 .. warning:: Ensure that the module is secured and there is no propeller attached before performing any testing.
 
 To test that the module is configured to spin and take throttle commands from the flight controller, open the Testing tab in Control Center and look for the *ESC Input* parameter. This parameter commands the module to spin in the same way 
-that a :ref:`hobby protocol <manual_hobby>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`, so it is the best way to test if 
+that a :ref:`hobby protocol <hobby_protocol>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`, so it is the best way to test if 
 the module is ready to connect with the flight controller. So setting this to 0.5 will send the module a 50% throttle command with the configuration specified in this example. 
 **Make sure the module is secured before attempting to spin it, as it may move dangerously if unsecured**. 
 

@@ -32,8 +32,8 @@
 
    communication_protocols/iquart_protocol
    communication_protocols/dronecan_protocol
-   communication_protocols/manual_canopen
-   communication_protocols/manual_hobby
+   communication_protocols/canopen_protocol
+   communication_protocols/hobby_protocol
 
 .. toctree::
    :hidden:

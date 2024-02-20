@@ -273,7 +273,7 @@ Now you can make the module spin. Open the Testing tab, and scroll down to the b
   a 10V drive voltage, since 50% of 20V is 10V. A positive PWM percentage always goes in the counter-clockwise direction, and a negative PWM percentage always goes clockwise.
 * **Velocity**: This commands the module to try and maintain a specific velocity in rad/s, using closed loop PID control. A positive velocity always goes in the counter-clockwise direction, and a negative velocity always goes clockwise.
 * **Voltage**: This commands the module to a specific drive voltage. A positive voltage always goes in the counter-clockwise direction, and a negative voltage always goes clockwise.
-* **ESC Input**: This commands the module to spin in the same way that a typical :ref:`hobby protocol <manual_hobby>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`. So, setting this
+* **ESC Input**: This commands the module to spin in the same way that a typical :ref:`hobby protocol <hobby_protocol>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`. So, setting this
   to 0.5 will send the module a 50% throttle command with the configuration specified in this example. 
   **However, because this test is meant to simulate commands from a flight controller, it is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter will not 
   cause the module to spin until the module has armed.** By default Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So, to arm your module using the

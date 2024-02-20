@@ -1,7 +1,7 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _manual_hobby:
+.. _hobby_protocol:
 
 ***********************************************
 Hobby Protocols

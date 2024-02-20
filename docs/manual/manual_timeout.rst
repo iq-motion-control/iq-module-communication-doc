@@ -151,7 +151,7 @@ coasting, or is braking, the timeout will not expire. The countdown only begins 
 After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
 
 * Any :ref:`IQUART <uart_messaging>` message
-* Throttle commands over :ref:`hobby protocols <manual_hobby>`
+* Throttle commands over :ref:`hobby protocols <hobby_protocol>`
 * Any :ref:`DroneCAN <dronecan_protocol>` message or request that the module will listen to. This does not include heartbeats from other nodes or other messages on the bus that are not intended for the module.
 
 

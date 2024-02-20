@@ -15,7 +15,7 @@ Velocity and voltage control provide methods of commanding your Vertiq module to
 regardless of firmware style (speed or servo), can be controlled via velocity and voltage commands, though the 
 underlying implementation of control varies depending on the controllers available on your firmware. Both our 
 velocity and position controllers support three methods of setting velocity targets: Control Velocity, Control Voltage, 
-and Control PWM. All modules also support control via standard :ref:`Analog Hobby Protocols <manual_hobby>`, with options to map inputs to Control Velocity, Control Voltage, and Control PWM. The inputs are mapped by either the 
+and Control PWM. All modules also support control via standard :ref:`Analog Hobby Protocols <hobby_protocol>`, with options to map inputs to Control Velocity, Control Voltage, and Control PWM. The inputs are mapped by either the 
 :ref:`ESC Propeller Input Parser <esc_propeller_input_parser>` or :ref:`Servo Input Parser <servo_input_parser>`. Vertiq's speed modules 
 larger than our 23XX family can also be driven with :ref:`DroneCAN <dronecan_protocol>`.
 
@@ -41,7 +41,7 @@ module and firmware, please see your module's page available on the left-hand si
 
 Our :ref:`Propeller Motor Controller <propeller_motor_control>`, available only while using speed firmware, uses a velocity PID controller in which the input target is 
 a velocity, and error is calculated on the difference between the module's actual velocity and the target. 
-This is the default controller used when the module receives commands through :ref:`Analog Hobby Protocols <manual_hobby>` or 
+This is the default controller used when the module receives commands through :ref:`Analog Hobby Protocols <hobby_protocol>` or 
 :ref:`DroneCAN <dronecan_protocol>`. An important note is that while Hobby and DroneCAN commands are passed into the Propeller Motor Controller, whether 
 the module uses velocity control depends on the configured :ref:`mode <throttle_mode_maximums_directions>` parameter. Please refer to these linked pages in order to learn more about  
 Hobby and DroneCAN, and the *mode* parameter.

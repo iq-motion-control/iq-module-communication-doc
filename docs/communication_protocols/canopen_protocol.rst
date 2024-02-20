@@ -1,7 +1,7 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _manual_canopen:
+.. _canopen_protocol:
 
 ***********************************************
 CANOpen
