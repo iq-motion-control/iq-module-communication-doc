@@ -47,8 +47,7 @@ Servo Modules
 
 Language Support
 ==================
-The Vertiq IQUART API currently supports
- the following languages:
+The Vertiq IQUART API currently supports the following languages:
 
 * :ref:`Arduino <getting_started_arduino_api>`
 * :ref:`C++ <getting_started_cpp_api>`
