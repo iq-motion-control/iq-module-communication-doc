@@ -9,7 +9,7 @@ DroneCAN Integration with a PX4 Flight Controller
 This document provides a general procedure for integrating a Vertiq module with a PX4 flight controller using DroneCAN, also known as UAVCANv0 or UAVCAN. 
 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
-Vertiq modules, refer to the :ref:`manual_dronecan` section of the Feature Reference Manual.
+Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
 Module Configuration and Enumeration
 =====================================

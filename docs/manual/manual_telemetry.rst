@@ -220,7 +220,7 @@ DroneCAN
 *********
 Vertiq modules broadcast the DroneCAN standard :ref:`uavcan.equipment.esc.Status <dronecan_support_esc_status>` 
 and :ref:`uavcan.equipment.device.Temperature <dronecan_support_device_temperature>` messages to send ESC telemetry. 
-Refer to the :ref:`DroneCAN <manual_dronecan>` section of the Feature Reference Manual for more details on the DroneCAN bus and those messages. 
+Refer to the :ref:`DroneCAN <dronecan_protocol>` section for more details on the DroneCAN bus and those messages. 
 
 All modules connected to a DroneCAN bus broadcast these telemetry messages, no additional configuration is required. It is possible to adjust
 the frequency that DroneCAN telemetry is sent with as detailed below.
