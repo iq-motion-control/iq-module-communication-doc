@@ -93,7 +93,7 @@ throttle command of -100%, and a raw command of 4096 corresponds to a throttle c
 
 Hobby Protocols
 ****************
-The :ref:`manual_hobby` section covers in more detail how each hobby protocol communicates with Vertiq modules. Generally, each type of hobby protocol 
+The :ref:`hobby_protocol` section covers in more detail how each hobby protocol communicates with Vertiq modules. Generally, each type of hobby protocol 
 sends a command that encodes a number from 0.0 to 1.0. For example, :ref:`Standard PWM <hobby_standard_pwm>` sends a pulse from 1000 microseconds to 2000 microseconds, where 1000 microseconds 
 corresponds to a 0.0 and 2000 microseconds corresponds to a 1.0.
 

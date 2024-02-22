@@ -30,7 +30,10 @@
    :caption: Messaging Protocols
    :hidden:
 
-   intro
+   communication_protocols/iquart_protocol
+   communication_protocols/dronecan_protocol
+   communication_protocols/canopen_protocol
+   communication_protocols/hobby_protocol
 
 .. toctree::
    :hidden:
@@ -52,10 +55,6 @@
    manual/manual_intro
    manual/manual_angle_control_mechanisms
    manual/manual_velocity_control_mechanisms
-   manual/manual_iquart
-   manual/manual_dronecan
-   manual/manual_canopen
-   manual/manual_hobby
    manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming

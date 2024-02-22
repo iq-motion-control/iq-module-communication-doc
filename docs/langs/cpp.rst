@@ -1,3 +1,5 @@
+.. _getting_started_cpp_api:
+
 ************************
 Getting Started with C++
 ************************
