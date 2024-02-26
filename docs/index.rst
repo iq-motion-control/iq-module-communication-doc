@@ -24,6 +24,7 @@
    modules/vertiq_8108_150
    modules/fortiq_42XX
    modules/vertiq_23xx_family
+   modules/vertiq_40xx_family
 
 .. toctree::
    :caption: Messaging Protocols
