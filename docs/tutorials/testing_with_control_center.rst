@@ -35,6 +35,9 @@ Hardware Setup
 To communicate with the module using IQ Control Center, you will need:
 
 * A USB-to-UART converter (FTDI, CP2012, etc.)
+
+    * We recommend the converter found `here <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`_
+
 * Wires or a cable to connect your USB-to-UART converter to the module's communication pins
 * A battery or power supply to connect to your module
 
