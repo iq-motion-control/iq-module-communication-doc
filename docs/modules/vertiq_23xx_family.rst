@@ -7,7 +7,7 @@ Vertiq 23-XX Family
 
 .. csv-table:: Vertiq 23-XX Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
-        :align: center
+        :align: left
 
         "23-06", "220", "Servo", "Servo, Step/Direction"
         "23-06", "2200", "Speed", "Speed, Pulsing"

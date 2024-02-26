@@ -4,9 +4,11 @@
 Vertiq 40-XX Family
 ********************************
 
+Generation 2
+
 .. csv-table:: Vertiq 40-XX Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
-        :align: center
+        :align: left
 
         "40-06", "370", "Speed", "Speed, Servo"
         "40-14", "400", "Speed", "Speed, Servo"
