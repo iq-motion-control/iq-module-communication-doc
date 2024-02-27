@@ -28,10 +28,11 @@ Getting Started
 ===============================
 
 Complete the correct "Getting Started Guide" for your module's style (if you are using a servo module, please complete "Getting Started with Vertiq Servo Modules")
-.. I am putting these just to have some sort of placeholder link. Eventually we'll have actual getting started manuals
 
         * :ref:`Getting Started with Vertiq Speed Modules <control_center_tutorial>`
         * :ref:`Getting Started with Vertiq Servo Modules <manual_angle_control_mechanisms>`
+
+.. I am putting these just to have some sort of placeholder link. Eventually we'll have actual getting started manuals
 
 More Features
 ===============================
