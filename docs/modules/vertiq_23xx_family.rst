@@ -5,52 +5,106 @@
 Vertiq 23-XX Family 
 *********************************
 
+.. image:: ../_static/module_pictures/23xx_family.png
+        :alt: Vertiq 23-06 2200Kv
+        :width: 500
+        :align: center
+
 .. csv-table:: Vertiq 23-XX Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
-        :align: left
+        :align: center
 
         "23-06", "220", "Servo", "Servo, Step/Direction"
         "23-06", "2200", "Speed", "Speed, Pulsing"
         "23-14", "920", "Speed", "Servo, Speed"
         
+Getting Familiar with your Module
+=====================================
 
-.. sidebar:: Vertiq 23-06
+Hardware Setup Walkthrough
+-----------------------------
 
-    .. image:: ../_static/IQ2306_2200kv.png
-        :alt: Vertiq 23-06 2200Kv
+Changing or Updating Firmware
+-------------------------------
 
-The Vertiq 23-06 2200Kv as well as the Vertiq 23-14 920Kv are integrated motor-controllers with a wide range of velocity based applications. They have open and closed loop controllers
-designed primarily to drive propeller loads.
+Please follow the instructions found in :ref:`updating_firmware`
 
-The Vertiq 23-06 220Kv is an integrated motor
-and controller with a wide range of position based applications. Its performance is comparable to or better
-than other 23-06 sized (NEMA 11, 28mm stepper) motors and can operate at any speed between -4,800 and
-4800 RPM thanks to its sensored control. Its closed loop PID controller tracks targets across multiple revolutions, 
-making it ideal for applications with transmissions, both rotary and linear. This sits on top of
-a voltage controller, which compensates for varying
-input voltages. Finally, the core is a raw PWM controller. Any of the above controllers can be used by
-the user. The Vertiq 23-06 Position Module has a built-in
-rotary to linear calculation converter, which allows
-the user to communicate to the firmware in native
-linear units. The onboard minimum jerk trajectory
-generator with 32 segment queue produces smooth,
-human like motions with minimal computation and
-communication overhead from the application controller.
+Getting Started
+------------------
 
-| :download:`Speed Module Datasheet <../_static/2306_speed_datasheet.pdf>`
-| :download:`Position Module Datasheet <../_static/2306_position_datasheet.pdf>` 
+Complete the correct "Getting Started Guide" for your module's style (if you are using a servo module, please complete "Getting Started with Vertiq Servo Modules")
+.. I am putting these just to have some sort of placeholder link. Eventually we'll have actual getting started manuals
 
-.. |module_name| Replace:: Vertiq23xx
-.. |variable_name| Replace:: vertiq
+        * :ref:`Getting Started with Vertiq Speed Modules <control_center_tutorial>`
+        * :ref:`Getting Started with Vertiq Servo Modules <manual_angle_control_mechanisms>`
 
-.. |module_firmware| unicode:: 0xA0
-.. include:: speed.rst
+More Features
+------------------
 
-.. |module_firmware| Replace:: , firmware="servo"
-.. include:: servo.rst
+Once you have completed the proper "Getting Started Guide," you can begin to dive deeper into your module's capabilities. Below, you will find
+a summary of all features supported on your module, IQUART Clients it can reach, as well as applicable tutorials. Please ensure that you are reading the feature
+summary for your module's style.
 
-.. |module_firmware| Replace:: , firmware="stepdir"
-.. include:: stepdir.rst
+Speed Module - Supported Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`manual_advanced_arming`
+        * :ref:`manual_zero_spin`
+        * :ref:`manual_telemetry`
+        * :ref:`manual_hobby`
+        * :ref:`controlling_ifci`
+        * :ref:`manual_iquart`
+        * :ref:`manual_throttle`
+        * :ref:`manual_timeout`
+        * :ref:`manual_velocity_control_mechanisms`
 
-.. |module_firmware| Replace:: , firmware="pulsing"
-.. include:: pulsing.rst
+Speed Module - Supported IQUART Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`system_control`
+        * :ref:`persistent_memory`
+        * :ref:`serial_interface`
+        * :ref:`brushless_drive`
+        * :ref:`propeller_motor_controller`
+        * :ref:`esc_propeller_input_parser_ref`
+        * :ref:`buzzer_control`
+        * :ref:`power_monitor`
+        * :ref:`temperature_monitor_microcontroller`
+        * :ref:`hobby_input`
+        * :ref:`temperature_estimator`
+        * :ref:`coil_temperature_estimator`
+        * :ref:`power_safety`
+        * :ref:`stopping_handler`
+        
+Speed Module - Supported Tutorials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`control_center_tutorial`
+        * :ref:`hobby_fc_tutorial`
+        * :ref:`hobby_calibration_tutorial`
+        * :ref:`fc_telemetry_tutorial`
+
+Servo Module - Supported Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`manual_angle_control_mechanisms`
+        * :ref:`manual_velocity_control_mechanisms`
+        * :ref:`manual_iquart`
+        * :ref:`manual_hobby`
+
+Servo Module - Supported IQUART Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`system_control`
+        * :ref:`persistent_memory`
+        * :ref:`serial_interface`
+        * :ref:`brushless_drive`
+        * :ref:`multi_turn_angle_control`
+        * :ref:`buzzer_control`
+        * :ref:`power_monitor`
+        * :ref:`anticogging`
+        * :ref:`temperature_monitor_microcontroller`
+        * :ref:`hobby_input`
+        * :ref:`temperature_estimator`
+        * :ref:`servo_input_parser_ref`
+        * :ref:`coil_temperature_estimator`
+        * :ref:`power_safety`
+        * :ref:`stopping_handler`
+
+Servo Module - Supported Tutorials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
