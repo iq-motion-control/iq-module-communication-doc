@@ -145,7 +145,7 @@ Type ID 88 | IQUART Flight Controller Interface
 =================================================
 .. include:: ../clients/iquart_flight_controller_interface.rst
 
-.. _pusling_rectangular_input_parser:
+.. _pulsing_rectangular_input_parser:
 
 Type ID 89 | Pulsing Rectangular Input Parser
 =================================================
