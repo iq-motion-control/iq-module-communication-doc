@@ -68,6 +68,7 @@ Type ID 69 | Power Monitor
 .. include:: ../clients/power_monitor.rst
 
 .. _anticogging:
+
 Type ID 71 | Anticogging
 =================================================
 .. include:: ../clients/anticogging.rst

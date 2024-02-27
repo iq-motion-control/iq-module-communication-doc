@@ -4,30 +4,112 @@
 Vertiq 40-XX Family
 ********************************
 
-Generation 2
+.. image:: ../_static/module_pictures/40xx_family.png
+        :alt: Vertiq 40-XX Family
+        :width: 500
+        :align: center
 
-.. csv-table:: Vertiq 40-XX Family of Modules
+.. csv-table:: Generation 2 Vertiq 40-XX Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
-        :align: left
+        :align: center
 
         "40-06", "370", "Speed", "Speed, Servo"
         "40-14", "400", "Speed", "Speed, Servo"
 
-.. sidebar:: Vertiq 40-06
+Hardware Setup Walkthrough
+===============================
 
-    .. image:: ../_static/Vertiq4006.png
-        :alt: Vertiq 40-06 
+Changing or Updating Firmware
+===============================
 
-The Vertiq 40-XX family of modules are built for high performance commercial UAV and robotic applications.
-With position sensing and advanced calibration and control algorithms, 
-we're able to drive the motor in a way that increases efficiency, torque output, and 
-responsiveness. Vertiq motors also output advanced telemetry for motor and vehicle health monitoring.
+Please follow the instructions found in :ref:`updating_firmware`
 
-.. |module_name| Replace:: Vertiq40xx
-.. |variable_name| Replace:: vertiq
+Getting Started
+===============================
 
-.. |module_firmware| unicode:: 0xA0
-.. include:: vertiq_4006_speed.rst
+Complete the correct "Getting Started Guide" for your module's style (if you are using a servo module, please complete "Getting Started with Vertiq Servo Modules")
+.. I am putting these just to have some sort of placeholder link. Eventually we'll have actual getting started manuals
 
-.. |module_firmware| Replace:: , firmware="servo"
-.. include:: servo.rst
+        * :ref:`Getting Started with Vertiq Speed Modules <control_center_tutorial>`
+        * :ref:`Getting Started with Vertiq Servo Modules <manual_angle_control_mechanisms>`
+
+More Features
+===============================
+
+Once you have completed the proper "Getting Started Guide," you can begin to dive deeper into your module's capabilities. Below, you will find
+a summary of all features supported on your module, IQUART Clients it can reach, as well as applicable tutorials. Please ensure that you are reading the feature
+summary for your module's style.
+
+Speed Module - Supported Features
+----------------------------------------------
+        * :ref:`manual_angle_control_mechanisms`
+        * :ref:`manual_velocity_control_mechanisms`
+        * :ref:`manual_iquart`
+        * :ref:`manual_dronecan`
+        * :ref:`manual_hobby`
+        * :ref:`manual_telemetry`
+        * :ref:`manual_throttle`
+        * :ref:`manual_advanced_arming`
+        * :ref:`manual_stow_position`
+        * :ref:`manual_timeout`
+        * :ref:`manual_zero_spin`
+        * :ref:`controlling_ifci`
+        
+Speed Module - Supported IQUART Clients
+----------------------------------------------
+        * :ref:`system_control`
+        * :ref:`persistent_memory`
+        * :ref:`serial_interface`
+        * :ref:`brushless_drive`
+        * :ref:`propeller_motor_controller`
+        * :ref:`multi_turn_angle_control`
+        * :ref:`esc_propeller_input_parser_ref`
+        * :ref:`buzzer_control`
+        * :ref:`power_monitor`
+        * :ref:`temperature_monitor_microcontroller`
+        * :ref:`hobby_input`
+        * :ref:`temperature_estimator`
+        * :ref:`uavcan_node`
+        * :ref:`coil_temperature_estimator`
+        * :ref:`power_safety`
+        * :ref:`stow_user_interface`
+        * :ref:`arming_handler`
+        * :ref:`stopping_handler`
+        * :ref:`iquart_flight_controller_interface`
+        
+Speed Module - Supported Tutorials
+----------------------------------------------
+        * :ref:`control_center_tutorial`
+        * :ref:`hobby_fc_tutorial`
+        * :ref:`hobby_calibration_tutorial`
+        * :ref:`dronecan_fc_tutorial`
+        * :ref:`fc_telemetry_tutorial`
+        * :ref:`motor_noise_debugging`
+
+Servo Module - Supported Features
+----------------------------------------------
+        * :ref:`manual_angle_control_mechanisms`
+        * :ref:`manual_velocity_control_mechanisms`
+        * :ref:`manual_iquart`
+        * :ref:`manual_hobby`
+        * :ref:`manual_timeout`
+
+Servo Module - Supported IQUART Clients
+----------------------------------------------
+        * :ref:`system_control`
+        * :ref:`persistent_memory`
+        * :ref:`serial_interface`
+        * :ref:`brushless_drive`
+        * :ref:`multi_turn_angle_control`
+        * :ref:`buzzer_control`
+        * :ref:`power_monitor`
+        * :ref:`anticogging`
+        * :ref:`temperature_monitor_microcontroller`
+        * :ref:`hobby_input`
+        * :ref:`temperature_estimator`
+        * :ref:`servo_input_parser_ref`
+        * :ref:`coil_temperature_estimator`
+        * :ref:`power_safety`
+
+Servo Module - Supported Tutorials
+----------------------------------------------
