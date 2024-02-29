@@ -43,8 +43,10 @@ Once you have completed the proper "Getting Started Guide," you can begin to div
 a summary of all features supported on your module, IQUART Clients it can reach, as well as applicable tutorials. Please ensure that you are reading the feature
 summary for your module's style.
 
-Speed Module - Supported Features
-----------------------------------------------
+Speed Module
+-----------------
+Supported Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
         * :ref:`manual_hobby`
@@ -54,8 +56,8 @@ Speed Module - Supported Features
         * :ref:`manual_zero_spin`
         * :ref:`controlling_ifci`
 
-Speed Module - Supported IQUART Clients
-----------------------------------------------
+Supported IQUART Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`system_control`
         * :ref:`persistent_memory`
         * :ref:`serial_interface`
@@ -73,23 +75,25 @@ Speed Module - Supported IQUART Clients
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`
         
-Speed Module - Supported Tutorials
-----------------------------------------------
+Supported Tutorials
+^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`control_center_tutorial`
         * :ref:`hobby_fc_tutorial`
         * :ref:`hobby_calibration_tutorial`
         * :ref:`fc_telemetry_tutorial`
 
-Servo Module - Supported Features
+Servo Module
 ----------------------------------------------
+Supported Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
         * :ref:`manual_hobby`
         * :ref:`manual_timeout`
 
-Servo Module - Supported IQUART Clients
-----------------------------------------------
+Supported IQUART Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`system_control`
         * :ref:`persistent_memory`
         * :ref:`serial_interface`
@@ -105,11 +109,13 @@ Servo Module - Supported IQUART Clients
         * :ref:`coil_temperature_estimator`
         * :ref:`power_safety`
 
-Servo Module - Supported Tutorials
-----------------------------------------------
+Supported Tutorials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pulsing Module - Supported Features
+Pulsing Module
 ----------------------------------------------
+Supported Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
         * :ref:`manual_throttle`
@@ -119,8 +125,8 @@ Pulsing Module - Supported Features
         * :ref:`controlling_ifci`
         * :ref:`correcting_underactuated_torque`
 
-Pulsing Module - Supported IQUART Clients
-----------------------------------------------
+Supported IQUART Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`system_control`
         * :ref:`persistent_memory`
         * :ref:`serial_interface`
@@ -138,8 +144,8 @@ Pulsing Module - Supported IQUART Clients
         * :ref:`iquart_flight_controller_interface`
         * :ref:`pulsing_rectangular_input_parser`
         
-Pulsing Module - Supported Tutorials
-----------------------------------------------
+Supported Tutorials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`control_center_tutorial`
         * :ref:`up12_initial_configuration`
         * :ref:`up12_installation_tutorial`
