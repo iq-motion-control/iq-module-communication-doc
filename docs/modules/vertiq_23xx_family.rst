@@ -16,7 +16,7 @@ Vertiq 23-XX Family
 
         "23-06", "220", "Servo", "Servo"
         "23-06", "2200", "Speed", "Speed, Pulsing"
-        "23-14", "920", "Speed", "Servo, Speed"
+        "23-14", "920", "Speed", "Speed"
         
 Hardware Setup Walkthrough
 ==============================

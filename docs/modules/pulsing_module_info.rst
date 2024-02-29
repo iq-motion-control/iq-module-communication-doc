@@ -21,7 +21,6 @@ Supported IQUART Clients
         * :ref:`buzzer_control`
         * :ref:`power_monitor`
         * :ref:`temperature_monitor_microcontroller`
-        * :ref:`hobby_input`
         * :ref:`temperature_estimator`
         * :ref:`coil_temperature_estimator`
         * :ref:`power_safety`
