@@ -36,8 +36,13 @@ Supported Features
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
+        * :ref:`manual_canopen`
         * :ref:`manual_hobby`
         * :ref:`manual_timeout`
+        * :ref:`manual_adc_interface`
+        * :ref:`manual_high_power_pwm_`
+        * :ref:`manual_gpio_interface_`
+        * :ref:`manual_step_direction`
 
 Supported IQUART Clients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
