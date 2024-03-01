@@ -20,11 +20,11 @@
    :maxdepth: 2
    :hidden:
    
-   modules/vertiq_2306_2200
-   modules/vertiq_2306_220
-   modules/vertiq_4006
-   modules/vertiq_8108_150
+   modules/vertiq_23xx_family
+   modules/vertiq_40xx_family
+   modules/vertiq_81xx_family
    modules/fortiq_42XX
+
 
 .. toctree::
    :caption: Messaging Protocols
