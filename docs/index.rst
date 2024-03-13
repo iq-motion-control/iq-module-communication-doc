@@ -76,7 +76,7 @@
 
    client_reference/client_reference_table
 
-Welcome to Vertiq's Read-The-Docs!
+Welcome to Vertiq's Documentation!
 ============================================
 The purpose of this site is to get your module spinning as quickly as possible, and to provide
 you with additional tutorials on accessing your module's more advanced features.
@@ -85,7 +85,10 @@ Looking to get started with your module for the first time, or just for a refres
 module found below, and you'll be walked through first time setup, the correct Getting Started manual to get spinning, and a list of applicable features, clients, and tutorials.
 
 Already an experienced user looking for help with a specific feature or behavior? Please use the Feature Reference Manual or the Tutorials meant for your
-module found on the left-hand side.
+module found on your module's family page.
+
+Looking for guidance on using our Python, C++, Arduino, or Matlab APIs, or need help with the IQ Control Center configuration software? Please 
+use the guides found on the left hand side.
 
 Need to contact us? Please use support@vertiq.co.
 
@@ -116,3 +119,11 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Fortiq Family
+
+Reporting Documentation Issues
+******************************
+We try our best to keep this documentation as clear, concise, and updated as possible.
+If you come across any typos, bugs in example code, confusing verbiage, or simply have a question on how to do something, 
+Please report it on our public github issues page!
+
+`Reporting Issues or Questions about the Documentation <https://github.com/iq-motion-control/iq-module-communication-doc/issues>`_
