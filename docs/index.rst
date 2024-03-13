@@ -76,7 +76,7 @@
 
    client_reference/client_reference_table
 
-Welcome to Vertiq's Documentation!
+Welcome to Vertiq's Documentation
 ============================================
 The purpose of this site is to get your module spinning as quickly as possible, and to provide
 you with additional tutorials on accessing your module's more advanced features.
