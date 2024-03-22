@@ -255,8 +255,11 @@ Next Steps
 ********************************************
 Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <81_getting_started>` for your module and its firmware style.
 
+Common Hardware Setup
+##############################
+
 Attaching a Propeller for Flight
-#####################################################
+******************************************
 
 The exact setup will differ for each propeller. Please follow the instructions supplied with your specific propeller.
 
@@ -267,11 +270,13 @@ The 81-XX family has options for mounting with both M4 and M3 bolts.
         Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
 
 Additional Mechanical/Electrical Information
-#####################################################
+***************************************************
 For more information about the Vertiq 81-XX Generation 1 family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
 * `81-08 85 Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_85Kv_module_datasheet-mcn8.pdf>`_
 * `81-08 150 Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_150Kv_module_datasheet-k4f2.pdf>`_
+
+
 
 .. _81_getting_started:
 .. include:: get_started_text.rst
