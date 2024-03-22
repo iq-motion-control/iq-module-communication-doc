@@ -36,7 +36,7 @@ Every Vertiq 40-XX module is packaged with the following:
 * 1 Vertiq 40-XX module
 * 1 bag of hardware containing
   
-        * 2 M3X10 bolts
+        * 2 M3x10 bolts
         * 1 propeller adapter
 
 If you are missing any components, please contact us at support@vertiq.co. 

@@ -38,8 +38,8 @@ Every Vertiq 23-XX module is packaged with the following:
 * 1 propeller adapter
 * 1 bag of hardware containing
   
-        * 4 M2X6 bolts
-        * 4 M3X8 bolts
+        * 4 M2x6 bolts
+        * 4 M3x8 bolts
         * 1 M5x0.8 locknut
 
 * 1 communications wire
