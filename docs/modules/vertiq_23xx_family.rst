@@ -5,7 +5,7 @@
 Vertiq 23-XX Family 
 *********************************
 
-.. image:: ../_static/module_pictures/23xx_family.png
+.. image:: ../_static/module_pictures/23xx/23xx_family.png
         :alt: Vertiq 23-XX Family
         :width: 500
         :align: center
@@ -26,7 +26,7 @@ What's in the Box
 ----------------------
 Every Vertiq 23-XX module is packaged with the following:
 
-.. image:: ../_static/module_pictures/23xx_in_the_box.png
+.. image:: ../_static/module_pictures/23xx/23xx_in_the_box.png
         :alt: Vertiq 23-XX Family in the Box
         :align: center
 
@@ -54,18 +54,18 @@ Pinout and Connectors
 The Vertiq 23-XX family does not support any connectors, and only accepts direct soldering to the exposed pads.
 
 .. note::
-        It is highly recommended for your and your module’s safety that you shroud all connections with the supplied heat shrink.
+        It is highly recommended for your and your module's safety that you shroud all connections with the supplied heat shrink.
 
-.. figure:: ../_static/module_pictures/23xx_final_with_heatshrink.png
-    :width: 40%
+.. figure:: ../_static/module_pictures/23xx/23xx_final_with_heatshrink.png
+    :width: 400
     :alt: Final 23-XX Connections with Heatshrink
 
     Final 23-XX Connections with Heatshrink
 
 Power
 ^^^^^^^^^^^
-.. figure:: ../_static/module_pictures/23xx_power_connection.png
-    :width: 25%
+.. figure:: ../_static/module_pictures/23xx/23xx_power_connection.png
+    :width: 250
     :alt: 23-XX Power Connections
 
     23-XX Power Connections
@@ -75,24 +75,83 @@ All Vertiq 23-XX modules support a minimum of 5.4V and a maximum of 6S power (25
 .. note::
         If you are driving your Vertiq 23-XX module(s) at a low voltage or near the maximum operating voltage, it is recommended that you connect the provided 270uF 
         capacitor between the power terminals. If you are unsure whether you should or should not include the capacitor, it is safest to include it. 
-        You may need to shorten the capacitor’s leads in order to solder it properly.
+        You may need to shorten the capacitor's leads in order to solder it properly.
 
 A module with its power lines and capacitor attached should look as follows
 
-.. figure:: ../_static/module_pictures/23xx_with_cap.png
-    :width: 40%
+.. figure:: ../_static/module_pictures/23xx/23xx_with_cap.png
+    :width: 400
     :alt: 23-XX Power Connections with Capacitor
 
     23-XX Power Connections with Capacitor
 
 Communication
 ^^^^^^^^^^^^^^^^^
-.. figure:: ../_static/module_pictures/23xx_comms_connection.png
-    :width: 40%
+.. figure:: ../_static/module_pictures/23xx/23xx_comms_connection.png
+    :width: 350
     :alt: 23-XX Communication Connections
 
     23-XX Communication Connections
 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect the supplied communication wire to your module. 
+In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
+of your module is connected to your controller's TX line.
+
+Please note that in order to configure your module through the IQ Control Center, to communicate with your module with any of our APIs, or to complete 
+any firmware updates you must connect communication wires as each of these uses IQUART communication.
+
+Adding the communication wires to our module results in the following
+
+.. figure:: ../_static/module_pictures/23xx/23xx_comms_soldered.png
+    :width: 500
+    :alt: 23-XX Communication Connections Soldered
+
+    23-XX Communication Connections Soldered
+
+Attaching a Propeller for Flight
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In order to attach a propeller, first find the propeller adapter and M2 bolts from the provided hardware.
+
+.. figure:: ../_static/module_pictures/23xx/23xx_prop_adapter.png
+    :width: 500
+    :alt: 23-XX Propeller Adapter Hardware
+
+    23-XX Propeller Adapter Hardware
+
+Use the bolts to connect the adapter to the module
+
+.. figure:: ../_static/module_pictures/23xx/23xx_with_prop_adapter.png
+    :width: 300
+    :alt: 23-XX with Propeller Adapter Hardware
+
+    23-XX with Propeller Adapter Hardware
+
+Now, find the locknut from the provided hardware as well as the propeller you plan on using.
+
+.. figure:: ../_static/module_pictures/23xx/23xx_prop_setup.png
+    :width: 300
+    :alt: 23-XX with Propeller Hardware
+
+    23-XX with Propeller Hardware
+
+Place the propeller on the module, tighten the locknut to secure it, and your module is ready to fly.
+
+.. figure:: ../_static/module_pictures/23xx/23xx_with_prop.png
+    :width: 500
+    :alt: 23-XX with Propeller
+
+    23-XX with Propeller
+
+.. warning::
+        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can lead to severe damage to yourself and those around you. 
+        Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
+
+Next Steps
+^^^^^^^^^^^^^^^^^^^
+Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <23_getting_started>` for your module and its firmware style.
+
+
+.. _23_getting_started:
 .. include:: get_started_text.rst
 
 .. include:: basic_speed_servo_info.rst

@@ -4,7 +4,7 @@
 Vertiq 40-XX Family
 ********************************
 
-.. image:: ../_static/module_pictures/40xx_family.png
+.. image:: ../_static/module_pictures/40xx/40xx_family.png
         :alt: Vertiq 40-XX Family
         :width: 500
         :align: center
