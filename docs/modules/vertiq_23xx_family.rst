@@ -37,9 +37,11 @@ Every Vertiq 23-XX module is packaged with the following:
 * 1 Vertiq 23-XX module
 * 1 propeller adapter
 * 1 bag of hardware containing
-* 4 M2X6 bolts
-* 4 M3X8 bolts
-* 1 M5x0.8 locknut
+  
+        * 4 M2X6 bolts
+        * 4 M3X8 bolts
+        * 1 M5x0.8 locknut
+
 * 1 communications wire
 * 1 set of power wires
 * 1 270uF capacitor
