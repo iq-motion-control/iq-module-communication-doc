@@ -24,7 +24,7 @@ Vertiq 81-XX Family
         "81-08", "240", "Speed", "Speed"
 
 Hardware Setup Walkthrough
-==============================
+####################################
 .. Unique for each module
 
 .. include:: get_started_text.rst

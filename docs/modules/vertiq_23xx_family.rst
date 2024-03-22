@@ -19,16 +19,18 @@ Vertiq 23-XX Family
         "23-14", "920", "Speed", "Speed"
         
 Hardware Setup Walkthrough
-==============================
+####################################
 .. Unique for each module
 
 What's in the Box
-----------------------
+********************************************
 Every Vertiq 23-XX module is packaged with the following:
 
-.. image:: ../_static/module_pictures/23xx/23xx_in_the_box.png
+.. figure:: ../_static/module_pictures/23xx/23xx_in_the_box.png
         :alt: Vertiq 23-XX Family in the Box
         :align: center
+
+        Vertiq 23-XX Family in the Box
 
 |
 
@@ -49,7 +51,7 @@ If you are missing any components, please contact us at support@vertiq.co.
         The exact color(s) of the provided hardware may differ based on supplier availability.
 
 Pinout and Connectors
-------------------------------
+********************************************
 
 The Vertiq 23-XX family does not support any connectors, and only accepts direct soldering to the exposed pads.
 
@@ -63,7 +65,7 @@ The Vertiq 23-XX family does not support any connectors, and only accepts direct
     Final 23-XX Connections with Heatshrink
 
 Power
-^^^^^^^^^^^
+================
 .. figure:: ../_static/module_pictures/23xx/23xx_power_connection.png
     :width: 250
     :alt: 23-XX Power Connections
@@ -85,8 +87,8 @@ A module with its power lines and capacitor attached should look as follows
 
     23-XX Power Connections with Capacitor
 
-Communication
-^^^^^^^^^^^^^^^^^
+Communication - IQUART or Hobby Configuration
+====================================================
 .. figure:: ../_static/module_pictures/23xx/23xx_comms_connection.png
     :width: 350
     :alt: 23-XX Communication Connections
@@ -109,7 +111,7 @@ Adding the communication wires to our module results in the following
     23-XX Communication Connections Soldered
 
 Attaching a Propeller for Flight
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+******************************************
 In order to attach a propeller, first find the propeller adapter and M2 bolts from the provided hardware.
 
 .. figure:: ../_static/module_pictures/23xx/23xx_prop_adapter.png
@@ -147,9 +149,16 @@ Place the propeller on the module, tighten the locknut to secure it, and your mo
         Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
 
 Next Steps
-^^^^^^^^^^^^^^^^^^^
+********************************************
 Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <23_getting_started>` for your module and its firmware style.
 
+Additional Mechanical/Electrical Information
+**********************************************
+For more information about the Vertiq 23-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
+
+* `23-06 2200 Kv Datasheet <https://www.vertiq.co/s/Vertiq_23-06_2200Kv_module_datasheet_10-2-2023pdf.pdf>`_
+* `23-06 220 Kv Datasheet <https://www.vertiq.co/s/Vertiq_23-06_220kv_module_datasheet-29rk.pdf>`_
+* `23-14 920 Kv Datasheet <https://www.vertiq.co/s/Vertiq_23_14_920Kv_module_datasheet-mrh2.pdf>`_
 
 .. _23_getting_started:
 .. include:: get_started_text.rst

@@ -1,7 +1,7 @@
 Pulsing Module
-----------------------------------------------
+****************************
 Supported Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=============================
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
         * :ref:`manual_throttle`
@@ -12,7 +12,7 @@ Supported Features
         * :ref:`correcting_underactuated_torque`
 
 Supported IQUART Clients
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=============================
         * :ref:`system_control`
         * :ref:`persistent_memory`
         * :ref:`serial_interface`
@@ -30,7 +30,7 @@ Supported IQUART Clients
         * :ref:`pulsing_rectangular_input_parser`
         
 Supported Tutorials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=============================
         * :ref:`control_center_tutorial`
         * :ref:`up12_initial_configuration`
         * :ref:`up12_installation_tutorial`
