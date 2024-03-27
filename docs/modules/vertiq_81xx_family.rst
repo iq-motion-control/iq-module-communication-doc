@@ -4,8 +4,9 @@ Vertiq 81-XX Family
 
 .. image:: ../_static/module_pictures/81xx/81xx_family.png
         :alt: Vertiq 81-XX Family
-        :width: 800
+        :width: 500
         :align: center
+
 |
 
 .. csv-table:: Vertiq 81-XX Gen 1 Family of Modules
