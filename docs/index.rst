@@ -99,35 +99,27 @@ Need to contact us? Please use support@vertiq.co.
    * - .. figure:: ./_static/module_pictures/23xx/23xx_family.png
             :target: modules/vertiq_23xx_family.html
             :alt: Vertiq 23-XX Family
-            :height: 150
-            :width: 275
             :align: center
 
             Vertiq 23-XX Family
      - .. figure:: ./_static/module_pictures/40xx/40xx_family.png
             :target: modules/vertiq_40xx_family.html
             :alt: Vertiq 40-XX Family
-            :height: 150
-            :width: 300
             :align: center
             
             Vertiq 40-XX Family
      - .. figure:: ./_static/module_pictures/81xx/81xx_family.png
             :target: modules/vertiq_81xx_family.html
             :alt: Vertiq 81-XX Family
-            :height: 150
-            :width: 275
             :align: center
             
             Vertiq 81-XX Family
      - .. figure:: ./_static/module_pictures/fortiq_family.png
             :target: modules/fortiq_42XX.html
-            :alt: Fortiq Family
-            :height: 150
-            :width: 200
+            :alt: Vertiq Fortiq Family
             :align: center
             
-            Fortiq Family
+            Vertiq Fortiq Family
 
 Reporting Documentation Issues
 ******************************
