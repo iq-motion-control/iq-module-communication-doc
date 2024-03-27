@@ -44,6 +44,14 @@ Pinout and Connectors
 
 More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <81_datasheets>`.
 
+Below is an 81-XX Generation 1 with all connections
+
+.. figure:: ../_static/module_pictures/81xx/gen1/81xx_fully_connected.png
+        :width: 500
+        :alt: Vertiq 81-XX Gen 1 Family
+
+        Final Vertiq 81-XX Gen 1 Family
+
 Power
 ================
 
@@ -136,11 +144,8 @@ Every Vertiq 81-XX Generation 2 module is packaged with the following
 .. figure:: ../_static/module_pictures/81xx/gen2/81_gen2.png
         :alt: Vertiq 81-XX Family in the Box
         :height: 250
-        :align: center
 
         Vertiq 81-XX Generation 2 in the Box
-
-|
 
 * 1 Vertiq Generation 2 81-XX module
 
@@ -148,12 +153,13 @@ Pinout and Connectors
 ********************************************
 The Vertiq 81-XX Generation 2 family does not support any connectors, and only accepts direct soldering to the exposed pads.
 
+More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <81_datasheets>`.
+
 .. note::
         It is highly recommended for your and your module's safety that you shroud all connections with the supplied heat shrink. 
         We recommend using a ¾” diameter heat shrink with a 3:1 shrink ratio. 
 
-Final module with all connections and heat shrink
-
+Below is am 81-XX Generation 2 with all connections and heat shrink
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81_gen2_fully_connected.png
         :width: 500
@@ -194,7 +200,7 @@ Required IQUART or Hobby Configuration
 
         Vertiq 81-XX Gen 2 Serial Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect the supplied communication wire to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 

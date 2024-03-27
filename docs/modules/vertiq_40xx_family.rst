@@ -71,9 +71,9 @@ we will be using a pre-tinned XT-30 male connector. Simply solder the connector'
 
 .. figure:: ../_static/module_pictures/40xx/40xx_power_connected.png
         :width: 425
-        :alt: Vertiq 40-XX Family Power Connected
+        :alt: Vertiq 40-XX Family with Power Connectors
 
-        Vertiq 40-XX Power Connected
+        Vertiq 40-XX with Power Connectors
 
 Communication
 ================
@@ -87,7 +87,7 @@ Required IQUART or Hobby Configuration
 
         Vertiq 40-XX Serial Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect the supplied communication wire to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 
@@ -173,7 +173,7 @@ Fit your propeller onto the center of the module. Then while holding the propell
         and your vehicle. 
 
 .. warning::
-        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can lead to severe damage to yourself and those around you. 
+        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can be dangerous. 
         Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
 
 Next Steps
