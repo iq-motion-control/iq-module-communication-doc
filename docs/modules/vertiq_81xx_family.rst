@@ -81,7 +81,7 @@ Required IQUART or Hobby Configuration
 
         Vertiq 81-XX Gen 1 Family Serial Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect the supplied communication wire to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 
