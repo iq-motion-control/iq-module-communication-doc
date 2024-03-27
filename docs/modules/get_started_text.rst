@@ -1,10 +1,10 @@
 Changing or Updating Firmware
-===============================
+####################################
 
 Please follow the instructions found in :ref:`updating_firmware`
 
 Getting Started
-===============================
+####################################
 
 Complete the correct "Getting Started Guide" for your module's style
 
@@ -14,7 +14,7 @@ Complete the correct "Getting Started Guide" for your module's style
 .. I am putting these just to have some sort of placeholder link. Eventually we'll have actual getting started manuals
 
 More Information
-===============================
+####################################
 
 Once you have completed the proper "Getting Started Guide," you can begin to dive deeper into your module's capabilities. Below, you will find
 a summary of all features supported on your module, IQUART Clients it can reach, as well as applicable tutorials. Please ensure that you are reading the feature

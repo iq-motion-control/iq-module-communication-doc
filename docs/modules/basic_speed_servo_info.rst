@@ -1,7 +1,7 @@
 Speed Module
------------------
+****************************
 Supported Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================================
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
         * :ref:`manual_hobby`
@@ -13,7 +13,7 @@ Supported Features
         * :ref:`controlling_ifci`
 
 Supported IQUART Clients
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================================
         * :ref:`system_control`
         * :ref:`persistent_memory`
         * :ref:`serial_interface`
@@ -32,16 +32,16 @@ Supported IQUART Clients
         * :ref:`iquart_flight_controller_interface`
         
 Supported Tutorials
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================================
         * :ref:`control_center_tutorial`
         * :ref:`hobby_fc_tutorial`
         * :ref:`hobby_calibration_tutorial`
         * :ref:`fc_telemetry_tutorial`
 
 Servo Module
-----------------------------------------------
+****************************
 Supported Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================================
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`manual_iquart`
@@ -49,7 +49,7 @@ Supported Features
         * :ref:`manual_timeout`
 
 Supported IQUART Clients
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================================
         * :ref:`system_control`
         * :ref:`persistent_memory`
         * :ref:`serial_interface`
@@ -66,4 +66,4 @@ Supported IQUART Clients
         * :ref:`power_safety`
 
 Supported Tutorials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================================
