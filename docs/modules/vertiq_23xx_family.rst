@@ -28,11 +28,8 @@ Every Vertiq 23-XX module is packaged with the following:
 
 .. figure:: ../_static/module_pictures/23xx/23xx_in_the_box.png
         :alt: Vertiq 23-XX Family in the Box
-        :align: center
 
         Vertiq 23-XX Family in the Box
-
-|
 
 * 1 Vertiq 23-XX module
 * 1 propeller adapter
@@ -56,6 +53,8 @@ Pinout and Connectors
 ********************************************
 
 The Vertiq 23-XX family does not support any connectors, and only accepts direct soldering to the exposed pads.
+
+More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <23_datasheets>`.
 
 .. note::
         It is highly recommended for your and your module's safety that you shroud all connections with the supplied heat shrink.
@@ -104,10 +103,10 @@ of your module is connected to your controller's TX line.
 Please note that in order to configure your module through the IQ Control Center, to communicate with your module with any of our APIs, or to complete 
 any firmware updates you must connect communication wires as each of these uses IQUART communication.
 
-Adding the communication wires to our module results in the following
+Adding the communication wires to your module results in the following
 
 .. figure:: ../_static/module_pictures/23xx/23xx_comms_soldered.png
-    :width: 500
+    :width: 250
     :alt: 23-XX Communication Connections Soldered
 
     23-XX Communication Connections Soldered
@@ -147,12 +146,15 @@ Place the propeller on the module, tighten the locknut to secure it, and your mo
     23-XX with Propeller
 
 .. warning::
-        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can lead to severe damage to yourself and those around you. 
+        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can be dangerous. 
         Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
 
 Next Steps
 ********************************************
 Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <23_getting_started>` for your module and its firmware style.
+
+
+.. _23_datasheets:
 
 Additional Mechanical/Electrical Information
 **********************************************

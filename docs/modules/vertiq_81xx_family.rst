@@ -7,8 +7,6 @@ Vertiq 81-XX Family
         :width: 500
         :align: center
 
-|
-
 .. csv-table:: Vertiq 81-XX Gen 1 Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
         :align: center
@@ -36,16 +34,15 @@ Every Vertiq 81-XX Generation 1 module is packaged with the following
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_in_the_box.png
         :alt: Vertiq 81-XX Family in the Box
         :height: 250
-        :align: center
 
         Vertiq 81-XX Generation 1 in the Box
-
-|
 
 * 1 Vertiq Generation 1 81-XX module
 
 Pinout and Connectors
 ********************************************
+
+More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <81_datasheets>`.
 
 Power
 ================
@@ -270,6 +267,8 @@ The 81-XX family has options for mounting with both M4 and M3 bolts.
 .. warning::
         Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can lead to severe damage to yourself and those around you. 
         Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
+
+.. _81_datasheets:
 
 Additional Mechanical/Electrical Information
 ***************************************************

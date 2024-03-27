@@ -27,11 +27,8 @@ Every Vertiq 40-XX module is packaged with the following:
 .. figure:: ../_static/module_pictures/40xx/40xx_in_the_box.png
         :alt: Vertiq 40-XX Family in the Box
         :height: 250
-        :align: center
 
         Vertiq 40-XX Family in the Box
-
-|
 
 * 1 Vertiq 40-XX module
 * 1 bag of hardware containing
@@ -47,6 +44,8 @@ If you are missing any components, please contact us at support@vertiq.co.
 Pinout and Connectors
 ********************************************
 The Vertiq 40-XX family does not support any connectors, and only accepts direct soldering to the exposed pads.
+
+More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <40_datasheets>`.
 
 .. note::
         It is highly recommended for your and your module's safety that you shroud all connections with heat shrink. We recommend using 15mm diameter heat shrink with a 2:1 shrink ratio. 
@@ -104,7 +103,7 @@ In this example, we are using a premade Servo Jr cable
         Vertiq 40-06 with Serial Cable
 
 
-Adding the communication wires to our module results in the following
+Adding the communication wires to your module results in the following
 
 .. figure:: ../_static/module_pictures/40xx/40xx_serial_connected.png
         :width: 450
@@ -180,6 +179,8 @@ Fit your propeller onto the center of the module. Then while holding the propell
 Next Steps
 ********************************************
 Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <40_getting_started>` for your module and its firmware style.
+
+.. _40_datasheets:
 
 Additional Mechanical/Electrical Information
 **********************************************
