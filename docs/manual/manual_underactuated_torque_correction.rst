@@ -1,10 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _correcting_underactuated_torque:
-
 .. |propeller_name| replace:: UP12
 .. |motor_name| replace:: Vertiq 23-06
+
+.. _correcting_underactuated_torque:
 
 ***********************************************
 Underactuated Propeller Torque Angle Correction
