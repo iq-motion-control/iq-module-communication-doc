@@ -2,7 +2,7 @@
 .. toctree::
 
 .. |propeller_name| replace:: UP12
-.. |motor_name| replace:: Vertiq 2306
+.. |motor_name| replace:: Vertiq 23-06
 
 .. _up12_initial_configuration:
 
