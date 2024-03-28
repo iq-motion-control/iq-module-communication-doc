@@ -48,23 +48,23 @@ Below is an 81-XX G1 with all connections
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_fully_connected.png
         :width: 500
-        :alt: Vertiq 81-XX Gen 1 Family
+        :alt: Vertiq 81-XX G1 Family
 
-        Final Vertiq 81-XX Gen 1 Family
+        Final Vertiq 81-XX G1 Family
 
 Power
 ================
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_power.png
         :width: 350
-        :alt: Vertiq 81-XX Gen 1 Family Power Connections
+        :alt: Vertiq 81-XX G1 Family Power Connections
 
-        Vertiq 81-XX Gen 1 Power Connections
+        Vertiq 81-XX G1 Power Connections
 
-All Vertiq 81-XX Gen 1 modules feature an embedded XT-60 male connector for power. To power your module, simply fit your power supply with 
+All Vertiq 81-XX G1 modules feature an embedded XT-60 male connector for power. To power your module, simply fit your power supply with 
 an XT-60 female connector ensuring that your power source's V+ goes to the module's V+ and V- to V-.
 
-All Vertiq 81-XX Gen 1 modules are rated for a maximum 12S (50.4V) across the power terminals V+ and V-. It is recommended that the supplied voltage remain between 
+All Vertiq 81-XX G1 modules are rated for a maximum 12S (50.4V) across the power terminals V+ and V-. It is recommended that the supplied voltage remain between 
 12 and 48V at all times.
 
 Please ensure that you select power wiring suitable for your application. Failure to do so can result in dangers like short circuits and fire. 
@@ -77,9 +77,9 @@ Required IQUART or Hobby Configuration
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_serial.png
         :width: 350
-        :alt: Vertiq 81-XX Gen 1 Family Serial Connections
+        :alt: Vertiq 81-XX G1 Family Serial Connections
 
-        Vertiq 81-XX Gen 1 Family Serial Connections
+        Vertiq 81-XX G1 Family Serial Connections
 
 In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
@@ -92,15 +92,15 @@ In this example, we are using a premade Servo Jr cable. No soldering is necessar
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_with_serial_cable_out.png
         :width: 400
-        :alt: Vertiq 81-XX Gen 1 with Serial Cable
+        :alt: Vertiq 81-XX G1 with Serial Cable
 
-        Vertiq 81-XX Gen 1 with Serial Cable
+        Vertiq 81-XX G1 with Serial Cable
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_with_serial_cable.png
         :width: 400
-        :alt: Vertiq 81-XX Gen 1 with Serial Cable Connected
+        :alt: Vertiq 81-XX G1 with Serial Cable Connected
 
-        Vertiq 81-XX Gen 1 with Serial Cable Connected
+        Vertiq 81-XX G1 with Serial Cable Connected
 
 If you intend to control your module with the DroneCAN (previously UAVCAN) protocol, please continue on to DroneCAN Configuration.
 
@@ -108,26 +108,26 @@ Optional DroneCAN Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. figure:: ../_static/module_pictures/81xx/gen1/81_can_cnxn.png
         :width: 400
-        :alt: Vertiq 81-XX Gen 1 CAN Connections
+        :alt: Vertiq 81-XX G1 CAN Connections
 
-        Vertiq 81-XX Gen 1 CAN Connections
+        Vertiq 81-XX G1 CAN Connections
 
-81-XX Gen 1 modules use the DroneCAN Micro Connector based on a JST-GH 4-Pin connector with the male end embedded into the module. The modules do not support the 5V bus connection, 
+81-XX G1 modules use the DroneCAN Micro Connector based on a JST-GH 4-Pin connector with the male end embedded into the module. The modules do not support the 5V bus connection, 
 but do connect the ground connection to common ground. More information about DroneCAN connections can be found `here <https://dronecan.github.io/Specification/8._Hardware_design_recommendations/>`_.
 
 To connect with the module's DroneCAN node, simply make a cable with a JST-GH 4-Pin connector with the correct wiring, and plug it in.
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_with_can_cable.png
         :width: 400
-        :alt: Vertiq 81-XX Gen 1 with CAN Cable
+        :alt: Vertiq 81-XX G1 with CAN Cable
 
-        Vertiq 81-XX Gen 1 with CAN Cable
+        Vertiq 81-XX G1 with CAN Cable
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_with_can_connected.png
         :width: 400
-        :alt: Vertiq 81-XX Gen 1 with CAN Cable Connected
+        :alt: Vertiq 81-XX G1 with CAN Cable Connected
 
-        Vertiq 81-XX Gen 1 with CAN Cable Connected
+        Vertiq 81-XX G1 with CAN Cable Connected
 
 Next Steps
 ********************************************
@@ -163,20 +163,20 @@ Below is am 81-XX G2 with all connections and heat shrink
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81_gen2_fully_connected.png
         :width: 500
-        :alt: Vertiq 81-XX Gen 2 Family with Heatshrink
+        :alt: Vertiq 81-XX G2 Family with Heatshrink
 
-        Final Vertiq 81-XX Gen 2 Family with Heatshrink
+        Final Vertiq 81-XX G2 Family with Heatshrink
 
 Power
 ================
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_power.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 Power Connections
+        :alt: Vertiq 81-XX G2 Power Connections
 
-        Vertiq 81-XX Gen 2 Power Connections
+        Vertiq 81-XX G2 Power Connections
 
-All Vertiq 81-XX Gen 2 modules are rated for a maximum 12S (50.4V) across the power terminals V+ and V-. It is recommended that the supplied voltage 
+All Vertiq 81-XX G2 modules are rated for a maximum 12S (50.4V) across the power terminals V+ and V-. It is recommended that the supplied voltage 
 remain between 12 and 48V at all times.
 
 Please ensure that you select power wiring suitable for your application. Failure to do so can result in dangers like short circuits and fire. 
@@ -184,9 +184,9 @@ In this example, we will be using a pre-tinned XT-60 male connector. Simply sold
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_power_connected.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 Power Connected
+        :alt: Vertiq 81-XX G2 Power Connected
 
-        Vertiq 81-XX Gen 2 Power Connected
+        Vertiq 81-XX G2 Power Connected
 
 Communication
 ================
@@ -196,9 +196,9 @@ Required IQUART or Hobby Configuration
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_serial.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 Serial Connections
+        :alt: Vertiq 81-XX G2 Serial Connections
 
-        Vertiq 81-XX Gen 2 Serial Connections
+        Vertiq 81-XX G2 Serial Connections
 
 In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <manual_hobby>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
@@ -211,15 +211,15 @@ In this example, we are using a premade Servo Jr cable
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_serial_cables.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 Serial Cables
+        :alt: Vertiq 81-XX G2 Serial Cables
 
-        Vertiq 81-XX Gen 2 Serial Cables
+        Vertiq 81-XX G2 Serial Cables
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_serial_connections.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 Serial Connections
+        :alt: Vertiq 81-XX G2 Serial Connections
 
-        Vertiq 81-XX Gen 2 Serial Connections
+        Vertiq 81-XX G2 Serial Connections
 
 If you intend to control your module with the DroneCAN (previously UAVCAN) protocol, please continue on to DroneCAN Configuration.
 
@@ -230,9 +230,9 @@ You will find the CAN connections on the underside of the module
 
 .. figure:: ../_static/module_pictures/81xx/gen2/can_cnxn.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 CAN Connections
+        :alt: Vertiq 81-XX G2 CAN Connections
 
-        Vertiq 81-XX Gen 2 CAN Connections
+        Vertiq 81-XX G2 CAN Connections
 
 In this example, we will be using a DroneCAN Micro Connector based on a JST-GH 4-Pin connector soldered to one CANH CANL pair. We will not connect a 
 5V bus connection, but will solder the ground connection to common ground on the module's top side. More information about DroneCAN connections 
@@ -240,21 +240,21 @@ can be found `here <https://dronecan.github.io/Specification/8._Hardware_design_
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_can_cables.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 CAN Cables
+        :alt: Vertiq 81-XX G2 CAN Cables
 
-        Vertiq 81-XX Gen 2 CAN Cables
+        Vertiq 81-XX G2 CAN Cables
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_can_cables_connected1.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 CAN Cables Connected
+        :alt: Vertiq 81-XX G2 CAN Cables Connected
 
-        Vertiq 81-XX Gen 2 CAN Cables Connected
+        Vertiq 81-XX G2 CAN Cables Connected
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_can_cables_connected2.png
         :height: 400
-        :alt: Vertiq 81-XX Gen 2 CAN Cables Connected
+        :alt: Vertiq 81-XX G2 CAN Cables Connected
 
-        Vertiq 81-XX Gen 2 CAN Cables Connected
+        Vertiq 81-XX G2 CAN Cables Connected
 
 Next Steps
 ********************************************
