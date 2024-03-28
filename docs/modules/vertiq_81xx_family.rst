@@ -7,7 +7,7 @@ Vertiq 81-XX Family
         :width: 500
         :align: center
 
-.. csv-table:: Vertiq 81-XX Gen 1 Family of Modules
+.. csv-table:: Vertiq 81-XX Generation 1 Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
         :align: center
 
@@ -15,7 +15,7 @@ Vertiq 81-XX Family
         "81-08", "150", "Speed", "Speed, Servo"
         "81-08", "220", "Speed", "Speed, Servo"
 
-.. csv-table:: Vertiq 81-XX Gen 2 Family of Modules
+.. csv-table:: Vertiq 81-XX Generation 2 Family of Modules
         :header: "Size", "Kv", "Default Firmware", "Available Firmware"
         :align: center
 
@@ -23,28 +23,28 @@ Vertiq 81-XX Family
         "81-08", "140", "Speed", "Speed"
         "81-08", "240", "Speed", "Speed"
 
-81-08 Generation 1 Hardware Setup Walkthrough
+81-08 Generation 1 (G1) Hardware Setup Walkthrough
 ##################################################
 .. Unique for each module
 
 What's in the Box
 ********************************************
-Every Vertiq 81-XX Generation 1 module is packaged with the following
+Every Vertiq 81-XX G1 module is packaged with the following
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_in_the_box.png
         :alt: Vertiq 81-XX Family in the Box
         :height: 250
 
-        Vertiq 81-XX Generation 1 in the Box
+        Vertiq 81-XX G1 in the Box
 
-* 1 Vertiq Generation 1 81-XX module
+* 1 Vertiq G1 81-XX module
 
 Pinout and Connectors
 ********************************************
 
 More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <81_datasheets>`.
 
-Below is an 81-XX Generation 1 with all connections
+Below is an 81-XX G1 with all connections
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_fully_connected.png
         :width: 500
@@ -133,25 +133,25 @@ Next Steps
 ********************************************
 Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <81_getting_started>` for your module and its firmware style.
 
-81-08 Generation 2 Hardware Setup Walkthrough
+81-08 Generation 2 (G2) Hardware Setup Walkthrough
 ##################################################
 .. Unique for each module
 
 What's in the Box
 ********************************************
-Every Vertiq 81-XX Generation 2 module is packaged with the following
+Every Vertiq 81-XX G2 module is packaged with the following
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81_gen2.png
         :alt: Vertiq 81-XX Family in the Box
         :height: 250
 
-        Vertiq 81-XX Generation 2 in the Box
+        Vertiq 81-XX G2 in the Box
 
-* 1 Vertiq Generation 2 81-XX module
+* 1 Vertiq G2 81-XX module
 
 Pinout and Connectors
 ********************************************
-The stock Vertiq 81-XX Generation 2 family does not support any connectors, and only accepts direct soldering to the exposed pads.
+The stock Vertiq 81-XX G2 family does not support any connectors, and only accepts direct soldering to the exposed pads.
 
 More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <81_datasheets>`.
 
@@ -159,7 +159,7 @@ More information about your module's electrical characteristics and connections 
         It is highly recommended for your and your module's safety that you shroud all connections with the supplied heat shrink. 
         We recommend using a ¾” diameter heat shrink with a 3:1 shrink ratio. 
 
-Below is am 81-XX Generation 2 with all connections and heat shrink
+Below is am 81-XX G2 with all connections and heat shrink
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81_gen2_fully_connected.png
         :width: 500
@@ -278,7 +278,7 @@ The 81-XX family has options for mounting with both M4 and M3 bolts.
 
 Additional Mechanical/Electrical Information
 ***************************************************
-For more information about the Vertiq 81-XX Generation 1 family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
+For more information about the Vertiq 81-XX G1 family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
 * `81-08 85 Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_85Kv_module_datasheet-mcn8.pdf>`_
 * `81-08 150 Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_150Kv_module_datasheet-k4f2.pdf>`_
