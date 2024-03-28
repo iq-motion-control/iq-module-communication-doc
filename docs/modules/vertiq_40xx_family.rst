@@ -43,7 +43,7 @@ If you are missing any components, please contact us at support@vertiq.co.
 
 Pinout and Connectors
 ********************************************
-The Vertiq 40-XX family does not support any connectors, and only accepts direct soldering to the exposed pads.
+The stock Vertiq 40-XX family does not support any connectors, and only accepts direct soldering to the exposed pads.
 
 More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <40_datasheets>`.
 
@@ -54,7 +54,7 @@ More information about your module's electrical characteristics and connections 
         :width: 450
         :alt: Vertiq 40-XX Family with Heatshrink
 
-        Final Vertiq 40-06 with Heatshrink
+        Final Vertiq 40-XX with Heatshrink
 
 Power
 ================
@@ -98,18 +98,18 @@ In this example, we are using a premade Servo Jr cable
 
 .. figure:: ../_static/module_pictures/40xx/40xx_with_servo.png
         :width: 450
-        :alt: Vertiq 40-06 with Serial Cable
+        :alt: Vertiq 40-XX with Serial Cable
 
-        Vertiq 40-06 with Serial Cable
+        Vertiq 40-XX with Serial Cable
 
 
 Adding the communication wires to your module results in the following
 
 .. figure:: ../_static/module_pictures/40xx/40xx_serial_connected.png
         :width: 450
-        :alt: Vertiq 40-06 with Serial Cable Connected
+        :alt: Vertiq 40-XX with Serial Cable Connected
 
-        Vertiq 40-06 with Serial Cable Connected
+        Vertiq 40-XX with Serial Cable Connected
 
 
 If you intend to control your module with the DroneCAN (previously UAVCAN) protocol, please continue on to DroneCAN Configuration.
@@ -132,21 +132,21 @@ can be found `here <https://dronecan.github.io/Specification/8._Hardware_design_
 
 .. figure:: ../_static/module_pictures/40xx/40xx_with_can_cable.png
         :width: 450
-        :alt: Vertiq 40-06 with CAN Cable
+        :alt: Vertiq 40-XX with CAN Cable
 
-        Vertiq 40-06 with CAN Cable
+        Vertiq 40-XX with CAN Cable
 
 .. figure:: ../_static/module_pictures/40xx/40xx_can_connected1.png
         :width: 450
-        :alt: Vertiq 40-06 with CAN Cable Connected
+        :alt: Vertiq 40-XX with CAN Cable Connected
 
-        Vertiq 40-06 with CAN Cable Connected
+        Vertiq 40-XX with CAN Cable Connected
 
 .. figure:: ../_static/module_pictures/40xx/40xx_can_connected2.png
         :width: 450
-        :alt: Vertiq 40-06 with CAN Cable Connected
+        :alt: Vertiq 40-XX with CAN Cable Connected
 
-        Vertiq 40-06 with CAN Cable Connected
+        Vertiq 40-XX with CAN Cable Connected
 
 Attaching a Propeller for Flight
 ******************************************
@@ -155,17 +155,17 @@ In order to attach a propeller, first, find the propeller adapter and M3 bolts f
 
 .. figure:: ../_static/module_pictures/40xx/40xx_with_prop.png
         :width: 450
-        :alt: Vertiq 40-06 with Propeller Hardware
+        :alt: Vertiq 40-XX with Propeller Hardware
 
-        Vertiq 40-06 with Propeller Hardware
+        Vertiq 40-XX with Propeller Hardware
 
 Fit your propeller onto the center of the module. Then while holding the propeller in place, place the propeller adapter on top, and secure down with the bolts. 
 
 .. figure:: ../_static/module_pictures/40xx/40_propeller_config.png
         :width: 450
-        :alt: Vertiq 40-06 with Propeller
+        :alt: Vertiq 40-XX with Propeller
 
-        Vertiq 40-06 with Propeller
+        Vertiq 40-XX with Propeller
 
 .. note::
         Depending on the thickness of your propeller's hub, you may need to use longer or shorter M3 bolts. Please ensure that all 

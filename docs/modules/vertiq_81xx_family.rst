@@ -92,15 +92,15 @@ In this example, we are using a premade Servo Jr cable. No soldering is necessar
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_with_serial_cable_out.png
         :width: 400
-        :alt: Vertiq 81-08 Gen 1 with Serial Cable
+        :alt: Vertiq 81-XX Gen 1 with Serial Cable
 
-        Vertiq 81-08 Gen 1 with Serial Cable
+        Vertiq 81-XX Gen 1 with Serial Cable
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_with_serial_cable.png
         :width: 400
-        :alt: Vertiq 81-08 Gen 1 with Serial Cable Connected
+        :alt: Vertiq 81-XX Gen 1 with Serial Cable Connected
 
-        Vertiq 81-08 Gen 1 with Serial Cable Connected
+        Vertiq 81-XX Gen 1 with Serial Cable Connected
 
 If you intend to control your module with the DroneCAN (previously UAVCAN) protocol, please continue on to DroneCAN Configuration.
 
@@ -119,15 +119,15 @@ To connect with the module's DroneCAN node, simply make a cable with a JST-GH 4-
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_with_can_cable.png
         :width: 400
-        :alt: Vertiq 81-08 Gen 1 with CAN Cable
+        :alt: Vertiq 81-XX Gen 1 with CAN Cable
 
-        Vertiq 81-08 Gen 1 with CAN Cable
+        Vertiq 81-XX Gen 1 with CAN Cable
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81xx_with_can_connected.png
         :width: 400
-        :alt: Vertiq 81-08 Gen 1 with CAN Cable Connected
+        :alt: Vertiq 81-XX Gen 1 with CAN Cable Connected
 
-        Vertiq 81-08 Gen 1 with CAN Cable Connected
+        Vertiq 81-XX Gen 1 with CAN Cable Connected
 
 Next Steps
 ********************************************
@@ -151,7 +151,7 @@ Every Vertiq 81-XX Generation 2 module is packaged with the following
 
 Pinout and Connectors
 ********************************************
-The Vertiq 81-XX Generation 2 family does not support any connectors, and only accepts direct soldering to the exposed pads.
+The stock Vertiq 81-XX Generation 2 family does not support any connectors, and only accepts direct soldering to the exposed pads.
 
 More information about your module's electrical characteristics and connections can be found in the datasheet provided :ref:`below <81_datasheets>`.
 
