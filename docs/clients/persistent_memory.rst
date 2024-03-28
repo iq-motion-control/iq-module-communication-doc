@@ -54,8 +54,8 @@ A minimal working example for the PersistentMemoryClient is:
         PersistentMemoryClient mem(0);
 
         // Use the Persistent Memory object
-        mem.format_key_1_.set(12345678);
-        mem.format_key_2_.set(11223344);
+        mem.format_key_1_.set(com, 12345678);
+        mem.format_key_2_.set(com, 11223344);
         mem.revert_to_default_.set(com);
 
         // Insert code for interfacing with hardware here
