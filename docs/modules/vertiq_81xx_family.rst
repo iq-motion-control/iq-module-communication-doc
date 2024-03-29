@@ -106,6 +106,8 @@ If you intend to control your module with the DroneCAN (previously UAVCAN) proto
 
 Optional DroneCAN Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You will find the CANBUS (CAN) connections on the right side of the module when facing the module's connectors.
+
 .. figure:: ../_static/module_pictures/81xx/gen1/81_can_cnxn.png
         :width: 400
         :alt: Vertiq 81-XX G1 CAN Connections
