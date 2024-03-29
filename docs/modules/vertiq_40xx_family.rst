@@ -117,7 +117,7 @@ If you intend to control your module with the DroneCAN (previously UAVCAN) proto
 Optional DroneCAN Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You will find the CAN connections on the underside of the module
+You will find the CANBUS (CAN) connections on the underside of the module
 
 .. figure:: ../_static/module_pictures/40xx/40xx_can_cnxs.png
         :width: 450
