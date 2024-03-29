@@ -268,10 +268,16 @@ Attaching a Propeller for Flight
 
 The exact setup will differ for each propeller. Please follow the instructions supplied with your specific propeller.
 
-The 81-XX family has options for mounting with both M4 and M3 bolts.
+The 81-XX family has options for mounting with both M4 and M3 bolts in the following pattern
+
+.. figure:: ../_static/module_pictures/81xx/81_mounting_pattern.png
+        :height: 400
+        :alt: Vertiq 81-XX Propeller Mounting Pattern
+
+        Vertiq 81-XX Propeller Mounting Pattern
 
 .. warning::
-        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can lead to severe damage to yourself and those around you. 
+        Please remove the propeller before performing any startup procedures and Getting Started manuals. Failure to do so can be dangerous.  
         Only attach propellers when your modules will be in flight, and all surroundings have been cleared.
 
 .. _81_datasheets:
