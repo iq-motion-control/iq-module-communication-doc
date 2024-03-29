@@ -160,9 +160,9 @@ Additional Mechanical/Electrical Information
 **********************************************
 For more information about the Vertiq 23-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
-* `23-06 2200 Kv Datasheet <https://www.vertiq.co/s/Vertiq_23-06_2200Kv_module_datasheet_10-2-2023pdf.pdf>`_
-* `23-06 220 Kv Datasheet <https://www.vertiq.co/s/Vertiq_23-06_220kv_module_datasheet-29rk.pdf>`_
-* `23-14 920 Kv Datasheet <https://www.vertiq.co/s/Vertiq_23_14_920Kv_module_datasheet-mrh2.pdf>`_
+* `23-06 2200Kv Datasheet <https://www.vertiq.co/s/Vertiq_23-06_2200Kv_module_datasheet_10-2-2023pdf.pdf>`_
+* `23-06 220Kv Datasheet <https://www.vertiq.co/s/Vertiq_23-06_220kv_module_datasheet-29rk.pdf>`_
+* `23-14 920Kv Datasheet <https://www.vertiq.co/s/Vertiq_23_14_920Kv_module_datasheet-mrh2.pdf>`_
 
 .. _23_getting_started:
 .. include:: get_started_text.rst

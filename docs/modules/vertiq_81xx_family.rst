@@ -278,12 +278,15 @@ The 81-XX family has options for mounting with both M4 and M3 bolts.
 
 Additional Mechanical/Electrical Information
 ***************************************************
-For more information about the Vertiq 81-XX G1 family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
+For more information about the Vertiq 81-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
-* `81-08 85 Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_85Kv_module_datasheet-mcn8.pdf>`_
-* `81-08 150 Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_150Kv_module_datasheet-k4f2.pdf>`_
+* `81-08 G1 85Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_85Kv_module_datasheet-mcn8.pdf>`_
+* `81-08 G1 150Kv Datasheet <https://www.vertiq.co/s/Vertiq_81-08_150Kv_module_datasheet-k4f2.pdf>`_
+* `81-08 G1 220Kv Datasheet <https://www.vertiq.co/s/Vertiq_81_08_220Kv_module_preliminary_datasheet-3say.pdf>`_
 
-
+* `81-08 G2 85Kv Datasheet <https://www.vertiq.co/s/VERT-M281-E161-Vertiq_81-08_85Kv_datasheet.pdf>`_
+* `81-08 G2 140Kv Datasheet <https://www.vertiq.co/s/VERT-M161-E161-Vertiq_81-08_140Kv_datasheet.pdf>`_
+* `81-08 G2 240Kv Datasheet <https://www.vertiq.co/s/VERT-M391-E161-Vertiq_81-08_240Kv_datasheet.pdf>`_
 
 .. _81_getting_started:
 .. include:: get_started_text.rst

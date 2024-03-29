@@ -186,8 +186,8 @@ Additional Mechanical/Electrical Information
 **********************************************
 For more information about the Vertiq 40-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
-* `40-06 370 Kv Datasheet <https://www.vertiq.co/s/Vertiq_40_06_370Kv_module_preliminary_datahsheet-ss6y.pdf>`_
-* `40-14 400 Kv Datasheet <https://www.vertiq.co/s/Vertiq_40_14_400Kv_module_datasheet_preliminary.pdf>`_
+* `40-06 370Kv Datasheet <https://www.vertiq.co/s/Vertiq_40_06_370Kv_module_preliminary_datahsheet-ss6y.pdf>`_
+* `40-14 400Kv Datasheet <https://www.vertiq.co/s/Vertiq_40_14_400Kv_module_datasheet_preliminary.pdf>`_
 
 
 .. _40_getting_started:
