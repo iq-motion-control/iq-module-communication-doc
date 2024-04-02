@@ -119,6 +119,9 @@ Optional DroneCAN Configuration
 
 You will find the CANBUS (CAN) connections on the underside of the module
 
+The board supports up to two CAN connections, both of which are connected to the same peripheral allowing for a true bus connection through the motor. 
+This configuration does not allow dual CAN redundancy.
+
 .. figure:: ../_static/module_pictures/40xx/40xx_can_cnxs.png
         :width: 450
         :alt: Vertiq 40-XX Family CAN Connections

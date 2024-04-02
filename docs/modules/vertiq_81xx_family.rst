@@ -108,6 +108,9 @@ Optional DroneCAN Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You will find the CANBUS (CAN) connections on the right side of the module when facing the module's connectors.
 
+The board supports up to two CAN connections, both of which are connected to the same peripheral allowing for a true bus connection through the motor. 
+This configuration does not allow dual CAN redundancy.
+
 .. figure:: ../_static/module_pictures/81xx/gen1/81_can_cnxn.png
         :width: 400
         :alt: Vertiq 81-XX G1 CAN Connections
@@ -161,7 +164,7 @@ More information about your module's electrical characteristics and connections 
         It is highly recommended for your and your module's safety that you shroud all connections with the supplied heat shrink. 
         We recommend using a ¾” diameter heat shrink with a 3:1 shrink ratio. 
 
-Below is am 81-XX G2 with all connections and heat shrink
+Below is an 81-XX G2 with all connections and heat shrink
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81_gen2_fully_connected.png
         :width: 500
@@ -229,6 +232,9 @@ Optional DroneCAN Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You will find the CANBUS (CAN) connections on the underside of the module
+
+The board supports up to two CAN connections, both of which are connected to the same peripheral allowing for a true bus connection through the motor. 
+This configuration does not allow dual CAN redundancy.
 
 .. figure:: ../_static/module_pictures/81xx/gen2/can_cnxn.png
         :height: 400
