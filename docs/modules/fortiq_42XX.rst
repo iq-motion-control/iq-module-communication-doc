@@ -35,9 +35,9 @@ Supported Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`manual_iquart`
-        * :ref:`manual_canopen`
-        * :ref:`manual_hobby`
+        * :ref:`uart_messaging`
+        * :ref:`canopen_protocol`
+        * :ref:`hobby_protocol`
         * :ref:`manual_timeout`
         * :ref:`manual_adc_interface`
         * :ref:`manual_high_power_pwm_`
