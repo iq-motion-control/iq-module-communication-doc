@@ -1,10 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _up12_installation_tutorial:
-
 .. |propeller_name| replace:: UP12
 .. |motor_name| replace:: Vertiq 23-06
+
+.. _up12_installation_tutorial:
 
 *********************************************
 Installing |propeller_name| on a |motor_name|
