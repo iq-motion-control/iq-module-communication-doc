@@ -1,11 +1,19 @@
 ********************************
-Fortiq 42-XX | Servo Module
+Fortiq 42-XX Family
 ********************************
 
-.. sidebar:: Fortiq
-
-    .. image:: ../_static/Fortiq_family.jpg
+.. image:: ../_static/Fortiq_family.jpg
         :alt: Fortiq 42-XX Family
+        :width: 500
+        :align: center
+
+.. csv-table:: Fortiq 42-XX Family of Modules
+        :header: "Size", "Default Firmware", "Available Firmware"
+        :align: center
+
+        "42-15", "Servo", "Servo, Step/Direction"
+        "42-35", "Servo", "Servo, Step/Direction"
+        "42-55", "Servo", "Servo, Step/Direction"
 
 
 The Fortiq 42-XX module is designed for industrial and robotic applications that 
@@ -23,13 +31,35 @@ of the Fortiq: **42-15**, **42-35**, **42-55**, **42-75**.
 
 :download:`Fortiq Module Datasheet <../_static/fortiq_datasheet.pdf>` 
 
-.. RST Substitution Variables
+Supported Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`manual_angle_control_mechanisms`
+        * :ref:`manual_velocity_control_mechanisms`
+        * :ref:`uart_messaging`
+        * :ref:`canopen_protocol`
+        * :ref:`hobby_protocol`
+        * :ref:`manual_timeout`
+        * :ref:`manual_adc_interface`
+        * :ref:`manual_high_power_pwm_`
+        * :ref:`manual_gpio_interface_`
+        * :ref:`manual_step_direction`
 
-.. |module_name| Replace:: Fortiq
-.. |variable_name| Replace:: fortiq
-
-.. |module_firmware| unicode:: 0xA0
-.. include:: servo.rst
-
-.. |module_firmware| Replace:: , firmware="stepdir"
-.. include:: stepdir.rst
+Supported IQUART Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        * :ref:`system_control`
+        * :ref:`persistent_memory`
+        * :ref:`serial_interface`
+        * :ref:`brushless_drive`
+        * :ref:`multi_turn_angle_control`
+        * :ref:`buzzer_control`
+        * :ref:`power_monitor`
+        * :ref:`anticogging`
+        * :ref:`temperature_monitor_microcontroller`
+        * :ref:`hobby_input`
+        * :ref:`temperature_estimator`
+        * :ref:`servo_input_parser_ref`
+        * :ref:`coil_temperature_estimator`
+        * :ref:`power_safety`
+        * :ref:`gpio_controller`
+        * :ref:`adc_interface`
+        * :ref:`pwm_interface`

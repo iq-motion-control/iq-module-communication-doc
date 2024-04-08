@@ -1,10 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _up12_initial_configuration:
-
 .. |propeller_name| replace:: UP12
-.. |motor_name| replace:: Vertiq 2306
+.. |motor_name| replace:: Vertiq 23-06
+
+.. _up12_initial_configuration:
 
 ****************************************************
 Setting up the |motor_name| for the |propeller_name|

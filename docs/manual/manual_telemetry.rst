@@ -55,7 +55,7 @@ The structure and triggering of supported telemetry messages varies between diff
 
 Hobby Protocols
 ****************
-ESC telemetry is available when using :ref:`Hobby Protocols <manual_hobby>` with Vertiq modules. Telemetry messages are sent from the module as a serial
+ESC telemetry is available when using :ref:`Hobby Protocols <hobby_protocol>` with Vertiq modules. Telemetry messages are sent from the module as a serial
 message at the baud rate configured on the module.
 
 The exact method for requesting telemetry varies depending on what type of hobby protocol is being used, but the structure and content of 
@@ -63,7 +63,7 @@ the telemetry sent is the same across all hobby protocols.
 
 Structure and Content
 ######################
-The structure and content of the ESC telemetry message available when using :ref:`Hobby Protocols <manual_hobby>` is based on the `telemetry
+The structure and content of the ESC telemetry message available when using :ref:`Hobby Protocols <hobby_protocol>` is based on the `telemetry
 of KISS and BLHeli ESCs <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_. 
 
 **There is one key difference between the telemetry sent by Vertiq modules and the KISS standard. The KISS standard specifies sending ERPM data in the telemetry message. ERPM data
@@ -76,7 +76,7 @@ need to perform any conversion.** See the note below for details on how this con
     For detailed information on how ArduCopter flight controllers handle the conversion, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
     telemetry with flight controllers. For other types of flight controllers, refer to your flight controller's documentation.
 
-The telemetry sent by Vertiq modules when using :ref:`Hobby Protocols <manual_hobby>` is specified in the table below. The message
+The telemetry sent by Vertiq modules when using :ref:`Hobby Protocols <hobby_protocol>` is specified in the table below. The message
 consists of 10 bytes:
 
 	+----------+-------------------------+-----------------------+
@@ -175,7 +175,7 @@ received units into more commonly used units.
 
 Hardware Setup
 ###############
-When using :ref:`Hobby Protocols <manual_hobby>` with a Vertiq module, one line is used to connect ground to the module, one line is used to send throttle commands,
+When using :ref:`Hobby Protocols <hobby_protocol>` with a Vertiq module, one line is used to connect ground to the module, one line is used to send throttle commands,
 and one line can optionally be used to receive telemetry from the module. An example of this can be seen for the 81-08 module in the image below. The pin marked as "PWM" 
 is used to send throttle commands and telemetry requests to the module, and the pin marked as "Telemetry" is used by the module to send telemetry back to a flight controller.
 Refer to your module's datasheet for more details on how to set up the hardware on your module.
@@ -192,7 +192,7 @@ should be connected to a serial port set to the correct baud rate on your flight
 
 Requesting Telemetry with Hobby Protocols
 ##########################################
-The procedure for requesting a telemetry message when using :ref:`Hobby Protocols <manual_hobby>` varies depending on if you are using analog
+The procedure for requesting a telemetry message when using :ref:`Hobby Protocols <hobby_protocol>` varies depending on if you are using analog
 hobby protocols or DSHOT. The sections below detail these procedures.
 
 .. _telemetry_analog_request:
@@ -220,7 +220,7 @@ DroneCAN
 *********
 Vertiq modules broadcast the DroneCAN standard :ref:`uavcan.equipment.esc.Status <dronecan_support_esc_status>` 
 and :ref:`uavcan.equipment.device.Temperature <dronecan_support_device_temperature>` messages to send ESC telemetry. 
-Refer to the :ref:`DroneCAN <manual_dronecan>` section of the Feature Reference Manual for more details on the DroneCAN bus and those messages. 
+Refer to the :ref:`DroneCAN <dronecan_protocol>` section for more details on the DroneCAN bus and those messages. 
 
 All modules connected to a DroneCAN bus broadcast these telemetry messages, no additional configuration is required. It is possible to adjust
 the frequency that DroneCAN telemetry is sent with as detailed below.

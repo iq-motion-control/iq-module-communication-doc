@@ -110,7 +110,7 @@ A minimal working example for the Power Safety Client is:
 Message Table
 ~~~~~~~~~~~~~
 
-Type ID 83 | Power Safety
+Type ID 84 | Power Safety
     .. table:: Power Safety
         :widths: 8 18 15 10 5 50
         :class: tight-table

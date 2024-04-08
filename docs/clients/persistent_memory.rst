@@ -22,6 +22,8 @@ A minimal working example for the PersistentMemoryClient is:
     
     void setup() {
         ser.begin();
+        ser.set(mem.format_key_1_, 12345678);
+        ser.set(mem.format_key_2_, 11223344);
         ser.set(mem.revert_to_default_);
     }
 
@@ -52,6 +54,8 @@ A minimal working example for the PersistentMemoryClient is:
         PersistentMemoryClient mem(0);
 
         // Use the Persistent Memory object
+        mem.format_key_1_.set(com, 12345678);
+        mem.format_key_2_.set(com, 11223344);
         mem.revert_to_default_.set(com);
 
         // Insert code for interfacing with hardware here
@@ -76,6 +80,8 @@ A minimal working example for the PersistentMemoryClient is:
     PersistentMemory = PersistentMemoryClient(’com’,com);
     
     % Use the PersistentMemoryClient object
+    PersistentMemory.set(’format_key_1’, 12345678);
+    PersistentMemory.set(’format_key_2’, 11223344);
     PersistentMemory.set(’revert_to_default’);
 
 
@@ -96,8 +102,8 @@ A minimal working example for the Persistent Memory Client is:
     com = iq.SerialCommunicator("/dev/ttyUSB0")
     |variable_name| = iq.|module_name|(com, 0)
     
-    |variable_name|.set("persistent_memory", "factory_default_key_1", 12345678)  # Set first key before erasing calibration data
-    |variable_name|.set("persistent_memory", "factory_default_key_2", 11223344)  # Set second key before erasing calibration data
+    |variable_name|.set("persistent_memory", "format_key_1", 12345678)  # Set first key before erasing calibration data
+    |variable_name|.set("persistent_memory", "format_key_2", 11223344)  # Set second key before erasing calibration data
     |variable_name|.set("persistent_memory", "revert_to_default")  # erases saved values except for factory defaults
 
 

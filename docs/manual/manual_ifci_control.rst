@@ -15,7 +15,7 @@ Vertiq 23-06 modules can be controlled with the IQUART Flight Controller Interfa
 
     Packed Control Message Description
 
-A general description of IQUART packets can be found in :ref:`manual_iquart`.
+A general description of IQUART packets can be found in :ref:`uart_messaging`.
 
 Each control value is two bytes and can encode either a throttle value, an X value, or a Y value. These are considered 'raw values' and represent a range of 0.0 to 1.0. The following sections contain more information about how the modules can use these values. A module can read any individual control value in the Packed Control Message through a corresponding Control Value Index (CVI) value. These CVIs are set in the :ref:`IQUART Flight Controller Interface Client<ifci_message_table>`. For example, if throttle_cvi is set to 2 and a packed control message has a control value in index 2 then the module will set its throttle based on the value at that control index. The same is true for x_cvi and y_cvi. The module's responses to control values are defined by settings in the :ref:`ESC Propeller Input Parser<epip_message_table>` and :ref:`Pulsing Rectangular Input Parser<prip_message_table>`.
 

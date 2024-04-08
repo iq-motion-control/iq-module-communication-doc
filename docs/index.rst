@@ -20,17 +20,20 @@
    :maxdepth: 2
    :hidden:
    
-   modules/vertiq_2306_2200
-   modules/vertiq_2306_220
-   modules/vertiq_4006
-   modules/vertiq_8108_150
+   modules/vertiq_23xx_family
+   modules/vertiq_40xx_family
+   modules/vertiq_81xx_family
    modules/fortiq_42XX
+
 
 .. toctree::
    :caption: Messaging Protocols
    :hidden:
 
-   intro
+   communication_protocols/iquart_protocol
+   communication_protocols/dronecan_protocol
+   communication_protocols/canopen_protocol
+   communication_protocols/hobby_protocol
 
 .. toctree::
    :hidden:
@@ -52,10 +55,6 @@
    manual/manual_intro
    manual/manual_angle_control_mechanisms
    manual/manual_velocity_control_mechanisms
-   manual/manual_iquart
-   manual/manual_dronecan
-   manual/manual_canopen
-   manual/manual_hobby
    manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming
@@ -70,29 +69,56 @@
    manual/manual_underactuated_torque_correction
    manual/manual_appendix
 
-Welcome to the Vertiq Documentation
-=================================================
+.. toctree::
+   :hidden:
+   :caption: IQUART Client Table Reference
 
-This documentation is meant to help you get the most out of your Vertiq Module. This includes APIs for our custom protocol, tutorial for setting up your modules, and
-examples of how to communicate with the modules.
+   client_reference/client_reference_table
 
-Setup Tutorials
-***************
-Detailed tutorials on how to setup and use your modules with our Control Center and flight controllers can be found in the `Tutorials` section on the sidebar to the left.
+Welcome to Vertiq's Documentation
+============================================
+The purpose of this site is to get your module spinning as quickly as possible, and to provide
+you with additional tutorials on accessing your module's more advanced features.
 
-Controlling Modules With Vertiq APIs
-**************************************
+Looking to get started with your module for the first time, or just for a refresher on the features supported by your module? Please click on the image of your
+module found below, and you'll be walked through first time setup, the correct Getting Started manual to get spinning, and a list of applicable features, clients, and tutorials.
 
-We currently support 4 different languages for controlling your Vertiq Module:
+Already an experienced user looking for help with a specific feature or behavior? Please use the Feature Reference Manual or the Tutorials meant for your
+module found on your module's family page.
 
-* Python
-* Arduino 
-* C++
-* Matlab
+Looking for guidance on using our Python, C++, Arduino, or Matlab APIs, or need help with the IQ Control Center configuration software? Please 
+use the guides found on the left hand side.
 
-The intention of these guides is to teach you how to quickly communicate with a Vertiq Module using our API.
-You may proceed with a `Getting Started` guide on the left
+Need to contact us? Please use support@vertiq.co.
 
+.. list-table:: Vertiq Module Families
+   :class: borderless
+   :align: center
+
+   * - .. figure:: ./_static/module_pictures/23xx/23xx_family.png
+            :target: modules/vertiq_23xx_family.html
+            :alt: Vertiq 23-XX Family
+            :align: center
+
+            Vertiq 23-XX Family
+     - .. figure:: ./_static/module_pictures/40xx/40xx_family.png
+            :target: modules/vertiq_40xx_family.html
+            :alt: Vertiq 40-XX Family
+            :align: center
+            
+            Vertiq 40-XX Family
+     - .. figure:: ./_static/module_pictures/81xx/81xx_family.png
+            :target: modules/vertiq_81xx_family.html
+            :alt: Vertiq 81-XX Family
+            :align: center
+            
+            Vertiq 81-XX Family
+     - .. figure:: ./_static/module_pictures/fortiq_family.png
+            :target: modules/fortiq_42XX.html
+            :alt: Vertiq Fortiq Family
+            :align: center
+            
+            Vertiq Fortiq Family
 
 Reporting Documentation Issues
 ******************************
@@ -101,26 +127,3 @@ If you come across any typos, bugs in example code, confusing verbiage, or simpl
 Please report it on our public github issues page!
 
 `Reporting Issues or Questions about the Documentation <https://github.com/iq-motion-control/iq-module-communication-doc/issues>`_
-
-
-Identifying Your Module's Firmware Style
-****************************************
-
-.. sidebar:: IQ Control Center Info Pane
-
-   .. image:: _static/Control_Center_Info_Pane.png
-         :alt: Control Center Information Pane
-
-Our motors are unique in that they can be configured to run as a speed or position based (servo/stepper) module based on the firmware you upload to it.
-
-To verify which firmware is on your module, connect to the IQ Control Center Desktop Application and check the Info Pane:
-
-`Download IQ Control Center <https://github.com/iq-motion-control/iq-control-center/releases>`_ 
-
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
