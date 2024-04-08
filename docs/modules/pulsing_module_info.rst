@@ -3,7 +3,7 @@ Pulsing Module
 Supported Features
 =============================
         * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`manual_iquart`
+        * :ref:`uart_messaging`
         * :ref:`manual_throttle`
         * :ref:`manual_advanced_arming`
         * :ref:`manual_timeout`
