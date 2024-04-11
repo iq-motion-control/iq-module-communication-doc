@@ -380,7 +380,7 @@ Module Configuration with IQ Control Center
 ***********************************************
 
 Configuration through the Control Center is performed through various tabs and parameters. As mentioned :ref:`above <gui_overview>`, 
-tabs are available through the left side. Parameter types found in each tab are discussed more below <link to config tabs bit>.
+tabs are available through the left side. Parameter types found in each tab are discussed more :ref:`below <config_values>`.
 
 This example screen capture demonstrates configuring the Motor Direction (a dropdown available in the General tab) and the Max Velocity parameter (a spin box available through the Tuning tab).
 
@@ -398,3 +398,186 @@ You will see the parameters be set for the module with Module ID 0, then the Tar
                 }
     </style>
     <video class='center_vid' controls><source src="../_static/control_center_pics/configuration_screen_cap.mp4" type="video/mp4"></video>
+
+.. _config_values:
+
+Configuration Values
+========================
+Values currently set on the target module are displayed in the box on the right hand side of each parameter.
+
+.. image:: ../_static/control_center_pics/config_options.png
+
+To learn more about a parameter, click on the “i” icon on the right hand side
+
+.. image:: ../_static/control_center_pics/motor_dir_i_highlight.png
+
+Saving and Refreshing
+--------------------------
+With a spin box, you can either type in a new value or use the up and down arrows to change the value. With a dropdown menu, 
+simply click the box to list the options available, and click on the value you would like to set.
+
+Values that have been changed but not saved are indicated by a * icon. For example, if you change *Mode* from 
+Voltage to Velocity without saving or refreshing the value, we see
+
+.. image:: ../_static/control_center_pics/mode_changed.png
+
+From this point, there are two choices: Save or Refresh. Saving sets and saves the new value on the targeted module. Refreshing rereads the target 
+module's value, and sets it back into either the spin box or dropdown.
+
+Saving is indicated by the down arrow on the right hand side
+
+.. image:: ../_static/control_center_pics/save_button.png
+
+Refresh is indicated by the circular arrow
+
+.. image:: ../_static/control_center_pics/refresh.png
+
+In this example, when we click the refresh button, we see Velocity return to Voltage, and the star disappears.
+
+If we save Velocity, however, you will see the star disappear, and a message stating “Value Saved Successfully” appears in the Messages section.
+
+Configuration Tabs
+===================
+The Control Center provides 3 tabs of configuration options: General, Tuning, and Advanced. These are found on the left side of the GUI, 
+and the selected tab is indicated in blue.
+
+.. image:: ../_static/control_center_pics/config_tabs.png
+
+.. note::
+    The configuration parameters presented for each module family and firmware style vary. Not all parameters shown in this example will be available for all modules and firmware styles.
+
+General
+-----------
+The general tab provides access to some more basic module configuration parameters. Parameters here help configure attributes necessary for properly controlling 
+your module with your desired behaviors.
+
+For example, the general tab is where you will find the :ref:`Motor Direction parameter <throttle_direction>`.
+
+Tuning
+-----------
+The tuning tab holds parameters geared towards affecting your module's performance. For example, this is where you find parameters that affect your module's PID gains.
+
+Advanced
+----------
+.. warning::
+    Changing parameters in the Advanced tab can compromise the safety features present on your module. Please use caution when changing parameters available in the Advanced tab.
+
+The advanced tab holds parameters that are meant for more experienced users. The advanced tab is where you find parameters such as your Module ID and UART Baud Rate.
+
+Configuration with Defaults
+============================
+IQ Control Center provides an easy method for setting several parameters at once with a system called Defaults. Defaults can be found in the general tab under MODULE PRE-SETTINGS
+
+.. image:: ../_static/control_center_pics/defaults.png
+
+There are two forms of defaults, one provided by default with the IQ Control Center software and one that is user generated.
+
+Using Vertiq Provided Default Settings
+-----------------------------------------
+The default settings provided with the Control Center are meant to help set parameters specific to certain battery and propeller settings configurations. 
+For example, you will find a default file called Vertiq2306_2200Kv_speed_APC6x4.json. This file provides tuning parameters for use of a 
+Vertiq 23-06 2200Kv module with speed firmware with an APC 6x4 propeller. In order to set these parameters, simply select the file that you would 
+like to use, then click Set.
+
+Using User Generated Default Settings
+-----------------------------------------
+User generated default settings allow you to easily share identical module configurations between multiple modules. For example, if you have parameters 
+that work for your module configuration (gains, modes, baud rate, etc.) that should be set on all of your modules, you would want to use a custom defaults file.
+
+.. note::
+    User generated Defaults files include the Module ID parameter. This means that setting up modules with custom Default files will result in collisions on 
+    a serial bus, and it is recommended that you set defaults with only one module connected at a time, and if desired, assign unique Module IDs 
+    after setting all other parameters to connect via a bus.
+
+Creating a User Defaults File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The first step in creating a defaults file is finding the parameters that work best for your modules. Once you have a set of parameters 
+(across the general, tuning, and advanced tabs) that work well, you can continue. 
+
+1. With your module connected, navigate to the general tab and find the MODULE PRE-SETTINGS
+2. Find the Export button on the right side
+3. Click Export, and you will see a File Explorer window open
+4. Here, choose a name and location for your generated defaults file. In this example I will save the file as “example_defaults.json”
+5. You will then be given the option to import the file directly into the Control Center. In order to use this file to configure other modules, you must import it into the Control Center
+
+.. image:: ../_static/control_center_pics/import_defaults_popup.png
+
+6. After clicking Yes, you will see your imported defaults as an option in the dropdown. This file will now always be available in the Control Center
+7. Once in the Control Center, you can use the Set button exactly as you would with a Vertiq supplied Defaults file
+
+Importing a User Defaults File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It is also possible to import externally generated Defaults files into the Control Center. To do so:
+
+#. Select the Import option
+#. Use the File Explorer to find the Defaults file you would like to import
+#. You will see the file appear in the dropdown of other Defaults files, and it is ready for use
+
+******************************************
+Testing Modules with the Control Center
+******************************************
+The Control Center provides a basic suite of testing options to ensure that your module is functioning properly. These options are available in the testing tab, 
+available on the left side.
+
+.. note::
+    Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s. 
+    This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected.
+
+.. warning::
+    Please remove all propellers before interacting with any testing parameters. Failure to do so is dangerous.
+
+In order to set a testing parameter, simply enter a value into the spin box, and hit the down arrow set button. Parameters such as Coast do not have a spin box, 
+and only require that you press the set button to trigger the behavior.
+
+The testing tab for a Veritq 23-06 2200Kv looks as follows:
+
+.. image:: ../_static/control_center_pics/23_testing_tab.png
+
+Brake
+=========
+This commands the module to brake, which shorts the motor phases, which slows the motor down by dissipating energy in the motor.
+
+.. warning::
+    If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
+    This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
+    voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
+
+Coast
+=============
+Commanding a coast means that the module allows its rotor to slowly decelerate and come to a stop. It is a safe way to stop the module when testing since it does not cause the module to rapidly decelerate.
+
+PWM
+========
+This tells the module to spin with a percentage of its input voltage. For example, if your input voltage is 20V, and you set this parameter to 0.5, the module will spin with a 10V drive voltage, since 50% of 20V is 10V. A positive PWM percentage always goes in the counterclockwise direction, and a negative PWM percentage always goes clockwise.
+
+Velocity
+=============
+This commands the module to try and maintain a specific velocity in rad/s, using closed loop PID control. A positive velocity always goes in the counterclockwise 
+direction, and a negative velocity always goes clockwise. To learn more about velocity and voltage control 
+see :ref:`manual_velocity_control_mechanisms`
+
+Voltage
+=============
+This commands the module to a specific drive voltage. A positive voltage always goes in the counterclockwise direction, and a negative voltage always goes clockwise.
+
+ESC Input
+=============
+This commands the module to spin in the same way that a typical hobby protocol used by a flight controller would, i.e. it sends an IQUART throttle command. 
+So, setting this to 0.5 will send the module a 50% throttle command with the configuration specified in this example. However, because this 
+test is meant to simulate commands from a flight controller, it is affected by the Advanced Arming feature. That means that setting this 
+parameter will not cause the module to spin until the module has armed. **By default Vertiq speed modules require 10 consecutive throttle 
+commands between 0% and 7.5% to arm. So, to arm your module using the ESC Input parameter, set the ESC Input to 0.05 to send a 5% throttle 
+command, and click the set arrow 10 times**. On the 10th time you click the set arrow, the module should play its 2 note arming song, and begin spinning. 
+Now that the module is armed, any new throttle commands sent using the ESC Input parameter will change how it is spinning. For example, setting ESC 
+Input to 0.5 should set the module to the same speed as setting the Voltage parameter to 2.5V. This is because the module is in Voltage mode with a 
+Max Volts of 5V, so a 50% throttle command will set the module to spin with a drive voltage of 2.5V. For more information on how to configure 
+the module to properly interpret throttle commands, see the Throttle Commands and Modes section of the Feature Reference Manual. For more information on 
+arming and disarming the module, refer to the Advanced Arming section of the Feature Reference Manual.
+
+Try it Yourself
+==================
+Try out some of these parameters and observe how the module spins. For example, try setting the Voltage to 2.5V, then set the ESC Input to 0.5. 
+You should observe the module staying at the same speed. You can repeat this with 5.0V and a 1.0 ESC input. Remember, to accept commands from ESC 
+Input, the module must be armed as described above. The module is now set up for basic testing with the Control Center. For integrating with a flight 
+controller, more setup is needed. Refer to the PWM and DSHOT Control with a Flight Controller and the DroneCAN Integration with a PX4 Flight Controller 
+for more details on integrating with flight controllers.
