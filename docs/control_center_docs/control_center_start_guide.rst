@@ -126,3 +126,27 @@ Mac
 .. image:: ../_static/control_center_pics/mac/mac_downloaded_installer.png
 
 4. **While holding CTRL**, click the file, and select Open
+5. In the pop-up that opens, select Open to start the installer
+
+.. image:: ../_static/control_center_pics/mac/mac_warning.png
+
+6. You will see the following window appear
+
+.. image:: ../_static/control_center_pics/mac/mac_wizard_open.png
+
+7. Follow the instructions in the wizard to complete installation
+8. After clicking Show Details and a successful installation, you will see the following
+
+.. image:: ../_static/control_center_pics/mac/mac_install_done.png
+
+9. Click Next and Finish to complete installation
+10. Navigate to the installation location and find the IQ Control Center folder. Inside you will find
+
+.. image:: ../_static/control_center_pics/mac/mac_inside_the_folder.png
+
+11. Double click on the IQ Control Center icon to start the application
+12. Once open you should see the following
+
+.. image:: ../_static/control_center_pics/mac/mac_control_center_open.png
+
+Congratulations! You have successfully installed IQ Control Center, and are ready to start communicating with your modules.
