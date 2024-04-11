@@ -647,3 +647,82 @@ and the correct firmware has already been downloaded from our website.
                 }
     </style>
     <video class='center_vid' controls><source src="../_static/control_center_pics/recovery_screen_cap.mp4" type="video/mp4"></video>
+
+****************************
+Control Center Support
+****************************
+The Control Center provides a support tab to provide you with information about Control Center operations as well as a method to produce support files.
+
+.. image:: ../_static/control_center_pics/support_tab.png
+    :scale: 50%
+
+In the middle of the support page, you will see the Output Log. Here, the Control Center places any important actions it has completed as well as information it has obtained. 
+If you want to clear the log window, simply click Clear Log. 
+
+If you are having any trouble with your module or with the Control Center, please use the steps below to generate a log file as well as a support file, 
+and reach out to us at support@vertiq.co with these files as well as a description of your issue.
+
+Exporting a Log
+=============================
+If you wish to export a log of all past IQ Control Center interactions, simply click the Export Log button. 
+
+.. image:: ../_static/control_center_pics/export_log.png
+    :scale: 50%
+
+Once clicked, a File Explorer will open, and you can select a name and location for your exported log.
+
+Generating a Support File
+=============================
+Support files provide a listing of all current parameters loaded on the target module. To generate a support file simply click the Generate Support File button.
+
+.. image:: ../_static/control_center_pics/generate_support.png
+    :scale: 50%
+
+Once clicked, a File Explorer will open, and you can select a name and location for your exported log.
+
+Adding Resource Files
+=============================
+Occasionally, it is necessary to manually add module resource files to the Control Center. These will be provided by a member of the Vertiq team. 
+The process for integrating the files into the Control Center is described below for each supported operating system.
+
+Windows
+----------------
+1. Use the File Explorer to locate the Control Center's installation. By default this is Program Files (x86)/IQ Control Center
+2. Open the installed folder, and you'll see
+
+.. image:: ../_static/control_center_pics/windows/windows_installed_folder.png
+
+3. Enter the IQ Control Center folder, and you’ll see the Resources folder
+
+.. image:: ../_static/control_center_pics/windows/resources_windows.png
+
+4. Inside of the Resources folder you’ll find Defaults, Firmware, and Tabs
+5. If you have been given a resource file with a number.json (42.json for example), copy the file into the Firmware folder
+6. If you have been given files with the names advanced, general, testing, or tuning, copy the files into the corresponding folder inside of the Tabs folder
+
+Linux (Ubuntu)
+------------------
+1. Open a new terminal window, and navigate to the IQ Control Center installation. By default this is Home/~user~/IQ Control Center
+2. Inside you will see the following
+
+.. image:: ../_static/control_center_pics/linux/linux_install_folder.png
+
+3. Enter IQ Control Center, and inside you will find a folder called Resources
+4. Enter the Resources folder, and inside you will see Defaults, Firmware, and Tabs
+5. If you have been given a resource file with a number.json (42.json for example), copy the file into the Firmware folder
+6. If you have been given files with the names advanced, general, testing, or tuning, copy the files into the corresponding folder inside of the Tabs folder
+
+Mac
+------
+1. Open a new terminal window, and navigate to the IQ Control Center installation. By default this is Applications/IQ Control Center
+2. Enter the IQ Control Center folder. Inside you will see the following
+
+.. image:: ../_static/control_center_pics/mac/mac_in_the_install.png
+
+3. Enter IQ Control Center.app/Contents/MacOS. Inside you will see the following
+
+.. image:: ../_static/control_center_pics/mac/mac_macos_folder.png
+
+4. Enter the Resources folder, and inside you will see Defaults, Firmware, and Tabs
+5. If you have been given a resource file with a number.json (42.json for example), copy the file into the Firmware folder
+6. If you have been given files with the names advanced, general, testing, or tuning, copy the files into the corresponding folder inside of the Tabs folder
