@@ -1,3 +1,6 @@
+.. include:: ../text_colors.rst
+.. toctree::
+
 .. _control_center_start_guide:
 
 #################################
@@ -155,6 +158,8 @@ Congratulations! You have successfully installed IQ Control Center, and are read
 Hardware Configuration
 **************************
 
+.. _connection_guide:
+
 Connection with a Computer
 ===============================
 
@@ -208,6 +213,8 @@ make the process much easier. A simple way to accomplish this is with 3-pin, 100
 In order to connect with several modules at once, you will also have to configure each module's Module ID. 
 More information about this can be found <link to the NOTE below JORDAN DON'T FORGET TO DO THIS> here.
 
+.. _gui_overview:
+
 ***********************************
 IQ Control Center GUI Overview
 ***********************************
@@ -225,3 +232,169 @@ with colored boxes in the figure above and are described below:
 * The :gold:`Display` section displays information, configuration parameters, and controls relevant to your current tab. When you change tabs, the controls and information shown here will change. This is where the majority of your interactions with a connected module will take place.
 
 * The :purple:`Messages` section displays information about the Control Center that can be useful for understanding what state the Control Center is in and debugging connection problems. Check here if you are having connection issues for feedback.
+
+**********************************
+Connecting With your Module(s)
+**********************************
+
+Required Configuration Before Connecting with Multiple Modules
+=================================================================
+
+The processes described below for connecting with your Vertiq modules are the same whether you are connecting with one or several modules. 
+An important note, however, is that when connecting multiple modules, each must have a unique Module ID. If two (or more) 
+modules share the same Module ID, they will be unable to communicate via IQUART. In order to change each module’s Module ID, 
+you must individually connect with it through the Control Center using the steps below
+
+#. Navigate to the Advanced tab
+#. Find Module ID, and change it to a unique value from all other modules you would like to connect with
+
+.. note::
+    In order to communicate with multiple modules at once, they all must have the same configured serial baud rate. If they do not, you will 
+    only be able to communicate with those modules with a baud rate equal to Serial Baud Rate.
+
+Module Connection Demonstration
+====================================
+An example of connecting with 4 Vertiq modules is presented in the screen capture below. In this example, 4 Vertiq 23-06 2200Kv 
+modules are connected, each with a different Module ID (0, 1, 2, and 3), configured to use a 921600 baud rate.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/control_center_pics/connection_screen_cap.mp4" type="video/mp4"></video>
+
+Connection Configuration in the GUI
+========================================
+The serial configuration used to attempt connection with your modules is presented in the top right corner of the Control Center:
+
+.. image:: ../_static/control_center_pics/serial_options.png
+
+Serial Baud Rate
+--------------------
+This is the baud rate with which we will open the serial port being used to communicate with the connected modules. In order for 
+communication to succeed, this value must be the same as the baud rate set on your module. By default, all Vertiq modules use a serial baud rate of 115200.
+
+Serial Port
+--------------------
+This is the serial port where you have connected your USB-to-UART device. After connecting your device, you will see an option in the dropdown appear. 
+Click it to select it.
+
+The names that appear in this box are OS dependent. For example, on Linux, you will see devices with the name “/dev/ttySX” where X is the value of the port.
+
+Connect Button
+--------------------
+
+Once you have selected your target baud rate and your USB-to-UART device's serial port, you are ready to connect with your module. 
+
+Connect your module to the USB-to-UART device as described :ref:`above <connection_guide>`, and power on your module. 
+
+Click the connect button in order to open serial communication between the Control Center and your module. 
+
+If you successfully found and communicated with a module, you will see its information appear in the <Link to Information section DONT FORGET> box in the bottom left. 
+You will also see the Module Connections <link to the module connections bit DONT FORGET> box list the number of detected modules as non-zero. 
+These will be covered more in <Connection Information in the GUI DONT FORGET>
+
+The CONNECT button now presents DISCONNECT.
+
+Disconnect Button
+--------------------
+
+Clicking the disconnect button closes the serial connection between the Control Center and your connected USB-to-UART device. 
+Once closed, you will see a “Serial Port Disconnected” message in the top left corner, and the CONNECT button will reappear.
+
+Connection Information Example
+===============================
+The following sections demonstrate how the :ref:`Control Center's GUI <gui_overview>` is filled in after connecting a module.
+
+Information
+--------------
+In the bottom left corner of the Control Center is information about the currently connected module. It provides information about the module's 
+firmware, hardware, bootloader and upgrade versions, and a link to your module's id.vertiq.co. 
+site.
+
+For example, when connecting a Vertiq 40-06 370Kv G2, we see the following
+
+.. image:: ../_static/control_center_pics/4006_info.png
+
+Module Connections
+-----------------------
+The top right Module Connections box provides more information about the currently connected modules, a method to identify modules between 
+one another, and if applicable, a method to switch between target modules.
+
+When we connect 4 Vertiq 23-06 2200Kv modules, we see the following
+
+.. image:: ../_static/control_center_pics/4_connected_modules.png
+
+Detected Modules
+^^^^^^^^^^^^^^^^^^^^^^^
+Reports the number of unique module IDs connected to the Control Center.
+
+Detect
+^^^^^^^^^^^^^^^^^^^^^^^
+Clicking DETECT reruns the module detection process. This allows you to connect modules to the Control Center after already having run the initial connection.
+
+For example, say you've connected one module with Module ID 1
+
+.. image:: ../_static/control_center_pics/one_module_connected.png
+
+Now, you would like to connect a second module to the bus, and configure it via the Control Center. All you have to do is 
+power it on, plug it in to the serial bus, and hit detect.
+
+You will now see 2 detected modules
+
+.. image:: ../_static/control_center_pics/module_detected.png
+
+Target Module ID
+^^^^^^^^^^^^^^^^^^^^^^^^
+This dropdown provides a list of the module IDs currently found on the serial bus. 
+
+.. image:: ../_static/control_center_pics/module_id_dropdown.png
+
+By selecting a new Target Module ID, you change the module whose parameters and information you are changing and reading.
+
+Identify
+^^^^^^^^^^^^^^^^^^^^^^^^
+Clicking the IDENTIFY button plays a song on the module currently selected by Target Module ID to help differentiate between modules.
+An example of the identification song is shown below.
+
+JORDAN THIS IS A PLACEHOLDER, GET A VIDEO WHERE IT DOESN'T MOVE AND YOU STAY STILL
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/control_center_pics/indication_song.mp4" type="video/mp4"></video>
+
+***********************************************
+Module Configuration with IQ Control Center
+***********************************************
+
+Configuration through the Control Center is performed through various tabs and parameters. As mentioned :ref:`above <gui_overview>`, 
+tabs are available through the left side. Parameter types found in each tab are discussed more below <link to config tabs bit>.
+
+This example screen capture demonstrates configuring the Motor Direction (a dropdown available in the General tab) and the Max Velocity parameter (a spin box available through the Tuning tab).
+
+This example starts with 4 modules already detected by IQ Control Center.
+
+You will see the parameters be set for the module with Module ID 0, then the Target Module ID changed to 3, and the parameters set again for the newly targeted module.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/control_center_pics/configuration_screen_cap.mp4" type="video/mp4"></video>
