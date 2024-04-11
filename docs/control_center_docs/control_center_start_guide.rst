@@ -150,3 +150,65 @@ Mac
 .. image:: ../_static/control_center_pics/mac/mac_control_center_open.png
 
 Congratulations! You have successfully installed IQ Control Center, and are ready to start communicating with your modules.
+
+**************************
+Hardware Configuration
+**************************
+
+Connection with a Computer
+===============================
+
+In order to communicate from your computer with a Vertiq module through the Control Center, you will need some form of USB-to-UART converter.
+
+We recommend using an CP2102 FTDI such as the one found `here <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`_.
+
+Once obtained, plug your USB-to-UART converter into your computer and install any necessary drivers (refer to the manufacturer's documentation for 
+your USB-to-UART converter). If installed correctly, a new serial port should be available on your PC. 
+Take note of the name of this new serial port. In Windows you can see this under Device Manager->Ports (COM & LPT). The image 
+below shows an example where the connected USB-to-UART converter shows up as COM3. This port will be used later when connecting with the Control Center.
+
+.. image:: ../_static/control_center_pics/windows/device_manager.png
+
+Wiring
+=============
+In order to communicate with your module(s) through IQ Control Center, you must connect serial communication wires. 
+For instructions on how to do so for your specific module, visit your module's family page:
+
+* :ref:`Vertiq 23-XX Family Serial Configuration <23xx_comms>`
+* :ref:`Vertiq 40-XX Family Serial Configuration <40xx_comms>`
+* :ref:`Vertiq 81-XX Family Serial Configuration <81xx_comms>`
+
+On modules with exposed serial pads, we recommend using cabling with one end set into a JR Servo female connector, and the other 
+end soldered directly to the module's pads. On the 81-08 G1, we recommend using a cable with a Servo JR female connector on both sides.
+
+Using Servo JR connectors makes it easy to connect with, and disconnect from the USB-to-UART device that you are using to connect with the Control Center. 
+
+Single Module Wiring
+---------------------------
+To communicate with a single module, simply connect the Servo JR female connector to the FTDI.
+
+**Please ensure that your USB-to-UART device's TX port is connected to your module's RX port, and your module's TX to the USB-to-UART device's RX.**
+
+A module wired for both power and serial communication attached to the aforementioned FTDI looks as follows:
+
+.. image:: ../_static/control_center_pics/module_with_ftdi.png
+    :scale: 12%
+
+Multiple Module Wiring
+---------------------------
+If you plan on connecting several modules to the Control Center at once, you must connect all of the modules' serial ports together. 
+How you do this is up to you, but you must ensure that the resulting wiring with your USB-to-UART device looks as follows:
+
+.. image:: ../_static/control_center_pics/multi_module_serial.png
+
+We highly recommend connecting your modules together with a non-permanent, easily detachable method. Some configurations through the Control Center 
+must be performed on independently connected modules before multiple can be connected at once. So, having a quick way to attach/detach modules will 
+make the process much easier. A simple way to accomplish this is with 3-pin, 100-mil header pins and a breadboard.
+
+In order to connect with several modules at once, you will also have to configure each module's Module ID. 
+More information about this can be found <link to the NOTE below JORDAN DON'T FORGET TO DO THIS> here.
+
+***********************************
+IQ Control Center GUI Overview
+***********************************
+.. image:: ../_static/control_center_pics/gui_breakdown.png

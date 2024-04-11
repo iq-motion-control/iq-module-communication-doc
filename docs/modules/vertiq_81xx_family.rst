@@ -69,6 +69,8 @@ All Vertiq 81-XX G1 modules are rated for a maximum 12S (50.4V) across the power
 
 Please ensure that you select power wiring suitable for your application. Failure to do so can result in dangers like short circuits and fire. 
 
+.. _81xx_comms:
+
 Communication
 ================
 
