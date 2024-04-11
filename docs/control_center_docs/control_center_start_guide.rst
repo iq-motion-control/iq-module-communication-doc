@@ -581,3 +581,69 @@ You should observe the module staying at the same speed. You can repeat this wit
 Input, the module must be armed as described above. The module is now set up for basic testing with the Control Center. For integrating with a flight 
 controller, more setup is needed. Refer to the PWM and DSHOT Control with a Flight Controller and the DroneCAN Integration with a PX4 Flight Controller 
 for more details on integrating with flight controllers.
+
+*******************************************
+Updating Firmware with the Control Center
+*******************************************
+Flashing new firmware onto your module is done through the FIRMWARE tab in the Control Center, available on the left side.
+
+All module firmware can be found on your product's page on `Vertiq's website <https://www.vertiq.co/>`_.
+Screen Capture Example
+The following screen capture demonstrates how to update your module's firmware through the Control Center. In this example, we will be updating a Vertiq 23-06 2200Kv configured to a baud rate of 921600.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/control_center_pics/firmware_flash_screen_cap.mp4" type="video/mp4"></video>
+
+Firmware Update Instructions
+=================================
+1. Download the file meant for your module from `vertiq.co <https://www.vertiq.co/>`_
+
+.. note::
+    If you downloaded a compressed zip archive from the website, you do not need to extract the contents. Simply use the .zip as your file selection 
+    when selecting your firmware file. It is highly recommended that you use zip archives as they contain important metadata that helps protect you 
+    from flashing incorrect firmware.
+
+2. Navigate to the FIRMWARE tab of the Control Center
+3. Click the Select Firmware button found at the bottom of the page
+
+.. image:: ../_static/control_center_pics/select_firmware.png
+
+4. Use the File Explorer to select the file downloaded from vertiq.co
+5. If you've selected the correct zip archive for your folder, or if you selected a binary file, you will see a Flash button appear. 
+   Click it to begin your firmware update
+
+.. image:: ../_static/control_center_pics/flash_btn.png
+
+.. note::
+    If you’ve selected a zip archive not meant for your module, you will be shown a warning, and will not be allowed to flash that particular file as it can cause serious damage to your module.
+
+Recovering a Module from a Failed Flash
+===========================================
+.. note::
+    Recovery mode is only available on the 40-XX and 81-XX families
+
+If your module fails during a firmware update for any reason, it enters into Recovery Mode. When the module boots into recovery mode, it will not play its 
+5 tone startup sequence. If you believe your module is in recovery mode, attempt to connect it to the Control Center, and you will be guided 
+through the recovery process.
+
+The following example shows the recovery of a Veritq 40-06 G2 370Kv. The module being recovered is already in recovery mode when the example begins, 
+and the correct firmware has already been downloaded from our website.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/control_center_pics/recovery_screen_cap.mp4" type="video/mp4"></video>
