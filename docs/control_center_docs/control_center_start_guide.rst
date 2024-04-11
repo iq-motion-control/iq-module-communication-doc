@@ -212,3 +212,16 @@ More information about this can be found <link to the NOTE below JORDAN DON'T FO
 IQ Control Center GUI Overview
 ***********************************
 .. image:: ../_static/control_center_pics/gui_breakdown.png
+
+There are 5 major sections of the Control Center interface, which have been highlighted
+with colored boxes in the figure above and are described below:
+
+* The :red:`Tabs` section lists the different tabs of the Control Center that are available when connected to a module. Each tab offers access to different configuration parameters and functionality. The settings in these tabs will be covered in greater detail later.
+
+* The :green:`Information` section lists information about the Control Center and connected module, if there is one. When there is no module connected, this only lists the Control Center version. When a module is connected, this will also list its Firmware Version, Firmware Style, Hardware Style, Bootloader Version, and Upgrader Version. Check this information to make sure you are using the proper hardware with the latest firmware. You can check for new firmware under the Modules section of the Vertiq website.
+
+* The :blue:`Module Connections` section is used to connect to modules. You can select the baud rate and the serial port to use for the module you want to connect to. The serial port is determined by the name of the serial port used by your USB-to-UART converter. See the <link to the right thing> section for more details on how to determine that port name.
+
+* The :gold:`Display` section displays information, configuration parameters, and controls relevant to your current tab. When you change tabs, the controls and information shown here will change. This is where the majority of your interactions with a connected module will take place.
+
+* The :purple:`Messages` section displays information about the Control Center that can be useful for understanding what state the Control Center is in and debugging connection problems. Check here if you are having connection issues for feedback.
