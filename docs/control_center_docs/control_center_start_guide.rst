@@ -53,6 +53,7 @@ Windows
 9. Now, if you hit the Windows key, and search for IQ Control Center, you should see the Application listed. Click it to start the application
 
 .. image:: ../_static/control_center_pics/windows/windows_key_search.png
+    :scale: 75%
 
 10. Alternatively, navigate to the location where you installed the application
 11. Open the folder, then open IQ Control Center
@@ -66,6 +67,7 @@ Windows
 13. After opening IQ Control Center, you should see the following
 
 .. image:: ../_static/control_center_pics/windows/win_control_center_open.png
+    :scale: 50%
 
 Congratulations! You have successfully installed IQ Control Center, and are ready to start communicating with your modules.
 
@@ -113,6 +115,7 @@ Linux (Ubuntu)
 11. Once open you will see the application
 
 .. image:: ../_static/control_center_pics/linux/linux_control_center_open.png
+    :scale: 45%
 
 Congratulations! You have successfully installed IQ Control Center, and are ready to start communicating with your modules.
 
@@ -151,6 +154,7 @@ Mac
 12. Once open you should see the following
 
 .. image:: ../_static/control_center_pics/mac/mac_control_center_open.png
+    :scale: 60%
 
 Congratulations! You have successfully installed IQ Control Center, and are ready to start communicating with your modules.
 
@@ -183,7 +187,7 @@ For instructions on how to do so for your specific module, visit your module's f
 * :ref:`Vertiq 40-XX Family Serial Configuration <40xx_comms>`
 * :ref:`Vertiq 81-XX Family Serial Configuration <81xx_comms>`
 
-On modules with exposed serial pads, we recommend using cabling with one end set into a JR Servo female connector, and the other 
+On modules with exposed serial pads, we recommend using cabling with one end set into a Servo JR female connector, and the other 
 end soldered directly to the module's pads. On the 81-08 G1, we recommend using a cable with a Servo JR female connector on both sides.
 
 Using Servo JR connectors makes it easy to connect with, and disconnect from the USB-to-UART device that you are using to connect with the Control Center. 
@@ -211,7 +215,7 @@ must be performed on independently connected modules before multiple can be conn
 make the process much easier. A simple way to accomplish this is with 3-pin, 100-mil header pins and a breadboard.
 
 In order to connect with several modules at once, you will also have to configure each module's Module ID. 
-More information about this can be found <link to the NOTE below JORDAN DON'T FORGET TO DO THIS> here.
+More information about this can be found :ref:`below <multi_module_config>`.
 
 .. _gui_overview:
 
@@ -219,6 +223,7 @@ More information about this can be found <link to the NOTE below JORDAN DON'T FO
 IQ Control Center GUI Overview
 ***********************************
 .. image:: ../_static/control_center_pics/gui_breakdown.png
+    :scale: 50%
 
 There are 5 major sections of the Control Center interface, which have been highlighted
 with colored boxes in the figure above and are described below:
@@ -236,6 +241,8 @@ with colored boxes in the figure above and are described below:
 **********************************
 Connecting With your Module(s)
 **********************************
+
+.. _multi_module_config:
 
 Required Configuration Before Connecting with Multiple Modules
 =================================================================
@@ -295,9 +302,8 @@ Connect your module to the USB-to-UART device as described :ref:`above <connecti
 
 Click the connect button in order to open serial communication between the Control Center and your module. 
 
-If you successfully found and communicated with a module, you will see its information appear in the <Link to Information section DONT FORGET> box in the bottom left. 
-You will also see the Module Connections <link to the module connections bit DONT FORGET> box list the number of detected modules as non-zero. 
-These will be covered more in <Connection Information in the GUI DONT FORGET>
+If you successfully found and communicated with a module, you will see its information appear in the :ref:`Information section <information_box>` in the bottom left. 
+You will also see the :ref:`Module Connections <module_connections>` box list the number of detected modules as non-zero. 
 
 The CONNECT button now presents DISCONNECT.
 
@@ -311,6 +317,8 @@ Connection Information Example
 ===============================
 The following sections demonstrate how the :ref:`Control Center's GUI <gui_overview>` is filled in after connecting a module.
 
+.. _information_box:
+
 Information
 --------------
 In the bottom left corner of the Control Center is information about the currently connected module. It provides information about the module's 
@@ -320,6 +328,8 @@ site.
 For example, when connecting a Vertiq 40-06 370Kv G2, we see the following
 
 .. image:: ../_static/control_center_pics/4006_info.png
+
+.. _module_connections:
 
 Module Connections
 -----------------------
@@ -361,8 +371,6 @@ Identify
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Clicking the IDENTIFY button plays a song on the module currently selected by Target Module ID to help differentiate between modules.
 An example of the identification song is shown below.
-
-JORDAN THIS IS A PLACEHOLDER, GET A VIDEO WHERE IT DOESN'T MOVE AND YOU STAY STILL
 
 .. raw:: html
 
@@ -532,6 +540,7 @@ and only require that you press the set button to trigger the behavior.
 The testing tab for a Veritq 23-06 2200Kv looks as follows:
 
 .. image:: ../_static/control_center_pics/23_testing_tab.png
+    :scale: 50%
 
 Brake
 =========
