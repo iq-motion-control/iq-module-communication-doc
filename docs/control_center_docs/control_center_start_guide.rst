@@ -232,7 +232,7 @@ with colored boxes in the figure above and are described below:
 
 * The :green:`Information` section lists information about the Control Center and connected module, if there is one. When there is no module connected, this only lists the Control Center version. When a module is connected, this will also list its Firmware Version, Firmware Style, Hardware Style, Bootloader Version, and Upgrader Version. Check this information to make sure you are using the proper hardware with the latest firmware. You can check for new firmware under the Modules section of the Vertiq website.
 
-* The :blue:`Module Connections` section is used to connect to modules. You can select the baud rate and the serial port to use for the module you want to connect to. The serial port is determined by the name of the serial port used by your USB-to-UART converter. See the <link to the right thing> section for more details on how to determine that port name.
+* The :blue:`Module Connections` section is used to connect to modules. You can select the baud rate and the serial port to use for the module you want to connect to. The serial port is determined by the name of the serial port used by your USB-to-UART converter. See the :ref:`serial_port` section for more details on how to determine that port name.
 
 * The :gold:`Display` section displays information, configuration parameters, and controls relevant to your current tab. When you change tabs, the controls and information shown here will change. This is where the majority of your interactions with a connected module will take place.
 
@@ -249,7 +249,7 @@ Required Configuration Before Connecting with Multiple Modules
 
 The processes described below for connecting with your Vertiq modules are the same whether you are connecting with one or several modules. 
 An important note, however, is that when connecting multiple modules, each must have a unique Module ID. If two (or more) 
-modules share the same Module ID, they will be unable to communicate via IQUART. In order to change each module’s Module ID, 
+modules share the same Module ID, they will be unable to communicate via IQUART. In order to change each module's Module ID, 
 you must individually connect with it through the Control Center using the steps below
 
 #. Navigate to the Advanced tab
@@ -286,6 +286,8 @@ Serial Baud Rate
 This is the baud rate with which we will open the serial port being used to communicate with the connected modules. In order for 
 communication to succeed, this value must be the same as the baud rate set on your module. By default, all Vertiq modules use a serial baud rate of 115200.
 
+.. _serial_port:
+
 Serial Port
 --------------------
 This is the serial port where you have connected your USB-to-UART device. After connecting your device, you will see an option in the dropdown appear. 
@@ -305,7 +307,7 @@ Click the connect button in order to open serial communication between the Contr
 If you successfully found and communicated with a module, you will see its information appear in the :ref:`Information section <information_box>` in the bottom left. 
 You will also see the :ref:`Module Connections <module_connections>` box list the number of detected modules as non-zero. 
 
-The CONNECT button now presents DISCONNECT.
+The CONNECT button now changes into the DISCONNECT button.
 
 Disconnect Button
 --------------------
@@ -322,8 +324,7 @@ The following sections demonstrate how the :ref:`Control Center's GUI <gui_overv
 Information
 --------------
 In the bottom left corner of the Control Center is information about the currently connected module. It provides information about the module's 
-firmware, hardware, bootloader and upgrade versions, and a link to your module's id.vertiq.co. 
-site.
+firmware, hardware, bootloader and upgrade versions, and a link to your module's `id.vertiq.co <http://id.vertiq.co>`_ site.
 
 For example, when connecting a Vertiq 40-06 370Kv G2, we see the following
 
@@ -353,7 +354,7 @@ For example, say you've connected one module with Module ID 1
 .. image:: ../_static/control_center_pics/one_module_connected.png
 
 Now, you would like to connect a second module to the bus, and configure it via the Control Center. All you have to do is 
-power it on, plug it in to the serial bus, and hit detect.
+power it on, plug it in to the serial bus, and hit DETECT.
 
 You will now see 2 detected modules
 
@@ -493,7 +494,7 @@ User generated default settings allow you to easily share identical module confi
 that work for your module configuration (gains, modes, baud rate, etc.) that should be set on all of your modules, you would want to use a custom defaults file.
 
 .. note::
-    User generated Defaults files include the Module ID parameter. This means that setting up modules with custom Default files will result in collisions on 
+    User generated defaults files include the Module ID parameter. This means that setting up modules with custom Default files will result in collisions on 
     a serial bus, and it is recommended that you set defaults with only one module connected at a time, and if desired, assign unique Module IDs 
     after setting all other parameters to connect via a bus.
 
@@ -528,16 +529,22 @@ The Control Center provides a basic suite of testing options to ensure that your
 available on the left side.
 
 .. note::
-    Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s. 
-    This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected.
+    Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s as the Control Center
+    sends heartbeat checks only once per second. This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected. When 
+    you are finished testing your module, please remember to reset your module's timeout value to your desired value. 
 
 .. warning::
     Please remove all propellers before interacting with any testing parameters. Failure to do so is dangerous.
 
+.. warning::
+    If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
+    This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
+    voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
+
 In order to set a testing parameter, simply enter a value into the spin box, and hit the down arrow set button. Parameters such as Coast do not have a spin box, 
 and only require that you press the set button to trigger the behavior.
 
-The testing tab for a Veritq 23-06 2200Kv looks as follows:
+The testing tab for a Vertiq 23-06 2200Kv looks as follows:
 
 .. image:: ../_static/control_center_pics/23_testing_tab.png
     :scale: 50%
@@ -546,14 +553,10 @@ Brake
 =========
 This commands the module to brake, which shorts the motor phases, which slows the motor down by dissipating energy in the motor.
 
-.. warning::
-    If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
-    This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
-    voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
-
 Coast
 =============
-Commanding a coast means that the module allows its rotor to slowly decelerate and come to a stop. It is a safe way to stop the module when testing since it does not cause the module to rapidly decelerate.
+Commanding a coast means that the module disconnects all phases, and allows the rotor to spin freely, slowly coming to a stop. It is a safe way to 
+stop the module when testing since it does not cause the module to rapidly decelerate.
 
 PWM
 ========
@@ -569,35 +572,15 @@ Voltage
 =============
 This commands the module to a specific drive voltage. A positive voltage always goes in the counterclockwise direction, and a negative voltage always goes clockwise.
 
-ESC Input
-=============
-This commands the module to spin in the same way that a typical hobby protocol used by a flight controller would, i.e. it sends an IQUART throttle command. 
-So, setting this to 0.5 will send the module a 50% throttle command with the configuration specified in this example. However, because this 
-test is meant to simulate commands from a flight controller, it is affected by the Advanced Arming feature. That means that setting this 
-parameter will not cause the module to spin until the module has armed. **By default Vertiq speed modules require 10 consecutive throttle 
-commands between 0% and 7.5% to arm. So, to arm your module using the ESC Input parameter, set the ESC Input to 0.05 to send a 5% throttle 
-command, and click the set arrow 10 times**. On the 10th time you click the set arrow, the module should play its 2 note arming song, and begin spinning. 
-Now that the module is armed, any new throttle commands sent using the ESC Input parameter will change how it is spinning. For example, setting ESC 
-Input to 0.5 should set the module to the same speed as setting the Voltage parameter to 2.5V. This is because the module is in Voltage mode with a 
-Max Volts of 5V, so a 50% throttle command will set the module to spin with a drive voltage of 2.5V. For more information on how to configure 
-the module to properly interpret throttle commands, see the Throttle Commands and Modes section of the Feature Reference Manual. For more information on 
-arming and disarming the module, refer to the Advanced Arming section of the Feature Reference Manual.
-
-Try it Yourself
-==================
-Try out some of these parameters and observe how the module spins. For example, try setting the Voltage to 2.5V, then set the ESC Input to 0.5. 
-You should observe the module staying at the same speed. You can repeat this with 5.0V and a 1.0 ESC input. Remember, to accept commands from ESC 
-Input, the module must be armed as described above. The module is now set up for basic testing with the Control Center. For integrating with a flight 
-controller, more setup is needed. Refer to the PWM and DSHOT Control with a Flight Controller and the DroneCAN Integration with a PX4 Flight Controller 
-for more details on integrating with flight controllers.
-
 *******************************************
 Updating Firmware with the Control Center
 *******************************************
 Flashing new firmware onto your module is done through the FIRMWARE tab in the Control Center, available on the left side.
 
 All module firmware can be found on your product's page on `Vertiq's website <https://www.vertiq.co/>`_.
+
 Screen Capture Example
+=================================
 The following screen capture demonstrates how to update your module's firmware through the Control Center. In this example, we will be updating a Vertiq 23-06 2200Kv configured to a baud rate of 921600.
 
 .. raw:: html
@@ -643,7 +626,7 @@ If your module fails during a firmware update for any reason, it enters into Rec
 5 tone startup sequence. If you believe your module is in recovery mode, attempt to connect it to the Control Center, and you will be guided 
 through the recovery process.
 
-The following example shows the recovery of a Veritq 40-06 G2 370Kv. The module being recovered is already in recovery mode when the example begins, 
+The following example shows the recovery of a Vertiq 40-06 G2 370Kv. The module being recovered is already in recovery mode when the example begins, 
 and the correct firmware has already been downloaded from our website.
 
 .. raw:: html
