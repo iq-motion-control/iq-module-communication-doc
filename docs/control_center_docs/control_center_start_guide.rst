@@ -612,15 +612,35 @@ Firmware Update Instructions
 5. If you've selected the correct zip archive for your folder, or if you selected a binary file, you will see a Flash button appear. 
    Click it to begin your firmware update
 
-.. image:: ../_static/control_center_pics/flash_btn.png
+   .. note::
+        If you are using a zip archive, you will be presented with up to 4 options (see below) depending on the state of your module and the release archive. 
+        Note that you may see as few as 1 option when using a zip archive. The number depends on the type of updates that are deemed to be appropriate for each release:
+           
+           * Flash App: Updates only the application code, which is the section of code that runs during normal operation.
+
+           * Flash Boot: Updates the proprietary bootloader.
+
+           * Flash Upgrade: Updates the proprietary upgrade firmware.
+
+           * Flash Combined: Updates all three sections.
+
+        **If you are unsure of which type of update to perform, it is recommended to select Flash Combined.**
+
+.. figure:: ../_static/control_center_pics/flash_btn.png
+
+    Flash Button when .bin Chosen
+
+.. figure:: ../_static/control_center_pics/all_flash_options.png
+
+    All Flash Options when .zip Chosen
 
 .. note::
-    If you’ve selected a zip archive not meant for your module, you will be shown a warning, and will not be allowed to flash that particular file as it can cause serious damage to your module.
+    If you've selected a zip archive not meant for your module, you will be shown a warning, and will not be allowed to flash that particular file as it can cause serious damage to your module.
 
 Recovering a Module from a Failed Flash
 ===========================================
 .. note::
-    Recovery mode is only available on the 40-XX and 81-XX families
+    Recovery mode is not available on the 23-XX or the Fortiq families.
 
 If your module fails during a firmware update for any reason, it enters into Recovery Mode. When the module boots into recovery mode, it will not play its 
 5 tone startup sequence. If you believe your module is in recovery mode, attempt to connect it to the Control Center, and you will be guided 
