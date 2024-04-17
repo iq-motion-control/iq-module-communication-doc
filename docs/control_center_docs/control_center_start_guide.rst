@@ -196,7 +196,7 @@ Single Module Wiring
 ---------------------------
 To communicate with a single module, simply connect the Servo JR female connector to the FTDI.
 
-**Please ensure that your USB-to-UART device's TX port is connected to your module's RX port, and your module's TX to the USB-to-UART device's RX.**
+**Please ensure that your USB-to-UART device's TX port is connected to your module's RX port, and your module's TX port to the USB-to-UART device's RX port.**
 
 A module wired for both power and serial communication attached to the aforementioned FTDI looks as follows:
 
@@ -210,9 +210,9 @@ How you do this is up to you, but you must ensure that the resulting wiring with
 
 .. image:: ../_static/control_center_pics/multi_module_serial.png
 
-We highly recommend connecting your modules together with a non-permanent, easily detachable method. Some configurations through the Control Center 
+**For initial configuration only** we highly recommend connecting your modules together with a non-permanent, easily detachable method. Some configurations through the Control Center 
 must be performed on independently connected modules before multiple can be connected at once. So, having a quick way to attach/detach modules will 
-make the process much easier. A simple way to accomplish this is with 3-pin, 100-mil header pins and a breadboard.
+make the process much easier.
 
 In order to connect with several modules at once, you will also have to configure each module's Module ID. 
 More information about this can be found :ref:`below <multi_module_config>`.
@@ -259,6 +259,10 @@ you must individually connect with it through the Control Center using the steps
     In order to communicate with multiple modules at once, they all must have the same configured serial baud rate. If they do not, you will 
     only be able to communicate with those modules with a baud rate equal to Serial Baud Rate.
 
+.. note::
+    Please ensure that your module is up to date with its latest available firmware. Older versions of firmware do not support multiple module
+    connections.
+
 Module Connection Demonstration
 ====================================
 An example of connecting with 4 Vertiq modules is presented in the screen capture below. In this example, 4 Vertiq 23-06 2200Kv 
@@ -302,7 +306,7 @@ Once you have selected your target baud rate and your USB-to-UART device's seria
 
 Connect your module to the USB-to-UART device as described :ref:`above <connection_guide>`, and power on your module. 
 
-Click the connect button in order to open serial communication between the Control Center and your module. 
+Click the CONNECT button in order to open serial communication between the Control Center and your module. 
 
 If you successfully found and communicated with a module, you will see its information appear in the :ref:`Information section <information_box>` in the bottom left. 
 You will also see the :ref:`Module Connections <module_connections>` box list the number of detected modules as non-zero. 
@@ -312,7 +316,7 @@ The CONNECT button now changes into the DISCONNECT button.
 Disconnect Button
 --------------------
 
-Clicking the disconnect button closes the serial connection between the Control Center and your connected USB-to-UART device. 
+Clicking the DISCONNECT button closes the serial connection between the Control Center and your connected USB-to-UART device. 
 Once closed, you will see a “Serial Port Disconnected” message in the top left corner, and the CONNECT button will reappear.
 
 Connection Information Example
@@ -460,7 +464,7 @@ General
 The general tab provides access to some more basic module configuration parameters. Parameters here help configure attributes necessary for properly controlling 
 your module with your desired behaviors.
 
-For example, the general tab is where you will find the :ref:`Motor Direction parameter <throttle_direction>`.
+For example, with a module with speed firmware connected, the general tab is where you will find the :ref:`Motor Direction parameter <throttle_direction>`.
 
 Tuning
 -----------
@@ -544,10 +548,13 @@ available on the left side.
 In order to set a testing parameter, simply enter a value into the spin box, and hit the down arrow set button. Parameters such as Coast do not have a spin box, 
 and only require that you press the set button to trigger the behavior.
 
-The testing tab for a Vertiq 23-06 2200Kv looks as follows:
+The testing tab for a Vertiq 23-06 2200Kv with speed firmware looks as follows:
 
 .. image:: ../_static/control_center_pics/23_testing_tab.png
     :scale: 50%
+
+The following testing parameters are available to all Vertiq modules and firmware styles. To learn more about additional testing options available on 
+your module, click the *info* icon in the Control Center. 
 
 Brake
 =========
@@ -624,7 +631,7 @@ Firmware Update Instructions
 
            * Flash Combined: Updates all three sections.
 
-        **If you are unsure of which type of update to perform, it is recommended to select Flash Combined.**
+        **If you are unsure of which type of update to perform, it is recommended to select Flash App if available, and Flash Combined otherwise.**
 
 .. figure:: ../_static/control_center_pics/flash_btn.png
 
