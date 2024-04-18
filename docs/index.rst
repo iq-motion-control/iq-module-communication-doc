@@ -25,6 +25,11 @@
    modules/vertiq_81xx_family
    modules/fortiq_42XX
 
+.. toctree::
+   :caption: IQ Control Center
+   :hidden:
+
+   control_center_docs/control_center_start_guide
 
 .. toctree::
    :caption: Messaging Protocols
@@ -39,7 +44,6 @@
    :hidden:
    :caption: Tutorials
 
-   tutorials/testing_with_control_center
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration
    tutorials/dronecan_px4_flight_controller

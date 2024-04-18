@@ -88,6 +88,8 @@ A module with its power lines and capacitor attached should look as follows
 
     23-XX Power Connections with Capacitor
 
+.. _23xx_comms:
+
 Communication - IQUART or Hobby Configuration
 ====================================================
 .. figure:: ../_static/module_pictures/23xx/23xx_comms_connection.png
