@@ -14,7 +14,7 @@ Problem Overview
 Flight controllers typically have built-in accelerometers and gyroscopes that are sensitive to high vibrations. Extreme 
 vibration can lead to bad readings from these sensors, which can lead to a range of problems, including instability and 
 rapidly oscillating actuator outputs. These oscillating actuator outputs from the flight controller can lead to your motors 
-seeming to “jitter”, switching their setpoint constantly instead of smoothly spinning. This article is intended to help with 
+seeming to “jitter,” switching their setpoint constantly instead of smoothly spinning. This article is intended to help with 
 identifying and addressing these types of vibration-induced jittering motor issues. For more information on the effects of 
 vibration on flight controllers see the PX4 wiki’s pages on `Vibration Isolation <https://docs.px4.io/main/en/assembly/vibration_isolation.html#vibration-isolation>`_ 
 and `Vibration Log Analysis <https://docs.px4.io/main/en/log/flight_review.html#vibration>`_. Ardupilot’s wiki also has useful information on how to 
@@ -89,7 +89,7 @@ There is also the option to turn on `raw FIFO high-rate data from the IMU or gyr
 look specifically at high frequencies it can be useful. This does add considerably to the logging bandwidth, so it can lead to drop-out of logging data and large log file sizes, 
 so it is best to avoid using those settings if it is not necessary.
 
-Once your logging profile is appropriately configured, run a ground or flight test to replicate the issue and generate a log. Then, upload the `log to Flight Review <https://logs.px4.io/>`_. 
+Once your logging profile is appropriately configured, safely run a test to replicate the issue and generate a log. Then, upload the `log to Flight Review <https://logs.px4.io/>`_. 
 This should generate a series of plots summarizing the data from the log. 
 
 The PX4 wiki page on `Log Analysis using Flight Review <https://docs.px4.io/main/en/log/flight_review.html>`_ provides an overview of how to use these plots to analyze the performance of your vehicle. 
@@ -105,7 +105,7 @@ The graph below shows a particularly bad example of what this can look like for 
 
         Example of Raw Sensor Data Showing Impact of Vibrations
 
-Flight Review also provides graphs of the FFT of sensor data if high-rate logging is turned on, which can help identify the specific frequencies of vibration and how severe they are. 
+Flight Review also provides graphs of the FFT of sensor data if high-rate logging is turned on. This helps identify the vibrations' specific frequencies and their severity. 
 An FFT from the previous example can be seen below, showing one quite extreme peak.
 
 .. figure:: ../_static/tutorial_images/vibration_tutorial/bad_acceleration_fft.png
@@ -115,7 +115,7 @@ An FFT from the previous example can be seen below, showing one quite extreme pe
 
         Example of Sensor Data FFT Showing Impact of Vibrations
 
-Reviewing the actuator outputs is also very useful, especially if you are having problems with your motors “jittering”. Oscillating motor outputs mean that the jitter is due to 
+Reviewing the actuator outputs is also very useful, especially if you are having problems with your motors “jittering”. Oscillating motor outputs means that the jitter is due to 
 the commands from the flight controller changing rapidly, which may mean the root cause of the issue is linked to vibration. An extreme example of these oscillating motor 
 outputs is shown below. Note how the periods of oscillation on the outputs correspond with the periods of oscillation on the raw acceleration graph that was previously shown.
 
@@ -126,8 +126,8 @@ outputs is shown below. Note how the periods of oscillation on the outputs corre
 
         Example of Oscillating Actuator Outputs Showing Impact of Flight Controller Vibrations
 
-The `actuator controls FFT <https://docs.px4.io/main/en/log/flight_review.html#actuator-controls-fft>`_ graph is also useful. Peaks on this graph indicate the frequency that the actuator outputs are oscillating at, and if they correspond with the peaks on the 
-FFTs of the sensor data, that indicates that the oscillation of the outputs is likely due to vibration. An example FFT graph is shown below, note how its peak is at a similar frequency to the peak on the acceleration FFT that was previously shown.
+The `actuator controls FFT <https://docs.px4.io/main/en/log/flight_review.html#actuator-controls-fft>`_ graph is also useful. Peaks on this graph indicate the frequency of the actuator outputs' oscillations. If they correspond with the peaks on the 
+sensor data's FFTs , that indicates that the oscillation of the outputs is likely due to vibration. An example FFT graph is shown below, note how its peak is at a similar frequency to the peak on the acceleration FFT that was previously shown.
 
 .. figure:: ../_static/tutorial_images/vibration_tutorial/bad_actuator_fft.png
         :align: center
@@ -137,13 +137,12 @@ FFTs of the sensor data, that indicates that the oscillation of the outputs is l
         Example of Actuator Output FFT Showing Impact of Flight Controller Vibrations
 
 Flight Review also provides graphs giving a general overview of the output of the PID controllers. Oscillations on these outputs corresponding with oscillations on 
-actuator output or sensor data graphs are further evidence that vibrations are negatively impacting your performance and causing your motors to jitter.
+actuator output or sensor data graphs are further evidence that vibrations are negatively impacting your performance and causing your motors to "jitter."
 
 Ardupilot
 ##########
 The Ardupilot wiki provides instructions on how to use Mission Planner to `measure and analyze vibrations <https://ardupilot.org/copter/docs/common-measuring-vibration.html#measuring-vibration>`_. 
-They also provide information on `logging raw IMU for FFT analysis <https://ardupilot.org/copter/docs/common-raw-imu-logging.html#common-raw-imu-logging>`_, 
-similarly to what was available with high-rate logging and Flight Review for PX4.
+Similarly to data available with PX4's high-rate logging and Flight Review, they also provide information on `logging raw IMU for FFT analysis <https://ardupilot.org/copter/docs/common-raw-imu-logging.html#common-raw-imu-logging>`_.
 
 Similar techniques to those discussed in the PX4 section above with Flight Review can be employed with these Mission Planner graphs. Start by checking the data from the sensors, 
 such as the VibeX, VibeY, and VibeZ data from the primary accelerometer. Periods of extreme oscillation on these readings may indicate vibration issues. 
@@ -181,11 +180,11 @@ only show the value out to two decimal places.
 
 .. figure:: ../_static/tutorial_images/vibration_tutorial/vibration_pid_adjust.png
         :align: center
-        :alt: Reducing Vibraton and Jittering By Adjusting Controller Gains
+        :alt: Reducing Vibration and Jittering By Adjusting Controller Gains
 
-        Reducing Vibraton and Jittering By Adjusting Controller Gains
+        Reducing Vibration and Jittering By Adjusting Controller Gains
 
-The specific gains that are most likely to be effective in addressing these issues will depend on your vehicle, consulting the log data from your flight controller can help 
+The specific gains that are most likely to be effective in addressing these issues will depend on your vehicle. Consulting the log data from your flight controller can help 
 determine which controller is the most problematic. More information on tuning PID gains can be found on the `PX4 <https://docs.px4.io/main/en/config_mc/pid_tuning_guide_multicopter_basic.html>`_ 
 and `Ardupilot <https://ardupilot.org/copter/docs/common-tuning.html>`_ wikis. 
 
