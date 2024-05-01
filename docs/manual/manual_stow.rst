@@ -171,7 +171,7 @@ The second method makes it possible to simply move the module to the position yo
 
 #. Move your module into the desired zero angle. Having a propeller attached to the module may make it easier to determine if you are in the desired orientation.
 #. Connect to the module with the IQ Control Center, and open the General tab.
-#. Click the :ref:`set arrow <control_center_tutorial_spinning_motor>` on the :ref:`Sample Zero Angle <stow_angle_parameters>` entry in the IQ Control Center. This will automatically set the current angle as the zero angle. 
+#. Click the :ref:`set arrow <save_button>` on the :ref:`Sample Zero Angle <stow_angle_parameters>` entry in the IQ Control Center. This will automatically set the current angle as the zero angle. 
 
 To test if the zero angle is set correctly, use the :ref:`Trigger Stow <trigger_manual_stow_iquart>` entry in the Control Center. This commands the module to the stow position. 
 Try moving the module to a different position, and then triggering the stow to confirm the module is moving to the expected position.

@@ -109,7 +109,7 @@ Mode, Maximums, and Direction
 To fully understand how a Vertiq module will interpret a throttle command, several key configurations must be covered. 
 The definition of a throttle command is covered in the :ref:`throttle_def` section.
 
-For detailed instructions on setting these parameters, see the :ref:`control_center_tutorial` and :ref:`hobby_fc_tutorial` tutorials.
+For detailed instructions on setting these parameters, see the :ref:`speed_module_start_guide` and :ref:`hobby_fc_tutorial` tutorials.
 
 .. note:: This section's descriptions of how a module will spin in response to a throttle command assume that the zero spin throttle is left at its default setting, where a 0% throttle 
     command is the zero spin throttle. The exact rate at which a module spins in response to a throttle command may differ from the descriptions in the following sections if the 

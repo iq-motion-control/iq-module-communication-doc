@@ -27,7 +27,7 @@ will cover the calibration process for a Vertiq module.
 Software and Firmware Setup
 ============================
 To follow this tutorial, ensure that your **IQ Control Center is on version 1.2.6 or later**. Earlier versions lacked some of the calibration features that will be discussed. If you
-are unfamiliar with the Control Center, refer to :ref:`control_center_tutorial` for basic usage information. 
+are unfamiliar with the Control Center, refer to :ref:`control_center_start_guide` for basic usage information. 
 
 If using a Vertiq 23-06, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 81-08, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
 modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 40-06, should calibrate correctly and have all relevant parameters with any version of the firmware.
@@ -72,7 +72,7 @@ song, then the calibration-in-progress song, and finally plays the arming song a
 Checking and Trimming Calibration with Control Center
 =====================================================
 The Control Center provides several useful parameters that can help us understand if a module calibrated properly. If you are unsure if calibration was completed successfully, check the parameters discussed below.
-**Make sure you are using Control Center version 1.2.6 or later to take advantage of these parameters.** If you are unfamiliar with Control Center, refer to :ref:`control_center_tutorial`
+**Make sure you are using Control Center version 1.2.6 or later to take advantage of these parameters.** If you are unfamiliar with Control Center, refer to :ref:`control_center_start_guide`
 
 The first parameter to check is the *Communication* parameter in the General tab. When you calibrate a module, it will set its communication type to the protocol that was used to 
 calibrate if *Communication* was previously set to *Autodetect*. Check that the *Communication* setting matches the protocol you calibrated with. If *Communication* was explicitly

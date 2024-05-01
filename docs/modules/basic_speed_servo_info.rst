@@ -33,7 +33,6 @@ Supported IQUART Clients
         
 Supported Tutorials
 =================================
-        * :ref:`control_center_tutorial`
         * :ref:`hobby_fc_tutorial`
         * :ref:`hobby_calibration_tutorial`
         * :ref:`fc_telemetry_tutorial`
