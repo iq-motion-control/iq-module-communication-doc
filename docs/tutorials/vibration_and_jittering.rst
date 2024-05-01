@@ -16,7 +16,7 @@ vibration can lead to bad readings from these sensors, which can lead to a range
 rapidly oscillating actuator outputs. These oscillating actuator outputs from the flight controller can lead to your motors 
 seeming to “jitter,” switching their setpoint constantly instead of smoothly spinning. This article is intended to help with 
 identifying and addressing these types of vibration-induced jittering motor issues. For more information on the effects of 
-vibration on flight controllers see the PX4 wiki’s pages on `Vibration Isolation <https://docs.px4.io/main/en/assembly/vibration_isolation.html#vibration-isolation>`_ 
+vibration on flight controllers, see the PX4 wiki’s pages on `Vibration Isolation <https://docs.px4.io/main/en/assembly/vibration_isolation.html#vibration-isolation>`_ 
 and `Vibration Log Analysis <https://docs.px4.io/main/en/log/flight_review.html#vibration>`_. Ardupilot’s wiki also has useful information on how to 
 `measure vibration <https://ardupilot.org/copter/docs/common-measuring-vibration.html>`_ and possible ways to 
 `dampen it <https://ardupilot.org/copter/docs/common-vibration-damping.html>`_ if you are using an Ardupilot based flight controller.
@@ -127,7 +127,7 @@ outputs is shown below. Note how the periods of oscillation on the outputs corre
         Example of Oscillating Actuator Outputs Showing Impact of Flight Controller Vibrations
 
 The `actuator controls FFT <https://docs.px4.io/main/en/log/flight_review.html#actuator-controls-fft>`_ graph is also useful. Peaks on this graph indicate the frequency of the actuator outputs' oscillations. If they correspond with the peaks on the 
-sensor data's FFTs , that indicates that the oscillation of the outputs is likely due to vibration. An example FFT graph is shown below, note how its peak is at a similar frequency to the peak on the acceleration FFT that was previously shown.
+sensor data's FFTs, that indicates that the oscillation of the outputs is likely due to vibration. An example FFT graph is shown below, note how its peak is at a similar frequency to the peak on the acceleration FFT that was previously shown.
 
 .. figure:: ../_static/tutorial_images/vibration_tutorial/bad_actuator_fft.png
         :align: center
