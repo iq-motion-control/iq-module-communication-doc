@@ -26,7 +26,7 @@ These parameters affect how your module communicates with, and is controlled by 
   To learn more about the Mode parameter see :ref:`manual_throttle`
 * Direction: this parameter is available through the General tab, and defines the direction that your module takes to be positive, either clockwise or 
   counter-clockwise. You can also configure either 2D or 3D configuration to allow for mapping negative throttle commands. 
-  For more on the Direction parameter and throttle mapping, see :ref:`throttle_direction`
+  For more on the *Direction* parameter and throttle mapping, see :ref:`throttle_direction`
 * Communication: This parameter is available through the General tab, and defines the communication protocol expected by your module as sent by the 
   flight controller. This parameter can be Standard PWM, OneShot protocols, MultiShot, or DShot protocols. To learn more see :ref:`throttle_sources`
 * Max Velocity and Max Volts: These parameters are available through the Tuning tab, and pair directly with the Mode parameter. This means that when your 

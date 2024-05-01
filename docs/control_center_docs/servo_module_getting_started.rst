@@ -24,7 +24,7 @@ Angle Controls and Maximum Angular Velocity
 ****************************************************
 
 Vertiq's servo firmware provides several methods for commanding your module to specific positions. The most basic method is a 
-direct angle command. Angle commands tell the module to spin to a specific position at the velocity specified by the Maximum Angular Velocity. 
+direct angle command. Angle commands tell the module to spin to a specific position at the velocity specified by the *Maximum Angular Velocity*. 
 To learn more about angle controls, see :ref:`control_displacements`.
 
 The Control Center's angle control testing parameter is available through the Testing tab, and the *Maximum Angular Velocity* parameter in the General tab.
@@ -72,6 +72,7 @@ in general as well as trajectory queue modes can be found :ref:`here <control_tr
     motion will occur.
 
 To test trajectory controls with the Control Center:
+
 1. Connect your module with the Control Center
 2. In the General tab, set *Maximum Angular Velocity* to 50 rad/s
 3. In the Testing tab, set *Angle* to 0 to make sure we are starting from 0 radians of displacement
@@ -82,7 +83,7 @@ To test trajectory controls with the Control Center:
 
 6. For this example, we will set only a duration and displacement. Set *Trajectory Angular Displacement* to 12.56 rad
 7. Set *Trajectory Duration* to 15s, and you will see the module start to spin
-8. While the module is still spinning, set *Trajectory Duration* to 1s, and *Trajectory Angular Displacement* to 0 rad. This will queue a second trajectory 
+8. While the module is still spinning, set *Trajectory Angular Displacement* to 0 rad, and *Trajectory Duration* to 1s. This will queue a second trajectory 
    bringing the module back to its initial position
 
 *******************************
