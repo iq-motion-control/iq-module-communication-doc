@@ -12,6 +12,9 @@ guide <control_center_start_guide>`. It walks you through Control Center install
 to all Vertiq modules and firmware types. The following document is meant to provide additional configurations and testing options available only on Vertiq's 
 speed firmware.
 
+.. note::
+    The following images are captured using IQ Control Center version 1.5.2 as connected to a Vertiq 40-06 Gen 2
+
 ************************************
 Flight Controller Parameters
 ************************************
@@ -44,9 +47,6 @@ Example Module Flight Controller Configuration and ESC Testing with the Control 
 
 Configuration
 ===================
-.. note::
-    The following images are captured using IQ Control Center version 1.5.2 as connected to a Vertiq 40-06 Gen 2
-
 Suppose that your module has the following requirements to function properly on your vehicle:
 
 #. The module must spin clockwise at all times
