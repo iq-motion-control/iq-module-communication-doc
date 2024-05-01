@@ -581,6 +581,8 @@ Voltage
 =============
 This commands the module to a specific drive voltage. A positive voltage always goes in the counterclockwise direction, and a negative voltage always goes clockwise.
 
+.. _updating_firmware_control_center:
+
 *******************************************
 Updating Firmware with the Control Center
 *******************************************

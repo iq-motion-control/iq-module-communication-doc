@@ -1,7 +1,7 @@
 Changing or Updating Firmware
 ####################################
 
-Please follow the instructions found in :ref:`updating_firmware`
+Please follow the instructions found in :ref:`updating_firmware_control_center`
 
 Getting Started
 ####################################
