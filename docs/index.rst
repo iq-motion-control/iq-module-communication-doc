@@ -30,6 +30,7 @@
    :hidden:
 
    control_center_docs/control_center_start_guide
+   control_center_docs/speed_module_getting_started
 
 .. toctree::
    :caption: Messaging Protocols
