@@ -99,7 +99,7 @@ all available in the General tab.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_servo_config.png
 
-Servo communication configuration and behavior is covered in more detail at :ref:`servo_hobby_control`.
+Servo communication configuration and behavior are covered in more detail at :ref:`servo_hobby_control`.
 
 *******************
 Next Steps
