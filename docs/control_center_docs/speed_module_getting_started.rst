@@ -9,34 +9,37 @@ Getting Started with Vertiq's Speed Firmware with IQ Control Center
 
 Before completing the following getting started guide, please ensure that you have read and completed our :ref:`IQ Control Center 
 guide <control_center_start_guide>`. It walks you through Control Center installation, module configuration, and basic testing options available 
-to all Vertiq modules and firmware types. The following document is meant to provide additional configurations and testing options available only on Vertiq's 
-speed firmware.
+to all Vertiq modules and firmware types. The following document is meant to provide additional configurations and testing options available only on Vertiq's speed firmware.
 
 .. note::
     The following images are captured using IQ Control Center version 1.5.2 as connected to a Vertiq 40-06 Gen 2
 
-************************************
-Flight Controller Parameters
-************************************
+*********************************************************
+Important Parameters for Flight Controller Integration
+*********************************************************
 
 The first set of configurations covered here are those that **must** be configured properly in order to control your module with a flight controller. 
 These parameters affect how your module communicates with, and is controlled by a flight controller. 
 
-* Mode: this parameter is available through the General tab, and defines whether your module accepts throttle commands as a voltage, a velocity, or a PWM. 
-  To learn more about the Mode parameter see :ref:`manual_throttle`
-* Direction: this parameter is available through the General tab, and defines the direction that your module takes to be positive, either clockwise or 
-  counter-clockwise. You can also configure either 2D or 3D configuration to allow for mapping negative throttle commands. 
+* **Mode**: this parameter is available through the General tab, and defines whether your module accepts throttle commands as a voltage, a velocity, or a PWM. 
+  To learn more about the Mode parameter see :ref:`throttle_mode`
+* **Direction**: this parameter is available through the General tab, and defines the direction that your module takes to be positive, either clockwise or 
+  counter-clockwise. You can also configure either 2D or 3D configuration to allow for mapping negative throttle commands.
   For more on the *Direction* parameter and throttle mapping, see :ref:`throttle_direction`
-* Communication: This parameter is available through the General tab, and defines the communication protocol expected by your module as sent by the 
+* **FC 2D/3D Mode**: This parameter is available through the General tab, and defines how ESC commands will be mapped to a throttle. To learn more see :ref:`throttle_mapping`.
+* **Communication**: This parameter is available through the General tab, and defines the communication protocol expected by your module as sent by the 
   flight controller. This parameter can be Standard PWM, OneShot protocols, MultiShot, or DShot protocols. To learn more see :ref:`throttle_sources`
-* Max Velocity and Max Volts: These parameters are available through the Tuning tab, and pair directly with the Mode parameter. This means that when your 
+* **Max Velocity and Max Volts**: These parameters are available through the Tuning tab, and pair directly with the Mode parameter. This means that when your 
   mode is set to velocity, your module will only ever map a throttle command as bounded by ± *Max Velocity*. When your mode is set to voltage, your module 
   will only ever map a throttle as bounded by ± *Max Volts*. To learn more see :ref:`throttle_maximums`
-* Arming regions: This parameter is available through the Tuning tab, and defines the throttle percentages to be treated as arming throttles. 
+
+The following set of configurations covered here are those that **can optionally** be configured in order to further customize your flight controller integration.
+
+* **Arming regions**: This parameter is available through the Tuning tab, and defines the throttle percentages to be treated as arming throttles. 
   To learn more see :ref:`throttle_regions`
-* Disarming regions This parameter is available through the Tuning tab, and defines the throttle percentages to be treated as disarming throttles. 
+* **Disarming regions**: This parameter is available through the Tuning tab, and defines the throttle percentages to be treated as disarming throttles. 
   To learn more see :ref:`throttle_regions`
-* Number of throttles for arming: This parameter is available through the Tuning tab, and defines the number of consecutively received throttle commands that 
+* **Number of throttles for arming**: This parameter is available through the Tuning tab, and defines the number of consecutively received throttle commands that 
   lie within the Arming region. To learn more see :ref:`arming_consecutive_throttles`
 
 *******************************************************************************************
@@ -79,6 +82,7 @@ To configure your module to meet these requirements:
 
    a. Set *Mode* is set to *Velocity*
    b. Set *Motor Direction* to *2D clockwise*
+   c. Set *FC 2D/3D Mode* to *2D*
 
 .. image:: ../_static/control_center_pics/speed_getting_started/speed_configured_mode.png
 
@@ -92,20 +96,11 @@ To configure your module to meet these requirements:
 
 Testing Flight Controller Configuration with IQ Control Center
 ===============================================================
-To verify your module's configuration for flight controller control, the Control Center provides a simulated ESC Input testing option in the Testing tab.
+To verify your module's configuration for flight controller control, the Control Center provides a simulated ESC Input testing option in the Testing tab. This commands the module to spin in 
+the same way that a typical hobby protocol used by a flight controller would, i.e. it sends an IQUART throttle command. So, setting this to 0.5, for example, sends the module a 50% throttle command 
+with the configuration specified above.
 
 .. image:: ../_static/control_center_pics/speed_getting_started/speed_esc_input.png
-
-This commands the module to spin in the same way that a typical :ref:`hobby protocol <hobby_protocol>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`. So, setting this
-to 0.5 will send the module a 50% throttle command with the configuration specified in this example. 
-**However, because this test is meant to simulate commands from a flight controller, it is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter will not 
-cause the module to spin until the module has armed.** By default Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So, to arm your module using the
-*ESC Input* parameter, set the *ESC Input* to 0.05 to send a 5% throttle command, and click the set arrow 10 times. On the 10th time you click the set arrow, the module should play 
-its 2 note arming song, and begin spinning. Now that the module is armed, any new throttle commands sent using the *ESC Input* parameter will change how it is spinning.
-For example, setting *ESC Input* to 0.5 should set the module to the same speed as setting the Voltage parameter to 2.5V. 
-This is because the module is in Voltage mode with a *Max Volts* of 5V, so a 50% throttle command will set the module to spin with a drive voltage of 2.5V.
-For more information on how to configure the module to properly interpret throttle commands, see the :ref:`manual_throttle` section of the Feature Reference 
-Manual. For more information on arming and disarming the module, refer to the :ref:`manual_advanced_arming` section of the Feature Reference Manual.
 
 .. note::
     Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s as the Control Center
@@ -139,7 +134,7 @@ For more on Vertiq module flight controller integration, see the following pages
 ************************************
 Stow Configuration
 ************************************
-Vertiq's speed modules larger than the 23-XX family provide a method for stopping your module into a designated position that we call stow. 
+Some Vertiq speed modules provide a method for stopping your module into a designated position that we call stow. Refer to your module's family page to see if this feature is supported.
 Parameters and testing functionality for the stow feature are available through the Control Center, and are covered in detail :ref:`here <manual_stow_position>`.
 
 ************************************
@@ -151,8 +146,8 @@ configuration through the Control Center are covered in detail :ref:`here <manua
 ************************************
 DroneCAN Configuration 
 ************************************
-Vertiq's speed modules larger than the 23-XX family provide support for the :ref:`DroneCAN protocol <dronecan_protocol>`. Your module's DroneCAN node configuration is available through the Control Center, 
-and is covered in detail :ref:`here <dronecan_fc_tutorial>`.
+Some Vertiq speed modules provide support for the :ref:`DroneCAN protocol <dronecan_protocol>`.  Refer to your module's family page to see if this feature is supported. 
+Your module's DroneCAN node configuration is available through the Control Center, and is covered in detail :ref:`here <dronecan_fc_tutorial>`.
 
 ************************************
 Timeout Configuration
