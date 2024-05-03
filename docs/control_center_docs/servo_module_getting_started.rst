@@ -13,7 +13,7 @@ to all Vertiq modules and firmware types. The following document is meant to pro
 servo firmware.
 
 .. note::
-    The following images are captured using IQ Control Center version 1.5.2 as connected to a Vertiq 40-06 Gen 1
+    The following images are captured using IQ Control Center version 1.5.2 as connected to a Vertiq 40-06 Gen 2
 
 .. warning::
     Before setting any parameters, ensure that the module is held in place securely. If the module is unsecured it could move unexpectedly when 
@@ -36,7 +36,7 @@ To test angle control with the Control Center:
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_max_angular_velo.png
 
-3. Set *Maximum Angular Velocity* to 3.14 rad/s
+3. Set *Maximum Angular Velocity* to 3.14 rad/s. For more information about the *Maximum Angular Velocity* parameter, see :ref:`control_displacements`.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_config_max_velo.png
 
@@ -90,11 +90,11 @@ To test trajectory controls with the Control Center:
 Communication Configuration
 *******************************
 Vertiq's servo firmware supports all supported :ref:`hobby_protocol`. Your module's target communication protocol can be configured in the 
-General tab under the *Communication* parameter. This parameter can be Standard PWM, a OneShot protocol, MultiShot, or a DShot protocol.
+General tab under the *Communication* parameter.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_comms_param.png
 
-The module's behavior when controlled with hobby protocols is defined by the *Servo Mode*, *Unit maximum*, and *Unit maximum* parameters, 
+The module's behavior when controlled with hobby protocols is defined by the *Servo Mode*, *Unit maximum*, and *Unit minimum* parameters, 
 all available in the General tab.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_servo_config.png

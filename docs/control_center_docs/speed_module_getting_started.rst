@@ -28,7 +28,8 @@ These parameters affect how your module communicates with, and is controlled by 
   For more on the *Direction* parameter and throttle mapping, see :ref:`throttle_direction`
 * **FC 2D/3D Mode**: This parameter is available through the General tab, and defines how ESC commands will be mapped to a throttle. To learn more see :ref:`throttle_mapping`.
 * **Communication**: This parameter is available through the General tab, and defines the communication protocol expected by your module as sent by the 
-  flight controller. This parameter can be Standard PWM, OneShot protocols, MultiShot, or DShot protocols. To learn more see :ref:`throttle_sources`
+  flight controller. This parameter can be Standard PWM, OneShot protocols, MultiShot, or DShot protocols. Please note that if you are 
+  controlling your module with :ref:`DroneCAN <dronecan_protocol>` or :ref:`IQUART <uart_messaging>`, this parameter **does not** apply. To learn more see :ref:`throttle_sources`
 * **Max Velocity and Max Volts**: These parameters are available through the Tuning tab, and pair directly with the Mode parameter. This means that when your 
   mode is set to velocity, your module will only ever map a throttle command as bounded by ± *Max Velocity*. When your mode is set to voltage, your module 
   will only ever map a throttle as bounded by ± *Max Volts*. To learn more see :ref:`throttle_maximums`
