@@ -28,20 +28,11 @@ These parameters affect how your module communicates with, and is controlled by 
   For more on the *Direction* parameter and throttle mapping, see :ref:`throttle_direction`
 * **FC 2D/3D Mode**: This parameter is available through the General tab, and defines how ESC commands will be mapped to a throttle. To learn more see :ref:`throttle_mapping`
 * **Communication**: This parameter is available through the General tab, and defines the communication protocol expected by your module as sent by the 
-  flight controller. This parameter can be Standard PWM, OneShot protocols, MultiShot, or DShot protocols. Please note that if you are 
+  flight controller when using :ref:`hobby protocols <hobby_protocol>`. This parameter can be Standard PWM, OneShot protocols, MultiShot, or DShot protocols. Please note that if you are 
   controlling your module with :ref:`DroneCAN <dronecan_protocol>` or :ref:`IQUART <uart_messaging>`, this parameter **does not** apply. To learn more see :ref:`throttle_sources`
 * **Max Velocity and Max Volts**: These parameters are available through the Tuning tab, and pair directly with the Mode parameter. This means that when your 
   mode is set to velocity, your module will only ever map a throttle command as bounded by ± *Max Velocity*. When your mode is set to voltage, your module 
   will only ever map a throttle as bounded by ± *Max Volts*. To learn more see :ref:`throttle_maximums`
-
-The following set of configurations covered here are those that **can optionally** be configured in order to further customize your flight controller integration.
-
-* **Arming regions**: This parameter is available through the Tuning tab, and defines the throttle percentages to be treated as arming throttles. 
-  To learn more see :ref:`throttle_regions`
-* **Disarming regions**: This parameter is available through the Tuning tab, and defines the throttle percentages to be treated as disarming throttles. 
-  To learn more see :ref:`throttle_regions`
-* **Number of throttles for arming**: This parameter is available through the Tuning tab, and defines the number of consecutively received throttle commands that 
-  lie within the Arming region. To learn more see :ref:`arming_consecutive_throttles`
 
 *******************************************************************************************
 Example Module Flight Controller Configuration and ESC Testing with the Control Center
@@ -60,7 +51,7 @@ Suppose that your module has the following requirements to function properly on 
 To configure your module to meet these requirements:
 
 1. Connect with your module through IQ Control Center
-2. In the General tab, find the Arm On Throttle parameter. Please note, the module used for this demonstration has been reset to factory defaults. 
+2. In the General tab, find the *Arm On Throttle* parameter. Please note, the module used for this demonstration has been reset to factory defaults. 
    If you have previously configured your module, your values may not match identically to these images
 
 .. image:: ../_static/control_center_pics/speed_getting_started/speed_default_arming_params.png
@@ -81,7 +72,7 @@ To configure your module to meet these requirements:
 
 5. Now, we will set the configurations to meet requirements 1 and the first part of 2
 
-   a. Set *Mode* is set to *Velocity*
+   a. Set *Mode* to *Velocity*
    b. Set *Motor Direction* to *2D clockwise*
    c. Set *FC 2D/3D Mode* to *2D*
 

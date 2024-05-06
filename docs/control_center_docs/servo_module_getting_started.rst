@@ -36,7 +36,7 @@ To test angle control with the Control Center:
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_max_angular_velo.png
 
-3. Set *Maximum Angular Velocity* to 3.14 rad/s. For more information about the *Maximum Angular Velocity* parameter, see :ref:`control_displacements`.
+3. Set *Maximum Angular Velocity* to 3.14 rad/s. For more information about the *Maximum Angular Velocity* parameter, see :ref:`Maximum Angular Speed`.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_config_max_velo.png
 
