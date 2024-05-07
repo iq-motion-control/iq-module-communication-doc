@@ -19,6 +19,8 @@ Position modules can also be controlled via duration based protocols such as 1-2
 Angle Control Mechanisms
 ================================
 
+.. _control_displacements:
+
 Control Displacements
 ++++++++++++++++++++++++
 The module's *Control Displacement* is a direct input target **displacement** into the position PID controller.
@@ -79,6 +81,8 @@ and then sets the displacement to :math:`\frac{\pi}{2}`, exactly as described in
 
     #Put the module into coast
     module.set("multi_turn_angle_control", "ctrl_coast")
+
+.. _control_trajectory:
 
 Control Trajectory
 ++++++++++++++++++++++++
@@ -260,6 +264,8 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
 
         module.set("multi_turn_angle_control", "trajectory_angular_displacement", 0)
         module.set("multi_turn_angle_control", "trajectory_duration", 20)
+
+.. _servo_hobby_control:
 
 Control With Duration Based Signals (PWM, DShot, OneShot, Etc.)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

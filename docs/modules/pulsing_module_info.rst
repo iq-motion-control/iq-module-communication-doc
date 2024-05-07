@@ -31,6 +31,5 @@ Supported IQUART Clients
         
 Supported Tutorials
 =============================
-        * :ref:`control_center_tutorial`
         * :ref:`up12_initial_configuration`
         * :ref:`up12_installation_tutorial`

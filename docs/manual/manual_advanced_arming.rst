@@ -497,7 +497,7 @@ The examples below cover the arming specific setup steps on a Vertiq module and 
 Using throttle regions for arming and disarming is recommended when integrating with flight controllers, as it allows for the simplest integration. 
 
 These examples cover only the additional setup needed to support arming and assume the mode, direction and unit maximums are already set appropriately on the module. 
-For examples of the initial setup of a Vertiq module see the :ref:`control_center_tutorial` tutorial and the :ref:`hobby_fc_tutorial` tutorial. 
+For examples of the initial setup of a Vertiq module see the :ref:`speed_module_start_guide` tutorial and the :ref:`hobby_fc_tutorial` tutorial. 
 For information on setting up the mode and throttle configurations for a Vertiq module, see the :ref:`manual_throttle` section.
 
 Arming and Disarming with Hobby PWM and PX4

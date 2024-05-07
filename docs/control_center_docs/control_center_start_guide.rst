@@ -437,6 +437,8 @@ Voltage to Velocity without saving or refreshing the value, we see
 From this point, there are two choices: Save or Refresh. Saving sets and saves the new value on the targeted module. Refreshing rereads the target 
 module's value, and sets it back into either the spin box or dropdown.
 
+.. _save_button:
+
 Saving is indicated by the down arrow on the right hand side
 
 .. image:: ../_static/control_center_pics/save_button.png
@@ -578,6 +580,8 @@ see :ref:`manual_velocity_control_mechanisms`
 Voltage
 =============
 This commands the module to a specific drive voltage. A positive voltage always goes in the counterclockwise direction, and a negative voltage always goes clockwise.
+
+.. _updating_firmware_control_center:
 
 *******************************************
 Updating Firmware with the Control Center
