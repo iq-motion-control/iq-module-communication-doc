@@ -34,6 +34,32 @@ These parameters affect how your module communicates with, and is controlled by 
   mode is set to velocity, your module will only ever map a throttle command as bounded by ± *Max Velocity*. When your mode is set to voltage, your module 
   will only ever map a throttle as bounded by ± *Max Volts*. To learn more see :ref:`throttle_maximums`
 
+************************************
+Arming and Disarming Configuration
+************************************
+Vertiq's speed modules provide several configuration parameters regarding the module's arming/disarming behaviors. These parameters, and their 
+configuration through the Control Center are covered in detail :ref:`here <manual_advanced_arming>`.
+
+Important arming parameters to understand for the example below are found in the :ref:`throttle_regions` section.
+
+************************************
+Timeout Configuration
+************************************
+Vertiq's speed modules provide several configuration parameters regarding the module's timeout behavior. Timeouts are triggered after a 
+configured length of time of not receiving new commands. Timeouts and their configurations are covered in detail :ref:`here <manual_timeout>`.
+
+************************************
+Stow Configuration
+************************************
+Some Vertiq speed modules provide a method for stopping your module into a designated position that we call stow. Refer to your module's family page to see if this feature is supported.
+Parameters and testing functionality for the stow feature are available through the Control Center, and are covered in detail :ref:`here <manual_stow_position>`.
+
+************************************
+DroneCAN Configuration 
+************************************
+Some Vertiq speed modules provide support for the :ref:`DroneCAN protocol <dronecan_protocol>`.  Refer to your module's family page to see if this feature is supported. 
+Your module's DroneCAN node configuration is available through the Control Center, and is covered in detail :ref:`here <dronecan_fc_tutorial>`.
+
 *******************************************************************************************
 Example Module Flight Controller Configuration and ESC Testing with the Control Center
 *******************************************************************************************
@@ -122,30 +148,6 @@ For more on Vertiq module flight controller integration, see the following pages
 
 * :ref:`hobby_fc_tutorial`
 * :ref:`dronecan_fc_tutorial`
-
-************************************
-Stow Configuration
-************************************
-Some Vertiq speed modules provide a method for stopping your module into a designated position that we call stow. Refer to your module's family page to see if this feature is supported.
-Parameters and testing functionality for the stow feature are available through the Control Center, and are covered in detail :ref:`here <manual_stow_position>`.
-
-************************************
-Arming and Disarming Configuration
-************************************
-Vertiq's speed modules provide several configuration parameters regarding the module's arming/disarming behaviors. These parameters, and their 
-configuration through the Control Center are covered in detail :ref:`here <manual_advanced_arming>`.
-
-************************************
-DroneCAN Configuration 
-************************************
-Some Vertiq speed modules provide support for the :ref:`DroneCAN protocol <dronecan_protocol>`.  Refer to your module's family page to see if this feature is supported. 
-Your module's DroneCAN node configuration is available through the Control Center, and is covered in detail :ref:`here <dronecan_fc_tutorial>`.
-
-************************************
-Timeout Configuration
-************************************
-Vertiq's speed modules provide several configuration parameters regarding the module's timeout behavior. Timeouts are triggered after a 
-configured length of time of not receiving new commands. Timeouts and their configurations are covered in detail :ref:`here <manual_timeout>`.
 
 *******************
 Next Steps
