@@ -55,6 +55,12 @@ Vertiq's speed modules provide several configuration parameters regarding the mo
 configured length of time of not receiving new commands. Timeouts and their configurations are covered in detail :ref:`here <manual_timeout>`.
 
 ************************************
+Pulsing Torque Angle
+************************************
+This parameter is available through the General tab, and defines a correction factor for the difference between the torque vector and the torque induced by 
+the force vector. Please read :ref:`correcting_underactuated_torque` to learn more about properly setting this value for your vehicle.
+
+************************************
 Pulsing Frequency
 ************************************
 This parameter is available through the General tab, and defines the number of pulses that happen per module rotation. This can be useful if the motor 
@@ -71,7 +77,7 @@ In *Supply Voltage* mode, the supply voltage is used as the maximum pulsing volt
 ************************************
 Pulsing Voltage Limit
 ************************************
-This parameter is available through the Tuning tab, and determines the maximum voltage to be applied to pulsing when *Pulsing Voltage Mod* is set to *Voltage Limit Mode*.
+This parameter is available through the Tuning tab, and determines the maximum voltage to be applied to pulsing when *Pulsing Voltage Mode* is set to *Voltage Limit Mode*.
 
 *****************************************************************************************
 Example Module Flight Controller and Pulsing Configuration with the Control Center
