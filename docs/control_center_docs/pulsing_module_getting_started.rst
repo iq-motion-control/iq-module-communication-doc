@@ -70,14 +70,16 @@ is not directly driving the propeller.
 Pulsing Voltage Mode
 ************************************
 This parameter is available through the General tab, and determines how the module decides on its maximum pulsing voltage for scaling incoming pulsing commands. 
-In *Supply Voltage* mode, the supply voltage is used as the maximum pulsing voltage. In *Voltage Limit* mode, the maximum pulsing voltage is specified by :ref:`pulsing_voltage_limit`.
+In *Supply Voltage* mode, the supply voltage is used as the maximum pulsing voltage. In *Voltage Limit* mode, the maximum pulsing voltage is specified by :ref:`pulsing_voltage_limit`. 
+To learn more please read :ref:`controlling_ifci`.
 
 .. _pulsing_voltage_limit:
 
 ************************************
 Pulsing Voltage Limit
 ************************************
-This parameter is available through the Tuning tab, and determines the maximum voltage to be applied to pulsing when *Pulsing Voltage Mode* is set to *Voltage Limit Mode*.
+This parameter is available through the Tuning tab, and determines the maximum voltage to be applied to pulsing when *Pulsing Voltage Mode* is set to *Voltage Limit Mode*. 
+To learn more please read :ref:`controlling_ifci`.
 
 *****************************************************************************************
 Example Module Flight Controller and Pulsing Configuration with the Control Center
