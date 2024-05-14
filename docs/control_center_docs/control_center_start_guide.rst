@@ -196,7 +196,8 @@ Single Module Wiring
 ---------------------------
 To communicate with a single module, simply connect the Servo JR female connector to the FTDI.
 
-**Please ensure that your USB-to-UART device's TX port is connected to your module's RX port, and your module's TX port to the USB-to-UART device's RX port.**
+.. note::
+    Please ensure that your USB-to-UART device's TX port is connected to your module's RX port, and your module's TX port to the USB-to-UART device's RX port.
 
 A module wired for both power and serial communication attached to the aforementioned FTDI looks as follows:
 
@@ -228,15 +229,15 @@ IQ Control Center GUI Overview
 There are 5 major sections of the Control Center interface, which have been highlighted
 with colored boxes in the figure above and are described below:
 
-* The :red:`Tabs` section lists the different tabs of the Control Center that are available when connected to a module. Each tab offers access to different configuration parameters and functionality. The settings in these tabs will be covered in greater detail later.
+#. The :red:`Tabs` section lists the different tabs of the Control Center that are available when connected to a module. Each tab offers access to different configuration parameters and functionality. The settings in these tabs will be covered in greater detail later.
 
-* The :green:`Information` section lists information about the Control Center and connected module, if there is one. When there is no module connected, this only lists the Control Center version. When a module is connected, this will also list its Firmware Version, Firmware Style, Hardware Style, Bootloader Version, and Upgrader Version. Check this information to make sure you are using the proper hardware with the latest firmware. You can check for new firmware under the Modules section of the Vertiq website.
+#. The :green:`Information` section lists information about the Control Center and connected module, if there is one. When there is no module connected, this only lists the Control Center version. When a module is connected, this will also list its Firmware Version, Firmware Style, Hardware Style, Bootloader Version, and Upgrader Version. Check this information to make sure you are using the proper hardware with the latest firmware. You can check for new firmware under the Modules section of the Vertiq website.
 
-* The :blue:`Module Connections` section is used to connect to modules. You can select the baud rate and the serial port to use for the module you want to connect to. The serial port is determined by the name of the serial port used by your USB-to-UART converter. See the :ref:`serial_port` section for more details on how to determine that port name.
+#. The :blue:`Module Connections` section is used to connect to modules. You can select the baud rate and the serial port to use for the module you want to connect to. The serial port is determined by the name of the serial port used by your USB-to-UART converter. See the :ref:`serial_port` section for more details on how to determine that port name.
 
-* The :gold:`Display` section displays information, configuration parameters, and controls relevant to your current tab. When you change tabs, the controls and information shown here will change. This is where the majority of your interactions with a connected module will take place.
+#. The :gold:`Display` section displays information, configuration parameters, and controls relevant to your current tab. When you change tabs, the controls and information shown here will change. This is where the majority of your interactions with a connected module will take place.
 
-* The :purple:`Messages` section displays information about the Control Center that can be useful for understanding what state the Control Center is in and debugging connection problems. Check here if you are having connection issues for feedback.
+#. The :purple:`Messages` section displays information about the Control Center that can be useful for understanding what state the Control Center is in and debugging connection problems. Check here if you are having connection issues for feedback.
 
 **********************************
 Connecting With your Module(s)
@@ -429,21 +430,20 @@ Saving and Refreshing
 With a spin box, you can either type in a new value or use the up and down arrows to change the value. With a dropdown menu, 
 simply click the box to list the options available, and click on the value you would like to set.
 
-Values that have been changed but not saved are indicated by a * icon. For example, if you change *Mode* from 
+Values that have been changed but not saved are indicated by an asterisk (*) icon. For example, if you change *Mode* from 
 Voltage to Velocity without saving or refreshing the value, we see
 
 .. image:: ../_static/control_center_pics/mode_changed.png
 
-From this point, there are two choices: Save or Refresh. Saving sets and saves the new value on the targeted module. Refreshing rereads the target 
-module's value, and sets it back into either the spin box or dropdown.
+From this point, there are two choices: Save or Refresh. 
 
 .. _save_button:
 
-Saving is indicated by the down arrow on the right hand side
+* **Saving** sets and saves the new value on the targeted module. Saving is indicated by the down arrow on the right hand side
 
 .. image:: ../_static/control_center_pics/save_button.png
 
-Refresh is indicated by the circular arrow
+* **Refreshing** rereads the target module's value, and sets it back into either the spin box or dropdown. Refresh is indicated by the circular arrow
 
 .. image:: ../_static/control_center_pics/refresh.png
 
