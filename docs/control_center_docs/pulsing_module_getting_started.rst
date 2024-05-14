@@ -39,10 +39,10 @@ These parameters affect how your module communicates with, and is controlled by 
   mode is set to velocity, your module will only ever map a throttle command as bounded by ± *Max Velocity*. When your mode is set to voltage, your module 
   will only ever map a throttle as bounded by ± *Max Volts*. To learn more see :ref:`throttle_maximums`
 
-*******************************
-IFCI Configuration Parameters
-*******************************
-If you are controlling your pulsing module with :ref:`IFCI <controlling_ifci>`, you must configure your module's IFCI control value indices for 
+**************************************************************
+IQUART Flight Controller Interface Configuration Parameters
+**************************************************************
+If you are controlling your pulsing module with the :ref:`IQUART Flight Controller Interface (IFCI) <controlling_ifci>`, you must configure your module's IFCI control value indices for 
 throttle, X, and Y commands. These parameters are available through the General tab as *Throttle Control Value Index*, *X Control Value Index*, and *Y Control Value Index*. 
 More information about these control values can be found at the link above.
 
