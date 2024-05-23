@@ -76,6 +76,8 @@ we will be using a pre-tinned XT-30 male connector. Simply solder the connector'
 
         Vertiq 40-XX with Power Connectors
 
+.. _40xx_comms:
+
 Communication
 ================
 

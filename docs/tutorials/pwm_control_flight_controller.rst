@@ -30,7 +30,7 @@ The Vertiq 81-08 is powered through its XT-60 connector from a benchtop power su
 datasheet on the `Vertiq website <https://www.vertiq.co/>`_.
 
 When setting the configuration parameters on the module through Control Center, it should be connected to a PC with a USB-to-UART converter. 
-For more details on how to use the Control Center with a module, refer to :ref:`control_center_tutorial`.
+For more details on how to use the Control Center with a module, refer to :ref:`control_center_start_guide`.
 
 When testing with the flight controller, the pins of the 81-08 must be connected to the
 appropriate output pins of the flight controller. The exact position or labeling of the output pins on your flight controller will vary depending on the specific
@@ -72,7 +72,7 @@ Firmware and Software Versions
 
 This tutorial was tested with IQ Control Center version 1.3.4. It should also be applicable to future versions of the Control Center, but there
 may be some slight differences in the number of parameters available on tabs or the exact names of parameters and settings. The version of your Control Center
-can be seen in the Information tab, as shown in the image below. For more information on how to use the Control Center, refer to :ref:`control_center_tutorial`.
+can be seen in the Information tab, as shown in the image below. For more information on how to use the Control Center, refer to :ref:`control_center_start_guide`.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_version.png
     :align: center
@@ -84,7 +84,7 @@ can be seen in the Information tab, as shown in the image below. For more inform
 
 
 For module firmware, you can check the firmware version and style on your module by connecting to it with the Control Center and referring to the Information section, as shown in the image below. 
-For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_tutorial`. You can check for updated firmware under the `Products <https://www.vertiq.co>`_ section of the Vertiq website.  
+For more information on how to use the Control Center to check and update firmware, refer to :ref:`control_center_start_guide`. You can check for updated firmware under the `Products <https://www.vertiq.co>`_ section of the Vertiq website.  
 
 For the Vertiq 81-08, this tutorial was tested using speed firmware version 0.0.7. Future firmware versions should also be compatible, but if you are using an 81-08 it is recommended that your 
 81-08 is on at least version 0.0.7 when following this tutorial. The image below shows the firmware version of the module in Control Center.
@@ -118,7 +118,7 @@ This will prime the module for defaulting. See the figure below for an example o
 
 Then, find the *Revert to Factory Defaults* configuration parameter and click the set arrow. The module should disconnect and reboot. When you re-connect, 
 it should be in its factory fresh state. For more information on how to connect to the module in Control Center and to set parameters, refer 
-to :ref:`control_center_tutorial`. 
+to :ref:`control_center_start_guide`. 
 
 .. _hobby_fc_tutorial_motor_configuration:
 
@@ -129,7 +129,7 @@ Module Configuration
      This could damage the module, its connectors, or any nearby observers.
 
 Now that the module is set up, you can begin configuring it with Control Center. The General tab and the Tuning tab are the only tabs with parameters that need to be configured.
-If you are unfamiliar with setting parameters through the Control Center, refer to :ref:`control_center_tutorial`.
+If you are unfamiliar with setting parameters through the Control Center, refer to :ref:`control_center_start_guide`.
 
 General Tab
 ***********
