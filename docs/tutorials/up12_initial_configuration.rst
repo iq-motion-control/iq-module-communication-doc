@@ -10,7 +10,7 @@
 Setting up the |motor_name| for the |propeller_name|
 ****************************************************
 
-For the |propeller_name| to create control torque, the |motor_name| must have the appropriate firmware and settings applied. You can download the pulsing firmware for the |motor_name| on the `underactuated propeller page <https://www.vertiq.co/up12>`_. To flash the downloaded firmware use the instructions in :ref:`updating_firmware`.
+For the |propeller_name| to create control torque, the |motor_name| must have the appropriate firmware and settings applied. You can download the pulsing firmware for the |motor_name| on the `underactuated propeller page <https://www.vertiq.co/up12>`_. To flash the downloaded firmware use the instructions in :ref:`updating_firmware_control_center`.
 
 Once the firmware is flashed, connect the module to IQ Control Center and go to the ‘General’ tab.
 
