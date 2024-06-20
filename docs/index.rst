@@ -117,7 +117,7 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Vertiq 40-XX Family
-     - .. figure:: ./_static/module_pictures/60xx/60xx_isolated.png
+     - .. figure:: ./_static/module_pictures/60xx/40xx_family.png
             :target: modules/vertiq_60xx_family.html
             :alt: Vertiq 60-XX Family
             :align: center
