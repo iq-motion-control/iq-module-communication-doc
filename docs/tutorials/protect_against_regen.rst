@@ -9,8 +9,8 @@ Configuring Your Module to Protect Against Regeneration Voltage Spikes
 
 What are Regenerative Voltage Spikes
 =======================================
-Regeneration voltage occurs when the commanded module voltage is less than the voltage caused by its back-EMF voltage. When this occurs, the motor's kinetic 
-energy is converted directly to electrical energy, and produces a current flowing out of the motor, and into the power source.
+Regeneration voltage occurs when the commanded module voltage is less than the module's back-EMF voltage. When this occurs, the motor's kinetic 
+energy is converted directly to electrical energy, and produces a current flowing out of the motor and into the power source.
 
 How Can Regeneration Affect Your Module
 =========================================
