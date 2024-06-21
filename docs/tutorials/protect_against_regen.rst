@@ -14,11 +14,10 @@ energy is converted directly to electrical energy, and produces a current flowin
 
 How Can Regeneration Affect Your Module
 =========================================
-In the case that the module's power source can absorb the regenerated current such as a battery, capacitor, etc., then the overall system voltage will remain roughly 
-constant. When the overall system voltage remains roughly constant, there is no risk of damage to your module due to regeneration voltage spikes. 
-In the case that the power supply (such as a benchtop power supply) cannot absorb the regenerated energy, however, the overall system voltage will increase. 
-These spikes can result in voltages above the module's **and** your supply's maximum rated operating voltage. When this happens, you can permanently damage the module, 
-the power supply, or both.
+If the module's power source can absorb the regenerated current without allowing the voltage to spike, regeneration protection isn't needed. This is often true with a battery as the power source.
+When connected to a less than constant voltage source, like a benchtop power supply, the overall system voltage will increase during regeneration. 
+These spikes can result in voltages above the module's and your supply's maximum rated operating voltage. When this happens, you can permanently damage the module, the power supply, or both. 
+When this happens, you can permanently damage the module, the power supply, or both.
 
 Protecting Against Dangerous Regeneration Voltage Spikes
 ===========================================================
@@ -38,8 +37,11 @@ negative supply current produced, reducing the produced regenerative voltage.
     These configuration parameters define **system voltages**. For example, if your module has a maximum voltage rating of 14S (or 58.8V), but your power supply has a 
     maximum rating of 30V, the values of Volts Limit Starting Voltage and Volts Limit must be set according to the absolute 30V maximum.
 
-    By default, all Vertiq modules are configured with the module assumed as the lowest maximum voltage limit. In order to protect your power supply and module, 
+    As another example, suppose you want to power your Vertiq 60-08 (rated up to 12S) with a 6S power supply. In this case, you would set your voltage limits based on the
+    6S power supply.
+
+    By default, Vertiq modules have these values set to protect the module's circuits while operating with the supplied voltage at its maximum rating. In order to protect your power supply and module, 
     please ensure that your configured voltage limits are set according to the **system's lowest maximum voltage rating**.
 
-* **Volts Limit Starting Voltage** defines the value (in volts) at which the module will begin limiting regeneration. The value of Volts Limit Starting Voltage must always be at least 1V below Volts Limit.
+* **Volts Limit Starting Voltage** defines the value (in volts) at which the module will begin checking if any limits on regeneration need to be applied. The value of Volts Limit Starting Voltage must always be at least 1V below Volts Limit.
 * **Volts Limit** defines the absolute maximum supply voltage the module will apply. In some extreme instances, your module may apply a voltage higher than the configured Volts Limit. In order to handle this properly, ensure that there is a buffer between the absolute maximum allowable system voltage and the value of Volts Limit. For example, if your system can handle a maximum of 30V, your Volts Limit may be 27V.
