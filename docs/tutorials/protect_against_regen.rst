@@ -13,7 +13,7 @@ Regeneration voltage occurs when the commanded module voltage is less than the m
 energy is converted directly to electrical energy, and produces a current flowing out of the motor and into the power source.
 
 The commanded module voltage may be less than the back-EMF voltage in cases where the module is slowing down or braking. The faster that the commanded voltage 
-changes (for example, jumping from a 20V to a 0V command), the more back-EMF generated.
+changes (for example, jumping from a 20V to a 0V command), the greater the magnitude of the regeneration current.
 
 How Can Regeneration Affect Your Module
 =========================================
@@ -26,7 +26,7 @@ Protecting Against Dangerous Regeneration Voltage Spikes
 Regenerative voltage spikes can pose a threat to your modules and power supply if not properly controlled. As such, all Vertiq modules can limit their regeneration current to limit the magnitude of voltage spikes on power supplies. 
 Vertiq modules have two main parameters to protect against dangerous regeneration voltage spikes. They are available through IQ Control Center's advanced tab as *Volts Limit* and *Volts Limit Starting Voltage*.
 
-For example, by default on Vertiq 81-XX family modules (rated to 14S), you will see:
+For example, by default on Vertiq 81-XX Gen 2 family modules (rated to 14S), you will see:
 
 .. image:: ../_static/control_center_pics/regen_params.png
         :alt: Regeneration Parameters in IQ Control Center
