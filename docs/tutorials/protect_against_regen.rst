@@ -12,18 +12,19 @@ What are Regenerative Voltage Spikes
 Regeneration voltage occurs when the commanded module voltage is less than the module's back-EMF voltage. When this occurs, the motor's kinetic 
 energy is converted directly to electrical energy, and produces a current flowing out of the motor and into the power source.
 
+The commanded module voltage may be less than the back-EMF voltage in cases where the module is slowing down or braking. The faster the deceleration, the more 
+back-EMF produced.
+
 How Can Regeneration Affect Your Module
 =========================================
 If the module's power source can absorb the regenerated current without allowing the voltage to spike, regeneration protection isn't needed. This is often true with a battery as the power source.
-When connected to a less than constant voltage source, like a benchtop power supply, the overall system voltage will increase during regeneration. 
-These spikes can result in voltages above the module's and your supply's maximum rated operating voltage. When this happens, you can permanently damage the module, the power supply, or both. 
-When this happens, you can permanently damage the module, the power supply, or both.
+When connected to a power source that cannot absorb this regenerated current, which is generally the case with benchtop power supplies, the output voltage of the source will often increase during regeneration. 
+These spikes can result in voltages above the module's and your supply's maximum rated operating voltage. When this happens, you can permanently damage the module, the power supply, or both.
 
 Protecting Against Dangerous Regeneration Voltage Spikes
 ===========================================================
-Regenerative voltage spikes pose a serious threat to both your modules and your power supply. As such, all Vertiq modules are able to self-limit the amount of 
-regeneration voltage produced. Vertiq modules have two main parameters to protect against dangerous regeneration voltage spikes. They are available through IQ Control Center's advanced tab as 
-*Volts Limit* and *Volts Limit Starting Voltage*.
+Regenerative voltage spikes can pose a threat to your modules and power supply if not properly controlled. As such, all Vertiq modules can limit their regeneration current to limit the magnitude of voltage spikes on power supplies. 
+Vertiq modules have two main parameters to protect against dangerous regeneration voltage spikes. They are available through IQ Control Center's advanced tab as *Volts Limit* and *Volts Limit Starting Voltage*.
 
 For example, by default on Vertiq 81-XX family modules (rated to 14S), you will see:
 
@@ -31,11 +32,11 @@ For example, by default on Vertiq 81-XX family modules (rated to 14S), you will 
         :alt: Regeneration Parameters in IQ Control Center
 
 In short, these two values work together in order to limit the rate at which your module will slow down or apply a braking force. In doing so, the module limits the amount of 
-negative supply current produced, reducing the produced regenerative voltage.
+negative supply current produced, reducing the voltage spike produced by the power supply.
 
 .. note::
     These configuration parameters define **system voltages**. For example, if your module has a maximum voltage rating of 14S (or 58.8V), but your power supply has a 
-    maximum rating of 30V, the values of Volts Limit Starting Voltage and Volts Limit must be set according to the absolute 30V maximum.
+    maximum rating of 30V, the values of Volts Limit Starting Voltage and Volts Limit must be set according to the power supply's absolute 30V maximum.
 
     As another example, suppose you want to power your Vertiq 60-08 (rated up to 12S) with a 6S power supply. In this case, you would set your voltage limits based on the
     6S power supply.
