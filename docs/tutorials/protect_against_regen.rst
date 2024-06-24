@@ -12,8 +12,8 @@ What are Regenerative Voltage Spikes
 Regeneration voltage occurs when the commanded module voltage is less than the module's back-EMF voltage. When this occurs, the motor's kinetic 
 energy is converted directly to electrical energy, and produces a current flowing out of the motor and into the power source.
 
-The commanded module voltage may be less than the back-EMF voltage in cases where the module is slowing down or braking. The faster the deceleration, the more 
-back-EMF produced.
+The commanded module voltage may be less than the back-EMF voltage in cases where the module is slowing down or braking. The faster that the commanded voltage 
+changes (for example, jumping from a 20V to a 0V command), the more back-EMF generated.
 
 How Can Regeneration Affect Your Module
 =========================================
