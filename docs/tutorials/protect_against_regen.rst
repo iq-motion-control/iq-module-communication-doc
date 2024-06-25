@@ -26,7 +26,7 @@ Protecting Against Dangerous Regeneration Voltage Spikes
 Regenerative voltage spikes can pose a threat to your modules and power supply if not properly controlled. As such, all Vertiq modules can limit their regeneration current to limit the magnitude of voltage spikes on power supplies. 
 Vertiq modules have two main parameters to protect against dangerous regeneration voltage spikes. They are available through IQ Control Center's advanced tab as *Volts Limit* and *Volts Limit Starting Voltage*.
 
-For example, by default on Vertiq 81-XX Gen 2 family modules (rated to 14S), you will see:
+For example, by default on modules rated to 14S, you will see:
 
 .. image:: ../_static/control_center_pics/regen_params.png
         :alt: Regeneration Parameters in IQ Control Center
@@ -38,11 +38,16 @@ negative supply current produced, reducing the voltage spike produced by the pow
     These configuration parameters define **system voltages**. For example, if your module has a maximum voltage rating of 14S (or 58.8V), but your power supply has a 
     maximum rating of 30V, the values of Volts Limit Starting Voltage and Volts Limit must be set according to the power supply's absolute 30V maximum.
 
-    As another example, suppose you want to power your Vertiq 60-08 (rated up to 12S) with a 6S power supply. In this case, you would set your voltage limits based on the
+    As another example, suppose you want to power your module rated up to 12S with a 6S power supply. In this case, you would set your voltage limits based on the
     6S power supply.
 
     By default, Vertiq modules have these values set to protect the module's circuits while operating with the supplied voltage at its maximum rating. In order to protect your power supply and module, 
     please ensure that your configured voltage limits are set according to the **system's lowest maximum voltage rating**.
 
-* **Volts Limit Starting Voltage** defines the value (in volts) at which the module will begin checking if any limits on regeneration need to be applied. The value of Volts Limit Starting Voltage must always be at least 1V below Volts Limit.
-* **Volts Limit** defines the absolute maximum supply voltage the module will apply. In some extreme instances, your module may apply a voltage higher than the configured Volts Limit. In order to handle this properly, ensure that there is a buffer between the absolute maximum allowable system voltage and the value of Volts Limit. For example, if your system can handle a maximum of 30V, your Volts Limit may be 27V.
+* **Volts Limit Starting Voltage** defines the value (in volts) at which the module will begin checking if any limits on regeneration need to be applied. A 0V limit means 
+  that regeneration voltage protection is always enabled. A limit configured just below the Volts Limit enables maximum braking under normal conditions, and enables protection 
+  only during voltage spikes.
+  
+* **Volts Limit** defines the absolute maximum supply voltage the module will apply. In some extreme instances, your module may apply a voltage higher than the configured Volts Limit. In order to handle this properly, ensure that there is a buffer between the absolute maximum allowable system voltage and the value of Volts Limit. 
+  For example, if your system can handle a maximum of 30V, your Volts Limit may be 27V. Never set Volts Limit below the maximum supply voltage. For example, if you're using a 6S 
+  battery with a maximum voltage of 25.2V, never set Volts Limit at or below 25.2V. Violating this rule may cause the motor to run away to its maximum speed.
