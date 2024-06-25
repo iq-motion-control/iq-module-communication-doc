@@ -22,6 +22,7 @@
    
    modules/vertiq_23xx_family
    modules/vertiq_40xx_family
+   modules/vertiq_60xx_family
    modules/vertiq_81xx_family
    modules/fortiq_42XX
 
@@ -55,6 +56,7 @@
    tutorials/up12_initial_configuration
    tutorials/motor_noise_debugging
    tutorials/vibration_and_jittering
+   tutorials/protect_against_regen
 
 .. toctree::
    :hidden:
@@ -115,6 +117,12 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Vertiq 40-XX Family
+     - .. figure:: ./_static/module_pictures/60xx/60xx_isolated.png
+            :target: modules/vertiq_60xx_family.html
+            :alt: Vertiq 60-XX Family
+            :align: center
+            
+            Vertiq 60-XX Family
      - .. figure:: ./_static/module_pictures/81xx/81xx_family.png
             :target: modules/vertiq_81xx_family.html
             :alt: Vertiq 81-XX Family

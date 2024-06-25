@@ -671,6 +671,27 @@ and the correct firmware has already been downloaded from our website.
     </style>
     <video class='center_vid' controls><source src="../_static/control_center_pics/recovery_screen_cap.mp4" type="video/mp4"></video>
 
+****************************************************
+Resetting Your Module to Factory Default Settings
+****************************************************
+
+In order to revert all module parameters to their default factory settings, please use the following steps.
+
+1. Navigate to the Advanced tab
+2. Locate Revert to Factory Default Key 1. Note that in order to fully reset your module to factory settings, you must first correctly enter the two key values
+
+.. image:: ../_static/control_center_pics/unset_revert_keys.png
+
+3. In Revert to Factory Default Key 1, enter 12345678, and hit the save button
+4. In Revert to Factory Default Key 2, enter 11223344, and hit the save button
+
+.. image:: ../_static/control_center_pics/set_revert_keys.png
+
+5. Now, select the save button on Revert to Factory Defaults, and your module should restart automatically. You will hear it play its five-beep startup song, and it will disconnect from the Control Center
+
+At this point, all parameters that were altered and saved to persistent memory will be reset to their values programmed during manufacturing.
+
+
 ****************************
 Control Center Support
 ****************************

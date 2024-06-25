@@ -44,6 +44,8 @@ Supported Tutorials
         * :ref:`dronecan_fc_tutorial`
         * :ref:`fc_telemetry_tutorial`
         * :ref:`motor_noise_debugging`
+        * :ref:`vibration_and_jittering`
+        * :ref:`protect_against_regen`
 
 Servo Module
 ****************************
