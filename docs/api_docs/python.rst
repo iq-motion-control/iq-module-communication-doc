@@ -51,7 +51,8 @@ initialization.
 1. A serial communicator object
 2. Optionally, a module ID (``module_idn``)
 
-  * This represents the module ID of the device you would like to communicate with. If your module has its module ID configured to 26, you must set ``module_idn`` to 26 in object instantiation.
+  * This represents the module ID of the device you would like to communicate with. If your module has its module ID configured to 26, you must set ``module_idn`` to 26 in object instantiation. 
+    By default, all modules have an ID of 0.
 
 3. Optionally, a firmware style (``firmware``)
 

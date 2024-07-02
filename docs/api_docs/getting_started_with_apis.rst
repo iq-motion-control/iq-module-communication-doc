@@ -20,7 +20,7 @@ If you intend to use the API in an embedded system, we recommend using the C++ o
 What Can the APIs Do
 ========================
 Essentially, each API is a language and hardware specific implementation of the IQUART protocol with access to information about each of the IQUART clients. 
-An IQUART client is a set of parameters or controls (known as IQUART entries) that allow you to directly configure your module. 
+Each IQUART client contains a set of IQUART entries which are parameters that allow you to directly configure and control your module. 
 For example, through the :ref:`propeller_motor_controller` Client, you find PID tuning parameters as well as control commands 
 such as velocity and voltage. For a full list of the clients supported by your module, please see your module's family page. 
 For a full listing of all IQUART clients please refer to the :ref:`iquart_client_reference_tables`. 
@@ -28,7 +28,7 @@ For a full listing of all IQUART clients please refer to the :ref:`iquart_client
 How to Interact with IQUART Clients and Entries
 --------------------------------------------------
 IQUART entries can have up to three interactions: getting, setting, and saving. The interactions available are specific to each entry, and are specified in 
-the :ref:`iquart_client_reference_tables`. A Get command requests the value of a given parameter, and stores the module's reply. A Set command tells the module to 
+the :ref:`iquart_client_reference_tables`. A Get command requests the value of a given parameter, and returns the module's reply. A Set command tells the module to 
 change a parameter's value. A Save command tells the module to store the current parameter value into persistent memory so that it is retained through power cycles.
 
 The specifics of getting, setting, and saving are dependent on your specific API. To learn more, please read the manual for your API.
