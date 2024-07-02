@@ -74,7 +74,7 @@ Please use the following to create the correct object for your module type:
 
 Additionally, there are generic ``SpeedModule`` and ``ServoModule`` objects with access to the most basic IQUART endpoints for the associated firmware style.
 
-For example, suppose you want to interact with a Vertiq 40-06 using speed firmware whose module ID is 42, and has extra client files located in a folder with the path “clients.” To do so:
+Suppose you want to interact with a Vertiq 40-06 using speed firmware whose module ID is 42, and has extra client files located in a folder with the path “clients.” To do so:
 
 1. Create a ``SerialCommunicator`` object as described above (in this case the USB-to-UART is on port COM3)
 2. Create a variable ``client_files`` with the path to your additional client json files
