@@ -9,6 +9,7 @@
    :titlesonly:
    :hidden:
 
+   api_docs/getting_started_with_apis
    api_docs/python
    api_docs/arduino
    api_docs/cpp

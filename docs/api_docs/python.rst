@@ -1,254 +1,91 @@
 .. _getting_started_python_api:
 
-***************************
+******************************
 Getting Started with Python
-***************************
+******************************
 
-The Python API library contains everything required to open a serial port and get/set/save values on a module 
-
-Installing Python API
-=====================
-
-.. code-block:: shell
-    
-    pip install iqmotion
-
-or
-
-.. code-block:: shell
-    
-    pipenv install iqmotion
-
-
+Installation
+==================
 .. note::
-    We heavily recommend to manage your projects with some sort of venv.
-    We prefer to use pipenv. 
-    Installing Pipenv for `(Win & Mac) <https://medium.com/@mahmudahsan/how-to-use-python-pipenv-in-mac-and-windows-1c6dc87b403e>`_ / `(Linux) <https://github.com/pypa/pipenv>`_
+    We heavily recommend to manage your projects with some sort of virtual environment, for example Pipenv. For instructions to install Pipenv for Mac or Windows click `here <https://medium.com/@mahmudahsan/how-to-use-python-pipenv-in-mac-and-windows-1c6dc87b403e>`_. For installation instructions for Linux click `here <https://github.com/pypa/pipenv>`_.
 
+Installing with Pipenv
+-----------------------------
+In order to install the Vertiq python API into your pipenv virtual environment, simply run ``pipenv install iqmotion`` within your virtual environment.
 
-Getting Started
-===============
+Installing with Pip
+-----------------------------
+In order to install the Vertiq python API via pip, simply run ``pip install iqmotion``.
 
-Import iqmotion library and create a ``SerialCommunicator``, which opens 
-a serial port and is responsible for the transmission and reception of messages:  
+Python API Basics
+=========================
+Hardware Setup
+----------------
+Information about required hardware for API communication can be found in the :ref:`Control Center documentation <connection_guide>`. The requirements for API communication 
+are the same as those for the IQ Control Center.
+
+Opening a Serial Connection
+--------------------------------
+In order to connect with your USB-to-UART bridge, the Python API provides the ``SerialCommunicator`` class.
+
+The ``SerialCommunicator`` class is initialized with a serial port name and a baud rate. The name of your serial port is dependent on your operating system. 
+For example, in the hardware example provided in the Control Center documentation linked above, the serial port name is “COM3,” and in Linux, it may be "/dev/ttyUSB0."
+
+In order to create a new ``SerialCommunicator`` object on a Windows operating system where your module is set to 115200 baud, and your FTDI reports on COM9, you would do the following:
 
 .. code-block:: python
     
     import iqmotion as iq
+    com = iq.SerialCommunicator("COM9", baudrate=115200)
 
-    com = iq.SerialCommunicator('COM PORT', baudrate=115200)
+In order to communicate with a Vertiq module through the Python API, you must create a ``SerialCommunicator`` object.
 
+Creating a Module Object
+-----------------------------
+Vertiq's module objects are preconfigured to communicate with all accessible IQUART clients for your module's firmware. All module objects are created with the same 
+initialization.
 
-Replace ``COM PORT`` with the port name for your serial device (FTDI or similar).
-The default serial baud rate for the motor controller is 115200.
+1. A serial communicator object
+2. Optionally, a module ID (``module_idn``)
 
-Creating a Module
-=================
+  * This represents the module ID of the device you would like to communicate with. If your module has its module ID configured to 26, you must set ``module_idn`` to 26 in object instantiation.
 
-Python interacts with the motor controller via Vertiq Module Objects. Currently Vertiq Python API 
-supports 3 types of motors: Vertiq 23-06, Vertiq 81-08, and Fortiq M42BLS
+3. Optionally, a firmware style (``firmware``)
 
-Creating a Vertiq Module
-------------------------
+  * This value is a string, and can be “speed”, “servo”, or “pulsing”. To learn more about what firmware styles are available for your module, please refer to your module's family page.
 
-Here's how you create a Vertiq Module:  
+4. Optionally, a path to additional clients (``clients_path``)
+
+  * There are two options available for adding extra clients. First, in order to add all client files in a folder, you can pass a path to a folder that contains all additional, client json files. Second, 
+    you can pass an array of paths to custom client json files in order to only add those you are interested in rather than an entire folder.
+
+Please use the following to create the correct object for your module type:
+
+.. csv-table:: Module Families and Python Object Names
+        :header: "Module Family", "Object Name"
+
+        "Vertiq 23-XX", "``Vertiq2306``"
+        "Vertiq 40-XX", "``Vertiq4006``"
+        "Vertiq 60-XX", "``Vertiq6008``"
+        "Vertiq 81-XX", "``Vertiq8108``"
+
+For example, suppose you want to interact with a Vertiq 40-06 using speed firmware whose module ID is 42, and has extra client files located in a folder with the path “clients.” To do so:
+
+1. Create a ``SerialCommunicator`` object as described above (in this case the USB-to-UART is on port COM3)
+2. Create a variable ``client_files`` with the path to your additional client json files
+3. Create a variable module as a ``Vertiq4006`` module with module ID 42, speed firmware, and extra clients path client_files
 
 .. code-block:: python
 
     import iqmotion as iq
 
-    serial_port = "/dev/ttyUSB0" # OS dependent Variable
-    com = iq.SerialCommunicator(serial_port)
+    # Module Communication
+    com = iq.SerialCommunicator("COM3", baudrate=115200)
 
-    # Create a Vertiq2306 2200kv module with default firmware style ("speed")
-    vertiq2306 = iq.Vertiq2306(com, 0)
+    # Clients to Load
+    client_files = "clients/"
 
-    # Create a Vertiq2306 220kv module with default firmware style ("servo")
-    vertiq2306 = iq.Vertiq2306(com, 0, firmware="servo")
+    # Using the Vertiq4006 with additional custom client files
+    module = iq.Vertiq4006(com, module_idn=42, firmware="speed", clients_path=client_files)
 
-    # Create a Vertiq8108 module with default firmware style ("speed")
-    vertiq8108 = iq.Vertiq8108(com, 0) 
-
-Creating a Fortiq Module
-------------------------
-
-Here's how you create a Vertiq Module:  
-
-.. code-block:: python
-
-    import iqmotion as iq
-
-    serial_port = "/dev/ttyUSB0" # OS dependent Variable
-    com = iq.SerialCommunicator(serial_port)
-
-    # Create a Fortiq module with default firmware style ("servo")
-    fortiq = iq.Fortiq(com, 0)
-
-Using Get/Set/Save Commands
-===========================
-
-Each module is capable of forming packets to send ``get, set, and save`` messages to a
-motor controller. 
-
-**To form a** ``get`` **message:**
-
-``module.get("client", "client_entry")``
-
-.. code-block:: python
-
-    vertiq = iq.Vertiq8108(com, 0)
-    uc_temp = vertiq.get("temperature_monitor_uc", "uc_temp")
-    print(f"The temperature of the UC is {uc_temp}")
-
-
-**To form a** ``set`` **message with a value:**
-
-``module.set("client", "client_entry", value)``
-
-.. code-block:: python
-
-    vertiq = iq.Vertiq8108(com, 0)
-
-    volts = 5  # Set motor power to 5 Volts 
-    vertiq.set("propeller_motor_control", "ctrl_volts", volts)
-
-**To form a** ``set`` **message with no value:**
-
-``module.set("client", "client_entry")``
-
-.. code-block:: python
-
-    vertiq = iq.Vertiq8108(com, 0)
-
-    # Reboots motor with saved values
-    vertiq .set("system_control", "reboot_program")
-
-
-**Finally, to form a** ``save`` **message, use**
-
-Saves the client and client entry values already set on the module
-
-``module.save("client", "client_entry")``
-
-.. code-block:: python
-
-    vertiq = iq.Vertiq8108(com, 0)
-    vertiq.set("propeller_motor_control", "velocity_kp", 10)
-    vertiq.save("propeller_motor_control", "velocity_kp")
-
-These commands form serialized ``get/set/save`` packets and store them into a ``com`` SerialCommunicator
-object which sends the packet request to the motor via Serial Communication.
-
-
-API Options
-===========
-
-.. contents:: 
-    :local:
-
-
-Download different firmware styles
-----------------------------------
-
-.. _Vertiq2306 2200Kv: https://www.vertiq.co/23-06-module
-.. _Vertiq2306 220Kv: https://www.vertiq.co/23-06-module
-.. _Fortiq: https://www.vertiq.co/fortiq-bls42
-.. _Vertiq8108 150Kv: https://www.vertiq.co/81-08-module
-
-Each module comes loaded with default firmware. An 'x' marks if a module supports the firmware style.
-
-+----------------------+------------------+------------------+--------------------+
-|        Module        | 'speed' Firmware | 'servo' Firmware | 'stepdir' Firmware |
-+======================+==================+==================+====================+
-| `Vertiq2306 2200Kv`_ |     DEFAULT      |       x          |       x            |
-+----------------------+------------------+------------------+--------------------+
-| `Vertiq2306 220Kv`_  |       x          |     DEFAULT      |       x            |
-+----------------------+------------------+------------------+--------------------+
-| `Vertiq8108 150Kv`_  |     DEFAULT      |                  |                    |
-+----------------------+------------------+------------------+--------------------+
-| `Fortiq`_            |       x          |     DEFAULT      |                    |
-+----------------------+------------------+------------------+--------------------+
-
-Changing the firmware style
----------------------------
-
-.. note:: 
-        The Vertiq 23-06 220Kv and Vertiq 23-06 2200Kv share the same API call. However the 220Kv was designed as a servo motor 
-        while the 2200Kv was designed as a speed motor.
-        
-        The API call to Vertiq 23-06 defaults to speed, therefore if using a 220Kv module, you need to specify `firmware="servo"`
-
-Example of changing the API firmware:
-
-.. code-block:: python
-
-    # Create a Vertiq 220Kv Servo Module
-    vertiq2306 = iq.Vertiq2306(com, 0, firmware="servo") 
-
-    # Create Fortiq Stepdir Module
-    fortiq = iq.Fortiq(com, 0, firmware="stepdir") 
-
-
-Adding New Clients to your Vertiq Module
-----------------------------------------
-
-There are 2 options avaiable for adding extra clients
-
- 
-1.  clients_path {str: directory path}: 
-
-    Create a folder that holds all of your custom client json 
-    files and pass the folder name to the module.
-
-    Note: this option will add every client entry in the folder
-
-    .. code-block:: python
-
-        import iqmotion as iq
-        import os
-
-        # extra_clients = <dirname to client jsons>
-        path_to_clients = os.path.join(os.path.dirname(__file__), ("extra_clients"))
-
-        com = iq.SerialCommunicator("/dev/ttyUSB0")
-        fortiq = iq.Fortiq(com, 0, clients_path=path_to_clients)
-        fortiq.list_clients()
-        
-    
-2.  extra_clients {list: [dir path, dir path, ...]}:
-
-    Contains a list of paths to each cleint entry you want to include
-    Note: you need to pass in an absolute paths
-
-    .. code-block:: python
-
-        import iqmotion as iq
-        import os
-
-        # extra_clients = <dirname to client jsons>
-        anticogging = os.path.join(os.path.dirname(__file__), ("extra_clients/anticogging.json"))
-        buzzer = os.path.join(os.path.dirname(__file__), ("extra_clients/buzzer_control.json"))
-        extra_clients = [anticogging, buzzer]
-
-        com = iq.SerialCommunicator("/dev/ttyUSB0")
-        fortiq = iq.Fortiq(com, 0, extra_clients=extra_clients)
-        fortiq.list_clients()
-
-Create a Base Module 
---------------------
-
-A Base Module is a module that contains all the essentials 
-clients needed to interact with a motor. It does not have any 
-control modules so consider it a blank slate.
-
-To start with a base module and add clients on top, 
-create a folder that holds all of your custom client 
-json files and pass the folder name to the module.
-
-.. code-block:: python
-    
-    # This folder should contain custom client jsons
-    clients_path = "custom_clients/"
-
-    FlyDronePro = iq.BaseIqModule(com, 0, clients_path=clients_path)
-    FlyDronePro.list_clients() # Displays loaded clients for the module
+At this point, you can communicate with, configure, and control your connected module, and all clients available on it.
