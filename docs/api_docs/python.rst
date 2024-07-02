@@ -134,7 +134,7 @@ To do so, we can do the following:
 
     print(module.get_all("system_control"))
 
-Again, you can also treat the returned value as a normal parameter, and store it in a variable.
+Again, you can also treat the returned value as a normal parameter, and store it in a variable. In this case the data is stored as an array.
 
 Set
 ^^^^^^^^^^
