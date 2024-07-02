@@ -6,7 +6,6 @@
 
 .. toctree::
    :caption: API Documentation
-   :titlesonly:
    :hidden:
 
    api_docs/getting_started_with_apis
