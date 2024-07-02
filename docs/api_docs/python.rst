@@ -104,7 +104,7 @@ Before moving forward, please familiarize yourself with the clients available fo
 module's family page in the Supported IQUART Clients section. For these examples, we will continue to use the ``Vertiq4006`` object created above.
 
 .. note::
-    In all instances, the value of ``client_entry`` is a value specified by the *Short Name* column of the associated client table.
+    In all instances, the value of ``client_entry`` is a value specified by the *Short Name* column of the associated IQUART client table.
 
 Get
 ^^^^^^^^^^
