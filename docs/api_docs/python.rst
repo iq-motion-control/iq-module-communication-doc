@@ -72,6 +72,8 @@ Please use the following to create the correct object for your module type:
         "Vertiq 60-XX", "``Vertiq6008``"
         "Vertiq 81-XX", "``Vertiq8108``"
 
+Additionally, there are generic ``SpeedModule`` and ``ServoModule`` objects with access to the most basic IQUART endpoints for the associated firmware style.
+
 For example, suppose you want to interact with a Vertiq 40-06 using speed firmware whose module ID is 42, and has extra client files located in a folder with the path “clients.” To do so:
 
 1. Create a ``SerialCommunicator`` object as described above (in this case the USB-to-UART is on port COM3)
@@ -159,3 +161,9 @@ Suppose we want to save the timeout value set above. To do so:
 .. code-block:: python
 
     module.save("propeller_motor_control", "timeout")
+
+Next Steps
+=========================
+As the get, set, and save commands are the basis of all IQUART configuration and control, you now posess all of the base knowledge necessary to begin development 
+with the Vertiq Python API. More specific examples of using the Python API exist throughout our Feature Reference Manual, such as a basic example 
+for commanding your module to :ref:`spin with the Propeller Motor Controller Client <spin_with_speed_demo>`.
