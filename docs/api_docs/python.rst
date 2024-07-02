@@ -94,7 +94,7 @@ Suppose you want to interact with a Vertiq 40-06 using speed firmware whose modu
     # Using the Vertiq4006 with additional custom client files
     module = iq.Vertiq4006(com, module_idn=42, firmware="speed", clients_path=client_files)
 
-At this point, you can communicate with, configure, and control your connected module, and all clients available on it.
+At this point, you can communicate with, configure, and control your connected module through its available clients.
 
 Interacting with Clients and Endpoints
 -------------------------------------------------
