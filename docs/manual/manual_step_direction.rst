@@ -59,7 +59,7 @@ Vertiq Python API - Step/Direction Interface
 
 The Step/Direction interface can also be accessed through Vertiq’s Python API's *step_direction_input* client, summarized in Vertiq's API documentation.
 
-#. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
+#. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/api_docs/python.html>`_
 
 #. After completing the walkthrough, you can interact with the *step_direction_input* client
 

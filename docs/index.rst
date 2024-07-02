@@ -9,10 +9,10 @@
    :titlesonly:
    :hidden:
 
-   langs/python
-   langs/arduino
-   langs/cpp
-   langs/matlab
+   api_docs/python
+   api_docs/arduino
+   api_docs/cpp
+   api_docs/matlab
    
 
 .. toctree::
