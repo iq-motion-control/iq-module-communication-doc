@@ -1,3 +1,6 @@
+.. include:: ../text_colors.rst
+.. toctree::
+
 .. _getting_started_with_apis:
 
 ***************************************
