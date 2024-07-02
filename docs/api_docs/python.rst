@@ -89,3 +89,70 @@ For example, suppose you want to interact with a Vertiq 40-06 using speed firmwa
     module = iq.Vertiq4006(com, module_idn=42, firmware="speed", clients_path=client_files)
 
 At this point, you can communicate with, configure, and control your connected module, and all clients available on it.
+
+Interacting with Clients and Endpoints
+-------------------------------------------------
+As mentioned in :ref:`getting_started_with_apis`, all Vertiq clients contain endpoints that can accept get, set, and save commands. This section discusses 
+how to perform gets, sets, and saves through the Python API.
+
+Before moving forward, please familiarize yourself with the clients available for your module's family and firmware style. You can find this information on your 
+module's family page in the Supported IQUART Clients section. For these examples, we will continue to use the ``Vertiq4006`` object created above.
+
+.. note::
+    In all instances, the value of ``client_entry`` is a value specified by the *Short Name* column in each client table.
+
+Get
+^^^^^^^^^^
+All Python get commands have the format ``module.get("client", "client_entry")``. The get function returns the value of a single client entry returned by the module through IQUART.
+
+Suppose we want to monitor the voltage read at the module's input. We can do this through the volts entry of the :ref:`Power Monitor <power_monitor>` client.
+
+.. image:: ../_static/api_pics/volts_entry.png
+
+In order to get and view the value of the volts parameter, we can add the following to our example
+
+.. code-block:: python
+
+    print(module.get("power_monitor", "volts"))
+
+You can also treat the returned value as a normal parameter, and store it in a variable.
+
+Get All
+^^^^^^^^^^
+All Python get_all commands have the format ``module.get_all("client”)``. The get_all function returns the value of all client entries returned by the module through IQUART.
+
+Suppose we want to see the current state of all parameters in the :ref:`System Control <system_control>` client.
+
+To do so, we can do the following:
+
+.. code-block:: python
+
+    print(module.get_all("system_control"))
+
+Again, you can also treat the returned value as a normal parameter, and store it in a variable.
+
+Set
+^^^^^^^^^^
+All Python set commands have the format ``module.set("client", "client_entry", value)``. The set function changes the value of the target ``client_entry`` to ``value``. 
+A value set and not saved will not be retained after a power cycle.
+
+Suppose we want to change the :ref:`Propeller Motor Controller's <propeller_motor_controller>` ``timeout`` parameter to 3 seconds.
+
+.. image:: ../_static/api_pics/timeout_entry.png
+
+To do so:
+
+.. code-block:: python
+
+    module.set("propeller_motor_control", "timeout", 3)
+
+Save
+^^^^^^^^^^^^
+All Python save commands have the format ``module.save("client", "client_entry")``. The save function takes the currently set entry value, and stores it in the module's persistent memory. 
+Values that are saved are retained on power cycles.
+
+Suppose we want to save the timeout value set above. To do so:
+
+.. code-block:: python
+
+    module.save("propeller_motor_control", "timeout")
