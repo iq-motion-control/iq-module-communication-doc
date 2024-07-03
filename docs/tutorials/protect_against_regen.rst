@@ -38,14 +38,14 @@ negative supply current produced, reducing the voltage spike produced by the pow
     These configuration parameters define **system voltages**. For example, if your module has a maximum voltage rating of 14S (or 58.8V), but your power supply has a 
     maximum rating of 30V, the values of Volts Limit Starting Voltage and Volts Limit must be set according to the power supply's absolute 30V maximum.
 
-    As another example, suppose you want to power your module rated up to 12S with a 6S power supply. In this case, you would set your voltage limits based on the
-    6S power supply.
+    As another example, suppose you want to power your module rated up to 12S with a 6S equivalent power supply. In this case, you would set your voltage limits based on the
+    6S equivalent power supply.
 
     By default, Vertiq modules have these values set to protect the module's circuits while operating with the supplied voltage at its maximum rating. In order to protect your power supply and module, 
     please ensure that your configured voltage limits are set according to the **system's lowest maximum voltage rating**.
 
-* **Volts Limit Starting Voltage** defines the value (in volts) at which the module will begin checking if any limits on regeneration need to be applied. A 0V limit means 
-  that regeneration voltage protection is always enabled. A limit configured just below the Volts Limit enables maximum braking under normal conditions, and enables protection 
+* **Volts Limit Starting Voltage** defines the value (in volts) at which the module will begin checking if any limits on regeneration need to be applied. A 0V starting voltage means 
+  that regeneration voltage protection is always enabled. A starting voltage configured just below the Volts Limit enables maximum braking under normal conditions, and enables protection 
   only during voltage spikes.
   
 * **Volts Limit** defines the absolute maximum supply voltage the module will apply. In some extreme instances, your module may apply a voltage higher than the configured Volts Limit. In order to handle this properly, ensure that there is a buffer between the absolute maximum allowable system voltage and the value of Volts Limit. 
