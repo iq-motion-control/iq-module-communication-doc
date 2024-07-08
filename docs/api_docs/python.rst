@@ -146,7 +146,7 @@ To do so:
     module.set("propeller_motor_control", "timeout", 3)
 
 Some client entries (such as :ref:`System Control's <system_control>` ``reboot_program``) accept sets without a ``value``. Simply calling ``module.set("client", "client_entry")`` is enough to 
-trigger the desired behavior. So, to reboot your module's program:
+trigger the desired behavior. You can tell that an entry does not require a ``value`` when its client table entry has no data type. So, to reboot your module's program:
 
 .. code-block:: python
 
@@ -161,6 +161,12 @@ calls have the same format as standard set commands, but provide additional opti
 * ``time_out``: A blocking timeout while verifying the set is successful in seconds. By default, this is 0.1s
 * ``retries``: The number of times you would like to retry the set before giving up. By default, this is 5
 * ``save``: Allows you to save the value once the set is confirmed. By default this is ``False``
+
+To set your module's DroneCAN (UAVCAN) node ID to 5, verify the set, and save it:
+
+.. code-block:: python
+
+    module.set_verify("uavcan_node", "uavcan_node_id", 5, time_out=5, retries=10, save=True)
 
 Save
 ^^^^^^^^^^^^
@@ -179,6 +185,9 @@ As the get, set, and save commands are the basis of all IQUART configuration and
 with the Vertiq Python API.
 
 A very basic example is provided here. It demonstrates the basics of setting up communication and a module object as well as how to ``set``, ``get``, and ``get_all``.
+
+.. warning::
+    Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
 
 .. code-block:: python
 
@@ -209,6 +218,8 @@ A very basic example is provided here. It demonstrates the basics of setting up 
 
         #Check our velocity
         print(module.get("brushless_drive", "obs_velocity"))
+
+        time.sleep(0.05)
 
 More specific examples of using the Python API exist throughout our Feature Reference Manual, such as a basic example 
 for commanding your module to :ref:`spin with the Propeller Motor Controller Client <spin_with_speed_demo>`.
