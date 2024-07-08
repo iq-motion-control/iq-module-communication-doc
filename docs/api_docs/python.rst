@@ -176,5 +176,39 @@ Suppose we want to save the timeout value set above. To do so:
 Next Steps
 =========================
 As the get, set, and save commands are the basis of all IQUART configuration and control, you now posess all of the base knowledge necessary to begin development 
-with the Vertiq Python API. More specific examples of using the Python API exist throughout our Feature Reference Manual, such as a basic example 
+with the Vertiq Python API.
+
+A very basic example is provided here. It demonstrates the basics of setting up communication and a module object as well as how to ``set``, ``get``, and ``get_all``.
+
+.. code-block:: python
+
+    import iqmotion as iq
+    import time
+
+    # Module Communication
+    com = iq.SerialCommunicator("COM3", baudrate=115200)
+
+    # Using the Vertiq4006 with default settings
+    module = iq.Vertiq4006(com)
+
+    #Check our microcontroller temperature client's status
+    print(module.get_all("temperature_monitor_uc"))
+
+    #Check our current input voltage. Store it in a variable.
+    voltage_now = module.get("power_monitor", "volts")
+    print(voltage_now)
+
+    #Wait 5 seconds
+    time.sleep(5)
+
+    #Loop forever
+    while(1):
+
+        #Spin very slowly
+        module.set("propeller_motor_control", "ctrl_velocity", 20)
+
+        #Check our velocity
+        print(module.get("brushless_drive", "obs_velocity"))
+
+More specific examples of using the Python API exist throughout our Feature Reference Manual, such as a basic example 
 for commanding your module to :ref:`spin with the Propeller Motor Controller Client <spin_with_speed_demo>`.
