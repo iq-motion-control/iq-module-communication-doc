@@ -13,13 +13,9 @@ Vertiq's APIs provide a simple mechanism for communicating with your modules via
 protocol meant to allow configuration and control of all Vertiq modules. To learn more about IQUART, please see :ref:`the protocol's documentation <uart_messaging>`. 
 Our APIs provide support for Python, Matlab, C++, and Arduino. These options provide flexibility to work easily on both PC-based and embedded solutions.
 
-If you intend to use the API specifically in a PC based environment, we recommend using either the Python or Matlab APIs.
-
-If you intend to use the API in an embedded system, we recommend using the C++ or Arduino libraries.
-
 What Can the APIs Do
 ========================
-Essentially, each API is a language and hardware specific implementation of the IQUART protocol with access to information about each of the IQUART clients. 
+Essentially, each API is a language specific implementation of the IQUART protocol with access to information about each of the IQUART clients. 
 Each IQUART client contains a set of IQUART entries which are parameters that allow you to directly configure and control your module. 
 For example, through the :ref:`propeller_motor_controller` Client, you find PID tuning parameters as well as control commands 
 such as velocity and voltage. For a full list of the clients supported by your module, please see your module's family page. 

@@ -9,16 +9,8 @@ Getting Started with Python
 
 Installation
 ==================
-.. note::
-    We heavily recommend to manage your projects with some sort of virtual environment, for example Pipenv. For instructions to install Pipenv for Mac or Windows click `here <https://medium.com/@mahmudahsan/how-to-use-python-pipenv-in-mac-and-windows-1c6dc87b403e>`_. For installation instructions for Linux click `here <https://github.com/pypa/pipenv>`_.
 
-Installing with Pipenv
------------------------------
-In order to install the Vertiq python API into your pipenv virtual environment, simply run ``pipenv install iqmotion`` within your virtual environment.
-
-Installing with Pip
------------------------------
-In order to install the Vertiq python API via pip, simply run ``pip install iqmotion``.
+Information on how to install the ``iqmotion`` library can be found on our `PyPi page <https://pypi.org/project/iqmotion/>`_.
 
 Python API Basics
 =========================
@@ -52,16 +44,17 @@ initialization.
 2. Optionally, a module ID (``module_idn``)
 
   * This represents the module ID of the device you would like to communicate with. If your module has its module ID configured to 26, you must set ``module_idn`` to 26 in object instantiation. 
-    By default, all modules have an ID of 0.
+    If no module ID is specified, the module object is created with an ID of 0.
 
 3. Optionally, a firmware style (``firmware``)
 
-  * This value is a string, and can be “speed”, “servo”, or “pulsing”. To learn more about what firmware styles are available for your module, please refer to your module's family page.
+  * This value is a string, and can be “speed”, “servo”, or “pulsing”. To learn more about what firmware styles are available for your module, please refer to your module's family page. 
+    If no firmware style is specified, the module object is created with a style of ``speed``.
 
 4. Optionally, a path to additional clients (``clients_path``)
 
   * There are two options available for adding extra clients. First, in order to add all client files in a folder, you can pass a path to a folder that contains all additional, client json files. Second, 
-    you can pass an array of paths to custom client json files in order to only add those you are interested in rather than an entire folder.
+    you can pass an array of paths to custom client json files in order to only add those you are interested in rather than an entire folder. In general, you will not need to include additional clients.
 
 Please use the following to create the correct object for your module type:
 
@@ -139,7 +132,7 @@ Again, you can also treat the returned value as a normal parameter, and store it
 
 Set
 ^^^^^^^^^^
-All Python set commands have the format ``module.set("client", "client_entry", value)``. The set function changes the value of the target ``client_entry`` to ``value``. 
+Most Python set commands have the format ``module.set("client", "client_entry", value)``. The set function changes the value of the target ``client_entry`` to ``value``. 
 A value set and not saved will not be retained after a power cycle.
 
 Suppose we want to change the :ref:`Propeller Motor Controller's <propeller_motor_controller>` ``timeout`` parameter to 3 seconds.
@@ -151,6 +144,23 @@ To do so:
 .. code-block:: python
 
     module.set("propeller_motor_control", "timeout", 3)
+
+Some client entries (such as :ref:`System Control's <system_control>` ``reboot_program``) accept sets without a ``value``. Simply calling ``module.set("client", "client_entry")`` is enough to 
+trigger the desired behavior. So, to reboot your module's program:
+
+.. code-block:: python
+
+    module.set("system_control", "reboot_program")
+
+Set Verify
+^^^^^^^^^^^^
+Additionally to the standard set, you can use the ``set_verify`` function in order to set a new value, and confirm that the value has been set correctly on the module. Set verify 
+calls have the same format as standard set commands, but provide additional optional parameters ``get_values``, ``time_out``, ``retries``, and ``save``. 
+
+* ``get_values``: Specifies values to add in the get message (such as index for some client entries). By default, this is ``None``
+* ``time_out``: A blocking timeout while verifying the set is successful in seconds. By default, this is 0.1s
+* ``retries``: The number of times you would like to retry the set before giving up. By default, this is 5
+* ``save``: Allows you to save the value once the set is confirmed. By default this is ``False``
 
 Save
 ^^^^^^^^^^^^
