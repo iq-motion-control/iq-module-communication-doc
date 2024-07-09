@@ -78,7 +78,7 @@ Vertiq Python API - ADC Interface
 
 The ADC interface can also be accessed through Vertiq’s Python API. Through the API you can read both the ADC’s read voltage and raw ADC value. To use the API, please use the following steps:
 
-#. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/langs/python.html>`_
+#. If you have never used Vertiq's Python API, you must first set up your local computer to use the Python API using the instructions found at `Getting Started with Python <https://iqmotion.readthedocs.io/en/latest/api_docs/python.html>`_
 
 #. After completing the walkthrough, you can interact with the *adc_interface* client
 
