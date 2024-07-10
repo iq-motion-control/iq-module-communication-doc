@@ -708,16 +708,17 @@ Adding Resource Files
 Occasionally, it is necessary to manually add module resource files to the Control Center. These will be provided by a member of the Vertiq team as a .zip file. 
 Store this .zip file in a location that is easily accessible. The process for integrating the files into the Control Center is described below.
 
+1. Run the Control Center application with administrator privileges.
+
 .. note::
-    The following instructions apply to all supported operating systems: Windows, Mac, and Linux (Ubunutu). The first step requires the Control Center application to be opened with administrator privileges.
+    In order to add resource files, the Control Center application must be ran with administrator privileges.
     On Mac and Linux, you must use the 'sudo' command in the terminal to run the application.
 
     .. image:: ../_static/control_center_pics/linux/linux_sudo_command.png
 
-1. Use the File Explorer to locate the Control Center's installation. By default, the application is located in Program Files (x86)/IQ Control Center/IQ Control Center/IQ Control Center.exe
-2. Right click the executable and select 'Run as administrator'.
+    On Windows, locate the Control Center's installation using the file explorer. Right click the executable and select 'Run as administrator'.
 
-.. image:: ../_static/control_center_pics/windows/windows_run_as_administrator.png
+    .. image:: ../_static/control_center_pics/windows/windows_run_as_administrator.png
 
 3. Once the application runs, navigate to the Menu in the top left and select 'Import Resource Pack'.
 
