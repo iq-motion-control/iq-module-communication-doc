@@ -706,26 +706,24 @@ Once clicked, a File Explorer will open, and you can select a name and location 
 Adding Resource Files
 =============================
 Occasionally, it is necessary to manually add module resource files to the Control Center. These will be provided by a member of the Vertiq team as a .zip file. 
-Store this .zip file in a location that is easily accessible, such as Downloads, Desktop, or Documents.
-The process for integrating the files into the Control Center is described below for each supported operating system.
+Store this .zip file in a location that is easily accessible. The process for integrating the files into the Control Center is described below.
 
 .. note::
     The following instructions apply to all supported operating systems: Windows, Mac, and Linux (Ubunutu). The first step requires the Control Center application to be opened with administrator privileges.
     On Mac and Linux, you must use the 'sudo' command in the terminal to run the application.
+
+    .. image:: ../_static/control_center_pics/linux/linux_sudo_command.png
 
 1. Use the File Explorer to locate the Control Center's installation. By default, the application is located in Program Files (x86)/IQ Control Center/IQ Control Center/IQ Control Center.exe
 2. Right click the executable and select 'Run as administrator'.
 
 .. image:: ../_static/control_center_pics/windows/windows_run_as_administrator.png
 
-.. note::
-    You need to run IQ Control Center as an administrator on Windows in order to import resource files.
-
 3. Once the application runs, navigate to the Menu in the top left and select 'Import Resource Pack'.
 
 .. image:: ../_static/control_center_pics/windows/windows_menu_import_resource_pack.png
 
-4. A popup will appear requesting that you run Control Center as an administrator. Since you already did this in step 1, click 'OK' and proceed to the next step.
+4. A popup will appear requesting that you run the Control Center as an administrator. Since you already did this in step 1, click 'OK' and proceed to the next step.
 
 .. image:: ../_static/control_center_pics/windows/windows_administrator_privileges_required_popup.png
 
@@ -733,10 +731,10 @@ The process for integrating the files into the Control Center is described below
 
 .. image:: ../_static/control_center_pics/windows/windows_resource_pack_file_explorer.png
 
-6. After the .zip file is imported, a popup will appear requesting that you restart Control Center. Click 'OK' and restart Control Center, but this time you do not have to run as an administrator.
+6. After the .zip file is imported, a popup will appear requesting that you restart the Control Center. Click 'OK' and restart the Control Center, but this time you do not have to run as an administrator.
 
 .. image:: ../_static/control_center_pics/windows/windows_application_restart_required_popup.png
 
-7. If the provided resource .zip file includes default files, you will find them in the dropdown menu in the General tab next to MODULE PRE-SETTINGS. The other resource files will include additional configuration options based on your connected module.
+7. If the provided resource .zip file includes `default files <#configuration-with-defaults>`_, you will find them in the dropdown menu in the General tab next to MODULE PRE-SETTINGS. The other resource files will include additional configuration options based on your connected module.
 
 .. image:: ../_static/control_center_pics/windows/windows_custom_default_file_example.png
