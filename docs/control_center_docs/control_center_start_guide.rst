@@ -709,8 +709,10 @@ Occasionally, it is necessary to manually add module resource files to the Contr
 Store this .zip file in a location that is easily accessible, such as Downloads, Desktop, or Documents.
 The process for integrating the files into the Control Center is described below for each supported operating system.
 
-Windows
-----------------
+.. note::
+    The following instructions apply to all supported operating systems: Windows, Mac, and Linux (Ubunutu). The first step requires the Control Center application to be opened with administrator privileges.
+    On Mac and Linux, you must use the 'sudo' command in the terminal to run the application.
+
 1. Use the File Explorer to locate the Control Center's installation. By default, the application is located in Program Files (x86)/IQ Control Center/IQ Control Center/IQ Control Center.exe
 2. Right click the executable and select 'Run as administrator'.
 
@@ -738,30 +740,3 @@ Windows
 7. If the provided resource .zip file includes default files, you will find them in the dropdown menu in the General tab next to MODULE PRE-SETTINGS. The other resource files will include additional configuration options based on your connected module.
 
 .. image:: ../_static/control_center_pics/windows/windows_custom_default_file_example.png
-
-Linux (Ubuntu)
-------------------
-1. Open a new terminal window, and navigate to the IQ Control Center installation. By default this is Home/~user~/IQ Control Center
-2. Inside you will see the following
-
-.. image:: ../_static/control_center_pics/linux/linux_install_folder.png
-
-3. Enter IQ Control Center, and inside you will find a folder called Resources
-4. Enter the Resources folder, and inside you will see Defaults, Firmware, and Tabs
-5. If you have been given a resource file with a number.json (42.json for example), copy the file into the Firmware folder
-6. If you have been given files with the names advanced, general, testing, or tuning, copy the files into the corresponding folder inside of the Tabs folder
-
-Mac
-------
-1. Open a new terminal window, and navigate to the IQ Control Center installation. By default this is Applications/IQ Control Center
-2. Enter the IQ Control Center folder. Inside you will see the following
-
-.. image:: ../_static/control_center_pics/mac/mac_in_the_install.png
-
-3. Enter IQ Control Center.app/Contents/MacOS. Inside you will see the following
-
-.. image:: ../_static/control_center_pics/mac/mac_macos_folder.png
-
-4. Enter the Resources folder, and inside you will see Defaults, Firmware, and Tabs
-5. If you have been given a resource file with a number.json (42.json for example), copy the file into the Firmware folder
-6. If you have been given files with the names advanced, general, testing, or tuning, copy the files into the corresponding folder inside of the Tabs folder
