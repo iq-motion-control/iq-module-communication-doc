@@ -12,7 +12,7 @@ Vertiq's Arduino API can be installed directly through the Arduino Library Manag
 
 You can also find a zipped archive of the Arduino API on `our website <https://www.vertiq.co/support>`_.
 
-For more information on installing Arduino libraries please read `the linked page here <https://www.arduino.cc/en/guide/libraries>`_.
+For more information on installing Arduino libraries please read `the page linked here <https://www.arduino.cc/en/guide/libraries>`_.
 
 Hardware Setup
 =================
@@ -42,7 +42,7 @@ module's family page in the Supported IQUART Clients section.
 Each IQUART client has a C++ object implementation to allow for easy communication. The client files can be found in our `C++ API's inc folder <https://github.com/iq-motion-control/iq-module-communication-cpp/tree/master/inc>`_. 
 Inside each client object are the client's entries whose formats are specified by templated instantiation. 
 For example, the :ref:`Power Monitor Client <power_monitor>` includes entries that contain float data ``ClientEntry<float> volts_;`` as well 
-as entries that contain unsigned words ``ClientEntry<uint16_t> volts_raw_;``
+as entries that contain unsigned half-words ``ClientEntry<uint16_t> volts_raw_;``
 
 In order to create an instance of IQUART client objects, you'll need to determine the correct module ID and create the object. 
 For example, suppose you want to communicate with the Power Monitor Client of the module whose Module ID is 42. We can create that object by:
@@ -93,7 +93,7 @@ Setting
 ^^^^^^^^^^^
 The ``set`` function has the format ``ser.set(client.entry, value);``
 
-The ``set`` function changes the value of the target entry to value. A value set and not saved will not be retained after a power cycle.
+The ``set`` function changes the value of the target entry to ``value``. A value set and not saved will not be retained after a power cycle.
 
 Suppose we want to change the Propeller Motor Controller's timeout parameter to 3 seconds. 
 
