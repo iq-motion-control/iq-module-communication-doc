@@ -1,66 +1,38 @@
 .. _getting_started_matlab_api:
 
-***************************
+*****************************
 Getting Started with Matlab
-***************************
+*****************************
 
+Installation
+==================
+In order to use the MATLAB API, you must first download the most recent version from our `Github <https://github.com/iq-motion-control/iq-module-communication-matlab/releases>`_. 
+Once you have downloaded and extracted our MATLAB library, you must add its path to your MATLAB folder path. To do so:
 
-The Matlab libraries contain everything required to open a serial port, send and receive messages on that
-serial port, and parse the results. First, create a MessageInterface, which opens a serial port and is responsible
-for the transmission and reception of messages, by typing
+1. Open MATLAB lab, and in the Home tab, find Set Path
 
-``com = MessageInterface(’COM_PORT’,115200);``
+.. image:: ../_static/api_pics/set_path_icon.png
 
-Replace the ’COM PORT’ string with the port string for your serial device (FTDI or similar). In Windows,
-this string has the form ’COM1’, ’COM2’, etc. In a Unix based OS, this string has the form ’/dev/ttyUSB0’
-or similar and depends on the device. The default serial baud rate for the motor controller is 115200.
-To communicate to the motor controller, create a client object using
+2. Click Set Path, and select Add with Subfolders…
 
-``client_object = ClientClass(’com’,com);``
+.. image:: ../_static/api_pics/add_with_subfolders.png
 
-Then, send and receive messages using this object via the get, set, and save member functions.
+3. Navigate to the location of your extracted Vertiq Matlab library, and select it
 
-``value = client_object.get(’short_name’);``
+In your MATLAB search path, you should now see the Matlab library folder as well as all of its subfolders. MATLAB will now check these locations in all projects in order to find all Vertiq specific functionality.
 
-sends a get request to the motor controller and waits for its response. The responded value is returned.
+Hardware Setup
+================
+Information about required hardware for API communication can be found in the :ref:`Control Center documentation <connection_guide>`. The requirements for API communication 
+are the same as those for the IQ Control Center.
 
-``client_object.set(’short_name’, value); % with value``
-``client_object.set(’short_name’); % without value``
+Opening a Serial Connection
+===============================
+In order to connect with your USB-to-UART bridge, the MATLAB API provides the ``MessageInterface`` class. The ``MessageInterface`` class is initialized with a serial 
+port name and a baud rate. The name of your serial port is dependent on your operating system. For example, in the hardware example above, the serial port name is 
+“COM3,” and in Linux, it may be "/dev/ttyUSB0."
 
-sends a set message. If the message requires a value, the value is stored in the motor controller’s RAM.
+Suppose your FTDI reports on COM4, and you would like to communicate with your module at 921600 baud. To do so, we can create a ``MessageInterface`` ``com`` by 
+running ``com = MessageInterface('COM4', 921600)``.
 
-``client_object.save(’short_name’);``
-
-sends a save message, which store’s the current RAM value into non-volatile memory. These functions are
-blocking and perform all necessary tasks for messaging.
-
-
-All clients have added member functions list, get all, set all, set verify, and save all.
-
-``client_object.list()``
-
-displays all possible short names, their data types, and their units.
-
-``data_all = client_object.get_all()``
-
-performs a get on all messages in list and stores it in data all.
-
-``client_object.set_all(data_all);``
-
-``data.short_name1 = 0;``
-
-``data.short_name2 = 1;``
-
-``client_object.set_all(data);``
-
-will send set messages for all fieldnames in data.
-
-``client_object.set_verify(’short_name’, value);``
-
-performs the same function as set, but also performs a get to verify transmission. It will retry up to 10
-times if transmission fails.
-
-``client_object.save_all()``
-
-saves all values currently in the motor controller’s RAM into non-volatile memory.
-For a complete example of usage, please see the documentation for the client classes.
+The ``MessageInterface`` is responsible for creating, transmitting, receiving, and decoding IQUART messages. All further communication is handled by ``com``.
