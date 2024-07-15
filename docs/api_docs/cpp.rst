@@ -321,3 +321,258 @@ Full Examples
 
 Windows
 ------------
+
+.. code-block:: cpp
+
+    /*
+    * This example C++ program uses the Power Monitor client to retrieve the Voltage of a motor.
+    * The serial port setup for windows is based on the example provided by microsoft:
+    *      https://learn.microsoft.com/en-us/windows/win32/devio/configuring-a-communications-resource
+    *
+    * Name: voltage_test.cpp
+    * Last update: 7/15/2024 by Jordan Leiber
+    * Author: Jordan Leiber
+    */
+
+    #include <iostream>
+    #include <windows.h>
+    #include <tchar.h>
+
+    #include "inc/generic_interface.hpp"
+    #include "inc/client_communication.hpp"
+    #include "inc/power_monitor_client.hpp"
+    #include "inc/propeller_motor_control_client.hpp"
+
+    using namespace std;
+
+    HANDLE com_port; // Handler for COM port
+    TCHAR *pcCommPort = TEXT("COM3"); // Change COM4 to whichever port your motor is connected to
+    GenericInterface com; // Interface used by com port to communicate with motor
+
+    PowerMonitorClient power(0); // Client endpoint for voltage reading
+    PropellerMotorControlClient prop_control(0); // Client endpoint for velocity control
+
+    //  Send out any message data we have over the serial interface
+    int handle_com_tx(){
+        uint8_t packet_buf[64];
+        uint8_t length = 0;
+        DWORD bytes_written;
+
+        // Get the packet from the com interface and place it into the packet buffer
+        if(com.GetTxBytes(packet_buf, length)){
+            WriteFile(com_port, packet_buf, length, &bytes_written, NULL);
+        }
+
+        return bytes_written;
+    }
+
+    // Grab any received data on the serial interface
+    int handle_com_rx(){
+        uint8_t recv_bytes[64];
+        DWORD dwBytesReceived;
+
+        ReadFile(com_port, &recv_bytes, 64, &dwBytesReceived, 0);
+        com.SetRxBytes(recv_bytes, dwBytesReceived);
+
+        return dwBytesReceived;
+    }
+
+    // Hand off any received data to each module so they can handle it
+    void update_modules(){
+        // Temporary Pointer to the packet data location
+        uint8_t *packet_data;
+        uint8_t packet_length;
+
+        // Loads the packet data buffer with data receieved from the motor
+        while(com.PeekPacket(&packet_data, &packet_length)){
+            power.ReadMsg(packet_data, packet_length);
+            com.DropPacket();
+        }
+    }
+
+    // Handles communication with motor
+    void send_message_and_process_reply(){
+        handle_com_tx();
+        handle_com_rx();
+        update_modules();
+    }
+
+    // Sends the command to motor to get Voltage
+    float get_voltage(){
+        power.volts_.get(com);
+        send_message_and_process_reply();
+        return power.volts_.get_reply();
+    }
+
+    int main(){
+        com_port = CreateFile( pcCommPort,
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,      //  must be opened with exclusive-access
+                        NULL,   //  default security attributes
+                        OPEN_EXISTING, //  must use OPEN_EXISTING
+                        0,      //  not overlapped I/O
+                        NULL ); //  hTemplate must be NULL for comm devices
+
+        cout << com_port << endl;
+
+        if (com_port== INVALID_HANDLE_VALUE)
+            cout <<"Error in opening serial port" << endl;
+        else
+            cout << "opening serial port successful" << endl;
+
+
+        DCB dcb = {0}; // Device-control block used to configure serial communications
+        dcb.DCBlength = sizeof(DCB);
+        GetCommState (com_port,&dcb);
+        dcb.BaudRate  = CBR_115200; // Set baud rate to 115200
+        dcb.ByteSize = 8;
+        SetCommState (com_port,&dcb);
+
+        //Set up a read timeout
+        COMMTIMEOUTS timeouts;
+        GetCommTimeouts(com_port, &timeouts);
+        timeouts.ReadIntervalTimeout = 5;
+        SetCommTimeouts(com_port, &timeouts);
+
+        // Get and print the current Voltage reading of the motor
+        float current_voltage = get_voltage();
+        cout << "voltage: " << to_string(current_voltage) << endl;
+
+        //Loop 5000 times setting a target velocity (send several times to avoid a timeout)
+        for(uint16_t command = 0; command < 5000; command++){
+            prop_control.ctrl_velocity_.set(com, 25); //Set the control velocity to 25 rad/s (notice that we require a value parameter here)
+            handle_com_tx();
+        }
+
+        //Coast the module
+        prop_control.ctrl_coast_.set(com); //Notice that we do not require a value parameter here
+        handle_com_tx();
+
+        return 0;
+    }
+
+Linux
+----------
+
+.. code-block:: cpp
+
+    /*
+    * Vertiq read motor coil temperature.
+    *
+    * This code shows how to use Serial over USB to read the
+    * motor coil temperature
+    *
+    *
+    * The circuit:
+    * Connected to FTDI usb to Serial
+    *
+    * This example uses:
+    *   - LibSerial (https://libserial.readthedocs.io/en/latest/index.html)
+    *
+    *   This demo works for POSIX supported systems and was ran using Linux Ubuntu 20.04.1 LTS
+    *
+    *
+    * Created 2021/03/31 by Malik B. Parker
+    *
+    * This example code is in the public domain.
+    */
+
+
+    #include "generic_interface.hpp"
+    #include "temperature_estimator_client.hpp"
+
+    #include "libserial/SerialPort.h"
+    #include "libserial/SerialStream.h"
+
+    #include <string>
+    #include <iostream>
+    #include "unistd.h"
+
+    using namespace LibSerial;
+
+    int main(){
+
+        // Setup the serial interface
+        SerialPort my_serial_port("/dev/ttyUSB0");
+        my_serial_port.SetBaudRate(BaudRate::BAUD_115200);
+
+        // Make a communication interface object
+        // This is what creates and parses packets
+        GenericInterface com;
+
+        // Make a Temperature Estimator Client object with obj_id 0
+        TemperatureEstimatorClient temp(0);
+
+
+        while(true){
+
+            /**********************************************************************
+            *********************** Sending Get Command **************************
+            *********************************************************************/
+
+            // Forms a packet in the com interface with the following:
+            // type:        (77) Temperature Estimator ID Number
+            // subtype:     ( 0) temp
+            // obj/access   ( 0) get
+            temp.temp_.get(com);
+
+            uint8_t packet_buf[64];
+            uint8_t length = 0;
+
+            // Get the packet from the com interface and place it into the packet buffer
+            if(com.GetTxBytes(packet_buf, length)){
+
+                // C is a strong typed language -_-
+                // so we need to convert to a string buffer to interface with LibSerial
+                std::string string_buf((char*)packet_buf, length);
+
+                // Send the get packet request to the motor
+                my_serial_port.Write(string_buf);
+            }
+
+            /**********************************************************************
+            ************************** Receiving Temp Value **********************
+            *********************************************************************/
+
+            // Need to wait for the Motor Controller to Respond
+            usleep(5000);
+
+            // Serial Receive Buffer
+            std::string read_buf;
+
+            // How many bytes are in the read buffer
+            length = my_serial_port.GetNumberOfBytesAvailable();
+
+            // Read the packet from Serial
+            my_serial_port.Read(read_buf, length);
+
+            // Again C is strongly types so we have to convert back to byte buffer
+            uint8_t * cbuf = (uint8_t *) read_buf.c_str();
+
+            // Transfer the buffer into the com interface
+            com.SetRxBytes(cbuf, length);
+
+            /**************************************************************************
+            **************************  Reading the Value  ***************************
+            *************************************************************************/
+
+            // Temporary Pointer to the packet data location
+            uint8_t *packet_data;
+            uint8_t packet_length;
+
+            // Loads the packet data buffer with data receieved from the motor
+            com.PeekPacket(&packet_data, &packet_length);
+
+            // Loads data into the temperature client
+            temp.ReadMsg(packet_data, packet_length);
+
+            com.DropPacket();
+
+            // Reads the data from the temperature client
+            float temperature = temp.temp_.get_reply();
+
+            printf("Temperature: %f\n", temperature);
+        }
+
+        return 0;
+    }
