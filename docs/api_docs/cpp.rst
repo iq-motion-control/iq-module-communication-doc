@@ -208,7 +208,7 @@ Communication with IQUART Clients
 As mentioned above, each IQUART client has a C++ object implementation to allow for easy communication. The client files can be found in the C++ API's ``inc`` folder. 
 Inside each client object are the client's entries whose formats are specified by templated instantiation. For example, 
 the :ref:`Power Monitor Client <power_monitor>` includes entries that contain float data ``ClientEntry<float> volts_;`` as well as entries 
-that contain unsigned words ``ClientEntry<uint16_t> volts_raw_;``.
+that contain unsigned half-words ``ClientEntry<uint16_t> volts_raw_;``.
 
 In order to create an instance of IQUART client objects, you'll need to include the correct header files, determine the correct module ID, and create the object. 
 For example, suppose you want to communicate with the Power Monitor Client of the module whose Module ID is 42. We can create that object by:
