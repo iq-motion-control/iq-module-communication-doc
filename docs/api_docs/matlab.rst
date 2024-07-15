@@ -95,3 +95,59 @@ The ``get_all`` function returns the value of all client entries returned by the
 .. image:: ../_static/api_pics/power_mon_get_all.png
 
 You can also treat the returned value as a normal parameter, and store it in a variable.
+
+Set
+^^^^^^
+All MATLAB set commands have the format ``client_object.set("client_entry", “value”)``.
+
+The set function changes the value of the target “client_entry” to value. A value set and not saved will not be retained after a power cycle.
+
+Suppose we want to change the Propeller Motor Controller's timeout parameter to 5 seconds. 
+
+.. image:: ../_static/api_pics/timeout_entry.png
+
+To do so, create a ``PropellerMotorControlClient`` instance ``prop``. Then, run ``prop.set(“timeout”, 5)``. To confirm that the set was successful, we can run a ``get``.
+
+.. image:: ../_static/api_pics/get_timeout.png
+
+Save
+^^^^^^
+All MATLAB save commands have the format ``client_object.save("client_entry")``.
+
+The save function takes the currently set entry value, and stores it in the module's persistent memory. Values that are saved are retained on power cycles.
+
+Suppose we want to save the timeout value set above. To do so ``prop.save('timeout')``.
+
+Next Steps
+==================
+
+As the get, set, and save commands are the basis of all IQUART configuration and control, you now possess all of the base knowledge necessary to begin development with the Vertiq MATLAB API.
+
+A very basic example is provided here. It demonstrates the basics of setting up communication and a module object as well as how to set and get parameters.
+
+.. warning::
+    Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
+
+.. code-block::
+
+    %Create a MessageInterface to handle IQUART communication
+    com = MessageInterface("COM3", 115200);
+
+    %Create the clients that we need (all using default Module ID of 0)
+    uc_temp = TemperatureMonitorUcClient('com', com);
+    prop_control = PropellerMotorControlClient('com', com);
+    brushless_drive = BrushlessDriveClient('com', com);
+
+    %Check our temperature
+    uc_temp.get("uc_temp")
+
+    %Loop forever
+    while 1
+        %Spin slowly
+        prop_control.set("ctrl_velocity", 20);
+
+        %Check our velocity now
+        brushless_drive.get("obs_velocity")
+    end
+
+
