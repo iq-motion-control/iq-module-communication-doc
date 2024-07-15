@@ -1,7 +1,7 @@
 .. _getting_started_arduino_api:
 
 *****************************
-Vertiq Arduino API Manual
+Getting Started with Arduino
 *****************************
 
 Installation
@@ -132,6 +132,7 @@ The save function takes the currently set entry value, and stores it in the modu
 Suppose we want to save the timeout value set above. To do so:
 
 .. code-block:: cpp
+   
    //Create our IqSerial instance on Serial1
    IqSerial ser(Serial1);
 

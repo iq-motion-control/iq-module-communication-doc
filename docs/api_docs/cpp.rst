@@ -3,9 +3,9 @@
 
 .. _getting_started_cpp_api:
 
-************************
-Vertiq C++ API Manual
-************************
+****************************
+Getting Started with C++
+****************************
 
 Installation
 ================
