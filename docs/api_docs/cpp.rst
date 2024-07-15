@@ -103,3 +103,68 @@ Serial data to be written to the module can be written to the file specified by 
     // Fill in packet_buf with data (as described later using the API), and update length
 
     WriteFile(com_port, packet_buf, length, &bytes_written, NULL);
+
+Linux (Ubuntu)
+----------------
+
+Files to Include
+^^^^^^^^^^^^^^^^^^^^^^^
+In these examples, we use the LibSerial library. For more information on getting started with LibSerial, please see `their documentation <https://libserial.readthedocs.io/en/latest/index.html>`_. 
+
+Here, we will include the following for serial communication:
+
+.. code-block:: cpp
+
+    #include "libserial/SerialPort.h"
+    #include "libserial/SerialStream.h"
+
+    #include <string>
+    #include <iostream>
+    #include "unistd.h"
+
+We also configure our namespace with:
+
+.. code-block:: cpp
+
+    using namespace LibSerial;
+
+Configuring the Serial Port
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In order to set up the specific serial port, you must know the name of the port connected to by your FTDI. In this example, we assume your port's name 
+is “/dev/ttyUSB0”. Suppose your module communicates with a serial baud rate of 115200. To configure your ``SerialPort``	instance:
+
+.. code-block:: cpp
+
+    SerialPort my_serial_port("/dev/ttyUSB0");
+    my_serial_port.SetBaudRate(BaudRate::BAUD_115200);
+
+Reading Data
+^^^^^^^^^^^^^^^^^
+In order to read data in from the serial port, we use the provided ``Read`` function from ``LibSerial``. First, we create a byte array to store our data as well as 
+a variable to store the length of the data. Then, we can check to see if there is data available with the ``LibSerial`` function ``GetNumberOfBytesAvailable``. 
+Now, we read and store the data in our byte array.
+
+.. code-block:: cpp
+
+    // Serial Receive Buffer
+    char read_buf[64];
+
+    // How many bytes are in the read buffer
+    uint8_t length = my_serial_port.GetNumberOfBytesAvailable();
+
+    // Read the packet from Serial
+    my_serial_port.Read(read_buf, length);
+
+From here, we can hand the received data to our IQUART parser as covered later.
+
+Transmitting Data
+^^^^^^^^^^^^^^^^^^^^
+In order to transmit data, we only need a byte string to write as well as the number of bytes to transmit. So, we create those as:
+
+.. code-block:: cpp
+
+    uint8_t packet_buf[64];
+    uint8_t length = 0;
+
+Now, we ask our IQUART ``GenericInterface`` for transmission data with ``GetTxBytes(packet_buf, length)`` (covered more below), 
+and can send the data to the module with ``my_serial_port.Write(packet_buf, length);``.
