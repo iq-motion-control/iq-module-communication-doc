@@ -88,3 +88,115 @@ Then, we can call the ``get`` function on ``PowerMonitorClient``'s ``volts_`` en
          Serial.println(volts_now);
       }
    }
+
+Setting
+^^^^^^^^^^^
+The ``set`` function has the format ``ser.set(client.entry, value);``
+
+The ``set`` function changes the value of the target entry to value. A value set and not saved will not be retained after a power cycle.
+
+Suppose we want to change the Propeller Motor Controller's timeout parameter to 3 seconds. 
+
+.. image:: ../_static/api_pics/timeout_entry.png
+
+We'll need a ``PropellerMotorControlClient`` ``prop_control`` initialized to our Module ID (in this case 0). To set a new timeout using only our ``setup`` function:
+
+.. code-block:: cpp
+
+   #include <iq_module_communication.hpp>
+   //Create our IqSerial instance on Serial1
+   IqSerial ser(Serial1);
+   
+   //Create the client we need in order to set/save the module's timeout
+   PropellerMotorControlClient prop_control(0);
+
+   void setup() {
+      // Initialize the IqSerial object
+      ser.begin();
+
+      // Initialize Serial (for displaying information on the terminal)
+      Serial.begin(115200);
+
+      //Set the timeout value
+      ser.set(prop_control.timeout_, 3.0);
+   }
+
+Note that we must call ``set`` with a data type matching that specified by the client entry (in this case a float). If you attempt to set the ``timeout_`` parameter with 3 only, you will get a compilation error.
+
+Save
+^^^^^^^^^
+The ``save`` function has the format ``ser.save(client.entry);``
+
+The save function takes the currently set entry value, and stores it in the module's persistent memory. Values that are saved are retained on power cycles.
+
+Suppose we want to save the timeout value set above. To do so:
+
+.. code-block:: cpp
+   //Create our IqSerial instance on Serial1
+   IqSerial ser(Serial1);
+
+   //Create the client we need in order to set/save the module's timeout
+   PropellerMotorControlClient prop_control(0);
+
+   void setup() {
+      // Initialize the IqSerial object
+      ser.begin();
+
+      // Initialize Serial (for displaying information on the terminal)
+      Serial.begin(115200);
+
+      //Set and save the timeout value
+      ser.set(prop_control.timeout_, 3.0);
+      ser.save(prop_control.timeout_);
+   }
+
+Next Steps
+================
+As the get, set, and save commands are the basis of all IQUART configuration and control, you now possess all of the base knowledge necessary to begin development with the Vertiq Arduino API.
+
+A very basic example is provided here. It demonstrates the basics of setting up communication and a module object as well as how to set and get parameters.
+
+.. warning::
+    Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
+
+.. code-block:: cpp
+
+   #include <iq_module_communication.hpp>
+
+   //Module communication running on Serial1
+   IqSerial ser(Serial1);
+
+   //All IQUART Clients we will need for this basic example. Each is set to communicate with Module ID 0 (the default Vertiq value)
+   TemperatureMonitorUcClient uc_temp(0);
+   PropellerMotorControlClient prop_control(0);
+   BrushlessDriveClient brushless_drive(0);
+
+   void setup() {
+      // Initialize the IqSerial object
+      ser.begin();
+
+      // Initialize Serial (for displaying information on the terminal)
+      Serial.begin(115200);
+
+      //Let's check our microcontroller temperature
+      float uc_temp_now;
+      if(ser.get(uc_temp.uc_temp_, uc_temp_now)){
+         Serial.print("Microcontroller Temp Now: ");
+         Serial.println(uc_temp_now);
+      }
+
+      //Wait 5 seconds before moving on
+      delay(5000);
+   }
+
+   void loop() {
+      //Spin very slowly
+      ser.set(prop_control.ctrl_velocity_, 20.0);
+
+      //Check our velocity
+      float velocity_now;
+      if(ser.get(brushless_drive.obs_velocity_, velocity_now)){
+         Serial.print("Velocity Now: ");
+         Serial.println(velocity_now);
+      }
+   }
