@@ -1,7 +1,7 @@
 .. _getting_started_matlab_api:
 
 *****************************
-Getting Started with Matlab
+Getting Started with MATLAB
 *****************************
 
 Installation
