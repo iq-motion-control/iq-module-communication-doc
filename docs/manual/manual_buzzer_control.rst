@@ -57,7 +57,7 @@ If the song playback option is set to Continuously, the disarm song will repeat 
 
 Analog Hobby Protocol Calibration
 -------------------------------------
-While :ref:`performing analog hobby protocol calibration <hobby_calibration_tutorial>`, you will hear two separate songs indicating the calibration's progress. 
+While :ref:`performing analog hobby protocol calibration <hobby_calibration_tutorial>`, you will hear two separate song portions indicating the calibration's progress. 
 The first portion of the song indicates that calibration is starting. This is followed by tones played twice as fast indicating that calibration is in progress. 
 An example of a full calibration song is played here:
 
@@ -84,7 +84,7 @@ If the song playback option is set to Continuously, the timeout song will repeat
 
 Watchdog
 -----------
-Watchdog timers are used to indicate that there has been a blocking error in the firmware. When a watchdog error occurs, the module restarts, and plays the watchdog song played here:
+Watchdog timers are used to indicate that there has been a blocking error in the firmware. When a watchdog error occurs, the module restarts, and plays the watchdog error song played here:
 
 .. raw:: html
 
