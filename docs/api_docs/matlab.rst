@@ -9,7 +9,7 @@ Installation
 In order to use the MATLAB API, you must first download the most recent version from our `Github <https://github.com/iq-motion-control/iq-module-communication-matlab/releases>`_. 
 Once you have downloaded and extracted our MATLAB library, you must add its path to your MATLAB folder path. To do so:
 
-1. Open MATLAB lab, and in the Home tab, find Set Path
+1. Open MATLAB, and in the Home tab, find Set Path
 
 .. image:: ../_static/api_pics/set_path_icon.png
 
@@ -17,9 +17,9 @@ Once you have downloaded and extracted our MATLAB library, you must add its path
 
 .. image:: ../_static/api_pics/add_with_subfolders.png
 
-3. Navigate to the location of your extracted Vertiq Matlab library, and select it
+3. Navigate to the location of your extracted Vertiq MATLAB library, and select it
 
-In your MATLAB search path, you should now see the Matlab library folder as well as all of its subfolders. MATLAB will now check these locations in all projects in order to find all Vertiq specific functionality.
+In your MATLAB search path, you should now see the MATLAB library folder as well as all of its subfolders. MATLAB will now check these locations in all projects in order to find Vertiq specific functionality.
 
 Hardware Setup
 ================
@@ -55,16 +55,16 @@ In order to create an instance of a client object, you must have at least a ``Me
 and timeout (``timeout``). By default the MATLAB API assumes a Module ID of 0 and a timeout of 0.2.
 
 Suppose we wanted to create an instance of the Microcontroller Temperature Monitor that uses our ``com`` instance created above, 
-communicates with a module with Module ID 42, and we allow up to 0.5 seconds for a response. To do so, we'd create an instance 
+communicates with a module with Module ID 42, and we allow up to 0.5 seconds for responses. To do so, we'd create an instance 
 of ``TemperatureMonitorUcClient`` with ``uc_temp = TemperatureMonitorUcClient(‘com’, com, ‘obj_id’, 42, ‘timeout’, 0.5);``
 
 Now that we can create client instances, we can move on to interacting with client entries through more explicit commands such as gets, sets, and saves.
 
 List
 ^^^^^^^^^^^
-All MATLAB list commands have the format ``client_object.list()``.
+All MATLAB ``list`` commands have the format ``client_object.list()``.
 
-``list`` returns a list of all parameters available from a client. For example, if we run ``list`` on an instance of ``PropellerMotorControlClient``, we receive:
+``list`` returns a list of all parameters available from a client. For example, if we run ``list`` on an instance of ``PropellerMotorControlClient`` called ``prop``, we receive:
 
 .. image:: ../_static/api_pics/prop_list.png
 
@@ -75,7 +75,7 @@ All MATLAB *get* commands have the format ``client_object.get("client_entry")``.
 The ``get`` function returns the value of a single client entry returned by the module through IQUART. The values of “client_entry” are specified by the Short Name 
 column found in the :ref:`Client Table Reference <iquart_client_reference_tables>`.
 
-Suppose we want to monitor the voltage read at the module's input. We can do this through the volts entry of the Power Monitor client.
+Suppose we want to monitor the module's input voltage. We can do this through the volts entry of the Power Monitor client.
 
 .. image:: ../_static/api_pics/volts_entry.png
 
@@ -116,7 +116,7 @@ All MATLAB save commands have the format ``client_object.save("client_entry")``.
 
 The save function takes the currently set entry value, and stores it in the module's persistent memory. Values that are saved are retained on power cycles.
 
-Suppose we want to save the timeout value set above. To do so ``prop.save('timeout')``.
+Suppose we want to save the timeout value set above. To do so, run ``prop.save('timeout')``.
 
 Next Steps
 ==================
