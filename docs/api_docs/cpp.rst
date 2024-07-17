@@ -658,3 +658,144 @@ Linux
 
         return 0;
     }
+
+Full Arduino Code Example (w/ Arduino Serial)
+=============================================
+
+The below is a complete example of a program using the Arduino programming environment. This
+example is to demonstrate how the C++ API can be useful in generic embedded as well as desktop environments. Simply interface a ``GenericInterface`` with your environment's serial 
+data handler (in this case ``Serial1``), and you can use it to communicate via IQUART. Please note that Vertiq's :ref:`dedicated Arduino libraries <getting_started_arduino_api>` streamline the data transfer process, thus, actual Arduino programming is simpler than the below example. 
+Please see the Arduino documentation if you intend on using the Arduino programming environment.
+    
+.. code-block:: Arduino
+
+    /*
+    * Vertiq spin and report demo.
+    *
+    * This code will command a motor to spin at various voltages and
+    * simultaniously report the motor’s position and velocity over USB
+    *
+    *
+    * The circuit:
+    * Serial1 RX is directly connected to motor TX (Red)
+    * Serial1 TX is directly connected to motor RX (White)
+    *
+    * Created 2018/10/8 by Matthew Piccoli
+    *
+    * This example code is in the public domain.
+    */
+
+    // USER SETABLE VALUES HERE------------------------------
+    // Voltage step size
+    const float kVoltageStep = 0.01f;
+    // Max voltage
+    const float kVoltageMax = 0.25f;
+    // END USER SETABLE VALUES-------------------------------
+    
+    // Includes required for communication
+    // Message forming interface
+    #include <generic_interface.hpp>
+
+    // Clients that speaks to module’s objects
+    #include <brushless_drive_client.hpp>
+
+    // Make a communication interface object
+    GenericInterface com;
+
+    // Make a objects that talk to the module
+    BrushlessDriveClient mot(0);
+
+    void setup() {
+        // Initialize USB communicaiton
+        Serial.begin(115200);
+        Serial.print("Program starting");
+        Serial.println();
+
+        // Initialize the Serial peripheral for motor controller
+        Serial1.begin(115200);
+    }
+
+    void loop() {
+        static float voltage_to_set = 0.0f;
+        static float voltage_sign = 1.0f;
+
+        // Update voltage command
+        if(abs(voltage_to_set) >= kVoltageMax){
+            voltage_sign = -1*voltage_sign;
+        }
+        voltage_to_set += kVoltageStep*voltage_sign;
+
+        SendMessages(voltage_to_set);
+        ReceiveMessages();
+        DoSomethingWithMessages();
+
+        delay(100);
+    }
+
+    void SendMessages(float voltage_command){
+        // This buffer is for passing around messages.
+        uint8_t communication_buffer[64];
+        // Stores length of message to send or receive
+        uint8_t communication_length;
+
+        // Generate the set message
+        mot.drive_spin_volts_.set(com, voltage_command);
+
+        // Generate the get message
+        mot.obs_angle_.get(com);
+        mot.obs_velocity_.get(com);
+
+        // Grab outbound messages in the com queue, store into buffer
+        // If it transferred something to communication_buffer...
+        if(com.GetTxBytes(communication_buffer,communication_length)){
+            // Use Arduino serial hardware to send messages
+            Serial1.write(communication_buffer,communication_length);
+        }
+
+        Serial.print("Setting voltage: ");
+        Serial.print(voltage_command);
+        Serial.println();
+    }
+
+    void ReceiveMessages(){
+        // This buffer is for passing around messages.
+        uint8_t communication_buffer[64];
+        // Stores length of message to send or receive
+        uint8_t communication_length;
+        // Reads however many bytes are currently available
+        communication_length = Serial1.readBytes(communication_buffer, Serial1.available());
+        // Puts the recently read bytes into coms receive queue
+        com.SetRxBytes(communication_buffer,communication_length);
+
+        uint8_t *rx_data; // temporary pointer to received type+data bytes
+        uint8_t rx_length; // number of received type+data bytes
+
+        // while we have message packets to parse
+        while(com.PeekPacket(&rx_data,&rx_length)){
+            // Share that packet with all client objects
+            mot.ReadMsg(com,rx_data,rx_length);
+            // Once were done with the message packet, drop it
+            com.DropPacket();
+        }
+    }
+
+    void DoSomethingWithMessages(){
+        // Check if we have any fresh data
+        // Checking for fresh data is not required, it simply
+        // lets you know if you received a message that you
+        // have not yet read.
+
+        // Check for a new angle message
+        if(mot.obs_angle_.IsFresh()) {
+            Serial.print("Angle: ");
+            Serial.print(mot.obs_angle_.get_reply());
+            Serial.println();
+        }
+
+        // Check for a new velocity message
+        if(mot.obs_velocity_.IsFresh()) {
+            Serial.print("Velocity: ");
+            Serial.print(mot.obs_velocity_.get_reply());
+            Serial.println();
+        }
+    }
