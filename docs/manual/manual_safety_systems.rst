@@ -56,7 +56,7 @@ Microcontroller temperature derate is calculated using the module's current micr
 (over temperature warning), and Temperature Monitor Microcontroller's ``otlo`` parameter (over temperature lock out). You can find the over temperature parameters 
 listed in the :ref:`Temperature Monitor Microcontroller Message Table <temperature_monitor_microcontroller>`.
 
-The total microcontroller temperature derate is calculated by :math:`\text{Microcontroller Temperature Derate} = \frac{\text{otlo - micro\_temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
+The total microcontroller temperature derate is calculated by :math:`\text{Microcontroller Temperature Derate} = \frac{\text{otlo - micro_temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
 
 This means that for any temperature below the range [otw, otlo], there is no derate applied. For any temperature above the range [otw, otlo], 
 the microcontroller temperature derate is 0. Any microcontroller temperature in that range is subject to a variable derate [0, 1].
@@ -74,7 +74,7 @@ As mentioned above, your module's coil temperature derate is meant to protect yo
 module's current estimated coil temperature, Coil Temperature Estimator's ``otw`` parameter (over temperature warning), and Coil Temperature Estimator's ``otlo`` 
 parameter (over temperature lock out). You can find the over temperature parameters listed in the :ref:`Coil Temperature Estimator Message Table <coil_temperature_estimator>`.
 
-The total coil temperature derate is calculated by :math:`\text{Coil Temperature Derate} = \frac{\text{otlo - coil\_temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
+The total coil temperature derate is calculated by :math:`\text{Coil Temperature Derate} = \frac{\text{otlo - coil_temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
 
 This means that for any temperature below the range [otw, otlo], there is no derate applied. For any temperature above the range [otw, otlo], the microcontroller 
 temperature derate is 0. Any microcontroller temperature in that range is subject to a variable derate [0, 1].
