@@ -15,13 +15,15 @@ representations of all :ref:`IQUART clients <iquart_client_reference_tables>` as
 Hardware Setup
 ================
 Information about required hardware for API communication can be found in the :ref:`Control Center documentation <connection_guide>`. The requirements for API communication 
-are the same as those for the IQ Control Center.
+are the same as those for the IQ Control Center if you plan on using the C++ library to connect with a desktop. If you are using the C++ library as part of an 
+embedded system or other standalone environment, you will need to figure out the serial connections for your specific setup.
 
 .. _writing_serial_data:
 
 Serial Connection Information
 ================================
-The method of opening and using a serial connection varies depending on the operating system being used to run the C++ API. We will discuss opening a serial port on Windows and Linux here.
+The method of opening and using a serial connection varies depending on the system being used to run the C++ API. We will discuss using a desktop, and opening a serial port on 
+Windows and Linux here.
 
 Windows
 ----------
@@ -106,6 +108,8 @@ Serial data to be written to the module can be written to the file specified by 
 
     WriteFile(com_port, packet_buf, length, &bytes_written, NULL);
 
+For more information of filling in ``packet_buf``, see :ref:`performing_iquart`.
+
 Linux (Ubuntu)
 ----------------
 
@@ -161,15 +165,18 @@ From here, we can hand the received data to our IQUART parser as covered later.
 
 Transmitting Data
 ^^^^^^^^^^^^^^^^^^^^
-In order to transmit data, we only need a byte string to write as well as the number of bytes to transmit. So, we create those as:
+In order to transmit data, we only need a byte string to write as well as the number of bytes to transmit. So, create those, and then we can write the data.
 
 .. code-block:: cpp
 
     uint8_t packet_buf[64];
     uint8_t length = 0;
 
-Now, we ask our IQUART ``GenericInterface`` for transmission data with ``GetTxBytes(packet_buf, length)`` (covered more below), 
-and can send the data to the module with ``my_serial_port.Write(packet_buf, length);``.
+    // Fill in packet_buf with data (as described later using the API), and update length
+
+    my_serial_port.Write(packet_buf, length);
+
+For more information of filling in ``packet_buf``, see :ref:`performing_iquart`.
 
 .. _performing_iquart:
 
@@ -234,26 +241,14 @@ To add the get command to the serial transmission buffer, we run ``power.volts_.
 transmit anything over the serial line. You must extract the queued message from the generic interface and transmit it using the appropriate serial function as specified in :ref:`performing_iquart` above.
 
 Once the module receives the transmitted get request, it will respond with the proper IQUART response message. Then, we can run the reception procedure illustrated in :ref:`performing_iquart` in order 
-to add the received IQUART data to our reception buffer. Once there, we update our ``PowerMonitorClient`` with all received IQUART data, 
-and allow it to determine what (if any) received data pertains to it. Then, we can throw away the now-processed IQUART packet.
+to add the received IQUART data to our reception buffer. Then, we can use the ``PeekPacket`` function of the generic interface to extract an individual valid IQUART 
+packet from that data, and can pass it to each of our clients using their ``ReadMsg`` function so they can check if that packet pertains to them. Then, we can throw away the now-processed IQUART packet.
 Finally, we can check our client entry to see if it has received new data through the ``IsFresh`` function.
-
-.. code-block:: cpp
-
-    // Temporary Pointer to the packet data location
-    uint8_t *packet_data;
-    uint8_t packet_length;
-
-    // Loads the packet data buffer with data received from the motor
-    while(com.PeekPacket(&packet_data, &packet_length)){
-        power.ReadMsg(packet_data, packet_length);
-        com.DropPacket();
-    }
 
 If data was properly received and processed from the ``get`` request, we can access it by calling ``get_reply`` on our ``volts_`` entry in order to read the gotten value ``power.volts_.get_reply()``.
 
 Note that by calling ``get_reply``, the entry's ``IsFresh`` flag is returned to 0. The following example illustrates how ``IsFresh`` works in relation to ``get`` and ``get_reply``. 
-The functions ``handle_com_tx``, ``handle_com_rx``, and ``update_modules`` are given in full in :ref:`full_examples`.
+The functions ``handle_com_tx`` and ``handle_com_rx`` are given in full in :ref:`full_examples`.
 
 .. code-block:: cpp
     
@@ -269,12 +264,20 @@ The functions ``handle_com_tx``, ``handle_com_rx``, and ``update_modules`` are g
 
     //Handle receiving the data
     handle_com_rx();
+    
     //Print out the current state of Power Monitor Volts parameter's IsFresh
     //We have not processed any data yet, so it should be false
     cout << "Power Monitor Volts IsFresh: " << power.volts_.IsFresh() << endl;
 
-    //Now, allow the Power Monitor to process any received data
-    update_modules();
+    // Temporary Pointer to the packet data location
+    uint8_t *packet_data;
+    uint8_t packet_length;
+
+    // Loads the packet data buffer with data received from the motor
+    while(com.PeekPacket(&packet_data, &packet_length)){
+        power.ReadMsg(packet_data, packet_length);
+        com.DropPacket();
+    }
 
     //At this point, we should have loaded a new value into power.volts_, and IsFresh should return true
     if(power.volts_.IsFresh()){
