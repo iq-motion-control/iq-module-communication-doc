@@ -10,7 +10,7 @@ Vertiq's Arduino API can be installed directly through the Arduino Library Manag
 
 .. image:: ../_static/api_pics/install_arduino.png
 
-You can also find a zipped archive of the Arduino API on `our website <https://www.vertiq.co/support>`_.
+You can also find a the most recent release of the Arduino API on `our Github <https://github.com/iq-motion-control/iq-module-communication-arduino/releases>`_.
 
 For more information on installing Arduino libraries please read `the page linked here <https://www.arduino.cc/en/guide/libraries>`_.
 
@@ -26,10 +26,10 @@ IQUART Communication
 Configuring Serial Connection
 --------------------------------
 In order to communicate with your module with an Arduino, you must configure an ``IqSerial`` instance. The ``IqSerial`` object is responsible for all communication 
-with the connected module, and can be attached to any available serial port on your Arduino. For example, to configure IQUART for Serial2 ``IqSerial ser(Serial2);``.
+with the connected module, and can be attached to any available serial port on your Arduino. For example, to configure IQUART for Serial2 you would use ``IqSerial ser(Serial2);``.
 
-We now use our ``setup`` function to initialize the IqSerial object as well as our terminal serial peripheral. By default, we set our IqSerial baud rate to 115200 
-(the default value for all Vertiq modules). In order to use a different baud rate with an IqSerial object, we can call ``ser.begin(<new baud rate>);``.
+Now, use the ``setup`` function to initialize the IqSerial object as well as our terminal serial peripheral. By default, IqSerial's baud rate is 115200 
+(the default value for all Vertiq modules). In order to use a different baud rate with an IqSerial object, call ``ser.begin(<new baud rate>);``.
 
 Communication with IQUART Clients
 --------------------------------------
@@ -39,7 +39,7 @@ discusses how to perform gets, sets, and saves through the Arduino API.
 Before moving forward, please familiarize yourself with the clients available for your module's family and firmware style. You can find this information on your 
 module's family page in the Supported IQUART Clients section.
 
-Each IQUART client has a C++ object implementation to allow for easy communication. The client files can be found in our `C++ API's inc folder <https://github.com/iq-motion-control/iq-module-communication-cpp/tree/master/inc>`_. 
+Each IQUART client has a C++ object implementation to allow for easy communication. The client files can be found in our `Arduino API's src folder <https://github.com/iq-motion-control/iq-module-communication-arduino/tree/master/src>`_. 
 Inside each client object are the client's entries whose formats are specified by templated instantiation. 
 For example, the :ref:`Power Monitor Client <power_monitor>` includes entries that contain float data ``ClientEntry<float> volts_;`` as well 
 as entries that contain unsigned half-words ``ClientEntry<uint16_t> volts_raw_;``
