@@ -36,6 +36,8 @@ Supported Tutorials
         * :ref:`hobby_fc_tutorial`
         * :ref:`hobby_calibration_tutorial`
         * :ref:`fc_telemetry_tutorial`
+        * :ref:`vibration_and_jittering`
+        * :ref:`protect_against_regen`
 
 Servo Module
 ****************************
