@@ -36,7 +36,7 @@ As mentioned above, your module's speed derate is meant to protect your module a
 brushless drive's ``motor_redline_start`` parameter, and brushless drive's ``motor_redline_end`` parameter. You can find the redline parameters listed in the 
 :ref:`Brushless Drive Message Table <brushless_drive>`.
 
-The total speed derate is calculated by :math:`\text{Speed Derate} = \frac{\text{motor\_redline\_end - speed}}{\text{motor\_redline\_end - motor\_redline\_start}}` where the solution is saturated to [0,1].
+The total speed derate is calculated by :math:`\text{Speed Derate} = \frac{\text{motor_redline_end - speed}}{\text{motor_redline_end - motor_redline_start}}` where the solution is saturated to [0,1].
 
 This means that for any speed below the range [redline_start, redline_end], there is no derate applied. For any speed above the range [redline_start, redline_end], 
 the speed derate is 0. Any speed in that range is subject to a variable derate [0, 1].
