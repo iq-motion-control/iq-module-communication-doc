@@ -12,14 +12,14 @@ and seek to protect your module from things like velocity runaway, power issues,
 Protecting Against Voltage Regeneration Spikes
 ====================================================
 Voltage regeneration is one of the most often cited reasons for module failure, and as such we have advanced systems to protect against extreme voltage spikes. 
-You can read more about voltage regeneration protection against it in :ref:`protect_against_regen`.
+You can read more about voltage regeneration protection in :ref:`protect_against_regen`.
 
 Protection with Derates
 ===========================
 Basically, a derate is a scaling factor that adjusts a control parameter into a safer area of operation. All derate values on Vertiq's modules are represented as float 
 values from [0,1].
 
-Suppose that your commanded drive voltage <link to the velo/volt based control guy> is 2V, and the current derate is 0.4. 
+Suppose that your :ref:`commanded drive voltage <manual_velocity_control_mechanisms>` is 2V, and the current derate is 0.4. 
 The actual drive voltage applied will be (2V * 0.4) = 0.8V. A basic illustration of derate application is shown below
 
 .. image:: ../_static/manual_images/safety/basic_derate_example.png
@@ -28,7 +28,7 @@ The actual drive voltage applied will be (2V * 0.4) = 0.8V. A basic illustration
 There are three separate derate values that are internally updated, each linked with a different module function. There is a speed derate used to avoid runaway, 
 a microcontroller temperature based derate to avoid microcontroller overheating, and a coil temperature derate to avoid coil overheating. 
 These three derate values are combined and applied to the target command voltage in order to protect your module. Details of each of these derate values as well as 
-how they are combined are discussed later.
+how they are combined are discussed below.
 
 Speed Based Derate
 ---------------------
