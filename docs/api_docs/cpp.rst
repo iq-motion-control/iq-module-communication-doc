@@ -256,6 +256,7 @@ Note that by calling ``get_reply``, the entry's ``IsFresh`` flag is returned to 
 The functions ``handle_com_tx``, ``handle_com_rx``, and ``update_modules`` are given in full in :ref:`full_examples`.
 
 .. code-block:: cpp
+    
     //Create PowerMonitorClient power(0);
 
     //Configure serial communications for your OS
