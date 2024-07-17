@@ -37,7 +37,11 @@ port name and a baud rate. The name of your serial port is dependent on your ope
 “COM3,” and in Linux, it may be "/dev/ttyUSB0."
 
 Suppose your FTDI reports on COM4, and you would like to communicate with your module at 921600 baud. To do so, we can create a ``MessageInterface`` ``com`` by 
-running ``com = MessageInterface('COM4', 921600)``.
+running 
+
+.. code-block::
+
+    com = MessageInterface('COM4', 921600)
 
 The ``MessageInterface`` is responsible for creating, transmitting, receiving, and decoding IQUART messages. All further communication is handled by ``com``.
 
@@ -56,7 +60,11 @@ and timeout (``timeout``). By default the MATLAB API assumes a Module ID of 0 an
 
 Suppose we wanted to create an instance of the Microcontroller Temperature Monitor that uses our ``com`` instance created above, 
 communicates with a module with Module ID 42, and we allow up to 0.5 seconds for responses. To do so, we'd create an instance 
-of ``TemperatureMonitorUcClient`` with ``uc_temp = TemperatureMonitorUcClient(‘com’, com, ‘obj_id’, 42, ‘timeout’, 0.5);``
+of ``TemperatureMonitorUcClient`` with
+
+.. code-block::
+
+    uc_temp = TemperatureMonitorUcClient(‘com’, com, ‘obj_id’, 42, ‘timeout’, 0.5);
 
 Now that we can create client instances, we can move on to interacting with client entries through more explicit commands such as gets, sets, and saves.
 
@@ -116,7 +124,11 @@ All MATLAB save commands have the format ``client_object.save("client_entry")``.
 
 The save function takes the currently set entry value, and stores it in the module's persistent memory. Values that are saved are retained on power cycles.
 
-Suppose we want to save the timeout value set above. To do so, run ``prop.save('timeout')``.
+Suppose we want to save the timeout value set above. To do so, run
+
+.. code-block::
+
+    prop.save('timeout')
 
 Next Steps
 ==================
