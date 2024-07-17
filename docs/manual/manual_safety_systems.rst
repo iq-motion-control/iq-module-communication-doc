@@ -36,7 +36,7 @@ As mentioned above, your module's speed derate is meant to protect your module a
 brushless drive's ``motor_redline_start`` parameter, and brushless drive's ``motor_redline_end`` parameter. You can find the redline parameters listed in the 
 :ref:`Brushless Drive Message Table <brushless_drive>`.
 
-The total speed derate is calculated by :math:`\text{Speed Derate} = \frac{\text{motor_redline_end} - \text{speed}}{\text{motor_redline_end} - \text{motor_redline_start}}` where the solution is saturated to [0,1].
+The total speed derate is calculated by :math:`\text{Speed Derate} = \frac{\text{motor\_redline\_end - speed}}{\text{motor\_redline\_end - motor\_redline\_start}}` where the solution is saturated to [0,1].
 
 This means that for any speed below the range [redline_start, redline_end], there is no derate applied. For any speed above the range [redline_start, redline_end], 
 the speed derate is 0. Any speed in that range is subject to a variable derate [0, 1].
@@ -56,7 +56,7 @@ Microcontroller temperature derate is calculated using the module's current micr
 (over temperature warning), and Temperature Monitor Microcontroller's ``otlo`` parameter (over temperature lock out). You can find the over temperature parameters 
 listed in the :ref:`Temperature Monitor Microcontroller Message Table <temperature_monitor_microcontroller>`.
 
-The total microcontroller temperature derate is calculated by :math:`\text{Microcontroller Temperature Derate} = \frac{\text{otlo} - \text{micro_temp}}{\text{otlo} - \text{otw}}` where the solution is saturated to [0,1].
+The total microcontroller temperature derate is calculated by :math:`\text{Microcontroller Temperature Derate} = \frac{\text{otlo - micro\_temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
 
 This means that for any temperature below the range [otw, otlo], there is no derate applied. For any temperature above the range [otw, otlo], 
 the microcontroller temperature derate is 0. Any microcontroller temperature in that range is subject to a variable derate [0, 1].
@@ -74,7 +74,7 @@ As mentioned above, your module's coil temperature derate is meant to protect yo
 module's current estimated coil temperature, Coil Temperature Estimator's ``otw`` parameter (over temperature warning), and Coil Temperature Estimator's ``otlo`` 
 parameter (over temperature lock out). You can find the over temperature parameters listed in the :ref:`Coil Temperature Estimator Message Table <coil_temperature_estimator>`.
 
-The total coil temperature derate is calculated by :math:`\text{Coil Temperature Derate} = \frac{\text{otlo} - \text{coil_temp}}{\text{otlo} - \text{otw}}` where the solution is saturated to [0,1].
+The total coil temperature derate is calculated by :math:`\text{Coil Temperature Derate} = \frac{\text{otlo - coil\_temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
 
 This means that for any temperature below the range [otw, otlo], there is no derate applied. For any temperature above the range [otw, otlo], the microcontroller 
 temperature derate is 0. Any microcontroller temperature in that range is subject to a variable derate [0, 1].
