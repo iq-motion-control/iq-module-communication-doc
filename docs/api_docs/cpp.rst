@@ -17,6 +17,8 @@ Hardware Setup
 Information about required hardware for API communication can be found in the :ref:`Control Center documentation <connection_guide>`. The requirements for API communication 
 are the same as those for the IQ Control Center.
 
+.. _writing_serial_data:
+
 Serial Connection Information
 ================================
 The method of opening and using a serial connection varies depending on the operating system being used to run the C++ API. We will discuss opening a serial port on Windows and Linux here.
@@ -46,7 +48,7 @@ Suppose your FTDI reports on COM4 you will configure your Windows variables as f
     TCHAR *pcCommPort = TEXT("COM4");
     
 Now, we can start up and open the serial port so that we can communicate with the connected module. Suppose we want to open our COM port at 115200 baud with the same 
-serial protocol configuration as all Veritq modules. To do so:
+serial protocol configuration as all Vertiq modules. To do so:
 
 .. code-block:: cpp
     
@@ -169,6 +171,8 @@ In order to transmit data, we only need a byte string to write as well as the nu
 Now, we ask our IQUART ``GenericInterface`` for transmission data with ``GetTxBytes(packet_buf, length)`` (covered more below), 
 and can send the data to the module with ``my_serial_port.Write(packet_buf, length);``.
 
+.. _performing_iquart:
+
 Performing IQUART Communication
 ================================
 
@@ -227,9 +231,9 @@ In order to get data from a client's entry (such as the ``volts_`` entry mention
 configured ``GenericInterface``. Then, we can call the ``get`` function on ``PowerMonitorClient``'s ``volts_`` entry. 
 In this example, we have called our ``GenericInterface`` ``com``, and are using ``PowerMonitorClient power``. 
 To add the get command to the serial transmission buffer, we run ``power.volts_.get(com)``. It is important to note that calling a ``get`` does not explicitly 
-transmit anything over the serial line. You must use the method above to transmit the data.
+transmit anything over the serial line. You must extract the queued message from the generic interface and transmit it using the appropriate serial function as specified in :ref:`performing_iquart` above.
 
-Once the module receives the transmitted get request, it will respond with the proper IQUART response message. Then, we can run the reception procedure above in order 
+Once the module receives the transmitted get request, it will respond with the proper IQUART response message. Then, we can run the reception procedure illustrated in :ref:`performing_iquart` in order 
 to add the received IQUART data to our reception buffer. Once there, we update our ``PowerMonitorClient`` with all received IQUART data, 
 and allow it to determine what (if any) received data pertains to it. Then, we can throw away the now-processed IQUART packet.
 Finally, we can check our client entry to see if it has received new data through the ``IsFresh`` function.
@@ -248,6 +252,39 @@ Finally, we can check our client entry to see if it has received new data throug
 
 If data was properly received and processed from the ``get`` request, we can access it by calling ``get_reply`` on our ``volts_`` entry in order to read the gotten value ``power.volts_.get_reply()``.
 
+Note that by calling ``get_reply``, the entry's ``IsFresh`` flag is returned to 0. The following example illustrates how ``IsFresh`` works in relation to ``get`` and ``get_reply``. 
+The functions ``handle_com_tx``, ``handle_com_rx``, and ``update_modules`` are given in full in :ref:`full_examples`.
+
+.. code-block:: cpp
+    //Create PowerMonitorClient power(0);
+
+    //Configure serial communications for your OS
+
+    //Queue a get message for Power Monitor Volts
+    power.volts_.get(com);
+
+    //Transmit the get
+    handle_com_tx();
+
+    //Handle receiving the data
+    handle_com_rx();
+    //Print out the current state of Power Monitor Volts parameter's IsFresh
+    //We have not processed any data yet, so it should be false
+    cout << "Power Monitor Volts IsFresh: " << power.volts_.IsFresh() << endl;
+
+    //Now, allow the Power Monitor to process any received data
+    update_modules();
+
+    //At this point, we should have loaded a new value into power.volts_, and IsFresh should return true
+    if(power.volts_.IsFresh()){
+        cout << "Volts was fresh with value: " << power.volts_.get_reply() << endl;
+    }
+
+    //We've now called get_reply meaning we've processed the most recently received data. IsFresh should be false again
+    cout << "Power Monitor Volts IsFresh: " << power.volts_.IsFresh() << endl;
+
+The entire process of executing a ``get`` using the C++ library is described by the following sequence diagram:
+
 .. figure:: ../_static/api_pics/process_of_a_get.png
 
 	Process for Getting an Entry Value
@@ -263,7 +300,24 @@ Suppose we create a ``PropellerMotorControlClient`` called ``prop_control``, and
 to 3.14 rad/s for transmission, we call ``prop_control.ctrl_velocity_.set(com, 3.14);``. In order to then queue a command for the module to coast, 
 we can call ``prop_control.ctrl_coast_.set(com);``.
 
-Processing data for output is the same as described as above, and is dependent on your operating system.
+Processing data for output is the same as described as :ref:`above <performing_iquart>`, and is dependent on your operating system.
+
+Suppose we want to change the Propeller Motor Controller's timeout parameter to 5 seconds. 
+
+.. image:: ../_static/api_pics/timeout_entry.png
+
+We'll need a ``PropellerMotorControlClient`` ``prop_control`` initialized to our Module ID (in this case 0). The function ``handle_com_tx`` is given in full in :ref:`full_examples`.
+
+.. code-block:: cpp
+
+    //Create PropellerMotorControlClient prop_control(0);
+    //Configure serial communications for your OS
+
+    //Queue a message that will set our module's timeout to 5 seconds
+    prop_control.timeout_.set(com, 5);
+
+    //Make sure the message gets out
+    handle_com_tx();
 
 Saving
 ---------
@@ -271,6 +325,22 @@ Sending a ``save`` command is identical to sending a  ``set`` command which does
 Suppose we want to change our :ref:`ESC Propeller Input Parser's <esc_propeller_input_parser_ref>` *volts_max* to 10, and then save that value. First, we create an instance 
 of ``EscPropellerInputParserClient`` named ``esc_input_parser``. Then, we run the process to set the ``volts_max_`` parameter to 10. 
 Now, we can queue a save command ``esc_input_parser.volts_max_.save(com);`` Once transmission is complete, the module's *volts_max* value is saved to its persistent memory.
+
+Suppose we want to save the timeout value set above. To do so:
+
+.. code-block:: cpp
+
+    //Create PropellerMotorControlClient prop_control(0);
+    //Configure serial communications for your OS
+
+    //Queue a message that will set our module's timeout to 5 seconds
+    prop_control.timeout_.set(com, 5);
+
+    //Queue a message that will save our module's timeout
+    prop_control.timeout_.save(com);
+
+    //Make sure the message gets out
+    handle_com_tx();
 
 Special Case Setting - Packed Messages
 ------------------------------------------
@@ -283,7 +353,7 @@ As with all ``set`` commands, this simply queues the bytes for transfer. The res
 
 Let's suppose we want to send a packed IFCI command message that transmits 4 throttle commands, and request telemetry from the module with Module ID 3.
 
-First, we need an instance of the ``IQUartFlightControllerInterfaceClientIQUartFlightControllerInterfaceClient`` class which we will call 
+First, we need an instance of the ``IQUartFlightControllerInterfaceClient`` class which we will call 
 ``ifci`` with a target Module ID 0. Then, we create and fill an ``IFCIPackedMessage`` structure. Then we create a byte buffer and length parameter, 
 and pass all three parameters into the ``PackageIfciCommandsForTransmission`` helper function.
 
@@ -309,6 +379,8 @@ Now, with our data prepared for transmission, we can call a ``set`` where ``com`
 .. code-block:: cpp
 
     ifci.packed_command_.set(com, output_data, output_data_len);
+
+.. _full_examples:
 
 Full Examples
 ===================
@@ -401,7 +473,13 @@ Windows
     float get_voltage(){
         power.volts_.get(com);
         send_message_and_process_reply();
-        return power.volts_.get_reply();
+
+        //Let's make sure we actually got a response
+        if(power.volts_.IsFresh()){
+            return power.volts_.get_reply();
+        }
+
+        return 0;
     }
 
     int main(){
@@ -568,10 +646,14 @@ Linux
 
             com.DropPacket();
 
-            // Reads the data from the temperature client
-            float temperature = temp.temp_.get_reply();
-
-            printf("Temperature: %f\n", temperature);
+            //Let's see if we actually got a response
+            if(temp.temp_.IsFresh()){
+                // Reads the data from the temperature client
+                float temperature = temp.temp_.get_reply();
+                printf("Temperature: %f\n", temperature);
+            }else{
+                printf("Did not get a response\n");
+            }
         }
 
         return 0;
