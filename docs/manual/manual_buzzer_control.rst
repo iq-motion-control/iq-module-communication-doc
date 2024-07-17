@@ -4,15 +4,15 @@
 
 .. _manual_buzzer_control:
 
-********************
-Buzzer Controller
-********************
+**************************************
+Buzzer Controller and Status Songs
+**************************************
 
 What is the Buzzer
 ====================
 Your module is capable of inducing specific vibration frequencies in order to create audible tones. These buzzer tones are used to indicate several module statuses. 
 Here, we will discuss all possible “songs” your module may play during normal operation and their meanings. We will also discuss how to use the 
-:ref:`buzzer control client <buzzer_control>` in order to create and play your own songs.
+:ref:`Buzzer Control client <buzzer_control>` in order to create and play your own songs.
 
 Standard Songs
 ==================
@@ -21,12 +21,24 @@ Startup
 -----------
 On a successful power-up and initialization, your module will play a 5-tone startup song. After this song completes, your module is ready for use.
 
-The startup song is played here:
+The complete startup song is played here:
 
 .. raw:: html
 
     <audio controls>
         <source src="../_static/manual_images/buzzer_song_mp3s_pics/startup_song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+In the event that your module is programmed with improper firmware, its calibration data becomes corrupted, or its product key becomes corrupted your module will only 
+play a 3-tone startup song. If :ref:`reprogramming your module <updating_firmware_control_center>` does not resolve this issue, please contact us at support@vertiq.co.
+
+The failed startup song is played here:
+
+.. raw:: html
+
+    <audio controls>
+        <source src="../_static/manual_images/buzzer_song_mp3s_pics/bad_startup.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
     </audio>
 
@@ -98,7 +110,7 @@ Any flight logs, support files, etc. that can be provided will help our team bes
 
 Buzzer Song Volume
 ====================
-If the audio feedback from your module is either too loud or quiet, you can adjust its volume with the Volume Max parameter available in the Control Center's advanced tab.
+If the audio feedback from your module is either too loud or quiet, you can adjust its volume with the Volume Max parameter available in the Control Center's Advanced tab.
 
 .. image:: ../_static/manual_images/buzzer_song_mp3s_pics/volume_max.png
 
@@ -120,7 +132,7 @@ Suppose you want your module to play a middle C (261.6 Hz) for 3 seconds.
     # Module Communication - This must be updated with the correct parameters for your module's serial communication
     com = iq.SerialCommunicator("COM3", baudrate=115200)
 
-    # Using the Vertiq4006 with additional custom client files
+    # Using the Vertiq2306
     module = iq.Vertiq2306(com, firmware="speed")
 
     #Play a middle C for 3 seconds
@@ -141,15 +153,14 @@ The following can be used as a basis to create custom songs, and provides an exa
 .. code-block:: python
 
     import iqmotion as iq
-    import numpy as np
 
     # Module Communication - This must be updated with the correct parameters for your module's serial communication
     com = iq.SerialCommunicator("COM3", baudrate=115200)
 
-    # Using the Vertiq2306 with additional custom client files
+    # Using the Vertiq2306
     module = iq.Vertiq2306(com, firmware="speed")
 
-    #Information about how loud to make each note as well as the frequency of each note in the C-Major scale
+    # Information about how loud to make each note as well as the frequency of each note in the C-Major scale
     volume = 100
     c = 261.6
     d = 293.7
@@ -159,10 +170,11 @@ The following can be used as a basis to create custom songs, and provides an exa
     a = 440
     b = 493
 
-    #Fill in our song information
-    duration = 750 #ms
-    c_scale = [c, d, e, f, g, a, b, c*2]
-    c_scale_durations = np.full(len(c_scale), duration)
+    # Fill in our song information
+    duration = 750  # ms
+    c_scale = [c, d, e, f, g, a, b, c * 2]
+    c_scale_durations = [duration]*len(c_scale)
+
 
     def play_note(hz, duration):
         module.set("buzzer_control", "hz", hz)
@@ -174,8 +186,8 @@ The following can be used as a basis to create custom songs, and provides an exa
         for i in range(len(notes)):
             play_note(notes[i], durations[i])
 
-            #Wait until the last note is done
-            while(module.get("buzzer_control", "ctrl_mode") == 2):
+            # Wait until the current note is done
+            while (module.get("buzzer_control", "ctrl_mode") == 2):
                 pass
 
     if __name__ == "__main__":
