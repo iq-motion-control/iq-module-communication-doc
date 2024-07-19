@@ -6,13 +6,13 @@
 
 .. toctree::
    :caption: API Documentation
-   :titlesonly:
    :hidden:
 
-   langs/python
-   langs/arduino
-   langs/cpp
-   langs/matlab
+   api_docs/getting_started_with_apis
+   api_docs/python
+   api_docs/arduino
+   api_docs/cpp
+   api_docs/matlab
    
 
 .. toctree::
