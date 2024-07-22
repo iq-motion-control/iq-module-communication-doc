@@ -9,6 +9,8 @@ Safety Systems
 The following manual is meant to outline the safety systems present on Vertiq modules. Safety systems are built into your module's firmware, 
 and seek to protect your module from things like over-velocity mechanical issues, power issues, and overheating.
 
+.. _protect_against_regen:
+
 Protecting Against Voltage Regeneration Spikes
 ====================================================
 What are Regenerative Voltage Spikes
@@ -78,7 +80,7 @@ how they are combined are discussed below.
 
 Speed Based Derate
 ---------------------
-As mentioned above, your module's speed derate is meant to protect your module against speed runaway. Speed derate is calculated using the module's current speed, 
+As mentioned above, your module's speed derate is meant to protect your module from mechanical failure. Speed derate is calculated using the module's current speed, 
 brushless drive's ``motor_redline_start`` parameter, and brushless drive's ``motor_redline_end`` parameter. You can find the redline parameters listed in the 
 :ref:`Brushless Drive Message Table <brushless_drive>`.
 
@@ -148,7 +150,7 @@ A graph illustrating the microcontroller temperature derate calculation is provi
 
 Calculation of the Total Derate
 -----------------------------------
-The total applied derate applied is the direct multiplication of the speed, microcontroller, and coil derate values. So, then our drive voltage system becomes:
+The total applied derate is the direct multiplication of the speed, microcontroller, and coil derate values. So, then our drive voltage system becomes:
 
 .. image:: ../_static/manual_images/safety/full_derate_system.png
     :align: center
@@ -194,6 +196,13 @@ There are two parameters in the :ref:`Brushless Drive client <brushless_drive>` 
 
 * ``slew_volts_per_second`` defines the actual slew rate in volts per second applied to voltage commands. This defines the strength of the filter's impact.
 * ``slew_enable`` determines whether or not ``slew_volts_per_second`` is actually applied to voltage commands. If ``slew_enable`` is false, then there will not be slew limiting applied.
+
+You can also find these parameters in the Control Center's Tuning tab as ``Voltage Slew Limit`` and ``Voltage Slew Limit Enable``
+
+.. image:: ../_static/manual_images/safety/slew_rate_control_center.png
+    :align: center
+    :scale: 50%
+
 
 The following examples are meant to illustrate the effect that slew limiting has on module control. All examples start with the module in coast followed by a voltage step command to 2V.
 
@@ -252,4 +261,4 @@ The biggest difference between this current limit and :ref:`slew_rate` is that t
 the time it takes to get there. This current limit is not meant to limit the rate of change of commanded voltages, it is meant to protect against all high current events. Suppose 
 your module is spinning, but is caught in a tree and can no longer spin. Assuming that your flight controller continues to send commands, your module will continue to 
 attempt spinning, but if it cannot, then it will end up with a surge of current going through its coils. In this case, ``motor_I_max`` would protect the module by 
-forcing it to stop trying to spin.
+limiting the drive voltage, and subsequently limiting the current.
