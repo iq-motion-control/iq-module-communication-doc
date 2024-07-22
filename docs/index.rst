@@ -64,6 +64,7 @@
    manual/manual_intro
    manual/manual_angle_control_mechanisms
    manual/manual_velocity_control_mechanisms
+   manual/manual_safety_systems
    manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming
@@ -76,7 +77,6 @@
    manual/manual_step_direction
    manual/manual_ifci_control
    manual/manual_underactuated_torque_correction
-   manual/manual_safety_systems
    manual/manual_appendix
 
 .. toctree::
