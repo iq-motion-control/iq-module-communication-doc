@@ -7,7 +7,7 @@
 Safety Systems
 *****************
 The following manual is meant to outline the safety systems present on Vertiq modules. Safety systems are built into your module's firmware, 
-and seek to protect your module from things like velocity runaway, power issues, and overheating.
+and seek to protect your module from things like over-velocity mechanical issues, power issues, and overheating.
 
 Protecting Against Voltage Regeneration Spikes
 ====================================================
