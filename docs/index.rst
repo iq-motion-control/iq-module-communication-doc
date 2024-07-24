@@ -56,7 +56,6 @@
    tutorials/up12_initial_configuration
    tutorials/motor_noise_debugging
    tutorials/vibration_and_jittering
-   tutorials/protect_against_regen
 
 .. toctree::
    :hidden:
@@ -65,6 +64,7 @@
    manual/manual_intro
    manual/manual_angle_control_mechanisms
    manual/manual_velocity_control_mechanisms
+   manual/manual_safety_systems
    manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming
