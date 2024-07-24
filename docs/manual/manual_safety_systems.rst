@@ -18,8 +18,7 @@ What are Regenerative Voltage Spikes
 Regeneration voltage occurs when the commanded module voltage is less than the module's back-EMF voltage. When this occurs, the motor's kinetic 
 energy is converted directly to electrical energy, and produces a current flowing out of the motor and into the power source.
 
-The commanded module voltage may be less than the back-EMF voltage in cases where the module is slowing down or braking. The faster that the commanded voltage 
-changes (for example, jumping from a 20V to a 0V command), the greater the magnitude of the regeneration current.
+The commanded module voltage may be less than the back-EMF voltage in cases where the module is slowing down or braking. A larger spread between back-EMF and commanded module voltage leads to a greater magnitude of regeneration current.
 
 How Can Regeneration Affect Your Module
 ------------------------------------------------------------
@@ -116,6 +115,9 @@ Microcontroller temperature derate is calculated using the module's current micr
 (over temperature warning), and Temperature Monitor Microcontroller's ``otlo`` parameter (over temperature lock out). You can find the over temperature parameters 
 listed in the :ref:`Temperature Monitor Microcontroller Message Table <temperature_monitor_microcontroller>`.
 
+.. note::
+    Microcontroller temperature based derate only functions while the module is motoring. Successful thermal derating is not guaranteed when generating.
+
 The total microcontroller temperature derate is calculated by :math:`\text{Microcontroller Temperature Derate} = \frac{\text{otlo - temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
 
 This means that for any temperature below otw, there is no derate applied. For any temperature at or above otlo, 
@@ -134,6 +136,9 @@ Coil Temperature Based Derate
 As mentioned above, your module's coil temperature derate is meant to protect your module's coils from overheating. Coil temperature derate is calculated using the 
 module's current estimated coil temperature, Coil Temperature Estimator's ``otw`` parameter (over temperature warning), and Coil Temperature Estimator's ``otlo`` 
 parameter (over temperature lock out). You can find the over temperature parameters listed in the :ref:`Coil Temperature Estimator Message Table <coil_temperature_estimator>`.
+
+.. note::
+    Coil temperature based derate only functions while the module is motoring. Successful thermal derating is not guaranteed when generating.
 
 The total coil temperature derate is calculated by :math:`\text{Coil Temperature Derate} = \frac{\text{otlo - temp}}{\text{otlo - otw}}` where the solution is saturated to [0,1].
 
@@ -172,7 +177,9 @@ The value of ``fault_ever`` is generally set by the hardware and cleared by the 
 
 The module's behavior when faults are detected is determined by the ``fault_latching`` parameter. If ``fault_latching`` is set to 1, then any high flags 
 in ``fault_ever`` place the module into safe mode. In safe mode, the module is set to coast, and it will not spin or apply any control voltage. The module remains in safe mode until the user clears ``fault_ever``. 
-When ``fault_latching`` is set to 0, the module remains in safe mode until all power safety parameters are back in their safe operating range, and ``fault_now`` returns to 0.
+When ``fault_latching`` is set to 0, the module remains in safe mode until all power safety parameters are back in their safe operating range, and ``fault_now`` returns to 0. 
+When ``fault_latching`` is set to 0, the module can enter and exit safe mode at high frequency which may be damaging to the the motor or supply since it can cause large ripple currents. 
+We recommend using ``fault_latching = 1`` whenever possible.
 
 Suppose the high limit of power safety's microcontroller temperature parameter is 115°C. If your module's microcontroller ever reaches 115°C, the module enters 
 safe mode, and will not spin until it exits safe mode. If ``fault_latching`` is set to 0, then once the module's microcontroller temperature drops below 115°C, 
@@ -189,8 +196,8 @@ The module will only be allowed to resume normal operation when Vdd has risen ba
 
 Slew Rate Limiter
 ==================
-Your module's slew rate limit defines the maximum change in control voltage per second. The slew rate limiter can be used to limit how quickly your module attempts to 
-change speed, which can be useful to protect external electronics or improve integration with flight controllers in certain cases.
+Your module's slew rate limit defines the maximum change in control voltage per second. The slew rate limiter can be used to limit how quickly your module attempts to
+change voltage, which can be useful to protect external electronics or improve integration with flight controllers in certain cases.
 
 There are two parameters in the :ref:`Brushless Drive client <brushless_drive>` that affect your module's slew rate limiting:
 
