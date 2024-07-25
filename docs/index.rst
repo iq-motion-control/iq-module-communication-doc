@@ -6,13 +6,13 @@
 
 .. toctree::
    :caption: API Documentation
-   :titlesonly:
    :hidden:
 
-   langs/python
-   langs/arduino
-   langs/cpp
-   langs/matlab
+   api_docs/getting_started_with_apis
+   api_docs/python
+   api_docs/arduino
+   api_docs/cpp
+   api_docs/matlab
    
 
 .. toctree::
@@ -56,7 +56,6 @@
    tutorials/up12_initial_configuration
    tutorials/motor_noise_debugging
    tutorials/vibration_and_jittering
-   tutorials/protect_against_regen
 
 .. toctree::
    :hidden:
@@ -65,6 +64,7 @@
    manual/manual_intro
    manual/manual_angle_control_mechanisms
    manual/manual_velocity_control_mechanisms
+   manual/manual_safety_systems
    manual/manual_telemetry
    manual/manual_throttle
    manual/manual_advanced_arming
@@ -77,6 +77,7 @@
    manual/manual_step_direction
    manual/manual_ifci_control
    manual/manual_underactuated_torque_correction
+   manual/manual_buzzer_control
    manual/manual_appendix
 
 .. toctree::

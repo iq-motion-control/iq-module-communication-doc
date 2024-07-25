@@ -193,7 +193,7 @@ Additional Mechanical/Electrical Information
 For more information about the Vertiq 40-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
 * `40-06 370Kv G2 Datasheet <https://www.vertiq.co/s/VERT-M341-E200-Vertiq_40-06_370Kv_datasheet.pdf>`_
-* `40-06 770Kv G2 Datasheet <https://www.vertiq.co/s/VERT-M411-E200-Vertiq_40-06_770Kv_datasheet-bjff.pdf>`_
+* `40-06 770Kv G2 Datasheet <https://www.vertiq.co/s/VERT-M411-E200-Vertiq_40-06_770Kv_datasheet.pdf>`_
 * `40-14 400Kv G2 Datasheet <https://www.vertiq.co/s/VERT-M351-E200-Vertiq_40-14_400Kv_datasheet.pdf>`_
 
 
