@@ -49,23 +49,50 @@ Setting Up the Underactuated Propeller with PX4
 ===============================================
 Once the flight controller and motor are set up to communicate via IFCI, power on the system and connect to the flight controller using QGroundControl. Go to the flight controller setup menu and in the parameter menu select the Vertiq IO section on the left hand menu.
 
-pix of that menu selection
+.. figure:: ../_static/tutorial_images/underactuated_px4_flight_controller/vertiq-io-menu.png
+    :align: center
+    :scale: 50
+    :alt: Vertiq IO Submenu
+
+    Vertiq IO Menu
 
 Change target module ID to the the module you are attempting to control. The values in the menu should update. Change 'Control_Mode' to 'Velocity' and 'Pulse_Volt_Mode' to 'Voltage Limit Mode'. Set the 'Max_Velocity' to the desired maximum velocity in rad/s and the 'Pulse_Volt_Lim' to the maximum desired rad/s for pulsing. For each motor set the 'THROTTLE_CVI', 'X_CVI', and 'Y_CVI' to different ESC #s. It is recommended that you start with ESC 1 (corresponding to a CVI of 0).
 
-pics of this
+.. figure:: ../_static/tutorial_images/underactuated_px4_flight_controller/vertiq-io-settings.png
+    :align: center
+    :scale: 50
+    :alt: Vertiq IO Settings
+
+    Vertiq IO Settings
 
 Set 'TRIGGER_READ' to enable and confirm that the changes have been saved.
 
 Finally, change the parameter 'CA_AIRFRAME' to 'Motors (6DOF)'.
 
-pic of this
+.. figure:: ../_static/tutorial_images/underactuated_px4_flight_controller/ca-airframe.png
+    :align: center
+    :scale: 50
+    :alt: Airframe Type
 
-After all of these settings have been set, go to the 'Actuators' page on the left menu. For each underactuated propeller, add 3 motors in the geometry section. Select the 'Advanced' checkbox in the top right. Assuming the rotor is facing upwards, for throttle motor select the direction as 'Upwards', for the X select 'Forwards', and for the Y select 'Leftwards'. Set the position X, Y, and Z position to the position of the rotor on the aircraft. They should all have the same location settings for the associated throttle, X, and Y thrusts. If you plan on using rotor differential throttle for Yaw control, set the moment coefficient. For a CCW rotor, set it positive. For a CW rotor, set it negative. For the X and Y thrusts, set the moment coefficient to 0.
+    Airframe Type
 
-On the Actuator Ouputs tab, select 'Vertiq IO'. Determine which ESC outputs you will be using for the motors in the Geometry section. The ESC # will be the corresponding CVI # + 1. For the ESC #, select the appropriate motor function. For example, if the throttle CVI is set to 0 and the motor function associated with upwards thrust is Motor 1, set ESC #1 (CVI 0 + 1) to a function of Motor 1. If the X CVI is set to 1 and the motor function associated with forwards thrust is Motor 2, set ESC #2 (CVI 1 + 1) to Motor 2. Continue this for all underactuated propellers you will be using.
+After all of these settings have been set, go to the 'Actuators' page on the left menu. For each underactuated propeller, add 3 motors in the geometry section. Select the :red:`'Advanced'`` checkbox in the top right. Assuming the rotor is facing upwards, for throttle motor select the direction as :blue:`'Upwards'`, for the X select :blue:`'Forwards'`, and for the Y select :blue:`'Leftwards'`. Set the :green:`X, Y, and Z position` to the position of the rotor on the aircraft. They should all have the same location settings for the associated throttle, X, and Y thrusts. If you plan on using rotor differential throttle for Yaw control, set the :gold:`moment coefficient` for the vertical thrust motor. For a CCW rotor, set it positive. For a CW rotor, set it negative. For the X and Y thrusts, set the :purple:`moment coefficient to 0` and select the :purple:`bidirectional checkbox`. In the example below a quadcopter is being defined. Rotor tilting is used for yaw, so the moment coefficient is set to 0 for all motors.
 
-Pic of final settings
+.. figure:: ../_static/tutorial_images/underactuated_px4_flight_controller/ca-geometry.png
+    :align: center
+    :scale: 50
+    :alt: Motor settings
+
+    Quadcopter Example. Boxed Areas are a Single Rotor
+
+On the Actuator Ouputs tab, select 'Vertiq IO'. Determine which ESC outputs you will be using for the motors in the Geometry section. The ESC # will be the corresponding CVI # + 1. For the ESC #, select the appropriate motor function. For example, if the throttle CVI is set to 0 and the motor function associated with upwards thrust is Motor 1, set ESC #1 (CVI 0 + 1) to a function of Motor 1. If the X CVI is set to 1 and the motor function associated with forwards thrust is Motor 2, set ESC #2 (CVI 1 + 1) to Motor 2. Continue this for all underactuated propellers you will be using. For the X and Y ESCs, set the disarmed value to 32767 and the minimum value to 0.
+
+.. figure:: ../_static/tutorial_images/underactuated_px4_flight_controller/ca-motor-association.png
+    :align: center
+    :scale: 50
+    :alt: Motor to ESC Allocation
+
+    Motor to ESC Allocation
 
 Now there are two tests to confirm that you have set this up correctly. First use the actuator testing section in the bottom left of the actuators tab. With the aircraft securely strapped down, confirm that when the motor number associated with the throttle is raised, the propeller starts spinning. Now confirm that the motor number associated with X causes the propeller to tilt directly fowards, and then one associated with Y causes the propeller to tilt directly leftwards. If any of these are swapped, the easiest way to fix this is to just vary the 'forwards' and 'leftwards' parameters to match what they actually cause the propeller to do.
 
