@@ -68,12 +68,12 @@ on a timeout if it was previously armed.** On a servo module, the module will co
 On modules with configurable timeout behavior, modules follow a multi-step timeout process when a timeout occurs, similar to the 
 :ref:`process that occurs when disarming <advanced_disarming_behavior>`.
 
-**This timeout process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a** :ref:`stop <appendix_stop_detection>` **, plays its timeout song as 
+**This timeout process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a** :ref:`stop <stop_detection>` **, plays its timeout song as 
 specified by its playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the timeout song, 
 and what final state it ends up in after playing the song are all configurable by the user. 
 
 The image below summarizes this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
-actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <appendix_stop_detection>`, the timeout song will play according to 
+actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <stop_detection>`, the timeout song will play according to 
 its playback option. After the song finishes, the motor will either coast, brake, or execute whatever final behavior is specified by the :ref:`stow position <manual_stow_position>` 
 feature. Each of these stages and the options at each stage are shown in the image below.
 
