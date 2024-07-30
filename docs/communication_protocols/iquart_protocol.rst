@@ -18,32 +18,12 @@ All Vertiq modules support IQUART, as summarized in the tables below.
 Speed Modules
 **************
 
-.. table:: Speed Module Support for IQUART
-
-	+--------------+------------------------------------+
-	| Module       | IQUART Support                     |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: ../manual/all_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for IQUART
-
-	+--------------+------------------------------------+
-	| Module       | IQUART Support                     |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: ../manual/all_checked_table.rst
 
 Language Support
 ==================

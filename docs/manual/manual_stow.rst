@@ -17,17 +17,7 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Speed Module Support for Stow Position
-
-	+--------------+------------------------------------+
-	| Module       | Stow Position Support              |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: advanced_only_table.rst
 
 Servo Modules
 **************
@@ -36,17 +26,7 @@ position is a natural part of their base functionality. Trajectory commands can 
 The stow position feature is useful on speed modules primarily as a way to easily allow integrating moving to a single stow position with a flight controller. So the 
 stow specific features described in this portion of the documentation are not relevant for servo modules.
 
-.. table:: Servo Module Support for Stow Position
-
-	+--------------+------------------------------------+
-	| Module       | Stow Position Support              |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: none_checked_table.rst
 
 .. _stow_process_overview:
 

@@ -16,32 +16,12 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Speed Module Support for Hobby Protocols
-
-	+--------------+------------------------------------+
-	| Module       | Hobby Protocol Support             |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: ../manual/all_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for Hobby Protocols
-
-	+--------------+------------------------------------+
-	| Module       | Hobby Protocol Support             |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: ../manual/all_checked_table.rst
 
 Supported Hobby Protocols
 ==========================

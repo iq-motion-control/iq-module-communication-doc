@@ -16,33 +16,13 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Speed Module Support for DroneCAN
-
-	+--------------+------------------------------------+
-	| Module       | DroneCAN Support                   |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: ../manual/advanced_only_table.rst
 
 Servo Modules
 **************
 Servo modules do not support DroneCAN, as shown in the table below.
 
-.. table:: Servo Module Support for DroneCAN
-
-	+--------------+------------------------------------+
-	| Module       | DroneCAN Support                   |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: ../manual/none_checked_table.rst
 
 .. _standard_dronecan_support:
 

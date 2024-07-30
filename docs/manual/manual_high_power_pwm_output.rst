@@ -18,35 +18,13 @@ The user high power PWM output interface is supported by only the Fortiq-42 modu
 Speed Modules
 **************
 
-.. table:: Speed Module Support for High Power PWM Output
-
-	+--------------+------------------------------------+
-	| Module       | User High Power Output Support     |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: none_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for High Power PWM Output
-
-	+------------------+------------------------------------------+
-	| Module           | User High Power Output Support           |
-	+------------------+------------------------------------------+
-	| Vertiq 81-08     | .. centered:: |:x:|                      |
-	+------------------+------------------------------------------+
-	| Vertiq 40-06     | .. centered:: |:x:|                      |
-	+------------------+------------------------------------------+
-	| Vertiq 23-06     | .. centered:: |:x:|                      |
-	+------------------+------------------------------------------+
-	| Vertiq Fortiq-42 | .. centered:: |:white_check_mark:|       |
-	+------------------+------------------------------------------+
-
+.. include:: fortiq_only_table.rst
+	
 Description
 ===============
 
