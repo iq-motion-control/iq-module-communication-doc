@@ -21,32 +21,12 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Module Support for Advanced Arming
-
-	+--------------+------------------------------------+
-	| Module       | Advanced Arming Support            |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: all_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for Advanced Arming
-
-	+--------------+------------------------------------+
-	| Module       | Advanced Arming Support            |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: none_checked_table.rst
 
 .. _advanced_arming_armed_states:
 

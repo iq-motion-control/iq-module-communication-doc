@@ -18,33 +18,25 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Speed Module Support for Configurable Timeout
-
-	+--------------+------------------------------------+
-	| Module       | Configurable Timeout Support       |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: all_checked_table.rst
 
 Servo Modules
 **************
 Servo modules do not support the full range of configurable timeout features described in this section. They do support a timeout, and the period of the timeout is configurable.
 The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. Servo modules will always coast when they timeout.
 
-.. table:: Servo Module Support for Configurable Timeout
+.. table:: Module Support
 
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Module       | Configurable Timeout Support       | Notes                                                                   |
+	| Module       | Feature Supported                  | Notes                                                                   |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	| Vertiq 81-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	| Vertiq 60-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	| Vertiq 40-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	+--------------+------------------------------------+-------------------------------------------------------------------------+
+	| Vertiq 23-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
 
 Configuring Timeout

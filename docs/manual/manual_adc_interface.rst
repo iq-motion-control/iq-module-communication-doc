@@ -15,35 +15,26 @@ The user ADC interface is supported by only the Fortiq-42 modules.
 Speed Modules
 **************
 
-.. table:: Speed Module Support for User ADC
-
-	+---------------+---------------------+
-	| Module        | User ADC Support    |
-	+---------------+---------------------+
-	| Vertiq 81-08  | .. centered:: |:x:| |
-	+---------------+---------------------+
-	| Vertiq 40-06  | .. centered:: |:x:| |
-	+---------------+---------------------+
-	| Vertiq 23-06  | .. centered:: |:x:| |
-	+---------------+---------------------+
+.. include:: none_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for User ADC
+.. table:: Module Support
 
 	+-------------------+-----------------------------------+
-	| Module            | User ADC Support                  |
+	| Module            | Feature Supported                 |
 	+-------------------+-----------------------------------+
-	| Vertiq 81-08      | .. centered:: |:x:|               |
+	| Vertiq 81-XX      | .. centered:: |:x:|               |
 	+-------------------+-----------------------------------+
-	| Vertiq 40-06      | .. centered:: |:x:|               |
+	| Vertiq 60-XX      | .. centered:: |:x:|               |
 	+-------------------+-----------------------------------+
-	| Vertiq 23-06      | .. centered:: |:x:|               |
+	| Vertiq 40-XX      | .. centered:: |:x:|               |
+	+-------------------+-----------------------------------+
+	| Vertiq 23-XX      | .. centered:: |:x:|               |
 	+-------------------+-----------------------------------+
 	| Vertiq Fortiq-42  | .. centered:: |:white_check_mark:||
 	+-------------------+-----------------------------------+
-
 Description
 =============
 Vertiq's ADC Interface provides access to an on-board Analog to Digital Converter (ADC). An ADC makes it possible for your module to read input analog voltages. The ADC handles voltages from 0.0V to 3.3V with a 12-bit resolution. For example, if you input 1V to the ADC interface, reading the voltage would return 1V, and reading the "raw value" would return 1241 (:math:`\frac{V_{\text{in}} * 4096}{3.3}`). 

@@ -20,32 +20,12 @@ throttle commands for the purposes of this documentation. Controlling servos wil
 Speed Modules
 **************
 
-.. table:: Speed Module Support for Throttle Commands and Modes
-
-	+--------------+------------------------------------+
-	| Module       | Throttle Support                   |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: all_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for Throttle Commands and Modes
-
-	+--------------+------------------------------------+
-	| Module       | Throttle Support                   |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: none_checked_table.rst
 
 .. _throttle_def:
 

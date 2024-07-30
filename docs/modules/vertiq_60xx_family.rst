@@ -15,6 +15,7 @@ Vertiq 60-XX Family
 
         "60-08", "150", "Speed", "Speed, Servo"
         "60-08", "300", "Speed", "Speed"
+        "60-08", "660", "Speed", "Speed"
 
 Hardware Setup Walkthrough
 ####################################
