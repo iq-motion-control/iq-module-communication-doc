@@ -648,6 +648,8 @@ Firmware Update Instructions
 .. note::
     If you've selected a zip archive not meant for your module, you will be shown a warning, and will not be allowed to flash that particular file as it can cause serious damage to your module.
 
+.. _recovery_mode:
+
 Recovering a Module from a Failed Flash
 ===========================================
 .. note::

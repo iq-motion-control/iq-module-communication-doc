@@ -42,6 +42,7 @@ Supported Tutorials
         * :ref:`hobby_fc_tutorial`
         * :ref:`hobby_calibration_tutorial`
         * :ref:`dronecan_fc_tutorial`
+        * :ref:`dronecan_firmware_upgrade`
         * :ref:`fc_telemetry_tutorial`
         * :ref:`motor_noise_debugging`
         * :ref:`vibration_and_jittering`
