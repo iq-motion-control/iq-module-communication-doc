@@ -46,8 +46,7 @@ Double click the module's node to find its DroneCAN node properties
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/module_properties.png
     :scale: 80%
 
-From here, you can view the module's parameters by selecting *Fetch All*, you can reboot your module with *Restart*, or you can start a firmware update with *Update Firmware*. 
-In order to change a parameter's value, simply double click it, change the value, and click *Send*.
+From here, you can view the module's parameters by selecting *Fetch All*, you can reboot your module with *Restart*, or you can start a firmware update with *Update Firmware*.
 
 .. _dronecan_upgrade_instructions:
 
@@ -58,8 +57,7 @@ module from `our website <https://www.vertiq.co/>`_. Take care to ensure that th
 Failure to do so can result in severe damage to your module. Inside of the downloaded .zip archive, you should find a file called combined.bin as well as a file called app.bin. 
 
 .. note::
-    If your zip archive does not include a file named app.bin, you cannot update your module's firmware via DroneCAN. An upcoming firmware release for your module 
-    will make the app.bin file available.
+    If your zip archive does not include a file named app.bin, you cannot update your module's firmware via DroneCAN. Future firmware releases will include app.bin files for all DroneCAN capable modules.
 
 Now, extract the archive's files to a location of your choosing. You will need to find this location again in the next step. In this case, the files have been extracted 
 to a folder called DroneCAN Upgrade Demo inside of the Documents folder.
@@ -76,12 +74,12 @@ This will open a file dialogue. Navigate to the location of your extracted archi
 
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/app_and_upgrade_files.png
 
-Select app.bin, and click Open.
+**Select app.bin**, and click Open.
 
 .. warning::
     It is crucial that you do not select combined.bin. Attempting to flash a combined application through the DroneCAN firmware upgrader will overwrite important module data, and will render your module unusable.
 
-The DroneCAN GUI will immediately attempt to upgrade your module's firmware. If all goes well, you will see your module's mode enter ``SOFTWARE_UPDATE (3)`` mode indicating 
+The DroneCAN GUI will immediately attempt to upgrade your module's firmware. You should see your module's mode enter ``SOFTWARE_UPDATE (3)`` mode indicating 
 an ongoing file transfer:
 
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/firmware_updating.png
@@ -123,11 +121,9 @@ In this example, we are connected to only one Vertiq module, do not have a GNSS 
 
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/dronecan_upgrade_bus.png
 
-Take care to ensure that you connect all CANH signals together and all CANL signals together. If any connection is backwards, you will not be able to communicate with 
-the bus. Furthermore, all Vertiq modules include 2 sets of CANH and CANL signals. It is recommended that you use one set to interface to the flight controller and 
-the other to interface with the next device in the chain (in this case the Zubax Babel). Refer to your module's family page for more information about hardware configuration and layout.
+Take care to ensure that all CAN wiring is correct with proper termination. Refer to your module's family page for more information about hardware configuration and layout.
 
-With this configuration, we expect to see the connected flight controller (in this case a PixHawk) as well as our module connected through the DroneCAN GUI:
+With this configuration, we expect to see the connected flight controller (in this case a Pixhawk) as well as our module connected through the DroneCAN GUI:
 
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/pix_and_module_connected.png
 
