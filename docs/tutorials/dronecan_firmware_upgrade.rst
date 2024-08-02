@@ -77,7 +77,8 @@ This will open a file dialogue. Navigate to the location of your extracted archi
 **Select app.bin**, and click Open.
 
 .. warning::
-    It is crucial that you do not select combined.bin. Attempting to flash a combined application through the DroneCAN firmware upgrader will overwrite important module data, and will render your module unusable.
+    It is crucial that you do not select combined.bin. Attempting to flash a combined application through the DroneCAN firmware upgrader will overwrite important module data such as calibration. 
+    Even if :ref:`recovered through IQ Control Center <recovery_mode>`, the module may be unstable due to the deleted calibration data.
 
 The DroneCAN GUI will immediately attempt to upgrade your module's firmware. You should see your module's mode enter ``SOFTWARE_UPDATE (3)`` mode indicating 
 an ongoing file transfer:
