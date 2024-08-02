@@ -247,8 +247,7 @@ The Python script necessary to accomplish this is provided here:
 			message_byte_arr = packet_parse.extract_message()
 			if(message_byte_arr is not None):
 				buffer_to_send = list(packet_parse._make_packet(message_byte_arr))
-				message = dronecan.uavcan.tunnel.Broadcast(protocol=dronecan.uavcan.tunnel.Protocol(protocol=0x55), channel_id=42,
-																				buffer=buffer_to_send)
+				message = dronecan.uavcan.tunnel.Broadcast(protocol=dronecan.uavcan.tunnel.Protocol(protocol=0x55), channel_id=42, buffer=buffer_to_send)
 				dronecan_node.broadcast(message)
 
 While this script is running with all hardware connected properly, you should be able to connect your module to IQ Control Center without a direct serial connection.
