@@ -239,9 +239,6 @@ The Python script necessary to accomplish this is provided here:
 		dronecan_node.add_handler(dronecan.uavcan.tunnel.Broadcast, read_response_callback)
 
 		while(1):
-			#Process our DroneCAN node
-			dronecan_node.spin(0)
-
 			#If we got IQUART data, package it for DroneCAN and send it out
 			packet_parse.read_bytes()
 			message_byte_arr = packet_parse.extract_message()
