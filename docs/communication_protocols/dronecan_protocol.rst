@@ -149,7 +149,6 @@ The Python script necessary to accomplish this is provided here:
 	import iqmotion as iq
 	import dronecan
 	import serial
-	import threading
 
 	slcan_port = "COM9" #Replace this value with the port connected to your SLCAN device
 	control_center_ftdi_port = "COM7" # Replace this value with the port connected to FTDI1 from the diagram above
@@ -233,12 +232,14 @@ The Python script necessary to accomplish this is provided here:
 
 		#Create a DroneCAN node, and start it up
 		dronecan_node = make_node()
-		threading.Thread(target=dronecan_node.spin, daemon=True).start()
 
 		#Add a callback function for when we receive Tunnel Broadcast mesasges
 		dronecan_node.add_handler(dronecan.uavcan.tunnel.Broadcast, read_response_callback)
 
 		while(1):
+			#Process our DroneCAN node
+			dronecan_node.spin(0)
+
 			#If we got IQUART data, package it for DroneCAN and send it out
 			packet_parse.read_bytes()
 			message_byte_arr = packet_parse.extract_message()
