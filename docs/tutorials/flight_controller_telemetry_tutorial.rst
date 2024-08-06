@@ -6,7 +6,7 @@
 ****************************************************
 Telemetry Integration with Flight Controllers
 ****************************************************
-Vertiq modules support :ref:`ESC telemetry <manual_telemetry>`, which allows them to report information back to a flight controller using telemetry messages.
+Vertiq modules support :ref:`ESC telemetry <manual_telemetry>` allowing them to report information back to a flight controller using telemetry messages.
 For more details on the ESC telemetry supported by Vertiq modules, see the :ref:`ESC Telemetry <manual_telemetry>` section of the Feature Reference Manual.
 
 This tutorial walks through how to configure a Vertiq module and a PX4 or ArduCopter flight controller to allow the flight controller to gather telemetry
@@ -14,10 +14,10 @@ data from the module.
 
 Module Hardware, Firmware, and Software Versions
 =================================================
-This tutorial was created with a Vertiq 81-08 module on speed firmware version 0.0.7. This tutorial should be applicable to any Vertiq module
+This tutorial was created with a :ref:`Vertiq 81-08 G2 <vertiq_81xx_family>` module on speed firmware version 0.0.0. This tutorial should be applicable to any Vertiq module
 that supports :ref:`ESC Telemetry <manual_telemetry>`. 
 
-IQ Control Center version 1.3.4 was used to create this tutorial. The image below summarizes this version information.
+IQ Control Center version 1.6.0 was used to create this tutorial. The image below summarizes this version information.
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/fc_telemetry_module_version.png
     :align: center
@@ -28,8 +28,8 @@ IQ Control Center version 1.3.4 was used to create this tutorial. The image belo
 
 Flight Controller Hardware
 ===========================
-This tutorial was created using a `Pixhawk 4 <https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk4.html>`_ flight controller. For receiving
-DSHOT telemetry, the TELEM2 port was configured as a serial port and connected to the Telemetry pin of the 81-08. Refer to the datasheet for your module
+This tutorial was created using a `Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`_ flight controller. For receiving
+DSHOT telemetry, the TELEM2 port was configured as a serial port and connected to the Telemetry pin of the 81-08. Refer your module's family page
 to see how to connect for telemetry. TELEM2 was selected arbitrarily as the serial port to use for receiving ESC telemetry, any other available serial
 port on your flight controller could be used. Refer to your flight controller's manual for pinout and port information.
 
@@ -39,7 +39,7 @@ Connecting the Module and Flight Controller
 ===========================================
 The Telemetry line of each Vertiq module in use should be connected to the RX pin of the serial port being used for ESC telemetry on your flight controller. 
 Refer to your module's family page to see how to connect with the Telemetry line. For example, when creating this tutorial the TELEM2 port on 
-the Pixhawk 4 was used to receive telemetry. The `pinout for TELEM2 on the Pixhawk 4 <https://cdn.shopify.com/s/files/1/0604/5905/7341/files/Pixhawk4-Pinouts.pdf>`_
+the Pixhawk 6C was used to receive telemetry. The `pinout for TELEM2 on the Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`_
 indicates that the RX pin for TELEM 2 is pin 3, so the Telemetry lines for the modules were connected to pin 3.
 
 This is the same as the hardware setup used for receiving ESC Telemetry from BLHeli ESCs. Refer
@@ -51,7 +51,7 @@ The sections below cover how to set up telemetry integration on a flight control
 
 ArduCopter and Mission Planner Versions
 ****************************************
-This tutorial was created using ArduCopter version 4.3.6 and Mission Planner version 1.3.80, as shown below.
+This tutorial was created using ArduCopter version 4.5.5 and Mission Planner version 1.3.80, as shown below.
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/arducopter_and_mp_version.png
     :align: center
@@ -69,13 +69,13 @@ Configure your Vertiq module and flight controller according to the :ref:`PWM an
 following the steps for DSHOT with ArduCopter. Confirm that your module can be controlled by the flight controller before proceeding.
 
 Once you have the basic DSHOT set up complete, you can move onto configuring telemetry. First, you must select a serial port to use for receiving
-telemetry from the module. When creating this tutorial, the TELEM2 port on the `Pixhawk 4 <https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk4.html>`_
+telemetry from the module. When creating this tutorial, the TELEM2 port on the `Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`_
 was used. For more details on how to set up the hardware connection to this serial port, see the :ref:`fc_telem_hardware_connection` section above.
 
 DSHOT telemetry with a Vertiq module uses the same type of connection as a BLHeli ESC, so `this page from the ArduCopter documentation on setting up telemetry
 for BLHeli ESCs <https://ardupilot.org/copter/docs/common-blheli32-passthru.html#esc-telemetry>`_ is a useful reference. As specified on that page,
 we first must set up the serial port that will be used to receive the telemetry. For this tutorial the TELEM2 port is being used, which for
-the Pixhawk 4 `maps to SERIAL2 according to the ArduCopter documentation <https://ardupilot.org/copter/docs/common-holybro-ph4mini.html#uart-mapping>`_.
+the Pixhawk 6C `maps to SERIAL2 according to the ArduCopter documentation <https://ardupilot.org/plane/docs/common-holybro-pixhawk6X.html#uart-mapping>`_.
 
 Since TELEM2 maps to SERIAL2, change the SERIAL2_PROTOCOL parameter to 16 in Mission Planner to set SERIAL2 to ESC Telemetry, as shown below.
 
@@ -86,7 +86,7 @@ Since TELEM2 maps to SERIAL2, change the SERIAL2_PROTOCOL parameter to 16 in Mis
 
     Setting SERIAL2_PROTOCOL to ESC Telemetry
 
-The SERIAL2_BAUD parameter should also be set to match the baudrate of the Vertiq module. By default Vertiq modules use a baudrate of 115200, so
+The SERIAL2_BAUD parameter should also be set to match the baudrate of the Vertiq module. By default, Vertiq modules use a baudrate of 115200, so
 set SERIAL2_BAUD to 115 as shown below.
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/mp_serial_2_baud.png
@@ -105,9 +105,12 @@ After changing these parameters, reboot your flight controller.
 
 Testing Telemetry
 ##################
-Live ESC telemetry updates can be viewed in Mission Planner under the Status section of the DATA tab. After properly configuring the flight controller,
+Live ESC telemetry updates can be viewed in Mission Planner under the Status section of the DATA tab (available in the top left). After properly configuring the flight controller,
 power on your connected Vertiq module. Select the Status section in the DATA tab, and scroll over to the esc1 section. The "esc1_curr", "esc1_rpm",
-"esc1_temp", and "esc1_volt" entries should update with live telemetry information, as shown below.
+"esc1_temp", and "esc1_volt" entries should update with live telemetry information, as shown below. 
+
+.. note::
+    If you are using a safety switch, you must arm it in order to view live telemetry.
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/mp_no_spin_telemetry.png
     :align: center
@@ -141,8 +144,8 @@ the displayed RPM value based on the value reported by the module, see the :ref:
 
 ERPM vs. RPM
 ##############
-As of v4.3.6, ArduCopter flight controllers expect the DSHOT telemetry messages to match the `KISS ESC standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
-That means that it expects the module to send ERPM/100, while Vertiq modules directly send RPM as covered in :ref:`ESC Telemetry <manual_telemetry>`.
+As of v4.5.5, ArduCopter flight controllers expect the DSHOT telemetry messages to match the `KISS ESC standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
+That means that it expects the module to send ERPM/100. Vertiq modules, however, directly send RPM as covered in :ref:`ESC Telemetry <manual_telemetry>`.
 
 To convert from ERPM to RPM, the ERPM value should be divided by the pole count of the motor divided by 2. The flight controller is expecting to receive 
 ERPM/100, so when it receives telemetry it tries to calculate RPM using the following formula shown below. This calculation can also be
@@ -158,7 +161,7 @@ seen in the `ArduCopter code for BLHeli telemetry parsing <https://github.com/Ar
 Because Vertiq modules send RPM instead of ERPM, this conversion is unnecessary, and actually leads to the flight controller calculating the incorrect RPM by default.
 
 As discussed in the :ref:`fc_telemetry_erpm_to_rpm` section for PX4 below, it is possible to workaround this conversion issue by setting the number of motor poles to 200.
-However, as of v4.3.6, ArduCopter flight controllers limit the maximum value of SERVO_BLH_POLES to 127, so it is not possible to apply this workaround when using
+As of v4.5.5, ArduCopter flight controllers limit the maximum value of SERVO_BLH_POLES to 127, so it is not possible to apply this workaround when using
 ArduCopter. As a result, the RPM value calculated by the flight controller will not be the module's true RPM, but any logged telemetry data can be converted
 based on the formula above to get the actual RPM value.
 
@@ -168,7 +171,7 @@ Vertiq modules support sending ESC telemetry when using :ref:`Standard PWM <hobb
 as covered in the :ref:`ESC Telemetry <telemetry_analog_request>` section of the Feature Reference Manual. This telemetry is requested by sending a 
 :ref:`30 microsecond pulse <telemetry_analog_request>` to the module over the throttle line.  
 
-However, as of version 4.3.6 ArduCopter flight controllers do not seem to support this method of requesting ESC telemetry according to 
+As of version 4.3.6 ArduCopter flight controllers do not seem to support this method of requesting ESC telemetry according to 
 the `ArduCopter documentation (see the note on polling for telemetry data on non-DSHOT protocols) <https://ardupilot.org/copter/docs/common-blheli32-passthru.html#esc-telemetry>`_.
 The relevant note from the ArduCopter documentation is shown below.
 
@@ -185,7 +188,7 @@ For configuring your module, follow the module setup steps in the :ref:`tutorial
 For flight controller setup, refer to the ArduCopter documentation on setting up `DroneCAN <https://ardupilot.org/copter/docs/common-uavcan-setup-advanced.html>`_ 
 and `CAN in general <https://ardupilot.org/copter/docs/common-canbus-setup-advanced.html#common-canbus-setup-advanced>`_.
 
-After completing that set up, no additional configuration of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
+After completing the configuratoin, no additional configuration of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
 section of the Feature Reference Manual, Vertiq modules constantly broadcast ESC telemetry messages on the DroneCAN bus when they are connected, and PX4
 flight controllers are able to accept those messages.
 
@@ -229,7 +232,7 @@ The sections below cover how to set up telemetry integration on a flight control
 
 PX4 and QGroundControl Versions
 ********************************
-This tutorial was created using PX4 version 1.13.3 and QGroundControl version 4.2.4, as shown below.
+This tutorial was created using PX4 version 1.14.3 and QGroundControl version 4.3.0, as shown below.
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/px4_version.png
     :align: center
@@ -254,7 +257,7 @@ Configure your Vertiq module and flight controller according to the :ref:`PWM an
 following the steps for DSHOT with PX4. Confirm that your module can be controlled by the flight controller before proceeding.
 
 Once you have the basic DSHOT set up complete, you can move onto configuring telemetry. First, you must select a serial port to use for receiving
-telemetry from the module. When creating this tutorial, the TELEM2 port on the `Pixhawk 4 <https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk4.html>`_
+telemetry from the module. When creating this tutorial, the TELEM2 port on the `Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`_
 was used. For more details on how to set up the hardware connection to this serial port, see the :ref:`fc_telem_hardware_connection` section above.
 
 Now you must enable telemetry on the appropriate serial port on the flight controller. **Set the DSHOT_TEL_CFG parameter to TELEM 2 or the appropriate
@@ -292,14 +295,12 @@ If your module is powered and connected to the flight controller properly, live 
 
     QGroundControl Instrument Panel Showing DSHOT Telemetry
 
-To see what the telemetry would look like when spinning, you can use the "motor_test" command in the MAVLink Console under Analyze Tools, as shown
+To see what the telemetry would look like when spinning, you can use the "actuator_test" command in the MAVLink Console under Analyze Tools, as shown
 in the code block below. **Before attempting to spin the module ensure that your module is secured and does not have a propeller attached.**
 
 .. code::
 
-    motor_test test -m 1 -p 5
-    INFO  [motor_test] motor 1 set to 0.05
-    nsh> 
+    nsh> actuator_test set -m 1 -v 0.01
 
 The image below shows an example of what the instrument panel may look like when the module is spinning. 
 
@@ -369,8 +370,8 @@ is reproduced below with the important sentence regarding ESC telemetry highligh
 DroneCAN Telemetry
 ******************
 First, follow the steps in the :ref:`tutorial for integrating a Vertiq module using DroneCAN with a PX4 flight controller <dronecan_fc_tutorial>`.
-After that tutorial, you should be able to control your module from the flight controller using DroneCAN. After completing that set up, no additional
-configuration of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
+After that tutorial, you should be able to control your module from the flight controller using DroneCAN. After configuration, no additional
+set up of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
 section of the Feature Reference Manual, Vertiq modules constantly broadcast ESC telemetry messages on the DroneCAN bus when they are connected, and PX4
 flight controllers are able to accept those messages.
 
