@@ -27,17 +27,17 @@ will cover the calibration process for a Vertiq module.
 Software and Firmware Setup
 ============================
 To follow this tutorial, ensure that your **IQ Control Center is on version 1.2.6 or later**. Earlier versions lacked some of the calibration features that will be discussed. If you
-are unfamiliar with the Control Center, refer to :ref:`control_center_start_guide` for basic usage information. 
+are unfamiliar with the Control Center, refer to the :ref:`control_center_start_guide` for basic usage information. 
 
 If using a Vertiq 23-06, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 81-08, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
-modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 40-06, should calibrate correctly and have all relevant parameters with any version of the firmware.
+modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 40-06, should calibrate correctly, and have all relevant parameters with any version of the firmware.
 
 For this tutorial, you should set up your module to use the :ref:`Standard PWM <hobby_standard_pwm>` hobby protocol. Follow the instructions in :ref:`hobby_fc_tutorial` to set up your module for Standard PWM control
-using Control Center, and to connect your hardware to the module. That tutorial also covers how to set up some flight controllers for Standard PWM control.
+using the Control Center, and to connect your hardware to the module. That tutorial also covers how to set up some flight controllers for Standard PWM control.
 
 Overview of Calibration Procedure
 =================================
-This section discusses at a high level how the calibration procedure for a module works. Later sections will walk through specific examples of performing calibration.
+This section discusses, at a high level, how the calibration procedure works. Later sections will walk through specific examples of performing calibration using flight controllers.
 
 .. warning:: Ensure that the module is secured and there is no propeller attached before attempting calibration, as the module may spin.
 
@@ -45,8 +45,8 @@ The steps to perform calibration are:
 
 1. Power off the module. Check that your Standard PWM input is connected correctly to the module (see :ref:`hobby_fc_tutorial` for more details).
 2. Raise your Standard PWM input to its maximum throttle level, and hold it there. If using an RC transmitter, this means holding the stick at maximum throttle.
-3. Power on the module, and keep the Standard PWM input at its maximum level while waiting for the module to complete its startup song.
-4. The module should begin looping through its 4-note "begin calibration" song.
+3. Power on the module, and keep the Standard PWM input at its maximum level while waiting for the module to complete its :ref:`startup song <startup_song>`.
+4. The module should begin looping through its :ref:`4-note "begin calibration" song <hobby_cal_song>`.
 5. Begin lowering the Standard PWM input. As you do, the module song should shift to the "calibration-in-progress" song. The new song plays the same notes as the previous song, but plays each note twice in a row and more quickly. If using an RC transmitter, begin lowering the throttle stick.
 6. Keep lowering the Standard PWM input to its minimum level. The calibration-in-progress song should continue playing. If using an RC transmitter, push down the throttle stick as far as possible.
 7. Once the Standard PWM input reaches its minimum level, hold it there briefly. Then begin raising the input again. 
@@ -167,16 +167,19 @@ Then follow these steps:
 
     .. note:: Depending on your version of PX4 and your configuration, you will have access to either "motor_test" or "actuator_test". You can find details on using both "motor_test" and "actuator_test" on the :ref:`DroneCAN Integration Tutorial <dronecan_px4_throttle_test_commands>`.
 
-    1. Power on your Vertiq module.
-    2. In the console, enter "motor_test test -p 100."
-    3. The module will briefly play the begin calibration song, and then stop.
-    4. In the console, enter "motor_test test -p 0."
-    5. The module will briefly play the calibration-in-progress song, and then stop.
-    6. In the console, enter "motor_test test -p 50."
-    7. The module should be calibrated now. To test it, enter "motor_test test -p 0" and confirm the module plays the arming song. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
-    8. In the console, enter "motor_test test -p 20" and confirm the module spins and then stops and plays the timeout song.
-    9. Power off the module and close QGroundControl.
-    10. Power the module back on, and connect to it with IQ Control Center. Check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful.
+    1. Power off your Vertiq module
+    2. In the console, enter ``actuator_test set -m 1 -v 1 -t 60``
+   
+        a. This tells the flight controller to run the actuator test targeting motor 1 with 100% throttle for 60 seconds. 60 seconds is an 
+        arbitrary value selected to make sure there is enough time to complete the next steps
+
+    3. Power on your module. The module will play its startup song, and then begin playing the calibration start song
+    4. In the console, enter ``actuator_test set -m 1 -v 0 -t 60`` to now send a 0% throttle. The module will start playing the double time song
+    5. Now, enter ``actuator_test set -m 1 -v 0.5 -t 60`` to send a 50% throttle. The module will stop playing the calibration song
+    6. The module should be calibrated now. To test it, enter ``actuator_test set -m 1 -v 0 -t 60`` and confirm the module plays the arming song. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
+    7. In the console, enter ``actuator_test set -m 1 -v 0.2 -t 60`` and confirm the module spins
+    8. Power off the module and close QGroundControl.
+    9. Power the module back on, and connect to it with IQ Control Center. Check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful.
 
 The figures below show the MAVLINK Console commands used during calibration, and the state of the calibration parameters in IQ Control Center after successfully calibrating a module with Standard PWM.
 
