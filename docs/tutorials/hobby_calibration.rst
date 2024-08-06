@@ -165,7 +165,7 @@ If the PWM_MAIN_MAX is too low it may fail to trigger the module to start calibr
 Open QGroundControl, and wait for it to connect to your flight controller. Click on the Q in the upper-left corner, and then select "Analyze Tools." Select "MAVLink Console."
 Then follow these steps:
 
-    .. note:: If using dynamic control allocation with your flight controller (which is true when SYS_CTRL_ALLOC is enabled), you may need to use the "actuator_test" command instead of "motor_test". You can find details on using both "motor_test" and "actuator_test" on the :ref:`DroneCAN Integration Tutorial <dronecan_px4_throttle_test_commands>`.
+    .. note:: Depending on your version of PX4 and your configuration, you will have access to either "motor_test" or "actuator_test". You can find details on using both "motor_test" and "actuator_test" on the :ref:`DroneCAN Integration Tutorial <dronecan_px4_throttle_test_commands>`.
 
     1. Power on your Vertiq module.
     2. In the console, enter "motor_test test -p 100."

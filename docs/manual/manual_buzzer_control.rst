@@ -42,6 +42,8 @@ The failed startup song is played here:
     Your browser does not support the audio element.
     </audio>
 
+.. _arming_song:
+
 Arming
 -------
 If you are using the :ref:`Advanced Arming feature <manual_advanced_arming>`, then, on arming, your module will perform its :ref:`advanced_arming_behavior` which includes the arming song played here:

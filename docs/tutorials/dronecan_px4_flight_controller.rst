@@ -13,14 +13,14 @@ Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
 Module Configuration and Enumeration
 =====================================
-The first step in the process of setting up a Vertiq module is configuring it through the IQ Control Center. The sections below describe these parameters and give suggestions 
-on how to set them up.
+Before interfacing your module with a flight controller via DroneCAN, it must be configured through :ref:`IQ Control Center <control_center_start_guide>`. The 
+next sections describe the parameters that must be configured..
 
 Bitrate
 ********
-Currently on Vertiq modules, the bitrate for DroneCAN defaults to 500000 bit/s. It is possible to change this bitrate using the *DroneCAN Bitrate* parameter in 
-IQ Control Center as shown below, or through a :ref:`DroneCAN configuration parameter <dronecan_bitrate_parameter>`. Whatever the bitrate on the module is set 
-to must match the bitrate of the flight controller.
+Currently, Vertiq modules use a default DroneCAN bitrate of 500000 bit/s. It is possible to change this bitrate using the *DroneCAN Bitrate* parameter in 
+IQ Control Center's Advanced tab as shown below. It is also configurable through a :ref:`DroneCAN configuration parameter <dronecan_bitrate_parameter>`. The module's 
+configured bitrate must match the flight controller's.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_bitrate_parameter.png
     :align: center
@@ -33,7 +33,7 @@ For the purposes of this example, the bitrate is assumed to be 500000 bit/s.
 
 Mode, Direction, and Limits
 ****************************
-Descriptions of some important parameters for the module’s direction and mode and how to change them through the IQ Control Center can be found in the :ref:`Motor Configuration section 
+Descriptions of some important parameters for the module’s direction and mode and how to change them through IQ Control Center can be found in the :ref:`Motor Configuration section 
 of the tutorial for flight controller integration using hobby protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using hobby protocols, but the details on configuring 
 the module are still accurate for DroneCAN.
 
@@ -46,7 +46,7 @@ assign the node ID of each module to some unique value from 2 to 127. By default
 **Note that the PX4 documentation mentions dynamic node ID allocation with DroneCAN. Vertiq modules do not currently support dynamic node ID allocation, you must configure a 
 static node ID for each module through the Control Center.** 
 
-The entry in the IQ Control Center to configure the node ID is the *DroneCAN Node ID*, and it can be found in the General tab, as shown below. Note that the module must be rebooted 
+The entry in IQ Control Center to configure the node ID is the *DroneCAN Node ID*, and it can be found in the General tab, as shown below. Note that the module must be rebooted 
 before a change to the node ID will take effect.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/control_center_node_id.png
@@ -71,13 +71,13 @@ flight controller. Most importantly, the ESC indices should correspond with the 
 for your airframe, though generally the ESC index will be one less than the motor number because the ESC indices start from 0. Generally, each module should have a unique ESC index, 
 and the indices should start at 0 and increment to the total number of modules minus one. 
 
-As an example, imagine we were setting up a quadcopter with a `Quadrotor X <https://docs.px4.io/main/en/airframes/airframe_reference.html#quadrotor-x>`_ type airframe . Motor 1 is on the 
+As an example, imagine we were setting up a quadcopter with a `Quadrotor X <https://docs.px4.io/main/en/airframes/airframe_reference.html#quadrotor-x>`_ type airframe. Motor 1 is on the 
 top right of that airframe.  When setting the ESC index on that module, it should be set  to 0, because the ESC indexing starts at 0, so the index of the module is always 1 less than 
 the motor number on the airframe reference. Similarly, module 2 would have index 1, module 3 would have index 2, and module 4 would have index 3. So, in the Control Center, the 
 ESC index of each module should be set to the appropriate value for its position on the airframe. 
 
 .. note:: For versions of the PX4 firmware from v1.13.3 onward, the mapping between ESC Index and the motor number on the airframe must be configured by the user, so it is not strictly necessary to
-    assign index 0 to motor 1 as described above. Sticking with this convention is convenient however, and it will be used for the rest of this tutorial. See the
+    assign index 0 to motor 1 as described above. This convention is convenient however, and it will be used for the rest of this tutorial. See the
     :ref:`assign_esc_functions` section below for more details.
 
 You can change the ESC Index of a module through the Control Center using *ESC Index* under the General tab, as shown below.
@@ -104,19 +104,20 @@ If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_by
 CAN Bus Hardware Setup
 =========================
 Before attempting to communicate with the flight controller, make sure that the hardware for the CAN bus is set up correctly. CANH and CANL should be connected on the 
-flight controller and all of the motors into one bus. There should also be a 120 ohm termination resistor between CANH and CANL on the bus. Refer to the datasheet
-of your Vertiq module for details on the pinout.
+flight controller and all of the motors into one bus. There should also be a 120 ohm termination resistor between CANH and CANL on the bus. Refer to 
+your module's family page for pinout information.
 
 .. _dronecan_px4_fc_configuration:
 
 Flight Controller Configuration
 ================================
-.. warning:: Between version 1.13.2 and 1.13.3 of the PX4 firmware, changes were made that require additonal steps to configure DroneCAN properly on the flight controller.
-    Steps that changed between the versions will be specified in the following sections, but if you have previously integrated with Vertiq module with a PX4 flight controller
-    on v1.13.2 or earlier, be aware that when you update your flight controller your integration process may have to change slightly.
+.. warning:: 
+    
+    As PX4 is receives consistent new versions, the steps shown below may not match those necessary for your version of PX4. We will point out some key version 
+    differences that have been found during internal testing.
 
 Once the motor is configured and the CAN bus is set up properly, the flight controller needs to be configured. The configurations discussed here were performed on a 
-`Pixhawk 4 <https://docs.px4.io/v1.11/en/flight_controller/pixhawk4.html>`_ using PX4 v1.13.3 with `QGroundControl <http://qgroundcontrol.com/>`_. The image below shows the 
+`Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`_ using PX4 v1.14.3 with `QGroundControl <http://qgroundcontrol.com/>`_. The image below shows the 
 firmware version used when developing this tutorial in QGroundControl.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_fw_version.png
@@ -127,32 +128,33 @@ firmware version used when developing this tutorial in QGroundControl.
     PX4 Firmware Version Used for Tutorial Testing
 
 .. note:: If your module is using :ref:`Advanced Arming <manual_advanced_arming>` with DroneCAN, then when you connect it to a bus with a properly configured flight controller 
-    you may hear your module play its arming song. When exactly the module arms will depend on how its :ref:`arming <manual_advanced_arming>` configurations are set up. By default,
+    you may hear your module play its :ref:`arming song <arming_song>`. When exactly the module arms will depend on how its :ref:`arming <manual_advanced_arming>` configurations are set up. By default,
     Vertiq modules typically will arm on 0% commands, and by default PX4 will send 0% commands to its connected ESCs over DroneCAN when it is disarmed. So it is likely when
     using the default arming configurations the module may arm as soon as the flight controller is properly configured. If your module is set to 
-    :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, which is currently the default for the Vertiq 81-08, then it will never play its arming song 
-    and does not need to arm to spin. 
+    :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never play its arming song and does not need to arm to spin. 
 
 Enabling DroneCAN
 ******************
-In QGroundControl under Parameters in the Vehicle Setup menu, there is a parameter section labeled UAVCAN. Initially, this section will only show one parameter, *UAVCAN_ENABLE*. 
-**Set** *UAVCAN_ENABLE* **to “Sensor and Actuators (ESCs) Automatic Config”**, which has a value of 3. This will enable DroneCAN for controlling motors. The image below shows what the 
-parameters section in QGroundControl should look like.
+In QGroundControl, under Parameters in the Vehicle Setup menu, there is a parameter section labeled UAVCAN. If the ``UAVCAN_ENABLE`` is set to *Disabled*, it will be the only parameter available. For this example, 
+``UAVCAN_ENABLE`` is set to 2 by default, so you will see various parameters available for configuration. In either case, you will only have to update the ``UAVCAN_ENABLE`` and 
+``UAVCAN_BITRATE`` parameters in order to interact with your Vertiq module. ``UAVCAN_ENABLE`` configured to 2 enables support for DroneCAN sensors and dynamic node allocation. 
+For our modules, you must set ``UAVCAN_ENABLE`` to 3 ("Sensors and Actuators (ESCs) Automatic Config"). This enables all features from 2, but also sets motor outputs 
+to DroneCAN. ``UAVCAN_BITRATE`` is covered in the next section.
+
+**You must reboot the flight controller before continuing.**
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/px4_uavcan_enable.png
     :align: center
-    :width: 60%
-    :alt: UAVCAN_ENABLE in PX4
+    :width: 50%
+    :alt: UAVCAN Parameters in PX4
 
-    UAVCAN_ENABLE in PX4
-
-Next, **reboot the flight controller before continuing.**
+    UAVCAN Parameters in PX4
 
 Seting Bitrate
 ***************
-After enabling DroneCAN and rebooting the flight controller, re-open the UAVCAN section of Parameters in QGroundControl. More options should now be available for configuring DroneCAN.
+After enabling DroneCAN and rebooting the flight controller, re-open the UAVCAN section of Parameters in QGroundControl. If ``UAVCAN_ENABLE`` was disabled, more options should now be available for configuring DroneCAN.
 
-The CAN bitrate of the flight controller needs to be changed to match the module's bitrate. Set *UAVCAN_BITRATE* to 500000 bit/s, and reboot the flight controller. 500000 bit/s is the 
+The CAN bitrate of the flight controller needs to be changed to match the module's bitrate. Set ``UAVCAN_BITRATE`` to 500000 bit/s, and reboot the flight controller. 500000 bit/s is the 
 default bitrate used by Vertiq modules and is used for this example. If your module is set to use a different bitrate, make sure to change the flight controller's bitrate to match. 
 The image below shows the proper configuration of this parameter.
 
@@ -165,31 +167,14 @@ The image below shows the proper configuration of this parameter.
 
 .. _enabling_dynamic_control_allocation:
 
-Enabling Dynamic Control Allocation
-************************************
-.. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to turn on dynamic control allocation or set
-    the funtions of the actuator outputs. 
-
-In order to assign each module to the correct ESC Index and function for DroneCAN, newer versions of the PX4 firmware require enabling dynamic control allocation. This can be done by setting
-the *SYS_CTRL_ALLOC* parameter to *Enabled*, as shown in the image below. This will expose several other necessary parameters that must be set to use DroneCAN. 
-**After setting** *SYS_CTRL_ALLOC*, **reboot your flight controller.**
-
-.. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/px4_sys_ctrl_alloc.png
-    :align: center
-    :width: 60%
-    :alt: SYS_CTRL_ALLOC in PX4
-
-    SYS_CTRL_ALLOC in PX4
-
 .. _assign_esc_functions:
 
 Assign ESC Functions in Actuators Tab
 ***************************************
-.. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to turn on dynamic control allocation or set
+.. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to set
     the funtions of the actuator outputs. 
 
-After :ref:`enabling dynamic control allocation <enabling_dynamic_control_allocation>` and rebooting the flight contorller, a new Actuators tab should be available in QGroundControl, as shown
-in the image below.
+After rebooting the flight contorller, QGroundControl's Actuators tab should present UAVCAN as an option.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_actuators_tab.png
     :align: center
@@ -207,10 +192,10 @@ in QGroundControl start from 1. So ESC 1 in QGroundControl corresponds to the mo
 to each ESC index to the appropriate motor.
 
 For example, if you had a module that you wanted to be motor 1 on the airframe, following the convention established in the :ref:`ESC index <dronecan_px4_tutorial_esc_index>` section, 
-you should set its :ref:`ESC index <dronecan_px4_tutorial_esc_index>` to 0 in the IQ Control Center. Then on the actuators tab, you should set ESC 1 to the Motor 1 function.
+you should set its :ref:`ESC index <dronecan_px4_tutorial_esc_index>` to 0 in IQ Control Center. Then on the actuators tab, you should set ESC 1 to the Motor 1 function.
 For the module you want to be motor 2, set its ESC index to be 1, and set ESC 2 to the Motor 2 function, and so on for the remaining modules.
 
-.. note:: Depdending on your modules :ref:`arming <manual_advanced_arming>` configurations, you may hear the module play its arming song when you
+.. note:: Depdending on your modules :ref:`arming <manual_advanced_arming>` configurations, you may hear the module play its :ref:`arming song <arming_song>` when you
     set the function for its ESC, if the module is connected to the bus. See the note in :ref:`dronecan_px4_fc_configuration` for more details on this.
 
 For this example, only 1 motor was used during testing, with an ESC index of 0. The image below shows how the actuator tab was set up to accomodate this.
@@ -237,7 +222,7 @@ the default minimum and maximum are fine and should not need to be changed.
 
 Other Configurations
 *********************
-One other parameter of note is UAVCAN_NODE_ID. This sets the flight controller's node ID. Generally, this can be left at its default of 1 as long as none of the 
+One other parameter of note is ``UAVCAN_NODE_ID``. This sets the flight controller's node ID. Generally, this can be left at its default of 1 as long as none of the 
 modules on the bus have a node ID of 1.
 
 There are various other configurations available under the UAVCAN section of Parameters, but none of them are essential for using DroneCAN with a Vertiq module. 
@@ -256,14 +241,11 @@ The sections below describe some of these testing methods.
     and by default PX4 will send 0% commands to its connected ESCs over DroneCAN when it is disarmed. So it is likely when
     using the default arming configurations the module will immediately arm as soon as the flight controller is properly configured and on the same bus as the module. 
     Because of that, for the general default settings used on Vertiq modules arming should not be a concern when running these tests. It should be apparent when your module arms
-    because it will play a short arming song. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming 
+    because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming 
     configurations on your module. If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never need to arm to spin when using DroneCAN.
 
 Slider Setup Tests
 ********************
-.. note:: Completing setup for DroneCAN on PX4 firmware v1.13.3 and later requires enabling dynamic control allocation, which replaces the Motor tab in QGroundControl with the
-    Actuator tab. The sections below cover testing with both the Motor tab for older PX4 firmware and the Actuator tab for newer PX4 firmware. Note that it is possible to
-    enable dynamic control allocation on older firmware, so it is possible to test using the actuator tab in that case as well, but it is not strictly necessary.
 
 Older PX4 Firmware (v1.13.2 and earlier)
 #########################################

@@ -31,14 +31,14 @@ Flight Controller Hardware
 This tutorial was created using a `Pixhawk 4 <https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk4.html>`_ flight controller. For receiving
 DSHOT telemetry, the TELEM2 port was configured as a serial port and connected to the Telemetry pin of the 81-08. Refer to the datasheet for your module
 to see how to connect for telemetry. TELEM2 was selected arbitrarily as the serial port to use for receiving ESC telemetry, any other available serial
-port on your flight controller could be used. Details on the pinouts of Pixhawk 4 ports can be found `here <https://cdn.shopify.com/s/files/1/0604/5905/7341/files/Pixhawk4-Pinouts.pdf>`_.
+port on your flight controller could be used. Refer to your flight controller's manual for pinout and port information.
 
 .. _fc_telem_hardware_connection:
 
 Connecting the Module and Flight Controller
 ===========================================
 The Telemetry line of each Vertiq module in use should be connected to the RX pin of the serial port being used for ESC telemetry on your flight controller. 
-Refer to the datasheet for your module to determine how to connect to the Telemetry line. For example, when creating this tutorial the TELEM2 port on 
+Refer to your module's family page to see how to connect with the Telemetry line. For example, when creating this tutorial the TELEM2 port on 
 the Pixhawk 4 was used to receive telemetry. The `pinout for TELEM2 on the Pixhawk 4 <https://cdn.shopify.com/s/files/1/0604/5905/7341/files/Pixhawk4-Pinouts.pdf>`_
 indicates that the RX pin for TELEM 2 is pin 3, so the Telemetry lines for the modules were connected to pin 3.
 
