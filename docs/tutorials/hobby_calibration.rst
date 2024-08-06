@@ -178,8 +178,8 @@ Then follow these steps:
     5. Now, enter ``actuator_test set -m 1 -v 0.5 -t 60`` to send a 50% throttle. The module will stop playing the calibration song
     6. The module should be calibrated now. To test it, enter ``actuator_test set -m 1 -v 0 -t 60`` and confirm the module plays the arming song. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
     7. In the console, enter ``actuator_test set -m 1 -v 0.2 -t 60`` and confirm the module spins
-    8. Power off the module and close QGroundControl.
-    9. Power the module back on, and connect to it with IQ Control Center. Check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful.
+    8. Power off the module and close QGroundControl
+    9. Power the module back on, and connect to it with IQ Control Center. Check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful
 
 The figures below show the MAVLINK Console commands used during calibration, and the state of the calibration parameters in IQ Control Center after successfully calibrating a module with Standard PWM.
 
