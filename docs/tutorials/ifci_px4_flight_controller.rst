@@ -7,11 +7,9 @@
 Setting up PX4 Firmware for Use with IFCI
 ****************************************************
 .. Converted from Jordan's google docs tutorial
-
-This tutorial will cover how to build and setup PX4 with Vertiq IQUART integrations including the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. These integrations allow multiple Vertiq 23-06 and 23-14 modules to be connected to a single PX4 UART and have the flight controller control them, change their settings, and receive telemetry.
-
-.. note::
-    Our IQUART integrations are not currently included in mainline PX4, but there is a pull request being reviewed
+This tutorial covers how to build and set up Vertiq’s PX4 fork which provides access to Vertiq’s IQUART protocol. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with our PX4 fork, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+.. .. note::
+..     Our IQUART integrations are not currently included in mainline PX4, but there is a pull request being reviewed
 .. set up motor -- all done in ifci px4 flight controller or 
 ..      ensure the motor is flashed with underactuated
 ..      If using multiple motors ensure that the IDs are different
@@ -34,7 +32,8 @@ Setting Up the PX4 Toolchain
 
 .. This can section can be removed once we are integrated in
 
-Before beginning, the PX4 toolchain must be installed. We recommend that you follow the `PX4 guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ for this, but replace the step where the repository is cloned using ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive``.
+
+In order to use our PX4 fork, you must install the PX4 toolchain.. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device. Note that when the PX4 guide gives the instruction to run ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` it should be replaced with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` in order to clone Vertiq's fork rather than the mainline PX4.
 
 Once the toolchain is installed go into the directory and add the remote original PX4 remote repository:
 
@@ -50,13 +49,13 @@ This should result in tags being added to the local repository. Once this is don
 Setting Up PX4 for IQUART and Building
 ======================================
 
-Once the toolchain is setup you must change the settings for your board to turn on Vertiq IQUART integrations. To do this, enter your PX4 directory and use the command below, but replace ``your-flight-control-board`` with your flight control board's name.
+Once the toolchain is set up, you must change the settings for your board to turn on Vertiq IQUART integrations. To do this, enter your PX4 directory and use the command below, but replace ``<your-flight-control-board>`` with your flight control board's name.
 
 .. code-block:: bash
 
-    make your-flight-control-board boardconfig
+    make <your-flight-control-board> boardconfig
 
-This should bring up a configuration window in the terminal. The 'Model' section should have your board name. In the image below we are using an ``fmu-v6c``.
+This should bring up the boardconfig window in the terminal. The 'Model' section should have your board name. In the image below we are using an ``fmu-v6c``.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/board_config_main.png
     :align: center
@@ -103,7 +102,7 @@ Inside the ``vertiq_io`` submenu one option should appear for including IFCI con
 
 Once this is selected, a second option will appear for including pulsing module configurations. If you plan on using underactuated propellers, select this as well.
 
-Once all of this is done press ``Q`` and the ``Y`` to save the configuration.
+Once done, press ``Q`` and then ``Y`` to save the configuration.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/save.png
     :align: center
@@ -112,7 +111,7 @@ Once all of this is done press ``Q`` and the ``Y`` to save the configuration.
 
     Save the Configuration
 
-Once this is done the code must be built with the following command, replacing ``your-flight-control-board`` with the name of your flight control board in the same way you did previously.
+Once saved, build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<Setting Up the PX4 Toolchain>`.
 
 .. code-block:: bash
 
@@ -121,7 +120,7 @@ Once this is done the code must be built with the following command, replacing `
 Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-control-board_default`` folder as ``your-flight-control-board_default.px4``
 
 .. warning::
-    Adding the IFCI configuration features may increase the size of the PX4 build past the size allowable by your board.
+    Adding the IFCI configuration features will increase the size of the PX4 build. This could make the build larger than the flash size available on your board.
     
     .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/large_code.png
         :align: center
@@ -130,7 +129,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
 
         Oversized Code
 
-    If it does, you may have to turn off other features to fit the binary on your flight controller. Some features you can turn off in the boardconfig to save space include the other output drivers that you won't be using including PWM, DShot, or Drone/UAVCAN.
+    If the build is too large does, you will have to turn off other features to fit the binary on your flight controller. We recommend excluding other output drivers (PWM, DShot, DroneCAN, etc.) that you will not be using. Features can be turned off through boardconfig exactly as you turned on Vertiq’s features.
 
     .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/disable_outputs.png
         :align: center
@@ -139,7 +138,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
 
         DShot and PWM Location
 
-    Once some unused features are turned off try to rebuild. Once the size is 100.0% or under the code should fit and the compilation will succeed.
+    With the build settings updated, rebuild the program. When the compiled program occupies under 100% of the flash size, you will be able to fully build the PX4 application.
 
     .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/small_code.png
         :align: center
@@ -151,7 +150,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
 Flashing PX4 to Your Flight Controller
 ======================================
 
-Once you have your ``.px4`` file you need to flash it to your flight control board. To do this, open up QGroundControl and go to the vehicle settings menu and enter the 'Firmware' menu. Once there, plug in your board and select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option.
+Once built, you must program your flight controller with your compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/custom_firmware.png
     :align: center
@@ -160,12 +159,12 @@ Once you have your ``.px4`` file you need to flash it to your flight control boa
 
     Custom Firmware Selection
 
-Once you press 'OK', a window to select your firmware location will show up. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
+Once you press 'OK', a file explorer should appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
 Enabling and IFCI Your Flight Controller
 ===================================================
 
-Once the flashing is complete, connect to your flight controller and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Once you find this, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
+Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Once you find this, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_enable.png
     :align: center
@@ -174,7 +173,7 @@ Once the flashing is complete, connect to your flight controller and go to the p
 
     Enabling Vertiq IO
 
-Withe Vertiq IO enabled you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VERTIQ_BAUD` parameter to match what your modules will be using. We recommend using 921600bps. This also requires changing the baud rate on your modules in IQControlCenter.
+After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VERTIQ_BAUD` parameter to match what your modules will be using. We recommend using a baud rate of 921600.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_settings.png
     :align: center
@@ -183,11 +182,13 @@ Withe Vertiq IO enabled you should now see a :blue:`Vertiq IO` submenu in the QG
 
     Vertiq IO Submenu
 
-Setting Up Your Vertiq Modules for Use with IFCI and PX4
+Now your Vertiq modules must be configured for proper communication with the flight controller.
+
+Configuring Your Vertiq Modules for Use with IFCI and PX4
 ========================================================
 .. check which pulsing firmware we need.
 
-To use your Vertiq modules properly with IFCI 23-xx modules must be running speed firmware version 0.32 or newer, or pulsing firmware 0.27 or newer. Once flashed with appropriate firmware, connect each module individually to IQControlCenter and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously we recommend that you use a baud rate of 921600. Ensure that each module that you plan to use on the IFCI port of the flight controller is set to a different module ID.
+To use your Vertiq modules properly with IFCI 23-xx modules must be running speed firmware version 0.32 or newer, or pulsing firmware 0.27 or newer. Once flashed with appropriate firmware, connect each module **individually** to IQControlCenter and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Ensure that each module connected to the flight controller is set to a different, unique module ID.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings.png
     :align: center
@@ -196,7 +197,7 @@ To use your Vertiq modules properly with IFCI 23-xx modules must be running spee
 
     Setting Baud Rate and Module ID
 
-With the modules set to different IDs and and the baud rate set, you can now connect your modules to the flight controller. To do this, find the serial port on the flight controller that you set up in QGroundControl and wire the TX of the serial port to every RX of the modules. Wire the RX of the serial port to every TX of the modules.
+With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port configured to run the VERTIQ_IO module, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port.
 
 .. figure:: ../_static/manual_images/pulsing_propeller/motor_serial_connection.png
     :align: center
@@ -210,7 +211,7 @@ Integration Setup
 .. warning::
     Ensure that there are not propellers connected to the motor modules during this testing.
 
-With the modules connected to the flight controller and everything connected to a common ground power on the system. Connect the flight controller to QGroundControl and go to the 'Parameters' section. Under the Vertiq IO submenu, set the ``Target_MODULE_ID`` parameter to the module ID of one of your motors and save. When you do this, the parameters should refresh and display the values from the motor. Any parameter that has a description starting with 'Module Param - ' is a value retrieved from the module.
+With the modules connected to the flight controller and everything connected to a common ground power on the system, connect the flight controller to QGroundControl and go to the 'Parameters' section. Under the Vertiq IO submenu, set the ``Target_MODULE_ID`` parameter to the module ID of one of your modules and save. When you do this, the parameters should refresh and display the module's configured parameters. Any parameter that has a description starting with 'Module Param - ' is a value retrieved from the module.
 
 For each module ID that you have connected, set the following parameters to your desired values: ``CONTROL_MODE``, ``VERTIQ_FC_DIR``, ``VERTIQ_MOTOR_DIR``. Additionally for each module set the ``THROTTLE_CVI`` parameter to a different value. CVI stands for Control Value Index and more information can be found in :ref:`controlling_ifci`. Matching the module ID is a good way to do this, but if your module IDs do not start at 0, it is recommended that your CVIs do. If ``CONTROL_MODE`` is set to Voltage or Velocity, set the corresponding ``MAX_VOLTAGE`` or ``MAX_VELOCITY`` parameter as well.
 
