@@ -7,7 +7,7 @@
 DroneCAN Integration with PX4 and ArduPilot
 ##############################################
 
-This document provides a general procedure for integrating a Vertiq module with a PX4 flight controller using DroneCAN, also known as UAVCANv0 or UAVCAN. 
+This document provides a general procedure for integrating a Vertiq module with an ArduPilot or PX4 flight controller using DroneCAN, also known as UAVCANv0 or UAVCAN. 
 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
 Vertiq modules, refer to the :ref:`dronecan_protocol` section.
@@ -535,7 +535,7 @@ Now, to interact with your module, and other DroneCAN devices:
 
 1. Select the flight controller's CAN peripheral being used to drive DroneCAN. In this case, we are using CAN1, so we select MAVlink-CAN1
 2. Click MAVlink-CAN1, and the flight controller will automatically detect the devices on the bus. In this example, the Vertiq module is the only external 
-   device connected
+   device connected, and appears as ``iq_motion.esc``.
 
     .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_dronecan_config.png
         :align: center
