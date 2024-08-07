@@ -230,7 +230,7 @@ the module is ready to connect with the flight controller. So setting this to 0.
 **However, because this test is meant to simulate commands from a flight controller, the** *ESC Input* **parameter is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter 
 will not cause the module to spin until the module has armed.** By default, Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So to arm your module using the
 *ESC Input* parameter, set the *ESC Input* to 0.05 to send a 5% throttle command as shown below, and click the set arrow 10 times. On the 10th time you click the set arrow, the module should play 
-its 2 note arming song, and begin spinning. 
+its :ref:`two tone arming song <arming_song>`, and begin spinning. 
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_esc_input.png
     :align: center
@@ -412,7 +412,7 @@ Now we can use Mission Planner's built-in motor testing tools to make sure the f
 
 5. Arm your safety switch if you have one.
    
-  * If using Standard PWM, the module should play its two-note arming song as the flight controller starts sending 0% throttle commands once the safety switch is armed
+  * If using Standard PWM, the module should play its two-notarming songe  as the flight controller starts sending 0% throttle commands once the safety switch is armed
   * On DSHOT, the module will not arm yet.
   
 6. Set the "Throttle %" to 5% and the "Duration" to 5s, and click "Test All Motors".
@@ -426,7 +426,7 @@ Now we can use Mission Planner's built-in motor testing tools to make sure the f
   * For DSHOT, you cannot command a high throttle level immediately as the module will disarm after each command, and only re-arms on a throttle command close to 0%. So for DSHOT testing,
     increase the duration and send a low level throttle command to arm the module, and before that command ends and the module disarms, send another higher throttle command.  
 
-See the `Successful Test Videos`_ section below for a video of this whole process. It demonstrates what sounds you should expect to hear from the module, as well as the module 
+See the `Successful Actuator Test`_ section below for a video of this whole process. It demonstrates what sounds you should expect to hear from the module, as well as the module 
 successfully spinning with Arducopter and Mission Planner.
 
 PX4 and QGroundControl Configuration and Testing
@@ -529,32 +529,40 @@ Now we can use the motor testing tools in QGroundControl to confirm that the fli
 3. Arm the safety switch on your flight controller if necessary. 
 4. Turn on the module, and wait for it to complete the 5-beep startup song.
 5. Enable the module sliders with the toggle underneath the sliders.
-6. Move the Motor 1 slider bar just slightly above its start position to give the module a throttle command near 0%. The module should play its two note arming song, and may spin slowly.
+6. Move the Motor 1 slider bar just slightly above its start position to give the module a throttle command near 0%. The module should play its :ref:`two tone arming song <arming_song>`, and may spin slowly.
+
+    .. list-table:: Actuator Testing for PWM and DSHOT
+      :class: borderless
+      :align: center
+
+      * - .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_ex.png
+            :align: center
+            :height: 300
+
+            Actuator Testing when using DSHOT
+
+        - .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_pwm.png
+            :align: center
+            :height: 300
+
+            Actuator Testing when using PWM
+
+    .. note::
+
+      All Actuator Testing is subject to the :ref:`manual_advanced_arming` feature. As such, when using DSHOT, halting the Actuator Test will send an explicit disarm 
+      command, and the module will stop and disarm. In order to re-arm, you must transmit throttle commands within your arming region. By default, placing the 
+      slider near the bottom should arm your module. When using PWM, your module will not disarm unless you have configured disarming on throttle. This is because PX4 
+      is constantly sending PWM commands at the defined disarmed value, so no timeout will occur.
   
-    * For Standard PWM, after each move of the slider, the module will spin for the timeout duration (1.5s). After the timeout period. it will stop spinning and timeout until the next command. The timeout will cause
-      the module to disarm. It will only re-arm on a throttle command close to 0%, so you cannot go straight to high throttle commands after the module times out. You should start by sending
-      a low level throttle command to arm the module, and before that command ends and the module disarms, send another higher throttle command. 
-      For more information on arming and disarming the module, refer to the :ref:`manual_advanced_arming` section of the Feature Reference Manual.
-    * For DSHOT, you cannot go straight to a high throttle level, as the module will disarm after each command, and only re-arms on a throttle command close to 0%. Follow the procedure
-      outlined above for re-arming when using Standard PWM after the module disarms. The module will never timeout while testing with DSHOT, due to DSHOT's explicit disarming procedure.
-  
-7. Move the Motor 1 slider around, and observe how the module changes speed. 
+7. Move the Motor 1 slider around, and observe how the module changes speed.
 
-The figure below demonstrates the Actuator Testing tool with only one configured output.
 
-.. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_ex.png
-  :align: center
-  
-See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner. The video demonstrates what sounds you should expect from the module, and it successfully
-spinning as controlled by a flight controller.
 
-Successful Test Videos
-======================
+Successful Actuator Test
+=============================
 
-PWM Test
-********
-The video below demonstrates the module being successfully controlled using PWM with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning and the
-arming song after the safety switch is armed. **Note that in the video below the module is secured with velcro on the bottom, be sure you also secure your modules before attempting to spin them.**
+The following demonstrates successfully using PX4's actuator test to drive a single Vertiq module through DSHOT. The module has been configured as described in 
+:ref:`hobby_fc_tutorial_motor_configuration`. This example uses a Vertiq 81-08 G2 85Kv, and shows all steps from module startup to the explicitly set DSHOT disarm command.
 
 .. raw:: html
 
@@ -565,21 +573,4 @@ arming song after the safety switch is armed. **Note that in the video below the
                     width: 75%; 
                 }
     </style>
-    <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/mp_pwm_test.mp4" type="video/mp4"></video>
-
-DSHOT Test
-**********
-The video below demonstrates the module being successfully controlled using PWM with Mission Planner through a flight controller running ArduCopter. Note the startup song at the beginning
-and the arming and disarming songs during testing. The module disarms after each test, so it needs to be re-armed with a low throttle command before testing higher throttles. **Note that in 
-the video below the module is secured with velcro on the bottom, be sure you also secure your modules before attempting to spin them.**
-
-.. raw:: html
-
-    <style type="text/css">
-    .center_vid {   margin-left: auto;
-                    margin-right: auto;
-                    display: block;
-                    width: 75%; 
-                }
-    </style>
-    <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/mp_dshot_test.mp4" type="video/mp4"></video>
+    <video class='center_vid' controls><source src="../_static/tutorial_images/pwm_flight_controller/dshot_demo_pic_in_pic.mov" type="video/mp4"></video>
