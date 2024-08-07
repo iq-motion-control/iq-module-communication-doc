@@ -375,6 +375,8 @@ Reboot the flight controller and connect to it again. This time in the "Messages
 
     Message Showing Outputs Are Using DSHOT
 
+.. _safety_switch_config:
+
 Configuring the Safety Switch
 *******************************
 By default, ArduCopter will not allow you to test spinning your modules unless a safety switch attached to your flight controller is armed. If you have a safety switch connected to your flight

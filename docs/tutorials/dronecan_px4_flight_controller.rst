@@ -3,21 +3,22 @@
 
 .. _dronecan_fc_tutorial:
 
-****************************************************
-DroneCAN Integration with a PX4 Flight Controller
-****************************************************
+##############################################
+DroneCAN Integration with PX4 and ArduPilot
+##############################################
+
 This document provides a general procedure for integrating a Vertiq module with a PX4 flight controller using DroneCAN, also known as UAVCANv0 or UAVCAN. 
 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
 Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
 Module Configuration and Enumeration
-=====================================
+=============================================
 Before interfacing your module with a flight controller via DroneCAN, it must be configured through :ref:`IQ Control Center <control_center_start_guide>`. The 
 next sections describe the parameters that must be configured..
 
 Bitrate
-********
+--------
 Currently, Vertiq modules use a default DroneCAN bitrate of 500000 bit/s. It is possible to change this bitrate using the *DroneCAN Bitrate* parameter in 
 IQ Control Center's Advanced tab as shown below. It is also configurable through a :ref:`DroneCAN configuration parameter <dronecan_bitrate_parameter>`. The module's 
 configured bitrate must match the flight controller's.
@@ -32,13 +33,13 @@ configured bitrate must match the flight controller's.
 For the purposes of this example, the bitrate is assumed to be 500000 bit/s.
 
 Mode, Direction, and Limits
-****************************
+------------------------------
 Descriptions of some important parameters for the module’s direction and mode and how to change them through IQ Control Center can be found in the :ref:`Motor Configuration section 
 of the tutorial for flight controller integration using hobby protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using hobby protocols, but the details on configuring 
 the module are still accurate for DroneCAN.
 
 Node ID
-********
+---------
 The node ID is a number the motor will use to identify itself on the DroneCAN bus. **The node ID must be unique for each module, and none of the 
 modules should use the same node ID as the flight controller.** Typically PX4 flight controllers will use node ID 1 by default, so it is best to avoid that ID, and ID 0 is reserved. You should 
 assign the node ID of each module to some unique value from 2 to 127. By default, the node ID of a Vertiq module is set to 99.
@@ -59,7 +60,7 @@ before a change to the node ID will take effect.
 .. _dronecan_px4_tutorial_esc_index:
 
 ESC Index
-**********
+-------------
 The ESC index determines the index of the value in a :ref:`uavcan.equipment.esc.RawCommand <dronecan_messages_raw_command>` message the motor will listen to. To be able to control each motor 
 individually, each motor should have a unique ESC index. By default, the ESC index of Vertiq modules is set to 0.
 
@@ -90,7 +91,7 @@ You can change the ESC Index of a module through the Control Center using *ESC I
     DroneCAN ESC Index Parameter in IQ Control Center
 
 Arming
-*******
+----------
 Vertiq modules can use :ref:`Advanced Arming <manual_advanced_arming>` with DroneCAN to improve safety and allow for configurable disarming behaviors. To see if your module 
 supports Advanced Arming, refer to the :ref:`Module Support section under Advanced Arming <arming_module_support>`. When using arming, modules must arm before they can spin.
 The default settings for Vertiq modules generally allow them to arm when they receive throttle commands between 0% and 7.5%, and by default PX4 sends 0% commands when it is
@@ -107,10 +108,13 @@ Before attempting to communicate with the flight controller, make sure that the 
 flight controller and all of the motors into one bus. There should also be a 120 ohm termination resistor between CANH and CANL on the bus. Refer to 
 your module's family page for pinout information.
 
+DroneCAN Integration with a PX4 Flight Controller
+======================================================
+
 .. _dronecan_px4_fc_configuration:
 
 Flight Controller Configuration
-================================
+--------------------------------------
 .. warning:: 
     
     As PX4 is receives consistent new versions, the steps shown below may not match those necessary for your version of PX4. We will point out some key version 
@@ -134,7 +138,7 @@ firmware version used when developing this tutorial in QGroundControl.
     :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never play its arming song and does not need to arm to spin. 
 
 Enabling DroneCAN
-******************
+---------------------
 In QGroundControl, under Parameters in the Vehicle Setup menu, there is a parameter section labeled UAVCAN. If the ``UAVCAN_ENABLE`` is set to *Disabled*, it will be the only parameter available. For this example, 
 ``UAVCAN_ENABLE`` is set to 2 by default, so you will see various parameters available for configuration. In either case, you will only have to update the ``UAVCAN_ENABLE`` and 
 ``UAVCAN_BITRATE`` parameters in order to interact with your Vertiq module. ``UAVCAN_ENABLE`` configured to 2 enables support for DroneCAN sensors and dynamic node allocation. 
@@ -151,7 +155,7 @@ to DroneCAN. ``UAVCAN_BITRATE`` is covered in the next section.
     UAVCAN Parameters in PX4
 
 Seting Bitrate
-***************
+-----------------
 After enabling DroneCAN and rebooting the flight controller, re-open the UAVCAN section of Parameters in QGroundControl. If ``UAVCAN_ENABLE`` was disabled, more options should now be available for configuring DroneCAN.
 
 The CAN bitrate of the flight controller needs to be changed to match the module's bitrate. Set ``UAVCAN_BITRATE`` to 500000 bit/s, and reboot the flight controller. 500000 bit/s is the 
@@ -170,7 +174,7 @@ The image below shows the proper configuration of this parameter.
 .. _assign_esc_functions:
 
 Assign ESC Functions in Actuators Tab
-***************************************
+----------------------------------------
 .. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to set
     the funtions of the actuator outputs. 
 
@@ -221,7 +225,7 @@ The minimums and maximums set the range of values that will be sent in the :ref:
 the default minimum and maximum are fine and should not need to be changed.
 
 Other Configurations
-*********************
+------------------------
 One other parameter of note is ``UAVCAN_NODE_ID``. This sets the flight controller's node ID. Generally, this can be left at its default of 1 as long as none of the 
 modules on the bus have a node ID of 1.
 
@@ -230,7 +234,7 @@ Refer to the `PX4 parameter reference documentation <https://docs.px4.io/main/en
 they may be useful in some applications.
 
 Testing
-========
+---------
 QGroundControl provides multiple helpful tools for testing if your motor is properly integrated with the flight controller over DroneCAN. 
 The sections below describe some of these testing methods.
 
@@ -245,10 +249,10 @@ The sections below describe some of these testing methods.
     configurations on your module. If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never need to arm to spin when using DroneCAN.
 
 Slider Setup Tests
-********************
+^^^^^^^^^^^^^^^^^^^^^^
 
 Older PX4 Firmware (v1.13.2 and earlier)
-#########################################
+""""""""""""""""""""""""""""""""""""""""""""
 Under the Motors tab in QGroundControl, there are sliders that can test if the modules will spin, and if the flight controller is configured to use DroneCAN properly. 
 If DroneCAN is enabled, this test should send DroneCAN commands to control the modules.
 
@@ -266,7 +270,7 @@ the motor with the corresponding index should start spinning as you move the sli
     Motor Test Sliders in Motors Tab
 
 Newer PX4 Firmware (v1.13.3 and later)
-#########################################
+"""""""""""""""""""""""""""""""""""""""""
 Under the Actuators tab in QGroundControl, there are sliders in the Actuator Testing section that can be used to test if the flight controller and module have been
 successfully integrated.
 
@@ -284,7 +288,7 @@ example of using this test is shown below.
     Actuator Testing Sliders in Actuators
 
 MAVLink Console
-****************
+-------------------
 The MAVlink console can also be used to check if your motor is sending out the expected status messages. To open the MAVLink console, on the home screen from QGroundControl 
 click on the QGroundControl logo and select Analyze Tools from the Select Tool menu, as shown below.
 
@@ -306,7 +310,7 @@ is powered on and is connected to the flight controller’s CAN bus. The image b
     MAVLink Console in QGroundControl
 
 Check Node Status
-##################
+^^^^^^^^^^^^^^^^^^^^
 The status of the online nodes can be checked using the MAVLink console. This will indicate if the modules are successfully connected to the DroneCAN bus. Enter “uavcan status” into 
 the console to check on the status of the connected DroneCAN nodes. This will print out data about the flight controller’s DroneCAN status. Of note is the listing 
 of “Online nodes.” This should include information on all of the nodes connected to the flight controller, with their assigned node IDs and status. All of the nodes should report they 
@@ -380,10 +384,10 @@ are “OK” and “OPERATIONAL.” The code block below shows an example of usi
 .. _dronecan_px4_throttle_test_commands:
 
 Test Throttle
-##############
+-------------------
 
 Older PX4 Firmware (v1.13.2 and earlier)
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 It is also possible to test spinning the module in this console using the motor_test command. Typing “motor_test -h” in the console will provide help on how to use the command. 
 As a basic example, to spin the motor with an ESC index of 1 at 20% of its maximum, you could use the command:: 
 
@@ -399,7 +403,7 @@ The image below shows some examples of using the motor_test command.
     Motor Test in MAVLink Console
 
 Newer PX4 Firmware (v1.13.3 and later)
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Integration with the module can be tested using the actuator_test command. Typing "actuator_test" in the console will provide help on how to use the command.
 
 For example, to command motor 1 to spin at 5% for 5 seconds, you can send the command "actuator_test set -m 1 -v 0.05 -t 5". The code block below shows the output
@@ -426,7 +430,7 @@ of the help for the actuator_test command, as well as this example command::
     nsh> actuator_test set -m 1 -v 0.05 -t 5
 
 Virtual Joysticks
-******************
+---------------------
 For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html>`_ in PX4 can be used to control connected 
 modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html#enable-the-thumbsticks>`_ 
 as detailed in the PX4 documentation, and ensure that all Vertiq modules are powered on and connected to the CAN bus.
@@ -434,3 +438,109 @@ as detailed in the PX4 documentation, and ensure that all Vertiq modules are pow
 Return to the home screen of PX4. If the flight controller is fully setup, it should say “Ready To Fly.” Lower the virtual throttle joystick to the bottom, click on where it 
 says “Ready To Fly”, and arm the flight controller using the Arm button. Moving the virtual joysticks should cause the modules to respond as the flight controller begins 
 sending commands. Switching to Manual mode may simplify this testing.
+
+DroneCAN Integration with an ArduPilot Flight Controller
+=============================================================
+
+Flight Controller Configuration
+--------------------------------------
+
+Once the motor is configured and the CAN bus is set up properly, the flight controller needs to be configured. The configurations discussed here were performed on a 
+`Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`_ using ArduCopter v4.5.5 with `Mission Planner <https://ardupilot.org/planner/>`_ v1.3.80.
+
+Enabling DroneCAN
+-------------------
+In order to use DroneCAN with an ArduPilot flight controller, you must first configure a CAN peripheral. To do so:
+
+1. Connect your flight controller with Mission Planner
+2. Navigate to Frame Type inside of the Setup tab to ensure you have selected a geometry. In general, this should match the shape of your actual vehicle, 
+   but in this case, with a single module connected, we will arbitrarily select the generic quad "X"
+
+   .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_frame.JPG
+        :align: center
+
+        Mission Planner Frame Type Selection
+
+3. Open the Config tab, and select Full Parameter List
+4. Using the search bar on the right hand side, search for ``CAN_P1_DRIVER``. This is the CAN peripheral that we will attach to DroneCAN, and in the case of 
+   the Pixhawk 6C, aligns with the labeled CAN ports. In this example, we will use the CAN1 port, so set ``CAN_P1_DRIVER`` to ``1: First Driver``
+
+   .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_can_driver.png
+        :align: center
+
+5. Search for ``CAN_P1_BITRATE``. This is the bitrate that will be used on the DroneCAN bus. For this example, set this to 500000. Your flight controller's bitrate must match your module's
+6. Reboot your flight controller, and then reconnect to Mission Planner
+7. In the Full Parameter List search bar, search ``can_d1`` to find all parameters related to our CAN1 driver
+   
+   .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_can1_params.png
+        :align: center
+        :height: 500
+
+8. Set the following configurations if not already configured properly
+
+    a. ``CAN_D1_PROTOCOL``: Set to 1 to use DroneCAN on the CAN1 port
+    b. ``CAN_D1_UC_ESC_BM``: This is a bitmask that defines the ESC indices that will be transmitted with each raw command. In this example, we will only select ``ESC 1`` for our module with ESC Index 0
+      
+       .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_esc_bitmask.png
+        :align: center
+
+    c. ``CAN_D1_UC_NODE``: Defines the DroneCAN node ID used by the flight controller. Ensure that this value is unique from all modules connected over DroneCAN
+
+9. Make sure you have written all parameters, and reboot your flight controller
+
+Testing DroneCAN with your Module
+---------------------------------------
+
+.. warning:: Before attempting any tests that may cause the module to spin, ensure any propellers are removed from the module and that the module is safely secured.
+
+With both the module and flight controller configured, you can now ensure that the two integrate as expected.
+
+Motor Test
+^^^^^^^^^^^^^^
+.. note:: 
+    
+    If your module is using :ref:`Advanced Arming <manual_advanced_arming>` with DroneCAN, then when you connect it to a bus with a properly configured flight controller 
+    you may hear your module play its :ref:`arming song <arming_song>`. When exactly the module arms will depend on how its :ref:`arming <manual_advanced_arming>` configurations are set up. By default,
+    Vertiq modules typically will arm on 0% commands, and by default ArduPilot will send 0% commands to its connected ESCs over DroneCAN when it is disarmed. So it is likely when
+    using the default arming configurations the module may arm as soon as the flight controller is properly configured. If your module is set to 
+    :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never play its arming song and does not need to arm to spin. 
+
+1. Connect your flight controller to Mission Planner
+2. Expand the Optional Hardware options under the setup tab, and select Motor Test. You will see the following
+
+    .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_motor_test.png
+        :align: center
+
+        Motor Test Screen in Mission Planner
+
+3. Connect your module's CAN connection to the flight controller, and power it on. For details on your module's CAN connections, refer to its module family page. As 
+   noted above, depending on your module's configuration, you may hear your module arm immediately after power up
+4. If your :ref:`safety switch is enabled <safety_switch_config>`, arm it
+5. Using the default throttle and duration, select Test motor A. Your module should start spinning
+6. Try some other throttle levels to see the module running at different speeds
+
+Configuring your Module with DroneCAN Via ArduPilot
+--------------------------------------------------------
+
+Mission Planner provides a convenient method for viewing and configuring all DroneCAN devices detected on the bus. To use it, navigate to Optional Hardware under 
+the Setup tab. There, you can find the DroneCAN/UAVCAN window.
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_dronecan_page.png
+        :align: center
+        :height: 500
+
+Now, to interact with your module, and other DroneCAN devices:
+
+1. Select the flight controller's CAN peripheral being used to drive DroneCAN. In this case, we are using CAN1, so we select MAVlink-CAN1
+2. Click MAVlink-CAN1, and the flight controller will automatically detect the devices on the bus. In this example, the Vertiq module is the only external 
+   device connected
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_dronecan_config.png
+        :align: center
+
+3. To configure your module's DroneCAN parameters, select Menu and Parameters. A window will open displaying all of your module's DroneCAN parameters
+   
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/mission_planner_dronecan_params.png
+        :align: center
+
+4. To change a value, simply enter a new value under Value, and select Write Params
