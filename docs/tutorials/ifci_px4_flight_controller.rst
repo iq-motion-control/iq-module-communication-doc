@@ -35,6 +35,9 @@ Setting Up the PX4 Toolchain
 
 In order to use our PX4 fork, you must install the PX4 toolchain.. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device. Note that when the PX4 guide gives the instruction to run ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` it should be replaced with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` in order to clone Vertiq's fork rather than the mainline PX4.
 
+.. warning::
+    If you do not replace the standard PX4 fork with our fork, nothing will work. Make sure you properly replace ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` as mentioned above.
+    
 Once the toolchain is installed go into the directory and add the remote original PX4 remote repository:
 
 .. code-block:: bash
