@@ -184,11 +184,10 @@ The relevant note from the ArduCopter documentation is shown below.
 
 DroneCAN Telemetry
 ******************
-For configuring your module, follow the module setup steps in the :ref:`tutorial for integrating a Vertiq module using DroneCAN with a PX4 flight controller <dronecan_fc_tutorial>`.
-For flight controller setup, refer to the ArduCopter documentation on setting up `DroneCAN <https://ardupilot.org/copter/docs/common-uavcan-setup-advanced.html>`_ 
-and `CAN in general <https://ardupilot.org/copter/docs/common-canbus-setup-advanced.html#common-canbus-setup-advanced>`_.
+For configuring your module, follow the module setup steps in the :ref:`tutorial for integrating a Vertiq module using DroneCAN with a flight controller <dronecan_fc_tutorial>`.
+For flight controller setup, refer to :ref:`dronecan_with_ardupilot`.
 
-After completing the configuratoin, no additional configuration of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
+After completing these steps, no additional configuration of the flight controller is required for it to receive ESC telemetry. As covered in the :ref:`ESC Telemetry <telemetry_dronecan>` 
 section of the Feature Reference Manual, Vertiq modules constantly broadcast ESC telemetry messages on the DroneCAN bus when they are connected, and PX4
 flight controllers are able to accept those messages.
 

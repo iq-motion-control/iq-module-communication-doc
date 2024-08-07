@@ -439,6 +439,8 @@ Return to the home screen of PX4. If the flight controller is fully setup, it sh
 says “Ready To Fly”, and arm the flight controller using the Arm button. Moving the virtual joysticks should cause the modules to respond as the flight controller begins 
 sending commands. Switching to Manual mode may simplify this testing.
 
+.. _dronecan_with_ardupilot:
+
 DroneCAN Integration with an ArduPilot Flight Controller
 =============================================================
 
