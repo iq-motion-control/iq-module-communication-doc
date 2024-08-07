@@ -389,6 +389,8 @@ An example of the identification song is shown below.
     </style>
     <video class='center_vid' controls><source src="../_static/control_center_pics/indication_song.mp4" type="video/mp4"></video>
 
+.. _module_config_with_control_center:
+
 ***********************************************
 Module Configuration with IQ Control Center
 ***********************************************
