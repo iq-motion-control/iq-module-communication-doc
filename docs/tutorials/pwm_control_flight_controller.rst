@@ -102,24 +102,14 @@ If left in Autodetect mode, the module listens for all of the supported Hobby pr
 
 The communication parsing process is summarized by the following:
 
-.. list-table:: Communication Parsing Processes
-   :class: borderless
-   :align: center
+ .. image:: ../_static/tutorial_images/pwm_flight_controller/overall_comms_flow.png
+    :align: left
 
-   * - .. figure:: ../_static/tutorial_images/pwm_flight_controller/overall_comms_flow.png
-            :align: center
+ .. image:: ../_static/tutorial_images/pwm_flight_controller/iquart_process.png
+    :align: right
 
-            Overall communication parsing process
-     - .. figure:: ../_static/tutorial_images/pwm_flight_controller/iquart_process.png
-            :align: center
-
-            IQUART parsing process
-
-     - .. figure:: ../_static/tutorial_images/pwm_flight_controller/process_hobby_in.png
-            :align: center
-
-            Hobby input parsing process
-
+ .. image:: ../_static/tutorial_images/pwm_flight_controller/process_hobby_in.png
+    :align: center
 
 Depending on the flight controller's configurations and noise on the communication lines, the module may have difficulty automatically discovering the protocol while using autodetection. 
 In these cases, it is best to set the module to only listen for a specific type of protocol. As such, we will explicitly set the hobby protocol 
@@ -510,7 +500,7 @@ For this example, we will assign AUX 1 to Motor 1 using the DSHOT600 protocol. O
 .. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_dshot_setup.png
       :align: center
       :width: 50%
-      
+
 |
 
 **Now reboot your flight controller to ensure that all changes take effect.**
