@@ -463,74 +463,60 @@ For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figur
 Setting PX4 PWM Parameters
 **************************
 Several parameters must be set properly to make sure the flight controller can communicate with your module using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
-"Parameters." Use the search bar to look for the following parameters, and set them to the correct values if necessary:
+"Actuators." On the Actuators tab, you will see the following. 
 
-* **PWM_MAIN_MIN = 990** 
-  
-  * This sets the minimum PWM value in microseconds that will be output to the module. By default, Vertiq modules use a range of 1000us to 2000us, but setting this to 990us helps ensure the module will not spin on a 0% throttle. See the image below to see what this parameter looks like in QGroundControl.
-
-  .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_main_min.png
+.. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuators_tab.png
       :align: center
+      :width: 50%
 
-      PWM_MAIN_MIN Parameter in QGroundControl
+Select PWM MAIN. Here, you can assign each channel output with the motor it represents in the drone geometry as well as the protocol to be used on the channels. For this example, we will assign MAIN 1 to Motor 1 using the PWM 400 Hz protocol. Set 
+Minimum and Maximum values to 990 and 2000 respectively. By default, Vertiq modules use a range of 1000us to 2000us, but setting the minimum to 990us helps ensure the module will not spin on a 0% throttle. 
+Once activated, you will see sliders appear under Actuator Testing in the bottom left. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
+you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting diarmed throttle commands immediately on channel activation.
 
-* **PWM_MAIN_MAX = 2000**
-  
-  *  This sets the max PWM value in microseconds that will be output to the module. By default, Vertiq modules use a range of 1000us to 2000us. See the image below to see what this parameter looks like in QGroundControl.
-  
-  .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_main_max.png
+.. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_active.png
       :align: center
+      :width: 50%
+|
 
-      PWM_MAIN_MAX Parameter in QGroundControl
+**Now reboot your flight controller to ensure that all changes take effect.**
 
-* **DSHOT_CONFIG = Disable (0)**
-  
-  * This disables DSHOT from running, which allows normal PWM to run. This should be set to Disable by default, so most likely it will not be necessary to change it. See the image below to see what this parameter looks like in QGroundControl.
-
-  .. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_dshot_config.PNG
-      :align: center
-
-      DSHOT_CONFIG Parameter in QGroundControl
-
-Reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+Your flight controller and single module are now ready for :ref:`testing <testing_with_qgc>`. In order to add more PWM outputs, simply set the other MAIN outputs to the 
+correct motor output, and ensure each channel is using the PWM 400 Hz protocol.
 
 Setting PX4 DSHOT Parameters
 ****************************
-There is only one parameter that needs to be set properly to make sure the flight controller can communicate with your module using DSHOT. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
-"Parameters." Use the Search bar to look for the following parameter, and set it to the correct value:
-  
-* **DSHOT_CONFIG = DShot600**
-  
-  * This sets the flight controller to use DSHOT600, which matches the speed we set on the module.
 
-.. figure:: ../_static/tutorial_images/pwm_flight_controller/px4_dshot_config.JPG
-    :align: center
+Several parameters must be set properly to make sure the flight controller can communicate with your module using DSHOT. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
+"Actuators." On the Actuators tab, you will see the following. 
 
-    DSHOT_CONFIG Parameter set for DSHOT600
-  
-Reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+.. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuators_tab.png
+      :align: center
+      :width: 50%
 
-Re-Configuring PX4 DSHOT Outputs
-################################
-.. note:: These steps are necessary on only some flight controllers. See the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_ documentation for more details on if your flight controller is included.
+Select PWM AUX. Here, you can assign each channel output with the motor it represents in the drone geometry as well as the protocol to be used on the channels. 
+For this example, we will assign AUX 1 to Motor 1 using the DSHOT600 protocol. Once activated, you will see sliders appear under Actuator Testing in the bottom left. 
 
-Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
-The reason for this and the affected flight controllers are discussed in the `PX4 DSHOT documentation <https://docs.px4.io/master/en/peripherals/dshot.html#wiring-connections>`_. 
-This issue applies to the Pix32 that was used for this tutorial, and also applies to the popular Cube Orange flight controller. 
-The main outputs of these flight controllers can output PWM, but not DSHOT. 
+.. note::
 
-If your flight controller is affected by this, **move the signal and ground wires from MAIN 1 OUT to AUX 1 OUT, or the equivalent for your flight controller hardware**, as shown in `Re-Configuring ArduCopter DSHOT Outputs`_.
+  According to `PX4's documentation <https://docs.px4.io/main/en/peripherals/dshot.html>`_, DSHOT cannot be transmitted via your flight controller's MAIN outputs. These 
+  may also be labeled I/O PWM OUT depending on your flight controller. You'll notice that on the PWM MAIN tab, DSHOT is not an option. DSHOT can only be transmitted through 
+  your flight controllers AUX (FMU PWM OUT) output channels.
 
-PX4 provides a simple workaround for this issue. Changing the SYS_USE_IO parameter to 0 forces the AUX or FMU PWM ports to act as if they were main ports. See the PX4 documentation linked above for more details
-on this and how it affects using other ports with an airframe. If you have a flight controller affected by this issue, **set SYS_USE_IO = 0 to use the AUX or FMU PWM ports instead of the main ports**.
-The figure below shows how the parameter should be configured.
+  .. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_no_dshot_for_main.png
+      :align: center
 
-.. figure:: ../_static/tutorial_images/pwm_flight_controller/px4_sys_use_io.JPG
-    :align: center
+.. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_dshot_setup.png
+      :align: center
+      :width: 50%
+|
 
-    SYS_USE_IO Set to Re-Configure AUX Outputs as Main Outputs
+**Now reboot your flight controller to ensure that all changes take effect.**
 
-Reboot the flight controller by selecting "Reboot Vehicle" from the "Tools" menu in the upper right.
+Your flight controller and single module are now ready for :ref:`testing <testing_with_qgc>`. In order to add more DSHOT outputs, simply set the other AUX outputs to the 
+correct motor output, and ensure each channel is using the DSHOT600 protocol.
+
+.. _testing_with_qgc:
 
 Testing the Module with QGroundControl
 ****************************************
@@ -554,13 +540,11 @@ Now we can use the motor testing tools in QGroundControl to confirm that the fli
   
 7. Move the Motor 1 slider around, and observe how the module changes speed. 
 
-The figure below demonstrates what the Motor tab should look like in QGroundControl when running a test.
+The figure below demonstrates the Actuator Testing tool with only one configured output.
 
-.. figure:: ../_static/tutorial_images/pwm_flight_controller/qgc_motor_test.JPG
-    :align: center
-
-    QGroundControl Motor Testing
-
+.. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_ex.png
+  :align: center
+  
 See the `Successful Test Videos`_ section below for a video of a similar test process using ArduCopter and Mission Planner. The video demonstrates what sounds you should expect from the module, and it successfully
 spinning as controlled by a flight controller.
 
