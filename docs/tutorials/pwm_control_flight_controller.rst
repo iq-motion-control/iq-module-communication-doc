@@ -108,17 +108,15 @@ The communication parsing process is summarized by the following:
 
    * - .. figure:: ../_static/tutorial_images/pwm_flight_controller/overall_comms_flow.png
             :align: center
-            :height: 700px
 
             Overall communication parsing process
      - .. figure:: ../_static/tutorial_images/pwm_flight_controller/iquart_process.png
             :align: center
-            :height: 700px
 
             IQUART parsing process
+
      - .. figure:: ../_static/tutorial_images/pwm_flight_controller/process_hobby_in.png
             :align: center
-            :height: 700px
 
             Hobby input parsing process
 
@@ -479,6 +477,7 @@ you will hear the module play its :ref:`two tone arming song <arming_song>` as P
 .. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_active.png
       :align: center
       :width: 50%
+
 |
 
 **Now reboot your flight controller to ensure that all changes take effect.**
@@ -511,6 +510,7 @@ For this example, we will assign AUX 1 to Motor 1 using the DSHOT600 protocol. O
 .. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_dshot_setup.png
       :align: center
       :width: 50%
+      
 |
 
 **Now reboot your flight controller to ensure that all changes take effect.**
