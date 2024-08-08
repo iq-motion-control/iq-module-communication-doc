@@ -17,6 +17,8 @@ Here, we will discuss all possible “songs” your module may play during norma
 Standard Songs
 ==================
 
+.. _startup_song:
+
 Startup
 -----------
 On a successful power-up and initialization, your module will play a 5-tone startup song. After this song completes, your module is ready for use.
@@ -42,6 +44,8 @@ The failed startup song is played here:
     Your browser does not support the audio element.
     </audio>
 
+.. _arming_song:
+
 Arming
 -------
 If you are using the :ref:`Advanced Arming feature <manual_advanced_arming>`, then, on arming, your module will perform its :ref:`advanced_arming_behavior` which includes the arming song played here:
@@ -66,6 +70,8 @@ If the song playback option is configured to either Once or Continuously, you wi
     </audio>
 
 If the song playback option is set to Continuously, the disarm song will repeat until the disarm state is broken.
+
+.. _hobby_cal_song:
 
 Analog Hobby Protocol Calibration
 -------------------------------------
