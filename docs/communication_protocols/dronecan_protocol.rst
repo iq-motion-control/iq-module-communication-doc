@@ -337,6 +337,8 @@ This parameter defines the ESC index of the module. The ESC index is used when a
 
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
 
+.. _zero_behavior:
+
 Zero Behavior
 ##############
 .. table::

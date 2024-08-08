@@ -117,7 +117,7 @@ Flight Controller Configuration
 --------------------------------------
 .. warning:: 
     
-    As PX4 is receives consistent new versions, the steps shown below may not match those necessary for your version of PX4. We will point out some key version 
+    As PX4 is consistently updated, the steps shown below may not match those necessary for your version of PX4. We will point out some key version 
     differences that have been found during internal testing.
 
 Once the motor is configured and the CAN bus is set up properly, the flight controller needs to be configured. The configurations discussed here were performed on a 
@@ -438,6 +438,56 @@ as detailed in the PX4 documentation, and ensure that all Vertiq modules are pow
 Return to the home screen of PX4. If the flight controller is fully setup, it should say “Ready To Fly.” Lower the virtual throttle joystick to the bottom, click on where it 
 says “Ready To Fly”, and arm the flight controller using the Arm button. Moving the virtual joysticks should cause the modules to respond as the flight controller begins 
 sending commands. Switching to Manual mode may simplify this testing.
+
+Configuring your Module with DroneCAN Via PX4
+--------------------------------------------------------
+
+QGroundControl provides a convenient method for viewing and configuring all DroneCAN devices detected on the bus. To use it:
+
+1. Configure your flight controller for DroneCAN control as described in this document
+2. Reboot your flight controller, and completely close QGroundControl
+3. Connect your module to the flight controller's CAN connection, and power on both the flight controller and your module
+4. Re-open QGroundControl
+5. Navigate to Vehicle Setup by clicking the Q icon in the top left corner, and selecting Vehicle Setup
+6. Click Parameters on the bottom left
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_vehicle_setup.png
+        :align: center
+        
+7. Click on Standard at the top of the list of parameter types in order to collapse the standard parameter list
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_standard_button.png
+        :align: center
+
+8. You should now see a list of additional parameter types. On this list you should see ``Component X`` where ``X`` is your module's node ID
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_component_99.png
+        :align: center
+
+9. Expand ``Component X``, and you will see Vertiq's available DroneCAN parameters
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_dronecan_params.png
+        :align: center
+
+10. Now, you can configure your module's DroneCAN parameters exactly as you would standard PX4 parameters
+
+.. warning:: Before attempting any tests that may cause the module to spin, ensure any propellers are removed from the module and that the module is safely secured.
+
+As an example, select zero, and you will see the ``zero_behavior`` parameter. By default, this is set to 2 indicating that the module will treat 0% throttle commands 
+the same as all other throttle commands. Notice that if you attempt to spin your module by hand, it will resist movement as it is being driven by a 
+0% throttle. To learn more, see :ref:`zero_behavior`. For this example, we want the module to coast when sent 0% throttles. So, 
+set ``zero_behavior`` to 0. 
+
+    .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_zero_behavior.png
+        :align: center
+
+
+Now, if you attempt to spin your module by hand, you will see that it spins freely. You have now successfully configured your module through DroneCAN 
+by using PX4 and QGroundControl. This same process is applicable to all Vertiq DroneCAN parameters.
+
+.. note::
+    If your module powers off or is otherwise disconnected from the DroneCAN bus, it will no longer be reachable through QGroundControl's DroneCAN configuration, even if 
+    reconnected. You must close and restart QGroundControl as in steps 3 and 4. For more information, see `PX4's DroneCAN configuration documentation <https://docs.px4.io/main/en/dronecan/#qgc-cannode-parameter-configuration>`_.
 
 .. _dronecan_with_ardupilot:
 
