@@ -29,9 +29,6 @@ Software and Firmware Setup
 To follow this tutorial, ensure that your **IQ Control Center is on version 1.2.6 or later**. Earlier versions lacked some of the calibration features that will be discussed. If you
 are unfamiliar with the Control Center, refer to the :ref:`control_center_start_guide` for basic usage information. 
 
-If using a Vertiq 23-06, it should be on **firmware version v0.0.26 or later**. If using a Vertiq 81-08, it should be on **firmware version 0.0.5 or later**. Earlier versions of the firmware for these
-modules had bugs that made calibration difficult and lacked some useful calibration parameters. Other modules, such as the Vertiq 40-06, should calibrate correctly, and have all relevant parameters with any version of the firmware.
-
 For this tutorial, you should set up your module to use the :ref:`Standard PWM <hobby_standard_pwm>` hobby protocol. Follow the instructions in :ref:`hobby_fc_tutorial` to set up your module for Standard PWM control
 using the Control Center, and to connect your hardware to the module. That tutorial also covers how to set up some flight controllers for Standard PWM control.
 
@@ -48,11 +45,12 @@ The steps to perform calibration are:
 3. Power on the module, and keep the Standard PWM input at its maximum level while waiting for the module to complete its :ref:`startup song <startup_song>`.
 4. The module should begin looping through its :ref:`4-note "begin calibration" song <hobby_cal_song>`.
 5. Begin lowering the Standard PWM input. As you do, the module song should shift to the "calibration-in-progress" song. The new song plays the same notes as the previous song, but plays each note twice in a row and more quickly. If using an RC transmitter, begin lowering the throttle stick.
+   Examples of all songs played during calibration are found in :ref:`hobby_cal_song`.
 6. Keep lowering the Standard PWM input to its minimum level. The calibration-in-progress song should continue playing. If using an RC transmitter, push down the throttle stick as far as possible.
 7. Once the Standard PWM input reaches its minimum level, hold it there briefly. Then begin raising the input again. 
 8. The module should stop playing the calibration-in-progress song as you raise the input. Depending on your minimum and maximum input levels, the module may arm at this point and start spinning. 
    If the module doesn't arm, don't worry. The calibration song stopping is the important indicator that the calibration has been accepted.
-9. If the module did not arm while raising the input, lower the input to its minimum again. The module should now arm. Raise the throttle and confirm the module spins. Note that if you have changed the arming parameters of the module from their default settings the module may not arm on a minimum throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
+9.  If the module did not arm while raising the input, lower the input to its minimum again. The module should now arm. Raise the throttle and confirm the module spins. Note that if you have changed the arming parameters of the module from their default settings the module may not arm on a minimum throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
 
 The video below demonstrates the sounds a module makes as it is taken through the calibration process from start to finish. The module first plays the startup song, then the begin calibration
 song, then the calibration-in-progress song, and finally plays the arming song and begins spinning:

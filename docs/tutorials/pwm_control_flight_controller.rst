@@ -26,7 +26,7 @@ Hardware Setup
 This example uses a Vertiq 81-08 G2 and a `Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`_ as the flight controller. Since this tutorial is
 focused specifically on setting up the Vertiq module, the only additional peripheral that is used along with the flight controller is a safety switch.
 
-The module is powered through its XT-60 connector from a benchtop power supply. For more information on how to properly power your module, refer to its
+The module is powered through its XT-60 connector from a bench-top power supply. For more information on how to properly power your module, refer to its
 family page.
 
 When setting the module's configuration parameters through the Control Center, it should be connected to a PC with a USB-to-UART converter. 
@@ -35,8 +35,8 @@ For more details on how to use the Control Center with a module, refer to :ref:`
 When testing with the flight controller, the module's pins must be connected to the flight controller's appropriate output pins. The exact position or labeling of 
 the flight controller's output pins will vary depending on the specific hardware you are using. Refer to your flight controller's documentation for more information. 
 Your module's RX pin should be connected to the flight controller's signal output pin sending throttle commands. 
-Your module's ground connection should be connected with the flight controller's. For this specfic example using a Pixhawk 6C, the signal pin was attached to FMU PWM OUT (AUX OUT) 1 for both 
-standard PWM and DSHOT.
+Your module's ground connection should be connected with the flight controller's. For information about your module's RX and GND connections, see the module's family page.
+For this specific example using a Pixhawk 6C, the signal pin was attached to FMU PWM OUT (AUX OUT) 1 for both standard PWM and DSHOT.
 
 .. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use a different set of outputs than when using Standard PWM. These outputs may be labeled as AUX or FMU PWM**. 
     This is because not all outputs on all flight controllers support using DSHOT. See the `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
@@ -59,11 +59,6 @@ can be seen in the Information tab, as shown in the image below. For more inform
     :align: center
 
     Control Center Version
-
-.. warning:: 
-  
-    Versions of the Control Center prior to 1.2.6 had bugs that made setting the hobby protocol correctly difficult. Please ensure that you are using the most recent 
-    version of the Control Center for the most up to date features and bug fixes.
 
 This tutorial is applicable to all Vertiq modules running speed firmware.
 
@@ -96,8 +91,8 @@ described in detail in the sections below. **Most parameters are the same in Sta
 Communication
 ##############
 This parameter controls what type of :ref:`Hobby Protocols <hobby_protocol>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
-which can be selected from the drop-down box. Once the module receives a command in its selected hobby protocol, it will only listen for that type of command until power cycled, so you will
-not be able to connect with Control Center until you power cycle the module. For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is restarted. 
+which can be selected from the drop-down box. **Once the module receives a command in its selected hobby protocol, it will only listen for that type of command until power cycled, so you will
+not be able to connect with Control Center until you power cycle the module.** For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is restarted. 
 If left in Autodetect mode, the module listens for all of the supported Hobby protocols to try to determine which one you are using. 
 
 The communication parsing process is summarized by the following:
@@ -118,10 +113,6 @@ The image below shows what the *Communication* parameter should look like in Con
     :align: center
 
     Communication Parameter
-
-.. warning:: **Known Bug:** In versions 1.2.5 and earlier versions of the Control Center, there is a bug in the dropdown menu for the Communication parameter. The numbering for options besides Autodetect was improperly configured.
-    If you select a protocol from the list other than Autodetect, the module will actually be listening for the next protocol up in the list instead of what you selected. So in order to listen for PWM, you should select OneShot125.
-    This is addressed in versions 1.2.6 and later of the Control Center.
 
 FC 2D/3D Mode
 ##############
@@ -338,7 +329,7 @@ a DSHOT compatible output instead.
 
     Message Showing Outputs are PWM Only
 
-To do so, move the module from a main output to an AUX output (these may also be labeled as FMU PWM outputs). For the Pixhawk used to test this example, the module was moved from FMU PWM OUT (MAIN OUT) 1 to I/O PWM OUT (AUX OUT) 1. 
+To do so, move the module from a main output to an AUX output (these may also be labeled as FMU PWM outputs). For the Pixhawk used to test this example, the module was moved from I/O PWM OUT (MAIN OUT) 1 to FMU PWM OUT (AUX OUT) 1. 
 Exactly which pins to use and how they are labeled will vary depending on your flight controller. Refer to the flight controller's documentation for more information.
 
 Next, you need to tell ArduCopter to use AUX OUT 1 (or the equivalent pin on your flight controller) as the output for Motor 1 on your vehicle. ArduCopter uses SERVOX_FUNCTION variables to assign a function to each
@@ -396,7 +387,7 @@ Now we can use Mission Planner's built-in motor testing tools to make sure the f
 
 5. Arm your safety switch if you have one.
    
-  * If using Standard PWM, the module should play its two-notarming songe  as the flight controller starts sending 0% throttle commands once the safety switch is armed
+  * If using Standard PWM, the module should play its :ref:`two tone arming song <arming_song>` as the flight controller starts sending 0% throttle commands once the safety switch is armed
   * On DSHOT, the module will not arm yet.
   
 6. Set the "Throttle %" to 5% and the "Duration" to 5s, and click "Test All Motors".
@@ -456,7 +447,11 @@ Several parameters must be set properly to make sure the flight controller can c
 Select PWM MAIN. Here, you can assign each channel output with the motor it represents in the drone geometry as well as the protocol to be used on the channels. For this example, we will assign MAIN 1 to Motor 1 using the PWM 400 Hz protocol. Set 
 Minimum and Maximum values to 990 and 2000 respectively. By default, Vertiq modules use a range of 1000us to 2000us, but setting the minimum to 990us helps ensure the module will not spin on a 0% throttle. 
 Once activated, you will see sliders appear under Actuator Testing in the bottom left. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
-you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting diarmed throttle commands immediately on channel activation.
+you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting 0% throttle commands immediately on channel activation. By default, Vertiq modules 
+take 0% throttle commands as arming throttles. 
+
+For more information on how to configure the module to properly interpret throttle commands, see the :ref:`manual_throttle` section of the Feature Reference 
+Manual. For more information on arming and disarming the module, refer to the :ref:`manual_advanced_arming` section of the Feature Reference Manual.
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/qgc_actuator_testing_active.png
       :align: center

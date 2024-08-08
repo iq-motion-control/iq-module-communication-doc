@@ -171,8 +171,8 @@ Vertiq modules support sending ESC telemetry when using :ref:`Standard PWM <hobb
 as covered in the :ref:`ESC Telemetry <telemetry_analog_request>` section of the Feature Reference Manual. This telemetry is requested by sending a 
 :ref:`30 microsecond pulse <telemetry_analog_request>` to the module over the throttle line.  
 
-As of version 4.3.6 ArduCopter flight controllers do not seem to support this method of requesting ESC telemetry according to 
-the `ArduCopter documentation (see the note on polling for telemetry data on non-DSHOT protocols) <https://ardupilot.org/copter/docs/common-blheli32-passthru.html#esc-telemetry>`_.
+As of version 4.5.5 ArduCopter flight controllers do not seem to support this method of requesting ESC telemetry according to 
+the `ArduCopter documentation (see the note on polling for telemetry data on non-DSHOT protocols) <https://ardupilot.org/copter/docs/common-esc-telemetry.html#esc-telemetry>`_.
 The relevant note from the ArduCopter documentation is shown below.
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/arducopter_no_pwm_telem.png
@@ -272,7 +272,7 @@ For more information on setting up DSHOT telemetry on a PX4 flight controller, r
 
 .. note:: If you attempt to use the "dshot esc_info" command to try and test if DSHOT telemetry is working as suggested on the
     `PX4 documentation <https://docs.px4.io/main/en/peripherals/dshot.html#telemetry>`_, you may see an error warning that there was a 
-    "Packet length mismatch" as shown below. This does not mean that your telemetry is improperly configured. This error occurs because as of PX4 v1.13.3 the 
+    "Packet length mismatch" as shown below. This does not mean that your telemetry is improperly configured. This error occurs because as of PX4 v1.14.3 the 
     structure of the DSHOT Info message sent by Vertiq modules does not match the structure expected by PX4. If you see this error,
     it does not indicate a problem with your setup, move onto the instructions below to confirm that your telemetry is working.
 
@@ -318,7 +318,7 @@ To learn how to adjust the MOT_POLE_COUNT to properly show RPM, see the :ref:`fc
 
 Converting ERPM to RPM Workaround
 ##################################
-As of v1.13.3, PX4 flight controllers expect the DSHOT telemetry messages to match the `KISS ESC standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
+As of v1.14.3, PX4 flight controllers expect the DSHOT telemetry messages to match the `KISS ESC standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
 That means that it expects the module to send ERPM/100, while Vertiq modules directly send RPM as covered in :ref:`ESC Telemetry <manual_telemetry>`.
 
 To convert from ERPM to RPM, the ERPM value should be divided by the pole count of the motor divided by 2. The flight controller is expecting to receive 
@@ -355,7 +355,7 @@ Vertiq modules support sending ESC telemetry when using :ref:`Standard PWM <hobb
 as covered in the :ref:`ESC Telemetry <telemetry_analog_request>` section of the Feature Reference Manual. This telemetry is requested by sending a 
 :ref:`30 microsecond pulse <telemetry_analog_request>` to the module over the throttle line.  
 
-However, as of v1.13.3 PX4 flight controllers do not seem to support this method of requesting ESC telemetry according to the 
+However, as of v1.14.3 PX4 flight controllers do not seem to support this method of requesting ESC telemetry according to the 
 `PX4 documentation <https://docs.px4.io/main/en/peripherals/esc_motors.html#pwm>`_. The relevant portion of the `PX4 documentation <https://docs.px4.io/main/en/peripherals/esc_motors.html#pwm>`_
 is reproduced below with the important sentence regarding ESC telemetry highlighted.
 
