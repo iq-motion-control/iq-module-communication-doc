@@ -4,4 +4,4 @@
     this example does not include code for interfacing with the hardware. 
 
     
-    For more, see :ref:`c-full-code`
+    For more, see :ref:`full_examples`
