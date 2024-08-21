@@ -143,7 +143,7 @@ Enabling DroneCAN
 In QGroundControl, under Parameters in the Vehicle Setup menu, there is a parameter section labeled UAVCAN. If the ``UAVCAN_ENABLE`` is set to *Disabled*, it will be the only parameter available. For this example, 
 ``UAVCAN_ENABLE`` is set to 2 by default, so you will see various parameters available for configuration. In either case, you will only have to update the ``UAVCAN_ENABLE`` and 
 ``UAVCAN_BITRATE`` parameters in order to interact with your Vertiq module. ``UAVCAN_ENABLE`` configured to 2 enables support for DroneCAN sensors and dynamic node allocation. 
-**For our modules, you must set ``UAVCAN_ENABLE`` to 3 ("Sensors and Actuators (ESCs) Automatic Config")**. This enables all features from 2, but also sets motor outputs 
+**For our modules, you must set** ``UAVCAN_ENABLE`` **to 3 ("Sensors and Actuators (ESCs) Automatic Config")**. This enables all features from 2, but also sets motor outputs 
 to DroneCAN. ``UAVCAN_BITRATE`` is covered in the next section.
 
 **You must reboot the flight controller before continuing.**
