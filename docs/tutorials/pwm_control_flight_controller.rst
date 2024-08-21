@@ -36,7 +36,7 @@ When testing with the flight controller, the module's pins must be connected to 
 the flight controller's output pins will vary depending on the specific hardware you are using. Refer to your flight controller's documentation for more information. 
 Your module's RX pin should be connected to the flight controller's signal output pin sending throttle commands. 
 Your module's ground connection should be connected with the flight controller's. For information about your module's RX and GND connections, see the module's family page.
-For this specific example using a Pixhawk 6C, the signal pin is FMU PWM OUT (AUX OUT) 1 for both standard PWM and DSHOT.
+For this specific example using a Pixhawk 6C, the signal pin is I/O PWM OUT (MAIN OUT) 1 for PWM and FMU PWM OUT (AUX OUT) 1 for DSHOT.
 
 .. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use a different set of outputs than when using Standard PWM. These outputs may be labeled as AUX or FMU PWM**. 
     This is because not all outputs on all flight controllers support using DSHOT. See the `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
