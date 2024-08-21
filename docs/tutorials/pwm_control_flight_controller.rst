@@ -36,7 +36,7 @@ When testing with the flight controller, the module's pins must be connected to 
 the flight controller's output pins will vary depending on the specific hardware you are using. Refer to your flight controller's documentation for more information. 
 Your module's RX pin should be connected to the flight controller's signal output pin sending throttle commands. 
 Your module's ground connection should be connected with the flight controller's. For information about your module's RX and GND connections, see the module's family page.
-For this specific example using a Pixhawk 6C, the signal pin was attached to FMU PWM OUT (AUX OUT) 1 for both standard PWM and DSHOT.
+For this specific example using a Pixhawk 6C, the signal pin is FMU PWM OUT (AUX OUT) 1 for both standard PWM and DSHOT.
 
 .. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use a different set of outputs than when using Standard PWM. These outputs may be labeled as AUX or FMU PWM**. 
     This is because not all outputs on all flight controllers support using DSHOT. See the `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
@@ -124,9 +124,6 @@ these modes and how to configure the module's spinning behaviors, see the :ref:`
     :align: center
 
     FC 2D/3D Mode Parameter
-
-.. warning:: **Known Bug:** This parameter can be difficult to set in versions of the Control Center prior to 1.2.7, sometimes requiring multiple attempts. It is recommended to update your Control Center
-  to the latest version to avoid this problem.
 
 Mode
 #####
@@ -314,7 +311,7 @@ Re-Configuring ArduCopter DSHOT Outputs
   
   Only needed on some flight controllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/main/en/peripherals/dshot.html>`_ documentation for more details on which
 
-Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible output. 
+Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible pin. 
 The reason for this and the types of flight controllers it affects are discussed in `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
 and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`_. This issue applies to the Pixhawk 6C that was used for this tutorial, and also
 applies to the popular Cube Orange flight controller. 
@@ -329,8 +326,8 @@ a DSHOT compatible output instead.
 
     Message Showing Outputs are PWM Only
 
-To do so, move the module from a main output to an AUX output (these may also be labeled as FMU PWM outputs). For the Pixhawk used to test this example, the module was moved from I/O PWM OUT (MAIN OUT) 1 to FMU PWM OUT (AUX OUT) 1. 
-Exactly which pins to use and how they are labeled will vary depending on your flight controller. Refer to the flight controller's documentation for more information.
+For the Pixhawk used to test this example, the module is connected with FMU PWM OUT (AUX OUT) 1. Exactly which pins to use and how they are labeled will vary depending 
+on your flight controller. Refer to the flight controller's documentation for more information.
 
 Next, you need to tell ArduCopter to use AUX OUT 1 (or the equivalent pin on your flight controller) as the output for Motor 1 on your vehicle. ArduCopter uses SERVOX_FUNCTION variables to assign a function to each
 output. For the Pixhawk, AUX OUT 1 is controlled by SERVO9_FUNCTION. **Set SERVO9_FUNCTION = 33 to output the throttle commands for Motor 1 on AUX OUT 1.** See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`_ for details on what
@@ -536,8 +533,6 @@ Now we can use the motor testing tools in QGroundControl to confirm that the fli
       is constantly sending PWM commands at the defined disarmed value, so no timeout will occur.
   
 7. Move the Motor 1 slider around, and observe how the module changes speed.
-
-
 
 Successful Actuator Test
 =============================
