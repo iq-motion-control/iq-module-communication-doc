@@ -28,13 +28,13 @@ you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO 
             :align: center
             :height: 350
 
-            40-06 LED Connections
+            Vertiq 40-06 LED Connections
      - .. figure:: ../_static/manual_images/leds/81_led_connections.png
-            :alt: Vertiq 40-XX Family
+            :alt: Vertiq 81-08 Gen 2 LED Connections
             :align: center
             :height: 350
 
-            81-08 Gen 2 LED Connections
+            Vertiq 81-08 Gen 2 LED Connections
 
 The LED board uses a 4-pin JST-ZE connector in order to interface with your module. The following image displays the LED board's pinout.
 
