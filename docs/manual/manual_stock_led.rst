@@ -233,7 +233,7 @@ Finally, set the period to 5 seconds, and the pattern will now restart every 5 s
 Strobing Pattern
 ********************
 The strobing pattern parameter defines a 32-bit bitmask that defines 32 segments of where an LED is on or off. The time it takes to move through all 32 segments is 
-defined by the :ref:`strobing period <strobing_period>`, and each individual segment is defined by the strobe period divided by 32. A 1 in the bitmask dictates the LED be on during that 
+defined by the :ref:`strobing period <strobing_period>`, and each individual segment is defined by :math:`\frac{\text{Strobe Period}}{32}` . A 1 in the bitmask dictates the LED be on during that 
 segment, a 0 indicates the LED is off during the segment.
 
 Suppose you would like your pattern to alternate being on and off after every two segments
