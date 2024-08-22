@@ -14,6 +14,9 @@ Supported Features
         * :ref:`manual_timeout`
         * :ref:`manual_zero_spin`
         * :ref:`controlling_ifci`
+
+Gen 2 Modules Only
+        * :ref:`manual_led_support`
         
 Supported IQUART Clients
 =================================

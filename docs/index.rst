@@ -80,6 +80,7 @@
    manual/manual_underactuated_torque_correction
    manual/manual_buzzer_control
    manual/manual_stop_detection
+   manual/manual_stock_led
    manual/manual_appendix
 
 .. toctree::

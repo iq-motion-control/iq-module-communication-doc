@@ -21,6 +21,8 @@ For example, through the :ref:`propeller_motor_controller` Client, you find PID 
 such as velocity and voltage. For a full list of the clients supported by your module, please see your module's family page. 
 For a full listing of all IQUART clients please refer to the :ref:`iquart_client_reference_tables`. 
 
+.. _api_interactions:
+
 How to Interact with IQUART Clients and Entries
 --------------------------------------------------
 IQUART entries can have up to three interactions: getting, setting, and saving. The interactions available are specific to each entry, and are specified in 
