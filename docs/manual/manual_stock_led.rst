@@ -9,6 +9,10 @@ Stock LED Support (White and RGB LED Control)
 All Vertiq Gen 2 modules support use of our LED add-on board available with Vertiq's Pro Kit. For information about purchasing a Pro Kit, or for information about 
 purchasing more LED add-on boards, please contact us at support@vertiq.co. Please refer to your module's family page to see if it belongs to Gen 1 or Gen 2.
 
+Your Pro Kit's LED add-on should include the LED board as well as all wiring necessary to connect with your module.
+
+<PUT A PICTURE OF EVERYTHING THAT COMES IN THE BOX>
+
 Hardware Configuration
 =========================
 Vertiq's Gen 2 modules all feature solder pads that allow you to easily connect with external power sources and other peripherals. The LED peripheral board connects 
@@ -32,8 +36,7 @@ you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO 
 
             81-08 Gen 2 LED Connections
 
-The LED board uses a 4-pin JST-ZE connector in order to interface with your module. The following image displays the LED board's pinout. Your Pro Kit includes 
-all wiring necessary to interface with the LED board.
+The LED board uses a 4-pin JST-ZE connector in order to interface with your module. The following image displays the LED board's pinout.
 
 <INSERT NICE PICTURE HERE OF THE PINOUT AND OF THE BOARD>
 
