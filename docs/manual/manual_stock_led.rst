@@ -248,4 +248,4 @@ identically to the RGB LED**
 
 <GET A NICE VIDEO OF THIS WHEN WE CAN>
 
-The pattern bitmask can be defined by any 32-bit value allowing for :math:`2^{32}` unique patterns.
+The pattern bitmask can be defined by any 32-bit value allowing for 2^32 unique patterns.
