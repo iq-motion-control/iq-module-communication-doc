@@ -250,7 +250,7 @@ Suppose you would like your pattern to alternate being on and off after every tw
 
 .. image:: ../_static/manual_images/leds/strobing_pattern_example.png
 
-In this case, your pattern is defined by the bitmask (in hex) 0xCCCCCCCC, a value of 3435973836. Suppose the strobe period is configured to 16 seconds, making each 
+In this case, your pattern is defined by the bitmask (in hex) 0xCCCCCCCC, a value of 3435973836. In binary this is 11001100110011001100110011001100. Suppose the strobe period is configured to 16 seconds, making each 
 segment 0.5 seconds. Therefore, with this pattern, the light will turn on and off every second. In this example, we will use the white LED, **but the same applies 
 identically to the RGB LED**
 
@@ -259,7 +259,7 @@ identically to the RGB LED**
 <GET A NICE VIDEO OF THIS WHEN WE CAN>
 
 Now, suppose you would like your pattern to be clear where it begins, is in progress, and is ending. To do so, you may have a quick blinking pattern to begin, a medium speed blinking 
-pattern in the middle, and a slow blinking pattern to end. In hex, this could be 0xAA330808 (decimal 2855471112).
+pattern in the middle, and a slow blinking pattern to end. In hex, this could be 0xAA330808 (decimal 2855471112 | binary 10101010001100110000100000001000).
 
 <GET A NICE VIDEO OF THIS WHEN WE CAN>
 
