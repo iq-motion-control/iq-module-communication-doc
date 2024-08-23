@@ -7,7 +7,7 @@
 Stock LED Support (White and RGB LED Control)
 ***********************************************
 All Vertiq Gen 2 modules support use of our LED add-on board available with Vertiq's Pro Kit. For information about purchasing a Pro Kit, or for information about 
-purchasing more LED add-on boards, please contact us at support@vertiq.co. Please refer to your module's family page to see if it belongs to Gen 1 or Gen 2.
+purchasing more LED add-on boards, please contact us at info@vertiq.co. Please refer to your module's family page to see if it belongs to Gen 1 or Gen 2.
 
 Your Pro Kit's LED add-on should include the LED board as well as all wiring necessary to connect with your module.
 
@@ -17,7 +17,7 @@ Hardware Configuration
 =========================
 Vertiq's Gen 2 modules all feature solder pads that allow you to easily connect with external power sources and other peripherals. The LED peripheral board connects 
 with your module's GPIO2 and GPIO3 connections where GPIO2 controls the RGB LED and GPIO3 controls the white LEDs. Depending on the size of your module, 
-you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value.
+you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value. The LED board's power connections should connect with your module's V+ and V- power terminals.
 
 .. list-table:: LED Connection Examples
    :class: borderless
@@ -49,12 +49,19 @@ Controlling Your LEDs
     Do not plug in your module's LED board while the module is already powered up. “Hot plugging” your module this way can cause damage to the LED board as well 
     as the module itself. Always ensure that the LED board is fully connected with the module before powering it on.
 
+.. _default_pattern:
+
 Default Pattern
 ******************
 
 By default, Vertiq modules control the RGB LED to display a static blue color, and the white LEDs to be shut off. On startup, the RGB LED should be illuminated.
 
 <try to get a nice picture of that>
+
+The default :ref:`strobing pattern <strobing_configuration>` for both the white LED and RGB led is to blink on and off 3 times, remain off, then restart the pattern with a 
+period of 2.5 seconds.
+
+<try to get a nice video of that>
 
 RGB LED Configuration
 ***********************
@@ -63,13 +70,15 @@ white LEDs, and is covered in :ref:`strobing_configuration`. By default, strobin
 the :ref:`RGB LED client reference table <rgb_led_message_table>`.
 
 The pertinent control parameters for RGB LED control are ``red``, ``green``, ``blue``, and ``update_color``. Each of the RGB parameters can be set, gotten, and 
-saved, and can be an integer [0, 255] where 255 indicates a maximum intensity. ``update_color`` is a trigger mechanism that causes your module to command the LED 
+saved, and can be an integer [0, 255] where 255 indicates the maximum intensity. ``update_color`` is a trigger mechanism that causes your module to command the LED 
 with the intensities specified by the values in ``red``, ``green``, and ``blue``.
 
-Suppose you wanted to set your LED to output a bright yellow light for 3 seconds, and then turn red only before turning off completely after another 3 seconds. 
+Suppose you wanted your RGB LED to be bright yellow for 3 seconds, bright red for 3 seconds, and then turn off completely.
 We can do so using our :ref:`Python API <getting_started_python_api>`, as well as some additive color theory.
 
 .. image:: ../_static/manual_images/leds/additive_color.png
+
+As in the image above, to make yellow light, simply combine red and green.
 
 .. code-block:: python
 
@@ -149,18 +158,18 @@ module reboots with the value set and saved by the program.
 White LED Configuration
 ==========================
 Your module has control over the two series white LEDs' intensity as well as their strobing output. Strobing configuration is identical for both the RGB and white LEDs, 
-and is covered in :ref:`strobing_configuration`. By default, the white LED intensity is 0 and strobing is enabled. White LED control parameters are 
-found in the :ref:`white LED message table <white_led_message_table>`.  The LED intensity can be an integer [0, 100] where 100 indicates a maximum intensity. Please note that the 
+and is covered in :ref:`strobing_configuration`. By default, the white LED intensity is 0% and strobing is enabled. White LED control parameters are 
+found in the :ref:`white LED message table <white_led_message_table>`.  The LED intensity can be an integer percentage [0, 100]% where 100% indicates the maximum intensity. Please note that the 
 two white LEDs are controlled in series, and cannot be controlled individually.
 
 .. warning::
     The white LEDs are extremely bright. Please do not look directly into the white LEDs while they are in use. Additionally, while operating the LED board at high 
     intensities, the LED board may get very hot. Please take care when handling your LED board to avoid injury.
 
-Since its default intensity is 0, the white LEDs are off by default. Suppose you would like to turn on the LEDs with minimum intensity (all examples will use low 
+Since its default intensity is 0%, the white LEDs are off by default. Suppose you would like to turn on the LEDs with minimum intensity (all examples will use low 
 intensities in order to avoid intense light while benchtop testing). To do so, we can use the :ref:`Python API <getting_started_python_api>`.
 
-Once the intensity is configured above 0, you will see the white LED flash with its default :ref:`strobing pattern <strobing_configuration>` in which it blinks on 
+Once the intensity is configured above 0%, you will see the white LED flash with its default :ref:`strobing pattern <strobing_configuration>` in which it blinks on 
 and off 3 times, remains off, then restarts the pattern.
 
 .. code-block:: python
@@ -183,7 +192,7 @@ LED parameters on the General tab
 
 .. image:: ../_static/manual_images/leds/white_led_cc_params.png
 
-Suppose you would like to drive the LED with 2% intensity on boot, simply set ``White LED Intensity`` to 2. Now, after rebooting your module, you will see that the 
+Suppose you would like to drive the LED with 2% intensity on boot, simply set ``White LED Intensity`` to 2%. Now, after rebooting your module, you will see that the 
 white LEDs now turn on with the same intensity as set and saved previously.
 
 .. _strobing_configuration:
@@ -216,8 +225,7 @@ Strobing activation can be changed on the fly, and is configured on boot-up acco
 Strobing Period
 ******************
 The strobing period defines the time it takes the module to complete one full cycle through the strobing pattern. This parameter only has an effect when strobing is 
-active. Strobe period is defined in seconds. Let's take the default strobing pattern used for both the RGB and white LEDs (blink, blink, blink, off). 
-By default, the strobing period is configured to 2.5 seconds.
+active. Strobe period is defined in seconds. Let's take the :ref:`default strobing pattern <default_pattern>` used for both the RGB and white LEDs. 
 
 Using the Control Center, configure the white LED to an intensity of 1%, and enable strobing
 
@@ -229,6 +237,8 @@ Finally, set the period to 5 seconds, and the pattern will now restart every 5 s
 **Strobing period operates identically for both the white and RGB LEDs.**
 
 <GET A VIDEO OF THIS WHEN WE CAN>
+
+.. _strobing_pattern:
 
 Strobing Pattern
 ********************
@@ -245,6 +255,11 @@ segment 0.5 seconds. Therefore, with this pattern, the light will turn on and of
 identically to the RGB LED**
 
 .. image:: ../_static/manual_images/leds/strobe_pattern_ex_config.png
+
+<GET A NICE VIDEO OF THIS WHEN WE CAN>
+
+Now, suppose you would like your pattern to be clear where it begins, is in progress, and is ending. To do so, you may have a quick blinking pattern to begin, a medium speed blinking 
+pattern in the middle, and a slow blinking pattern to end. In hex, this could be 0xAA330808 (decimal 2855471112).
 
 <GET A NICE VIDEO OF THIS WHEN WE CAN>
 
