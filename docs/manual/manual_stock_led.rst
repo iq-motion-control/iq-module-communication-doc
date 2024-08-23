@@ -17,7 +17,9 @@ Hardware Configuration
 =========================
 Vertiq's Gen 2 modules all feature solder pads that allow you to easily connect with external power sources and other peripherals. The LED peripheral board connects 
 with your module's GPIO2 and GPIO3 connections where GPIO2 controls the RGB LED and GPIO3 controls the white LEDs. Depending on the size of your module, 
-you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value. The LED board's power connections should connect with your module's V+ and V- power terminals.
+you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value.
+
+<TALK ABOUT ALL OF THE WAYS THAT YOU CAN POWER THE THING BECAUSE IT'S UNCLEAR WHAT IS EXPECTED!!>
 
 .. list-table:: LED Connection Examples
    :class: borderless
