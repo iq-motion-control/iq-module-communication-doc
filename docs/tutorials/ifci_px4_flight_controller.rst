@@ -143,7 +143,7 @@ Once built, you must program your flight controller with your compiled ``.px4`` 
 
 Once you press 'OK', a file explorer should appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
-Enabling and IFCI Your Flight Controller
+Enabling IFCI on Your Flight Controller
 ===================================================
 
 Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Once you find this, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
