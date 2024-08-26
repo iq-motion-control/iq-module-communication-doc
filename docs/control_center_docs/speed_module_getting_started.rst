@@ -60,11 +60,11 @@ DroneCAN Configuration
 Some Vertiq speed modules provide support for the :ref:`DroneCAN protocol <dronecan_protocol>`.  Refer to your module's family page to see if this feature is supported. 
 Your module's DroneCAN node configuration is available through the Control Center, and is covered in detail :ref:`here <dronecan_fc_tutorial>`.
 
+.. _flight_controller_config_with_control_center:
+
 *******************************************************************************************
 Example Module Flight Controller Configuration and ESC Testing with the Control Center
 *******************************************************************************************
-
-.. _flight_controller_config_with_control_center:
 
 Configuration
 ===================
