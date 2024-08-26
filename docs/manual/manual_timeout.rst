@@ -18,33 +18,25 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Speed Module Support for Configurable Timeout
-
-	+--------------+------------------------------------+
-	| Module       | Configurable Timeout Support       |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
+.. include:: all_checked_table.rst
 
 Servo Modules
 **************
 Servo modules do not support the full range of configurable timeout features described in this section. They do support a timeout, and the period of the timeout is configurable.
 The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. Servo modules will always coast when they timeout.
 
-.. table:: Servo Module Support for Configurable Timeout
+.. table:: Module Support
 
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Module       | Configurable Timeout Support       | Notes                                                                   |
+	| Module       | Feature Supported                  | Notes                                                                   |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	| Vertiq 81-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	| Vertiq 60-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	| Vertiq 40-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
+	+--------------+------------------------------------+-------------------------------------------------------------------------+
+	| Vertiq 23-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
 	+--------------+------------------------------------+-------------------------------------------------------------------------+
 
 Configuring Timeout
@@ -76,12 +68,12 @@ on a timeout if it was previously armed.** On a servo module, the module will co
 On modules with configurable timeout behavior, modules follow a multi-step timeout process when a timeout occurs, similar to the 
 :ref:`process that occurs when disarming <advanced_disarming_behavior>`.
 
-**This timeout process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a** :ref:`stop <appendix_stop_detection>` **, plays its timeout song as 
+**This timeout process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a** :ref:`stop <stop_detection>` **, plays its timeout song as 
 specified by its playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the timeout song, 
 and what final state it ends up in after playing the song are all configurable by the user. 
 
 The image below summarizes this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
-actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <appendix_stop_detection>`, the timeout song will play according to 
+actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <stop_detection>`, the timeout song will play according to 
 its playback option. After the song finishes, the motor will either coast, brake, or execute whatever final behavior is specified by the :ref:`stow position <manual_stow_position>` 
 feature. Each of these stages and the options at each stage are shown in the image below.
 

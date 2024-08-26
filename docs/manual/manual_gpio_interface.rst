@@ -15,35 +15,13 @@ The user GPIO interface is supported by only the Fortiq-42 modules.
 Speed Modules
 **************
 
-.. table:: Speed Module Support for GPIO Interface
-
-	+--------------+------------------------------------+
-	| Module       | User GPIO Support                  |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: none_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for GPIO Interface
-
-	+------------------+------------------------------------------+
-	| Module           | User GPIO Support                        |
-	+------------------+------------------------------------------+
-	| Vertiq 81-08     | .. centered:: |:x:|                      |
-	+------------------+------------------------------------------+
-	| Vertiq 40-06     | .. centered:: |:x:|                      |
-	+------------------+------------------------------------------+
-	| Vertiq 23-06     | .. centered:: |:x:|                      |
-	+------------------+------------------------------------------+
-	| Vertiq Fortiq-42 | .. centered:: |:white_check_mark:|       |
-	+------------------+------------------------------------------+
-
+.. include:: fortiq_only_table.rst
+	
 Description
 ===============
 Vertiq’s GPIO interface provides a flexible method of interacting with a module’s user-specific GPIO pins. Each GPIO can be set to input or output, which can be switched on-the-fly, if desired. Each pin set as an input may choose whether or not to use an `internal pull resistor (up or down) <https://eepower.com/resistor-guide/resistor-applications/pull-up-resistor-pull-down-resistor/#>`_, as well as the type of pull used. Each pin set as an output may choose whether to output in a `Push-Pull or Open-Drain configuration <https://ebics.net/the-difference-between-push-pull-output-and-open-drain-output-of-microcontroller-i-o-port/>`_. 

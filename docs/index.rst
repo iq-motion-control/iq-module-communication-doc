@@ -50,7 +50,8 @@
 
    tutorials/pwm_control_flight_controller
    tutorials/hobby_calibration
-   tutorials/dronecan_px4_flight_controller
+   tutorials/dronecan_flight_controller
+   tutorials/dronecan_firmware_upgrade
    tutorials/flight_controller_telemetry_tutorial
    tutorials/up12_installation
    tutorials/up12_initial_configuration
@@ -78,6 +79,7 @@
    manual/manual_ifci_control
    manual/manual_underactuated_torque_correction
    manual/manual_buzzer_control
+   manual/manual_stop_detection
    manual/manual_appendix
 
 .. toctree::

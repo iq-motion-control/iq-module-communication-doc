@@ -15,34 +15,12 @@ The user ADC interface is supported by only the Fortiq-42 modules.
 Speed Modules
 **************
 
-.. table:: Speed Module Support for User ADC
-
-	+---------------+---------------------+
-	| Module        | User ADC Support    |
-	+---------------+---------------------+
-	| Vertiq 81-08  | .. centered:: |:x:| |
-	+---------------+---------------------+
-	| Vertiq 40-06  | .. centered:: |:x:| |
-	+---------------+---------------------+
-	| Vertiq 23-06  | .. centered:: |:x:| |
-	+---------------+---------------------+
+.. include:: none_checked_table.rst
 
 Servo Modules
 **************
 
-.. table:: Servo Module Support for User ADC
-
-	+-------------------+-----------------------------------+
-	| Module            | User ADC Support                  |
-	+-------------------+-----------------------------------+
-	| Vertiq 81-08      | .. centered:: |:x:|               |
-	+-------------------+-----------------------------------+
-	| Vertiq 40-06      | .. centered:: |:x:|               |
-	+-------------------+-----------------------------------+
-	| Vertiq 23-06      | .. centered:: |:x:|               |
-	+-------------------+-----------------------------------+
-	| Vertiq Fortiq-42  | .. centered:: |:white_check_mark:||
-	+-------------------+-----------------------------------+
+.. include:: fortiq_only_table.rst
 
 Description
 =============

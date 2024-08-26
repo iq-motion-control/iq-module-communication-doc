@@ -389,6 +389,8 @@ An example of the identification song is shown below.
     </style>
     <video class='center_vid' controls><source src="../_static/control_center_pics/indication_song.mp4" type="video/mp4"></video>
 
+.. _module_config_with_control_center:
+
 ***********************************************
 Module Configuration with IQ Control Center
 ***********************************************
@@ -648,6 +650,8 @@ Firmware Update Instructions
 .. note::
     If you've selected a zip archive not meant for your module, you will be shown a warning, and will not be allowed to flash that particular file as it can cause serious damage to your module.
 
+.. _recovery_mode:
+
 Recovering a Module from a Failed Flash
 ===========================================
 .. note::
@@ -670,6 +674,8 @@ and the correct firmware has already been downloaded from our website.
                 }
     </style>
     <video class='center_vid' controls><source src="../_static/control_center_pics/recovery_screen_cap.mp4" type="video/mp4"></video>
+
+.. _reset_to_defaults_manual:
 
 ****************************************************
 Resetting Your Module to Factory Default Settings

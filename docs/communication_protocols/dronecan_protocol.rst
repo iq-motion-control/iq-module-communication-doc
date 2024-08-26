@@ -16,33 +16,13 @@ Module Support
 Speed Modules
 **************
 
-.. table:: Speed Module Support for DroneCAN
-
-	+--------------+------------------------------------+
-	| Module       | DroneCAN Support                   |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:white_check_mark:| |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: ../manual/advanced_only_table.rst
 
 Servo Modules
 **************
 Servo modules do not support DroneCAN, as shown in the table below.
 
-.. table:: Servo Module Support for DroneCAN
-
-	+--------------+------------------------------------+
-	| Module       | DroneCAN Support                   |
-	+--------------+------------------------------------+
-	| Vertiq 81-08 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 40-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
-	| Vertiq 23-06 | .. centered:: |:x:|                |
-	+--------------+------------------------------------+
+.. include:: ../manual/none_checked_table.rst
 
 .. _standard_dronecan_support:
 
@@ -116,6 +96,142 @@ The values represent the speed and direction to command the motor to, normalized
 
 Refer to the `uavcan.equipment.esc.RawCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#rawcommand>`_ in the specification 
 for more details
+
+uavcan.tunnel.Broadcast (Data Type ID = 2010)
+#############################################################
+DroneCAN's “tunnel” messages allow users to transmit arbitrary data bytes through the DroneCAN protocol. The tunnel broadcast message contains a byte representing the 
+protocol being tunneled, a channel ID allowing for additional routing options, and an array of up to 60 bytes of data.
+
+Vertiq modules are configured to accept broadcast messages with a protocol value of 0x55, and check the received data buffer for valid :ref:`IQUART data <uart_messaging>`. 
+As such, the DroneCAN tunnel broadcast message allows users to transmit IQUART messages via DroneCAN. Vertiq modules do not support use of the channel ID for additional routing.
+
+A very rudimentary example of using the DroneCAN tunnel message is provided below. The example requires an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_, and two :ref:`FTDI devices <connection_guide>`. 
+The hardware is configured as follows:
+
+.. image:: ../_static/manual_images/dronecan/dronecan_tunnel_hardware.png
+
+In this example, the module has no serial connection to :ref:`IQ Control Center <control_center_start_guide>`. Instead, the Control Center sends messages to a Python script which packages 
+the IQUART bytes as a DroneCAN tunnel message, and transmits the message to the module. The module receives and decodes the IQUART message, and if necessary, 
+forms a response as a DroneCAN tunnel message which is sent back to the Python script. Finally, the Python script pulls the IQUART response out of the module's 
+tunnel message, and transmits the response to the Control Center via IQUART. 
+
+A similar configuration is possible using a flight controller with a serial connection, CAN connection, and appropriate script running.
+
+The process is summarized below.
+
+.. image:: ../_static/manual_images/dronecan/dronecan_tunnel_python_sequence.png
+
+The Python script necessary to accomplish this is provided here: 
+
+.. code-block:: python
+
+	import time
+	import iqmotion as iq
+	import dronecan
+	import serial
+
+	slcan_port = "COM9" #Replace this value with the port connected to your SLCAN device
+	control_center_ftdi_port = "COM7" # Replace this value with the port connected to FTDI1 from the diagram above
+
+	def make_node():
+		for attempt in range(10):
+			try:
+				node = dronecan.make_node(slcan_port, node_id=126, baudrate=115200, bitrate=500000)
+			except serial.SerialException:
+				print("Trouble connecting to DroneCAN, waiting and trying again...")
+				time.sleep(2)
+				continue
+			else:
+				break
+
+		return node
+
+	def read_response_callback(event):
+		if event:
+			data = event.transfer.payload.buffer
+			decode_gotten_data(data)
+		else:
+			print("Read request has timed out")
+
+	def decode_gotten_data(data):
+		received_iquart_data = []
+		for byte in data:
+			received_iquart_data.append(byte)
+
+		packet_parse.add_to_out_queue(bytearray(received_iquart_data))
+		packet_parse.send_now()
+
+	def crc16(data: bytes):
+		'''
+		CRC-16 (CCITT) implemented with a precomputed lookup table
+		'''
+		table = [
+			0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50A5, 0x60C6, 0x70E7, 0x8108, 0x9129, 0xA14A, 0xB16B, 0xC18C, 0xD1AD,
+			0xE1CE, 0xF1EF,
+			0x1231, 0x0210, 0x3273, 0x2252, 0x52B5, 0x4294, 0x72F7, 0x62D6, 0x9339, 0x8318, 0xB37B, 0xA35A, 0xD3BD, 0xC39C,
+			0xF3FF, 0xE3DE,
+			0x2462, 0x3443, 0x0420, 0x1401, 0x64E6, 0x74C7, 0x44A4, 0x5485, 0xA56A, 0xB54B, 0x8528, 0x9509, 0xE5EE, 0xF5CF,
+			0xC5AC, 0xD58D,
+			0x3653, 0x2672, 0x1611, 0x0630, 0x76D7, 0x66F6, 0x5695, 0x46B4, 0xB75B, 0xA77A, 0x9719, 0x8738, 0xF7DF, 0xE7FE,
+			0xD79D, 0xC7BC,
+			0x48C4, 0x58E5, 0x6886, 0x78A7, 0x0840, 0x1861, 0x2802, 0x3823, 0xC9CC, 0xD9ED, 0xE98E, 0xF9AF, 0x8948, 0x9969,
+			0xA90A, 0xB92B,
+			0x5AF5, 0x4AD4, 0x7AB7, 0x6A96, 0x1A71, 0x0A50, 0x3A33, 0x2A12, 0xDBFD, 0xCBDC, 0xFBBF, 0xEB9E, 0x9B79, 0x8B58,
+			0xBB3B, 0xAB1A,
+			0x6CA6, 0x7C87, 0x4CE4, 0x5CC5, 0x2C22, 0x3C03, 0x0C60, 0x1C41, 0xEDAE, 0xFD8F, 0xCDEC, 0xDDCD, 0xAD2A, 0xBD0B,
+			0x8D68, 0x9D49,
+			0x7E97, 0x6EB6, 0x5ED5, 0x4EF4, 0x3E13, 0x2E32, 0x1E51, 0x0E70, 0xFF9F, 0xEFBE, 0xDFDD, 0xCFFC, 0xBF1B, 0xAF3A,
+			0x9F59, 0x8F78,
+			0x9188, 0x81A9, 0xB1CA, 0xA1EB, 0xD10C, 0xC12D, 0xF14E, 0xE16F, 0x1080, 0x00A1, 0x30C2, 0x20E3, 0x5004, 0x4025,
+			0x7046, 0x6067,
+			0x83B9, 0x9398, 0xA3FB, 0xB3DA, 0xC33D, 0xD31C, 0xE37F, 0xF35E, 0x02B1, 0x1290, 0x22F3, 0x32D2, 0x4235, 0x5214,
+			0x6277, 0x7256,
+			0xB5EA, 0xA5CB, 0x95A8, 0x8589, 0xF56E, 0xE54F, 0xD52C, 0xC50D, 0x34E2, 0x24C3, 0x14A0, 0x0481, 0x7466, 0x6447,
+			0x5424, 0x4405,
+			0xA7DB, 0xB7FA, 0x8799, 0x97B8, 0xE75F, 0xF77E, 0xC71D, 0xD73C, 0x26D3, 0x36F2, 0x0691, 0x16B0, 0x6657, 0x7676,
+			0x4615, 0x5634,
+			0xD94C, 0xC96D, 0xF90E, 0xE92F, 0x99C8, 0x89E9, 0xB98A, 0xA9AB, 0x5844, 0x4865, 0x7806, 0x6827, 0x18C0, 0x08E1,
+			0x3882, 0x28A3,
+			0xCB7D, 0xDB5C, 0xEB3F, 0xFB1E, 0x8BF9, 0x9BD8, 0xABBB, 0xBB9A, 0x4A75, 0x5A54, 0x6A37, 0x7A16, 0x0AF1, 0x1AD0,
+			0x2AB3, 0x3A92,
+			0xFD2E, 0xED0F, 0xDD6C, 0xCD4D, 0xBDAA, 0xAD8B, 0x9DE8, 0x8DC9, 0x7C26, 0x6C07, 0x5C64, 0x4C45, 0x3CA2, 0x2C83,
+			0x1CE0, 0x0CC1,
+			0xEF1F, 0xFF3E, 0xCF5D, 0xDF7C, 0xAF9B, 0xBFBA, 0x8FD9, 0x9FF8, 0x6E17, 0x7E36, 0x4E55, 0x5E74, 0x2E93, 0x3EB2,
+			0x0ED1, 0x1EF0
+			]
+
+		crc = 0xFFFF
+		for byte in data:
+			crc = (crc << 8) ^ table[(crc >> 8) ^ byte]
+			crc &= 0xFFFF  # important, crc must stay 16bits all the way through
+		return crc
+
+	if __name__ == "__main__":
+		#Create an object that can create/parse IQUART mesages
+		packet_parse = iq.SerialCommunicator(control_center_ftdi_port)
+
+		#Create a DroneCAN node, and start it up
+		dronecan_node = make_node()
+
+		#Add a callback function for when we receive Tunnel Broadcast mesasges
+		dronecan_node.add_handler(dronecan.uavcan.tunnel.Broadcast, read_response_callback)
+
+		while(1):
+			#Process our DroneCAN node
+			dronecan_node.spin(0)
+
+			#If we got IQUART data, package it for DroneCAN and send it out
+			packet_parse.read_bytes()
+			message_byte_arr = packet_parse.extract_message()
+			if(message_byte_arr is not None):
+				buffer_to_send = list(packet_parse._make_packet(message_byte_arr))
+				message = dronecan.uavcan.tunnel.Broadcast(protocol=dronecan.uavcan.tunnel.Protocol(protocol=0x55), channel_id=42, buffer=buffer_to_send)
+				dronecan_node.broadcast(message)
+
+While this script is running with all hardware connected properly, you should be able to connect your module to IQ Control Center without a direct serial connection.
+
+Refer to the `uavcan.tunnel.Broadcast section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#broadcast>`_ in the 
+specification for more details.
 
 Service Requests
 *****************
@@ -220,6 +336,8 @@ ESC Index
 This parameter defines the ESC index of the module. The ESC index is used when a Raw Command message is received to determine which value in the Raw Command should be read by the module.
 
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
+
+.. _zero_behavior:
 
 Zero Behavior
 ##############
