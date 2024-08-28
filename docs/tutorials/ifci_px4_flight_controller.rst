@@ -188,7 +188,7 @@ To use your Vertiq modules properly with IFCI, your modules must be flashed with
 
     Setting Baud Rate
 
-With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port configured to run the Vertiq IO module, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a command ground between the flight controller and each module. An example for a quadrotor is shown below, bit if you would like to use fewer motors or more motors you can just add them on the same serial port.
+With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port configured to run the Vertiq IO module, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a command ground between the flight controller and each module.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_wiring.png
     :align: center
@@ -304,7 +304,11 @@ Now that the modules and flight controller have been configured, the modules can
 
     Actuator Testing Section
 
-Enable the actuator testing slider. This effectively arms the modules. Now the sliders will control the modules that they correspond to. Slide each motor slider up individually and confirm that it corresponds to the expected module in the geometry picture. Additionally confirm that it is spinning in the correct direction.
+Enable the actuator testing slider. This effectively arms the modules. Now the sliders will control the modules that they correspond to. Slide each motor slider up individually and confirm that it corresponds to the expected module in the geometry picture. Additionally, confirm that it is spinning in the correct direction.
+
+.. note::
+    For testing, it is important to understand if your module is using :ref:`Advanced Arming <manual_advanced_arming>` with IFCI. If your module is using Advanced Arming with IFCI, then it will need to arm before it can spin for any of these tests. By default, Vertiq modules will typically arm after 10 consecutive packets of commands between 0% and 7.5% throttle. PX4 sends packets at 400hz by default, so it will take 2.5ms for the motors to arm once the actuator testing slider is engaged and the motor sliders have remained at the bottom. Because of that, for the general default settings used on Vertiq modules arming should not be a concern when running these tests. It should be apparent when your module arms because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming configurations on your module.
+ 
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_test.png
     :align: center
