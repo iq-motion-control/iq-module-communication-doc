@@ -229,7 +229,7 @@ The parameters available in this subsection either control how PX4 talks to the 
 
     PX4 Module Parameters
 
-The :blue:`TARGET_MODULE_ID` parameter sets which module the Module Params are synchronized with. When this parameter is written the Module Params will update. If you would like to specifically update those parameters without switching module IDs you can set :red:`TRIGGER_READ`. It will immediately set itself back to disabled, but the Module Params will update.
+The :blue:`TARGET_MODULE_ID` parameter sets which module the Module Params are synchronized with. When this parameter is written, the Module Params will fetched from the module with that module ID and the values displayed for the Module Params will be updated. If you would like to specifically synchronize those parameters without switching module IDs you can set :red:`TRIGGER_READ`. It will immediately set itself back to disabled, but the Module Params will synchronize.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/trigger_read.png
     :align: center
@@ -238,7 +238,7 @@ The :blue:`TARGET_MODULE_ID` parameter sets which module the Module Params are s
 
     PX4 Module Parameters
 
-In this example we will be setting the modules up in PWM mode. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
+In this example we will be setting the module's input parser up in PWM mode. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
 
 .. _quad_image:
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/QuadcopterModules.png
@@ -257,7 +257,7 @@ First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` 
 
     PX4 Module Parameters
 
-Next, the module parameters will be set. First the ``TARGET_MODULE_ID`` parameter will be set to 0. This means that we are interacting with the module ID 0. When ``TARGET_MODULE_ID`` is set, the Module Params should be reloaded. The ``CONTROL_MODE`` parameter will be set to PWM. The ``MAX_VELOCITY`` and ``MAX_VOLTS`` parameters can be ignored because we are not controlling the motor with velocity or voltage mode. If ``CONTROL_MODE`` is set to one of those, the MAX\_ parameter that it corresponds to needs to be set appropriately. More information about control mode and its the related MAX\_ parameter can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. ``VERTIQ_FC_DIR`` should be set to 2D. All of these parameters will be the same for all of the modules. The last two parameters ``THROTTLE_CVI``, and ``VERTIQ_MOTOR_DIR`` will vary with each module. In our example, ``THROTTLE_CVI`` will be set to match the module ID. Since we are currently setting module ID 0’s settings, we will set ``THROTTLE_CVI`` to 0. ``VERTIQ_MOTOR_DIR`` will be set to 2D Counter Clockwise to match the :ref:`diagram of the quadcopter above<quad_image>`. Ensure the ``VERTIQ_MOTOR_DIR`` parameter matches the direction shown in the diagram for each module ID. This is then repeated for each module ID by selecting a new ``TARGET_MODULE_ID``. The resulting parameters for each module are shown below. Blue boxes are the parameters that match between modules, red are the ones that vary, and yellow is the module ID.
+Next, the module parameters will be set. First the ``TARGET_MODULE_ID`` parameter will be set to 0. This means that we are interacting with the module with module ID 0. When ``TARGET_MODULE_ID`` is set, the Module Params should be reloaded. The ``CONTROL_MODE`` parameter will be set to PWM. The ``MAX_VELOCITY`` and ``MAX_VOLTS`` parameters can be ignored because we are not controlling the motor with velocity or voltage mode. If ``CONTROL_MODE`` is set to one of those, the MAX\_ parameter that it corresponds to needs to be set appropriately. More information about control mode and its the related MAX\_ parameter can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. ``VERTIQ_FC_DIR`` should be set to 2D. All of these parameters will be the same for all of the modules. The last two parameters ``THROTTLE_CVI``, and ``VERTIQ_MOTOR_DIR`` will vary with each module. In our example, ``THROTTLE_CVI`` will be set to match the module ID. Since we are currently setting module ID 0’s settings, we will set ``THROTTLE_CVI`` to 0. CVI stands for Control Value Index. More information can be found in the :ref:`IFCI documentation<controlling_ifci>`. ``VERTIQ_MOTOR_DIR`` will be set to 2D Counter Clockwise to match the :ref:`diagram of the quadcopter above<quad_image>`. Ensure the ``VERTIQ_MOTOR_DIR`` parameter matches the direction shown in the diagram for each module ID. This is then repeated for each module ID by selecting a new ``TARGET_MODULE_ID``. The resulting parameters for each module are shown below. Blue boxes are the parameters that match between modules, red are the ones that vary, and yellow is the module ID.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_settings.png
     :align: center
