@@ -204,6 +204,7 @@ A module wired for both power and serial communication attached to the aforement
 .. image:: ../_static/control_center_pics/module_with_ftdi.png
     :scale: 12%
 
+.. _multiple_module_wiring:
 Multiple Module Wiring
 ---------------------------
 If you plan on connecting several modules to the Control Center at once, you must connect all of the modules' serial ports together. 

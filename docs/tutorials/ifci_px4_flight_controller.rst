@@ -7,7 +7,7 @@
 Setting up PX4 Firmware for Use with IFCI
 ****************************************************
 .. Converted from Jordan's google docs tutorial
-This tutorial covers how to build and set up `Vertiq’s PX4 fork <https://github.com/iq-motion-control/PX4-Autopilot>`_ which provides access to Vertiq’s IQUART protocol. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with our PX4 fork, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+This tutorial covers how to build and set up `Vertiq’s PX4 fork <https://github.com/iq-motion-control/PX4-Autopilot>`_ which provides access to Vertiq’s `IQUART protocol <uart_messaging>`_. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with our PX4 fork, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
 Setting Up the PX4 Toolchain
 =============================
@@ -17,25 +17,27 @@ In order to use our PX4 fork, you must install the PX4 toolchain. We recommend t
 .. warning::
     If you do not replace the standard PX4 fork with our fork, none of the future steps will be possible. Make sure you properly replace ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` as mentioned above.
     
-Once the toolchain is installed navigate into the top level PX4-Autopilot directory and add the remote original PX4 remote repository:
+Once the toolchain is installed navigate into the top level PX4-Autopilot directory and add the remote original PX4 remote repository as instructed by the `PX4 Git documentation <https://docs.px4.io/main/en/contribute/git_examples.html>`_:
 
 .. code-block:: bash
 
     git remote add upstream git@github.com:PX4/PX4-Autopilot.git
     git fetch upstream
 
-This should result in tags being added to the local repository. Once this is done you should be able to build PX4. These steps are from the `PX4 Git documentation <https://docs.px4.io/main/en/contribute/git_examples.html>`_. If the tags are not added then the compilation will fail.
+This should result in tags being added to the local repository. Once this is done you should be able to build PX4. If the tags are not added then the compilation will fail.
 
 .. once we are in px4, this whole section can be replaced with install px4 toolchain as described by them
 
 Setting Up PX4 for IQUART and Building
 ======================================
 
-Once the toolchain is set up, you must change the settings for your board to turn on Vertiq IQUART integrations. To do this, enter your PX4 directory and use the command below, but replace ``<your-flight-control-board>`` with your flight control board's name. Additionally a command with the example board we are using is shown below for reference.
+Once the toolchain is set up, you must change the settings for your board to turn on Vertiq IQUART integrations. To do this, enter your PX4 directory and use the command below, but replace ``<your-flight-control-board>`` with your flight control board's name.
 
 .. code-block:: bash
 
     make <your-flight-control-board> boardconfig
+
+For this example, we are building for the px4_fmu-v6c so we run the command below.
 
 .. code-block:: bash
 
@@ -102,6 +104,12 @@ Once saved, build the firmware with the following command, replacing ``your-flig
 .. code-block:: bash
 
     make <your-flight-control-board>
+
+For this example, we are building for the px4_fmu-v6c so we run the command below.
+
+.. code-block:: bash
+
+    make px4_fmu-v6c
 
 Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-control-board_default`` folder as ``your-flight-control-board_default.px4``
 
@@ -172,7 +180,7 @@ Now your Vertiq modules must be configured for proper communication with the fli
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ========================================================
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQControlCenter and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQControlCenter to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the buad rate. This avoids needing to change the baud rate of IQControlCenter at all. Ensure that each module connected to the flight controller is set to a different, unique module ID. For this tutorial we will be using the module IDs 0, 1, 2, and 3.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQControlCenter and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQControlCenter to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the buad rate. This avoids needing to change the baud rate of IQControlCenter at all. Ensure that each module connected to the flight controller is set to a different, unique module ID. For this tutorial we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQControlCenter using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>`.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
@@ -212,7 +220,7 @@ Connect your flight controller and motors as shown in the diagram above. Ensure 
 
     PX4 Vertiq IO Parameters
 
-The parameters available in this subsection either control how PX4 talks to the modules, or parameters that are specific to the module. Parameters that are specific to the module are called out using ‘Module Param -’ in their description.
+The parameters available in this subsection either control how PX4 talks to the modules, or parameters that are specific to the module. Parameters that are specific to the module are indicated by ‘Module Param -’ in their description.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_parameters.png
     :align: center
@@ -240,7 +248,7 @@ In this example we will be setting the modules up in PWM mode. We will be settin
 
     Module Organization on Quadcopter
 
-First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` can be left as the default “Use Motor Arm Behave”. ``DISARM_TRIGGER`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VERTIQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After these parameters are set, the flight controller will need to be rebooted.
+First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` can be left as the default “Use Motor Arm Behave”. ``DISARM_TRIGGER`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VERTIQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/px4_settings.png
     :align: center
