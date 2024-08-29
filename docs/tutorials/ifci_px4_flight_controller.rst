@@ -271,7 +271,7 @@ Next, the module parameters will be set. First the ``TARGET_MODULE_ID`` paramete
 Actuator Setup
 ==============
 
-Now, we will configure PX4's internal representation of the quadcopter's geometry to our IFCI outputs. Navigate to the :red:`actuator tab` of QGroundControl and ensure that the :blue:`Vertiq IO tab` shows up.
+Now, we will configure PX4's internal representation of the quadcopter's geometry to match the IFCI outputs. Navigate to the :red:`actuator tab` of QGroundControl and ensure that the :blue:`Vertiq IO tab` shows up.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_vertiq_tab.png
     :align: center
