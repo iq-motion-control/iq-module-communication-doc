@@ -180,7 +180,7 @@ Now your Vertiq modules must be configured for proper communication with the fli
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ========================================================
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQControlCenter and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQControlCenter to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the buad rate. This avoids needing to change the baud rate of IQControlCenter at all. Ensure that each module connected to the flight controller is set to a different, unique module ID. For this tutorial we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQControlCenter using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>`.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the buad rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a different, unique module ID. For this tutorial we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>`.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
@@ -238,7 +238,8 @@ The :blue:`TARGET_MODULE_ID` parameter sets which module the Module Params are s
 
     PX4 Module Parameters
 
-In this example we will be setting the module's input parser up in PWM mode. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
+
+In this example, we will set the module's input parser to PWM mode. This means that received throttle commands are applied as a percentage of your module's **supply voltage**. For example, if your module is powered by 20V, a 50% throttle command tells the module to apply a 10V drive voltage. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
 
 .. _quad_image:
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/QuadcopterModules.png
