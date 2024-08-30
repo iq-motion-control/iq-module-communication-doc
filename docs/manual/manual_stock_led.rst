@@ -9,17 +9,13 @@ Stock LED Support (White and RGB LED Control)
 All Vertiq Gen 2 modules support use of our LED add-on board available with Vertiq's Pro Kit. For information about purchasing a Pro Kit, or for information about 
 purchasing more LED add-on boards, please contact us at info@vertiq.co. Please refer to your module's family page to see if it belongs to Gen 1 or Gen 2.
 
-Your Pro Kit's LED add-on should include the LED board as well as all wiring necessary to connect with your module.
-
-<PUT A PICTURE OF EVERYTHING THAT COMES IN THE BOX>
-
 Hardware Configuration
 =========================
+If you are using Vertiq's Pro Kit, simply plug the LED connector into the LED board, and you can move on to *Controlling Your LEDs*. Otherwise continue reading.
+
 Vertiq's Gen 2 modules all feature solder pads that allow you to easily connect with external power sources and other peripherals. The LED peripheral board connects 
 with your module's GPIO2 and GPIO3 connections where GPIO2 controls the RGB LED and GPIO3 controls the white LEDs. Depending on the size of your module, 
 you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value.
-
-<TALK ABOUT ALL OF THE WAYS THAT YOU CAN POWER THE THING BECAUSE IT'S UNCLEAR WHAT IS EXPECTED!!>
 
 .. list-table:: LED Connection Examples
    :class: borderless
@@ -38,9 +34,13 @@ you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO 
 
             Vertiq 81-08 Gen 2 LED Connections
 
+The LED board's power connections should be tied to your module's V+ and V- ports ensuring that GND attaches to V-, and V+ connects to V+. The LED board has an operating range of 
+3-14S (11.1-52V nominal). Operating the LED board above this range can result in serious damage to the board. Operating the board below this range will simply prevent it from 
+operating as expected.
+
 The LED board uses a 4-pin JST-ZE connector in order to interface with your module. The following image displays the LED board's pinout.
 
-<INSERT NICE PICTURE HERE OF THE PINOUT AND OF THE BOARD>
+.. image:: ../_static/manual_images/leds/led_board_connections.png
 
 Please note that the connector's clip is at the top of this image. Take care to ensure that the module's RGB LED pad connects with the LED board's RGB LED pin, 
 and the module's white LED pad attaches to the LED board's white LED pin. Failure to do so can result in damage to your LED board as well as your module.
@@ -58,12 +58,22 @@ Default Pattern
 
 By default, Vertiq modules control the RGB LED to display a static blue color, and the white LEDs to be shut off. On startup, the RGB LED should be illuminated.
 
-<try to get a nice picture of that>
+.. image:: ../_static/manual_images/leds/vertiblue_default_on.png
+    :width: 60%
 
 The default :ref:`strobing pattern <strobing_configuration>` for both the white LED and RGB led is to blink on and off 3 times, remain off, then restart the pattern with a 
 period of 2.5 seconds.
 
-<try to get a nice video of that>
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/default_blinking.mov" type="video/mp4"></video>
 
 RGB LED Configuration
 ***********************
@@ -220,7 +230,16 @@ So, when we set ``RGB LED Strobing Active`` to ``Active``, we will see the red L
 
 Strobing activation can be changed on the fly, and is configured on boot-up according to the value stored in the module's persistent memory.
 
-<GET A VIDEO OF THIS (MAYBE ANOTHER SCREEN CAP)>
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/toggle_strobe_enable.mov" type="video/mp4"></video>
 
 .. _strobing_period:
 
@@ -238,7 +257,16 @@ Finally, set the period to 5 seconds, and the pattern will now restart every 5 s
 
 **Strobing period operates identically for both the white and RGB LEDs.**
 
-<GET A VIDEO OF THIS WHEN WE CAN>
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/blinking_period_adjust.mp4" type="video/mp4"></video>
 
 .. _strobing_pattern:
 
@@ -258,11 +286,29 @@ identically to the RGB LED**
 
 .. image:: ../_static/manual_images/leds/strobe_pattern_ex_config.png
 
-<GET A NICE VIDEO OF THIS WHEN WE CAN>
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/one_sec_strobe.mov" type="video/mp4"></video>
 
 Now, suppose you would like your pattern to be clear where it begins, is in progress, and is ending. To do so, you may have a quick blinking pattern to begin, a medium speed blinking 
 pattern in the middle, and a slow blinking pattern to end. In hex, this could be 0xAA330808 (decimal 2855471112 | binary 10101010001100110000100000001000).
 
-<GET A NICE VIDEO OF THIS WHEN WE CAN>
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/weird_strobing_pattern.mov" type="video/mp4"></video>
 
 The pattern bitmask can be defined by any 32-bit value allowing for :math:`{2}^{32}` unique patterns.
