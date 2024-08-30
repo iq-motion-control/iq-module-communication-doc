@@ -200,7 +200,7 @@ With the modules set to unique module IDs, and the baud rate set to match the fl
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_wiring.png
     :align: center
-    :scale: 100
+    :width: 100%
     :alt: Module Flight Control Wiring
 
     Module Flight Control Wiring
