@@ -17,7 +17,7 @@ In order to use our PX4 fork, you must install the PX4 toolchain. We recommend t
 .. warning::
     If you do not replace the standard PX4 fork with our fork, none of the future steps will be possible. Make sure you properly replace ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` as mentioned above.
     
-Once the toolchain is installed navigate into the top level PX4-Autopilot directory and add the remote original PX4 remote repository as instructed by the `PX4 Git documentation <https://docs.px4.io/main/en/contribute/git_examples.html>`_:
+Once the toolchain is installed, navigate into the top level PX4-Autopilot directory and add the original PX4 remote repository as instructed by the `PX4 Git documentation <https://docs.px4.io/main/en/contribute/git_examples.html>`_:
 
 .. code-block:: bash
 
@@ -70,7 +70,7 @@ Navigate to the ``actuators`` submenu with the arrow keys and press ``Enter`` to
 
     Selecting the Actuators Section
 
-Navigate to the ``vertiq_io`` subsection and press space to select it. An asterisk should appear in the box. Once the asterisk is in the box, press ``Enter`` to enter the vertiq_io submenu.
+Navigate to the ``vertiq_io`` subsection and press ``Space`` to select it. An asterisk should appear in the box. Once the asterisk is in the box, press ``Enter`` to enter the vertiq_io submenu.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuators_select_vertiq_io.png
     :align: center
@@ -79,7 +79,7 @@ Navigate to the ``vertiq_io`` subsection and press space to select it. An asteri
 
     Selecting the vertiq_io Section
 
-Inside the ``vertiq_io`` submenu one option should appear for including IFCI configuration parameters. Select this by pressing space.
+Inside the ``vertiq_io`` submenu one option should appear for including IFCI configuration parameters. Select this by pressing ``Space``.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/ifci_unselect.png
     :align: center
@@ -180,7 +180,7 @@ Now your Vertiq modules must be configured for proper communication with the fli
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ========================================================
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>`.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
@@ -196,7 +196,7 @@ To use your Vertiq modules properly with IFCI, your modules must be flashed with
 
     Setting Baud Rate
 
-With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port configured to run the Vertiq IO module, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a command ground between the flight controller and each module.
+With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port that you configured to run Vertiq IO, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a common ground between the flight controller and each module.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_wiring.png
     :align: center
@@ -209,7 +209,7 @@ Integration Setup
 =================
 
 .. warning::
-    Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
+    Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your modules are secured to a stationary platform or surface before attempting to spin them.
 
 Connect your flight controller and motors as shown in the diagram above. Ensure that both the motors and flight controller are receiving power.  :ref:`A short set of tones<startup_song>` should play from each motor when powered on. Connect the flight controller to QGroundControl, navigate to the :red:`parameters menu`, and select the :blue:`Vertiq IO` subsection as shown below.
 
@@ -249,7 +249,7 @@ In this example, we will set the module's input parser to PWM mode. This means t
 
     Module Organization on Quadcopter
 
-First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` can be left as the default “Use Motor Arm Behave”. ``DISARM_TRIGGER`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VERTIQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
+First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``DISARM_TRIGGER`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VERTIQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/px4_settings.png
     :align: center
