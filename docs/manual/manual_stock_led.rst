@@ -73,7 +73,7 @@ period of 2.5 seconds.
                     width: 75%; 
                 }
     </style>
-    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/default_blinking.mov" type="video/mp4"></video>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/default_blinking.mp4" type="video/mp4"></video>
 
 RGB LED Configuration
 ***********************
@@ -239,7 +239,7 @@ Strobing activation can be changed on the fly, and is configured on boot-up acco
                     width: 75%; 
                 }
     </style>
-    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/toggle_strobe_enable.mov" type="video/mp4"></video>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/toggle_strobe_enable.mp4" type="video/mp4"></video>
 
 .. _strobing_period:
 
@@ -295,7 +295,7 @@ identically to the RGB LED**
                     width: 75%; 
                 }
     </style>
-    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/one_sec_strobe.mov" type="video/mp4"></video>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/one_sec_strobe.mp4" type="video/mp4"></video>
 
 Now, suppose you would like your pattern to be clear where it begins, is in progress, and is ending. To do so, you may have a quick blinking pattern to begin, a medium speed blinking 
 pattern in the middle, and a slow blinking pattern to end. In hex, this could be 0xAA330808 (decimal 2855471112 | binary 10101010001100110000100000001000).
@@ -309,6 +309,6 @@ pattern in the middle, and a slow blinking pattern to end. In hex, this could be
                     width: 75%; 
                 }
     </style>
-    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/weird_strobing_pattern.mov" type="video/mp4"></video>
+    <video class='center_vid' controls muted><source src="../_static/manual_images/leds/weird_strobing_pattern.mp4" type="video/mp4"></video>
 
 The pattern bitmask can be defined by any 32-bit value allowing for :math:`{2}^{32}` unique patterns.
