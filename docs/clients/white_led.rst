@@ -30,7 +30,7 @@ A minimal working example for the WhiteLedClient is:
     void loop() {
         int intensity = 0;
         if(ser.get(ledInterface.intensity_, intensity))
-        Serial.println(intensity);
+            Serial.println(intensity);
     }
 
 C++
@@ -58,7 +58,7 @@ A minimal working example for the WhiteLedClient is:
         WhiteLedClient ledInterface(0);
 
         // Use the white LED Interface Client
-        ledInterface.intensity_.get(com)
+        ledInterface.intensity_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

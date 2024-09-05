@@ -6,16 +6,18 @@
 ***********************************************
 Stock LED Support (White and RGB LED Control)
 ***********************************************
-All Vertiq Gen 2 modules support use of our LED add-on board available with Vertiq's Pro Kit. For information about purchasing a Pro Kit, or for information about 
+All Vertiq Gen 2 modules support use of our LED add-on board available with Vertiq's Pro Kit or by special request. For information about purchasing a Pro Kit, or for information about 
 purchasing more LED add-on boards, please contact us at info@vertiq.co. Please refer to your module's family page to see if it belongs to Gen 1 or Gen 2.
 
 Hardware Configuration
 =========================
 If you are using Vertiq's Pro Kit, simply plug the LED connector into the LED board, and you can move on to *Controlling Your LEDs*. Otherwise continue reading.
 
-Vertiq's Gen 2 modules all feature solder pads that allow you to easily connect with external power sources and other peripherals. The LED peripheral board connects 
-with your module's GPIO2 and GPIO3 connections where GPIO2 controls the RGB LED and GPIO3 controls the white LEDs. Depending on the size of your module, 
-you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value.
+Vertiq's Gen 2 modules all feature solderable connections that allow you to easily connect with external power sources and other peripherals. The LED peripheral board connects 
+with your module's GPIO2 and GPIO3 connections where GPIO2 controls the RGB LED and GPIO3 controls the white LEDs. The connections' labels vary for each connector board model. If you 
+are using a tongue (external from the main motor body) connector board with solder pads, you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO value. If you are using a 
+tongue connector board with through hole connections, GPIO2 is pin 8 and GPIO3 is pin 7. Lastly, if you are using an internally connected downward eject connector board, 
+GPIO2 is pin 8 and GPIO3 is pin 7.
 
 .. list-table:: LED Connection Examples
    :class: borderless
@@ -34,8 +36,8 @@ you will see the GPIO values printed as either IOX or GPIOX where X is the GPIO 
 
             Vertiq 81-08 Gen 2 LED Connections
 
-The LED board's power connections should be tied to your module's V+ and V- ports ensuring that GND attaches to V-, and V+ connects to V+. The LED board has an operating range of 
-3-14S (11.1-52V nominal). Operating the LED board above this range can result in serious damage to the board. Operating the board below this range will simply prevent it from 
+The LED board's power connections should be tied to your module's V+ and V- ports ensuring that GND attaches to V-, and V+ connects to V+. The LED board has an operating range of 7.5V-58.8V (3-14S). 
+Operating the LED board above this range can result in serious damage to the board. Operating the board below this range will simply prevent it from 
 operating as expected.
 
 The LED board uses a 4-pin JST-ZE connector in order to interface with your module. The following image displays the LED board's pinout.
@@ -193,8 +195,8 @@ found in the :ref:`white LED message table <white_led_message_table>`.  The LED 
 two white LEDs are controlled in series, and cannot be controlled individually.
 
 .. warning::
-    The white LEDs are extremely bright. Please do not look directly into the white LEDs while they are in use. Additionally, while operating the LED board at high 
-    intensities, the LED board may get very hot. Please take care when handling your LED board to avoid injury.
+    The white LEDs are extremely bright. Please do not look directly into the white LEDs while they are in use. Additionally, prolonged operation of the white LED at high intensities 
+    causes the LED board to heat up, and may require heat sinks. Please take care when handling your LED board to avoid injury.
 
 Since its default intensity is 0%, the white LEDs are off by default. Suppose you would like to turn on the LEDs with minimum intensity (all examples will use low 
 intensities in order to avoid intense light while benchtop testing). To do so, we can use the :ref:`Python API <getting_started_python_api>`.

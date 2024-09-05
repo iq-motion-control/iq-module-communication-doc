@@ -30,7 +30,7 @@ A minimal working example for the RgbLedClient is:
     void loop() {
         int redIntensity = 0;
         if(ser.get(rgbInterface.red_, redIntensity))
-        Serial.println(redIntensity);
+            Serial.println(redIntensity);
     }
 
 C++
@@ -58,7 +58,7 @@ A minimal working example for the RgbLedClient is:
         RgbLedClient rgbInterface(0);
 
         // Use the RGB LED Interface Client
-        rgbInterface.red_.get(com)
+        rgbInterface.red_.get(com);
 
         // Insert code for interfacing with hardware here  
     }
