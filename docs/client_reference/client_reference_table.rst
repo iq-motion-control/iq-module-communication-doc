@@ -168,3 +168,11 @@ Type ID 91 | ADC Interface
 Type ID 92 | PWM Interface
 =================================================
 .. include:: ../clients/pwm_interface.rst
+
+Type ID 100 | RGB LED
+=================================================
+.. include:: ../clients/rgb_led.rst
+
+Type ID 101 | White LED
+=================================================
+.. include:: ../clients/white_led.rst
