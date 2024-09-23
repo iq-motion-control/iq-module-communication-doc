@@ -101,6 +101,9 @@ properly configured and disarmed. So the default settings on Vertiq modules shou
 **Because of this, there is no need to change any arming parmeters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
 features for more complex integrations, refer to the :ref:`Advanced Arming <manual_advanced_arming>` section for more details.
 
+If your module is set to :ref:`use ArmingStatus to drive module arming <dronecan_arming_and_bypass>`, :ref:`Advanced Arming <manual_advanced_arming>` will not apply, and the module will arm solely 
+on the status of your flight controller's reported ArmingStatus. Configuring your flight controller to output the ArmingStatus message is covered in the specific flight controller sections below.
+
 If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then arming is not required for the module to spin when receiving DroneCAN commands.
 
 CAN Bus Hardware Setup
@@ -155,7 +158,7 @@ to DroneCAN. ``UAVCAN_BITRATE`` is covered in the next section.
 
     UAVCAN Parameters in PX4
 
-Seting Bitrate
+Setting Bitrate
 -----------------
 After enabling DroneCAN and rebooting the flight controller, re-open the UAVCAN section of Parameters in QGroundControl. If ``UAVCAN_ENABLE`` was disabled, more options should now be available for configuring DroneCAN.
 
@@ -177,7 +180,7 @@ The image below shows the proper configuration of this parameter.
 Assign ESC Functions in Actuators Tab
 ----------------------------------------
 .. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to set
-    the funtions of the actuator outputs. 
+    the functions of the actuator outputs. 
 
 After rebooting the flight contorller, QGroundControl's Actuators tab should present UAVCAN as an option.
 
@@ -224,6 +227,26 @@ in the image below.
 
 The minimums and maximums set the range of values that will be sent in the :ref:`uavcan.equipment.esc.RawCommand <dronecan_messages_raw_command>` message to control the modules. Generally,
 the default minimum and maximum are fine and should not need to be changed.
+
+Enabling ArmingStatus
+--------------------------
+If your module's arming state is configured to be :ref:`driven by DroneCAN's ArmingStatus message <dronecan_arming_and_bypass>`, your flight controller must broadcast the ArmingStatus 
+message at a regular interval. In order to enable the ArmingStatus message on your PX4 flight controller, you must do the following:
+
+1. Connect your flight controller with QGroundControl, and navigate to the UAVCAN tab in Vehicle Setup
+2. Find the ``UAVCAN_PUB_ARM`` parameter
+
+.. image:: ../_static/tutorial_images/dronecan_px4_tutorial/arming_status_config.png
+    :align: center
+    :width: 60%
+
+3. Set ``UAVCAN_PUB_ARM`` to ``Enabled`` and reboot your flight controller
+
+Now, your flight controller will output the ArmingStatus message at 500ms intervals. As viewed in the DroneCAN GUI tool:
+
+.. image:: ../_static/tutorial_images/dronecan_px4_tutorial/arming_status_message.png
+    :align: center
+    :width: 60%
 
 Other Configurations
 ------------------------
@@ -541,6 +564,17 @@ In order to use DroneCAN with an ArduPilot flight controller, you must first con
     c. ``CAN_D1_UC_NODE``: Defines the DroneCAN node ID used by the flight controller. Ensure that this value is unique from all modules connected over DroneCAN
 
 9. Make sure you have written all parameters, and reboot your flight controller
+
+Enabling ArmingStatus
+--------------------------
+If your module's arming state is configured to be :ref:`driven by DroneCAN's ArmingStatus message <dronecan_arming_and_bypass>`, your flight controller must broadcast the ArmingStatus 
+message at a regular interval. By default, ArduPilot flight controllers broadcast ArmingStatus messages at 500ms intervals, so no additional configuration is necessary.
+
+As viewed through the DroneCAN GUI tool:
+
+       .. image:: ../_static/tutorial_images/dronecan_px4_tutorial/ardupilot_armingstatus.png
+        :align: center
+
 
 Testing DroneCAN with your Module
 ---------------------------------------
