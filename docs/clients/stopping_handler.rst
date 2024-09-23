@@ -57,7 +57,7 @@ A minimal working example for the StoppingHandlerClient is:
         StoppingHandlerClient temp_client(0);
 
         // Use the Temperature Estimator Client
-        temp_client.stopped_speed_.get(com)
+        temp_client.stopped_speed_.get(com);
 
         // Insert code for interfacing with hardware here  
     }
@@ -97,7 +97,7 @@ A minimal working example for the Stopping Handler Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     stopped_speed = |variable_name|.get("stopping_handler", "stopped_speed") 
     print(f"Stopped speed: {stopped_speed}")

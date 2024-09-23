@@ -56,10 +56,10 @@ A minimal working example for the AnticoggingClient is:
         // Make a communication interface object
         GenericInterface com;
         
-        // Make a ESC Propeller Input Parser object with obj_id 0
+        // Make an Anticogging Client object with obj_id 0
         AnticoggingClient cog(0);
         
-        // Use the ESC Propeller Input Parser object
+        // Use theAnticogging Client object
         cog.is_enabled_.set(com, 1);
         
         // Insert code for interfacing with hardware here
@@ -101,7 +101,7 @@ A minimal working example for the Anticogging Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|
     
     |variable_name|.set("anticogging", "is_enabled", 1)  # Turns on Anticogging
 

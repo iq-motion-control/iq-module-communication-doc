@@ -62,7 +62,7 @@ A minimal working example for the TemperatureEstimatorClient is:
         CoilTemperatureEstimatorClient temp_client(0);
 
         // Use the Temperature Estimator Client
-        temp_client.temp_.get(com)
+        temp_client.temp_.get(com);
 
         // [Insert code for interfacing with hardware here]
 
@@ -102,7 +102,7 @@ A minimal working example for the Temperature Estimator Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     coil_temp = |variable_name|.get("coil_temperature_estimator", "t_coil")  # Estimated Motor Temperature
     print(f"Estimated Motor Temperature: {coil_temp}")
