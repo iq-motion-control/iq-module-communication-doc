@@ -541,7 +541,7 @@ Arming with ArmingStatus
 ******************************
 Vertiq modules can arm and disarm based off of DroneCAN's :ref:`ArmingStatus message <arming_status>`. This means that whenever your flight controller broadcasts an ArmingStatus 
 ``STATUS_FULLY_ARMED`` message, your module will transition from disarmed to armed, or if already armed, will remain armed. These transitions are not subject to the constraints 
-set by your :ref:`arming throttle region <arming_throttle_regions>`, so any ``STATUS_FULLY_ARMED`` will arm your module. When your flight controller broadcasts a ``STATUS_DISARMED`` message, your module 
+set by your :ref:`arming throttle region <arming_throttle_regions>`, so any ``STATUS_FULLY_ARMED`` message will arm your module. When your flight controller broadcasts a ``STATUS_DISARMED`` message, your module 
 will similarly transition from armed to disarmed.
 
 Whether your module arms via the ArmingStatus message is configured through the ``arming_by_arming_status`` parameter in the :ref:`DroneCAN node client <uavcan_node>`.
