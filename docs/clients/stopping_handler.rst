@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Stopping Handler
 ----------------
 A Vertiq module is considered stopped when it has been below its stopping speed continuously for some stopping time. 
@@ -97,7 +99,7 @@ A minimal working example for the Stopping Handler Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     stopped_speed = |variable_name|.get("stopping_handler", "stopped_speed") 
     print(f"Stopped speed: {stopped_speed}")

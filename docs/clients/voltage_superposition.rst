@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Voltage Superposition
 ---------------------
 This client is used to set up and change settings related to Vertiq underactuated pulsing propellers.
@@ -95,7 +97,7 @@ A minimal working example for the Voltage Superposition Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing")
+    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing") |module_name_comment|
     
     zero_angle= |variable_name|.get("voltage_superposition", "zero_angle") 
     print(f"Zero angle: {zero_angle}")

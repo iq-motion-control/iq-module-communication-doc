@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Brushless Drive
 ---------------
 
@@ -96,7 +98,7 @@ A minimal working example for the BrushlessDriveClient is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     |variable_name|.set("brushless_drive", "drive_spin_volts", 5) # Spins motor at 5 volts
 

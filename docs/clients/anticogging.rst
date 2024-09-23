@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Anticogging
 -----------
 
@@ -101,7 +103,7 @@ A minimal working example for the Anticogging Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|
     
     |variable_name|.set("anticogging", "is_enabled", 1)  # Turns on Anticogging
 

@@ -1,3 +1,4 @@
+.. include:: common_client_variables.rst
 
 .. _propeller_motor_control:
 
@@ -109,7 +110,7 @@ A minimal working example for the Propeller Motor Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     |variable_name|.set("propeller_motor_control", "ctrl_velocity", 5)  # Supplies 5V to motor
 

@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 ADC Interface
 -------------
 Vertiq's :ref:`ADC Interface <manual_adc_interface>` provides access to an on-board Analog to Digital Converter (ADC). An ADC makes it possible for your module to read input analog voltages. The ADC handles voltages from 0.0V to 3.3V with a 12-bit resolution. For example, if you input 1V to the ADC interface, reading the voltage would return 1V, and reading the "raw value" would return 1241 (:math:`\frac{V_{\text{in}} * 4096}{3.3}`). 
@@ -96,7 +98,7 @@ A minimal working example for the ADC Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|
     
     adc_voltage = |variable_name|.get("adc_interface", "adc_voltage") 
     print(f"adc voltage : {adc_voltage}")

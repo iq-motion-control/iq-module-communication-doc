@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Coil Temperature Estimator
 --------------------------
 
@@ -102,7 +104,7 @@ A minimal working example for the Temperature Estimator Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     coil_temp = |variable_name|.get("coil_temperature_estimator", "t_coil")  # Estimated Motor Temperature
     print(f"Estimated Motor Temperature: {coil_temp}")

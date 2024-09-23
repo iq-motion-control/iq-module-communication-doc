@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Arming Handler
 --------------
 Vertiq Advanced Speed modules can support an :ref:`Advanced Arming <manual_advanced_arming>` feature, 
@@ -99,7 +101,7 @@ A minimal working example for the Arming Handler Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     always_armed_status = |variable_name|.get("arming_handler", "always_armed") 
     print(f"Always armed status: {always_armed_status}")

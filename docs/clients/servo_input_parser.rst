@@ -1,3 +1,4 @@
+.. include:: common_client_variables.rst
 
 .. _servo_input_parser:
 
@@ -109,7 +110,7 @@ A minimal working example for the Servo Input Parser Client is:
     import math
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|
     
     # Set Servo Limits
     |variable_name|.set("servo_input_parser", "mode", 3)             # Position Control Mode 

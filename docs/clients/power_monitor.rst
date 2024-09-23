@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Power Monitor
 -------------
 
@@ -103,7 +105,7 @@ A minimal working example for the Power Monitor Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     volts = |variable_name|.get("power_monitor", "volts")  # returns the input voltage to module
     print(f"Voltage coming into module: {volts}")

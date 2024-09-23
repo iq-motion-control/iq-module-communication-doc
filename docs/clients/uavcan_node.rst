@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 UAVCAN Node
 ---------------------
 This client is used to configure the DroneCAN interface on a Vertiq module.
@@ -95,7 +97,7 @@ A minimal working example for the UAVCAN Node Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     uavcan_node_id = |variable_name|.get("uavcan_node", "uavcan_node_id") 
     print(f"UAVCAN Node ID: {uavcan_node_id}")

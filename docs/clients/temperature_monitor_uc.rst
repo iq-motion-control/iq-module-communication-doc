@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Temperature Monitor UC
 ----------------------
 
@@ -105,7 +107,7 @@ A minimal working example for the Temperature Monitor Microcontroller Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     temp = |variable_name|.get("temperature_monitor_uc", "uc_temp")  # Internal UC Temperature
     print(f"Internal UC temperature: {temp}")

@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 IQUART Flight Controller Interface (IFCI)
 -----------------------------------------
 This client is used to simplify communication between flight controllers and multiple modules connected to the IQUART bus.
@@ -110,7 +112,7 @@ A minimal working example for the IQUART Flight Controller Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing")
+    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing") |module_name_comment|
     
     telemetry = |variable_name|.get("iquart_flight_controller_interface", "telemetry") 
     print(f"Pulsing voltage mode: {telemetry}")

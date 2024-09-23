@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 Pulsing Rectangular Input Parser
 --------------------------------
 This pulsing module specific client is used to convert flight controller x/y coordinate commands into a format understood by pulsing modules.
@@ -95,7 +97,7 @@ A minimal working example for the Pulsing Rectangular Input Parser Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing")
+    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing") |module_name_comment|
     
     pulsing_voltage_mode = |variable_name|.get("pulsing_rectangular_input_parser", "pulsing_voltage_mode") 
     print(f"Pulsing voltage mode: {pulsing_voltage_mode}")

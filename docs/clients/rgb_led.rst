@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 RGB LED
 ---------------
 
@@ -98,7 +100,7 @@ A minimal working example for the RGB LED Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="speed")
+    |variable_name| = iq.|module_name|(com, 0, firmware="speed") |module_name_comment|
     
     red = |variable_name|.get("rgb_led", "red") 
     print(f"Red Intensity: {red}")

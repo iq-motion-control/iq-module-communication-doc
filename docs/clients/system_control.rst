@@ -1,3 +1,5 @@
+.. include:: common_client_variables.rst
+
 System Control
 --------------
 
@@ -103,7 +105,7 @@ A minimal working example for the System Control Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     FW = |variable_name|.get("system_control", "firmware_version")  # Firmware Version Number
     print(f"Firmware: {FW}")
