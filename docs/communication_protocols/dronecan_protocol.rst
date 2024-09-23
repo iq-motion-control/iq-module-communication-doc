@@ -558,7 +558,9 @@ the Control Center's Advanced tab as ``Arming By DroneCAN ArmingStatus``.
 
 .. image:: ../_static/manual_images/dronecan/control_center_armingstatus.png
 	:align: center
+
 |
+
 Further, if you are using the ArmingStatus to arm, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
 ArmingStatus. Your flight controller may transmit throttle commands of 0% on boot-up while its ArmingState states disarmed. Then, your module's arming handler may attempt to arm on throttle, 
 but will be quickly overwritten by an ArmingStatus disarm. This cycle will continue until the flight controller's throttle leaves your arming region. To avoid this behavior, simply disable arm 
