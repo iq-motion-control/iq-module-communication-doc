@@ -59,7 +59,7 @@ A minimal working example for the AnticoggingClient is:
         // Make an Anticogging Client object with obj_id 0
         AnticoggingClient cog(0);
         
-        // Use theAnticogging Client object
+        // Use the Anticogging Client object
         cog.is_enabled_.set(com, 1);
         
         // Insert code for interfacing with hardware here
