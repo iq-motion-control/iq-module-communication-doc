@@ -549,6 +549,11 @@ Whether your module arms via the ArmingStatus message is configured through the 
 An important note is that the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
 :ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``.
 
+Further, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
+ArmingStatus. Your flight controller may transmit throttle commands of 0% on boot-up while its ArmingState states disarmed. Then, your module's arming handler may attempt to arm on throttle, 
+but will be quickly overwritten by an ArmingStatus disarm. This cycle will continue until the flight controller's throttle leaves your arming region. To avoid this behavior, simply disable arm 
+on throttle.
+
 Arming Bypass
 *********************
 Older Vertiq firmware does not include support for arming over DroneCAN. To maintain backwards compatibility, it is possible for users to toggle 
