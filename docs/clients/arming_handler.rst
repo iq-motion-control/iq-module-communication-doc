@@ -61,7 +61,7 @@ A minimal working example for the ArmingHandlerClient is:
         ArmingHandlerClient armingHandler(0);
 
         // Use the Arming Handler Client
-        armingHandler.always_armed_.get(com)
+        armingHandler.always_armed_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

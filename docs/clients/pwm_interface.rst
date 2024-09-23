@@ -61,7 +61,7 @@ A minimal working example for the PwmInterfaceClient is:
         PwmInterfaceClient pwmInterface(0);
 
         // Use the PWM Interface Client
-        pwmInterface.pwm_frequency_.get(com)
+        pwmInterface.pwm_frequency_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

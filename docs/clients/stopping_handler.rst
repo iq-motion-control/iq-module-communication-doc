@@ -57,7 +57,7 @@ A minimal working example for the StoppingHandlerClient is:
         StoppingHandlerClient temp_client(0);
 
         // Use the Temperature Estimator Client
-        temp_client.stopped_speed_.get(com)
+        temp_client.stopped_speed_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

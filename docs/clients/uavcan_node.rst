@@ -55,7 +55,7 @@ A minimal working example for the UavcanNodeClient is:
         UavcanNodeClient uavcanNode(0);
 
         // Use the UAVCAN Node Client
-        uavcanNode.uavcan_node_id_.get(com)
+        uavcanNode.uavcan_node_id_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

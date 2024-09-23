@@ -64,7 +64,7 @@ A minimal working example for the GpioControllerClient is:
         GpioControllerClient gpioController(0);
 
         // Use the GPIO Controller Client
-        gpioController.mode_register_.get(com)
+        gpioController.mode_register_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

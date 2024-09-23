@@ -61,7 +61,7 @@ A minimal working example for the StowUserInterfaceClient is:
         StowUserInterfaceClient stowUserInterface(0);
 
         // Use the Temperature Estimator Client
-        stowUserInterface.zero_angle_.get(com)
+        stowUserInterface.zero_angle_.get(com);
 
         // [Insert code for interfacing with hardware here]
     }

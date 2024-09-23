@@ -55,7 +55,7 @@ A minimal working example for the PulsingRectangularInputParserClient is:
         PulsingRectangularInputParserClient pulsingRectangularInputParser(0);
 
         // Use the Pulsing Rectangular Input Parser Client
-        pulsingRectangularInputParser.pulsing_voltage_mode_.get(com)
+        pulsingRectangularInputParser.pulsing_voltage_mode_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

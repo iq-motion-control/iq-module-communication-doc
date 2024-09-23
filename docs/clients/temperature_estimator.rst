@@ -60,7 +60,7 @@ A minimal working example for the TemperatureEstimatorClient is:
         TemperatureEstimatorClient temp_client(0);
 
         // Use the Temperature Estimator Client
-        temp_client.temp_.get(com)
+        temp_client.temp_.get(com);
 
         // [Insert code for interfacing with hardware here]
     }

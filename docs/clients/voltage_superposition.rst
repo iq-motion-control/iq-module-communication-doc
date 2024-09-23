@@ -55,7 +55,7 @@ A minimal working example for the VoltageSuperpositionClient is:
         VoltageSuperpositionClient voltageSuperposition(0);
 
         // Use the Voltage Superposition Client
-        voltageSuperposition.zero_angle_.get(com)
+        voltageSuperposition.zero_angle_.get(com);
 
         // Insert code for interfacing with hardware here  
     }

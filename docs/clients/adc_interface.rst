@@ -54,11 +54,11 @@ A minimal working example for the AdcInterfaceClient is:
         // Make a communication interface object
         GenericInterface com;
 
-        // Make a ADC Interface object with obj_id 0
+        // Make an ADC Interface object with obj_id 0
         AdcInterfaceClient adcInterface(0);
 
         // Use the ADC Interface Client
-        adcInterface.adc_voltage_.get(com)
+        adcInterface.adc_voltage_.get(com);
 
         // Insert code for interfacing with hardware here  
     }
