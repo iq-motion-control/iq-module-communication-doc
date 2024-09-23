@@ -434,6 +434,85 @@ Stow Result
 This parameter is available on modules that support :ref:`manual_stow_position`. It reports on how the previous stow attempt ended. See the
 :ref:`stow_result` section for more information.
 
+Module ID
+############
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| module_id        | Integer  |
+	+------------------+----------+
+
+This parameter defines the **module ID** of the connected module. Please note that this is different than the DroneCAN Node ID. Your module's Module ID parameter defines 
+what IQUART messages to accept. You can find out more about IQUART at :ref:`uart_messaging`, and more about connecting to multiple modules via IQUART in our 
+:ref:`IQ Control Center documentation <multi_module_config>`.
+
+Motor Direction
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| motor_direction  | Integer  |
+	+------------------+----------+
+
+Your module's motor direction defines, in part, how your module will interpret and react to throttle commands. Motor direction is covered in detail :ref:`in our throttle documentation <throttle_direction>`.
+
+Motor direction is enumerated as:
+
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
+
+Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
+and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
+
+Control Mode
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| control_mode     | Integer  |
+	+------------------+----------+
+
+Mode determines how the module will interpret throttle commands it receive, and is covered in detail at :ref:`throttle_mode`.
+
+Control mode is enumerated as:
+
+0. PWM
+1. Voltage
+2. Velocity
+ 
+Max Volts
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| max_volts        | Float    |
+	+------------------+----------+
+
+When ``control_mode`` is configured to voltage, ``max_volts`` defines the maximum allowable driving voltage. More information can be found at :ref:`max_volts`.
+
+Max Velocity
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| max_velocity     | Float    |
+	+------------------+----------+
+
+When ``control_mode`` is configured to velocity, ``max_velocity`` defines the maximum allowable angular velocity in rad/s. More information can be found at :ref:`max_velo`.
+
 Flight Controller Integration
 ================================
 For guidance on integrating Vertiq modules with flight controllers using DroneCAN, see 
