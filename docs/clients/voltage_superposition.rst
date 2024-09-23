@@ -55,7 +55,7 @@ A minimal working example for the VoltageSuperpositionClient is:
         VoltageSuperpositionClient voltageSuperposition(0);
 
         // Use the Voltage Superposition Client
-        voltageSuperposition.zero_angle_.get(com)
+        voltageSuperposition.zero_angle_.get(com);
 
         // Insert code for interfacing with hardware here  
     }
@@ -95,7 +95,7 @@ A minimal working example for the Voltage Superposition Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing")
+    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing") |module_name_comment|
     
     zero_angle= |variable_name|.get("voltage_superposition", "zero_angle") 
     print(f"Zero angle: {zero_angle}")

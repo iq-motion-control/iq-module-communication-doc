@@ -50,7 +50,7 @@ A minimal working example for the BrushlessDriveClient is:
     // This is what creates and parses packets
     GenericInterface com;
 
-    // Make a Temperature Estimator Client object with obj_id 0
+    // Make a Brushless Drive Client object with obj_id 0
     BrushlessDriveClient brushless(0);
 
     // Drives the motor at 3 Volts
@@ -96,7 +96,7 @@ A minimal working example for the BrushlessDriveClient is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     |variable_name|.set("brushless_drive", "drive_spin_volts", 5) # Spins motor at 5 volts
 

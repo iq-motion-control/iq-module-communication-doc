@@ -29,7 +29,7 @@ This should result in tags being added to the local repository. Once this is don
 .. once we are in px4, this whole section can be replaced with install px4 toolchain as described by them
 
 Setting Up PX4 for IQUART and Building
-======================================
+=========================================
 
 Once the toolchain is set up, you must change the settings for your board to turn on Vertiq IQUART integrations. To do this, enter your PX4 directory and use the command below, but replace ``<your-flight-control-board>`` with your flight control board's name.
 
@@ -179,7 +179,7 @@ After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO`
 Now your Vertiq modules must be configured for proper communication with the flight controller.
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
-========================================================
+=============================================================
 To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
