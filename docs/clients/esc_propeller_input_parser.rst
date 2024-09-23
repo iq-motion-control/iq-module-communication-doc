@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 .. _esc_propeller_input_parser:
 
 ESC Propeller Input Parser

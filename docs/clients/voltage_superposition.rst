@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 Voltage Superposition
 ---------------------
 This client is used to set up and change settings related to Vertiq underactuated pulsing propellers.

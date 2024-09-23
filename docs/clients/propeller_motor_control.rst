@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 .. _propeller_motor_control:
 
 Propeller Motor Control

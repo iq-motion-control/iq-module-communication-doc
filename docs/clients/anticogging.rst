@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 Anticogging
 -----------
 

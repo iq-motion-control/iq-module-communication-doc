@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 GPIO Controller
 ---------------
 
@@ -104,8 +102,7 @@ A minimal working example for the GPIO Controller Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|
-    
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|   
     mode_register = |variable_name|.get("gpio_controller", "mode_register") 
     print(f"mode register: {mode_register}")
 

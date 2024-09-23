@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 Stopping Handler
 ----------------
 A Vertiq module is considered stopped when it has been below its stopping speed continuously for some stopping time. 

@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 UAVCAN Node
 ---------------------
 This client is used to configure the DroneCAN interface on a Vertiq module.

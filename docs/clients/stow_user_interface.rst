@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 Stow User Interface
 -------------------
 The :ref:`Stow Position <manual_stow_position>` feature allows a Vertiq module to return to a configurable position on a transition from armed to disarmed,

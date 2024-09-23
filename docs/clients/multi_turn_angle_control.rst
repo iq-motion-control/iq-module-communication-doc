@@ -1,5 +1,3 @@
- .. include:: common_client_variables.rst
-
 .. _multi_turn_control_label:
 
 Multi Turn Angle Control

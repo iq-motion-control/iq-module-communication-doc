@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 Pulsing Rectangular Input Parser
 --------------------------------
 This pulsing module specific client is used to convert flight controller x/y coordinate commands into a format understood by pulsing modules.

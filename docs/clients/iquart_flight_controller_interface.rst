@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 IQUART Flight Controller Interface (IFCI)
 -----------------------------------------
 This client is used to simplify communication between flight controllers and multiple modules connected to the IQUART bus.

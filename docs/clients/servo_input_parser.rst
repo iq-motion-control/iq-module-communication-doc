@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 .. _servo_input_parser:
 
 Servo Input Parser

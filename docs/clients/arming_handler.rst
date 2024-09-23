@@ -1,5 +1,3 @@
-.. include:: common_client_variables.rst
-
 Arming Handler
 --------------
 Vertiq Advanced Speed modules can support an :ref:`Advanced Arming <manual_advanced_arming>` feature, 
