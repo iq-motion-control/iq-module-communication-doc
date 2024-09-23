@@ -101,8 +101,16 @@ properly configured and disarmed. So the default settings on Vertiq modules shou
 **Because of this, there is no need to change any arming parmeters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
 features for more complex integrations, refer to the :ref:`Advanced Arming <manual_advanced_arming>` section for more details.
 
-If your module is set to :ref:`use ArmingStatus to drive module arming <dronecan_arming_and_bypass>`, the module will arm 
-on the status of your flight controller's reported ArmingStatus. Configuring your flight controller to output the ArmingStatus message is covered in the specific flight controller sections below.
+If your module is set to :ref:`use ArmingStatus to drive module arming <dronecan_arming_and_bypass>`, the module will arm on the status of your flight controller's reported ArmingStatus. 
+Configuring your flight controller to output the ArmingStatus message is covered in the specific flight controller sections below.
+
+.. note::
+	In order to control your module properly while arming with ArmingStatus messages, you must properly set the :ref:`manual_arming_throttle_source` parameter. This parameter should 
+	be set to the protocol being used to send the module throttle commands.
+
+	As such, the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
+	:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``. 
+	If, however, you are arming and sending throttle commands with DroneCAN, your manual arming source should be ``DroneCAN``.
 
 If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then arming is not required for the module to spin when receiving DroneCAN commands.
 

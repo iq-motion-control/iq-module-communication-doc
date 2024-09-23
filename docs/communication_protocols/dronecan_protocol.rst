@@ -539,20 +539,30 @@ DroneCAN can use the same advanced arming procedure as all other throttle source
 
 Arming with ArmingStatus
 ******************************
+
+.. note::
+	In order to control your module properly while arming with ArmingStatus messages, you must properly set the :ref:`manual_arming_throttle_source` parameter. This parameter should 
+	be set to the protocol being used to send the module throttle commands.
+
+	As such, the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
+	:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``. 
+	If, however, you are arming and sending throttle commands with DroneCAN, your manual arming source should be ``DroneCAN``.
+
 Vertiq modules can arm and disarm based off of DroneCAN's :ref:`ArmingStatus message <arming_status>`. This means that whenever your flight controller broadcasts an ArmingStatus 
 ``STATUS_FULLY_ARMED`` message, your module will transition from disarmed to armed, or if already armed, will remain armed. These transitions are not subject to the constraints 
 set by your :ref:`arming throttle region <arming_throttle_regions>`, so any ``STATUS_FULLY_ARMED`` message will arm your module. When your flight controller broadcasts a ``STATUS_DISARMED`` message, your module 
 will similarly transition from armed to disarmed.
 
-Whether your module arms via the ArmingStatus message is configured through the ``arming_by_arming_status`` parameter in the :ref:`DroneCAN node client <uavcan_node>`.
+Whether your module arms via the ArmingStatus message is configured through the ``arming_by_arming_status`` parameter in the :ref:`DroneCAN node client <uavcan_node>`. You can access this parameter through 
+the Control Center's Advanced tab as ``Arming By DroneCAN ArmingStatus``.
 
-An important note is that the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
-:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``.
-
-Further, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
+.. image:: ../_static/manual_images/dronecan/control_center_armingstatus.png
+	:align: center
+|
+Further, if you are using the ArmingStatus to arm, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
 ArmingStatus. Your flight controller may transmit throttle commands of 0% on boot-up while its ArmingState states disarmed. Then, your module's arming handler may attempt to arm on throttle, 
 but will be quickly overwritten by an ArmingStatus disarm. This cycle will continue until the flight controller's throttle leaves your arming region. To avoid this behavior, simply disable arm 
-on throttle.
+on throttle. For the same reasons, we also recommend that you disable your module's ability to :ref:`disarm on throttle <arming_throttle_regions>`.
 
 Arming Bypass
 *********************
