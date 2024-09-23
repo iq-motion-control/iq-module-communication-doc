@@ -101,7 +101,7 @@ properly configured and disarmed. So the default settings on Vertiq modules shou
 **Because of this, there is no need to change any arming parmeters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
 features for more complex integrations, refer to the :ref:`Advanced Arming <manual_advanced_arming>` section for more details.
 
-If your module is set to :ref:`use ArmingStatus to drive module arming <dronecan_arming_and_bypass>`, :ref:`Advanced Arming <manual_advanced_arming>` will not apply, and the module will arm solely 
+If your module is set to :ref:`use ArmingStatus to drive module arming <dronecan_arming_and_bypass>`, the module will arm 
 on the status of your flight controller's reported ArmingStatus. Configuring your flight controller to output the ArmingStatus message is covered in the specific flight controller sections below.
 
 If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then arming is not required for the module to spin when receiving DroneCAN commands.

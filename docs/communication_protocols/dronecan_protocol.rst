@@ -491,7 +491,7 @@ Control Mode
 	| control_mode     | Integer  |
 	+------------------+----------+
 
-Mode determines how the module will interpret throttle commands it receive, and is covered in detail at :ref:`throttle_mode`.
+Mode determines how the module interprets received throttle commands, and is covered in detail at :ref:`throttle_mode`.
 
 Control mode is enumerated as:
 
