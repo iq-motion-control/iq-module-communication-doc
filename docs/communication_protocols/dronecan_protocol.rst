@@ -450,7 +450,7 @@ This parameter is available on modules that support :ref:`manual_stow_position`.
 
 .. note::
 	The following parameters are not yet available on all modules that support DroneCAN. If you do not see these parameters, check `vertiq.co <https://www.vertiq.co/>`_ for a new firmware release for 
-	your module.
+	your module. If you are on the latest release and do not have access to these parameters, future updates for your module may add support for these messages.
 
 Module ID
 ############
