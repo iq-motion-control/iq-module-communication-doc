@@ -238,6 +238,10 @@ specification for more details.
 uavcan.equipment.safety.ArmingStatus (Data Type ID = 1100)
 ###############################################################
 
+.. note::
+	The ArmingStatus message is not yet supported on all modules that support DroneCAN. Please check `vertiq.co <https://www.vertiq.co/>`_ to ensure that you are on the 
+	latest firmware version available for your module to gain access to the most up to date features.
+
 `DroneCAN's ArmingStatus message <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=uavcan.equipment.safety-,ArmingStatus,-Full%20name%3A>`_ broadcasts the overall system's arming state. For example, both PX4 and ArduPilot can transmit the ArmingStatus message. Vertiq 
 modules are configured only to listen for, and not transmit, the ArmingStatus message. More information on configuring your module to update its arming state based on 
 the ArmingStatus message can be found below in :ref:`dronecan_arming_and_bypass`. Information about configuring your flight controller to transmit the ArmingStatus 
@@ -444,6 +448,10 @@ Stow Result
 This parameter is available on modules that support :ref:`manual_stow_position`. It reports on how the previous stow attempt ended. See the
 :ref:`stow_result` section for more information.
 
+.. note::
+	The following parameters are not yet available on all modules that support DroneCAN. If you do not see these parameters, check `vertiq.co <https://www.vertiq.co/>`_ for a new firmware release for 
+	your module.
+
 Module ID
 ############
 .. table::
@@ -558,8 +566,6 @@ the Control Center's Advanced tab as ``Arming By DroneCAN ArmingStatus``.
 
 .. image:: ../_static/manual_images/dronecan/control_center_armingstatus.png
 	:align: center
-
-|
 
 Further, if you are using the ArmingStatus to arm, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
 ArmingStatus. Your flight controller may transmit throttle commands of 0% on boot-up while its ArmingState states disarmed. Then, your module's arming handler may attempt to arm on throttle, 
