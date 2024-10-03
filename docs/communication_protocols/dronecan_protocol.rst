@@ -252,8 +252,8 @@ uavcan.equipment.indication.LightsCommand (Data Type ID = 1081)
 Vertiq modules do not publish this broadcast message, but they do listen for it. The content of this message can be used to dynamically control the white and RGB LEDs
 on Vertiq's LED Boards. For more information on the LED Board, see :ref:`manual_led_support`.
 
-As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_, this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
-to be handled by the nodes on the bus, each of which contain a light ID to indicate which light that command is for, and and a field to indicate the desired intensity for the white LED, or the desired color for the RGB LED. For Vertiq modules, 
+As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
+to be handled by the nodes on the bus. Each SingleLightCommand contains a light ID to indicate which light that command is for and a field that indicates either the intensity of the white LED or the color of the RGB LED depending on the targeted LED. For Vertiq modules, 
 the light ID of each type of LED (RGB or White) is determined based on the ESC index. This allows the LEDs on each module on a bus to be uniquely addressable
 as long as each module has a unique ESC index. The light IDs on each module are calculated as described in the example code block below:
 
