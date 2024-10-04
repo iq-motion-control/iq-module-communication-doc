@@ -247,6 +247,28 @@ modules are configured only to listen for, and not transmit, the ArmingStatus me
 the ArmingStatus message can be found below in :ref:`dronecan_arming_and_bypass`. Information about configuring your flight controller to transmit the ArmingStatus 
 message can be found in our :ref:`tutorial for integrating with flight controller DroneCAN <dronecan_fc_tutorial>`.
 
+uavcan.equipment.indication.LightsCommand (Data Type ID = 1081)
+###############################################################
+Vertiq modules do not publish this broadcast message, but they do listen for it. The content of this message can be used to dynamically control the white and RGB LEDs
+on Vertiq's LED Boards. For more information on the LED Board, see :ref:`manual_led_support`.
+
+As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
+to be handled by the nodes on the bus. Each SingleLightCommand contains a light ID to indicate which light that command is for and a field that indicates either the intensity of the white LED or the color of the RGB LED depending on the targeted LED. For Vertiq modules, 
+the light ID of each type of LED (RGB or White) is determined based on the ESC index. This allows the LEDs on each module on a bus to be uniquely addressable
+as long as each module has a unique ESC index. The light IDs on each module are calculated as described in the example code block below:
+
+.. code-block:: python
+
+	#The base ID for an RGB LED is 1, and the base ID for a white LED is 2. From there, we can just apply the calculation below to determine 
+	#what the light IDs for a module with a given ESC index should be. For example, if my module has an ESC Index of 1, 
+	#then the White LED's light ID will be 1*3 + 2 = 5. The RGB LED's light ID will be 1*3+1 = 4
+	RGB_LIGHT_TYPE_BASE_ID = 1
+	WHITE_LIGHT_TYPE_BASE_ID  = 2
+
+	light_id = (esc_index*3 + LIGHT_TYPE_BASE_ID)
+
+Refer to the `uavcan.equipment.indication.LightsCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ in the specification for more details.
+
 Service Requests
 *****************
 Service requests are messages sent to a specific target node from another node, and to which the sending node expects to receive a response message.
