@@ -105,10 +105,19 @@ protocol being tunneled, a channel ID allowing for additional routing options, a
 Vertiq modules are configured to accept broadcast messages with a protocol value of 0x55, and check the received data buffer for valid :ref:`IQUART data <uart_messaging>`. 
 As such, the DroneCAN tunnel broadcast message allows users to transmit IQUART messages via DroneCAN. Vertiq modules do not support use of the channel ID for additional routing.
 
-A very rudimentary example of using the DroneCAN tunnel message is provided below. The example requires an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_, and two :ref:`FTDI devices <connection_guide>`. 
-The hardware is configured as follows:
+A very rudimentary example of using the DroneCAN tunnel message is provided below. The example requires an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_ and any 
+software that can emulate COM ports. In this example, we are using `com0com <https://com0com.sourceforge.net/>`_. We will use the virtual COM ports in order to create the following connections:
 
 .. image:: ../_static/manual_images/dronecan/dronecan_tunnel_hardware.png
+
+In order to create the required virtual COM ports using com0com, open com0com, and create a Virtual Port Pair. In this example, we've created COM16 and COM17 which, by default, are connected as depicted in the diagram above.
+
+.. image:: ../_static/manual_images/dronecan/com_0_com.png
+
+On Windows, you can confirm that these ports are reachable through Device Manager.
+
+.. image:: ../_static/manual_images/dronecan/tunnel_device_manager.png
+
 
 In this example, the module has no serial connection to :ref:`IQ Control Center <control_center_start_guide>`. Instead, the Control Center sends messages to a Python script which packages 
 the IQUART bytes as a DroneCAN tunnel message, and transmits the message to the module. The module receives and decodes the IQUART message, and if necessary, 
@@ -121,7 +130,7 @@ The process is summarized below.
 
 .. image:: ../_static/manual_images/dronecan/dronecan_tunnel_python_sequence.png
 
-The Python script necessary to accomplish this is provided here: 
+The Python script necessary to accomplish this is provided here. Run this script before attempting to connect with the Control Center: 
 
 .. code-block:: python
 
@@ -131,7 +140,7 @@ The Python script necessary to accomplish this is provided here:
 	import serial
 
 	slcan_port = "COM9" #Replace this value with the port connected to your SLCAN device
-	control_center_ftdi_port = "COM7" # Replace this value with the port connected to FTDI1 from the diagram above
+	control_center_ftdi_port = "COM17" # Replace this value with the port connected to a virtual COM port
 
 	def make_node():
 		for attempt in range(10):
@@ -228,7 +237,12 @@ The Python script necessary to accomplish this is provided here:
 				message = dronecan.uavcan.tunnel.Broadcast(protocol=dronecan.uavcan.tunnel.Protocol(protocol=0x55), channel_id=42, buffer=buffer_to_send)
 				dronecan_node.broadcast(message)
 
-While this script is running with all hardware connected properly, you should be able to connect your module to IQ Control Center without a direct serial connection.
+While this script is running, your module is powered on and connected properly, and your virtual COM ports are configured correctly, you should be able to connect your module to IQ Control Center without a direct serial connection.
+
+With the script active, navigate to the Control Center, and in Serial Port, select the virtual COM port not connected to your running script (in this case COM16). After you click CONNECT, you should see the 
+Control Center perform its normal detection process, and connect with your module.
+
+.. image:: ../_static/manual_images/dronecan/control_center_with_tunnel.png
 
 Refer to the `uavcan.tunnel.Broadcast section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#broadcast>`_ in the 
 specification for more details.
