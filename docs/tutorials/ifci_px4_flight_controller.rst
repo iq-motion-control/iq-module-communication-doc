@@ -7,24 +7,12 @@
 Setting up PX4 Firmware for Use with IFCI
 ****************************************************
 .. Converted from Jordan's google docs tutorial
-This tutorial covers how to configure and build `PX4 Autopilot<https://github.com/PX4/PX4-Autopilot>`_ for use with Vertiq’s `IQUART protocol <uart_messaging>`_, and then set up the PX4 firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI throughPX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+This tutorial covers how to configure and build `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ for use with Vertiq’s `IQUART protocol <uart_messaging>`_, and then set up the PX4 firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
 Setting Up the PX4 Toolchain
 =============================
 
-In order to use our PX4 fork, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device. Note that when the PX4 guide gives the instruction to run ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` it should be replaced with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` in order to clone Vertiq's fork rather than the mainline PX4.
-
-.. warning::
-    If you do not replace the standard PX4 fork with our fork, none of the future steps will be possible. Make sure you properly replace ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` as mentioned above.
-    
-Once the toolchain is installed, navigate into the top level PX4-Autopilot directory and add the original PX4 remote repository as instructed by the `PX4 Git documentation <https://docs.px4.io/main/en/contribute/git_examples.html>`_:
-
-.. code-block:: bash
-
-    git remote add upstream git@github.com:PX4/PX4-Autopilot.git
-    git fetch upstream
-
-This should result in tags being added to the local repository. Once this is done you should be able to build PX4. If the tags are not added then the compilation will fail.
+In order to build PX4, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device.
 
 .. once we are in px4, this whole section can be replaced with install px4 toolchain as described by them
 
