@@ -7,7 +7,7 @@
 Setting up PX4 Firmware for Use with IFCI
 ****************************************************
 .. Converted from Jordan's google docs tutorial
-This tutorial covers how to build and set up `Vertiq’s PX4 fork <https://github.com/iq-motion-control/PX4-Autopilot>`_ which provides access to Vertiq’s `IQUART protocol <uart_messaging>`_. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with our PX4 fork, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+This tutorial covers how to configure and build `PX4 Autopilot<https://github.com/PX4/PX4-Autopilot>`_ for use with Vertiq’s `IQUART protocol <uart_messaging>`_, and then set up the PX4 firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI throughPX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
 Setting Up the PX4 Toolchain
 =============================
