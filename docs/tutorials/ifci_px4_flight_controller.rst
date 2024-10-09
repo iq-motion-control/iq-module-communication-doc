@@ -226,6 +226,14 @@ The :blue:`VTQ_TRGT_MOD_ID` parameter sets which module the Module Params are sy
 
     PX4 Module Parameters
 
+Sometimes if the link from your computer to your flight controller is slow, ``VTQ_REDO_READ`` will not immediately set itself back to disabled. In these cases it is recommended that you :red:`refresh the parameters`.
+
+.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/param_refresh.png
+    :align: center
+    :scale: 50
+    :alt: Refreshing Parameters
+
+    Refreshing parameters when ``VTQ_REDO_READ`` is stuck
 
 In this example, we will set the module's input parser to PWM mode. This means that received throttle commands are applied as a percentage of your module's **supply voltage**. For example, if your module is powered by 20V, a 50% throttle command tells the module to apply a 10V drive voltage. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
 
