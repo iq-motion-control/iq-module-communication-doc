@@ -7,24 +7,12 @@
 Setting up PX4 Firmware for Use with IFCI
 ****************************************************
 .. Converted from Jordan's google docs tutorial
-This tutorial covers how to build and set up `Vertiq’s PX4 fork <https://github.com/iq-motion-control/PX4-Autopilot>`_ which provides access to Vertiq’s `IQUART protocol <uart_messaging>`_. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with our PX4 fork, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+This tutorial covers how to configure and build `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ for use with Vertiq’s `IQUART protocol <uart_messaging>`_, and then set up the PX4 firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
 Setting Up the PX4 Toolchain
 =============================
 
-In order to use our PX4 fork, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device. Note that when the PX4 guide gives the instruction to run ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` it should be replaced with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` in order to clone Vertiq's fork rather than the mainline PX4.
-
-.. warning::
-    If you do not replace the standard PX4 fork with our fork, none of the future steps will be possible. Make sure you properly replace ``git clone https://github.com/PX4/PX4-Autopilot.git --recursive`` with ``git clone https://github.com/iq-motion-control/PX4-Autopilot --recursive`` as mentioned above.
-    
-Once the toolchain is installed, navigate into the top level PX4-Autopilot directory and add the original PX4 remote repository as instructed by the `PX4 Git documentation <https://docs.px4.io/main/en/contribute/git_examples.html>`_:
-
-.. code-block:: bash
-
-    git remote add upstream git@github.com:PX4/PX4-Autopilot.git
-    git fetch upstream
-
-This should result in tags being added to the local repository. Once this is done you should be able to build PX4. If the tags are not added then the compilation will fail.
+In order to build PX4, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device.
 
 .. once we are in px4, this whole section can be replaced with install px4 toolchain as described by them
 
@@ -79,7 +67,7 @@ Navigate to the ``vertiq_io`` subsection and press ``Space`` to select it. An as
 
     Selecting the vertiq_io Section
 
-Inside the ``vertiq_io`` submenu one option should appear for including IFCI configuration parameters. Select this by pressing ``Space``.
+Inside the ``vertiq_io`` submenu one option should appear for including IFCI Configuration Parameters. Select this by pressing ``Space``.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/ifci_unselect.png
     :align: center
@@ -88,9 +76,9 @@ Inside the ``vertiq_io`` submenu one option should appear for including IFCI con
 
     Include IFCI Parameters
 
-Once this is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
+When IFCI Configuration Parameters is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
 
-Once done, press ``Q`` and then ``Y`` to save the configuration.
+When all of your desired configuration options are selected, press ``Q`` and then ``Y`` to save the configuration.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/save.png
     :align: center
@@ -99,7 +87,7 @@ Once done, press ``Q`` and then ``Y`` to save the configuration.
 
     Save the Configuration
 
-Once saved, build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<Setting Up the PX4 Toolchain>`.
+Build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<Setting Up the PX4 Toolchain>`.
 
 .. code-block:: bash
 
@@ -144,7 +132,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
 Flashing PX4 to Your Flight Controller
 ======================================
 
-Once built, you must program your flight controller with your compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that it might confuse as a flight control board before attempting to plug your flight control board in again.
+Now you will need to flash your flight controller with the newly compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that QGroundControl might confuse as a flight control board before attempting to plug your flight control board in again.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/custom_firmware.png
     :align: center
@@ -153,12 +141,12 @@ Once built, you must program your flight controller with your compiled ``.px4`` 
 
     Custom Firmware Selection
 
-Once you press 'OK', a file explorer should appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
+Pressing 'Ok' will cause a file explorer to appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
 Enabling IFCI on Your Flight Controller
 ===================================================
 
-Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Once you find this, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
+Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Select this parameter, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_enable.png
     :align: center
@@ -167,7 +155,7 @@ Once the flashing is complete, connect to your flight controller with QGroundCon
 
     Enabling Vertiq IO
 
-After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VERTIQ_BAUD` parameter to match what your modules will be using. In this tutorial we will be using a baud rate of 921600 which is what we recommend.
+After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VTQ_BAUD` parameter to match what your modules will be using. In this tutorial we will be using a baud rate of 921600 which is what we recommend.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_settings.png
     :align: center
@@ -180,7 +168,7 @@ Now your Vertiq modules must be configured for proper communication with the fli
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 =============================================================
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
@@ -229,7 +217,7 @@ The parameters available in this subsection either control how PX4 talks to the 
 
     PX4 Module Parameters
 
-The :blue:`TARGET_MODULE_ID` parameter sets which module the Module Params are synchronized with. When this parameter is written, the Module Params will be fetched from the module with that module ID and the values displayed for the Module Params will be updated. If you would like to specifically synchronize those parameters without switching module IDs you can set :red:`TRIGGER_READ`. It will immediately set itself back to disabled, but the Module Params will synchronize.
+The :blue:`VTQ_TRGT_MOD_ID` parameter sets which module the Module Params are synchronized with. When this parameter is written, the Module Params will be fetched from the module with that module ID and the values displayed for the Module Params will be updated. If you would like to specifically synchronize those parameters without switching module IDs you can set :red:`VTQ_REDO_READ`. It will immediately set itself back to disabled, but the Module Params will synchronize.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/trigger_read.png
     :align: center
@@ -238,6 +226,14 @@ The :blue:`TARGET_MODULE_ID` parameter sets which module the Module Params are s
 
     PX4 Module Parameters
 
+Sometimes if the link from your computer to your flight controller is slow, ``VTQ_REDO_READ`` will not immediately set itself back to disabled. In these cases it is recommended that you :red:`refresh the parameters`.
+
+.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/param_refresh.png
+    :align: center
+    :scale: 50
+    :alt: Refreshing Parameters
+
+    Refreshing parameters when ``VTQ_REDO_READ`` is stuck
 
 In this example, we will set the module's input parser to PWM mode. This means that received throttle commands are applied as a percentage of your module's **supply voltage**. For example, if your module is powered by 20V, a 50% throttle command tells the module to apply a 10V drive voltage. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
 
@@ -249,7 +245,7 @@ In this example, we will set the module's input parser to PWM mode. This means t
 
     Module Organization on Quadcopter
 
-First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``DISARM_TRIGGER`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VERTIQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
+First, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``VTQ_DISARM_TRIG`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``VTQ_TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VTQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/px4_settings.png
     :align: center
@@ -258,7 +254,7 @@ First, we will set the flight controller specific parameters. ``ARMING_BEHAVE`` 
 
     PX4 Module Parameters
 
-Next, the module parameters will be set. First the ``TARGET_MODULE_ID`` parameter will be set to 0. This means that we are interacting with the module with module ID 0. When ``TARGET_MODULE_ID`` is set, the Module Params should be reloaded. The ``CONTROL_MODE`` parameter will be set to PWM. The ``MAX_VELOCITY`` and ``MAX_VOLTS`` parameters can be ignored because we are not controlling the motor with velocity or voltage mode. If ``CONTROL_MODE`` is set to one of those, the MAX\_ parameter that it corresponds to needs to be set appropriately. More information about control mode and the related MAX\_ parameter can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. ``VERTIQ_FC_DIR`` should be set to 2D. All of these parameters will be the same for all of the modules. The last two parameters ``THROTTLE_CVI``, and ``VERTIQ_MOTOR_DIR`` will vary with each module. In our example, ``THROTTLE_CVI`` will be set to match the module ID. Since we are currently setting module ID 0’s settings, we will set ``THROTTLE_CVI`` to 0. CVI stands for Control Value Index and more information can be found in the :ref:`IFCI documentation<controlling_ifci>`. ``VERTIQ_MOTOR_DIR`` will be set to 2D Counter Clockwise to match the :ref:`diagram of the quadcopter above<quad_image>`. Ensure the ``VERTIQ_MOTOR_DIR`` parameter matches the direction shown in the diagram for each module ID. This is then repeated for each module ID by selecting a new ``TARGET_MODULE_ID``. The resulting parameters for each module are shown below. Blue boxes are the parameters that match between modules, red are the ones that vary, and yellow is the module ID. After setting all of the parameters for one module, we recommend setting the ``TRIGGER_READ`` parameter to confirm that all of the Module Params have been set correctly. 
+Next, the module parameters will be set. First the ``VTQ_TRGT_MOD_ID`` parameter will be set to 0. This means that we are interacting with the module with module ID 0. When ``VTQ_TRGT_MOD_ID`` is set, the Module Params should be reloaded. The ``VTQ_CONTROL_MODE`` parameter will be set to PWM. The ``VTQ_MAX_VELOCITY`` and ``VTQ_MAX_VOLTS`` parameters can be ignored because we are not controlling the motor with velocity or voltage mode. If ``VTQ_CONTROL_MODE`` is set to one of those, the MAX\_ parameter that it corresponds to needs to be set appropriately. More information about control mode and the related MAX\_ parameter can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. ``VTQ_FC_DIR`` should be set to 2D. All of these parameters will be the same for all of the modules. The last two parameters ``VTQ_THROTTLE_CVI``, and ``VTQ_MOTOR_DIR`` will vary with each module. In our example, ``VTQ_THROTTLE_CVI`` will be set to match the module ID. Since we are currently setting module ID 0’s settings, we will set ``VTQ_THROTTLE_CVI`` to 0. CVI stands for Control Value Index and more information can be found in the :ref:`IFCI documentation<controlling_ifci>`. The CVI we set here indicates which CVI the motor is listening for in the IFCI control packet. ``VTQ_MOTOR_DIR`` will be set to 2D Counter Clockwise to match the :ref:`diagram of the quadcopter above<quad_image>`. Ensure the ``VTQ_MOTOR_DIR`` parameter matches the direction shown in the diagram for each module ID. This is then repeated for each module ID by selecting a new ``VTQ_TRGT_MOD_ID``. The resulting parameters for each module are shown below. Blue boxes are the parameters that match between modules, red are the ones that vary, and yellow is the module ID. After setting all of the parameters for one module, we recommend setting the ``VTQ_REDO_READ`` parameter to confirm that all of the Module Params have been set correctly. 
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_settings.png
     :align: center
@@ -280,7 +276,7 @@ Now, we will configure PX4's internal representation of the quadcopter's geometr
 
     Vertiq IO Tab Appears
 
-The geometry section determines where each motor is on the aircraft and what direction it is spinning. The Actuator Outputs section determines which motor defined in the geometry section is connected to which actuator. In this case, we want to associate Motors from the geometry section with our Modules. The ESCs in the Actuator Outputs section correspond to the CVIs set in the previous section, but are offset by 1. If you would like to set the Motor associated with CVI 0, you need to set that motor on ESC 1, for CVI 1, you must set ESC 2, etc. In this example, we have set the CVIs such that we can associate Motor 1 with ESC 1, Motor 2 with ESC 2, Motor 3 with ESC 3, and Motor 4 with ESC 4.
+The geometry section determines where the flight controller expects each motor on the aircraft, and what direction the flight controller expects that motor to be spinning. The Actuator Outputs section determines which motor defined in the geometry section is connected to which actuator. In this case, we want to associate Motors from the geometry section with our Modules. The CVIs in the Vertiq IO section of Actuator Outputs correspond to the CVIs set on each motor module in the previous section. In this example, we have set the CVIs such that we can associate Motor 1 with CVI 0, Motor 2 with CVI 1, Motor 3 with CVI 2, and Motor 4 with CVI 3.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_associations.png
     :align: center
@@ -289,7 +285,7 @@ The geometry section determines where each motor is on the aircraft and what dir
 
     Motor to Actuator to CVI Associations
 
-If you accidentally put the wrong CVI on a motor you can just switch the motor functions in the actuator outputs section. If for example you accidentally set the front right motor as CVI 2 and the front left motor as CVI 0, then you can just set ESC 1 as Motor 3, and ESC 3 as Motor 1. You could also change the CVIs associated with each module, but we find that this is the most straightforward way to swap connections.
+If you accidentally put the wrong CVI on a motor you can just switch the motor functions in the actuator outputs section. If for example you accidentally set the front right motor (Module ID 0) as CVI 2 and the front left motor (Module ID 2) as CVI 0, then you can just set CVI 0 as Motor 3, and CVI 2 as Motor 1. You could also change the CVIs associated with each module, but we find that this is the most straightforward way to swap connections.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_associations_swap.png
     :align: center
@@ -326,4 +322,4 @@ Enable the actuator testing slider. The modules should arm when the testing slid
 
     Actuators Armed and Enabled
 
-If the modules are incorrectly mapped you can rearrange the motor function associations as discussed in the previous section. If the direction of the motor is incorrect you will need to change the parameter ``VERTIQ_MOTOR_DIR`` for that module. For example, if motor 3 in the geometry image is spinning counterclockwise you need to determine which module ID that it is associated with (in our case module ID 2), and adjust the parameter by setting ``TARGET_MODULE_ID`` to 2 and then adjusting ``VERTIQ_MOTOR_DIR`` to 2D Clockwise.
+If the modules are incorrectly mapped you can rearrange the motor function associations as discussed in the previous section. If the direction of the motor is incorrect you will need to change the parameter ``VTQ_MOTOR_DIR`` for that module. For example, if motor 3 in the geometry image is spinning counterclockwise you need to determine which module ID that it is associated with (in our case module ID 2), and adjust the parameter by setting ``VTQ_TRGT_MOD_ID`` to 2 and then adjusting ``VTQ_MOTOR_DIR`` to 2D Clockwise.
