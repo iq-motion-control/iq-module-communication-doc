@@ -67,7 +67,7 @@ Navigate to the ``vertiq_io`` subsection and press ``Space`` to select it. An as
 
     Selecting the vertiq_io Section
 
-Inside the ``vertiq_io`` submenu one option should appear for including IFCI configuration parameters. Select this by pressing ``Space``.
+Inside the ``vertiq_io`` submenu one option should appear for including IFCI Configuration Parameters. Select this by pressing ``Space``.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/ifci_unselect.png
     :align: center
@@ -76,9 +76,9 @@ Inside the ``vertiq_io`` submenu one option should appear for including IFCI con
 
     Include IFCI Parameters
 
-Once this is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
+When IFCI Configuration Paraeters is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
 
-Once done, press ``Q`` and then ``Y`` to save the configuration.
+When all of your desired configuration options are selected, press ``Q`` and then ``Y`` to save the configuration.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/save.png
     :align: center
@@ -87,7 +87,7 @@ Once done, press ``Q`` and then ``Y`` to save the configuration.
 
     Save the Configuration
 
-Once saved, build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<Setting Up the PX4 Toolchain>`.
+Build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<Setting Up the PX4 Toolchain>`.
 
 .. code-block:: bash
 
@@ -132,7 +132,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
 Flashing PX4 to Your Flight Controller
 ======================================
 
-Once built, you must program your flight controller with your compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that QGroundControl might confuse as a flight control board before attempting to plug your flight control board in again.
+Now you will need to flash your flight controller with the newly compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that QGroundControl might confuse as a flight control board before attempting to plug your flight control board in again.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/custom_firmware.png
     :align: center
@@ -141,12 +141,12 @@ Once built, you must program your flight controller with your compiled ``.px4`` 
 
     Custom Firmware Selection
 
-Once you press 'OK', a file explorer should appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
+Pressing 'Ok' will cause a file explorer should appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
 Enabling IFCI on Your Flight Controller
 ===================================================
 
-Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Once you find this, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
+Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Select this parameter, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_enable.png
     :align: center
@@ -168,7 +168,7 @@ Now your Vertiq modules must be configured for proper communication with the fli
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 =============================================================
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. Once flashed with appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
