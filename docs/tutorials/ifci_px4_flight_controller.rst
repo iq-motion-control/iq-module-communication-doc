@@ -76,7 +76,7 @@ Inside the ``vertiq_io`` submenu one option should appear for including IFCI Con
 
     Include IFCI Parameters
 
-When IFCI Configuration Paraeters is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
+When IFCI Configuration Parameters is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
 
 When all of your desired configuration options are selected, press ``Q`` and then ``Y`` to save the configuration.
 
@@ -141,7 +141,7 @@ Now you will need to flash your flight controller with the newly compiled ``.px4
 
     Custom Firmware Selection
 
-Pressing 'Ok' will cause a file explorer should appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
+Pressing 'Ok' will cause a file explorer to appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
 Enabling IFCI on Your Flight Controller
 ===================================================
