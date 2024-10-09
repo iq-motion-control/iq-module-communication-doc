@@ -132,7 +132,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
 Flashing PX4 to Your Flight Controller
 ======================================
 
-Once built, you must program your flight controller with your compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that it might confuse as a flight control board before attempting to plug your flight control board in again.
+Once built, you must program your flight controller with your compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that QGroundControl might confuse as a flight control board before attempting to plug your flight control board in again.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/custom_firmware.png
     :align: center
