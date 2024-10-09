@@ -285,7 +285,7 @@ The geometry section determines where the flight controller expects each motor o
 
     Motor to Actuator to CVI Associations
 
-If you accidentally put the wrong CVI on a motor you can just switch the motor functions in the actuator outputs section. If for example you accidentally set the front right motor (Module ID 0) as CVI 2 and the front left motor (Module ID 2) as CVI 0, then you can just set ESC 1 as Motor 3, and ESC 3 as Motor 1. You could also change the CVIs associated with each module, but we find that this is the most straightforward way to swap connections.
+If you accidentally put the wrong CVI on a motor you can just switch the motor functions in the actuator outputs section. If for example you accidentally set the front right motor (Module ID 0) as CVI 2 and the front left motor (Module ID 2) as CVI 0, then you can just set CVI 0 as Motor 3, and CVI 2 as Motor 1. You could also change the CVIs associated with each module, but we find that this is the most straightforward way to swap connections.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_associations_swap.png
     :align: center
