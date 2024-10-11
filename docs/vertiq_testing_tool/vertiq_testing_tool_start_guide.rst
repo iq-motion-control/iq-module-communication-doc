@@ -3,13 +3,13 @@
 
 .. _vertiq_testing__guide:
 
-###################
-Vertiq Testing Tool
-###################
+########################################
+Getting Started with Vertiq Testing Tool
+########################################
 
-************************************
-About Vertiq Testing Tool
-************************************
+*****
+About
+*****
 
 Vertiq Testing Tool is a supplimental application to IQ Control Center. 
 It provides a streamlined interface to control your module using ESC, Voltage, Velocity, and PWM inputs.
