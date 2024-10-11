@@ -58,14 +58,46 @@ Once the application is loaded, you will be presented with the welcome screen. F
 In this ESC Input tab, the Control Panel contains the same parameters that need to be configured as the example in :ref:`Control Center <flight_controller_config_with_control_center>`.
 The only difference is that these parameters are in all on the same tab, as opposed to different tabs in Control Center.
 
+==================
+Continuous command
+==================
 
 .. image:: ../_static/vertiq_testing_tool_pictures/esc_input_command_widget.png
 
-A notable feature in this tab is the 'Continuous command' at the bottom of the Control Panel. This feature is disabled by default, which means you need to click the 'Command ESC' button every time you want to send an ESC command.
+A notable feature in the ESC Input tab is the 'Continuous command' at the bottom of the Control Panel. This feature is disabled by default, which means you need to click the 'Command ESC' button every time you want to send an ESC command.
 When this feature is enabled, the ESC command will be continuously sent at the 'Command rate' with 10 Hz being the default value. The 'Command rate' can be adjust to send the ESC command at different rates. 
 You can also use the slider to adjust the ESC input value.
 
 
+================================
+Live Plotting and Active metrics
+================================
+
+.. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
+One main feature of Vertiq Testing Tool is the ability to plot any supported metric. For example, let's command 3 volts to the module using the Control Panel in the Voltage Input tab.
+
+**WARNING: Please make sure there are no propellers attached to your module before attempting to spin it.**
+
+Set the 'Target Voltage' to 3.00 and click "Send Command". The module will ramp up to 3 volts over the next 5 seconds specified by the 'Ramp Time' value.
+After 5 seconds, the module is now constantly spinning at 3 volts. Let's confirm that this is true by plotting the drive volts.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/drive_volts_metric_plotting_example.png
+
+To visualize that 3 volts are indeed being applied to the module navigate to the widget labeled 'Select a metric to plot'.
+In the upper dropdown menu, select *brushless_drive*. This corresponds to the :ref:`Brushless Drive <brushless_drive>` client.
+In the lower dropdown menu, select *drive_volts*. This corresponds to the drive_volts client entry under Brushess Drive.
+Then click 'Update Plot'. 
+
+Notice that the *drive_volts* metric is added to the 'Active metrics' widget. By default, *obs_velocity*, *watts*, and *amps* are preloaded in the 'Active metrics' widget.
+Selecting a metric will activate it and update the live plot. Currently, only one metric can be active at a time, but there is no limit to the number of metrics that can be added to the 'Active metrics' widget.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/remove_metric_example.png
+To remove a metric from the 'Active metrics' widget, simply right click on it and select 'Remove metric'.
+
+
+===============================
+Auto Command and Ramp to Target
+===============================
 .. image:: ../_static/vertiq_testing_tool_pictures/voltage_input.png
 
 Another useful feature found in the Voltage Input, Velocity Input, and PWM Input tabs is 'Ramp to target' in the Control Panel.
