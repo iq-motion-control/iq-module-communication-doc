@@ -85,6 +85,12 @@
    manual/manual_appendix
 
 .. toctree::
+   :caption: Vertiq Testing Tool
+   :hidden:
+
+   vertiq_testing_tool/vertiq_testing_tool_start_guide
+
+.. toctree::
    :hidden:
    :caption: IQUART Client Table Reference
 
