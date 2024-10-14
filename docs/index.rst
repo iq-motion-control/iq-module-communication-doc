@@ -36,6 +36,12 @@
    control_center_docs/pulsing_module_getting_started
 
 .. toctree::
+   :caption: Vertiq Testing Tool
+   :hidden:
+
+   vertiq_testing_tool/vertiq_testing_tool_start_guide
+
+.. toctree::
    :caption: Messaging Protocols
    :hidden:
 
@@ -83,12 +89,6 @@
    manual/manual_stop_detection
    manual/manual_stock_led
    manual/manual_appendix
-
-.. toctree::
-   :caption: Vertiq Testing Tool
-   :hidden:
-
-   vertiq_testing_tool/vertiq_testing_tool_start_guide
 
 .. toctree::
    :hidden:
