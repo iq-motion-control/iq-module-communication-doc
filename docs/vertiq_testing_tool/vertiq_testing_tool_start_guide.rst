@@ -122,6 +122,16 @@ Instead, the application will automatically send the command whenever the target
 Be very cautious when 'Auto Command' is enabled and 'Ramp to Target' is disabled. It is recommended to lower the 'Step Amount' to avoid large jumps between each target voltage command.
 
 
+.. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_ramp_example.png
+
+The example above shows the plot of the observed velocity of the module. 'Ramp to target' was enabled when the module was commanded to 5 Volts. The plot shows that the module took 5 seconds to ramp up to the target voltage.
+The module was then commanded to 3 Volts, and then 0 Volts.
+
+
+.. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_ramp_disabled_example.png
+
+In this example, 'Ramp to target' was disabled when the module was commanded to 1 Volt, 2 Volts, 3 Volts, and finally 0 Volts. The steep jumps between each target voltage command shows that the module was not ramping.
+
 .. note::
     Thank you for using our application! Please note that it is currently in active development, and you may encounter some bugs or unexpected behavior. 
     Your experience and feedback are extremely valuable to us as we continue to improve the application. 
