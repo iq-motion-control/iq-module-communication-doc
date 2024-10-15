@@ -112,6 +112,8 @@ use the guides found on the left hand side.
 
 Need to contact us? Please use support@vertiq.co.
 
+.. _module_families:
+
 .. list-table:: Vertiq Module Families
    :class: borderless
    :align: center

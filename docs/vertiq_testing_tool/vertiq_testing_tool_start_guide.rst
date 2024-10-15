@@ -49,9 +49,10 @@ Once the application loads, you will be presented with the welcome screen. Follo
 
 .. image:: ../_static/vertiq_testing_tool_pictures/esc_input.png
 
-Once connected, you should see the tab as shown above.
+Once connected, you should see the ESC Input tab as shown above.
 
-#. The :gold:`Tabs` section provides different widgets for controlling your module. ESC Input provides configuration parameters necessary for integrating properly with a flight controller as well as simulating flight controller throttle commands via the IQUART raw value message.
+#. The :goldenrod:`Tabs` section provides different widgets for controlling your module. ESC Input provides configuration parameters necessary for integrating properly with a flight controller as well as simulating flight controller throttle commands via the IQUART raw value message. 
+   Please refer to the :ref:`Throttle Command and Modes <throttle_iquart_ref>` documentation to learn more about ESC Input.
 
 #. The :green:`Plotting` section contains a live plot in the upper section and a dashboard with widgets to control the live plot in the lower section.
 
@@ -59,6 +60,10 @@ Once connected, you should see the tab as shown above.
 
 In the ESC Input tab shown above, the Control Panel contains the same parameters necessary to configure your module for use with a flight controller as in this :ref:`Control Center example <flight_controller_config_with_control_center>`.
 
+.. note::
+    .. image:: ../_static/vertiq_testing_tool_pictures/module_id_widget.png
+
+    If multiple modules have been connected as described in the :ref:`Multiple Module Wiring <connection_guide>` section, you can communicate with each module by changing the Module ID in the widget shown above.
 
 ==================
 Continuous command
@@ -77,10 +82,10 @@ Live Plotting and Active Metrics
 
 .. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
 One main feature of Vertiq Testing Tool is the ability to plot any supported metric. 
-Please refer to the :ref:`IQUART Client Table Reference tables <iquart_client_reference_tables>` to find the endpoints that allows for 'get' in the Access field, 
-as these are the supported metrics that can be plotted.
+Please refer to the :ref:`IQUART Client Table Reference tables <iquart_client_reference_tables>` to find the endpoints that allow for 'get' in the Access field, 
+as these are the supported metrics that can be plotted. Also, please make sure that your module supports that client by checking its :ref:`Module Family page <module_families>`.
 
-For example, let's command the module to a 3V drive voltage using the Control Panel in the Voltage Input tab and plot the *drive_volts* from the Brushless Drive client.
+For example, let's command the module to a 3V drive voltage using the Control Panel in the Voltage Input tab and plot the value of *drive_volts* from the Brushless Drive client.
 
 .. note::
     Please refer to the :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>` documentation to learn more about Velocity and Voltage Control.
@@ -97,7 +102,7 @@ In order to visualize the module's drive voltage, navigate to the widget labeled
 Please refer to :ref:`Getting Started with Vertiq's APIs <getting_started_with_apis>` to learn more about IQUART clients.
 
 In the upper dropdown menu, select *brushless_drive*. This corresponds to the :ref:`Brushless Drive <brushless_drive>` client.
-In the lower dropdown menu, select *drive_volts*, which corresponds with brushless drive's drive_volts entry.
+In the lower dropdown menu, select *drive_volts*, which corresponds with brushless drive's *drive_volts* entry.
 Now, click 'Update Plot'. 
 
 Notice that the *drive_volts* metric is added to the 'Active metrics' widget. By default, *obs_velocity*, *watts*, and *amps* are preloaded in the 'Active metrics' widget.
