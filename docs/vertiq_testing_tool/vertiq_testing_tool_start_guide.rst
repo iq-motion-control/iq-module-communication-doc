@@ -49,7 +49,7 @@ Once the application loads, you will be presented with the welcome screen. Follo
 
 .. image:: ../_static/vertiq_testing_tool_pictures/esc_input.png
 
-Once connected, you should see the ESC Input tab as shown above.
+Once connected, you should see the ESC Input tab as shown above. The Control Panel contains the same parameters necessary to configure your module for use with a flight controller as in this :ref:`Control Center example <flight_controller_config_with_control_center>`.
 
 #. The :goldenrod:`Tabs` section provides different widgets for controlling your module. ESC Input provides configuration parameters necessary for integrating properly with a flight controller as well as simulating flight controller throttle commands via the IQUART raw value message. 
    Please refer to the :ref:`Throttle Command and Modes <throttle_iquart_ref>` documentation to learn more about ESC Input.
@@ -58,7 +58,6 @@ Once connected, you should see the ESC Input tab as shown above.
 
 #. The :purple:`Control Panel` section contains widgets to configure specific parameters and to control your module. The Control Panel on each tab contains different widgets.
 
-In the ESC Input tab shown above, the Control Panel contains the same parameters necessary to configure your module for use with a flight controller as in this :ref:`Control Center example <flight_controller_config_with_control_center>`.
 
 .. note::
     .. image:: ../_static/vertiq_testing_tool_pictures/module_id_widget.png
