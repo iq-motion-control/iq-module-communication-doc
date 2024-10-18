@@ -27,3 +27,9 @@
     <style> .purple {color:purple} </style>
 
 .. role:: purple
+
+.. raw:: html
+
+    <style> .goldenrod {color:goldenrod} </style>
+
+.. role:: goldenrod 
