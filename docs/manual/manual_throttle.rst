@@ -153,6 +153,8 @@ maximum voltage is set to 24V, a 100% throttle command will cause the module to 
 Any throttle command less than 100% will be scaled between 0 and the maximum. If the module is in Voltage mode, and its maximum voltage is set to 24V 
 then a 50% throttle command will cause the module to apply a drive voltage of 12V.
 
+.. _max_volts:
+
 Maximum Voltage
 ################
 The maximum voltage is used when the module is configured to use :ref:`throttle_voltage_mode` mode. The maximum voltage can be configured using the *Max Volts* parameter under 
@@ -164,6 +166,8 @@ the Tuning tab in IQ Control Center, as shown below.
     :alt: Max Volts Parameter
 
     Max Volts Parameter in IQ Control Center
+
+.. _max_velo:
 
 Maximum Velocity
 #################

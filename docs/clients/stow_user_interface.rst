@@ -1,4 +1,3 @@
-
 Stow User Interface
 -------------------
 The :ref:`Stow Position <manual_stow_position>` feature allows a Vertiq module to return to a configurable position on a transition from armed to disarmed,
@@ -61,7 +60,7 @@ A minimal working example for the StowUserInterfaceClient is:
         StowUserInterfaceClient stowUserInterface(0);
 
         // Use the Temperature Estimator Client
-        stowUserInterface.zero_angle_.get(com)
+        stowUserInterface.zero_angle_.get(com);
 
         // [Insert code for interfacing with hardware here]
     }
@@ -101,7 +100,7 @@ A minimal working example for the Stow User Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     zero_angle = |variable_name|.get("stow_user_interface", "zero_angle") 
     print(f"Zero angle: {zero_angle}")

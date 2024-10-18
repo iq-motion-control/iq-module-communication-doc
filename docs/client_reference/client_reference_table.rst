@@ -1,4 +1,6 @@
 .. include:: ../text_colors.rst
+.. include:: common_client_variables.rst
+
 .. toctree::
 
 .. _iquart_client_reference_tables:

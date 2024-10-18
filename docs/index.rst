@@ -36,6 +36,12 @@
    control_center_docs/pulsing_module_getting_started
 
 .. toctree::
+   :caption: Vertiq Testing Tool
+   :hidden:
+
+   vertiq_testing_tool/vertiq_testing_tool_start_guide
+
+.. toctree::
    :caption: Messaging Protocols
    :hidden:
 
@@ -105,6 +111,8 @@ Looking for guidance on using our Python, C++, Arduino, or Matlab APIs, or need 
 use the guides found on the left hand side.
 
 Need to contact us? Please use support@vertiq.co.
+
+.. _module_families:
 
 .. list-table:: Vertiq Module Families
    :class: borderless

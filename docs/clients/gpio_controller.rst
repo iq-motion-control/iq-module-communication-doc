@@ -64,7 +64,7 @@ A minimal working example for the GpioControllerClient is:
         GpioControllerClient gpioController(0);
 
         // Use the GPIO Controller Client
-        gpioController.mode_register_.get(com)
+        gpioController.mode_register_.get(com);
 
         // Insert code for interfacing with hardware here  
     }
@@ -102,8 +102,7 @@ A minimal working example for the GPIO Controller Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="servo")
-    
+    |variable_name| = iq.|module_name|(com, 0, firmware="servo") |module_name_comment|   
     mode_register = |variable_name|.get("gpio_controller", "mode_register") 
     print(f"mode register: {mode_register}")
 

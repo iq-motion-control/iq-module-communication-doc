@@ -1,4 +1,3 @@
-
 Power Safety
 -------------
 
@@ -102,7 +101,7 @@ A minimal working example for the Power Safety Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     fault_now = |variable_name|.get("power_safety", "fault_now")  
     print(f"current fault: {fault_now}")

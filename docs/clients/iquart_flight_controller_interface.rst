@@ -59,12 +59,12 @@ A minimal working example for the IQUartFlightControllerInterfaceClient using th
         IQUartFlightControllerInterfaceClient iquartFlightControllerInterface(0);
 
         // Use the IQUART Flight Controller Interface Client
-        iquartFlightControllerInterface.telemetry_.get(com)
+        iquartFlightControllerInterface.telemetry_.get(com);
 
         // Insert code for interfacing with hardware here  
 
         // Store telemetry data in an IFCITelemetryData object
-        IFCITelemetryData telemetry = iquart_flight_controller_interface.telemetry_.get_reply()
+        IFCITelemetryData telemetry = iquart_flight_controller_interface.telemetry_.get_reply();
 
         // Examples on how to access each property of IFCITelemetryData
         cout << "telemetry coil_temp: " << telemetry.coil_temp << endl;
@@ -110,7 +110,7 @@ A minimal working example for the IQUART Flight Controller Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing")
+    |variable_name| = iq.|module_name|(com, 0, firmware="pulsing") |module_name_comment|
     
     telemetry = |variable_name|.get("iquart_flight_controller_interface", "telemetry") 
     print(f"Pulsing voltage mode: {telemetry}")

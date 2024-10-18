@@ -78,6 +78,8 @@ A **throttle region is a range of throttle commands specified by an upper bound 
 boundaries is considered to be in that throttle region. Throttle commands that are in the arming throttle region will contribute towards transitioning the module 
 to the armed state, and throttle commands that are in the disarming throttle region contribute towards transitioning the module to the disarmed state.
 
+.. _arming_throttle_regions:
+
 Arming With the Arming Throttle Regions
 ########################################
 

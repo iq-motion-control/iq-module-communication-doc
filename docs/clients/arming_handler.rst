@@ -61,7 +61,7 @@ A minimal working example for the ArmingHandlerClient is:
         ArmingHandlerClient armingHandler(0);
 
         // Use the Arming Handler Client
-        armingHandler.always_armed_.get(com)
+        armingHandler.always_armed_.get(com);
 
         // Insert code for interfacing with hardware here  
     }
@@ -99,7 +99,7 @@ A minimal working example for the Arming Handler Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     always_armed_status = |variable_name|.get("arming_handler", "always_armed") 
     print(f"Always armed status: {always_armed_status}")
