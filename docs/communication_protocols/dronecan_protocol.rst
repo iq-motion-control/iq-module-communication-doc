@@ -105,11 +105,6 @@ protocol being tunneled, a channel ID allowing for additional routing options, a
 Vertiq modules are configured to accept broadcast messages with a protocol value of 0x55, and check the received data buffer for valid :ref:`IQUART data <uart_messaging>`. 
 As such, the DroneCAN tunnel broadcast message allows users to transmit IQUART messages via DroneCAN. Vertiq modules do not support use of the channel ID for additional routing.
 
-A very rudimentary example of using the DroneCAN tunnel message is provided below. The example requires an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_, and two :ref:`FTDI devices <connection_guide>`. 
-The hardware is configured as follows:
-
-.. image:: ../_static/manual_images/dronecan/dronecan_tunnel_hardware.png
-
 In this example, the module has no serial connection to :ref:`IQ Control Center <control_center_start_guide>`. Instead, the Control Center sends messages to a Python script which packages 
 the IQUART bytes as a DroneCAN tunnel message, and transmits the message to the module. The module receives and decodes the IQUART message, and if necessary, 
 forms a response as a DroneCAN tunnel message which is sent back to the Python script. Finally, the Python script pulls the IQUART response out of the module's 
@@ -121,7 +116,23 @@ The process is summarized below.
 
 .. image:: ../_static/manual_images/dronecan/dronecan_tunnel_python_sequence.png
 
-The Python script necessary to accomplish this is provided here: 
+This example requires an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_ and any 
+software that can emulate COM ports. In this example, we are using `com0com <https://com0com.sourceforge.net/>`_. Please note that the following example will only work on the Windows operating 
+system, though a similar approach can be taken on Linux/UNIX.
+
+We will use the virtual COM ports in order to create the following connections:
+
+.. image:: ../_static/manual_images/dronecan/dronecan_tunnel_hardware.png
+
+In order to create the required virtual COM ports using com0com, open com0com, and create a Virtual Port Pair. In this example, we've created COM16 and COM17 which, by default, are connected as depicted in the diagram above.
+
+.. image:: ../_static/manual_images/dronecan/com_0_com.png
+
+On Windows, you can confirm that these ports are reachable through Device Manager.
+
+.. image:: ../_static/manual_images/dronecan/tunnel_device_manager.png
+
+The Python script necessary to accomplish run this example is provided here. Run this script before attempting to connect with the Control Center: 
 
 .. code-block:: python
 
@@ -131,7 +142,7 @@ The Python script necessary to accomplish this is provided here:
 	import serial
 
 	slcan_port = "COM9" #Replace this value with the port connected to your SLCAN device
-	control_center_ftdi_port = "COM7" # Replace this value with the port connected to FTDI1 from the diagram above
+	control_center_ftdi_port = "COM17" # Replace this value with the port connected to a virtual COM port
 
 	def make_node():
 		for attempt in range(10):
@@ -228,10 +239,51 @@ The Python script necessary to accomplish this is provided here:
 				message = dronecan.uavcan.tunnel.Broadcast(protocol=dronecan.uavcan.tunnel.Protocol(protocol=0x55), channel_id=42, buffer=buffer_to_send)
 				dronecan_node.broadcast(message)
 
-While this script is running with all hardware connected properly, you should be able to connect your module to IQ Control Center without a direct serial connection.
+While this script is running, your module is powered on and connected properly, and your virtual COM ports are configured correctly, you should be able to connect your module to IQ Control Center without a direct serial connection.
+
+With the script active, navigate to the Control Center, and in Serial Port, select the virtual COM port not connected to your running script (in this case COM16). After you click CONNECT, you should see the 
+Control Center perform its normal detection process, and connect with your module.
+
+.. image:: ../_static/manual_images/dronecan/control_center_with_tunnel.png
 
 Refer to the `uavcan.tunnel.Broadcast section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#broadcast>`_ in the 
 specification for more details.
+
+.. _arming_status:
+
+uavcan.equipment.safety.ArmingStatus (Data Type ID = 1100)
+###############################################################
+
+.. note::
+	The ArmingStatus message is not yet supported on all modules that support DroneCAN. Please check `vertiq.co <https://www.vertiq.co/>`_ to ensure that you are on the 
+	latest firmware version available for your module to gain access to the most up to date features.
+
+`DroneCAN's ArmingStatus message <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=uavcan.equipment.safety-,ArmingStatus,-Full%20name%3A>`_ broadcasts the overall system's arming state. For example, both PX4 and ArduPilot can transmit the ArmingStatus message. Vertiq 
+modules are configured only to listen for, and not transmit, the ArmingStatus message. More information on configuring your module to update its arming state based on 
+the ArmingStatus message can be found below in :ref:`dronecan_arming_and_bypass`. Information about configuring your flight controller to transmit the ArmingStatus 
+message can be found in our :ref:`tutorial for integrating with flight controller DroneCAN <dronecan_fc_tutorial>`.
+
+uavcan.equipment.indication.LightsCommand (Data Type ID = 1081)
+###############################################################
+Vertiq modules do not publish this broadcast message, but they do listen for it. The content of this message can be used to dynamically control the white and RGB LEDs
+on Vertiq's LED Boards. For more information on the LED Board, see :ref:`manual_led_support`.
+
+As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
+to be handled by the nodes on the bus. Each SingleLightCommand contains a light ID to indicate which light that command is for and a field that indicates either the intensity of the white LED or the color of the RGB LED depending on the targeted LED. For Vertiq modules, 
+the light ID of each type of LED (RGB or White) is determined based on the ESC index. This allows the LEDs on each module on a bus to be uniquely addressable
+as long as each module has a unique ESC index. The light IDs on each module are calculated as described in the example code block below:
+
+.. code-block:: python
+
+	#The base ID for an RGB LED is 1, and the base ID for a white LED is 2. From there, we can just apply the calculation below to determine 
+	#what the light IDs for a module with a given ESC index should be. For example, if my module has an ESC Index of 1, 
+	#then the White LED's light ID will be 1*3 + 2 = 5. The RGB LED's light ID will be 1*3+1 = 4
+	RGB_LIGHT_TYPE_BASE_ID = 1
+	WHITE_LIGHT_TYPE_BASE_ID  = 2
+
+	light_id = (esc_index*3 + LIGHT_TYPE_BASE_ID)
+
+Refer to the `uavcan.equipment.indication.LightsCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ in the specification for more details.
 
 Service Requests
 *****************
@@ -434,6 +486,89 @@ Stow Result
 This parameter is available on modules that support :ref:`manual_stow_position`. It reports on how the previous stow attempt ended. See the
 :ref:`stow_result` section for more information.
 
+.. note::
+	The following parameters are not yet available on all modules that support DroneCAN. If you do not see these parameters, check `vertiq.co <https://www.vertiq.co/>`_ for a new firmware release for 
+	your module. If you are on the latest release and do not have access to these parameters, future updates for your module may add support for these messages.
+
+Module ID
+############
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| module_id        | Integer  |
+	+------------------+----------+
+
+This parameter defines the **module ID** of the connected module. Please note that this is different than the DroneCAN Node ID. Your module's Module ID parameter defines 
+what IQUART messages to accept. You can find out more about IQUART at :ref:`uart_messaging`, and more about connecting to multiple modules via IQUART in our 
+:ref:`IQ Control Center documentation <multi_module_config>`.
+
+Motor Direction
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| motor_direction  | Integer  |
+	+------------------+----------+
+
+Your module's motor direction defines, in part, how your module will interpret and react to throttle commands. Motor direction is covered in detail :ref:`in our throttle documentation <throttle_direction>`.
+
+Motor direction is enumerated as:
+
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
+
+Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
+and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
+
+Control Mode
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| control_mode     | Integer  |
+	+------------------+----------+
+
+Mode determines how the module interprets received throttle commands, and is covered in detail at :ref:`throttle_mode`.
+
+Control mode is enumerated as:
+
+0. PWM
+1. Voltage
+2. Velocity
+ 
+Max Volts
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| max_volts        | Float    |
+	+------------------+----------+
+
+When ``control_mode`` is configured to voltage, ``max_volts`` defines the maximum allowable driving voltage. More information can be found at :ref:`max_volts`.
+
+Max Velocity
+#################
+.. table::
+
+	+------------------+----------+
+	| **Name**         | **Type** |
+	+------------------+----------+
+	| max_velocity     | Float    |
+	+------------------+----------+
+
+When ``control_mode`` is configured to velocity, ``max_velocity`` defines the maximum allowable angular velocity in rad/s. More information can be found at :ref:`max_velo`.
+
 Flight Controller Integration
 ================================
 For guidance on integrating Vertiq modules with flight controllers using DroneCAN, see 
@@ -443,8 +578,40 @@ the :ref:`dronecan_fc_tutorial` tutorial.
 
 Arming and Arming Bypass
 ================================
+
+Standard Arming
+*****************
 DroneCAN can use the same advanced arming procedure as all other throttle sources. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
 
+Arming with ArmingStatus
+******************************
+
+.. note::
+	In order to control your module properly while arming with ArmingStatus messages, you must properly set the :ref:`manual_arming_throttle_source` parameter. This parameter should 
+	be set to the protocol being used to send the module throttle commands.
+
+	As such, the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
+	:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``. 
+	If, however, you are arming and sending throttle commands with DroneCAN, your manual arming source should be ``DroneCAN``.
+
+Vertiq modules can arm and disarm based off of DroneCAN's :ref:`ArmingStatus message <arming_status>`. This means that whenever your flight controller broadcasts an ArmingStatus 
+``STATUS_FULLY_ARMED`` message, your module will transition from disarmed to armed, or if already armed, will remain armed. These transitions are not subject to the constraints 
+set by your :ref:`arming throttle region <arming_throttle_regions>`, so any ``STATUS_FULLY_ARMED`` message will arm your module. When your flight controller broadcasts a ``STATUS_DISARMED`` message, your module 
+will similarly transition from armed to disarmed.
+
+Whether your module arms via the ArmingStatus message is configured through the ``arming_by_arming_status`` parameter in the :ref:`DroneCAN node client <uavcan_node>`. You can access this parameter through 
+the Control Center's Advanced tab as ``Arming By DroneCAN ArmingStatus``.
+
+.. image:: ../_static/manual_images/dronecan/control_center_armingstatus.png
+	:align: center
+
+Further, if you are using the ArmingStatus to arm, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
+ArmingStatus. Your flight controller may transmit throttle commands of 0% on boot-up while its ArmingState states disarmed. Then, your module's arming handler may attempt to arm on throttle, 
+but will be quickly overwritten by an ArmingStatus disarm. This cycle will continue until the flight controller's throttle leaves your arming region. To avoid this behavior, simply disable arm 
+on throttle. For the same reasons, we also recommend that you disable your module's ability to :ref:`disarm on throttle <arming_throttle_regions>`.
+
+Arming Bypass
+*********************
 Older Vertiq firmware does not include support for arming over DroneCAN. To maintain backwards compatibility, it is possible for users to toggle 
 arming integration with DroneCAN on or off. This is called “arming bypass”. When Vertiq modules have arming bypass turned on for DroneCAN they will spin on any :ref:`DroneCAN throttle command <throttle_sources_dronecan>`, 
 regardless of armed state. Additionally, when arming bypass is on DroneCAN throttle commands will not cause :ref:`arming or disarming transitions <arming_state_transitions>`. 

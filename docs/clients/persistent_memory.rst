@@ -100,7 +100,7 @@ A minimal working example for the Persistent Memory Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0)
+    |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     |variable_name|.set("persistent_memory", "format_key_1", 12345678)  # Set first key before erasing calibration data
     |variable_name|.set("persistent_memory", "format_key_2", 11223344)  # Set second key before erasing calibration data

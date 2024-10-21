@@ -98,7 +98,7 @@ A minimal working example for the white LED Interface Client is:
     import iqmotion as iq
 
     com = iq.SerialCommunicator("/dev/ttyUSB0")
-    |variable_name| = iq.|module_name|(com, 0, firmware="speed")
+    |variable_name| = iq.|module_name|(com, 0, firmware="speed") |module_name_comment|
     
     intensity = |variable_name|.get("white_led", "intensity") 
     print(f"Intensity: {intensity}")
