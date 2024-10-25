@@ -5,7 +5,7 @@
 Vertiq 81-XX Family
 ********************************
 
-.. image:: ../_static/module_pictures/81xx/81xx_family.png
+.. image:: ../_static/module_pictures/81xx/81xx_family_small.png
         :alt: Vertiq 81-XX Family
         :width: 750
         :align: center
