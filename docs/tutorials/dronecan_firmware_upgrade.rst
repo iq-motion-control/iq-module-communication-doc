@@ -20,6 +20,8 @@ Hardware
 In order to connect with the DroneCAN GUI tool, you will need an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_ which 
 will be used in each of the following examples. See the DroneCAN GUI tool's documentation to find more information on supported devices.
 
+.. _dronecan_gui_basics:
+
 DroneCAN GUI Tool Basics
 ============================
 After opening the DroneCAN GUI tool, you are met with the following screen: 
