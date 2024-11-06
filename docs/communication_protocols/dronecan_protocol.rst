@@ -287,6 +287,39 @@ as long as each module has a unique ESC index. The light IDs on each module are 
 
 Refer to the `uavcan.equipment.indication.LightsCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ in the specification for more details.
 
+uavcan.equipment.esc.StatusExtended (Data Type ID = 1036)
+------------------------------------------------------------------------
+This message is published periodically, and acts as an extension of uavcan.equipment.esc.Status. The extra information in this message is as follows:
+
+* **Input Percent**: Input command to ESC, in percent, which is commanded using the setpoint messages. Range 0% to 100%
+* **Output Percent**: Output command from ESC to motor, in percent. Range 0% to 100%
+* **Motor Temperature °C**: Temperature of connected motor, in Celsius. Range is -256 to +255 C
+* **Motor Angle**: Measured angle of connected angle sensor, in degrees. Range is 0 to 360
+* **Status Flags**: Manufacturer-specific status flags currently active
+     * Bit 0: Indicates the module's current arming state (see :ref:`manual_advanced_arming` for more information)
+     * Bits[3:1]: Indicate the module's drive mode (see :ref:`brushless drive's <brushless_drive>` ``drive_mode`` for more information)
+     * Bit 4: Indicates if the module is timed out (see :ref:`manual_timeout` for more)
+     * Bit 5: Indicates if the last stow attempt was successful (see :ref:`manual_stow_position` for more information)
+     * Bit 6: Indicates if the module is holding stow (see :ref:`manual_stow_position` for more information)
+* **ESC Index**: The ESC index of the motor that is broadcasting this update
+
+The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
+
+Please note that it is possible to disable this message, and fall back to the legacy transmission of uavcan.equipment.esc.Status and uavcan.equipment.device.Temperature as your 
+telemetry sources. In IQ Control Center's Advanced tab, you'll find the ``DroneCAN Use Legacy Telemetry Style`` parameter. 
+
+.. image:: ../_static/manual_images/dronecan/legacy_telem_control_center.png
+
+Setting this to ``Use Status Extended`` will output ESC Status and ESC Status Extended as your telemetry. In this case, the reported temperature through ESC Status is 
+your module's coil temperature, and ESC Status Extended's reported temperature is the temperature of your module's microcontroller.
+
+Setting this to ``Use Device Temperature`` will output ESC Status and Device Temperature as your telemetry. In this case, the reported temperature through ESC Status 
+is your module's microcontroller temperature, and Device Temperature's reported temperature is the temperature of your module's coil.
+
+Refer to the `uavcan.equipment.esc.Status section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#status-2>`_ in the specification 
+for more details.
+
+
 Service Requests
 ========================
 Service requests are messages sent to a specific target node from another node, and to which the sending node expects to receive a response message.
@@ -530,11 +563,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-0. Unconfigured
-1. 3D Counter Clockwise
-2. 3D Clockwise
-3. 2D Counter Clockwise
-4. 2D Clockwise 
+1. Unconfigured
+2. 3D Counter Clockwise
+3. 3D Clockwise
+4. 2D Counter Clockwise
+5. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
