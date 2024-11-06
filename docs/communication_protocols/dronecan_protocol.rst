@@ -316,10 +316,6 @@ your module's coil temperature, and ESC Status Extended's reported temperature i
 Setting this to ``Use Device Temperature`` will output ESC Status and Device Temperature as your telemetry. In this case, the reported temperature through ESC Status 
 is your module's microcontroller temperature, and Device Temperature's reported temperature is the temperature of your module's coil.
 
-Refer to the `uavcan.equipment.esc.Status section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#status-2>`_ in the specification 
-for more details.
-
-
 Service Requests
 ========================
 Service requests are messages sent to a specific target node from another node, and to which the sending node expects to receive a response message.
