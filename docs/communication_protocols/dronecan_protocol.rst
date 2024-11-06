@@ -662,11 +662,11 @@ In order to configure your module to use auto-bitrate detection, simply configur
 
 	Configured through the Control Center:
 
-	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_control_center.png
+	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_control_center.PNG
 
 	Configured through the DroneCAN GUI Tool:
 
-	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_dronecan.png
+	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_dronecan.PNG
 		:height: 350
 
 	Configured through Vertiq's Python API:
@@ -701,11 +701,11 @@ specification, a node ID of 0 indicates an anonymous node, and should be used fo
 
 	Configured through the Control Center:
 
-	.. image:: ../_static/manual_images/dronecan/node_id_with_control_center.png
+	.. image:: ../_static/manual_images/dronecan/node_id_with_control_center.PNG
 
 	Configured through the DroneCAN GUI Tool:
 
-	.. image:: ../_static/manual_images/dronecan/node_id_with_dronecan.png
+	.. image:: ../_static/manual_images/dronecan/node_id_with_dronecan.PNG
 		:height: 350
 
 	Configured through Vertiq's Python API:
