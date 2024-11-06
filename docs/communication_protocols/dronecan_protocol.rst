@@ -747,6 +747,9 @@ You will see the node ID and its associated UID in the DNA server window:
 Receiving a Dynamically Allocated Node ID with PX4 and ArduPilot
 --------------------------------------------------------------------
 
+.. note:: 
+	The following instructions can be combined with auto-bitrate detection to provide you a full plug-and-play experience.
+
 PX4
 ^^^^^^^
 The following is performed on PX4 version 1.15.1
