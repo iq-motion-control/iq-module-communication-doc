@@ -689,9 +689,9 @@ Dynamic Node ID Allocation
 ===========================
 All DroneCAN nodes must have a unique Node ID in order to communicate on the DroneCAN bus. Nodes can be given a unique ID manually, or they may request a dynamically 
 generated Node ID from a Node ID Allocator. Please see the `DroneCAN specification <https://dronecan.github.io/Specification/6._Application_level_functions/#:~:text=7%5D%20reason_text-,Dynamic%20node%20ID%20allocation,-In%20order%20to>`_ 
-for more information about ID Allocators. Vertiq’s DroneCAN nodes can act as allocatees, and can initiate requests to the allocator to receive node ID.
+for more information about ID Allocators. Vertiq's DroneCAN nodes can act as allocatees, and can initiate requests to the allocator to receive node ID.
 
-In order to configure your module to use DNA rather than manually setting unique, static, node IDs, simply set its ``Node ID`` parameter to 0. According to the DroneCAN 
+In order to configure your module to use DNA rather than manually setting unique, static, node IDs, simply set its ``Node ID`` parameter to ``0``. According to the DroneCAN 
 specification, a node ID of 0 indicates an anonymous node, and should be used for allocatees until they are issued a proper ID.
 
 .. note::
@@ -722,6 +722,62 @@ specification, a node ID of 0 indicates an anonymous node, and should be used fo
 		module.set("uavcan_node", "uavcan_node_id", 0)
 		module.save("uavcan_node", "uavcan_node_id")
 
+Please note that, if configured for DNA (``Node ID`` set and saved as ``0`` as above), your module will always boot up with DNA active. The ID allocated during DNA is not saved 
+on reboot. Your DNA allocator server will allocate the same node ID on each handshake if it has saved your module's UID. For the best performance, we suggest configuring 
+static, concrete, node IDs for each module you have connected, and only use DNA for initial setup. For example, if your DNA server provides the node ID 124, we recommend 
+manually setting and saving your module's node ID to 124 with the same methods available as above. 
 
 Receiving a Dynamically Allocated Node ID with the DroneCAN GUI
 --------------------------------------------------------------------
+The :ref:`DroneCAN GUI tool <dronecan_gui_basics>` provides an easy-to-use node ID server. Simply click the rocket icon in the bottom right hand side to start the server:
+
+.. image:: ../_static/manual_images/dronecan/dronecan_gui_dna_server.png
+
+Once your module is powered on and connected to the GUI tool, your module will automatically begin requesting a node ID from the server, and the two will complete the 
+handshake necessary to obtain a dynamically allocated node ID.
+
+As seen through the CAN bus monitor tool, we see our node is allocated the ID 125, and immediately starts reporting its node status and ESC telemetry:
+
+.. image:: ../_static/manual_images/dronecan/dna_handshake.png
+
+You will see the node ID and its associated UID in the DNA server window:
+
+.. image:: ../_static/manual_images/dronecan/allocated_id.PNG
+
+Receiving a Dynamically Allocated Node ID with PX4 and ArduPilot
+--------------------------------------------------------------------
+
+PX4
+^^^^^^^
+The following is performed on PX4 version 1.15.1
+
+1. Open `QGroundControl <http://qgroundcontrol.com/>`_, and connect your flight controller
+2. Navigate to Vehicle Setup
+3. Select Parameters, and scroll down until you find UAVCAN
+4. In the UAVCAN settings, you will find ``UAVCAN_ENABLE``. Set this value to ``Sensors and Actuators (ESCs) Automatic Config``, save, and reboot
+5. Navigate to the MAVLink Console in Analyze Tools
+6. Enter ``uavcan status`` 
+   
+   a. If you have not connected your module with your flight controller, you will not see any nodes listed
+   b. If you have already connected your module, you should see your node, and its allocated ID, listed as shown below
+
+7. If you have not already, connect and power on your module
+8. Once again, enter ``uavcan status``, and you should see your module has connected with the flight controller with a dynamically allocated ID
+
+.. image:: ../_static/manual_images/dronecan/px4_allocated.PNG
+
+9. Now, if you reboot your module, and check ``uavcan status`` again, you'll find that PX4 allocates the same ID again
+
+ArduPilot
+^^^^^^^^^^^^^
+The following is performed on ArduCopter version v4.5.7
+
+1. Open `Mission Planner <https://ardupilot.org/planner/>`_, and connect your flight controller
+2. Configure DroneCAN as described in :ref:`dronecan_with_ardupilot`
+3. If you have not already, connect and power on your module
+4. Navigate to the DroneCAN configuration tool as described in :ref:`configuring_with_ardupilot`
+5. You should see your module with its allocated node ID as follows
+
+.. image:: ../_static/manual_images/dronecan/ardupilot_dna_success.PNG
+
+6. 9. Now, if you reboot your module, and check the DroneCAN configuration window again, you'll find that ArduPilot allocates the same ID again
