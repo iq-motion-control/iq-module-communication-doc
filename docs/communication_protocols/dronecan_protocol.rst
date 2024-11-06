@@ -660,7 +660,7 @@ In order to configure your module to use auto-bitrate detection, simply configur
 	``DroneCAN Bitrate`` can be configured in three ways: :ref:`IQ Control Center <control_center_start_guide>`, DroneCAN configuration via the 
 	:ref:`DroneCAN GUI tool <dronecan_gui_basics>`, or through any of :ref:`Veritq’s APIs <getting_started_with_apis>`.
 
-	Configured through the Control Center:
+	Configured through the Control Center's Advanced tab:
 
 	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_control_center.PNG
 
@@ -683,7 +683,8 @@ In order to configure your module to use auto-bitrate detection, simply configur
 		module.set("uavcan_node", "bit_rate", 0)
 		module.save("uavcan_node", "bit_rate")
 
-Please note that once the module has locked onto a bitrate, it will not be able to communicate at any other rate until it is rebooted, or the bitrate is set manually. The bitrate detection process restarts every time the module is powered on.
+Please note that once the module has locked onto a bitrate, it will not be able to communicate at any other rate until it is rebooted or the bitrate is set manually. 
+The bitrate detection process restarts every time the module is powered on and ``DroneCAN Bitrate`` is ``0``.
 
 Dynamic Node ID Allocation
 ===========================
@@ -699,7 +700,7 @@ specification, a node ID of 0 indicates an anonymous node, and should be used fo
 	You can configure your module's Node ID in three ways: :ref:`IQ Control Center <control_center_start_guide>`, DroneCAN configuration via 
 	the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`, or through any of :ref:`Veritq's APIs <getting_started_with_apis>`.
 
-	Configured through the Control Center:
+	Configured through the Control Center's General tab:
 
 	.. image:: ../_static/manual_images/dronecan/node_id_with_control_center.PNG
 
@@ -731,14 +732,14 @@ Receiving a Dynamically Allocated Node ID with the DroneCAN GUI
 --------------------------------------------------------------------
 The :ref:`DroneCAN GUI tool <dronecan_gui_basics>` provides an easy-to-use node ID server. Simply click the rocket icon in the bottom right hand side to start the server:
 
-.. image:: ../_static/manual_images/dronecan/dronecan_gui_dna_server.png
+.. image:: ../_static/manual_images/dronecan/dronecan_gui_dna_server.PNG
 
 Once your module is powered on and connected to the GUI tool, your module will automatically begin requesting a node ID from the server, and the two will complete the 
 handshake necessary to obtain a dynamically allocated node ID.
 
 As seen through the CAN bus monitor tool, we see our node is allocated the ID 125, and immediately starts reporting its node status and ESC telemetry:
 
-.. image:: ../_static/manual_images/dronecan/dna_handshake.png
+.. image:: ../_static/manual_images/dronecan/dna_handshake.PNG
 
 You will see the node ID and its associated UID in the DNA server window:
 
@@ -783,4 +784,4 @@ The following is performed on ArduCopter version v4.5.7
 
 .. image:: ../_static/manual_images/dronecan/ardupilot_dna_success.PNG
 
-6. 9. Now, if you reboot your module, and check the DroneCAN configuration window again, you'll find that ArduPilot allocates the same ID again
+6. Now, if you reboot your module, and check the DroneCAN configuration window again, you'll find that ArduPilot allocates the same ID again
