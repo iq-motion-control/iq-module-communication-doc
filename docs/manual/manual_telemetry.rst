@@ -31,7 +31,7 @@ Speed Modules
 	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
 	| Vertiq 40-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
 	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:warning:|          | Vertiq 23-06 modules do not support DroneCAN, so the DroneCAN telemetry described below does not apply to them.|
+	| Vertiq 23-XX | .. centered:: |:warning:|          | Vertiq 23-XX modules do not support DroneCAN, so the DroneCAN telemetry described below does not apply to them.|
 	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
 
 Servo Modules
