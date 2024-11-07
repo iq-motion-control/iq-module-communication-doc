@@ -27,6 +27,12 @@
    modules/fortiq_42XX
 
 .. toctree::
+   :caption: FAQ
+   :hidden: 
+   
+   faq/frequently_asked_questions
+
+.. toctree::
    :caption: IQ Control Center
    :hidden:
 
