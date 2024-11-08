@@ -148,6 +148,10 @@ The following steps demonstrate how to spin a module configured as :ref:`above <
 #. To stop your module from spinning, set *Coast*
 #. You have now confirmed your module's configuration for flight controller integration, and it is ready for vehicle testing
 
+.. warning::
+    Please double check to make sure that each module is spinning in the correct direction before moving on to flight controller integration.
+    You can confirm the module's direction by testing with **ESC Input** as explained in the example above. Voltage Input and Velocity Input **does not** use the direction set on the module.
+
 For more on Vertiq module flight controller integration, see the following pages:
 
 * :ref:`hobby_fc_tutorial`
