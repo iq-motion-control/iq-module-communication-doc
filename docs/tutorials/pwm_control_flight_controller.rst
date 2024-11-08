@@ -220,9 +220,13 @@ If the module is spinning as expected, set the *Coast* parameter to stop the mod
 
   You can find another full module configuration example for Velocity mode at :ref:`flight_controller_config_with_control_center`.
 
+.. _Ardupilot_and_Mission_Planner_Configuration:
 
 Ardupilot and Mission Planner Configuration and Testing
 =======================================================
+.. note::
+    If you are using PX4 firmware, please follow the :ref:`PX4 and QGroundControl Configuration and Testing <PX4_and_QGroundControl_Configuration>` tutorial.
+
 This tutorial was tested using Mission Planner 1.3.80 and ArduCopter v4.5.5, as shown in the figure below. These instructions assume you are starting from the default parameters, and cover how to test that the
 flight controller and module can communicate with no additional flight controller peripherals. See the `Hardware Setup`_ section for more details on the hardware and connections.
 
@@ -401,8 +405,13 @@ Now we can use Mission Planner's built-in motor testing tools to make sure the f
 See the `Successful Actuator Test`_ section below for a video of this whole process. It demonstrates what sounds you should expect to hear from the module, as well as the module 
 successfully spinning with Arducopter and Mission Planner.
 
+.. _PX4_and_QGroundControl_Configuration:
+
 PX4 and QGroundControl Configuration and Testing
 ================================================
+.. note::
+    If you are using Ardupilot firmware, please follow the :ref:`Ardupilot and Mission Planner Configuration and Testing <Ardupilot_and_Mission_Planner_Configuration>` tutorial.
+
 This tutorial was tested using QGroundControl 4.3.0 and PX4 version 1.14.3, as shown in the figures below. 
 These instructions assume you are starting from default parameters, and cover how to test that the flight controller and module can communicate with no additional flight controller peripherals. 
 See the `Hardware Setup`_ section for more details on the hardware and connections.
