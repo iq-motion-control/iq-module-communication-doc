@@ -58,6 +58,7 @@
    tutorials/hobby_calibration
    tutorials/dronecan_flight_controller
    tutorials/ifci_px4_flight_controller
+   tutorials/ifci_log_qgroundcontrol
    tutorials/dronecan_firmware_upgrade
    tutorials/flight_controller_telemetry_tutorial
    tutorials/up12_installation
