@@ -7,7 +7,7 @@
 IQUART Flight Controller Interface
 **********************************
 
-Vertiq 23-06 modules can be controlled with the IQUART Flight Controller Interface (IFCI) while running pulsing firmware. A specifc IQUART packet has been created to allow for highspeed control of Vertiq modules. A single packet can include all of the control signals for multiple modules connected to the same UART port on a flight controller. Additionally a telemetry packet can be requested from a specific module every time the packet is sent. An example of a full IFCI packet is shown in the diagram below.
+Vertiq modules can be controlled with the IQUART Flight Controller Interface (IFCI) while running pulsing firmware. A specifc IQUART packet has been created to allow for highspeed control of Vertiq modules. A single packet can include all of the control signals for multiple modules connected to the same UART port on a flight controller. Additionally a telemetry packet can be requested from a specific module every time the packet is sent. An example of a full IFCI packet is shown in the diagram below.
 
 .. figure:: ../_static/manual_images/pulsing_propeller/Long_Packed_Control_Message.png
     :align: center
