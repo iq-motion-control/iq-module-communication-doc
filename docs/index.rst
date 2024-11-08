@@ -136,7 +136,7 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Vertiq 60-XX Family
-     - .. figure:: ./_static/module_pictures/81xx/81xx_family.png
+     - .. figure:: ./_static/module_pictures/81xx/81xx_family_index.png
             :target: modules/vertiq_81xx_family.html
             :alt: Vertiq 81-XX Family
             :align: center
