@@ -7,6 +7,10 @@
 Getting Started with Vertiq's Speed Firmware with IQ Control Center
 ####################################################################
 
+.. note::
+    This guide focuses on setting parameters on your Vertiq modules. Please refer to your hardware's documentation before
+    integration. For example, refer to the `PX4 documentation <https://docs.px4.io/main/en/flight_controller/>`_ for integrating with a PX4 flight controller. 
+
 Before completing the following getting started guide, please ensure that you have read and completed our :ref:`IQ Control Center 
 guide <control_center_start_guide>`. It walks you through Control Center installation, module configuration, and basic testing options available 
 to all Vertiq modules and firmware types. The following document is meant to provide additional configurations and testing options available only on Vertiq's speed firmware.
