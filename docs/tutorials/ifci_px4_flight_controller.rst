@@ -278,6 +278,10 @@ Now, we will configure PX4's internal representation of the quadcopter's geometr
 
 The geometry section determines where the flight controller expects each motor on the aircraft, and what direction the flight controller expects that motor to be spinning. The Actuator Outputs section determines which motor defined in the geometry section is connected to which actuator. In this case, we want to associate Motors from the geometry section with our Modules. The CVIs in the Vertiq IO section of Actuator Outputs correspond to the CVIs set on each motor module in the previous section. In this example, we have set the CVIs such that we can associate Motor 1 with CVI 0, Motor 2 with CVI 1, Motor 3 with CVI 2, and Motor 4 with CVI 3.
 
+.. note::
+    If this is your first time configuring CVI values on a quadcopter, it is highly recommended to use values: 0, 1, 2, 3 as the CVI values.
+    Please refer to the :ref:`IFCI documentation <controlling_ifci>` to understand the difference between CVI values and Module ID's.
+
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_associations.png
     :align: center
     :scale: 50
