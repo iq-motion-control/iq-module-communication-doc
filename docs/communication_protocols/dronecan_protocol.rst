@@ -61,7 +61,7 @@ This message is published periodically and provides telemetry updates on the sta
 * **Error Count**: This is a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
 * **Voltage**: The input voltage to the motor in volts
 * **Current**: The current draw of the motor in amps
-* **Temperature**: The temperature of the motor's coils in Kelvin
+* **Temperature**: The temperature of the motor's coils in Kelvin or the motor's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
 * **RPM**: The current speed of the motor in RPM
 * **Power Rating Percentage**: The PWM duty cycle percentage being applied to the motor, from 0% to 100%. Maximum power draw occurs at 100% duty cycle
 * **ESC Index**: The ESC index of the motor that is broadcasting this update
@@ -75,6 +75,10 @@ for more details.
 
 uavcan.equipment.device.Temperature (Data Type ID = 1110)
 ------------------------------------------------------------------------
+
+.. note:: 
+	This message is transmitted only if ``DroneCAN Telemetry Style`` is configured to ``Use Old-Style Telemetry``. Please see :ref:`status_extended` for more information. 
+
 This message is published periodically and provides updates on the temperature of the microcontroller used on the controller. The fields contained in this message are:
 
 * **Device ID**: The ESC index of the motor sending this broadcast
@@ -287,8 +291,14 @@ as long as each module has a unique ESC index. The light IDs on each module are 
 
 Refer to the `uavcan.equipment.indication.LightsCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ in the specification for more details.
 
+
+.. _status_extended: 
+
 uavcan.equipment.esc.StatusExtended (Data Type ID = 1036)
 ------------------------------------------------------------------------
+.. note:: 
+	This message is published only if ``DroneCAN Telemetry Style`` is configured to ``Use New-Style Telemetry``. More information about telemetry style is found below.
+
 This message is published periodically, and acts as an extension of uavcan.equipment.esc.Status. The extra information in this message is as follows:
 
 * **Input Percent**: Input command to ESC, in percent, which is commanded using the setpoint messages. Range 0% to 100%
@@ -306,15 +316,18 @@ This message is published periodically, and acts as an extension of uavcan.equip
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
 Please note that it is possible to disable this message, and fall back to the legacy transmission of uavcan.equipment.esc.Status and uavcan.equipment.device.Temperature as your 
-telemetry sources. In IQ Control Center's Advanced tab, you'll find the ``DroneCAN Use Legacy Telemetry Style`` parameter. 
+telemetry sources. In IQ Control Center's Advanced tab, you'll find the ``DroneCAN Telemetry Style`` parameter. 
 
 .. image:: ../_static/manual_images/dronecan/legacy_telem_control_center.png
 
-Setting this to ``Use Status Extended`` will output ESC Status and ESC Status Extended as your telemetry. In this case, the reported temperature through ESC Status is 
+Setting this to ``Use New-Style Telemetry`` will output ESC Status and ESC Status Extended as your telemetry. In this case, the reported temperature through ESC Status is 
 your module's coil temperature, and ESC Status Extended's reported temperature is the temperature of your module's microcontroller.
 
-Setting this to ``Use Device Temperature`` will output ESC Status and Device Temperature as your telemetry. In this case, the reported temperature through ESC Status 
+Setting this to ``Use Old-Style Telemetry`` will output ESC Status and Device Temperature as your telemetry. In this case, the reported temperature through ESC Status 
 is your module's microcontroller temperature, and Device Temperature's reported temperature is the temperature of your module's coil.
+
+.. note:: 
+	We recommend using the ``Use New-Style Telemetry`` in order to receive the most telemetry data from your modules.
 
 Service Requests
 ========================
@@ -559,11 +572,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-1. Unconfigured
-2. 3D Counter Clockwise
-3. 3D Clockwise
-4. 2D Counter Clockwise
-5. 2D Clockwise 
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -686,31 +699,11 @@ the module to configure its own bitrate accordingly without user intervention.
 In order to configure your module to use auto-bitrate detection, simply configure its ``DroneCAN Bitrate`` parameter to ``0``.
 
 .. note:: 
-	``DroneCAN Bitrate`` can be configured in three ways: :ref:`IQ Control Center <control_center_start_guide>`, DroneCAN configuration via the 
-	:ref:`DroneCAN GUI tool <dronecan_gui_basics>`, or through any of :ref:`Veritq’s APIs <getting_started_with_apis>`.
 
-	Configured through the Control Center's Advanced tab:
-
-	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_control_center.PNG
-
-	Configured through the DroneCAN GUI Tool:
+	``DroneCAN Bitrate`` can be configured in all methods available for DroneCAN configuration. Here, we'll show an example of configuration through the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`:
 
 	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_dronecan.PNG
 		:height: 350
-
-	Configured through Vertiq's Python API:
-
-	.. code-block:: python
-
-		import iqmotion as iq
-
-		# Motor Communication. Make sure you replace "COM3" with the serial port connected with your module
-		com = iq.SerialCommunicator("COM3")
-
-		module = iq.Vertiq8108(com, 0, firmware="speed") # Replace Vertiq8108 with the class meant for your module
-
-		module.set("uavcan_node", "bit_rate", 0)
-		module.save("uavcan_node", "bit_rate")
 
 Please note that once the module has locked onto a bitrate, it will not be able to communicate at any other rate until it is rebooted or the bitrate is set manually. 
 The bitrate detection process restarts every time the module is powered on and ``DroneCAN Bitrate`` is ``0``.
@@ -726,31 +719,10 @@ specification, a node ID of 0 indicates an anonymous node, and should be used fo
 
 .. note::
 
-	You can configure your module's Node ID in three ways: :ref:`IQ Control Center <control_center_start_guide>`, DroneCAN configuration via 
-	the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`, or through any of :ref:`Veritq's APIs <getting_started_with_apis>`.
-
-	Configured through the Control Center's General tab:
-
-	.. image:: ../_static/manual_images/dronecan/node_id_with_control_center.PNG
-
-	Configured through the DroneCAN GUI Tool:
+	``Node ID`` can be configured in all methods available for DroneCAN configuration. Here, we'll show an example of configuration through the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`:
 
 	.. image:: ../_static/manual_images/dronecan/node_id_with_dronecan.PNG
 		:height: 350
-
-	Configured through Vertiq's Python API:
-
-	.. code-block:: python
-
-		import iqmotion as iq
-
-		# Motor Communication. Make sure you replace "COM3" with the serial port connected with your module
-		com = iq.SerialCommunicator("COM3")
-
-		module = iq.Vertiq8108(com, 0, firmware="speed") # Replace Vertiq8108 with the class meant for your module
-
-		module.set("uavcan_node", "uavcan_node_id", 0)
-		module.save("uavcan_node", "uavcan_node_id")
 
 Please note that, if configured for DNA (``Node ID`` set and saved as ``0`` as above), your module will always boot up with DNA active. The ID allocated during DNA is not saved 
 on reboot. Your DNA allocator server will allocate the same node ID on each handshake if it has saved your module's UID. For the best performance, we suggest configuring 
