@@ -118,7 +118,7 @@ Attaching a Propeller for Flight
 In order to attach a propeller, first find the propeller adapter and M2 bolts from the provided hardware.
 
 .. note::
-    It is highly recommended to apply a threadlocker, like Loctite 243, to each of the M2 screws and locknut when attaching to the module.
+    It is highly recommended to apply a threadlocker, like Loctite 243, to each of the M2 screws when attaching to the module.
 
 .. figure:: ../_static/module_pictures/23xx/23xx_prop_adapter.png
     :width: 500

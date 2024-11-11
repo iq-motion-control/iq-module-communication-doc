@@ -220,6 +220,11 @@ If the module is spinning as expected, set the *Coast* parameter to stop the mod
 
   You can find another full module configuration example for Velocity mode at :ref:`flight_controller_config_with_control_center`.
 
+The next two sections cover setting up ardupilot and PX4 flight control firmwares. Please ensure that you are in the correct section for your flight control firmware before attempting to follow the instructions.
+
+* :ref:`Ardupilot and Mission Planner Configuration and Testing <Ardupilot_and_Mission_Planner_Configuration>`.
+* :ref:`PX4 and QGroundControl Configuration and Testing <PX4_and_QGroundControl_Configuration>`.
+
 .. _Ardupilot_and_Mission_Planner_Configuration:
 
 Ardupilot and Mission Planner Configuration and Testing
@@ -281,6 +286,7 @@ Reboot your flight controller to make sure the new parameters take effect. The i
     :align: center
 
     Important ArduCopter Standard PWM Parameters in Mission Planner
+
 
 Setting ArduCopter DSHOT Parameters
 ***********************************

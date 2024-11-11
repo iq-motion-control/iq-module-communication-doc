@@ -8,7 +8,7 @@ Getting Started with Vertiq's Speed Firmware with IQ Control Center
 ####################################################################
 
 .. note::
-    This guide focuses on setting parameters on your Vertiq modules. Please refer to the documentation for any hardware you are integrating with, such as flight controllers or radios, for more details on integrating with that hardware. 
+    This guide focuses on setting parameters on your Vertiq modules. Please refer to your hardware's documentation (flight controller, radio, etc.) for more details on its spcific configuration. 
     For example, refer to the `PX4 documentation <https://docs.px4.io/main/en/flight_controller/>`_ for integrating with a PX4 flight controller. 
 
 Before completing the following getting started guide, please ensure that you have read and completed our :ref:`IQ Control Center 
@@ -148,9 +148,10 @@ The following steps demonstrate how to spin a module configured as :ref:`above <
 #. To stop your module from spinning, set *Coast*
 #. You have now confirmed your module's configuration for flight controller integration, and it is ready for vehicle testing
 
-.. warning::
+.. note::
     Please double check to make sure that each module is spinning in the correct direction before moving on to flight controller integration.
-    You can confirm the module's direction by testing with **ESC Input** as explained in the example above. Voltage Input and Velocity Input **does not** use the direction set on the module.
+    You can confirm the module's direction by testing with **ESC Input** as explained in the example above. Voltage and Velocity inputs **do not** use the module's motor direction configuration, and will always result in a counter-clockwise rotation given a positive input.
+    To learn more, please refer to the :ref:`Velocity and Voltage Based Control Mechanisms <spin_with_speed_demo>` documentation.
 
 For more on Vertiq module flight controller integration, see the following pages:
 
