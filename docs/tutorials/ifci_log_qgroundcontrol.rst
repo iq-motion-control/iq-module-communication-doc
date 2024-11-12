@@ -9,6 +9,7 @@ Exporting IFCI Logs Using QGroundControl
 ********************************************
 
 Motor telemetry data can be found in the flight controller logs if you are using PX4 firmware with IFCI enabled. Please refer to the documentation on :ref:`Setting up PX4 Firmware for Use with IFCI <ifci_px4_flight_controller>` to make sure your flight controller is configured properly. 
+Also, your PX4 firmware must have the EscStatus topic enabled for logging. Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`_ on how to configure which topics are logged.
 This tutorial covers how to extract and view motor telemetry logs from your flight controller's SD card using QGroundControl.
 
 Click the QGroundControl icon on the upper left-hand corner of the application.
