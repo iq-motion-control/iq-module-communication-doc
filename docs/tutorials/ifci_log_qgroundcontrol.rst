@@ -4,9 +4,16 @@
 
 .. _ifci_log:
 
-********************************************
-Exporting IFCI Logs Using QGroundControl
-********************************************
+**************************************************************
+Getting Logs from PX4 Flight Controller using QGroundControl
+**************************************************************
+
+.. note::
+    This tutorial is only applicable for PX4 firmware.
+
+
+Exporting Logs 
+==============
 
 Motor telemetry data can be found in the flight controller logs if you are using PX4 firmware with IFCI enabled. Please refer to the documentation on :ref:`Setting up PX4 Firmware for Use with IFCI <ifci_px4_flight_controller>` to make sure your flight controller is configured properly. 
 Also, your PX4 firmware must have the EscStatus topic enabled for logging. Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`_ on how to configure which topics are logged.
@@ -86,7 +93,7 @@ Select "esc.00" and a sub-menu will be displayed containing data for this specif
 
     PlotJuggler RPM data for "esc.00"
 
-The plot of the rpm data of "esc.00" will be displayed, which is the RPM reported by the module. To view the RPM tha the flight controller is commanding to each module, see the `ActuatorOutputs topic <https://docs.px4.io/main/en/msg_docs/ActuatorOutputs.html>`_.
+The plot of the rpm data of "esc.00" will be displayed, which is the RPM reported by the module. To view the throttle values that the flight controller is outputting to each module, see the `ActuatorOutputs topic <https://docs.px4.io/main/en/msg_docs/ActuatorOutputs.html>`_.
 Repeat the step above for "esc.01", "esc.02", and "esc.03".
 
 .. figure:: ../_static/tutorial_images/ifci_log/plotjuggler_all_esc_rpm_data.png
