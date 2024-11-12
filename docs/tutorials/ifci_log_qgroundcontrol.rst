@@ -77,7 +77,7 @@ Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_
     PlotJuggler Loaded Data
 
 Locate and select "esc_status". A sub-menu of ESC values will be displayed.
-The values "esc.00", "esc.01", "esc.02", and "esc.03" correspond to Module ID 0, 1, 2, and 3, respectively.
+The values "esc.00", "esc.01", "esc.02", and "esc.03" maps to the values selected for the VTQ_TELEM_IDS_1 parameter in the firmware, starting with the lowest value.
 
 .. figure:: ../_static/tutorial_images/ifci_log/plotjuggler_esc_status.png
     :align: center
