@@ -154,7 +154,7 @@ Attaching a Propeller for Flight
 ******************************************
 
 .. note::
-    It is highly recommended to apply a threadlocker, like Loctite 243, to each of the M3 screws when attaching to the module.
+    It is highly recommended to apply a threadlocker, like Loctite 243, to each of the screws when attaching to the module.
 
 The exact setup will differ for each propeller. Please follow the instructions supplied with your specific propeller.
 
