@@ -15,9 +15,12 @@ Exporting Logs from PX4 Flight Controller using QGroundControl
 Exporting Logs 
 ==============
 
-Motor telemetry data can be found in the flight controller logs if you are using PX4 firmware with IFCI enabled. Please refer to the documentation on :ref:`Setting up PX4 Firmware for Use with IFCI <ifci_px4_flight_controller>` to make sure your flight controller is configured properly. 
+Motor telemetry data can be found in the flight controller logs if you are using PX4 firmware.  
 Also, your PX4 firmware must have the EscStatus topic enabled for logging. Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`_ on how to configure which topics are logged.
 This tutorial covers how to extract and view motor telemetry logs from your flight controller's SD card using QGroundControl.
+
+.. note::
+    In this example, the PX4 firmware has IFCI enabled. Please refer to the documentation on :ref:`Setting up PX4 Firmware for Use with IFCI <ifci_px4_flight_controller>` to make sure your flight controller is configured properly if you are extracting IFCI data.
 
 Click the QGroundControl icon on the upper left-hand corner of the application.
 Then, click "Analyze Tools" from the pop-up menu.
@@ -47,7 +50,9 @@ Then, select the log that you want to download, and click the "Download" button.
     QGroundControl Download Logs
 
 
-You can then choose where to download the selected log file through the file explorer. The file will be downloaded as a .ulg file.
+You can then choose where to download the selected log file through the file explorer. The log in this example is an .ulg file.
+
+
 
 
 Viewing Logs
@@ -77,7 +82,6 @@ Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_
     PlotJuggler Loaded Data
 
 Locate and select "esc_status". A sub-menu of ESC values will be displayed.
-The values "esc.00", "esc.01", "esc.02", and "esc.03" map to the values selected for the VTQ_TELEM_IDS_1 or VTQ_TELEM_IDS_2 parameter in the firmware, starting with the lowest value.
 
 .. figure:: ../_static/tutorial_images/ifci_log/plotjuggler_esc_status.png
     :align: center
@@ -103,4 +107,9 @@ Repeat the step above for "esc.01", "esc.02", and "esc.03".
     PlotJuggler RPM data for all ESC values
 
 Now you can compare the RPM data for all four modules. The same steps can be applied for the other ESC data types.
+
+
+Additional Information About IFCI
+=================================
+For the EscStatus topic, the values "esc.00", "esc.01", "esc.02", and "esc.03" map to the values selected for the VTQ_TELEM_IDS_1 or VTQ_TELEM_IDS_2 parameter in the firmware, starting with the lowest value.
 
