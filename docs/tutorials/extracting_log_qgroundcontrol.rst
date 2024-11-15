@@ -109,7 +109,9 @@ Repeat the step above for "esc.01", "esc.02", and "esc.03".
 Now you can compare the RPM data for all four modules. The same steps can be applied for the other ESC data types.
 
 
-Additional Information About IFCI
-=================================
-For the EscStatus topic, the values "esc.00", "esc.01", "esc.02", and "esc.03" map to the values selected for the VTQ_TELEM_IDS_1 or VTQ_TELEM_IDS_2 parameter in the firmware, starting with the lowest value.
+Additional Information About EscStatus Topic Numbering
+======================================================
+For firmware with IFCI enabled, the EscStatus topic values "esc.00", "esc.01", "esc.02", and "esc.03" map to the values selected for the VTQ_TELEM_IDS_1 or VTQ_TELEM_IDS_2 parameter in the firmware, starting with the lowest value.
+
+For firmware with DroneCAN enabled, the EscStatus topic values map to the ESC index values.
 
