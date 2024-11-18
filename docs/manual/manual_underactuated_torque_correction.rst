@@ -50,11 +50,11 @@ In this equation 'h' is the height of the propeller blades above the aircraft's 
 
     |propeller_name| height drawing
 
-An example calculation where the blades are 50mm above the CoM is done below. The propeller is the UP12 which has a calibrated 'propeller_torque_offset_angle' of -2.6 radians.
+An example calculation where the blades are 50mm above the CoM is done below. The propeller is the UP12 which has a calibrated 'propeller_torque_offset_angle' of 1.75 radians.
 
 .. admonition:: Calculating the Torque Angle Correction for a UP12 Propeller
 
-    Calibrated 'propeller_torque_offset_angle' = -2.6 radians
+    Calibrated 'propeller_torque_offset_angle' = 1.75 radians
 
     Height of blades above CoM = 50.0mm
 
@@ -71,9 +71,9 @@ An example calculation where the blades are 50mm above the CoM is done below. Th
         -tan^{-1}\biggl(\genfrac{}{}{}{}{0.38}{1.759}\biggr) = -0.2126
 
     .. math::
-        -2.6-0.2126 = -2.8126
+        1.75-0.2126 = 1.5374
 
-    **Final 'propeller_torque_offset_angle' = -2.8126**
+    **Final 'propeller_torque_offset_angle' = 1.5374**
 
 
 
