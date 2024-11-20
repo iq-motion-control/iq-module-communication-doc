@@ -8,6 +8,11 @@
 Frequently Asked Questions
 ##########################
 
+#. What hardware do I need prior to receiving my module?
+    * Certain modules come with included hardware, such as prop adapters and heatshrink. Please refer to your module’s family page found in the sidebar under the Modules section for everything that is included in the box.
+    * You will need screws to attach a propeller to your module and to attach your module to the drone arm. Please check your module’s datasheet found on the module's family page under “Documentation” on our `website <https://www.vertiq.co/>`_. It is also highly recommended to apply a threadlocker, such as Loctite 243, to your screws when attaching a propeller to your module.
+    * For all modules, you will need a UART-to-Serial adapter in order to communicate with your module using your computer. We recommend using a `CP2102 FTDI adapter <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`_.
+
 #. I just purchased my motor, how do I get started with Vertiq's IQ Control Center software? How can I communicate with my module?
     * Issues with spinning your module can be related to improper configuration of the motor. Control Center is the recommended tool for configuring your module. Before connecting with Control Center, refer to your module’s family page found under the sidebar's Modules section. Here, you will find the hardware setup instructions for your specific module. After your hardware is set up, refer to our :ref:`Control Center Manual <control_center_start_guide>` for instructions on how to install and run Control Center. Then, follow the *Getting Started with Control Center* instructions for your module's specific firmware style: :ref:`Speed <speed_module_start_guide>`, :ref:`Servo <servo_module_start_guide>`, or :ref:`Pulsing <pulsing_module_start_guide>`. After getting familiar with configuring your module with Control Center, see our documentation under the Tutorials section of the sidebar for additional information, such as integrating with your flight controller, retrieving flight controller logs, and debugging communication issues. 
     * We also have a supplementary application called :ref:`Vertiq Testing Tool <vertiq_testing_tool_guide>` to help you test your module. You can download and run Vertiq Testing Tool for more advanced testing of your module's configuration.
@@ -17,11 +22,6 @@ Frequently Asked Questions
 
 #. Why does my module not spin when I send it DroneCAN Raw Command messages?
     * A common issue that may cause your module not to spin is that its parameters are not configured correctly. Please confirm that you have properly configured the :ref:`Motor Direction <throttle_direction>`, :ref:`Mode <throttle_mode>`, and :ref:`Maximums <throttle_maximums>` for your module. Also, confirm that your configured :ref:`ESC Index <dronecan_px4_tutorial_esc_index>` is correct for the module that you are trying to control. If your module is not using :ref:`Arming Bypass <dronecan_arming_and_bypass>`, confirm that you are sending DroneCAN commands that will :ref:`arm <dronecan_arming_and_bypass>` the module initially. By default, commands close to 0% throttle should arm the module. For more information on how to use DroneCAN with your module, please refer to our :ref:`DroneCAN Integration with PX4 and Ardupilot <dronecan_fc_tutorial>` documentation.
-
-#. What hardware do I need prior to receiving my module?
-    * Certain modules come with included hardware, such as prop adapters and heatshrink. Please refer to your module’s family page found in the sidebar under the Modules section for everything that is included in the box.
-    * You will need screws to attach a propeller to your module and to attach your module to the drone arm. Please check your module’s datasheet found on the module's family page under “Documentation” on our `website <https://www.vertiq.co/>`_. It is also highly recommended to apply a threadlocker, such as Loctite 243, to your screws when attaching a propeller to your module.
-    * For all modules, you will need a UART-to-Serial adapter in order to communicate with your module using your computer. We recommend using a `CP2102 FTDI adapter <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`_.
 
 #. Why is my module slowing down, even though I am not adjusting the throttle? Why is my module derating?
     * Each motor has built in safeties to protect the module from overheating failures. The module will start to spin slower, or derate, when the safeties are in effect to keep it at a safe operating point. To learn more about these safety features, please refer to the :ref:`Safety Systems <manual_safety>` documentation.
