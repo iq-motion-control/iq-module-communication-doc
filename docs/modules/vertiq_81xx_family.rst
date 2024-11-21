@@ -7,7 +7,7 @@ Vertiq 81-XX Family
 
 .. image:: ../_static/module_pictures/81xx/81xx_family.png
         :alt: Vertiq 81-XX Family
-        :width: 500
+        :width: 750
         :align: center
 
 .. csv-table:: Vertiq 81-XX Generation 1 Family of Modules
@@ -25,8 +25,9 @@ Vertiq 81-XX Family
         "81-08", "85", "Speed", "Speed, Servo"
         "81-08", "140", "Speed", "Speed"
         "81-08", "240", "Speed", "Speed"
+        "81-17", "110", "Speed", "Speed"
 
-81-08 Generation 1 (G1) Hardware Setup Walkthrough
+81-XX Generation 1 (G1) Hardware Setup Walkthrough
 ##################################################
 .. Unique for each module
 
@@ -143,7 +144,10 @@ Next Steps
 ********************************************
 Now that you have successfully wired your module for use, feel free to complete the :ref:`Getting Started Guide <81_getting_started>` for your module and its firmware style.
 
-81-08 Generation 2 (G2) Hardware Setup Walkthrough
+.. note::
+        While the images below show an 81-08 size module, these setup instructions are also valid for an 81-17 size module.
+
+81-XX Generation 2 (G2) Hardware Setup Walkthrough
 ##################################################
 .. Unique for each module
 
@@ -278,6 +282,9 @@ Common Hardware Setup
 
 Attaching a Propeller for Flight
 ******************************************
+
+.. note::
+    It is highly recommended to apply a threadlocker, like Loctite 243, to each of the screws when attaching to the module.
 
 The exact setup will differ for each propeller. Please follow the instructions supplied with your specific propeller.
 

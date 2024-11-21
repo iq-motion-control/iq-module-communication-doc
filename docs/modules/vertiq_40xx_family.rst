@@ -157,6 +157,9 @@ can be found `here <https://dronecan.github.io/Specification/8._Hardware_design_
 Attaching a Propeller for Flight
 ******************************************
 
+.. note::
+    It is highly recommended to apply a threadlocker, like Loctite 243, to each of the screws when attaching to the module.
+
 In order to attach a propeller, first, find the propeller adapter and M3 bolts from the provided hardware.
 
 .. figure:: ../_static/module_pictures/40xx/40xx_with_prop.png

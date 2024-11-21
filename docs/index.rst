@@ -27,6 +27,12 @@
    modules/fortiq_42XX
 
 .. toctree::
+   :caption: FAQ
+   :hidden: 
+   
+   faq/frequently_asked_questions
+
+.. toctree::
    :caption: IQ Control Center
    :hidden:
 
@@ -58,6 +64,7 @@
    tutorials/hobby_calibration
    tutorials/dronecan_flight_controller
    tutorials/ifci_px4_flight_controller
+   tutorials/extracting_log_qgroundcontrol
    tutorials/dronecan_firmware_upgrade
    tutorials/flight_controller_telemetry_tutorial
    tutorials/up12_installation
@@ -136,7 +143,7 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Vertiq 60-XX Family
-     - .. figure:: ./_static/module_pictures/81xx/81xx_family.png
+     - .. figure:: ./_static/module_pictures/81xx/81xx_family_index.png
             :target: modules/vertiq_81xx_family.html
             :alt: Vertiq 81-XX Family
             :align: center
