@@ -1,7 +1,7 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _vertiq_testing__guide:
+.. _vertiq_testing_tool_guide:
 
 ########################################
 Getting Started with Vertiq Testing Tool
