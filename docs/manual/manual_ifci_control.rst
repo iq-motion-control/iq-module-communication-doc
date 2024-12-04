@@ -58,7 +58,7 @@ In order to calculate the raw value that your module will apply, simply divide t
 
 Suppose your module is configured to spin two-dimensionally counterclockwise with a 2D flight controller, and is set to velocity mode with a maximum of 1000 rad/s. 
 Now, your module receives an IFCI packet that has data in your module's Throttle Control Value Index with the value 26000. The equivalent IQUART raw command is 
-:math:`\frac{26000}{65535} = 0.397`. In this case, the applied throttle percentage is calculated simply by :math:`0.397 * 100 = 39.7%`. Since we are in velocity mode with a maximum velocity 
+:math:`\frac{26000}{65535} = 0.397`. In this case, the applied throttle percentage is calculated simply by :math:`0.397 * 100 = 39.7\%`. Since we are in velocity mode with a maximum velocity 
 of 1000 rad/s, your module is set to spin at :math:`0.397 * 1000 = 397 rad/s` in the counterclockwise direction.
 
 Now, you change your module's sign to 3D clockwise with the same flight controller direction. We once again receive a throttle control value of 26000. Our raw command 
