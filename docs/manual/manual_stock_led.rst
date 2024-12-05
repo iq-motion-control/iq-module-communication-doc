@@ -40,12 +40,44 @@ The LED board's power connections should be tied to your module's V+ and V- port
 Operating the LED board above this range can result in serious damage to the board. Operating the board below this range will simply prevent it from 
 operating as expected.
 
-The LED board uses a 4-pin JST-ZE connector in order to interface with your module. The following image displays the LED board's pinout.
+All LED board versions use a 4-pin JST-ZE connector in order to interface with your module.
 
-.. image:: ../_static/manual_images/leds/led_board_connections.png
-    :align: center
+.. warning::
+    The pinout of the Vertiq LD3.0.0 differs from the LD3.1.0.
 
-Please note that the connector's clip is at the top of this image. Take care to ensure that the module's RGB LED pad connects with the LED board's RGB LED pin, 
+    The LD3.0.0 can be identified by its label on the same side as the LEDs:
+
+    .. image:: ../_static/manual_images/leds/ld_3_0_highlight.png
+        :align: center
+        :width: 500
+
+    The LD3.1.0 can be identified by its label on the same side as the JST-ZE connector:
+
+    .. image:: ../_static/manual_images/leds/ld_3_1_highlight.png
+        :align: center
+        :width: 500
+
+    Please take care to ensure that you use the pinout for the correct LED board.
+
+
+.. list-table:: LD3.X.0 Pinouts
+   :class: borderless
+
+   * - .. figure:: ../_static/manual_images/leds/led_board_connections.png
+        :align: center
+        :width: 500
+        :height: 300
+
+        LD3.0.0 Pinout
+
+     - .. figure:: ../_static/manual_images/leds/ld_3_1_pinout.png
+        :align: center
+        :width: 500
+        :height: 300
+        
+        LD3.1.0 Pinout
+
+Please note that the connector's clip is at the top of both images. Take care to ensure that the module's RGB LED pad connects with the LED board's RGB LED pin, 
 and the module's white LED pad attaches to the LED board's white LED pin. Failure to do so can result in damage to your LED board as well as your module.
 
 Controlling Your LEDs
