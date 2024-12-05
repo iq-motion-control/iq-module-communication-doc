@@ -36,7 +36,7 @@ configured is the 5th command (CVI 4) in the IFCI packet. In order to have the m
 The same principle applies to X and Y commands as well.
 
 .. note::
-    If any module CVI is set to 255, the module will not look in any received control values for a command.
+    If the CVI for any of the control values needed by a module is set to 255, then the module will not attempt to extract the control value from any index in the IFCI packet.
 
 All module Control Value Index values can be found in the :ref:`iquart_flight_controller_interface`. You can also find the CVIs in the :ref:`Control Center's <control_center_start_guide>` general tab:
 
