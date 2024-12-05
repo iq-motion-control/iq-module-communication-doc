@@ -28,11 +28,12 @@ Highlighted in orange are the bytes that are necessary in order to send valid IQ
 Highlighted in green are Control Values. A control value is an unsigned 16 bit value that defines a throttle, an X, or a Y command. X and Y commands are only applicable when 
 using Vertiq's :ref:`pulsing firmware <pulsing_module_start_guide>`. Any type of command can occupy any control value, and the location it occupies in an IFCI packet is called its Control 
 Value Index (CVI). For example, suppose you want to control a generic quadcopter. You may place the throttle commands for motor 1 in CVI 0, commands for motor 
-2 in CVI 1, and so on. Where each motor's throttle command is fully configurable, however, and it would be equally valid to place motor 4's throttle command in CVI 0.
+2 in CVI 1, and so on. Since the control values' order is fully configurable, however, it would be equally valid to place motor 4's throttle command in CVI 0.
 
-In order to bridge the flight controller's commands with the commands accepted by a module, Vertiq modules have their own version of the expected CVIs. For example, 
-suppose your flight controller is configured to transmit 10 control values. The throttle command for the module being configured is the 5th command (CVI 4) in the IFCI 
-packet. In order to have the module listen to that command, you simply set its `Throttle CVI` to 4. The same principle applies to X and Y commands as well.
+Having the ability to place any control value in any index also means that you must configure your Vertiq module to know which control value indices to read for its 
+specific commands. For example, suppose your flight controller is configured to transmit 10 control values. The throttle command for the module being 
+configured is the 5th command (CVI 4) in the IFCI packet. In order to have the module listen to that command, you simply set its `Throttle CVI` to 4. 
+The same principle applies to X and Y commands as well.
 
 .. note::
     If any module CVI is set to 255, the module will not look in any received control values for a command.
@@ -56,7 +57,7 @@ pipeline as the :ref:`IQUART raw value <throttle_iquart_ref>`.
 
 In order to calculate the raw value that your module will apply, simply divide the received throttle control value by 65535. That value is then mapped to applied throttle based on your modes and directions.
 
-Suppose your module is configured to spin two-dimensionally counterclockwise with a 2D flight controller, and is set to velocity mode with a maximum of 1000 rad/s. 
+Suppose your module is configured to spin two-dimensionally counterclockwise with :ref:`2D FC Mode <throttle_2d_2d_mapping>`, and is set to velocity mode with a maximum of 1000 rad/s. 
 Now, your module receives an IFCI packet that has data in your module's Throttle Control Value Index with the value 26000. The equivalent IQUART raw command is 
 :math:`\frac{26000}{65535} = 0.397`. In this case, the applied throttle percentage is calculated simply by :math:`0.397 * 100 = 39.7\%`. Since we are in velocity mode with a maximum velocity 
 of 1000 rad/s, your module is set to spin at :math:`0.397 * 1000 = 397 rad/s` in the counterclockwise direction.
@@ -76,7 +77,7 @@ two and subtract one. In this case :math:`(0.641 * 2) - 1 = +0.284`.
 
 Your module also receives a Y control value of 1000. The raw value is :math:`\frac{1000}{65535} = 0.015`, and the Y control percentage is :math:`(0.015*2) - 1 = -0.97`.
 
-In the Pulsing Rectangular Input Parser, the setting ``pulsing_voltage_mode`` controls whether this value is considered a percentage of supply voltage or a percentage of the 
+In the :ref:`Pulsing Rectangular Input Parser <pulsing_rectangular_input_parser>`, the setting ``pulsing_voltage_mode`` controls whether this value is considered a percentage of supply voltage or a percentage of the 
 value defined by ``pulsing_voltage_limit``. When set to supply voltage mode -1.0 maps to a pulsing voltage on that axis of negative battery voltage and 1.0 maps to positive 
 battery voltage. When set to voltage limit mode you must also set the ``pulsing_voltage_limit`` parameter. This will set the maximum and minimum pulsing voltage. 
 In this mode -1.0 will map to ``-pulsing_voltage_limit`` and 1.0 will map to ``pulsing_voltage_limit``. Between these values, the raw value is linearly mapped to the voltages in 
