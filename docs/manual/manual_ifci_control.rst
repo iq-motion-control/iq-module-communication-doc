@@ -57,7 +57,7 @@ pipeline as the :ref:`IQUART raw value <throttle_iquart_ref>`.
 
 In order to calculate the raw value that your module will apply, simply divide the received throttle control value by 65535. That value is then mapped to applied throttle based on your modes and directions.
 
-Suppose your module is configured to spin two-dimensionally counterclockwise with :ref:`2D FC Mode <throttle_2d_2d_mapping>`, and is set to velocity mode with a maximum of 1000 rad/s. 
+Suppose your module is configured to spin :ref:`2D counterclockwise with 2D FC Mode <throttle_2d_2d_mapping>`, and is set to velocity mode with a maximum of 1000 rad/s. 
 Now, your module receives an IFCI packet that has data in your module's Throttle Control Value Index with the value 26000. The equivalent IQUART raw command is 
 :math:`\frac{26000}{65535} = 0.397`. In this case, the applied throttle percentage is calculated simply by :math:`0.397 * 100 = 39.7\%`. Since we are in velocity mode with a maximum velocity 
 of 1000 rad/s, your module is set to spin at :math:`0.397 * 1000 = 397 rad/s` in the counterclockwise direction.
