@@ -62,17 +62,18 @@ All LED board versions use a 4-pin JST-ZE connector in order to interface with y
 
 .. list-table:: LD3.X.0 Pinouts
    :class: borderless
+   :align: center
 
    * - .. figure:: ../_static/manual_images/leds/led_board_connections.png
         :align: center
-        :width: 500
+        :width: 400
         :height: 300
 
         LD3.0.0 Pinout
 
      - .. figure:: ../_static/manual_images/leds/ld_3_1_pinout.png
         :align: center
-        :width: 500
+        :width: 400
         :height: 300
         
         LD3.1.0 Pinout
