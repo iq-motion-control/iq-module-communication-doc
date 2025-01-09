@@ -171,6 +171,10 @@ In order to communicate from your computer with a Vertiq module through the Cont
 
 We recommend using an CP2102 FTDI such as the one found `here <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`_.
 
+.. note::
+    If you are using the UART-to-Serial adapter we have recommended and are not seeing it as an available port, you may need to install the appropriate drivers from `here <https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=overview>`_.
+
+
 Once obtained, plug your USB-to-UART converter into your computer and install any necessary drivers (refer to the manufacturer's documentation for 
 your USB-to-UART converter). If installed correctly, a new serial port should be available on your PC. 
 Take note of the name of this new serial port. In Windows you can see this under Device Manager->Ports (COM & LPT). The image 
