@@ -95,3 +95,18 @@ consecutive throttles.
 VTT outputs IQUART throttles at 10%, and the DroneCAN GUI transmits 3% throttles. In this case, your module will not arm. Since IQUART has a higher priority, its throttles take 
 precedence over DroneCAN, so the arming handler will only receive the 10% throttles. If you pause the VTT output, however, your module will arm as the throttle source manager will 
 have transitioned to accepting the DroneCAN commands within the arming region. Now, if you unpause the VTT output, your module will start spinning at 10% throttle.
+
+The example is demonstrated below:
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/manual_images/redundant_throttle/redundant_arming_example.mp4" type="video/mp4"></video>
+
+.. _config_values:
