@@ -4,9 +4,9 @@
 
 .. _frequently_asked_questions:
 
-##########################
+==========================
 Frequently Asked Questions
-##########################
+==========================
 
 #. What hardware do I need prior to receiving my module?
     * Certain modules come with included hardware, such as prop adapters and heatshrink. Please refer to your module’s family page found in the sidebar under the Modules section for everything that is included in the box.
@@ -55,3 +55,45 @@ Frequently Asked Questions
 
 #. Can the modules stow at multiple angles?
     * Currently, there is no support for storing multiple stow angles. Your module can only save one stow angle with reference to the zero angle. To learn more about stowing, please refer to our :ref:`Stow Position <manual_stow_position>` documentation.
+
+
+
+.. _upf-23-12_frequently_asked_questions:
+
+===============================
+UPF-23-12 Frequently Asked Questions
+===============================
+
+#. How does the underactuated propeller hardware mechanism work?
+    * The underactuated propeller consists of a 45 degree hinge in the hub of the propeller and flapping hinges at the blades. It is connected to a Vertiq module, which consists of an integrated motor, ESC, and position sensor. 
+    * The underactuated propeller is a variable-pitch propeller, and its blade pitch is coupled with its lead/lag position. When the motor accelerates, the propeller hinges (about the hub hinge) into a lag position; when the motor decelerates, the propeller hinges into a lead position; and when the propeller spins at a constant speed, the propeller returns to a neutral position. The change in blade pitch creates torques and forces that control the vehicle.
+    * While the hub hinge is used for propeller pitch control, the flapping hinges are designed to absorb vibration and vector thrust.
+
+#. How is the underactuated propeller controlled?
+    * Vertiq’s pulsing firmware does the math for you! Our ESC translates standard flight controller commands into a drive voltage and applies a sinusoidal pulse (oscillating voltage) on top of the drive signal. The frequency, amplitude, and phase of the oscillating voltage allows us to accelerate and decelerate the motor at specific points throughout the motor’s rotation. This, in turn, makes the propeller hinge into a lead or lag position, creating a coherent torque and/or force in the desired direction. 
+
+#. What messages are being sent from the FC to the ESC to enable pulsing at the right time?
+    * To control the motor we are using something we call the IQUART flight controller interface (IFCI). A throttle, X, and Y signal is sent. Additionally a telemetry request can be sent.
+
+#. Are there instructions for FC integration?
+    * Yes, you can find the documentation on setting up the UPF-23-12 :ref:`here <up12_initial_configuration>`.
+
+#. What mechanisms are the underactuated propeller replacing?
+    * By creating thrust, as well as forces/torques to control roll and pitch, the underactuated propeller effectively replaces additional motors and swashplates. An underactuated motor and propeller gives you 3 degrees of freedom (DOF). Quadrotors fly with 4 DOF, using 4 motors and propellers to control thrust, roll, pitch, and yaw. You only need 1 underactuated motor and propeller and 1 standard motor and propeller to achieve the same degrees of freedom. Similarly, helicopters use a swashplate mechanism, which is a series of motors and complex linkages, to control blade pitch. The underactuated solution is a simpler, lighter replacement for a swashplate, eliminating the additional motors and complexities.
+
+#. How is the propeller mounted to the motor?
+    * The hub of the propeller is mounted to the motor using 4 M2 screws.
+
+#. What communication protocols can be used for pulsing the motor?
+    * The 23-06 2200Kv and 23-14 920Kv modules, which pair with the UPF-23-12, only have 2 input pins available, making IQUART the only control protocol available for the pulsing functionality. When we release larger propellers for larger modules, there will be more inputs available, allowing for communication via DroneCAN.
+
+#. What size vehicle should I have in mind for the UPF-23-12?
+    * While there are various vehicles that can be built around the UPF-23-12, we designed the propeller to optimize flight time and payload capacity for a 250g vehicle. The specific vehicle in mind was a 2-motor helicopter that could replace a quadrotor with an equivalent total propeller disc area, increasing flight time by 30% and payload capacity by up to 6x. Other possible vehicles include 6 DOF quadrotors, coaxial vehicles, tailsitters, and more!
+
+#. Are other propeller sizes available?
+    * We are developing new propellers, but the UPF-23-12 is the only one available for purchase at this time.
+
+#. What are the different styles of underactuated propellers available?
+    * Flapping: The UPF-23-12 is a flapping propeller. It has the main hub hinge and two flap hinges at its blades. The flapping version vectors both forces and torques. If you move the flapping hinges closer together, you vector relatively more force and less torque (until you reach the center, at which point it becomes a teeter hinge and only creates force). If you move the flapping hinges away from each other, you vector relatively more torque and less force (until the flapping hinges are so far away that they are beyond the tip of the propeller, at which point it becomes the rigid version and only generates torques on the vehicle).
+    * Teeter: A teetering underactuated propeller has the main hub hinge and a single teeter hinge between the blades. 
+    * Rigid: A rigid underactuated propeller just has the main hub hinge. This version only creates torques on the vehicle.
