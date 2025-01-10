@@ -63,7 +63,8 @@ The sequence diagram below illustrates how your module reacts to received thrott
     :width: 50%
 
 Note that the first DroneCAN throttle is applied to the motor since no IQUART messages had been received before. Then, when both an IQUART and DroneCAN message are received, 
-the IQUART throttle is applied. Last, DroneCAN throttles are only applied again once the throttle timeout is reached after IQUART disconnects.
+the IQUART throttle is applied. Last, DroneCAN throttles are only applied again once the throttle timeout is reached after IQUART disconnects. If for any reason, the module begins receiving 
+IQUART throttles again at this point, the module will immediately start accepting those as IQUART has a higher priority.
 
 Configuration Example 2
 ##########################
@@ -80,7 +81,7 @@ You configure the following:
     :width: 70%
 
 In this example, the module is configured to ignore all hobby and IQUART throttle messages. So, all received DSHOT throttles are dropped, and throttles are only applied once DroneCAN 
-throttles are received. An important note from this example is that the module will reach the module's :ref:`propeller motor control timeout <manual_timeout>` even if the 
+throttles are received. An important note from this example is that the module will reach its :ref:`propeller motor control timeout <manual_timeout>` even if the 
 flight controller continues to send DSHOT throttles. As they are not processed by the throttle source manager, DSHOT throttles cannot be used to reset the timeout timer.
 
 ********************************
