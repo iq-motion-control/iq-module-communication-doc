@@ -615,6 +615,8 @@ Motor Test
 5. Using the default throttle and duration, select Test motor A. Your module should start spinning
 6. Try some other throttle levels to see the module running at different speeds
 
+.. _configuring_with_ardupilot:
+
 Configuring your Module with DroneCAN Via ArduPilot
 --------------------------------------------------------
 
