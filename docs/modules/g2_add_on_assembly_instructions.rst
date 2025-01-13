@@ -59,6 +59,9 @@ Assembly Instructions:
             <td></td>
     </table>
 
+.. raw:: html
+
+    <br><br> <!-- Adds spacing -->
 
 Pro Kit
 =======
@@ -116,6 +119,10 @@ Assembly Instructions:
         </tr>
     </table>
 
+.. raw:: html
+
+    <br><br> <!-- Adds spacing -->
+
 
 Coil Cover
 ~~~~~~~~~~
@@ -146,9 +153,13 @@ Assembly Instructions:
         </tr>
     </table>
 
+.. raw:: html
+
+    <br><br> <!-- Adds spacing -->
+
 
 Stator Cover Seal
-------------------
+~~~~~~~~~~~~~~~~~~
 
 **Description**: The Pro Kit comes with an IP-sealable stator cover already assembled onto the module. To seal the module to the drone arm, Vertiq provides an O-ring:
 
@@ -181,8 +192,13 @@ Assembly Instructions:
         </tr>
     </table>
 
+.. raw:: html
+
+    <br><br> <!-- Adds spacing -->
+
+
 Power & Communication
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 **Description**: The Pro Kit comes with downward eject power and communication wires coming off the ESC. Downward eject wires are necessary to IP-seal the ESC compartment.
 
 Assembly Instructions:
@@ -207,8 +223,13 @@ Assembly Instructions:
         </tr>
     </table>
 
+.. raw:: html
+
+    <br><br> <!-- Adds spacing -->
+
+
 LED
----
+~~~
 **Description**: The Pro Kit comes with an LED, as well as downward eject power and communication wires for the LED:
 
 - LD - LED board capable of white & RGB flashing 
@@ -239,6 +260,11 @@ Assembly Instructions:
             <td></td>
         </tr>
     </table>
+
+.. raw:: html
+
+    <br><br> <!-- Adds spacing -->
+
 
 .. _visual_aids:
 
