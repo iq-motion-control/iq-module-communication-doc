@@ -42,17 +42,17 @@ Assembly Instructions:
         <tr>
             <td>1</td>
             <td>Place the RCM on the motor’s rotor, aligning the 3 screw holes in the RCM with the 3 screw holes in the spokes of the rotor</td>
-            <td><img src="../_static/module_pictures/g2_add_on/performance_kit_1.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/rcm.png" width="200"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Screw the SCRs into the RCM to fasten it to the rotor. We suggest using an appropriate threadlocker, such as Loctite 243, to prevent screws from backing out during operation.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/performance_kit_2.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scr.png" width="200"></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Place the ADP in the center of the RCM, aligning its holes with those on the rotor.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/performance_kit_3.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/adp.png" width="200"></td>
         </tr>
             <td>4</td>
             <td>The customer will need to acquire screws of the appropriate length to go through their propeller, the ADP, and into the rotor. We suggest using an appropriate threadlocker, such as Loctite 243, to prevent screws from backing out during operation.</td>
@@ -95,22 +95,22 @@ Assembly Instructions:
         <tr>
             <td>1</td>
             <td>Place the SCN over the top of the motor’s rotor, aligning the 3 screw holes in the mesh with the 3 screw holes in the spokes of the rotor.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/pro_kit_1.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scn.png" width="200"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Place the RCM directly on top of the mesh, aligning the 3 screw holes in the RCM with the 3 screw holes in the spokes of the motors. Make sure the mesh, which is sandwiched between the motor and RCM maintains its alignment.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/pro_kit_2.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/rcm.png" width="200"></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Screw the SCRs into the RCM and SCN to fasten them to the rotor. We suggest using an appropriate threadlocker, such as Loctite 243, to prevent screws from backing out during operation.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/performance_kit_2.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scr.png" width="200"></td>
         </tr>
         <tr>
             <td>4</td>
             <td>Place the ADP in the center of the RCM, aligning its holes with those on the rotor.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/performance_kit_3.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/adp.png" width="200"></td>
         </tr>
         <tr>
             <td>5</td>
@@ -144,12 +144,12 @@ Assembly Instructions:
         <tr>
             <td>1</td>
             <td>Place the two CCMs beneath the coils and around the motor, aligning them with each other to allow the screws to hold them together.  Align the dots of the CCMs with the circuit board on the Default Module or where the cables are on the Pro Kit.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/coil_cover_1.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/ccm.png" width="200"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Screw the SCRs into the CCMs, ensuring they are securely fastened and the motor can freely rotate.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/coil_cover_2.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scr_2.png" width="250"></td>
         </tr>
     </table>
 
@@ -183,7 +183,7 @@ Assembly Instructions:
         <tr>
             <td>2</td>
             <td>Place the RNG in the groove of the module’s stator cover and align the screw holes of the module with those of the drone arm.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/stator_cover_seal_1.png" width="100"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/rng.png" width="250"></td>
         </tr>
         <tr>
             <td>3</td>
@@ -209,17 +209,14 @@ Assembly Instructions:
         <tr>
             <th>Step</th>
             <th>Description</th>
-            <th>Visual</th>
         </tr>
         <tr>
             <td>1</td>
             <td>Please see your module's family page to find the wire assembly instructions</td>
-            <td></td>
         </tr>
         <tr>
             <td>2</td>
             <td>You can find ESC Programming instructions <a href="https://iqmotion.readthedocs.io/en/latest/control_center_docs/control_center_start_guide.html">here</a>.</td>
-            <td></td>
         </tr>
     </table>
 
@@ -242,22 +239,18 @@ Assembly Instructions:
         <tr>
             <th>Step</th>
             <th>Description</th>
-            <th>Visual</th>
         </tr>
         <tr>
             <td>1</td>
             <td>Connect the LED board to the dedicated wires coming from the ESC downward eject connector board. Further instructions and visuals can be found <a href="https://iqmotion.readthedocs.io/en/latest/manual/manual_stock_led.html">here</a>.</td>
-            <td></td>
         </tr>
         <tr>
             <td>2</td>
             <td>It is highly recommended to mount the LED heatsink areas to flat metal surfaces to help cool the boards. Please see the <a href="https://www.vertiq.co/s/VERT-LD310_datasheet_preliminary.pdf">LED datasheet for more information on this.</td>
-            <td></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Find LED programming instructions here: <a href="https://iqmotion.readthedocs.io/en/latest/manual/manual_stock_led.html">Stock LED support</a>, <a href="https://iqmotion.readthedocs.io/en/latest/clients/rgb_led.html">RGB control</a>, and <a href="https://iqmotion.readthedocs.io/en/latest/clients/white_led.html">White control</a>.</td>
-            <td></td>
         </tr>
     </table>
 
@@ -272,7 +265,7 @@ Additional Visual Aids
 ======================
 
 .. image:: ../_static/module_pictures/g2_add_on/visual_aid_1.png
-    :width: 100
+    :width: 500
 
 .. image:: ../_static/module_pictures/g2_add_on/visual_aid_2.png
-    :width: 100
+    :width: 500
