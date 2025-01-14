@@ -34,7 +34,7 @@ Redundant Throttle Configurations
 
 There are two types of configurations available to redundant throttle. The first defines the amount of time that the module waits before switching to another throttle 
 source if the active source (the source whose throttles are being applied to module control) goes offline. The second set of parameters defines the priorities of each supported throttle source. You can find the specific parameters 
-at :ref:`throttle_source_manager`. You can access these parameters either a :ref:`Vertiq API <getting_started_with_apis>` or through the :ref:`IQ Control Center <control_center_start_guide>`. 
+at :ref:`throttle_source_manager`. You can access these parameters either using a :ref:`Vertiq API <getting_started_with_apis>` or through the :ref:`IQ Control Center <control_center_start_guide>`. 
 
 The time that a module waits (throttle source timeout) can be configured through the Control Center's tuning tab:
 
