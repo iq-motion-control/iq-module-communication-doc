@@ -72,8 +72,8 @@ The sequence diagram below illustrates how your module reacts to received thrott
     :width: 50%
 
 Note that when two throttles are received at the same time, one through DroneCAN and one through DSHOT, the DroneCAN throttle is always applied to spin the module. This is because DroneCAN's 
-priority (3) is higher than hobby's (2). Only when DroneCAN has gone offline for the throttle source timeout (0.1s) are DSHOT throttles applied. Now, somehow, the flight controller is 
-once again able to transmit throttles, the received DroneCAN throttles are immediately applied to module spinning.
+priority (3) is higher than hobby's (2). Only when DroneCAN has gone offline for the throttle source timeout (0.1s) are DSHOT throttles applied. Now, the flight controller is 
+once again able to successfully transmit DroneCAN throttles, and the received DroneCAN throttles are immediately applied to module spinning.
 
 Configuration Example 2
 ##########################
