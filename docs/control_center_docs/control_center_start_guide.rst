@@ -198,7 +198,7 @@ Using Servo JR connectors makes it easy to connect with, and disconnect from the
 
 Single Module Wiring
 ---------------------------
-To communicate with a single module, simply connect the Servo JR female connector to the FTDI.
+To communicate with a single module, simply connect the Servo JR female connector to the FTDI and the power to a power supply.
 
 .. note::
     Please ensure that your USB-to-UART device's TX port is connected to your module's RX port, and your module's TX port to the USB-to-UART device's RX port.
