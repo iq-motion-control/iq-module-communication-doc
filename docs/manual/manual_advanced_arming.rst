@@ -44,18 +44,6 @@ Reboot Armed State
 **After a reboot, regardless of what armed state the motor was in previously, it will start up in the disarmed state.** Users must transition the 
 motor from disarmed to armed to begin spinning again following a reboot.
 
-.. _armed_throttle_source_lockout:
-
-Armed Throttle Source Lockout
-==============================
-**When armed, the module will always choose one throttle source as its armed throttle source, and reject incoming throttle commands from all other throttle sources.** 
-For an explanation on what is a throttle source, see the :ref:`throttle_sources` section. These rejected throttle commands will not affect how the module is spinning 
-and will not trigger disarming transitions. For example, if DroneCAN was the armed throttle source, throttle commands received over DroneCAN would be treated 
-normally, and throttle commands received over Hobby PWM would be rejected.
-
-How the module determines the armed throttle source depends on how the arming transition is triggered. See the individual sections on types of arming transitions 
-in :ref:`arming_state_transitions` for more details.
-
 .. _arming_state_transitions:
 
 Armed State Transitions
@@ -145,15 +133,10 @@ Control Center with the *Consecutive Arming Throttles to Arm* parameter, as show
 region is received. The module must receive the specified number of consecutive arming throttles all in a row, with no throttle commands outside of 
 the arming throttle region coming in between them.** For example, if the module's *Consecutive Arming Throttles to Arm* parameter was set to 10, and 
 it received 9 throttle commands in the arming throttle region, 1 outside of the region, and finally 1 throttle command in the region, 
-the module would not arm. At the end of that sequence, the module has only received 1 consecutive arming throttle, because the throttle command 
+the module would not arm. At the end of that sequence, the module has only received 1 consecutive arming throttle because the throttle command 
 from outside of the arming region reset the count.
 
-**It is also important to note that the consecutive arming throttles must be from the same** :ref:`throttle source <throttle_sources>`. A change in the source of 
-arming throttles will cause the count to reset. For example, if 5 arming throttles are sent over DroneCAN, and then 1 arming throttle 
-is received over hobby PWM, the count of consecutive arming throttles will be 1. The change of source for the arming throttles caused a reset of the count. 
-
-**To summarize, the module must receive a user-configurable number of consecutive throttle commands all in the arming throttle region and 
-all from the same source to trigger an arming transition.**
+**To summarize, the module must receive a user-configurable number of consecutive throttle commands, all in the arming throttle region, to trigger an arming transition.**
 
 Arming with Throttle Example
 -----------------------------
@@ -186,11 +169,9 @@ An illustration of the arming throttle region defined by these parameters is sho
 
     Throttle Region Illustration for Arming Example
 
-Now that the module is properly configured we can begin sending throttle commands to it. The module is in the disarmed state initially. Also, 
-for this example, we will assume there is only one source sending throttle commands. For more information on how multiple sources sending throttle 
-commands affect the arming process, see :ref:`arming_consecutive_throttles`.
+Now that the module is properly configured, we can begin sending throttle commands to it. The module is in the disarmed state initially.
 
-Imagine that we begin sending 30% throttle commands to the module. Nothing will happen in this case; the module will not spin and it will not arm. 
+Imagine that we begin sending 30% throttle commands to the module. Nothing will happen in this case, and the module will not spin and it will not arm. 
 The module is disarmed, so throttle commands will not cause it to spin. These 30% throttle commands are outside the arming throttle region, 
 so they will not cause the module to arm.
 
@@ -219,10 +200,9 @@ throttle region is received, a disarming transition will occur.  For more inform
     Disarming Throttle Region Limits in IQ Control Center
 
 The *Disarm Throttle Upper Limit* defines the upper, more positive bound of the disarming throttle region. It should always be more positive than or equal to the 
-*Disarm Throttle Lower Limit*. The *Disarm Throttle Lower Limit* defines the lower bound of the disarming throttle region. **Any throttle command from the same** :ref:`source <throttle_sources>`
-**as the module armed with that the module receives in this region is considered a disarming throttle and will cause a disarming transition.** For more information on 
-the throttle source requirements for disarming, see :ref:`disarming_throttle_source_requirement` below. Note that unlike with arming throttles, it always only takes one 
-disarming throttle to trigger a disarm. This is to allow disarms to happen as quickly as possible in critical safety situations.
+*Disarm Throttle Lower Limit*. The *Disarm Throttle Lower Limit* defines the lower bound of the disarming throttle region. **Any throttle command the module receives in this region is considered a disarming throttle and will cause a disarming transition.** 
+Like with arming throttles, there is a *Consecutive Disarming Throttles to Disarm* parameter that allows users to select how many throttles in the disarming region should trigger the 
+disarming behavior.
 
 The image below illustrates where the disarming throttle region would be for an example setup where the *Disarm Throttle Upper Limit* is set to 0.15 and the 
 *Disarm Throttle Lower Limit* is set to 0.0. Any throttle command between 0% and 15% is a disarming throttle in this setup.
@@ -244,16 +224,6 @@ and throttles cannot cause an disarming transition. Otherwise, disarming throttl
     :alt: Disarm on Throttle Parameter
 
     Disarm on Throttle Parameter in IQ Control Center
-
-.. _disarming_throttle_source_requirement:
-
-Disarming Throttle Source Requirement
---------------------------------------
-**To disarm with a throttle command that throttle command must be from the same** :ref:`source <throttle_sources>` **as the throttle commands that armed the module.** This is to reduce the 
-chance of noise on communication interfaces that are not being actively used from unintentionally triggering a disarm.
-
-For example, if a module armed using throttle commands sent over DroneCAN, then any throttle commands sent using a different communication protocol, such as :ref:`hobby_standard_pwm`, 
-could not trigger a disarm. Throttle commands from a different source will have no effect on the armed state of the module and will not change how the module is spinning.
 
 Disarming with Throttle Example
 ---------------------------------
@@ -285,9 +255,7 @@ An illustration of the disarming throttle region defined by these parameters is 
 
     Disarming Example Throttle Region
 
-Now that the module is properly configured we can begin sending throttle commands to it. Assume that the module is already in the armed state, and the throttle source 
-the module armed with is the same throttle source we are using to send these disarming throttles. For more information on how throttle sources affect disarming, 
-see the :ref:`disarming_throttle_source_requirement` section.
+Now that the module is properly configured we can begin sending throttle commands to it. Assume that the module is already in the armed state.
 
 Imagine that we begin sending 15% throttle commands to the module. Because the module is armed, it will spin at 15%, but the module’s arming state will be unaffected. 
 These 15% throttle commands are outside the disarming throttle region, so they will not cause the module to disarm.
@@ -296,7 +264,7 @@ If we switch to sending -5% throttle commands, we can expect a similar result. T
 the 15% throttle commands, but its armed state will not change.
 
 If we instead begin sending 5% throttle commands, those commands will fall within the disarming throttle region, so they are counted as disarming throttles. 
-When the first of these 5% throttle commands are received the module will immediately begin a disarming transition. For more details on what the behavior of 
+When enough of these 5% throttle commands are received as defined by *Consecutive Disarming Throttles to Disarm*, the module will immediately begin a disarming transition. For more details on what the behavior of 
 the module will be during the disarming transition, refer to the :ref:`advanced_disarming_behavior` section.
 
 Throttle Region Overlap
@@ -308,8 +276,6 @@ User Commands
 **************
 It is possible for users to manually trigger arming and disarming transitions over DroneCAN and IQUART. This approach is generally more difficult to integrate with 
 flight controllers as it requires modifying them to send the arm and disarm commands at the appropriate times, but it is possible for advanced users.
-
-Before attempting to arm manually, be sure to refer to :ref:`manual_arming_throttle_source` for information on how to set the *Manual Arming Throttle Source* appropriately.
 
 .. _arming_user_command_dronecan:
 
@@ -351,29 +317,6 @@ command is received.
 
 .. _manual_arming_throttle_source:
 
-Manual Arming Throttle Source
-##############################
-When the module is armed, it must have a specific throttle source set as its armed throttle source, so it knows to reject throttles from other sources for 
-spinning and disarming. See the :ref:`armed_throttle_source_lockout` section for more information on this. 
-
-When the module arms using throttle regions as described in :ref:`throttle_regions`, then the armed throttle source is determined by the throttle source that sent the needed consecutive throttle commands. 
-When a user manually arms the module using commands, it is not clear what source they intend the module to take throttle commands from.
-
-**The** *Manual Arming Throttle Source* **is a parameter that allows users to configure what throttle source they want the module to use as its armed throttle source 
-when arming manually.** This parameter can be set in IQ Control Center under the Advanced tab, as shown below.
-
-.. figure:: ../_static/manual_images/arming/manual_arming_throttle_source_parameter.png
-    :align: center
-    :width: 60%
-    :alt: Manual Arming Throttle Source Parameter
-
-    Manual Arming Throttle Source Parameter in IQ Control Center
-
-When the module is armed manually, it will use the *Manual Arming Throttle Source* as its armed throttle source. **That means that it will only listen to throttle 
-commands from the specified source for spinning and disarming when it is armed manually.** For example, if you had the *Manual Arming Throttle Source* set to *DroneCAN* and manually armed the module,
-then any throttle commands from DroneCAN would be accepted, but any sent over :ref:`hobby_standard_pwm` would be rejected. **It is essential to set the** *Manual Arming Throttle Source*
-**before attempting to arm manually.**
-
 Timeout
 ********
 Timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout. Note that 
@@ -392,10 +335,7 @@ immediately arm on the first throttle message it receives, regardless of its val
 
     Always Armed Parameter in IQ Control Center
 
-**When this parameter is set to the** *Always Armed* **value, the first throttle command received will cause the module to immediately arm.** The module will then set 
-its armed throttle source to whatever is specified in the *Manual Arming Throttle Source* parameter. For more information on the *Manual Arming Throttle Source* parameter, 
-see :ref:`manual_arming_throttle_source`. **If using** *Always Armed*, **it is essential to also set the** *Manual Arming Throttle Source* **appropriately so the proper source 
-will be used by the module after arming.**
+**When this parameter is set to the** *Always Armed* **value, the first throttle command received will cause the module to immediately arm.**
 
 **It is recommended to avoid using this feature and to leave this parameter set to** *Normal Arming* **whenever possible.** Arming on any throttle message may lead 
 to the module arming on high percentage throttles and suddenly spinning rapidly, posing a risk to anyone nearby. Using arming throttle regions as described 
@@ -407,10 +347,8 @@ Arming Behavior
 ================
 When an arming transition (from disarmed to armed) occurs, the module executes its arming behavior. The arming behavior is not configurable, it will always be the same. 
 
-The module will play the arming song, which consists of 2 short, high-pitched notes. The end of this song indicates the module is armed. The module will then begin spinning 
-at the throttle percentage commanded by its last throttle command, and will begin accepting new throttle commands from its armed throttle source.
-
-A video demonstrating what the arming and disarming songs sound like can be found in the DSHOT portion of the :ref:`hobby_fc_tutorial` tutorial.
+The module will play the :ref:`arming song <arming_song>`, which consists of 2 short, high-pitched notes. The end of this song indicates the module is armed. The module will then begin spinning 
+at the throttle percentage commanded by its last throttle command, and will begin accepting new throttle commands.
 
 .. _advanced_disarming_behavior:
 
@@ -418,7 +356,7 @@ Disarming Behavior
 ===================
 Vertiq modules' disarming process attempts to safely stop the module, and clearly indicate that the disarm procedure is complete. **The disarming 
 process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a stop, plays its disarm song as specified by its 
-playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the disarm song, and what final state it 
+playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the :ref:`disarm song <disarm_song>`, and what final state it 
 ends up in after playing the song are all configurable by the user. 
 
 The image below summarizes this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
@@ -664,7 +602,7 @@ Module Setup
 #############
 First, configure the arming throttle region on the Vertiq module. To do this, ensure that *Arm on Throttle* is set to *Arm on Throttle* in the Control Center, 
 to turn on the arming throttle region. Then, set the *Arm Throttle Upper Limit* to 0.07 and the *Arm Throttle Lower Limit* to 0.03. This means that any throttle 
-command between 3% and 7% will be treated as an arming throttle. The flight controllers arming throttle will be configured to be at 5%, right in the middle 
+command between 3% and 7% will be treated as an arming throttle. The flight controller's arming throttle will be configured to be at 5%, right in the middle 
 of this range. So this region choice provides some tolerance for the arming throttles.
 
 Set the *Consecutive Arming Throttles to Arm* to 10, so the module is less likely to arm unintentionally if there is any electrical noise. These configurations 
