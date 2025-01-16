@@ -52,6 +52,11 @@ motor from disarmed to armed to begin spinning again following a reboot.
 
 Armed State Transitions
 ==========================
+
+.. note::
+    If your module does not support the :ref:`redundant throttle feature <redundant_throttle_manual>`, please also read the :ref:`legacy_arming_support` section for additional constraints 
+    on the advanced arming feature. You can find if your module's firmware supports redundant throttle on its family page.
+
 There are two types of armed state transitions:
 
 * **Arming**: A transition from disarmed to armed. See :ref:`advanced_arming_behavior` for more details on what occurs during and after an arming transition.
@@ -119,6 +124,11 @@ then there is no arming throttle region and throttles cannot cause an arming tra
 
 Consecutive Arming Throttles
 ------------------------------
+
+.. note::
+    If your module does not support the :ref:`redundant throttle feature <redundant_throttle_manual>`, please also read the :ref:`legacy_arming_support` section for additional constraints 
+    on the advanced arming feature. You can find if your module's firmware supports redundant throttle on its family page.
+
 **Users can specify the number of consecutively received arming throttles required to cause an arming transition.** This can be useful 
 if the module is in a high-noise situation where there is a danger of noise being interpreted as a throttle command, or as a general safety 
 feature to help prevent unintentional arming. 
@@ -189,6 +199,10 @@ arming transition. When the module arms, it will perform its arming behavior, as
 
 Disarming With the Disarming Throttle Region
 ##############################################
+
+.. note::
+    If your module does not support the :ref:`redundant throttle feature <redundant_throttle_manual>`, please also read the :ref:`legacy_arming_support` section for additional constraints 
+    on the advanced arming feature. You can find if your module's firmware supports redundant throttle on its family page.
 
 Disarming Throttle Region Definition
 --------------------------------------
@@ -278,6 +292,11 @@ throttle region will take precedence, and throttles in the overlapping region wi
 
 User Commands
 **************
+
+.. note::
+    If your module does not support the :ref:`redundant throttle feature <redundant_throttle_manual>`, please also read the :ref:`legacy_arming_support` section for additional constraints 
+    on the advanced arming feature. You can find if your module's firmware supports redundant throttle on its family page.
+
 It is possible for users to manually trigger arming and disarming transitions over DroneCAN and IQUART. This approach is generally more difficult to integrate with 
 flight controllers as it requires modifying them to send the arm and disarm commands at the appropriate times, but it is possible for advanced users.
 
@@ -331,6 +350,11 @@ whether the module performs its disarming behavior or not on a timeout depends o
 
 Always Armed
 *************
+
+.. note::
+    If your module does not support the :ref:`redundant throttle feature <redundant_throttle_manual>`, please also read the :ref:`legacy_arming_support` section for additional constraints 
+    on the advanced arming feature. You can find if your module's firmware supports redundant throttle on its family page.
+
 For users who want to avoid any arming procedure altogether, there is the *Always Armed* parameter. **This parameter allows users to specify that they want the motor to 
 immediately arm on the first throttle message it receives, regardless of its value.** This parameter can be found in the Advanced tab of IQ Control Center as shown below.
 
