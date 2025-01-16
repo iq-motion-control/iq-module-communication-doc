@@ -1,3 +1,5 @@
+.. _redundant_throttle_manual:
+
 ##############################
 Redundant Throttle Support
 ##############################

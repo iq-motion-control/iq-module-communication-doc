@@ -13,6 +13,10 @@ simplifying flight controller integration.
 
 The :ref:`arming_module_support` section below details which Vertiq modules currently support advanced arming.
 
+.. note::
+    If your module does not support the :ref:`redundant throttle feature <redundant_throttle_manual>`, please also read the :ref:`legacy_arming_support` section for additional constraints 
+    on the advanced arming feature. You can find if your module's firmware supports redundant throttle on its family page.
+
 .. _arming_module_support:
 
 Module Support
@@ -322,6 +326,8 @@ Timeout
 Timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout. Note that 
 whether the module performs its disarming behavior or not on a timeout depends on the timeout feature configurations. See the :ref:`manual_timeout` section, specifically the 
 :ref:`timeout_meaning` subsection, for more information.
+
+.. _always_armed:
 
 Always Armed
 *************
@@ -677,3 +683,56 @@ parameter in QGroundControl.
     :alt: MOT_SPIN_ARM Parameter
 
     MOT_SPIN_ARM Parameter in QGroundControl
+
+.. _legacy_arming_support:
+
+Legacy Arming Support
+========================================
+
+Please note that if your module does not yet support the :ref:`redundant throttle feature <redundant_throttle_manual>`, it will be subject to arming source lockout and other 
+throttle source requirements. See your module's family page to see if redundant throttle is supported on your module's firmware. The limitations of non-redundant throttle based arming 
+are discussed below.
+
+.. _armed_throttle_source_lockout:
+
+Armed Throttle Source Lockout
+********************************
+**When armed, the module will always choose one throttle source as its armed throttle source, and reject incoming throttle commands from all other throttle sources.** 
+For an explanation on what is a throttle source, see the :ref:`throttle_sources` section. These rejected throttle commands will not affect how the module is spinning 
+and will not trigger disarming transitions. For example, if DroneCAN was the armed throttle source, throttle commands received over DroneCAN would be treated 
+normally, and throttle commands received over Hobby PWM would be rejected.
+
+How the module determines the armed throttle source depends on how the arming transition is triggered. See the individual sections on types of arming transitions 
+in :ref:`arming_state_transitions` for more details.
+
+Consecutive Arming and Disarming Throttles
+**********************************************
+Consecutive arming or disarming throttles must be from the same :ref:`throttle source <throttle_sources>`. A change in the source of 
+arming throttles will cause the count to reset. For example, if 5 arming throttles are sent over DroneCAN, and then 1 arming throttle 
+is received over hobby PWM, the count of consecutive arming throttles will be 1. The change of source for the arming throttles caused a reset of the count. 
+
+**To summarize, the module must receive a user-configurable number of consecutive throttle commands all in the arming or disarming throttle region and 
+all from the same source to trigger an arming state transition.**
+
+Manual Arming Throttle Source
+*******************************
+When the module is armed, it must have a specific throttle source set as its armed throttle source, so it knows to reject throttles from other sources for 
+spinning and disarming. See the :ref:`armed_throttle_source_lockout` section for more information on this. 
+
+When the module arms using throttle regions as described in :ref:`throttle_regions`, then the armed throttle source is determined by the throttle source that sent the needed consecutive throttle commands. 
+When a user manually arms the module using commands or the module is set to :ref:`always armed <always_armed>`, it is not clear what source they intend the module to take throttle commands from.
+
+**The** *Manual Arming Throttle Source* **is a parameter that allows users to configure what throttle source they want the module to use as its armed throttle source 
+when arming manually.** This parameter can be set in IQ Control Center under the Advanced tab, as shown below.
+
+.. figure:: ../_static/manual_images/arming/manual_arming_throttle_source_parameter.png
+    :align: center
+    :width: 60%
+    :alt: Manual Arming Throttle Source Parameter
+
+    Manual Arming Throttle Source Parameter in IQ Control Center
+
+When the module is armed manually or when using always armed, it will use the *Manual Arming Throttle Source* as its armed throttle source. **That means that it will only listen to throttle 
+commands from the specified source for spinning and disarming when it is armed manually.** For example, if you had the *Manual Arming Throttle Source* set to *DroneCAN* and manually armed the module,
+then any throttle commands from DroneCAN would be accepted, but any sent over :ref:`hobby_standard_pwm` would be rejected. **It is essential to set the** *Manual Arming Throttle Source*
+**before attempting to arm manually.**
