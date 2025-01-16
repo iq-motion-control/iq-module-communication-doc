@@ -57,6 +57,8 @@ If you are using the :ref:`Advanced Arming feature <manual_advanced_arming>`, th
     Your browser does not support the audio element.
     </audio>
 
+.. _disarm_song:
+
 Disarming
 ------------
 If you are using the :ref:`Advanced Arming feature <manual_advanced_arming>`, then, on disarming, your module will perform its :ref:`advanced_disarming_behavior`. 

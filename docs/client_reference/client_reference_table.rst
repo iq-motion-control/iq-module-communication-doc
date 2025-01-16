@@ -178,3 +178,9 @@ Type ID 100 | RGB LED
 Type ID 101 | White LED
 =================================================
 .. include:: ../clients/white_led.rst
+
+.. _throttle_source_manager:
+
+Type ID 104 | Throttle Source Manager
+=================================================
+.. include:: ../clients/throttle_source_manager.rst
