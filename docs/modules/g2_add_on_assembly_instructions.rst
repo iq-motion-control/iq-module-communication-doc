@@ -14,9 +14,10 @@ Default Kit
 ===========
 Vertiq’s Default Modules allow customers to test and integrate their modules quickly and easily.
 These modules are characterized by a side-eject connector board with solder pads that can accept a wide range of power, communication, and LED wires.
+
 Some (not all) Default Modules come as Kits when Vertiq provides a propeller adapter and accompanying screws.
+For electrical interface instructions, please visit the Hardware Setup Walkthrough on your product’s page in ReadTheDocs.
 For Default Kits, please follow standard propeller adapter instructions provided by your propeller supplier.
-For electrical interface instructions, please visit the Hardware Setup Walkthrough on your modules’s Family page.
 
 
 Performance Kit
@@ -41,18 +42,18 @@ Assembly Instructions:
         </tr>
         <tr>
             <td>1</td>
-            <td>Place the RCM on the motor’s rotor, aligning the 3 screw holes in the RCM with the 3 screw holes in the spokes of the rotor</td>
-            <td><img src="../_static/module_pictures/g2_add_on/rcm.png" width="200"></td>
+            <td>Place the RCM on the motor’s rotor, aligning the 3 screw holes in the RCM with the 3 screw holes in the spokes of the rotor.</td>
+            <td><img src="../_static/module_pictures/g2_add_on/rcm.png" width="400"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Screw the SCRs into the RCM to fasten it to the rotor. We suggest using an appropriate threadlocker, such as Loctite 243, to prevent screws from backing out during operation.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/scr.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scr.png" width="400"></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Place the ADP in the center of the RCM, aligning its holes with those on the rotor.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/adp.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/adp.png" width="400"></td>
         </tr>
             <td>4</td>
             <td>The customer will need to acquire screws of the appropriate length to go through their propeller, the ADP, and into the rotor. We suggest using an appropriate threadlocker, such as Loctite 243, to prevent screws from backing out during operation.</td>
@@ -95,22 +96,22 @@ Assembly Instructions:
         <tr>
             <td>1</td>
             <td>Place the SCN over the top of the motor’s rotor, aligning the 3 screw holes in the mesh with the 3 screw holes in the spokes of the rotor.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/scn.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scn.png" width="400"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Place the RCM directly on top of the mesh, aligning the 3 screw holes in the RCM with the 3 screw holes in the spokes of the motors. Make sure the mesh, which is sandwiched between the motor and RCM maintains its alignment.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/rcm.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/rcm.png" width="400"></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Screw the SCRs into the RCM and SCN to fasten them to the rotor. We suggest using an appropriate threadlocker, such as Loctite 243, to prevent screws from backing out during operation.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/scr.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scr.png" width="400"></td>
         </tr>
         <tr>
             <td>4</td>
             <td>Place the ADP in the center of the RCM, aligning its holes with those on the rotor.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/adp.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/adp.png" width="400"></td>
         </tr>
         <tr>
             <td>5</td>
@@ -129,7 +130,7 @@ Coil Cover
 **Description**: The coil cover is fastened around the motor and underneath the coils. It is designed to protect the underside of the coils from foreign object debris. The parts that make up the Pro Kit’s Coil Cover include:
 
 - CCM (Qty. 2) - plastic part made of PA 12 glass-filled nylon designed to protect from >1mm debris. Two of these parts are needed for the coil cover.
-- SCR (Qty. 2) - MX screws to fasten the two CCMs together around the motor
+- SCR (Qty. 2) - M2 screws to fasten the two CCMs together around the motor
 
 Assembly Instructions:
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -144,12 +145,12 @@ Assembly Instructions:
         <tr>
             <td>1</td>
             <td>Place the two CCMs beneath the coils and around the motor, aligning them with each other to allow the screws to hold them together.  Align the dots of the CCMs with the circuit board on the Default Module or where the cables are on the Pro Kit.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/ccm.png" width="200"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/ccm.png" width="400"></td>
         </tr>
         <tr>
             <td>2</td>
             <td>Screw the SCRs into the CCMs, ensuring they are securely fastened and the motor can freely rotate.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/scr_2.png" width="250"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/scr_2.png" width="550"></td>
         </tr>
     </table>
 
@@ -183,7 +184,7 @@ Assembly Instructions:
         <tr>
             <td>2</td>
             <td>Place the RNG in the groove of the module’s stator cover and align the screw holes of the module with those of the drone arm.</td>
-            <td><img src="../_static/module_pictures/g2_add_on/rng.png" width="250"></td>
+            <td><img src="../_static/module_pictures/g2_add_on/rng.png" width="450"></td>
         </tr>
         <tr>
             <td>3</td>
