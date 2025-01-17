@@ -70,5 +70,5 @@ html_static_path = ['_static']
 
 html_logo = "_static/VertiqClear.png"
 
-html_css_files = ['custom_width.css', 'bottom_caption.css', 'tight_table.css']
+html_css_files = ['custom_width.css', 'bottom_caption.css', 'tight_table.css', 'g2_add_on_table.css']
 
