@@ -25,6 +25,7 @@
    modules/vertiq_60xx_family
    modules/vertiq_81xx_family
    modules/fortiq_42XX
+   modules/g2_add_on_assembly_instructions
 
 .. toctree::
    :caption: FAQ
