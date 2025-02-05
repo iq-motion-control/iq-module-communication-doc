@@ -239,7 +239,7 @@ NOTE: Component designator labels (F1, R1, etc) may not appear on connector boar
 
     Figure 15: 81 sized motor with CN10.2.0 Connector
 	
-To ground the motor frame, A PTC or 0 ohm resistor should be soldered to the footprint pads labeled 1 and 2 in the relevant image above. One pad of the component footprint 
+To ground the motor frame, a PTC or 0 ohm resistor should be soldered to the footprint pads labeled 1 and 2 in the relevant image above. One pad of the component footprint 
 is connected directly to the V- ground input while the other pad is tied to an exposed grounding pad underneath a nearby mounting screw. The mounting screw will provide an 
 electrical path from the grounding pad to the motor’s frame. The standard footprint sizes of the component pads and recommended part numbers can be found below:
 
