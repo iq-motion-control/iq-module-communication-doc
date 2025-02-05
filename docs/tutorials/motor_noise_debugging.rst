@@ -4,7 +4,7 @@
 .. _motor_noise_debugging:
 
 ***********************************************************************
-Understanding And Debugging Communication Errors From Motor Noise
+Communication Errors And Motor Noise
 ***********************************************************************
 
 Where Does Motor Noise Come From?
