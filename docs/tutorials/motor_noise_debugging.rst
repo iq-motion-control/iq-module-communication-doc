@@ -205,9 +205,10 @@ and 81 sized motors and their connector boards will be provided below. The nonpo
 	1. Solderpad connected to V-/ground 
 	2. Solderpad connected to grounding screw 
 	3. Grounding screw 
-	4. Mounting screw. 
-
-NOTE: Component designator labels (F1, R1, etc) may not appear on connector board silkscreen.
+	4. Mounting screw
+	
+.. note::
+	Component designator labels (F1, R1, etc) may not appear on connector board silkscreen.
 
 .. figure:: ../_static/tutorial_images/motor_noise/40CN2_1_2_labelled.png
     :align: center
