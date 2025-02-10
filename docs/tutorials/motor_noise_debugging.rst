@@ -4,7 +4,7 @@
 .. _motor_noise_debugging:
 
 ***********************************************************************
-Communication Errors And Motor Noise
+Communication Errors and Motor Noise
 ***********************************************************************
 
 Where Does Motor Noise Come From?
@@ -195,70 +195,70 @@ vibration resistant features include, but are not limited to the following:
 Additionally, consider making redundant ground connections through a fuse or polymeric positive temperature coefficient device (PTC) to prevent high current flows through 
 a carbon fiber frame.
 
-Grounding Vetiq Motors Frames
+Grounding Your Vertiq Module's Frame
 #####################################################
 
-Vertiq's Pro Kit motors as well as many modular motors in the 40, 60, and 81 diameter sizes are shipped with a user accessible, nonpopulated component footprint. 
-This component footprint provides a convenient method for connecting the motor’s frame to the V- electrical ground through a mounting screw. Illustrations of the 40, 60, 
-and 81 sized motors and their connector boards will be provided below. The nonpopulated footprint’s pads and the mounting screws are labeled:
+Vertiq's Pro Kit modules, as well as many modular motors in the 40, 60, and 81 diameter families are shipped with a user accessible, nonpopulated component footprint. 
+This footprint provides a convenient method for connecting the module’s frame to the V- electrical ground through a mounting screw. Illustrations of the 40, 60, 
+and 81 sized modules and their connector boards are provided below. The nonpopulated footprint’s pads and the mounting screws are labeled:
 
-	1. Solderpad connected to V-/ground 
-	2. Solderpad connected to grounding screw 
+	1. Solder pad connected to V-/ground 
+	2. Solder pad connected to grounding screw 
 	3. Grounding screw 
 	4. Mounting screw
 	
 .. note::
-	Component designator labels (F1, R1, etc) may not appear on connector board silkscreen.
+	Component designator labels (F1, R1, etc) may not appear on the connector board's silkscreen.
 
 .. figure:: ../_static/tutorial_images/motor_noise/40CN2_1_2_labelled.png
     :align: center
 
-    Figure 10: 40 sized motor with CN2.1.2 Connector
+    Figure 10: 40 sized module with CN2.1.2 Connector
 	
 .. figure:: ../_static/tutorial_images/motor_noise/40CN3_1_labelled.png
     :align: center
 
-    Figure 11: 40 sized motor with CN3.1.0 Connector
+    Figure 11: 40 sized module with CN3.1.0 Connector
 	
 .. figure:: ../_static/tutorial_images/motor_noise/60CN5_1_labelled.png
     :align: center
 
-    Figure 12: 60 sized motor with CN5.1.0 Connector
+    Figure 12: 60 sized module with CN5.1.0 Connector
 	
 .. figure:: ../_static/tutorial_images/motor_noise/60CN6_2_labelled.png
     :align: center
 
-    Figure 13: 60 sized motor with CN6.2.0 Connector
+    Figure 13: 60 sized module with CN6.2.0 Connector
 	
 .. figure:: ../_static/tutorial_images/motor_noise/81CN8_1_labelled.png
     :align: center
 
-    Figure 14: 81 sized motor with CN8.1.0 Connector
+    Figure 14: 81 sized module with CN8.1.0 Connector
 	
 .. figure:: ../_static/tutorial_images/motor_noise/81CN10_2_labelled.png
     :align: center
 
-    Figure 15: 81 sized motor with CN10.2.0 Connector
+    Figure 15: 81 sized module with CN10.2.0 Connector
 	
-To ground the motor frame, a PTC or 0 ohm resistor should be soldered to the footprint pads labeled 1 and 2 in the relevant image above. One pad of the component footprint 
-is connected directly to the V- ground input while the other pad is tied to an exposed grounding pad underneath a nearby mounting screw. The mounting screw will provide an 
-electrical path from the grounding pad to the motor’s frame. The standard footprint sizes of the component pads and recommended part numbers can be found below:
+To ground the module's frame, a PTC or 0 ohm resistor should be soldered to the footprint pads labeled 1 and 2 in the relevant image above. One pad of the component footprint 
+is connected directly to the V- ground input while the other pad is tied to an exposed grounding pad underneath the nearby mounting screw (3). The mounting screw will provide an 
+electrical path from the grounding pad to the module’s frame. The standard footprint sizes of the component pads and recommended part numbers can be found below:
 
-* 40XX
+* 40-XX
 	* CN2.1.2: US 0805 (M 2012)
 		* PTC PN: 0805L005/30YR
 		* 0 ohm Resistor PN: ERJ-6GEY0R00V
 	* CN3.1.0: US 0805 (M 2012)
 		* PTC PN: 0805L005/30YR
 		* 0 ohm Resistor PN: ERJ-6GEY0R00V
-* 60XX
+* 60-XX
 	* CN5.1.0: US 0805 (M 2012)
 		* PTC PN: 0805L002YR
 		* 0 ohm Resistor PN: ERJ-6GEY0R00V
 	* CN6.2.0: US 0603 (M 1608)
 		* PTC PN: 0ZCM0002FF2G
 		* RMCF0603ZT0R00
-* 81XX
+* 81-XX
 	* CN8.1.0: US1206 (M 3216)
 		* PTC PN: 1206L005/60WR
 		* 0 Ohm Resistor: RMCF1206ZT0R00
@@ -266,8 +266,8 @@ electrical path from the grounding pad to the motor’s frame. The standard foot
 		* PTC PN: 1206L005/60WR
 		* 0 Ohm Resistor: RMCF1206ZT0R00
 
-Continuity between the solderpad and the motor frame can be confirmed using a multimeter between the pad labelled 1 (V-/ground net of the solderpad) and the screwhead 
-labelled 4 (mounting screw opposite of the grounding screw). If continuity cannot be established with both screws and the grounding component is in place, then tighten the 
+Continuity between the solder pad and the module's frame can be confirmed using a multimeter between the pad labelled 1 (V-/ground net of the solder pad) and the screwhead 
+labelled 4 (mounting screw opposite of the grounding screw). If continuity cannot be established when both screws and the grounding component are in place, then tighten the 
 screws a bit and try again, repeating as necessary. If using a PTC, please consider the nominal resistance of the device when performing the continuity test. Testing 
 continuity should be done to confirm that the mounting screw is touching and electrically connected to the grounding pad on the PCB. Tightening the screws will also help 
-the mounting screw pierce the black anodization applied to the motor frame inside the screw hole, which can resist the flow of grounding current.  
+the mounting screw pierce the black anodization applied to the module frame inside the screw hole, which can resist the flow of grounding current.  
