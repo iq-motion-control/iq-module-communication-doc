@@ -198,7 +198,7 @@ a carbon fiber frame.
 Grounding Your Vertiq Module's Frame
 #####################################################
 
-Vertiq's Pro Kit modules, as well as many modular motors in the 40, 60, and 81 diameter families are shipped with a user accessible, nonpopulated component footprint. 
+Vertiq's Pro Kit modules, as well as many Vertiq G2 modules are shipped with a user accessible, nonpopulated component footprint. 
 This footprint provides a convenient method for connecting the module’s frame to the V- electrical ground through a mounting screw. Illustrations of the 40, 60, 
 and 81 sized modules and their connector boards are provided below. The nonpopulated footprint’s pads and the mounting screws are labeled:
 
