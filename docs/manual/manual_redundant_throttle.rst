@@ -161,7 +161,7 @@ DroneCAN and DSHOT Arming interaction
 When disarmed, flight controllers transmit explicit disarm commands via DSHOT. Vertiq modules accept these commands, and transition to disarmed. As such, if using DSHOT and DroneCAN as 
 redundant throttle sources, your module can end up in an arming-disarming loop if arming on throttle. Suppose your arming region is 0-12.5% (your module's default), then when the flight controller 
 is disarmed, DSHOT will transmit the disarm command and DroneCAN a 0% throttle command. When arming on throttle, DroneCAN will arm the module after receiving the correct number of 
-throttles which is immediately overwritten by the explicit DSHOT disarm which is again overwritten by receiving the correct number of DroneCAN throttles. To avoid this behavior, 
+throttles. Arming is immediately overwritten by the explicit DSHOT disarm which is again overwritten by receiving the correct number of DroneCAN throttles. To avoid this behavior, 
 we highly recommend disabling Arm on Throttle as described in :ref:`arm_with_armingstatus`.
 
 DroneCAN and IFCI Arming interaction
@@ -170,5 +170,5 @@ DroneCAN and IFCI Arming interaction
 When disarmed, PX4 flight controllers :ref:`may transmit explicit disarm commands via IQUART depending on your configuration <ifci_px4_flight_controller>`. Vertiq modules accept these commands, and transition to disarmed. As such, if using IFCI and DroneCAN as 
 redundant throttle sources, your module can end up in an arming-disarming loop if arming on throttle. Suppose your arming region is 0-12.5% (your module's default), then when the flight controller 
 is disarmed, IQUART will transmit the disarm command and DroneCAN a 0% throttle command. When arming on throttle, DroneCAN will arm the module after receiving the correct number of 
-throttles which is immediately overwritten by the explicit IQUART disarm which is again overwritten by receiving the correct number of DroneCAN throttles. To avoid this behavior, 
+throttles. Arming is immediately overwritten by the explicit IQUART disarm which is again overwritten by receiving the correct number of DroneCAN throttles. To avoid this behavior, 
 we highly recommend disabling Arm on Throttle as described in :ref:`arm_with_armingstatus`.
