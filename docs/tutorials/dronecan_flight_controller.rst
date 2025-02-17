@@ -54,7 +54,7 @@ The node ID is a number the module will use to identify itself on the DroneCAN b
 modules should use the same node ID as the flight controller.** Typically PX4 flight controllers will use node ID 1 by default, and ArduPilot flight controllers will 
 use node ID 10 by default, so it is best to avoid those IDs.
 
-If you are connecting your module a previously configured bus with unknown node IDs, or simply want to avoid setting specific node IDs for each of your modules, you can use :ref:`DroneCAN's Dynamic Node ID Allocation feature supported by Vertiq modules <dynamic_node_id_allocation>`. 
+If you are connecting your module to a previously configured bus with unknown node IDs, or simply want to avoid setting specific node IDs for each of your modules, you can use :ref:`DroneCAN's Dynamic Node ID Allocation feature supported by Vertiq modules <dynamic_node_id_allocation>`. 
 To do so, simply set your module's Node ID to 0. Otherwise, you should assign the node ID of each module to some unique value from 1 to 127 excluding your flight controller's node ID. By default, the node ID of a Vertiq module is set to 99.
 
 The entry in IQ Control Center to configure the node ID is the *DroneCAN Node ID*, and it can be found in the General tab, as shown below. Note that the module must be rebooted 
