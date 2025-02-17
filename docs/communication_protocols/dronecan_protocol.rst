@@ -691,6 +691,8 @@ Advanced Plug-And-Play Functionality
 Vertiq's DroneCAN nodes support both auto-bitrate detection as well as Dynamic Node Allocation. The following sections walk you through configuring your modules to use 
 both of these settings, as well as examples of the features in use with both the DroneCAN GUI tool as well as a flight controller.
 
+.. _auto_bitrate:
+
 Auto-Bitrate Detection
 ===========================
 As the name implies, auto-bitrate detection allows your Vertiq module to connect with an active DroneCAN bus, and automatically detect the bitrate in use. This allows 
@@ -707,6 +709,8 @@ In order to configure your module to use auto-bitrate detection, simply configur
 
 Please note that once the module has locked onto a bitrate, it will not be able to communicate at any other rate until it is rebooted or the bitrate is set manually. 
 The bitrate detection process restarts every time the module is powered on and ``DroneCAN Bitrate`` is ``0``.
+
+.. _dynamic_node_id_allocation:
 
 Dynamic Node ID Allocation
 ===========================
