@@ -21,6 +21,11 @@ These instructions are applicable to any Vertiq module using speed firmware. Tho
 the configuration and setup for basic control with Standard PWM or DSHOT is the same for all Vertiq speed modules. This example uses a :ref:`Vertiq 81-08 G2 <vertiq_81xx_family>` for demonstration purposes, 
 but it is not specific to the 81-08.
 
+.. note:: 
+    
+    If you intend on using DroneCAN and a :ref:`hobby protocol <hobby_protocol>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
+
 Hardware Setup
 ==============
 This example uses a Vertiq 81-08 G2 and a `Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`_ as the flight controller. Since this tutorial is

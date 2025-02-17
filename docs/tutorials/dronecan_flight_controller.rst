@@ -12,6 +12,11 @@ This document provides a general procedure for integrating a Vertiq module with 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
 Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
+.. note:: 
+    
+    If you intend on using DroneCAN and a :ref:`hobby protocol <hobby_protocol>` or :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
+
 Module Configuration and Enumeration
 =============================================
 Before interfacing your module with a flight controller via DroneCAN, it must be configured through :ref:`IQ Control Center <control_center_start_guide>`. The 
