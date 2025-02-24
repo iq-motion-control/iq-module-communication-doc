@@ -37,11 +37,6 @@ configured bitrate must match the flight controller's.
 
 For the purposes of this example, the bitrate is assumed to be 500000 bit/s.
 
-.. note::
-
-    If you are unsure of your vehicle's bitrate, or just want the ability to connect your module with any unknown DroneCAN bus, you can set your bitrate to 0 in order to leverage 
-    Vertiq's :ref:`auto_bitrate`.
-
 Mode, Direction, and Limits
 ------------------------------
 Descriptions of some important parameters for the module’s direction and mode and how to change them through IQ Control Center can be found in the :ref:`Motor Configuration section 

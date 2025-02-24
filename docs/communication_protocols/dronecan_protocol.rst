@@ -682,27 +682,8 @@ arming bypass is on for DroneCAN, and when it is set to *Normal Arming*, DroneCA
 *************************************
 Advanced Plug-And-Play Functionality
 *************************************
-Vertiq's DroneCAN nodes support both auto-bitrate detection as well as Dynamic Node Allocation. The following sections walk you through configuring your modules to use 
-both of these settings, as well as examples of the features in use with both the DroneCAN GUI tool as well as a flight controller.
-
-.. _auto_bitrate:
-
-Auto-Bitrate Detection
-===========================
-As the name implies, auto-bitrate detection allows your Vertiq module to connect with an active DroneCAN bus, and automatically detect the bitrate in use. This allows 
-the module to configure its own bitrate accordingly without user intervention.
-
-In order to configure your module to use auto-bitrate detection, simply configure its ``DroneCAN Bitrate`` parameter to ``0``.
-
-.. note:: 
-
-	``DroneCAN Bitrate`` can be configured in all methods available for DroneCAN configuration. Here, we'll show an example of configuration through the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`:
-
-	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_dronecan.PNG
-		:height: 350
-
-Please note that once the module has locked onto a bitrate, it will not be able to communicate at any other rate until it is rebooted or the bitrate is set manually. 
-The bitrate detection process restarts every time the module is powered on and ``DroneCAN Bitrate`` is ``0``.
+Vertiq's DroneCAN nodes support Dynamic Node ID Allocation. The following sections walk you through configuring your modules to use 
+both of this setting, as well as examples of the feature in use with both the DroneCAN GUI tool as well as a flight controller.
 
 .. _dynamic_node_id_allocation:
 
@@ -746,9 +727,6 @@ You will see the node ID and its associated UID in the DNA server window:
 
 Receiving a Dynamically Allocated Node ID with PX4 and ArduPilot
 --------------------------------------------------------------------
-
-.. note:: 
-	The following instructions can be combined with auto-bitrate detection to provide you a full plug-and-play experience.
 
 PX4
 ^^^^^^^
