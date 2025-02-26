@@ -12,6 +12,11 @@ This document provides a general procedure for integrating a Vertiq module with 
 Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
 Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
+.. note:: 
+    
+    If you intend on using DroneCAN and a :ref:`hobby protocol <hobby_protocol>` or :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
+
 Module Configuration and Enumeration
 =============================================
 Before interfacing your module with a flight controller via DroneCAN, it must be configured through :ref:`IQ Control Center <control_center_start_guide>`. The 
@@ -40,13 +45,12 @@ the module are still accurate for DroneCAN.
 
 Node ID
 ---------
-The node ID is a number the motor will use to identify itself on the DroneCAN bus. **The node ID must be unique for each module, and none of the 
+The node ID is a number the module will use to identify itself on the DroneCAN bus. **The node ID must be unique for each module, and none of the 
 modules should use the same node ID as the flight controller.** Typically PX4 flight controllers will use node ID 1 by default, and ArduPilot flight controllers will 
-use node ID 10 by default, so it is best to avoid those IDs. ID 0 is reserved for other DroneCAN features. You should 
-assign the node ID of each module to some unique value from 1 to 127 excluding your flight controller's node ID. By default, the node ID of a Vertiq module is set to 99.
+use node ID 10 by default, so it is best to avoid those IDs.
 
-**Note that your flight controller's documentation may mention dynamic node ID allocation with DroneCAN. Vertiq modules do not currently support dynamic node ID allocation, you must configure a 
-static node ID for each module through the Control Center.** 
+If you are connecting your module to a previously configured bus with unknown node IDs, or simply want to avoid setting specific node IDs for each of your modules, you can use :ref:`DroneCAN's Dynamic Node ID Allocation feature supported by Vertiq modules <dynamic_node_id_allocation>`. 
+To do so, simply set your module's Node ID to 0. Otherwise, you should assign the node ID of each module to some unique value from 1 to 127 excluding your flight controller's node ID. By default, the node ID of a Vertiq module is set to 99.
 
 The entry in IQ Control Center to configure the node ID is the *DroneCAN Node ID*, and it can be found in the General tab, as shown below. Note that the module must be rebooted 
 before a change to the node ID will take effect.
@@ -93,25 +97,35 @@ You can change the ESC Index of a module through the Control Center using *ESC I
 
 Arming
 ----------
-Vertiq modules can use :ref:`Advanced Arming <manual_advanced_arming>` with DroneCAN to improve safety and allow for configurable disarming behaviors. To see if your module 
-supports Advanced Arming, refer to the :ref:`Module Support section under Advanced Arming <arming_module_support>`. When using arming, modules must arm before they can spin.
-The default settings for Vertiq modules generally allow them to arm when they receive throttle commands between 0% and 7.5%, and by default both PX4 and ArduPilot send 0% commands when 
-properly configured and disarmed. So the default settings on Vertiq modules should allow them to arm immediately when they are connected to a properly configured flight controller on a DroneCAN bus. 
 
-**Because of this, there is no need to change any arming parmeters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
-features for more complex integrations, refer to the :ref:`Advanced Arming <manual_advanced_arming>` section for more details.
+If you intend to leverage Vertiq's :ref:`Advanced Arming <manual_advanced_arming>`, there are two main options for controlling your module's armed state with DroneCAN. 
+First, and recommended, is via DroneCAN's :ref:`ArmingStatus message <dronecan_arming_and_bypass>`, and second via throttle commands. When using the arming feature, modules must arm before they can spin.
+
+Arming with ArmingStatus (Recommended)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your module is set to :ref:`use ArmingStatus to drive module arming <dronecan_arming_and_bypass>`, the module will arm on the status of your flight controller's reported ArmingStatus. 
 Configuring your flight controller to output the ArmingStatus message is covered in the specific flight controller sections below.
 
 .. note::
-	In order to control your module properly while arming with ArmingStatus messages, you must properly set the :ref:`manual_arming_throttle_source` parameter. This parameter should 
-	be set to the protocol being used to send the module throttle commands.
+	
+    When arming with the ArmingStatus message, you should disable your module's ability to arm with throttle. To do so, simply set :ref:`arm on throttle <arming_throttle_regions>` to 
+    *Do Not Arm on Throttle*. If you do not disable arm on throttle, then your module can end up in a loop of arming and disarming which may lead to unexpected and potentially 
+    dangerous behaviors. Ensuring that your module only arms and disarms based on your flight controller's armed state increases safety for you and your modules.
 
-	As such, the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
-	:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``. 
-	If, however, you are arming and sending throttle commands with DroneCAN, your manual arming source should be ``DroneCAN``.
+Arming with Throttle
+^^^^^^^^^^^^^^^^^^^^^^
 
+The default settings for Vertiq modules generally allow them to arm when they receive throttle commands between 0% and 12.5%, and by default both PX4 and ArduPilot send 0% commands when 
+properly configured and disarmed. So, the default settings on Vertiq modules should allow them to arm immediately when they are connected to a properly configured flight controller on a DroneCAN bus. 
+
+**Because of this, there is no need to change any arming parmeters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
+features for more complex integrations, refer to the :ref:`Advanced Arming <manual_advanced_arming>` section for more details.
+
+Bypassing Arming
+^^^^^^^^^^^^^^^^^^^
+
+If do not want to use the arming feature at all (not recommended), you can configure your module to immediately apply all DroneCAN throttles to spinning.
 If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then arming is not required for the module to spin when receiving DroneCAN commands.
 
 CAN Bus Hardware Setup

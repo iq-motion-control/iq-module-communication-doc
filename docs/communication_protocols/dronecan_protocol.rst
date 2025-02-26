@@ -639,16 +639,10 @@ Standard Arming
 ==========================
 DroneCAN can use the same advanced arming procedure as all other throttle sources. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
 
+.. _arm_with_armingstatus:
+
 Arming with ArmingStatus
 ==========================
-
-.. note::
-	In order to control your module properly while arming with ArmingStatus messages, you must properly set the :ref:`manual_arming_throttle_source` parameter. This parameter should 
-	be set to the protocol being used to send the module throttle commands.
-
-	As such, the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
-	:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``. 
-	If, however, you are arming and sending throttle commands with DroneCAN, your manual arming source should be ``DroneCAN``.
 
 Vertiq modules can arm and disarm based off of DroneCAN's :ref:`ArmingStatus message <arming_status>`. This means that whenever your flight controller broadcasts an ArmingStatus 
 ``STATUS_FULLY_ARMED`` message, your module will transition from disarmed to armed, or if already armed, will remain armed. These transitions are not subject to the constraints 
@@ -688,25 +682,10 @@ arming bypass is on for DroneCAN, and when it is set to *Normal Arming*, DroneCA
 *************************************
 Advanced Plug-And-Play Functionality
 *************************************
-Vertiq's DroneCAN nodes support both auto-bitrate detection as well as Dynamic Node Allocation. The following sections walk you through configuring your modules to use 
-both of these settings, as well as examples of the features in use with both the DroneCAN GUI tool as well as a flight controller.
+Vertiq's DroneCAN nodes support Dynamic Node ID Allocation. The following sections walk you through configuring your modules to use 
+both of this setting, as well as examples of the feature in use with both the DroneCAN GUI tool as well as a flight controller.
 
-Auto-Bitrate Detection
-===========================
-As the name implies, auto-bitrate detection allows your Vertiq module to connect with an active DroneCAN bus, and automatically detect the bitrate in use. This allows 
-the module to configure its own bitrate accordingly without user intervention.
-
-In order to configure your module to use auto-bitrate detection, simply configure its ``DroneCAN Bitrate`` parameter to ``0``.
-
-.. note:: 
-
-	``DroneCAN Bitrate`` can be configured in all methods available for DroneCAN configuration. Here, we'll show an example of configuration through the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`:
-
-	.. image:: ../_static/manual_images/dronecan/auto_bitrate_with_dronecan.PNG
-		:height: 350
-
-Please note that once the module has locked onto a bitrate, it will not be able to communicate at any other rate until it is rebooted or the bitrate is set manually. 
-The bitrate detection process restarts every time the module is powered on and ``DroneCAN Bitrate`` is ``0``.
+.. _dynamic_node_id_allocation:
 
 Dynamic Node ID Allocation
 ===========================
@@ -748,9 +727,6 @@ You will see the node ID and its associated UID in the DNA server window:
 
 Receiving a Dynamically Allocated Node ID with PX4 and ArduPilot
 --------------------------------------------------------------------
-
-.. note:: 
-	The following instructions can be combined with auto-bitrate detection to provide you a full plug-and-play experience.
 
 PX4
 ^^^^^^^

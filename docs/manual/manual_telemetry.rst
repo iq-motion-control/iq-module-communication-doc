@@ -10,6 +10,12 @@ Flight controllers, including flight controllers running `PX4 <https://px4.io/>`
 about the state of the ESC and the motor(s) it is controlling. Vertiq modules support a range of these telemetry messages across different protocols. This section provides
 details on the structure of the telemetry messages supported by Vertiq modules and how to use them.
 
+.. note:: 
+
+    When using :ref:`redundant throttle sources <redundant_throttle_manual>`, it is still possible to receive module telemetry. Testing has shown that when reporting telemetry through 
+    both DroneCAN and a serial line (:ref:`IQUART Flight Controller Interface <controlling_ifci>`, DSHOT, or PWM), only the telemetry received serially is processed and logged by the 
+    flight controller. **This is true on both PX4 and ArduPilot**.
+
 .. _telemetry_module_support:
 
 Module Support
@@ -225,6 +231,13 @@ DroneCAN
 Vertiq modules broadcast the DroneCAN standard :ref:`uavcan.equipment.esc.Status <dronecan_support_esc_status>` 
 and :ref:`uavcan.equipment.device.Temperature <dronecan_support_device_temperature>` messages to send ESC telemetry. 
 Refer to the :ref:`DroneCAN <dronecan_protocol>` section for more details on the DroneCAN bus and those messages. 
+
+.. note:: 
+
+    Your module can be configured to report speed rather than velocity in its DroneCAN ESC Status message. To do so, simply set ``Report Telemetry as Speed`` in :ref:`IQ Control Center's <control_center_start_guide>` 
+    advanced tab to ``Enabled``.
+
+    .. image:: ../_static/manual_images/telemetry/report_telem_as_speed.png
 
 All modules connected to a DroneCAN bus broadcast these telemetry messages, no additional configuration is required. It is possible to adjust
 the frequency that DroneCAN telemetry is sent with as detailed below.

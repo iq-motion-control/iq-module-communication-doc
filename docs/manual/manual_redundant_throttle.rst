@@ -117,6 +117,8 @@ In this example, the module is configured to ignore all hobby and IQUART throttl
 throttles are received. An important note from this example is that the module will reach its :ref:`propeller motor control timeout <manual_timeout>` even if the 
 flight controller continues to send DSHOT throttles. As they are not processed by the throttle source manager, DSHOT throttles cannot be used to reset the timeout timer.
 
+.. _redundant_arming_interactions:
+
 ********************************
 Redundant Throttle and Arming
 ********************************
@@ -145,4 +147,30 @@ The example is demonstrated below:
     </style>
     <video class='center_vid' controls><source src="../_static/manual_images/redundant_throttle/redundant_arming_example.mp4" type="video/mp4"></video>
 
-.. _config_values:
+DroneCAN and PWM Arming interaction
+#######################################
+
+If you are using DroneCAN and standard PWM together as redundant throttle sources, make sure that PWM is being transmitted to your module from first startup. Parsing of the very first 
+received PWM signal can affect the arming process on current firmware. If you are not using PWM at all, we highly recommend that you set your ``Communication`` parameter to 
+either ``Hobby Disabled`` or your specific throttle protocol (DSHOT, OneShot, etc.). This can be done through  :ref:`IQ Control Center's <control_center_start_guide>` general tab.
+
+  .. image:: ../_static/control_center_pics/servo_getting_started/servo_comms_param.png
+
+
+DroneCAN and DSHOT Arming interaction
+#######################################
+
+When disarmed, flight controllers transmit explicit disarm commands via DSHOT. Vertiq modules accept these commands, and transition to disarmed. As such, if using DSHOT and DroneCAN as 
+redundant throttle sources, your module can end up in an arming-disarming loop if arming on throttle. Suppose your arming region is 0-12.5% (your module's default), then when the flight controller 
+is disarmed, DSHOT will transmit the disarm command and DroneCAN a 0% throttle command. When arming on throttle, DroneCAN will arm the module after receiving the correct number of 
+throttles. Arming is immediately overwritten by the explicit DSHOT disarm which is again overwritten by receiving the correct number of DroneCAN throttles. To avoid this behavior, 
+we highly recommend disabling Arm on Throttle as described in :ref:`arm_with_armingstatus`.
+
+DroneCAN and IFCI Arming interaction
+#######################################
+
+When disarmed, PX4 flight controllers :ref:`may transmit explicit disarm commands via IQUART depending on your configuration <ifci_px4_flight_controller>`. Vertiq modules accept these commands, and transition to disarmed. As such, if using IFCI and DroneCAN as 
+redundant throttle sources, your module can end up in an arming-disarming loop if arming on throttle. Suppose your arming region is 0-12.5% (your module's default), then when the flight controller 
+is disarmed, IQUART will transmit the disarm command and DroneCAN a 0% throttle command. When arming on throttle, DroneCAN will arm the module after receiving the correct number of 
+throttles. Arming is immediately overwritten by the explicit IQUART disarm which is again overwritten by receiving the correct number of DroneCAN throttles. To avoid this behavior, 
+we highly recommend disabling Arm on Throttle as described in :ref:`arm_with_armingstatus`.
