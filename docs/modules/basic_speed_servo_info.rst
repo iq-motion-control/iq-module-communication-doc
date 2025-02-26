@@ -30,7 +30,6 @@ Supported IQUART Clients
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`
-        * :ref:`throttle_source_manager`
         
 Supported Tutorials
 =================================
@@ -39,7 +38,6 @@ Supported Tutorials
         * :ref:`fc_telemetry_tutorial`
         * :ref:`vibration_and_jittering`
         * :ref:`protect_against_regen`
-        * :ref:`ifci_px4_flight_controller`
 
 Servo Module
 ****************************
