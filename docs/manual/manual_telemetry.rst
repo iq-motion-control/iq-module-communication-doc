@@ -14,7 +14,7 @@ details on the structure of the telemetry messages supported by Vertiq modules a
 
     When using :ref:`redundant throttle sources <redundant_throttle_manual>`, it is still possible to receive module telemetry. Testing has shown that when reporting telemetry through 
     both DroneCAN and a serial line (:ref:`IQUART Flight Controller Interface <controlling_ifci>`, DSHOT, or PWM), only the telemetry received serially is processed and logged by the 
-    flight controller.
+    flight controller. **This is true on both PX4 and ArduPilot**.
 
 .. _telemetry_module_support:
 

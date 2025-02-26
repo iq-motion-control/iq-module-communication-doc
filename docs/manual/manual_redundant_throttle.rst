@@ -151,9 +151,26 @@ DroneCAN and PWM Arming interaction
 #######################################
 
 Vertiq modules are configured to disarm on the first received PWM signal. As such, if your module has already armed via DroneCAN, and after some time a PWM throttle is received, 
-the module will disarm even if DroneCAN has a higher priority. The image below illustrates this behavior.
+the module will disarm even if DroneCAN has a higher priority. The image below illustrates this behavior with mitigation strategies after.
 
 .. image:: ../_static/manual_images/redundant_throttle/pwm_force_disarm.png
+
+Notes and Mitigation Strategies to Avoid this Behavior
+-----------------------------------------------------------
+
+* This behavior only occurs when the module receives PWM signals, and not other :ref:`hobby protocols <hobby_protocol>`. So, if you are using DSHOT, for example, as your 
+  backup throttle source, you do not need to worry about this specific interaction.
+
+* Setting your module's ``communication`` parameter to ``Autodetect`` does not resolve this behavior. Setting it to either ``Hobby Disabled`` or any of the other available protocols,
+  however, **does** stop this behavior as the module will never look for PWM inputs. The ``communication`` parameter is available in the :ref:`IQ Control Center's <control_center_start_guide>` 
+  general tab.
+
+  .. image:: ../_static/control_center_pics/servo_getting_started/servo_comms_param.png
+
+* Only the **first ever received** PWM signal will cause this disarming behavior. Any future PWM signals will not cause an automatic disarming transition unless it meets the 
+  criteria to :ref:`disarm on throttle <disarm_on_throttle>`. So, if any PWM is received before the module's first arming transition, this behavior will not occur.
+
+* This behavior is independent of hobby throttle's :ref:`priority <redundant_throttle_config>`. It will occur regardless of throttle source priority configuration.
 
 DroneCAN and DSHOT Arming interaction
 #######################################

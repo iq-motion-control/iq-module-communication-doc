@@ -196,6 +196,7 @@ throttles. The module will not begin an arming transition when it receives the f
 parameter means that it must receive 10 consecutive arming throttles before it will arm. After 10 consecutively received 5% throttle commands, the module will begin an 
 arming transition. When the module arms, it will perform its arming behavior, as detailed in :ref:`advanced_arming_behavior`.
 
+.. _disarm_on_throttle:
 
 Disarming With the Disarming Throttle Region
 ##############################################
