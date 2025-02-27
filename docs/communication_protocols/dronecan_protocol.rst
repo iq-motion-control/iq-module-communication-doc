@@ -3,31 +3,33 @@
 
 .. _dronecan_protocol:
 
-***********************************************
+##########
 DroneCAN
-***********************************************
+##########
 
 DroneCAN (previously known as UAVCAN or UAVCANv0), is an open protocol for communication over a CAN bus. DroneCAN is supported by both PX4
 and Ardupilot flight controllers. Refer to the `DroneCAN documentation <https://dronecan.github.io/>`_ for more information on the protcol and the standard.
 
+****************
 Module Support
-===============
+****************
 
 Speed Modules
-**************
+================
 
 .. include:: ../manual/advanced_only_table.rst
 
 Servo Modules
-**************
+================
 Servo modules do not support DroneCAN, as shown in the table below.
 
 .. include:: ../manual/none_checked_table.rst
 
 .. _standard_dronecan_support:
 
+******************************
 Standard DroneCAN Support
-================================
+******************************
 This section details the standard DroneCAN messages supported across all Vertiq DroneCAN modules. The structure and contents of these messages are defined by the 
 DroneCAN specification. This section just provides details on how exactly Vertiq modules support them and some supplementary information. 
 
@@ -35,13 +37,13 @@ Details on the DroneCAN protocol can be found on the `DroneCAN specification <ht
 specified by DroneCAN, see the `List of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/>`_ in the DroneCAN specification.
 
 Broadcast Messages
-********************
+=======================
 These are `broadcast messages <https://dronecan.github.io/Specification/2._Basic_concepts/#message-broadcasting>`_ that are sent to or from the motors. Broadcast messages are not intended
 for any specific node on the bus, data is simply transferred over the bus and is available for any node that is interested. Since they are broadcast, 
 there is no response message sent. These messages typically make up the majority of communication on the bus during operation.
 
 uavcan.protocol.NodeStatus (Data Type ID = 341)
-################################################
+------------------------------------------------------------------------
 The DroneCAN protocol requires that all nodes on a DroneCAN network periodically publish their status using the Node Status message. Vertiq modules support this behavior to conform 
 to the standard. A uavcan.protocol.NodeStatus message is published at 1 Hz during operation, reporting its health, current mode, and uptime.
 
@@ -53,13 +55,13 @@ for more details.
 .. _dronecan_support_esc_status:
 
 uavcan.equipment.esc.Status (Data Type ID = 1034)
-##################################################
+------------------------------------------------------------------------
 This message is published periodically and provides telemetry updates on the state of the motor and its inputs. Specifically it contains information on:
 
 * **Error Count**: This is a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
 * **Voltage**: The input voltage to the motor in volts
 * **Current**: The current draw of the motor in amps
-* **Temperature**: The temperature of the motor's coils in Kelvin
+* **Temperature**: The temperature of the motor's coils in Kelvin or the motor's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
 * **RPM**: The current speed of the motor in RPM
 * **Power Rating Percentage**: The PWM duty cycle percentage being applied to the motor, from 0% to 100%. Maximum power draw occurs at 100% duty cycle
 * **ESC Index**: The ESC index of the motor that is broadcasting this update
@@ -72,7 +74,11 @@ for more details.
 .. _dronecan_support_device_temperature:
 
 uavcan.equipment.device.Temperature (Data Type ID = 1110)
-##########################################################
+------------------------------------------------------------------------
+
+.. note:: 
+	This message is transmitted only if ``DroneCAN Telemetry Style`` is configured to ``Use Old-Style Telemetry``. Please see :ref:`status_extended` for more information. 
+
 This message is published periodically and provides updates on the temperature of the microcontroller used on the controller. The fields contained in this message are:
 
 * **Device ID**: The ESC index of the motor sending this broadcast
@@ -87,7 +93,7 @@ for more details.
 .. _dronecan_messages_raw_command:
 
 uavcan.equipment.esc.RawCommand (Data Type ID = 1030)
-######################################################
+------------------------------------------------------------------------
 Used to control the speed and direction of the motor. This message should be sent from the flight controller to the motors. The payload consists of a list of up to 20 values, 
 with each value interpreted as a 14 bit signed integer. Each entry in the list corresponds to a motor with the given ESC index. E.g. The first entry in the list of raw commands 
 will be read by the motor that has been assigned ESC index 0, the second entry will be read by the motor with ESC index 1, and so on. 
@@ -98,7 +104,7 @@ Refer to the `uavcan.equipment.esc.RawCommand section of Standard Data Types <ht
 for more details
 
 uavcan.tunnel.Broadcast (Data Type ID = 2010)
-#############################################################
+------------------------------------------------------------------------
 DroneCAN's “tunnel” messages allow users to transmit arbitrary data bytes through the DroneCAN protocol. The tunnel broadcast message contains a byte representing the 
 protocol being tunneled, a channel ID allowing for additional routing options, and an array of up to 60 bytes of data.
 
@@ -252,7 +258,7 @@ specification for more details.
 .. _arming_status:
 
 uavcan.equipment.safety.ArmingStatus (Data Type ID = 1100)
-###############################################################
+------------------------------------------------------------------------
 
 .. note::
 	The ArmingStatus message is not yet supported on all modules that support DroneCAN. Please check `vertiq.co <https://www.vertiq.co/>`_ to ensure that you are on the 
@@ -264,7 +270,7 @@ the ArmingStatus message can be found below in :ref:`dronecan_arming_and_bypass`
 message can be found in our :ref:`tutorial for integrating with flight controller DroneCAN <dronecan_fc_tutorial>`.
 
 uavcan.equipment.indication.LightsCommand (Data Type ID = 1081)
-###############################################################
+------------------------------------------------------------------------
 Vertiq modules do not publish this broadcast message, but they do listen for it. The content of this message can be used to dynamically control the white and RGB LEDs
 on Vertiq's LED Boards. For more information on the LED Board, see :ref:`manual_led_support`.
 
@@ -285,22 +291,69 @@ as long as each module has a unique ESC index. The light IDs on each module are 
 
 Refer to the `uavcan.equipment.indication.LightsCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ in the specification for more details.
 
+
+.. _status_extended: 
+
+uavcan.equipment.esc.StatusExtended (Data Type ID = 1036)
+------------------------------------------------------------------------
+.. note:: 
+	This message is published only if ``DroneCAN Telemetry Style`` is configured to ``Use New-Style Telemetry``. More information about telemetry style is found below.
+
+This message is published periodically, and acts as an extension of uavcan.equipment.esc.Status. The extra information in this message is as follows:
+
+* **Input Percent**: Input command to ESC, in percent, which is commanded using the setpoint messages. Range 0% to 100%
+* **Output Percent**: Output command from ESC to motor, in percent. Range 0% to 100%
+* **Motor Temperature °C**: Temperature of connected motor, in Celsius. Range is -256 to +255 C
+* **Motor Angle**: Measured angle of connected angle sensor, in degrees. Range is 0 to 360
+* **Status Flags**: Manufacturer-specific status flags currently active
+     * Bit 0: Indicates the module's current arming state (see :ref:`manual_advanced_arming` for more information)
+     * Bits[3:1]: Indicate the module's drive mode (see :ref:`brushless drive's <brushless_drive>` ``drive_mode`` for more information)
+     * Bit 4: Indicates if the module is timed out (see :ref:`manual_timeout` for more)
+     * Bit 5: Indicates if the last stow attempt was successful (see :ref:`manual_stow_position` for more information)
+     * Bit 6: Indicates if the module is holding stow (see :ref:`manual_stow_position` for more information)
+* **ESC Index**: The ESC index of the motor that is broadcasting this update
+
+The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
+
+Please note that it is possible to disable this message, and fall back to the legacy transmission of uavcan.equipment.esc.Status and uavcan.equipment.device.Temperature as your 
+telemetry sources. In IQ Control Center's Advanced tab, you'll find the ``DroneCAN Telemetry Style`` parameter. 
+
+.. image:: ../_static/manual_images/dronecan/legacy_telem_control_center.png
+
+Setting this to ``Use New-Style Telemetry`` will output ESC Status and ESC Status Extended as your telemetry. In this case, the reported temperature through ESC Status is 
+your module's coil temperature, and ESC Status Extended's reported temperature is the temperature of your module's microcontroller.
+
+Setting this to ``Use Old-Style Telemetry`` will output ESC Status and Device Temperature as your telemetry. In this case, the reported temperature through ESC Status 
+is your module's microcontroller temperature, and Device Temperature's reported temperature is the temperature of your module's coil.
+
+.. note:: 
+	We recommend using the ``Use New-Style Telemetry`` in order to receive the most telemetry data from your modules.
+
 Service Requests
-*****************
+========================
 Service requests are messages sent to a specific target node from another node, and to which the sending node expects to receive a response message.
 
 uavcan.protocol.GetNodeInfo (Data Type ID = 1)
-################################################
+---------------------------------------------------------------
 This request has no payload fields. The response message from the receiving node should include the status of the node as defined by the NodeStatus message, the 
 software and hardware version of the node, and the name of the node. For Vertiq modules, the name of each node is currently “iq_motion.esc”.
 
 Refer to the `uavcan.protocol.GetNodeInfo section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#getnodeinfo>`_ in the specification 
 for more details
 
+uavcan.protocol.dynamic_node_id.Allocation (Data Type ID = 1)
+---------------------------------------------------------------
+
+This message is used by both the dynamic node allocator and allocatee. Vertiq modules can only act as the DNA allocatee. It is used to carry out the DNA process which is 
+covered in detail `here <https://dronecan.github.io/Specification/6._Application_level_functions/#:~:text=7%5D%20reason_text-,Dynamic%20node%20ID%20allocation,-In%20order%20to>`_. 
+More information about configuring your Vertiq module to use dynamic node ID allocation, please refer to :ref:`dronecan_plug_and_play`.
+
+Refer to `The uavcan.protocol.dynamic_node_id.Allocation section of the Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#getnodeinfo:~:text=uavcan.protocol.dynamic_node_id-,Allocation,-Full%20name%3A>`_ in the specification for more details on this message.
+
 .. _dronecan_getset:
 
 uavcan.protocol.param.GetSet (Data Type ID = 11)
-##################################################
+---------------------------------------------------------------
 Used to get or set the value of a configuration parameter using either the index or the name of the parameter. The configuration parameters currently available on standard 
 Vertiq modules are listed in the :ref:`dronecan_configuration_parameters` section below. The request message should contain the index or name of the parameter 
 (depending on how you are accessing it), and if performing a set operation, should contain the value to set to the parameter. **Parameter indices are not guaranteed to remain consistent across 
@@ -312,7 +365,7 @@ Refer to the `uavcan.protocol.param.GetSet section of Standard Data Types <https
 for more details.
 
 uavcan.protocol.RestartNode (Data Type ID = 5)
-###############################################
+---------------------------------------------------------------
 This request has one field, its “magic number.” This field is an unsigned 40 bit integer. The magic number is used to identify that this is an intentional restart request, 
 and we have also extended it to allow for two different types of reboots. One magic number performs a normal reboot that simply restarts into the normal application firmware, 
 and the other reboots the device into the `ST bootloader <https://www.st.com/resource/en/application_note/cd00167594-stm32-microcontroller-system-memory-boot-mode-stmicroelectronics.pdf>`_, 
@@ -328,7 +381,7 @@ Refer to the `uavcan.protocol.RestartNode section of Standard Data Types <https:
 for more details.
 
 uavcan.protocol.file.BeginFirmwareUpdate (Data Type ID = 40)
-#############################################################
+---------------------------------------------------------------
 On modules that support DroneCAN firmware updates, this command causes the module to enter into upgrade mode, and begin attempting to firmware update over DroneCAN. 
 The request includes a source node ID and a file path on that source node. The module will attempt to get information on the file from the file server, and then begin reading the data from the upgrade file.
 
@@ -339,13 +392,14 @@ specification for more details.
 
 .. _dronecan_configuration_parameters:
 
+
 Configuration Parameters
-**************************
+===========================
 Configuration parameters are parameters that can configure the behavior of a Vertiq module and are available to read and modify over DroneCAN. The :ref:`uavcan.protocol.param.GetSet <dronecan_getset>` 
 request can be used to access configuration parameters. The sections below cover the stadard configuration parameters available on Vertiq modules.
 
 Node ID
-########
+-----------------------
 
 .. table::
 
@@ -363,7 +417,7 @@ This parameter can also be changed through the IQ Control Center if you wish to 
 .. _dronecan_bitrate_parameter:
 
 Bitrate
-########
+-----------------------
 .. table::
 
 	+----------------+----------+
@@ -376,7 +430,7 @@ This parameter determines the DroneCAN bitrate that the module will use in bit/s
 will most likely be necessary to reconnect to the bus as at the new bitrate to continue communicating with the module.
 
 ESC Index
-##########
+-----------------------
 .. table::
 
 	+----------------+----------+
@@ -392,7 +446,7 @@ This parameter can also be changed through the IQ Control Center if you wish to 
 .. _zero_behavior:
 
 Zero Behavior
-##############
+-----------------------
 .. table::
 
 	+----------------+----------+
@@ -419,7 +473,7 @@ This parameter can also be changed through the IQ Control Center if you wish to 
 .. _dronecan_support_telemetry_frequency:
 
 Telemetry Frequency
-####################
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -435,7 +489,7 @@ For example, if this value were set to 10, the telemetry would be sent at a rate
 This parameter can also be changed through the IQ Control Center if you wish to change this without using DroneCAN.
 
 Motor Armed
-##############
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -448,7 +502,7 @@ This parameter is available on modules that support :ref:`manual_advanced_arming
 section on :ref:`user arming commands over DroneCAN <arming_user_command_dronecan>` for more information.
 
 Motor Stowed
-##############
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -461,7 +515,7 @@ This parameter is available on modules that support :ref:`manual_stow_position`.
 :ref:`manual stow over DroneCAN <trigger_manual_stow_dronecan>` for more information.
 
 Stow Status
-############
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -474,7 +528,7 @@ This parameter is available on modules that support :ref:`manual_stow_position`.
 :ref:`stow_status` section for more information.
 
 Stow Result
-############
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -491,7 +545,7 @@ This parameter is available on modules that support :ref:`manual_stow_position`.
 	your module. If you are on the latest release and do not have access to these parameters, future updates for your module may add support for these messages.
 
 Module ID
-############
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -505,7 +559,7 @@ what IQUART messages to accept. You can find out more about IQUART at :ref:`uart
 :ref:`IQ Control Center documentation <multi_module_config>`.
 
 Motor Direction
-#################
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -528,7 +582,7 @@ Please note that if you are controlling your module with DroneCAN throttle comma
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
 
 Control Mode
-#################
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -546,7 +600,7 @@ Control mode is enumerated as:
 2. Velocity
  
 Max Volts
-#################
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -558,7 +612,7 @@ Max Volts
 When ``control_mode`` is configured to voltage, ``max_volts`` defines the maximum allowable driving voltage. More information can be found at :ref:`max_volts`.
 
 Max Velocity
-#################
+-----------------------
 .. table::
 
 	+------------------+----------+
@@ -569,30 +623,26 @@ Max Velocity
 
 When ``control_mode`` is configured to velocity, ``max_velocity`` defines the maximum allowable angular velocity in rad/s. More information can be found at :ref:`max_velo`.
 
+*********************************
 Flight Controller Integration
-================================
+*********************************
 For guidance on integrating Vertiq modules with flight controllers using DroneCAN, see 
 the :ref:`dronecan_fc_tutorial` tutorial.
 
 .. _dronecan_arming_and_bypass:
 
+*****************************
 Arming and Arming Bypass
-================================
+*****************************
 
 Standard Arming
-*****************
+==========================
 DroneCAN can use the same advanced arming procedure as all other throttle sources. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
 
+.. _arm_with_armingstatus:
+
 Arming with ArmingStatus
-******************************
-
-.. note::
-	In order to control your module properly while arming with ArmingStatus messages, you must properly set the :ref:`manual_arming_throttle_source` parameter. This parameter should 
-	be set to the protocol being used to send the module throttle commands.
-
-	As such, the ArmingStatus message can be used to arm a vehicle controlled by a different protocol. For example, if your vehicle has connections for both DroneCAN and 
-	:ref:`PWM <hobby_protocol>` control, your module can arm with DroneCAN, but be controlled by PWM so long as :ref:`manual_arming_throttle_source` is configured to ``Hobby``. 
-	If, however, you are arming and sending throttle commands with DroneCAN, your manual arming source should be ``DroneCAN``.
+==========================
 
 Vertiq modules can arm and disarm based off of DroneCAN's :ref:`ArmingStatus message <arming_status>`. This means that whenever your flight controller broadcasts an ArmingStatus 
 ``STATUS_FULLY_ARMED`` message, your module will transition from disarmed to armed, or if already armed, will remain armed. These transitions are not subject to the constraints 
@@ -611,7 +661,7 @@ but will be quickly overwritten by an ArmingStatus disarm. This cycle will conti
 on throttle. For the same reasons, we also recommend that you disable your module's ability to :ref:`disarm on throttle <arming_throttle_regions>`.
 
 Arming Bypass
-*********************
+=================
 Older Vertiq firmware does not include support for arming over DroneCAN. To maintain backwards compatibility, it is possible for users to toggle 
 arming integration with DroneCAN on or off. This is called “arming bypass”. When Vertiq modules have arming bypass turned on for DroneCAN they will spin on any :ref:`DroneCAN throttle command <throttle_sources_dronecan>`, 
 regardless of armed state. Additionally, when arming bypass is on DroneCAN throttle commands will not cause :ref:`arming or disarming transitions <arming_state_transitions>`. 
@@ -626,3 +676,89 @@ arming bypass is on for DroneCAN, and when it is set to *Normal Arming*, DroneCA
     :alt: DroneCAN Bypass Arming Parameter
 
     DroneCAN Bypass Arming Parameter in IQ Control Center
+
+.. _dronecan_plug_and_play:
+
+*************************************
+Advanced Plug-And-Play Functionality
+*************************************
+Vertiq's DroneCAN nodes support Dynamic Node ID Allocation. The following sections walk you through configuring your modules to use 
+both of this setting, as well as examples of the feature in use with both the DroneCAN GUI tool as well as a flight controller.
+
+.. _dynamic_node_id_allocation:
+
+Dynamic Node ID Allocation
+===========================
+All DroneCAN nodes must have a unique Node ID in order to communicate on the DroneCAN bus. Nodes can be given a unique ID manually, or they may request a dynamically 
+generated Node ID from a Node ID Allocator. Please see the `DroneCAN specification <https://dronecan.github.io/Specification/6._Application_level_functions/#:~:text=7%5D%20reason_text-,Dynamic%20node%20ID%20allocation,-In%20order%20to>`_ 
+for more information about ID Allocators. Vertiq's DroneCAN nodes can act as allocatees, and can initiate requests to the allocator to receive node ID.
+
+In order to configure your module to use DNA rather than manually setting unique, static, node IDs, simply set its ``Node ID`` parameter to ``0``. According to the DroneCAN 
+specification, a node ID of 0 indicates an anonymous node, and should be used for allocatees until they are issued a proper ID.
+
+.. note::
+
+	``Node ID`` can be configured in all methods available for DroneCAN configuration. Here, we'll show an example of configuration through the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`:
+
+	.. image:: ../_static/manual_images/dronecan/node_id_with_dronecan.PNG
+		:height: 350
+
+Please note that, if configured for DNA (``Node ID`` set and saved as ``0`` as above), your module will always boot up with DNA active. The ID allocated during DNA is not saved 
+on reboot. Your DNA allocator server will allocate the same node ID on each handshake if it has saved your module's UID. For the best performance, we suggest configuring 
+static, concrete, node IDs for each module you have connected, and only use DNA for initial setup. For example, if your DNA server provides the node ID 124, we recommend 
+manually setting and saving your module's node ID to 124 with the same methods available as above. 
+
+Receiving a Dynamically Allocated Node ID with the DroneCAN GUI
+--------------------------------------------------------------------
+The :ref:`DroneCAN GUI tool <dronecan_gui_basics>` provides an easy-to-use node ID server. Simply click the rocket icon in the bottom right hand side to start the server:
+
+.. image:: ../_static/manual_images/dronecan/dronecan_gui_dna_server.PNG
+
+Once your module is powered on and connected to the GUI tool, your module will automatically begin requesting a node ID from the server, and the two will complete the 
+handshake necessary to obtain a dynamically allocated node ID.
+
+As seen through the CAN bus monitor tool, we see our node is allocated the ID 125, and immediately starts reporting its node status and ESC telemetry:
+
+.. image:: ../_static/manual_images/dronecan/dna_handshake.PNG
+
+You will see the node ID and its associated UID in the DNA server window:
+
+.. image:: ../_static/manual_images/dronecan/allocated_id.PNG
+
+Receiving a Dynamically Allocated Node ID with PX4 and ArduPilot
+--------------------------------------------------------------------
+
+PX4
+^^^^^^^
+The following is performed on PX4 version 1.15.1
+
+1. Open `QGroundControl <http://qgroundcontrol.com/>`_, and connect your flight controller
+2. Navigate to Vehicle Setup
+3. Select Parameters, and scroll down until you find UAVCAN
+4. In the UAVCAN settings, you will find ``UAVCAN_ENABLE``. Set this value to ``Sensors and Actuators (ESCs) Automatic Config``, save, and reboot
+5. Navigate to the MAVLink Console in Analyze Tools
+6. Enter ``uavcan status`` 
+   
+   a. If you have not connected your module with your flight controller, you will not see any nodes listed
+   b. If you have already connected your module, you should see your node, and its allocated ID, listed as shown below
+
+7. If you have not already, connect and power on your module
+8. Once again, enter ``uavcan status``, and you should see your module has connected with the flight controller with a dynamically allocated ID
+
+.. image:: ../_static/manual_images/dronecan/px4_allocated.PNG
+
+9. Now, if you reboot your module, and check ``uavcan status`` again, you'll find that PX4 allocates the same ID again
+
+ArduPilot
+^^^^^^^^^^^^^
+The following is performed on ArduCopter version v4.5.7
+
+1. Open `Mission Planner <https://ardupilot.org/planner/>`_, and connect your flight controller
+2. Configure DroneCAN as described in :ref:`dronecan_with_ardupilot`
+3. If you have not already, connect and power on your module
+4. Navigate to the DroneCAN configuration tool as described in :ref:`configuring_with_ardupilot`
+5. You should see your module with its allocated node ID as follows
+
+.. image:: ../_static/manual_images/dronecan/ardupilot_dna_success.PNG
+
+6. Now, if you reboot your module, and check the DroneCAN configuration window again, you'll find that ArduPilot allocates the same ID again
