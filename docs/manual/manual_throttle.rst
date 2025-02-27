@@ -46,8 +46,6 @@ Vertiq modules suport three different throttle sources: :ref:`IQUART <throttle_i
 These sources correspond to different communication protocols that can send throttle commands to a Vertiq module. Each source uses different messages and mappings to send its 
 throttle commands, as covered in the sections below. 
 
-Vertiq modules identify and track the source of incoming throttle command for use with the :ref:`armed_throttle_source_lockout` feature.
-
 .. _throttle_iquart_ref:
 
 IQUART

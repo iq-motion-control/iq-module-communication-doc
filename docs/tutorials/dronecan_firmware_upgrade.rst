@@ -20,6 +20,8 @@ Hardware
 In order to connect with the DroneCAN GUI tool, you will need an SLCAN device such as the `Zubax Babel <https://zubax.com/products/adapters/canface>`_ which 
 will be used in each of the following examples. See the DroneCAN GUI tool's documentation to find more information on supported devices.
 
+.. _dronecan_gui_basics:
+
 DroneCAN GUI Tool Basics
 ============================
 After opening the DroneCAN GUI tool, you are met with the following screen: 
@@ -40,6 +42,11 @@ bus (the default 127 is unique from the default Vertiq node ID of 99), and click
 Now, connect your module to your USB-to-CAN device, and power it on. You should see it appear in the list of *Online nodes*:
 
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/module_seen.png
+
+.. note:: 
+    
+    DroneCAN firmware updates are still possible when using your module's :ref:`DroneCAN plug-and-play features <dronecan_plug_and_play>`. Just ensure that your module has been 
+    allocated an ID by the GUI as described in :ref:`dynamic_node_id_allocation`, and is detected on the bus before continuing.
 
 Double click the module's node to find its DroneCAN node properties
 

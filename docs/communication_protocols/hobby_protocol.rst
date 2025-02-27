@@ -10,6 +10,11 @@ Hobby Protocols
 Hobby protocols refers to an array of different protocols commonly used by drone hobbyists for controlling ESCs. Vertiq modules support a selection of the 
 most popular of these protocols. Some details on these protocols and how Vertiq modules support them is provided below.
 
+.. note::
+
+    Please note that no two hobby protocols can be used together as :ref:`redundant throttle sources <redundant_throttle_manual>`. Only one 
+    hobby protocol can be accepted at any time.
+
 Module Support
 ===============
 
