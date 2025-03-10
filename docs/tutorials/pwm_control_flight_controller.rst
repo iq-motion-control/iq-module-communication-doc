@@ -461,10 +461,32 @@ Several parameters must be set properly to make sure the flight controller can c
       :align: center
       :width: 50%
 
-Select PWM MAIN. Here, you can assign each channel output with the motor it represents in the drone geometry as well as the protocol to be used on the channels. For this example, we will assign MAIN 1 to Motor 1 using the PWM 400 Hz protocol. Set 
-Minimum and Maximum values to 990 and 2000 respectively. By default, Vertiq modules use a range of 1000us to 2000us, but setting the minimum to 990us helps ensure the module will not spin on a 0% throttle. 
-Once activated, you will see sliders appear under Actuator Testing in the bottom left. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
-you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting 0% throttle commands immediately on channel activation. By default, Vertiq modules 
+Select PWM MAIN. Here, you can assign each channel output with the motor it represents in the drone geometry as well as the protocol to be used on the channels. For this example, 
+we will assign MAIN 1 to Motor 1 using the PWM 400 Hz protocol. PX4's Disarmed, Minimum, and Maximum parameters define the protocol specific values that are transmitted 
+when your flight controller is both disarmed and armed. When using PWM, each value represents a number of microseconds. So, for example, suppose Disarmed is set to 990, Minimum to 
+1000, and Maximum to 2000. When the flight controller is in a disarmed state, it will transmit a 990us pulse on the channel being configured. Once armed, the flight controller 
+will begin outputting active throttles where the pulses will never be less than 1000us and will never exceed 2000us.
+
+We highly recommend that you coordinate your PX4 configuration with your module's :ref:`arming parameter settings <manual_advanced_arming>`. For example, suppose your module is 
+configured to disarm on throttle commands between 0 and 2%, and to arm between 2 and 12.5%. When the flight controller is disarmed, we want our module to be as well. Since Vertiq 
+modules use a range of 1000us to 2000us for PWM throttle parsing, we can easily map our percentages to the correct Disarmed, Minimum, and Maximum values. When disarmed, we want the flight 
+controller to output a command that will disarm the module. So, we will set our Disarmed value to 1000us as it represents a 0% throttle. Now, we want to ensure the module arms when 
+the flight controller does, so we'll adjust our minimum flight controller output to fall inside of our :ref:`arming region <arming_throttle_regions>`. To ensure we fall inside of the 
+arming region, we will configure the flight controller to output a 2.5% throttle once armed. 2.5% of our 1000us range is 25, so we'll set our Minimum to 1025us. The maximum is 
+defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
+
+.. warning::
+
+  It is strongly encouraged that your Minimum throttle output from the flight controller lies outside of your module's disarming region. If your module disarms while in flight, 
+  it can lead to vehicle failure. For the safest flight experience, your flight controller's outputs and your module's arming regions must align such that the flight controller will never 
+  disarm your module via throttles while the flight controller is armed.
+
+
+In the module configuration completed so far in this tutorial, there is no configured :ref:`disarming region <disarm_on_throttle>`. So, we will set both our Disarmed and Minimum outputs 
+to 990us in order to ensure that the module will not spin unexpectedly on 0% throttle outputs. The Maximum value can remain 2000us.
+
+Once you have fully configured the output channel, you will see sliders appear under Actuator Testing. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
+you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (990us) immediately on channel activation. By default, Vertiq modules 
 take 0% throttle commands as arming throttles. 
 
 For more information on how to configure the module to properly interpret throttle commands, see the :ref:`manual_throttle` section of the Feature Reference 
