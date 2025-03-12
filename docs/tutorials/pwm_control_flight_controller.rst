@@ -478,12 +478,12 @@ defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 .. warning::
 
   It is strongly encouraged that your Minimum throttle output from the flight controller lies outside of your module's disarming region. If your module disarms while in flight, 
-  it can lead to vehicle failure. For the safest flight experience, your flight controller's outputs and your module's arming regions must align such that the flight controller will never 
-  disarm your module via throttles while the flight controller is armed.
+  it can cause your modules to stop responding to throttle commands until they rearm. For the safest flight experience, your flight controller's outputs and your module's arming 
+  regions must align such that the flight controller will never disarm your module via throttles while the flight controller is armed.
 
-
-In the module configuration completed so far in this tutorial, there is no configured :ref:`disarming region <disarm_on_throttle>`. So, we will set both our Disarmed and Minimum outputs 
-to 990us in order to ensure that the module will not spin unexpectedly on 0% throttle outputs. The Maximum value can remain 2000us.
+In the module configuration completed so far in this tutorial, there is no configured :ref:`disarming region <disarm_on_throttle>`. So, we will set our Disarmed output to 990us and our 
+Minimum outputs to 1000us in order to ensure that the module will not spin unexpectedly on 0% throttle outputs. Note that our Disarmed output should always be lower 
+than the Minimum output. The Maximum value can remain 2000us.
 
 Once you have fully configured the output channel, you will see sliders appear under Actuator Testing. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
 you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (990us) immediately on channel activation. By default, Vertiq modules 
