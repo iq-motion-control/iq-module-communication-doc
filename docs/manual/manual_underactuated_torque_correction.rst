@@ -1,7 +1,7 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. |propeller_name| replace:: UP12
+.. |propeller_name| replace:: UPF-23-12
 .. |motor_name| replace:: Vertiq 23-06
 
 .. _correcting_underactuated_torque:
@@ -50,9 +50,9 @@ In this equation 'h' is the height of the propeller blades above the aircraft's 
 
     |propeller_name| height drawing
 
-An example calculation where the blades are 50mm above the CoM is done below. The propeller is the UP12 which has a calibrated 'propeller_torque_offset_angle' of 1.75 radians.
+An example calculation where the blades are 50mm above the CoM is done below. The propeller is the UPF-23-12 which has a calibrated 'propeller_torque_offset_angle' of 1.75 radians.
 
-.. admonition:: Calculating the Torque Angle Correction for a UP12 Propeller
+.. admonition:: Calculating the Torque Angle Correction for a UPF-23-12 Propeller
 
     Calibrated 'propeller_torque_offset_angle' = 1.75 radians
 

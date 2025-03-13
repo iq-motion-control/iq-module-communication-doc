@@ -1,7 +1,7 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. |propeller_name| replace:: UP12
+.. |propeller_name| replace:: UPF-23-12
 .. |motor_name| replace:: Vertiq 23-06
 
 .. _up12_installation_tutorial:

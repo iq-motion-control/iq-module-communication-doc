@@ -61,9 +61,9 @@ Frequently Asked Questions
 
 .. _upf-23-12_frequently_asked_questions:
 
-===============================
+=======================================
 UPF-23-12 Frequently Asked Questions
-===============================
+=======================================
 
 #. How does the underactuated propeller hardware mechanism work?
     * The underactuated propeller consists of a 45 degree hinge in the hub of the propeller and flapping hinges at the blades. It is connected to a Vertiq module, which consists of an integrated motor, ESC, and position sensor. 
