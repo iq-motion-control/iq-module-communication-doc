@@ -18,7 +18,7 @@ It provides a streamlined interface to control your module using ESC, Voltage, V
 ********
 Download
 ********
-Currently, Vertiq Testing Tool is only available on Windows.
+Vertiq Testing Tool is available on Windows and Linux.
 You can download Vertiq Testing Tool on our `Support Page <https://www.vertiq.co/support>`_.
 
 
@@ -31,7 +31,9 @@ Please follow the 'Connection with a Computer' and 'Wiring' sections of the :ref
 ********
 Overview
 ********
-Once downloaded, extract and run the Vertiq Testing Tool executable. When running this application for the first time, 
+Once downloaded on Linux, extract and run the Vertiq Testing Tool executable. 
+
+Once download on Windows, follow the instructions in the installer. When running this application for the first time, 
 you may encounter a Windows Defender SmartScreen warning.
 
 If the popup below appears, click on 'More info'.
@@ -78,6 +80,9 @@ You can also use the slider to adjust the ESC input value, which mimics adjustin
 
 .. image:: ../_static/vertiq_testing_tool_pictures/esc_input_command_widget.png
 
+.. note::
+    Continuous command will be automatically disabled when your module is disconnected for safety purposes.
+
 
 ================================
 Live Plotting and Active Metrics
@@ -111,11 +116,25 @@ Now, click 'Update Plot'.
 Notice that the *drive_volts* metric is added to the 'Active metrics' widget. By default, *obs_velocity*, *watts*, and *amps* are preloaded in the 'Active metrics' widget.
 Selecting a metric activates it, and updates the live plot with the now active metric. Only one metric can be active at a time, but there is no limit to the number of metrics that can be added to the 'Active metrics' widget.
 
-.. image:: ../_static/vertiq_testing_tool_pictures/drive_volts_metric_plotting_example.png
+.. image:: ../_static/vertiq_testing_tool_pictures/active_metrics_widget_example.png
 
-To remove a metric from the 'Active metrics' widget, simply right click on it and select 'Remove metric'.
+To remove a metric from the 'Active metrics' widget, simply right click on it and select 'Remove'.
 
 .. image:: ../_static/vertiq_testing_tool_pictures/remove_metric_example.png
+
+
+============
+Plot Windows
+============
+In versions \>=v0.1.0, there is a new feature that allows you to create multiple plot windows. To use this feature, navigate to Windows \> New plot window in the menu bar: 
+
+.. image:: ../_static/vertiq_testing_tool_pictures/new_plot_window.png
+
+You can create multiple plot windows to plot different metrics:
+
+.. image:: ../_static/vertiq_testing_tool_pictures/multiple_plot_windows.png
+
+The new plot windows are highlighted above in the blue and green boxes.
 
 
 ===============================
@@ -147,3 +166,26 @@ In this example, 'Ramp to target' was disabled when the module was commanded to 
     Thank you for using our application! Please note that it is currently in active development, and you may encounter some bugs or unexpected behavior. 
     Your experience and feedback are extremely valuable to us as we continue to improve the application. 
     If you notice any issues or have any questions reach out to us at support@vertiq.co. Suggestions and feature requests are welcomed!
+
+=================
+Custom API Widget
+=================
+
+In versions \>=v0.1.0, there is a new widget in all tabs called the API widget:
+
+.. image:: ../_static/vertiq_testing_tool_pictures/api_widget_1.png
+
+This widget allows you to choose any client and client entry that is supported on your module, and perform GET/SET/SAVE commands.
+Here is an example of getting the input amperage to your module using the 'amps' entry from the 'power_monitor' client:
+
+.. image:: ../_static/vertiq_testing_tool_pictures/api_widget_power_monitor_amps.png
+
+For more information about clients and client entries, please refer to the :ref:`Client Table Reference <iquart_client_reference_tables>`.
+
+You can also use the 'Add API widget' to add additional API widgets in the control panel:
+
+.. image:: ../_static/vertiq_testing_tool_pictures/multiple_api_widgets.png
+
+
+
+
