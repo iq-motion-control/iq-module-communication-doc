@@ -81,7 +81,7 @@ Inside the ``vertiq_io`` submenu one option should appear for including IFCI Con
 
     Include IFCI Parameters
 
-When IFCI Configuration Parameters is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/up12>`_, select this as well.
+When IFCI Configuration Parameters is selected, a second option will appear for including pulsing module configurations. If you plan on using `underactuated propellers <https://www.vertiq.co/upf-23-12>`_, select this as well.
 
 When all of your desired configuration options are selected, press ``Q`` and then ``Y`` to save the configuration.
 
