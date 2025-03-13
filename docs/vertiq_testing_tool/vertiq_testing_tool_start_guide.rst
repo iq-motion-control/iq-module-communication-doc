@@ -162,10 +162,6 @@ In this example, 'Ramp to target' was disabled when the module was commanded to 
 
 .. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_ramp_disabled_example.png
 
-.. note::
-    Thank you for using our application! Please note that it is currently in active development, and you may encounter some bugs or unexpected behavior. 
-    Your experience and feedback are extremely valuable to us as we continue to improve the application. 
-    If you notice any issues or have any questions reach out to us at support@vertiq.co. Suggestions and feature requests are welcomed!
 
 =================
 Custom API Widget
@@ -188,4 +184,7 @@ You can also use the 'Add API widget' to add additional API widgets in the contr
 
 
 
-
+.. note::
+    Thank you for using our application! Please note that it is currently in active development, and you may encounter some bugs or unexpected behavior. 
+    Your experience and feedback are extremely valuable to us as we continue to improve the application. 
+    If you notice any issues or have any questions reach out to us at support@vertiq.co. Suggestions and feature requests are welcomed!
