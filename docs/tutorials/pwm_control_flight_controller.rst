@@ -485,7 +485,7 @@ In the module configuration completed so far in this tutorial, there is no confi
 Minimum output to 1005us. Note that our Disarmed output should always be lower than the Minimum output. The Maximum value can remain 2000us.
 
 Once you have fully configured the output channel, you will see sliders appear under Actuator Testing. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
-you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (990us) immediately on channel activation. By default, Vertiq modules 
+you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (1000us) immediately on channel activation. By default, Vertiq modules 
 take 0% throttle commands as arming throttles. 
 
 For more information on how to configure the module to properly interpret throttle commands, see the :ref:`manual_throttle` section of the Feature Reference 
