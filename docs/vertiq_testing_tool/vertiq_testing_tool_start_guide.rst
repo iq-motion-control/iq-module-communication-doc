@@ -33,7 +33,7 @@ Overview
 ********
 Once downloaded on Linux, extract and run the Vertiq Testing Tool executable. 
 
-Once download on Windows, follow the instructions in the installer. When running this application for the first time, 
+Once downloaded on Windows, follow the instructions in the installer. When running this application for the first time, 
 you may encounter a Windows Defender SmartScreen warning.
 
 If the popup below appears, click on 'More info'.
@@ -126,7 +126,7 @@ To remove a metric from the 'Active metrics' widget, simply right click on it an
 ============
 Plot Windows
 ============
-In versions \>=v0.1.0, there is a new feature that allows you to create multiple plot windows. To use this feature, navigate to Windows \> New plot window in the menu bar: 
+In versions v0.1.0 and above, there is a new feature that allows you to create multiple plot windows. To use this feature, navigate to Windows \> New plot window in the menu bar: 
 
 .. image:: ../_static/vertiq_testing_tool_pictures/new_plot_window.png
 
@@ -167,7 +167,7 @@ In this example, 'Ramp to target' was disabled when the module was commanded to 
 Custom API Widget
 =================
 
-In versions \>=v0.1.0, there is a new widget in all tabs called the API widget:
+In versions v0.1.0 and above, there is a new widget in all tabs called the API widget:
 
 .. image:: ../_static/vertiq_testing_tool_pictures/api_widget_1.png
 
