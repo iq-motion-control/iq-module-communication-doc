@@ -95,47 +95,66 @@ as these are the supported metrics that can be plotted. Also, please make sure t
 .. warning::
     Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
 
-For example, let's command the module to a 3V drive voltage using the Control Panel in the Voltage Input tab and plot the value of *drive_volts* from the Brushless Drive client.
+For example, let's walk-through the process of commanding the module to a 3V drive voltage using the Control Panel in the Voltage Input tab and plotting the value of *drive_volts* from the Brushless Drive client.
 
 .. note::
     Please refer to the :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>` documentation to learn more about Velocity and Voltage Control.
-
-
-Set the 'Target Voltage' to 3.00 and click 'Send Command'. The module will ramp up to 3 volts over the next 5 seconds specified by the 'Ramp Time' value.
-After 5 seconds, the module should now have a constant, 3V, drive voltage. We can confirm this by plotting the drive volts.
-
-.. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
 
 In order to visualize the module's drive voltage, navigate to the widget labeled 'Select a metric to plot'. The upper dropdown menu allows you to pick a client, and the lower a client entry.
 Please refer to :ref:`Getting Started with Vertiq's APIs <getting_started_with_apis>` to learn more about IQUART clients.
 
 In the upper dropdown menu, select *brushless_drive*. This corresponds to the :ref:`Brushless Drive <brushless_drive>` client.
-In the lower dropdown menu, select *drive_volts*, which corresponds with brushless drive's *drive_volts* entry.
-Now, click 'Update Plot'. 
+In the lower dropdown menu, select *drive_volts*, which corresponds with brushless drive's *drive_volts* entry.Now, click 'Update Plot'. 
 
-Notice that the *drive_volts* metric is added to the 'Active metrics' widget. By default, *obs_velocity*, *watts*, and *amps* are preloaded in the 'Active metrics' widget.
-Selecting a metric activates it, and updates the live plot with the now active metric. Only one metric can be active at a time, but there is no limit to the number of metrics that can be added to the 'Active metrics' widget.
+Notice that the *drive_volts* metric is added to the 'Selected metrics' widget. By default, *volts* from the :ref:`Power Monitor <power_monitor>` client is preloaded in the 'Active metrics' widget.
+Selecting a metric activates it, and updates the live plot with the now active metric. Multiple metrics can be plotted at once, so when *drive_volts* is added both *volts* and *drive_volts* will be plotted.
+At this point, *drive_volts* should be 0V, as no drive voltage has been commanded to the motor yet.
 
-.. image:: ../_static/vertiq_testing_tool_pictures/active_metrics_widget_example.png
+.. image:: ../_static/vertiq_testing_tool_pictures/added_volts_metric_example.png
 
-To remove a metric from the 'Active metrics' widget, simply right click on it and select 'Remove'.
+To plot only the *drive_volts* metric, uncheck the *volts* metric. This will hide that metric on the plot, so only the *drive_volts* metric will be visible.
 
-.. image:: ../_static/vertiq_testing_tool_pictures/remove_metric_example.png
+.. image:: ../_static/vertiq_testing_tool_pictures/hide_volts_example.png
 
+Note that the position of the y-axes is determined by the order of the metrics in the metrics list. Because *volts* is the first metric in the list its y-axis will be on the left
+and all other metrics will have their y-axes on the right, even when the first metric is hidden. To remove a metric from the metrics list, right click on it and select 'Remove'.
+If *volts* is removed, *drive_volts* will be the first metric in the list and will move its y-axis to the left, as can be seen below.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/removed_volts_metric_example.png
+
+Now that the plot is set up to plot only *drive_volts*, we can see how the value changes as we command the module. Select the Voltage Input tab on the left-hand side of the tool.
+Set the 'Target Voltage' to 3.00 and click 'Send Command'. The module will ramp up to 3 volts over the next 5 seconds specified by the 'Ramp Time' value.
+After 5 seconds, the module should now have a constant, 3V, drive voltage. The plot of *drive_volts* shows this ramp and final setpoint, as shown below.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
+
+==============================
+Customizing Plotted Metrics
+==============================
+In versions v0.2.0 and above, it is possible to further customize the plotting of metrics. Specifically, the color of the line, the label used on the y-axis, and the visibility of the y-axis can be configured.
+To change these properties of the metric, select the gear icon next to the metric in the 'Selected metrics' list. This will bring up a small dialog box with options for customizing the metric.
+The images below show the gear icon and metric customization dialog.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/metric_gear.png
+
+.. image:: ../_static/vertiq_testing_tool_pictures/metric_config_dialog.png
+
+On the metric customization dialog, "Show y-axis" controls whether the y-axis for this metric is visible. The color palette allows you to select what color the axis and line should be.
+The label allows you to customize the label on the y-axis for this metric. The picture below shows an example of using this dialog to change both the color and label of a metric.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/customizing_metric.png
 
 ============
 Plot Windows
 ============
-In versions v0.1.0 and above, there is a new feature that allows you to create multiple plot windows. To use this feature, navigate to Windows \> New plot window in the menu bar: 
+In versions v0.1.0 and above, there is a feature that allows you to create multiple plot windows. To use this feature, navigate to Windows \> New plot window in the menu bar: 
 
 .. image:: ../_static/vertiq_testing_tool_pictures/new_plot_window.png
 
-You can create multiple plot windows to plot different metrics:
+You can create multiple plot windows to plot different metrics, and each of these plot windows has the same ability to plot and customize multiple metrics as previously described.
+The image below shows an example of two additional plot windows with multiple active metrics.
 
 .. image:: ../_static/vertiq_testing_tool_pictures/multiple_plot_windows.png
-
-The new plot windows are highlighted above in the blue and green boxes.
-
 
 ===============================
 Auto Command and Ramp to Target
