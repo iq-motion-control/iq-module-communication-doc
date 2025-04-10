@@ -104,7 +104,7 @@ In order to visualize the module's drive voltage, navigate to the widget labeled
 Please refer to :ref:`Getting Started with Vertiq's APIs <getting_started_with_apis>` to learn more about IQUART clients.
 
 In the upper dropdown menu, select *brushless_drive*. This corresponds to the :ref:`Brushless Drive <brushless_drive>` client.
-In the lower dropdown menu, select *drive_volts*, which corresponds with brushless drive's *drive_volts* entry.Now, click 'Update Plot'. 
+In the lower dropdown menu, select *drive_volts*, which corresponds with brushless drive's *drive_volts* entry. Now, click 'Update Plot'.
 
 Notice that the *drive_volts* metric is added to the 'Selected metrics' widget. By default, *volts* from the :ref:`Power Monitor <power_monitor>` client is preloaded in the 'Active metrics' widget.
 Selecting a metric activates it, and updates the live plot with the now active metric. Multiple metrics can be plotted at once, so when *drive_volts* is added both *volts* and *drive_volts* will be plotted.
@@ -112,18 +112,18 @@ At this point, *drive_volts* should be 0V, as no drive voltage has been commande
 
 .. image:: ../_static/vertiq_testing_tool_pictures/added_volts_metric_example.png
 
-To plot only the *drive_volts* metric, uncheck the *volts* metric. This will hide that metric on the plot, so only the *drive_volts* metric will be visible.
+To plot only the *drive_volts* metric, uncheck the *volts* metric. This will hide that metric on the plot so only the *drive_volts* metric will be visible.
 
 .. image:: ../_static/vertiq_testing_tool_pictures/hide_volts_example.png
 
-Note that the position of the y-axes is determined by the order of the metrics in the metrics list. Because *volts* is the first metric in the list its y-axis will be on the left
+Note that the position of the y-axes is determined by the order of the metrics in the metrics list. Because *volts* is the first metric in the list, its y-axis will be on the left
 and all other metrics will have their y-axes on the right, even when the first metric is hidden. To remove a metric from the metrics list, right click on it and select 'Remove'.
 If *volts* is removed, *drive_volts* will be the first metric in the list and will move its y-axis to the left, as can be seen below.
 
 .. image:: ../_static/vertiq_testing_tool_pictures/removed_volts_metric_example.png
 
 Now that the plot is set up to plot only *drive_volts*, we can see how the value changes as we command the module. Select the Voltage Input tab on the left-hand side of the tool.
-Set the 'Target Voltage' to 3.00 and click 'Send Command'. The module will ramp up to 3 volts over the next 5 seconds specified by the 'Ramp Time' value.
+Set the 'Target Voltage' to 3.00 and click 'Send Command'. The module will ramp up to 3 volts over the next 5 seconds as specified by the 'Ramp Time' value.
 After 5 seconds, the module should now have a constant, 3V, drive voltage. The plot of *drive_volts* shows this ramp and final setpoint, as shown below.
 
 .. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
