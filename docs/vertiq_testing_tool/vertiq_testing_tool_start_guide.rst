@@ -95,7 +95,7 @@ as these are the supported metrics that can be plotted. Also, please make sure t
 .. warning::
     Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
 
-For example, let's walk-through the process of commanding the module to a 3V drive voltage using the Control Panel in the Voltage Input tab and plotting the value of *drive_volts* from the Brushless Drive client.
+For example, let's walk through the process of commanding the module to a 3V drive voltage using the Control Panel in the Voltage Input tab and plotting the value of *drive_volts* from the Brushless Drive client.
 
 .. note::
     Please refer to the :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>` documentation to learn more about Velocity and Voltage Control.
