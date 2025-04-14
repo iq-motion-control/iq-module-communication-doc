@@ -47,7 +47,42 @@ uavcan.protocol.NodeStatus (Data Type ID = 341)
 The DroneCAN protocol requires that all nodes on a DroneCAN network periodically publish their status using the Node Status message. Vertiq modules support this behavior to conform 
 to the standard. A uavcan.protocol.NodeStatus message is published at 1 Hz during operation, reporting its health, current mode, and uptime.
 
-In normal operation a Vertiq module should always report its Health as OK, and its mode as Operational. No sub-modes or vendor specific status codes are currently supported.
+Vertiq's Node Health Indications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vertiq modules support all four standard DroneCAN `health indications <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=fatal%20malfunction.%0Auint2-,health,-%23%0A%23%20Current%20mode.%0A%23%0A%23%20Mode>`_. Modules enter each state given the following:
+
+Critical
+""""""""""
+#. The module's :ref:`total derate <derates>` reaches 0
+#. Your module's drive mode is in lockout due to :ref:`power safety <power_safety>`
+
+Warning
+""""""""""
+#. The module's supply voltage is greater than your drive's :ref:`v_max_start <brushless_drive>`. This typically indicates that the module is regenerating into a supply that cannot handle regenerated current, such as a typical benchtop power supply, and is limiting how much it regenerates to protect itself
+#. Your microcontroller's temperature is within 10°C of your module's :ref:`microcontroller temperature derate <microcontroller_derate>` window
+#. Your module's coil temperature is within 10°C of your module's :ref:`coil temperature derate <coil_temp_derate>` window
+
+Error
+""""""""
+#. The module is actively in :ref:`timeout <manual_timeout>`
+#. The module's :ref:`total derate <derates>` is less than 1 but greater than 0
+
+Healthy
+""""""""""
+When none of the conditions of Critical, Warning, or Error are met, the module is considered Healthy.
+
+
+Vertiq's Vendor Specific NodeStatus Code Breakdown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vertiq's vendor specific NodeStatus bits are used to indicate the state of various possible module errors. The bits are broken down as follows:
+
+* Bits [0, 7]: Indicate the value of :ref:`Power Safety's fault_now <power_safety_client_params>` value. Please refer to the linked documentation for an additional breakdown of these bits
+* Bit 8: Indicates that the module's :ref:`speed derate <speed_derate>` is less than 1 but greater than 0. This means the motor is approaching an over-speed condition
+* Bit 9: Indicates that the module's :ref:`microcontroller temperature derate <microcontroller_derate>` is less than 1 but greater than 0. This means that the microcontroller's temperature is getting dangerously high
+* Bit 10: Indicates that the module's :ref:`coil temperature derate <coil_temp_derate>` is less than 1 but greater than 0. This means that the coil's temperature is getting dangerously high
+* Bit 11: Indicates that the module's measured voltage is greater than your drive's :ref:`v_max_start <brushless_drive>`. This typically indicates that the module is regenerating into a supply that cannot handle regenerated current, such as a typical benchtop power supply, and is limiting how much it regenerates to protect itself
 
 Refer to the `uavcan.protocol.NodeStatus section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#nodestatus>`_ in the specification 
 for more details.
@@ -572,11 +607,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-0. Unconfigured
-1. 3D Counter Clockwise
-2. 3D Clockwise
-3. 2D Counter Clockwise
-4. 2D Clockwise 
+1. Unconfigured
+2. 3D Counter Clockwise
+3. 3D Clockwise
+4. 2D Counter Clockwise
+5. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
