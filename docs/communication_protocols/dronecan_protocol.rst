@@ -81,7 +81,7 @@ Vertiq's vendor specific NodeStatus bits are used to indicate the state of vario
 * Bits [0, 7]: Indicate the value of :ref:`Power Safety's fault_now <power_safety_client_params>` value. Please refer to the linked documentation for an additional breakdown of these bits
 * Bit 8: Indicates that the module's :ref:`speed derate <speed_derate>` is less than 1 but greater than 0. This means the motor is approaching an over-speed condition
 * Bit 9: Indicates that the module's :ref:`microcontroller temperature derate <microcontroller_derate>` is less than 1 but greater than 0. This means that the microcontroller's temperature is getting dangerously high
-* Bit 10: Indicates that the module's :ref:`coil temperature derate <coil_temp_derate>` is less than 1 but greater than 0. This means that the coil's temperature is getting dangerously high
+* Bit 10: Indicates that the module's :ref:`coil temperature derate <coil_temp_derate>` is less than 1 but greater than 0. This means that the coil temperature is getting dangerously high
 * Bit 11: Indicates that the module's measured voltage is greater than your drive's :ref:`v_max_start <brushless_drive>`. This typically indicates that the module is regenerating into a supply that cannot handle regenerated current, such as a typical benchtop power supply, and is limiting how much it regenerates to protect itself
 
 Refer to the `uavcan.protocol.NodeStatus section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#nodestatus>`_ in the specification 
