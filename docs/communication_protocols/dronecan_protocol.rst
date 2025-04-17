@@ -75,7 +75,6 @@ Healthy
 """"""""""
 When none of the conditions of Critical, Warning, or Error are met, the module is considered Healthy.
 
-
 Vertiq's Vendor Specific NodeStatus Code Breakdown
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
