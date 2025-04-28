@@ -43,9 +43,16 @@ There are two types of configurations available to redundant throttle. The first
 source if the active source (the source whose throttles are being applied to module control) goes offline. The second set of parameters defines the priorities of each supported throttle source. You can find the specific parameters 
 at :ref:`throttle_source_manager`. You can access these parameters either using a :ref:`Vertiq API <getting_started_with_apis>` or through the :ref:`IQ Control Center <control_center_start_guide>`. 
 
-The time that a module waits (throttle source timeout) can be configured through the Control Center's tuning tab:
+The time that a module waits, its throttle switchover time, can be configured through the Control Center's tuning tab as ``Throttle Source Timeout``:
 
 .. image:: ../_static/manual_images/redundant_throttle/throttle_source_to.png
+
+.. note:: 
+
+    Please note that if your throttle source switchover time is greater than propeller motor controller's :ref:`timeout <manual_timeout>`, it is possible to experience 
+    unexpected behaviors. In this scenario, it is possible for the module to reach the propeller motor control timeout before the throttle source manager has 
+    an opportunity to switch to another source. As such, we highly recommend that your throttle switchover time be less than propeller motor controller's timeout.
+
 
 Each protocol priority can be adjusted through the Control Center's general tab:
 
@@ -70,7 +77,7 @@ You configure the following:
 
 - DroneCAN's priority to 3 and hobby's to 2 (the module will automatically set IQUART's to 1 ensuring that there are no two matching priorities)
 - Flight controller outputting both :ref:`DSHOT <hobby_dshot>` as well as DroneCAN commands
-- Throttle source timeout configured to 0.1 seconds
+- Throttle source switchover time configured to 0.1 seconds
 - Propeller motor controller's :ref:`timeout <manual_timeout>` to 1 second
 
 The sequence diagram below illustrates how your module reacts to received throttle commands as well as how it deals with switching between sources should the primary source go offline.
@@ -79,7 +86,7 @@ The sequence diagram below illustrates how your module reacts to received thrott
     :width: 50%
 
 Note that when two throttles are received at the same time, one through DroneCAN and one through DSHOT, the DroneCAN throttle is always applied to spin the module. This is because DroneCAN's 
-priority (3) is higher than hobby's (2). Only when DroneCAN has gone offline for the throttle source timeout (0.1s) are DSHOT throttles applied. Now, the flight controller is 
+priority (3) is higher than hobby's (2). Only when DroneCAN has gone offline for the throttle source switchover time (0.1s) are DSHOT throttles applied. Now, the flight controller is 
 once again able to successfully transmit DroneCAN throttles, and the received DroneCAN throttles are immediately applied to module spinning.
 
 Configuration Example 2
@@ -91,7 +98,7 @@ You configure the following:
 
 - IQUART's priority to 3 and DroneCAN's to 1 (the module will automatically set hobby's to 2 ensuring that there are no two matching priorities)
 - Flight controller outputting both :ref:`IQUART Flight Controller Interface commands <controlling_ifci>` as well as DroneCAN commands
-- Throttle source timeout configured to 0.5 seconds
+- Throttle source switchover time configured to 0.5 seconds
 - Propeller motor controller's :ref:`timeout <manual_timeout>` to 1 second
 
 The sequence diagram below illustrates how your module reacts to received throttle commands as well as how it deals with switching between sources.
@@ -100,7 +107,7 @@ The sequence diagram below illustrates how your module reacts to received thrott
     :width: 50%
 
 Note that the first DroneCAN throttle is applied to the motor since no IQUART messages had been received before. Then, when both an IQUART and DroneCAN message are received, 
-the IQUART throttle is applied. Last, DroneCAN throttles are only applied again once the throttle timeout is reached after IQUART disconnects. If for any reason, the module begins receiving 
+the IQUART throttle is applied. Last, DroneCAN throttles are only applied again once the throttle switchover time is reached after IQUART disconnects. If for any reason, the module begins receiving 
 IQUART throttles again at this point, the module will immediately start accepting those as IQUART has a higher priority.
 
 Configuration Example 3
@@ -112,7 +119,7 @@ You configure the following:
 
 - DroneCAN's priority to 3, IQUART to 0, hobby to 0
 - Flight controller outputting both :ref:`hobby_dshot` as well as DroneCAN commands
-- Throttle source timeout configured to 0.1 seconds
+- Throttle source switchover time configured to 0.1 seconds
 - Propeller motor controller's :ref:`timeout <manual_timeout>` to 1 second
 
 .. image:: ../_static/manual_images/redundant_throttle/dshot_ignored_ex.png

@@ -24,7 +24,6 @@
    modules/vertiq_40xx_family
    modules/vertiq_60xx_family
    modules/vertiq_81xx_family
-   modules/fortiq_42XX
    modules/g2_add_on_assembly_instructions
 
 .. toctree::
@@ -146,12 +145,6 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Vertiq 81-XX Family
-     - .. figure:: ./_static/module_pictures/fortiq_family.png
-            :target: modules/fortiq_42XX.html
-            :alt: Vertiq Fortiq Family
-            :align: center
-            
-            Vertiq Fortiq Family
 
 Reporting Documentation Issues
 ******************************
