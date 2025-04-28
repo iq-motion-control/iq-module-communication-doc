@@ -23,4 +23,5 @@ This manual is divided into sections based on individual features. A listing of 
     :align: center
     :file: ../_static/manual_images/supported_features_table.csv
     :header-rows: 1
+    
 \(1\) LED control is not available on the :ref:`Vertiq 81-08 Gen 1 <vertiq_81xx_family>`.

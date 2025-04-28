@@ -129,7 +129,7 @@ Redundant Throttle and Arming
 ********************************
 
 All throttle commands received by the throttle source manager are sent to your module's :ref:`arming handler <manual_advanced_arming>`, and are subject to all constraints defined by the arming handler. 
-For example, suppose you have configured IQUART to be the highest priority source, and are sending IQUART throttle commands via the :ref:`Vertiq Testing Tool (VTT) <vertiq_testing__guide>`. At the same 
+For example, suppose you have configured IQUART to be the highest priority source, and are sending IQUART throttle commands via the :ref:`Vertiq Testing Tool (VTT) <vertiq_testing_tool_guide>`. At the same 
 time, you are transmitting DroneCAN throttles with the `DroneCAN GUI tool <https://dronecan.github.io/GUI_Tool/Overview/>`_. In this example, your arming handler is set to arm on throttles in the range 0-7.5% on 10 
 consecutive throttles.
 

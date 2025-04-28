@@ -14,16 +14,7 @@ and Ardupilot flight controllers. Refer to the `DroneCAN documentation <https://
 Module Support
 ****************
 
-Speed Modules
-================
-
-.. include:: ../manual/advanced_only_table.rst
-
-Servo Modules
-================
-Servo modules do not support DroneCAN, as shown in the table below.
-
-.. include:: ../manual/none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _standard_dronecan_support:
 
