@@ -114,7 +114,7 @@ These options can all be configured through IQ Control Center through the *Timeo
 
 Timeout Meaning
 *****************
-Some users may wish to change the process triggered once the :ref:`timeout_behavior` is complete. This is configurable through the ``Timeout Meaning`` parameter available 
+Some users may wish to change the module state once the :ref:`timeout_behavior` is complete. This is configurable through the ``Timeout Meaning`` parameter available 
 in the IQ Control Center's advanced tab as shown below.
 
 .. figure:: ../_static/manual_images/timeout/timeout_meaning_parameter.png
