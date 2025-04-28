@@ -9,6 +9,11 @@ Stock LED Support (White and RGB LED Control)
 All Vertiq Gen 2 modules support use of our LED add-on board available with Vertiq's Pro Kit or by special request. For information about purchasing a Pro Kit, or for information about 
 purchasing more LED add-on boards, please contact us at info@vertiq.co. Please refer to your module's family page to see if it belongs to Gen 1 or Gen 2.
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
 Hardware Configuration
 =========================
 If you are using Vertiq's Pro Kit, simply plug the LED connector into the LED board, and you can move on to *Controlling Your LEDs*. Otherwise continue reading.

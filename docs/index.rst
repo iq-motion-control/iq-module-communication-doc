@@ -87,10 +87,6 @@
    manual/manual_stow
    manual/manual_timeout
    manual/manual_zero_spin
-   manual/manual_adc_interface
-   manual/manual_high_power_pwm_output
-   manual/manual_gpio_interface
-   manual/manual_step_direction
    manual/manual_ifci_control
    manual/manual_underactuated_torque_correction
    manual/manual_buzzer_control

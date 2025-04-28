@@ -7,11 +7,15 @@
 IQUART Flight Controller Interface
 **********************************
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
 About IFCI and Control Values
 =================================
 
-Vertiq modules may be controlled through the IQUART Flight Controller Interface (IFCI) when running applicable firmware. Please refer to your module's family page to see if 
-IFCI is supported. The IQUART Flight Controller Interface leverages Vertiq's :ref:`IQUART serial protocol <uart_messaging>` in order to send high speed controls to your modules. 
+Vertiq modules may be controlled through the IQUART Flight Controller Interface (IFCI) when running applicable firmware. The IQUART Flight Controller Interface leverages Vertiq's :ref:`IQUART serial protocol <uart_messaging>` in order to send high speed controls to your modules. 
 These controls are packed into a single message allowing one IFCI packet to send controls to multiple modules connected to the same serial line. 
 The basic structure of an IFCI packet is illustrated below:
 

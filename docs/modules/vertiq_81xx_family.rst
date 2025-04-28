@@ -316,9 +316,3 @@ For more information about the Vertiq 81-XX family's mechanical and electrical c
 
 .. _81_getting_started:
 .. include:: get_started_text.rst
-
-.. note::
-
-        :ref:`manual_led_support` is only available on Gen 2 models.
-
-.. include:: advanced_speed_servo_info.rst

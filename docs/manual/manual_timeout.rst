@@ -15,29 +15,20 @@ disarm when a timeout occurs, leaving them in a safe state following a timeout.
 Module Support
 ===============
 
-Speed Modules
-**************
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
-.. include:: all_checked_table.rst
+.. _triggering_timeout:
 
-Servo Modules
-**************
-Servo modules do not support the full range of configurable timeout features described in this section. They do support a timeout, and the period of the timeout is configurable.
-The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. Servo modules will always coast when they timeout.
+Triggering Timeout
+=====================
+Timeouts occur when the module is spinning and has not received a new message or command within its :ref:`timeout period <timeout_period>`. If a module has just rebooted, is 
+coasting, or is braking, the timeout will not expire. The countdown only begins when the module receives a command that makes it start spinning or otherwise applying some drive voltage. 
 
-.. table:: Module Support
+After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
 
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Module       | Feature Supported                  | Notes                                                                   |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 81-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 60-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 40-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
+* Any :ref:`IQUART <uart_messaging>` message
+* Throttle commands over :ref:`hobby protocols <hobby_protocol>`
+* Any :ref:`DroneCAN <dronecan_protocol>` message or request that the module will listen to. For a list of supported messages, please see :ref:`standard_dronecan_support`
 
 Configuring Timeout
 ====================
@@ -70,7 +61,9 @@ On modules with configurable timeout behavior, modules follow a multi-step timeo
 
 **This timeout process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a** :ref:`stop <stop_detection>` **, plays its timeout song as 
 specified by its playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the timeout song, 
-and what final state it ends up in after playing the song are all configurable by the user. 
+and what final state it ends up in after playing the song are all configurable by the user.
+
+A sample of the timeout song playing only once can be found in our :ref:`status song manual <timeout_song>`.
 
 The image below summarizes this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
 actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <stop_detection>`, the timeout song will play according to 
@@ -132,18 +125,5 @@ Note that no matter what the *Timeout Meaning* is set to, timeouts will always c
     :alt: Timeout Meaning Parameter
 
     Timeout Meaning Parameter in Control Center
-
-.. _triggering_timeout:
-
-Triggering Timeout
-=====================
-Timeouts occur when the module is spinning and has not received a new message or command within its :ref:`timeout period <timeout_period>`. If a module has just rebooted, is 
-coasting, or is braking, the timeout will not expire. The countdown only begins when the module receives a command that makes it start spinning or otherwise applying some drive voltage. 
-
-After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
-
-* Any :ref:`IQUART <uart_messaging>` message
-* Throttle commands over :ref:`hobby protocols <hobby_protocol>`
-* Any :ref:`DroneCAN <dronecan_protocol>` message or request that the module will listen to. This does not include heartbeats from other nodes or other messages on the bus that are not intended for the module.
 
 

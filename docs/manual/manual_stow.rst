@@ -14,19 +14,7 @@ once it reaches the stow position. Note that incoming commands can cause interru
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: advanced_only_table.rst
-
-Servo Modules
-**************
-Servo modules do not support stow as a separate feature. Rather, they are intended to primarily serve as position modules, so controlling them to move to any desired
-position is a natural part of their base functionality. Trajectory commands can be used to achieve a similar behavior to stow on any servo module. 
-The stow position feature is useful on speed modules primarily as a way to easily allow integrating moving to a single stow position with a flight controller. So the 
-stow specific features described in this portion of the documentation are not relevant for servo modules.
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _stow_process_overview:
 
