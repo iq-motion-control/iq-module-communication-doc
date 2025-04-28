@@ -114,10 +114,8 @@ These options can all be configured through IQ Control Center through the *Timeo
 
 Timeout Meaning
 *****************
-Some users may wish to intentionally cause timeouts to trigger a disarming process on their module. To accommodate this behavior, it is possible to configure a 
-timeout to explicitly act just like a disarm using the *Timeout Meaning* parameter in IQ Control Center as shown below. When this parameter is set to *Disarm*, 
-a timeout will trigger the :ref:`disarming behavior <advanced_disarming_behavior>`, play the disarm song, and will act exactly as if a disarm had been triggered in all ways. 
-Note that no matter what the *Timeout Meaning* is set to, timeouts will always cause modules to disarm, so they are left in a safe state.
+Some users may wish to change the process triggered once the :ref:`timeout_behavior` is complete. This is configurable through the ``Timeout Meaning`` parameter available 
+in the IQ Control Center's advanced tab as shown below.
 
 .. figure:: ../_static/manual_images/timeout/timeout_meaning_parameter.png
     :align: center
@@ -125,5 +123,20 @@ Note that no matter what the *Timeout Meaning* is set to, timeouts will always c
     :alt: Timeout Meaning Parameter
 
     Timeout Meaning Parameter in Control Center
+
+After performing its timeout behavior, the module can perform any of the following:
+
+* ``Timeout Error Disarm``
+
+    - The module will perform its :ref:`timeout_behavior`, and the error is treated as a communication error only. After the timeout behavior, the module **is explicitly disarmed**
+
+* ``Trigger Disarm Behavior``
+
+    - The module **will not** perform its :ref:`timeout_behavior`, but will instead perform only its :ref:`disarming behavior <advanced_disarming_behavior>`
+
+* ``Timeout Error Remain Armed``
+
+    - The module will perform its :ref:`timeout_behavior`, and the error is treated as a communication error only. After the timeout behavior, the module **remains armed**
+
 
 
