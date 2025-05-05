@@ -47,10 +47,55 @@ uavcan.protocol.NodeStatus (Data Type ID = 341)
 The DroneCAN protocol requires that all nodes on a DroneCAN network periodically publish their status using the Node Status message. Vertiq modules support this behavior to conform 
 to the standard. A uavcan.protocol.NodeStatus message is published at 1 Hz during operation, reporting its health, current mode, and uptime.
 
-In normal operation a Vertiq module should always report its Health as OK, and its mode as Operational. No sub-modes or vendor specific status codes are currently supported.
+Vertiq's Node Health Indications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vertiq modules support all four standard DroneCAN `health indications <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=fatal%20malfunction.%0Auint2-,health,-%23%0A%23%20Current%20mode.%0A%23%0A%23%20Mode>`_. Modules enter each state given the following conditions. 
+Please note that if any one condition is met, the module will enter that health state. For example, if your module is in timeout but it's derate is still 1, it **will** enter the 
+Error state. Also, please note that the list below is in order of health state priority. For example, if your module meets a condition for both Warning and Error, it will report 
+its health as Error.
+
+Critical
+""""""""""
+#. The module's :ref:`total derate <derates>` reaches 0
+#. Your module's drive mode is in lockout due to :ref:`power safety <power_safety>`
+
+Error
+""""""""
+#. The module is actively in :ref:`timeout <manual_timeout>`
+#. The module's :ref:`total derate <derates>` is less than 1 but greater than 0
+
+Warning
+""""""""""
+#. The module's supply voltage is greater than your drive's :ref:`Volts Limit Starting Voltage <manual_safety>`. This typically indicates that the module is regenerating into a supply that cannot handle regenerated current, such as a typical benchtop power supply, and is limiting how much it regenerates to protect itself
+#. Your microcontroller's temperature is within 10°C of your module's :ref:`microcontroller temperature derate <microcontroller_derate>` window
+#. Your module's coil temperature is within 10°C of your module's :ref:`coil temperature derate <coil_temp_derate>` window
+
+Healthy
+""""""""""
+When none of the conditions of Critical, Warning, or Error are met, the module is considered Healthy.
+
+Vertiq's Vendor Specific NodeStatus Code Breakdown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vertiq's vendor specific NodeStatus bits are used to indicate the state of various possible module errors. The bits are broken down as follows:
+
+* Bits [0, 7]: Indicate the value of :ref:`Power Safety's fault_now <power_safety_client_params>` value. Please refer to the linked documentation for an additional breakdown of these bits
+* Bit 8: Indicates that the module's :ref:`speed derate <speed_derate>` is less than 1 but greater than 0. This means the motor is approaching an over-speed condition
+* Bit 9: Indicates that the module's :ref:`microcontroller temperature derate <microcontroller_derate>` is less than 1 but greater than 0. This means that the microcontroller's temperature is getting dangerously high
+* Bit 10: Indicates that the module's :ref:`coil temperature derate <coil_temp_derate>` is less than 1 but greater than 0. This means that the coil temperature is getting dangerously high
+* Bit 11: Indicates that the module's measured voltage is greater than your drive's :ref:`Volts Limit Starting Voltage <manual_safety>`. This typically indicates that the module is regenerating into a supply that cannot handle regenerated current, such as a typical benchtop power supply, and is limiting how much it regenerates to protect itself
+
+Suppose your module's :ref:`microcontroller temperature is causing a derate <microcontroller_derate>` and at the same time, its voltage spikes beyond :ref:`Volts Limit Starting Voltage <manual_safety>`, and its input 
+current exceeds :ref:`power safety's maximum input current <power_safety_client_params>`. We expect bits 3, 9, and 11 to go high. We also expect that the module will enter Critical health 
+caused by the high input current. As viewed in the DroneCAN GUI tool:
+
+.. image:: ../_static/manual_images/dronecan/dronecan_health_critical.png
 
 Refer to the `uavcan.protocol.NodeStatus section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#nodestatus>`_ in the specification 
 for more details.
+
+If you are looking to view more detail about your module during flight, see :ref:`dronecan_support_esc_status` and :ref:`status_extended`.
 
 .. _dronecan_support_esc_status:
 

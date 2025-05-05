@@ -77,6 +77,8 @@ a microcontroller temperature based derate to avoid microcontroller overheating,
 These three derate values are combined and applied to the target command voltage in order to protect your module. Details of each of these derate values as well as 
 how they are combined are discussed below.
 
+.. _speed_derate:
+
 Speed Based Derate
 ---------------------
 As mentioned above, your module's speed derate is meant to protect your module from mechanical failure. Speed derate is calculated using the module's current speed, 
@@ -108,6 +110,8 @@ A graph illustrating the speed derate calculation is provided below:
     :align: center
     :scale: 50%
 
+.. _microcontroller_derate:
+
 Microcontroller Temperature Based Derate
 --------------------------------------------
 As mentioned above, your module's microcontroller temperature derate is meant to protect your module's microcontroller from overheating. 
@@ -130,6 +134,8 @@ A graph illustrating the microcontroller temperature derate calculation is provi
 .. image:: ../_static/manual_images/safety/micro_temp_derate_graph.png
     :align: center
     :scale: 50%
+
+.. _coil_temp_derate:
 
 Coil Temperature Based Derate
 ---------------------------------
@@ -161,10 +167,14 @@ The total applied derate is the direct multiplication of the speed, microcontrol
     :align: center
     :scale: 50%
 
+.. _power_safety:
+
 Power Safety
 =================
 Power safety is a general monitoring interface that immediately coasts your module if any measured parameters reach dangerous levels. In the event that 
 :ref:`standard derates <derates>` are insufficient, the power safety interface ensures safe module operation.
+
+.. _power_safety_client_params:
 
 Safety Parameters Handled by the Power Safety Client
 -------------------------------------------------------------
