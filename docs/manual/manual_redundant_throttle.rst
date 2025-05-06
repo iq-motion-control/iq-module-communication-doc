@@ -50,7 +50,7 @@ The time that a module waits, its throttle switchover time, can be configured th
 .. note:: 
 
     Please note that if your throttle source switchover time is greater than propeller motor controller's :ref:`timeout <manual_timeout>`, it is possible to experience 
-    unexpected behaviors. In this scenario, it is possible for the module to reach the propeller motor control timeout before the throttle source manager has 
+    undesired behaviors. In this scenario, it is possible for the module to reach the propeller motor control timeout before the throttle source manager has 
     an opportunity to switch to another source. As such, we highly recommend that your throttle switchover time be less than propeller motor controller's timeout.
 
 Each protocol priority can be adjusted through the Control Center's general tab:

@@ -22,7 +22,7 @@ To see if your module and firmware style supports this feature, please see our :
 Triggering Timeout
 =====================
 Timeouts occur when the module is spinning and has not received a new message or command within its :ref:`timeout period <timeout_period>`. If a module has just rebooted, is 
-coasting, or is braking, the timeout will not expire. The countdown only begins when the module receives a command that makes it start spinning or otherwise applying some drive voltage. 
+coasting, or is braking, the timeout will not expire. The countdown only begins when the module receives a command that makes it start spinning or otherwise apply some drive voltage. 
 
 After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
 
