@@ -8,6 +8,11 @@
 Velocity and Voltage Based Control Mechanisms
 ****************************************************
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
 ===================================
 About Velocity and Voltage Control
 ===================================

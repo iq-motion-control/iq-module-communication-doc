@@ -24,7 +24,6 @@
    modules/vertiq_40xx_family
    modules/vertiq_60xx_family
    modules/vertiq_81xx_family
-   modules/fortiq_42XX
    modules/g2_add_on_assembly_instructions
 
 .. toctree::
@@ -54,7 +53,6 @@
 
    communication_protocols/iquart_protocol
    communication_protocols/dronecan_protocol
-   communication_protocols/canopen_protocol
    communication_protocols/hobby_protocol
 
 .. toctree::
@@ -78,6 +76,7 @@
    :caption: Feature Reference Manual
 
    manual/manual_intro
+   manual/manual_supported_features
    manual/manual_angle_control_mechanisms
    manual/manual_velocity_control_mechanisms
    manual/manual_safety_systems
@@ -87,10 +86,6 @@
    manual/manual_stow
    manual/manual_timeout
    manual/manual_zero_spin
-   manual/manual_adc_interface
-   manual/manual_high_power_pwm_output
-   manual/manual_gpio_interface
-   manual/manual_step_direction
    manual/manual_ifci_control
    manual/manual_underactuated_torque_correction
    manual/manual_buzzer_control
@@ -151,12 +146,6 @@ Need to contact us? Please use support@vertiq.co.
             :align: center
             
             Vertiq 81-XX Family
-     - .. figure:: ./_static/module_pictures/fortiq_family.png
-            :target: modules/fortiq_42XX.html
-            :alt: Vertiq Fortiq Family
-            :align: center
-            
-            Vertiq Fortiq Family
 
 Reporting Documentation Issues
 ******************************

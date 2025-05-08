@@ -22,15 +22,7 @@ The :ref:`arming_module_support` section below details which Vertiq modules curr
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _advanced_arming_armed_states:
 

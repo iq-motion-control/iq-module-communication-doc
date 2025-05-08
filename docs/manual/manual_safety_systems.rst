@@ -9,6 +9,11 @@ Safety Systems
 The following manual is meant to outline the safety systems present on Vertiq modules. Safety systems are built into your module's firmware, 
 and seek to protect your module from things like over-velocity mechanical issues, power issues, and overheating.
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
 .. _protect_against_regen:
 
 Protecting Against Voltage Regeneration Spikes

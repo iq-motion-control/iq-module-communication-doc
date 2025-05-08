@@ -21,43 +21,7 @@ details on the structure of the telemetry messages supported by Vertiq modules a
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. table:: Module Support
-	:widths: 8 8 20
-	:class: tight-table
-
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Module       | Feature Supported                  |Notes                                                                                                           |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 81-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 60-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 40-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:warning:|          | Vertiq 23-XX modules do not support DroneCAN, so the DroneCAN telemetry described below does not apply to them.|
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-
-Servo Modules
-**************
-
-.. table:: Module Support
-	:widths: 8 8 20
-	:class: tight-table
-
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Module       | Feature Supported                  | Notes                                                                                                                                                                              |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 81-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 60-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 40-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 Supported Telemetry
 =====================

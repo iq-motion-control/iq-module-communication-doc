@@ -18,15 +18,7 @@ most popular of these protocols. Some details on these protocols and how Vertiq 
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: ../manual/all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: ../manual/all_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 Supported Hobby Protocols
 ==========================

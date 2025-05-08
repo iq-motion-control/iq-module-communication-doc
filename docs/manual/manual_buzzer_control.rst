@@ -14,6 +14,13 @@ Your module is capable of inducing specific vibration frequencies in order to cr
 Here, we will discuss all possible “songs” your module may play during normal operation and their meanings. We will also discuss how to use the 
 :ref:`Buzzer Control client <buzzer_control>` in order to create and play your own songs.
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
+.. _advanced_arming_armed_states:
+
 Standard Songs
 ==================
 
@@ -87,6 +94,8 @@ An example of a full calibration song is played here:
         <source src="../_static/manual_images/buzzer_song_mp3s_pics/hobby_calibration.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
     </audio>
+
+.. _timeout_song:
 
 Timeout
 ----------
