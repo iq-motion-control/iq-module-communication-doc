@@ -187,7 +187,7 @@ a bitmask used to show which flags are active, and is broken down as follows:
 * Bit 0: The microcontroller's Programmable Voltage Detector detected a voltage below acceptable limits
 * Bit 1: Power safety's input voltage reading has exceeded ``volt_input_high`` or has fallen below ``volt_input_low``
 * Bit 2: Power safety's reference voltage reading has exceeded ``vref_int_high`` or has fallen below ``vref_int_low``
-* Bit 3: Power safety's current input reading has exceeded ``current_input_high`` or has fallen below ``current_input_low``
+* Bit 3: Power safety's supply current reading has exceeded ``current_input_high`` or has fallen below ``current_input_low``
 * Bit 4: Power safety's motor current reading has exceeded ``motor_current_high`` or has fallen below ``motor_current_low``
 * Bit 5: Power safety's microcontroller temperature reading has exceeded ``temperature_uc_high`` or has fallen below ``temperature_uc_low``
 * Bit 6: Power safety's coil temperature reading has exceeded ``temperature_coil_high`` or has fallen below ``temperature_coil_low``
