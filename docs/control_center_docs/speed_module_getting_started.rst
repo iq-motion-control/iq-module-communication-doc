@@ -18,6 +18,8 @@ to all Vertiq modules and firmware types. The following document is meant to pro
 .. note::
     The following images are captured using IQ Control Center version 1.5.2 as connected to a Vertiq 40-06 Gen 2
 
+.. _params_for_fc_integration:
+
 *********************************************************
 Important Parameters for Flight Controller Integration
 *********************************************************
