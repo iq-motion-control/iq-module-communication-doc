@@ -3,9 +3,9 @@
 
 .. _hobby_calibration_tutorial:
 
-***********************************************
-Calibrating Modules With Analog Hobby Protocols
-***********************************************
+*********************************************************
+Calibrating Modules With Analog Timer Based Protocols
+*********************************************************
 
 Vertiq modules can be controlled with analog :ref:`timer based protocols <hobby_protocol>` such as :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`DShot <hobby_dshot>`. 
 These protocols send throttle commands to the module using a square wave or pulse of variable duration,
@@ -29,7 +29,7 @@ Software and Firmware Setup
 To follow this tutorial, ensure that your **IQ Control Center is on version 1.2.6 or later**. Earlier versions lacked some of the calibration features that will be discussed. If you
 are unfamiliar with the Control Center, refer to the :ref:`control_center_start_guide` for basic usage information. 
 
-For this tutorial, you should set up your module to use the :ref:`Standard PWM <hobby_standard_pwm>` hobby protocol. Follow the instructions in :ref:`hobby_fc_tutorial` to set up your module for Standard PWM control
+For this tutorial, you should set up your module to use the :ref:`Standard PWM <hobby_standard_pwm>` protocol. Follow the instructions in :ref:`hobby_fc_tutorial` to set up your module for Standard PWM control
 using the Control Center, and to connect your hardware to the module. That tutorial also covers how to set up some flight controllers for Standard PWM control.
 
 Overview of Calibration Procedure
@@ -76,7 +76,7 @@ The first parameter to check is the *Communication* parameter in the General tab
 calibrate if *Communication* was previously set to *Autodetect*. Check that the *Communication* setting matches the protocol you calibrated with. If *Communication* was explicitly
 set to a value other than *Autodetect* prior to calibration, then its value should not change. The figure below shows the an example of the *Communication* parameter after
 calibrating a module with the Standard PWM protocol. If you do wish to switch to using another protocol, you can simply change the selected Communication protocol. **Reboot the module
-after connecting it to with Control Center before attempting to control it with your flight controller. When a Vertiq module communicates with Control Center, it cannot receive hobby protocol
+after connecting it to with Control Center before attempting to control it with your flight controller. When a Vertiq module communicates with Control Center, it cannot receive timer based protocol
 commands until it reboots.**
 
 .. figure:: ../_static/tutorial_images/calibration_tutorial/general_communication_calibrated.JPG
