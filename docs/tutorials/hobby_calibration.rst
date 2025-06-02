@@ -14,7 +14,7 @@ pulse of 1000 us as 0% throttle, and a pulse of 2000 us as 100% throttle. For mo
 throttle commands, refer to the :ref:`manual_throttle` section of the Feature Reference Manual.
 
 The exact pulse duration used to represent the endpoints of the throttle range, however, can vary between different flight controllers. One controller may consider 1000 us to 2000 us to be the 0%
-to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control a Vertiq module, they must agree on this input range. In some instances you
+to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control a Vertiq module, they must agree on this input range. In some instances, you
 can edit the range used by the controller as discussed for Ardupilot and PX4 based flight controllers in this tutorial: :ref:`hobby_fc_tutorial`. 
 
 Another reason why calibration may be necessary is due to clock inaccuracies. Vertiq 23-XX modules do not have an external crystal, which reduces the accuracy of their clock. This can lead
