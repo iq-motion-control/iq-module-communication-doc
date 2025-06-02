@@ -7,13 +7,13 @@
 Calibrating Modules With Analog Hobby Protocols
 ***********************************************
 
-Vertiq modules can be controlled with analog :ref:`hobby protocols <hobby_protocol>` such as :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`OneShot <hobby_other_protocols>`. 
+Vertiq modules can be controlled with analog :ref:`timer based protocols <hobby_protocol>` such as :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`DShot <hobby_dshot>`. 
 These protocols send throttle commands to the module using a square wave or pulse of variable duration,
 where the length of the wave determines the throttle input. For example, when using Standard PWM, by default Vertiq modules interpret a 
 pulse of 1000 us as 0% throttle, and a pulse of 2000 us as 100% throttle. For more details on how a module can be configured to interpret 
 throttle commands, refer to the :ref:`manual_throttle` section of the Feature Reference Manual.
 
-However, the exact pulse duration used to represent the endpoints of the throttle range can vary between different controllers. One controller may consider 1000 us to 2000 us to be the 0%
+The exact pulse duration used to represent the endpoints of the throttle range, however, can vary between different flight controllers. One controller may consider 1000 us to 2000 us to be the 0%
 to 100% range, but another may consider 950 us to 1950 us to be the range. For a controller to properly control a Vertiq module, they must agree on this input range. In some instances you
 can edit the range used by the controller as discussed for Ardupilot and PX4 based flight controllers in this tutorial: :ref:`hobby_fc_tutorial`. 
 
@@ -53,7 +53,7 @@ The steps to perform calibration are:
 9.  If the module did not arm while raising the input, lower the input to its minimum again. The module should now arm. Raise the throttle and confirm the module spins. Note that if you have changed the arming parameters of the module from their default settings the module may not arm on a minimum throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
 
 The video below demonstrates the sounds a module makes as it is taken through the calibration process from start to finish. The module first plays the startup song, then the begin calibration
-song, then the calibration-in-progress song, and finally plays the arming song and begins spinning:
+song, then the calibration-in-progress song, and finally plays the :ref:`arming song <arming_song>` and begins spinning:
 
 .. raw:: html
 
@@ -124,23 +124,31 @@ Now, open Mission Planner and navigate to the Motor Test section under the Optio
 follow these steps:
 
     1. Power off the Vertiq module.
-    2. Set the duration in Motor Test to 120s. The precise number here isn't critically important, this is just meant to hold each command for a long enough time to make it easy to manually change them.
+    2. Set the duration in Motor Test to 25s. The precise number here isn't critically important, this is just meant to hold each command for a long enough time to make it easy to manually change them.
     3. Set the Throttle % to 100%.
     4. Click "Test All Motors" to start sending the 100% throttle commands.
     5. Power on the Vertiq Module, and wait for it to start playing the begin calibration song.
     6. Lower the Throttle % to 0% and click "Test All Motors." The module song should switch to the calibration-in-progress song.
-    7. Wait 5s, and then set the Throttle % to 50% and click "Test All Motors". The module should stop playing the calibration-in-progress song, indicating it completed calibration.
+    7. Wait 5s, and then set the Throttle % to 10% and click "Test All Motors". The module should stop playing the calibration-in-progress song, indicating it completed calibration.
     8. Lower the Throttle % to 0% and click "Test All Motors." Confirm that the module plays the arming song. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
     9. Try out different Throttle % settings to confirm the module spins when armed.
     10. Power cycle the module and check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful.
 
+You can see this whole procedure performed below.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/tutorial_images/calibration_tutorial/mission_planner_calibration.mp4" type="video/mp4"></video>
+
 The figures below show what the Motor Test panel should look like at the beginning of the calibration procedure and what your calibration parameters in IQ Control Center should look like after a successful calibration,
 though the exact high and low durations may be different.
-
-.. figure:: ../_static/tutorial_images/calibration_tutorial/mp_start_cal.JPG
-    :align: center
-
-    Mission Planner Motor Test at Start of Calibration Procedure
 
 
 .. figure:: ../_static/tutorial_images/calibration_tutorial/mp_calibrated.JPG
@@ -148,8 +156,8 @@ though the exact high and low durations may be different.
 
     Calibration Parameters in Advanced Tab After Calibrating With Standard PWM through Mission Planner
 
-Calibration With PX4 and QGroundControl Motor Test
-==================================================
+Calibration With PX4 and QGroundControl Actuator Test
+==========================================================
 As described in `Calibration With ArduCopter and Mission Planner Motor Test`_ above, typically you would use an RC transmitter to calibrate a module when connected to a flight controller.
 But just as with ArduCopter and Mission Planner, you can also use PX4 and QGroundControl to easily try out calibration without the need for any RC transmitter setup. All you need is your Vertiq 
 Module, a flight controller with PX4, and a computer with QGroundControl.
@@ -160,34 +168,32 @@ If the PWM_MAIN_MAX is too low it may fail to trigger the module to start calibr
 
 .. warning:: Ensure that the module is secured and there is no propeller attached before attempting calibration, as the module may spin.
 
-Open QGroundControl, and wait for it to connect to your flight controller. Click on the Q in the upper-left corner, and then select "Analyze Tools." Select "MAVLink Console."
-Then follow these steps:
+Open QGroundControl, and wait for it to connect to your flight controller. Click on the Q in the upper-left corner, and then select "Vehicle Setup." Select "Actuators."
 
-    .. note:: Depending on your version of PX4 and your configuration, you will have access to either "motor_test" or "actuator_test". You can find details on using both "motor_test" and "actuator_test" on the :ref:`DroneCAN Integration Tutorial <dronecan_px4_throttle_test_commands>`.
+Now, use the following steps to calibrate your module(s):
 
     1. Power off your Vertiq module
-    2. In the console, enter ``actuator_test set -m 1 -v 1 -t 60``
-   
-        a. This tells the flight controller to run the actuator test targeting motor 1 with 100% throttle for 60 seconds. 60 seconds is an 
-        arbitrary value selected to make sure there is enough time to complete the next steps
+    2. In the Actuators window, locate *Actuator Testing* in the bottom left-hand corner
+    3. Enable the outputs by moving the toggle to the right
 
-    3. Power on your module. The module will play its startup song, and then begin playing the calibration start song
-    4. In the console, enter ``actuator_test set -m 1 -v 0 -t 60`` to now send a 0% throttle. The module will start playing the double time song
-    5. Now, enter ``actuator_test set -m 1 -v 0.5 -t 60`` to send a 50% throttle. The module will stop playing the calibration song
-    6. The module should be calibrated now. To test it, enter ``actuator_test set -m 1 -v 0 -t 60`` and confirm the module plays the arming song. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
-    7. In the console, enter ``actuator_test set -m 1 -v 0.2 -t 60`` and confirm the module spins
-    8. Power off the module and close QGroundControl
-    9. Power the module back on, and connect to it with IQ Control Center. Check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful
+     .. image:: ../_static/tutorial_images/calibration_tutorial/actuator_testing_enabled.png
 
-The figures below show the MAVLINK Console commands used during calibration, and the state of the calibration parameters in IQ Control Center after successfully calibrating a module with Standard PWM.
+    4. Move the throttles to 100%
+ 
+     .. image:: ../_static/tutorial_images/calibration_tutorial/actuator_testing_full_throttle.png
 
-.. figure:: ../_static/tutorial_images/calibration_tutorial/qgc_cal.JPG
-    :align: center
+    5. Power on your module, and you should hear it begin its calibration process
+    6. Slowly decrease the throttle to 0%, then move it back up 
 
-    MAVLINK Console Commands for Calibration Procedure
+You can see this whole procedure performed below.
 
+.. raw:: html
 
-.. figure:: ../_static/tutorial_images/calibration_tutorial/qgc_calibrated.JPG
-    :align: center
-
-    Calibration Parameters in Advanced Tab After Calibrating With Standard PWM through QGroundControl
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/tutorial_images/calibration_tutorial/qgc_calibration.mp4" type="video/mp4"></video>
