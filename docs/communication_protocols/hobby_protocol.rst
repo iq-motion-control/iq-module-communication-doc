@@ -79,7 +79,7 @@ are reserved for special behaviors leaving 2000 for throttle. So, on receiving a
 
 Additional Protocols
 *********************
-Vertiq modules also support several other less commonly used hobby protocols:
+Vertiq modules also support several other, less commonly used, timer based protocols:
 
 * OneShot125
 * OneShot42
@@ -93,12 +93,12 @@ Interaction with Serial Communication
 ======================================
 The connector used for inputting hobby protocols on Vertiq modules is also used for serial communication. Serial communication is used for connecting to the 
 modules with IQ Control Center or interacting with them using the Vertiq APIs. **Because the connector is shared between hobby protocols and serial communication, only one of them can be active at any time.** On startup, the module will 
-look for valid messages of either the currently configured hobby protocol or the Vertiq serial protocol. **When it detects the first valid message of 
+look for valid messages of either the currently configured hobby protocol or the Vertiq serial protocol :ref:`IQUART <uart_messaging>`. **When it detects the first valid message of 
 either type, it will lock-on to that type of communication, and stop listening for any other types of messages on that physical interface. This behavior is slightly different 
 when using the** *Autodetect* **setting for the** *Communication* **parameter**. See more :ref:`below <the_communication_parameter>`.
 
-For example, if after startup a DSHOT message is the first thing sent to the module, and the module is not set to use *Autodetect* (see the note above), it will then only listen for 
-additional DSHOT messages, ignoring any serial communication. The module must be rebooted before you can switch which protocol it will listen to. **This means that you cannot connect to 
+For example, if after startup a DSHOT message is the first thing sent to the module, and the module is set to use *Autodetect*, it will then only listen for 
+additional DSHOT messages, ignoring any serial communication (as well as all other timer based protocols). The module must be rebooted before you can switch which protocol it will listen to. **This means that you cannot connect to 
 the IQ Control Center after controlling the module with a hobby protocol unless you reboot, and vice versa.** This behavior is summarized in the diagram below.
 
 Also, note that for modules that support DroneCAN, DroneCAN uses a separate physical interface from hobby protocols and serial communication, so DroneCAN communication can still be used when using hobby protocols.
@@ -116,7 +116,7 @@ As mentioned above, the *Communication* parameter can affect how the module reac
 
 When this parameter is set to ``Autodetect``, the behavior described in the diagram above applies. Otherwise, by default, the module will only listen for the timer based protocol 
 specified by the configured value as well as listening for IQUART messages. So, if *Communication* is set to DShot600, and you send PWM signals to the module, the module will **not** 
-lock on to hobby protocols, and the it will still accept IQUART messages. The rest of the behavior is the same as before. The module will lock on to the first received 
+lock on to hobby protocols, and it will still accept IQUART messages. The rest of the behavior is the same as before. The module will lock on to the first received 
 protocol (IQUART or DShot600 in this example), and will stop listening for the other. If configured to ``Hobby Disabled``, the module will never listen for any timer based protocols,
 and will only react to IQUART on the shared RX line.
 
@@ -136,4 +136,4 @@ the calibrated endpoints.
 
 Arming
 ========
-Hobby Protocols use the same advanced arming procedure as all other throttle sources on speed modules. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
+Timer based protocols use the same advanced arming procedure as all other throttle sources on speed modules. The details of this arming procedure are covered in the :ref:`manual_advanced_arming` section.
