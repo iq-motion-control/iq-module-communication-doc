@@ -7,7 +7,7 @@
 PWM and DSHOT Control with a Flight Controller
 ***********************************************
 
-This tutorial is meant to walk you through the process of performing basic setup and testing for controlling a Vertiq module
+This tutorial is meant to walk you through the process of performing basic setup and testing of a Vertiq module in order to integrate 
 with a flight controller using :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>`. This tutorial covers only the basics of testing 
 that the flight controller can spin your modules with the appropriate protocol, and not the setup of any additional flight controller peripherals like an RC controller
 or a GPS. This tutorial takes you from a totally fresh module and flight controller to a :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>` controllable module 
@@ -23,7 +23,7 @@ but it is not specific to the 81-08.
 
 .. note:: 
     
-    If you intend on using DroneCAN and a :ref:`hobby protocol <hobby_protocol>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    If you intend on using DroneCAN and a :ref:`timer based protocol <hobby_protocol>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
     :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
 
 Hardware Setup
@@ -95,10 +95,10 @@ described in detail in the sections below. **Most parameters are the same in Sta
 
 Communication
 ##############
-This parameter controls what type of :ref:`Hobby Protocols <hobby_protocol>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
+This parameter controls what type of :ref:`timer based (hobby) protocol(s) <hobby_protocol>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
 which can be selected from the drop-down box. **Once the module receives a command in its selected hobby protocol, it will only listen for that type of command until power cycled, so you will
 not be able to connect with Control Center until you power cycle the module.** For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is restarted. 
-If left in Autodetect mode, the module listens for all of the supported Hobby protocols to try to determine which one you are using. 
+If left in Autodetect mode, the module listens for all of the supported timer based protocols to try to determine which is in use. 
 
 The communication parsing process is summarized by the following:
 
@@ -221,7 +221,7 @@ flight controller may send a PWM pulse of 1000 to 2000 microseconds.
 Once again, **please ensure that all propellers are removed at this point before attempting to spin your module**.
 
 We'll use the *Continuous command* option to have VTT send throttles automatically at the frequency specified by the *Command rate* (by default 10 Hz). 
-Make sure that the throttle is at 0% to ensure that the throttle command is within our arming region, and click the *Continuous command* box.
+Make sure that the throttle is at 0% to ensure that the throttle command is within our :ref:`arming region <arming_throttle_regions>`, and click the *Continuous command* box.
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_enabled_command.png
 
@@ -231,7 +231,7 @@ the module spins.
 
 In the following video example, you'll see the module arm with *Continuous command* enabled, spin at the throttle specified, the user enables the ability to 
 disarm on throttle, then lower the throttle to 0 where the module plays its disarm song. Plotted in the plotting window are the module's armed state in 
-orange (0 for disarmed, 1 for armed) and the its velocity in green.
+orange (0 for disarmed, 1 for armed) and its velocity in green.
 
 .. raw:: html
 
