@@ -67,8 +67,8 @@ can be seen in the Information tab, as shown in the image below. For more inform
 
 This tutorial is applicable to all Vertiq modules running speed firmware.
 
-Reverting to Defaults (Optional)
-================================
+Reverting to Defaults (Optional but Recommended)
+========================================================
 
 If you have previously changed any configurations on the module, it may be useful to revert it to its default state before continuing with this tutorial. This ensures
 that there will be no lingering conflicts from previous configurations, and this tutorial will work as expected.
@@ -135,12 +135,12 @@ Mode
 This parameter determines how the module interprets a setpoint command, i.e., what should the module do when receiving a 50% or 100% throttle command? Is that meant to be a fraction of the battery voltage, a specific drive voltage, or a velocity?
 The list below provides a brief introduction to each of the 3 possible modes:
 
-  * **PWM**: This mode means that the module will apply a fraction of the battery voltage as its drive voltage when given a setpoint. For example, if your battery voltage is 20V, and you send a 50% command, then the module will apply a 10V drive voltage. 
+  * :ref:`throttle_pwm_mode`: This mode means that the module will apply a fraction of the battery voltage as its drive voltage when given a setpoint. For example, if your battery voltage is 20V, and you send a 50% command, then the module will apply a 10V drive voltage. 
     
     * Despite the similar naming, this mode has nothing to do with using the Standard PWM hobby protocol
   
-  * **Voltage**: This mode interprets the commands as a fraction of the **Max Volts** set in the Tuning tab. So, if your maximum voltage was set at 8V, and you sent a 25% throttle command, the module would apply a drive voltage of 2V.
-  * **Velocity**: This mode interprets the command as a fraction of the **Max Velocity** set in the Tuning tab. So, if your maximum velocity was set at 100 rad/s, and you sent a 25% throttle command, the module would try to spin at 25 rad/s.
+  * :ref:`throttle_voltage_mode`: This mode interprets the commands as a fraction of the **Max Volts** set in the Tuning tab. So, if your maximum voltage was set at 8V, and you sent a 25% throttle command, the module would apply a drive voltage of 2V.
+  * :ref:`throttle_velocity_mode`: This mode interprets the command as a fraction of the **Max Velocity** set in the Tuning tab. So, if your maximum velocity was set at 100 rad/s, and you sent a 25% throttle command, the module would try to spin at 25 rad/s.
 
 The meaning of this parameter is covered in greater detail in the :ref:`throttle_mode_maximums_directions` section of the Feature Reference Manual. 
 
@@ -182,9 +182,14 @@ the modes available on the module, refer to the :ref:`throttle_mode_maximums_dir
 
     Max Volts Parameter
 
-Timeout
-########
-This determines the length of the module's timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below, 1s, it can be difficult to test with the Control Center. 
+.. note:: 
+
+  If you are using velocity mode rather than the recommended voltage mode, please make sure to set ``Max Velocity`` rather than ``Max Volts`` to the velocity 
+  the module should spin when given 100% throttle.
+
+Communication Timeout
+########################
+This determines the length of the module's communication timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below, 1s, it can be difficult to test with the Control Center. 
 So for this example, the **timeout should be set to 1.5s**. To do this, set the *Timeout* parameter to 1.5s, as shown in the image below. Depending on how frequently your flight controller sends throttle commands, 
 you may want to decrease the timeout when using the modules on a drone. For more information on the timeout feature of Vertiq modules, refer to the :ref:`manual_timeout` section of the Feature Reference Manual.
 
@@ -197,29 +202,46 @@ Testing the Module
 *******************
 .. warning:: Ensure that the module is secured and there is no propeller attached before performing any testing.
 
-To test that the module is configured to spin and take throttle commands from the flight controller, open the Testing tab in Control Center and look for the *ESC Input* parameter. This parameter commands the module to spin in the same way 
-that a :ref:`hobby protocol <hobby_protocol>` used by a flight controller would, i.e. it sends an :ref:`IQUART throttle command <manual_throttle>`, so it is the best way to test if 
-the module is ready to connect with the flight controller. So setting this to 0.5 will send the module a 50% throttle command with the configuration specified in this example. 
-**Make sure the module is secured before attempting to spin it, as it may move dangerously if unsecured**. 
+Now that we've configured the module to spin given a flight controller's commands, we will use the :ref:`Vertiq Testing Tool (VTT) <vertiq_testing_tool_guide>` to verify 
+that our module reacts how we expect. If you have not installed or used VTT, please do so before continuing with this tutorial.
 
-**However, because this test is meant to simulate commands from a flight controller, the** *ESC Input* **parameter is affected by the** :ref:`manual_advanced_arming` **feature. That means that setting this parameter 
-will not cause the module to spin until the module has armed.** By default, Vertiq speed modules require 10 consecutive throttle commands between 0% and 7.5% to arm. So to arm your module using the
-*ESC Input* parameter, set the *ESC Input* to 0.05 to send a 5% throttle command as shown below, and click the set arrow 10 times. On the 10th time you click the set arrow, the module should play 
-its :ref:`two tone arming song <arming_song>`, and begin spinning. 
+Connect your module to VTT, and confirm that you are in the ESC Input tab (seen in the top left corner). Now, verify that your module's settings match what you expect given the tutorial so far. 
 
-.. figure:: ../_static/tutorial_images/pwm_flight_controller/control_center_esc_input.png
-    :align: center
+.. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_module_config.png
 
-    ESC Input Parameter For 5% Throttle Command
+If these settings are incorrect, or you would like to adjust any, you can do so directly through VTT.
 
-Now that the module is armed, any new throttle commands sent using the *ESC Input* parameter will change how it spins.
-For example, setting *ESC Input* to 0.1 should set the module to spin with a drive voltage of 1V. This is because the module is in Voltage mode with a *Max Volts* of 10V, so a 
-10% throttle command commands 1V. Confirm that the module is spinning counter-clockwise, matching the direction that was configured previously.
+In the bottom right corner, you'll see the ESC Input slide bar. 
 
-For more information on how to configure the module to properly interpret throttle commands, see the :ref:`manual_throttle` section of the Feature Reference 
-Manual. For more information on arming and disarming the module, refer to the :ref:`manual_advanced_arming` section of the Feature Reference Manual.
+.. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_disabled_command.png
 
-If the module is spinning as expected, set the *Coast* parameter to stop the module. With your module configured to spin, you must now set up your flight controller to send proper commands.
+The ESC Input here simulates a throttle sent through a flight controller. Using IQUART, it transmits throttle commands as a value from zero to one just as a 
+flight controller may send a PWM pulse of 1000 to 2000 microseconds.
+
+Once again, **please ensure that all propellers are removed at this point before attempting to spin your module**.
+
+We'll use the *Continuous command* option to have VTT send throttles automatically at the frequency specified by the *Command rate* (by default 10 Hz). 
+Make sure that the throttle is at 0% to ensure that the throttle command is within our arming region, and click the *Continuous command* box.
+
+.. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_enabled_command.png
+
+You should hear your module play its :ref:`arming song <arming_song>` after 1 second (10 Hz to reach 10 arming throttles). With your module armed, you can move the ESC 
+Input slide bar up and down to adjust your module's speed. Feel free to use :ref:`VTT's plotting interface <vtt_custom_plotting>` to watch any parameters you would like while 
+the module spins.
+
+In the following video example, you'll see the module arm with *Continuous command* enabled, spin at the throttle specified, the user enables the ability to 
+disarm on throttle, then lower the throttle to 0 where the module plays its disarm song. Plotted in the plotting window are the module's armed state in 
+orange (0 for disarmed, 1 for armed) and the its velocity in green.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                }
+    </style>
+    <video class='center_vid' controls muted><source src="../_static/tutorial_images/pwm_flight_controller/vtt_spin_example.mp4" type="video/mp4"></video>
 
 .. note::
 
@@ -237,7 +259,7 @@ Ardupilot and Mission Planner Configuration and Testing
 .. note::
     If you are using PX4 firmware, please follow the :ref:`PX4 and QGroundControl Configuration and Testing <PX4_and_QGroundControl_Configuration>` tutorial.
 
-This tutorial was tested using Mission Planner 1.3.80 and ArduCopter v4.5.5, as shown in the figure below. These instructions assume you are starting from the default parameters, and cover how to test that the
+This tutorial was tested using Mission Planner 1.3.80 and ArduCopter v4.5.5, as shown in the figure below. These instructions assume you are starting from the default ArduPilot parameters, and cover how to test that the
 flight controller and module can communicate with no additional flight controller peripherals. See the `Hardware Setup`_ section for more details on the hardware and connections.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_version.png

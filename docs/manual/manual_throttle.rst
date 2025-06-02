@@ -110,6 +110,8 @@ The mode of the module can be controlled using the *Mode* parameter in the Gener
 
     Mode Parameter in IQ Control Center
 
+.. _throttle_pwm_mode:
+
 PWM
 ####
 Throttle commands will be interpreted as commanding a percentage of the module’s supply voltage in this mode. E.g. a 50% throttle command will command the module to 
