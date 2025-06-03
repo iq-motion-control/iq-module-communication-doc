@@ -72,6 +72,7 @@
    tutorials/up12_initial_configuration
    tutorials/motor_noise_debugging
    tutorials/vibration_and_jittering
+   tutorials/spin_with_pwm_generator
 
 .. toctree::
    :hidden:
