@@ -73,7 +73,7 @@ Use the following steps to calibrate your module to a Pololu Maestro:
 #. Turn off your Vertiq module
 #. Connect the module to the Maestro output you plan on using
 #. Make sure your Maestro channel is enabled, and set its target pulse length to 2000
-#. Power on your module, and you should hear it start playing its calibration song <LINK>
+#. Power on your module, and you should hear it start playing its :ref:`calibration song <hobby_cal_song>`
 #. Slowly decrease the throttle until you reach the minimum pulse width output
 #. Increase the throttle again to complete calibration
 

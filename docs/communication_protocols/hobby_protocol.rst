@@ -92,7 +92,7 @@ the :ref:`throttle_def` section for more details on how a speed module defines a
 Interaction with Serial Communication
 ======================================
 The connector used for inputting hobby protocols on Vertiq modules is also used for serial communication. Serial communication is used for connecting to the 
-modules with IQ Control Center or interacting with them using the Vertiq APIs. **Because the connector is shared between hobby protocols and serial communication, only one of them can be active at any time.** On startup, the module will 
+modules with IQ Control Center or interacting with them using the Vertiq APIs. **Because the connector is shared between timer based protocols and serial communication, only one of them can be active at any time.** On startup, the module will 
 look for valid messages of either the currently configured hobby protocol or the Vertiq serial protocol :ref:`IQUART <uart_messaging>`. **When it detects the first valid message of 
 either type, it will lock-on to that type of communication, and stop listening for any other types of messages on that physical interface. This behavior is slightly different 
 when using the** *Autodetect* **setting for the** *Communication* **parameter**. See more :ref:`below <the_communication_parameter>`.

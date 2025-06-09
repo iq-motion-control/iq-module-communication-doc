@@ -189,7 +189,7 @@ the modes available on the module, refer to the :ref:`throttle_mode_maximums_dir
 
 Communication Timeout
 ########################
-This determines the length of the module's communication timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below, 1s, it can be difficult to test with the Control Center. 
+This determines the length of the module's communication timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below 1s, it can be difficult to test with the Control Center. 
 So for this example, the **timeout should be set to 1.5s**. To do this, set the *Timeout* parameter to 1.5s, as shown in the image below. Depending on how frequently your flight controller sends throttle commands, 
 you may want to decrease the timeout when using the modules on a drone. For more information on the timeout feature of Vertiq modules, refer to the :ref:`manual_timeout` section of the Feature Reference Manual.
 
