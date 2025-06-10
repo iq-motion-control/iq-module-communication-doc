@@ -230,6 +230,11 @@ You can also find these parameters in the Control Center's Tuning tab as ``Volta
     :align: center
     :scale: 50%
 
+.. note:: 
+    
+    When adjusting your module's slew rate limit, it is possible that it may affect the module's :ref:`buzzer function <manual_buzzer_control>`. The module creates its buzzer tones by 
+    rapidly changing the motor's voltage, and not through any separate hardware (the modules do not have a separate buzzer). So, by lowering the slew limit specifically, you may 
+    cause your buzzer to sound quieter than expected as the module cannot generate the changes in voltages required to play a strong tone.
 
 The following examples are meant to illustrate the effect that slew limiting has on module control. All examples start with the module in coast followed by a voltage step command to 2V.
 
@@ -265,12 +270,6 @@ The following examples are meant to illustrate the effect that slew limiting has
 
 As you can see, the slew limit parameter helps protect against sudden changes in commanded voltage. This can be especially useful in :ref:`noisy/vibration heavy 
 environments <vibration_and_jittering>`. The amount of slew filtering that is necessary (if any) is completely application specific, and will require manual tuning.
-
-.. note:: 
-    
-    When adjusting your module's slew rate limit, it is possible that it may affect the module's :ref:`buzzer function <manual_buzzer_control>`. The module creates its buzzer tones by 
-    rapidly changing the motor's voltage, and not through any separate hardware (the modules do not have a separate buzzer). So, by lowering the slew limit specifically, you may 
-    cause your buzzer to sound quieter than expected as the module cannot generate the frequencies (changes in voltages) required to play a strong tone.
 
 Brushless Drive Current Limiter
 ====================================
