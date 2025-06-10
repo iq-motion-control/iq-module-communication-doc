@@ -266,6 +266,12 @@ The following examples are meant to illustrate the effect that slew limiting has
 As you can see, the slew limit parameter helps protect against sudden changes in commanded voltage. This can be especially useful in :ref:`noisy/vibration heavy 
 environments <vibration_and_jittering>`. The amount of slew filtering that is necessary (if any) is completely application specific, and will require manual tuning.
 
+.. note:: 
+    
+    When adjusting your module's slew rate limit, it is possible that it may affect the module's :ref:`buzzer function <manual_buzzer_control>`. The module creates its buzzer tones by 
+    rapidly changing the motor's voltage, and not through any separate hardware (the modules do not have a separate buzzer). So, by lowering the slew limit specifically, you may 
+    cause your buzzer to sound quieter than expected as the module cannot generate the frequencies (changes in voltages) required to play a strong tone.
+
 Brushless Drive Current Limiter
 ====================================
 :ref:`Brushless Drive's <brushless_drive>` ``motor_I_max`` defines the maximum allowable drive current. In general, this current limit protects your module against extreme current surges (e.g. step commands and stalls), and ensures that the current moving through the motor is always in a safe region.
