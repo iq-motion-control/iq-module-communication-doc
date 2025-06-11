@@ -1,7 +1,7 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. _hobby_protocol:
+.. _timer_based_protocol:
 
 ***************************************************
 Timer Based Protocols - PWM, DSHOT, and More
@@ -19,8 +19,8 @@ Details on these protocols and how Vertiq modules support them is provided below
 
 .. note::
 
-    Please note that no two hobby protocols can be used together as :ref:`redundant throttle sources <redundant_throttle_manual>`. Only one 
-    hobby protocol can be accepted at any time.
+    Please note that no two timer based protocols can be used together as :ref:`redundant throttle sources <redundant_throttle_manual>`. Only one 
+    timer based protocol can be accepted at any time.
 
 Module Support
 ===============
@@ -35,8 +35,8 @@ Servo Modules
 
 .. include:: ../manual/all_checked_table.rst
 
-Supported Hobby Protocols
-==========================
+Supported Timer Based Protocols
+=================================
 
 .. _hobby_standard_pwm:
 
@@ -91,17 +91,17 @@ the :ref:`throttle_def` section for more details on how a speed module defines a
 
 Interaction with Serial Communication
 ======================================
-The connector used for inputting hobby protocols on Vertiq modules is also used for serial communication. Serial communication is used for connecting to the 
+The connector used for inputting timer based protocols on Vertiq modules is also used for serial communication. Serial communication is used for connecting to the 
 modules with IQ Control Center or interacting with them using the Vertiq APIs. **Because the connector is shared between timer based protocols and serial communication, only one of them can be active at any time.** On startup, the module will 
-look for valid messages of either the currently configured hobby protocol or the Vertiq serial protocol :ref:`IQUART <uart_messaging>`. **When it detects the first valid message of 
+look for valid messages of either the currently configured timer based protocol or the Vertiq serial protocol :ref:`IQUART <uart_messaging>`. **When it detects the first valid message of 
 either type, it will lock-on to that type of communication, and stop listening for any other types of messages on that physical interface. This behavior is slightly different 
 when using the** *Autodetect* **setting for the** *Communication* **parameter**. See more :ref:`below <the_communication_parameter>`.
 
 For example, if after startup a DSHOT message is the first thing sent to the module, and the module is set to use *Autodetect*, it will then only listen for 
 additional DSHOT messages, ignoring any serial communication (as well as all other timer based protocols). The module must be rebooted before you can switch which protocol it will listen to. **This means that you cannot connect to 
-the IQ Control Center after controlling the module with a hobby protocol unless you reboot, and vice versa.** This behavior is summarized in the diagram below.
+the IQ Control Center after controlling the module with a timer based protocol unless you reboot, and vice versa.** This behavior is summarized in the diagram below.
 
-Also, note that for modules that support DroneCAN, DroneCAN uses a separate physical interface from hobby protocols and serial communication, so DroneCAN communication can still be used when using hobby protocols.
+Also, note that for modules that support DroneCAN, DroneCAN uses a separate physical interface from timer based protocols and serial communication, so DroneCAN communication can still be used when using timer based protocols.
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/comms_flow.png
 
@@ -116,7 +116,7 @@ As mentioned above, the *Communication* parameter can affect how the module reac
 
 When this parameter is set to ``Autodetect``, the behavior described in the diagram above applies. Otherwise, by default, the module will only listen for the timer based protocol 
 specified by the configured value as well as listening for IQUART messages. So, if *Communication* is set to DShot600, and you send PWM signals to the module, the module will **not** 
-lock on to hobby protocols, and it will still accept IQUART messages. The rest of the behavior is the same as before. The module will lock on to the first received 
+lock on to timer based protocols, and it will still accept IQUART messages. The rest of the behavior is the same as before. The module will lock on to the first received 
 protocol (IQUART or DShot600 in this example), and will stop listening for the other. If configured to ``Hobby Disabled``, the module will never listen for any timer based protocols,
 and will only react to IQUART on the shared RX line.
 

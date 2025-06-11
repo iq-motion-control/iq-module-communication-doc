@@ -77,7 +77,7 @@ If the song playback option is set to Continuously, the disarm song will repeat 
 
 Analog Hobby Protocol Calibration
 -------------------------------------
-While :ref:`performing analog hobby protocol calibration <hobby_calibration_tutorial>`, you will hear two separate song portions indicating the calibration's progress. 
+While :ref:`performing analog timer based protocol calibration <hobby_calibration_tutorial>`, you will hear two separate song portions indicating the calibration's progress. 
 The first portion of the song indicates that the calibration has started and is looking for the highest possible throttle signal. This is followed by tones played twice as fast indicating that the calibration is looking for the lowest possible throttle signal.
 An example of a full calibration song is played here:
 

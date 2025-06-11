@@ -6,7 +6,7 @@ Supported Features
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
         * :ref:`dronecan_protocol`
-        * :ref:`hobby_protocol`
+        * :ref:`timer_based_protocol`
         * :ref:`manual_telemetry`
         * :ref:`manual_throttle`
         * :ref:`manual_advanced_arming`
@@ -60,7 +60,7 @@ Supported Features
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
-        * :ref:`hobby_protocol`
+        * :ref:`timer_based_protocol`
         * :ref:`manual_timeout`
 
 Supported IQUART Clients

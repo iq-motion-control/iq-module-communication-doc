@@ -14,7 +14,7 @@ Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
 .. note:: 
     
-    If you intend on using DroneCAN and a :ref:`hobby protocol <hobby_protocol>` or :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    If you intend on using DroneCAN and a :ref:`timer based protocol <timer_based_protocol>` or :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
     :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
 
 Module Configuration and Enumeration
@@ -40,7 +40,7 @@ For the purposes of this example, the bitrate is assumed to be 500000 bit/s.
 Mode, Direction, and Limits
 ------------------------------
 Descriptions of some important parameters for the module’s direction and mode and how to change them through IQ Control Center can be found in the :ref:`Motor Configuration section 
-of the tutorial for flight controller integration using hobby protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using hobby protocols, but the details on configuring 
+of the tutorial for flight controller integration using timer based protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using timer based protocols, but the details on configuring 
 the module are still accurate for DroneCAN.
 
 Node ID

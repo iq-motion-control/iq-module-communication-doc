@@ -78,8 +78,8 @@ Please ensure that you select power wiring suitable for your application. Failur
 Communication
 ================
 
-Required IQUART or Hobby Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Required IQUART or Timer Based Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ../_static/module_pictures/81xx/gen1/81_serial.png
         :width: 350
@@ -87,7 +87,7 @@ Required IQUART or Hobby Configuration
 
         Vertiq 81-XX G1 Family Serial Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <hobby_protocol>` you will have to connect communication wiring to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Timer Based Protocols <timer_based_protocol>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 
@@ -205,8 +205,8 @@ In this example, we will be using a pre-tinned XT-60 male connector. Simply sold
 Communication
 ================
 
-Required IQUART or Hobby Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Required IQUART or Timer Based Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ../_static/module_pictures/81xx/gen2/81gen2_serial.png
         :height: 400
@@ -214,7 +214,7 @@ Required IQUART or Hobby Configuration
 
         Vertiq 81-XX G2 Serial Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <hobby_protocol>` you will have to connect communication wiring to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Timer Based Protocols <timer_based_protocol>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 

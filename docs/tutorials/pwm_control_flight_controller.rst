@@ -23,7 +23,7 @@ but it is not specific to the 81-08.
 
 .. note:: 
     
-    If you intend on using DroneCAN and a :ref:`timer based protocol <hobby_protocol>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    If you intend on using DroneCAN and a :ref:`timer based protocol <timer_based_protocol>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
     :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
 
 Hardware Setup
@@ -95,8 +95,8 @@ described in detail in the sections below. **Most parameters are the same in Sta
 
 Communication
 ##############
-This parameter controls what type of :ref:`timer based (hobby) protocol(s) <hobby_protocol>` the module will listen for. The module is capable of listening to a wide variety of hobby protocols,
-which can be selected from the drop-down box. **Once the module receives a command in its selected hobby protocol, it will only listen for that type of command until power cycled, so you will
+This parameter controls what type of :ref:`timer based (hobby) protocol(s) <timer_based_protocol>` the module will listen for. The module is capable of listening to a wide variety of timer based protocols,
+which can be selected from the drop-down box. **Once the module receives a command in its selected timer based protocol, it will only listen for that type of command until power cycled, so you will
 not be able to connect with Control Center until you power cycle the module.** For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is restarted. 
 If left in Autodetect mode, the module listens for all of the supported timer based protocols to try to determine which is in use. 
 
@@ -106,7 +106,7 @@ The communication parsing process is summarized by the following:
   :align: center
 
 Depending on the flight controller's configurations and noise on the communication lines, the module may have difficulty automatically discovering the protocol while using autodetection. 
-In these cases, it is best to set the module to only listen for a specific type of protocol. As such, we will explicitly set the hobby protocol 
+In these cases, it is best to set the module to only listen for a specific type of protocol. As such, we will explicitly set the timer based protocol 
 to use in this setup. The proper value for this configuration depends on if you are using :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>`:
 
   * **Standard PWM Setup**: Set *Communication* to *Standard PWM* to receive :ref:`Standard PWM <hobby_standard_pwm>` messages
@@ -137,7 +137,7 @@ The list below provides a brief introduction to each of the 3 possible modes:
 
   * :ref:`throttle_pwm_mode`: This mode means that the module will apply a fraction of the battery voltage as its drive voltage when given a setpoint. For example, if your battery voltage is 20V, and you send a 50% command, then the module will apply a 10V drive voltage. 
     
-    * Despite the similar naming, this mode has nothing to do with using the Standard PWM hobby protocol
+    * Despite the similar naming, this mode has nothing to do with using the Standard PWM timer based protocol
   
   * :ref:`throttle_voltage_mode`: This mode interprets the commands as a fraction of the **Max Volts** set in the Tuning tab. So, if your maximum voltage was set at 8V, and you sent a 25% throttle command, the module would apply a drive voltage of 2V.
   * :ref:`throttle_velocity_mode`: This mode interprets the command as a fraction of the **Max Velocity** set in the Tuning tab. So, if your maximum velocity was set at 100 rad/s, and you sent a 25% throttle command, the module would try to spin at 25 rad/s.

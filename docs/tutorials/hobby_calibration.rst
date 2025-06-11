@@ -7,7 +7,7 @@
 Calibrating Modules With Analog Timer Based Protocols
 *********************************************************
 
-Vertiq modules can be controlled with analog :ref:`timer based protocols <hobby_protocol>` such as :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`DShot <hobby_dshot>`. 
+Vertiq modules can be controlled with analog :ref:`timer based protocols <timer_based_protocol>` such as :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`DShot <hobby_dshot>`. 
 These protocols send throttle commands to the module using a square wave or pulse of variable duration,
 where the length of the wave determines the throttle input. For example, when using Standard PWM, by default Vertiq modules interpret a 
 pulse of 1000 us as 0% throttle, and a pulse of 2000 us as 100% throttle. For more details on how a module can be configured to interpret 

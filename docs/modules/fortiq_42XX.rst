@@ -37,7 +37,7 @@ Supported Features
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
         * :ref:`canopen_protocol`
-        * :ref:`hobby_protocol`
+        * :ref:`timer_based_protocol`
         * :ref:`manual_timeout`
         * :ref:`manual_adc_interface`
         * :ref:`manual_high_power_pwm_`

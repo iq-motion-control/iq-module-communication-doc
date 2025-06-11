@@ -81,8 +81,8 @@ we will be using a pre-tinned XT-30 male connector. Simply solder the connector'
 Communication
 ================
 
-Required IQUART or Hobby Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Required IQUART or Timer Based Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ../_static/module_pictures/40xx/40xx_serial_cnxs.png
         :width: 350
@@ -90,7 +90,7 @@ Required IQUART or Hobby Configuration
 
         Vertiq 40-XX Serial Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <hobby_protocol>` you will have to connect communication wiring to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Timer Based Protocols <timer_based_protocol>` you will have to connect communication wiring to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 
