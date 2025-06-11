@@ -43,10 +43,9 @@ Supported Timer Based Protocols
 Standard PWM
 *************
 Standard PWM refers to a very commonly used analog protocol that uses a 1000 microsecond to 2000 microsecond pulse to send throttle commands. This pulse encodes a number 
-from 0.0 to 1.0, where typically, a 1000 microsecond pulse represents 0.0, a 1500 microsecond pulse represents 0.50, and a 2000 microsecond pulse represents 1.0. These values 
-represent a throttle percentage as well, with 1000us (0.0) mapping to 0% throttle and 2000us to 100% throttle.
+from 0.0 to 1.0, where typically, a 1000 microsecond pulse represents 0.0, a 1500 microsecond pulse represents 0.50, and a 2000 microsecond pulse represents 1.0.
 
-So, for example, the 1700us pulse shown below represents a 70% throttle command (1700 is 70% of the way between 1000 and 2000 microseconds). The flight controller is configured 
+So, for example, the 1700us pulse shown below represents a 0.7 command using default settings. The flight controller in this example is configured 
 to transmit this 1700us pulse at 400Hz:
 
 .. image:: ../_static/comms_protocols_pictures/70_pct_throttle.png
@@ -59,8 +58,8 @@ to transmit this 1700us pulse at 400Hz:
 Exactly how Vertiq modules convert this number into a command 
 depends on the module's configurations. Refer to the :ref:`throttle_mapping` section for more details on mapping throttle to module commands in the :ref:`throttle_def` section.
 
-The endpoints, 1000us to 2000us, can be calibrated to change how the module interprets incoming pulse widths. For example, you could calibrate your module such that 1200us represents 0% throttle with 
-2000us still being the high end. The 1700us pulse illustrated above would now represent a 62.5% throttle. To learn more about PWM calibration, please refer to :ref:`hobby_calibration_tutorial`.
+The endpoints, 1000us to 2000us, can be calibrated to change how the module interprets incoming pulse widths. For example, you could calibrate your module such that 1200us represents 0.0 with 
+2000us still being the high end (1.0). The 1700us pulse illustrated above would now represent a 0.625 command. To learn more about PWM calibration, please refer to :ref:`hobby_calibration_tutorial`.
 
 .. _hobby_dshot:
 
@@ -70,10 +69,17 @@ DSHOT is a digital protocol that is gaining in popularity and is supported by a 
 `“D-SHOT - The Missing Handbook” article from Chris Landa <https://brushlesswhoop.com/dshot-and-bidirectional-dshot/>`_.
 
 The 11 bit throttle sent in a DSHOT message is treated as a value 0.0 to 1.0 by Vertiq modules. With 11 bits, DSHOT throttles can be any value from 0 to 2047. The final 47 values 
-are reserved for special behaviors leaving 2000 for throttle. So, on receiving a DSHOT throttle of 2000, the module will apply a 100% throttle, 0 a 0% throttle, and, for example, 
-260 a 13% throttle. Refer to the :ref:`throttle_mapping` section for more details on mapping throttle to module commands in the :ref:`throttle_def` section.
+are reserved for special behaviors leaving 2000 for throttle. So, on receiving a DSHOT throttle of 2000, the module will apply a 1.0 command, 0 a 0.0 command, and, for example, 
+260 a 0.13 command. Refer to the :ref:`throttle_mapping` section for more details on mapping throttle to module commands in the :ref:`throttle_def` section.
 
 **Vertiq modules support DSHOT, but they do not support Bidirectional DSHOT.** See the linked article from Chris Landa above for more details on the difference between the two protocols. 
+
+DSHOT has various different speeds, currently Vertiq modules support:
+
+* DSHOT150
+* DSHOT300
+* DSHOT600
+* DSHOT1200
 
 .. _hobby_other_protocols:
 
