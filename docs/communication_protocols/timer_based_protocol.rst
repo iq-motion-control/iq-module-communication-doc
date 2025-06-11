@@ -89,6 +89,8 @@ Similarly to `Standard PWM`_, the commands sent by these protocols are interpret
 this number into a throttle command depends on the configurations of the module. Refer to the :ref:`throttle_mapping` section for more details on that mapping for speed modules and 
 the :ref:`throttle_def` section for more details on how a speed module defines a throttle command.
 
+.. _timer_based_v_serial_flowchart:
+
 Interaction with Serial Communication
 ======================================
 The connector used for inputting timer based protocols on Vertiq modules is also used for serial communication. Serial communication is used for connecting to the 

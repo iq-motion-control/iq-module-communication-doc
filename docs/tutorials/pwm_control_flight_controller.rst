@@ -52,6 +52,7 @@ For more details on the wiring for your module, refer to the module's family pag
 pin. This is the PWM/DSHOT input for all Vertiq modules. In general, connection with your module will look as follows:
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/connect_with_module.png
+    :align: center
 
 Firmware and Software Versions
 ==============================
@@ -100,10 +101,7 @@ which can be selected from the drop-down box. **Once the module receives a comma
 not be able to connect with Control Center until you power cycle the module.** For example, if the module receives a PWM message when it is set to accept them, it will only listen to PWM messages until it is restarted. 
 If left in Autodetect mode, the module listens for all of the supported timer based protocols to try to determine which is in use. 
 
-The communication parsing process is summarized by the following:
-
-.. image:: ../_static/tutorial_images/pwm_flight_controller/comms_flow.png
-  :align: center
+If you would like to see more details about the communication parsing process, please refer to the :ref:`image found in our timer based protocol documentation <timer_based_v_serial_flowchart>`.
 
 Depending on the flight controller's configurations and noise on the communication lines, the module may have difficulty automatically discovering the protocol while using autodetection. 
 In these cases, it is best to set the module to only listen for a specific type of protocol. As such, we will explicitly set the timer based protocol 
@@ -207,13 +205,19 @@ that our module reacts how we expect. If you have not installed or used VTT, ple
 
 Connect your module to VTT, and confirm that you are in the ESC Input tab (seen in the top left corner). Now, verify that your module's settings match what you expect given the tutorial so far. 
 
+.. note::
+
+  Older versions of Vertiq firmware may have a default arming throttle upper limit of 7.5% rather than the 12.5% illustrated here.
+
 .. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_module_config.png
+    :align: center
 
 If these settings are incorrect, or you would like to adjust any, you can do so directly through VTT.
 
 In the bottom right corner, you'll see the ESC Input slide bar. 
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_disabled_command.png
+    :align: center
 
 The ESC Input here simulates a throttle sent through a flight controller. Using IQUART, it transmits throttle commands as a value from zero to one just as a 
 flight controller may send a PWM pulse of 1000 to 2000 microseconds.
@@ -224,14 +228,13 @@ We'll use the *Continuous command* option to have VTT send throttles automatical
 Make sure that the throttle is at 0% to ensure that the throttle command is within our :ref:`arming region <arming_throttle_regions>`, and click the *Continuous command* box.
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/vtt_enabled_command.png
+    :align: center
 
-You should hear your module play its :ref:`arming song <arming_song>` after 1 second (10 Hz to reach 10 arming throttles). With your module armed, you can move the ESC 
+You should hear your module play its :ref:`arming song <arming_song>` after 1 second (10 Hz to reach :ref:`10 arming throttles <consecutive_arming_disarming_throttle>`). With your module armed, you can move the ESC 
 Input slide bar up and down to adjust your module's speed. Feel free to use :ref:`VTT's plotting interface <vtt_custom_plotting>` to watch any parameters you would like while 
 the module spins.
 
-In the following video example, you'll see the module arm with *Continuous command* enabled, spin at the throttle specified, the user enables the ability to 
-disarm on throttle, then lower the throttle to 0 where the module plays its disarm song. Plotted in the plotting window are the module's armed state in 
-orange (0 for disarmed, 1 for armed) and its velocity in green.
+In the following video example, you'll see a basic demo of the module arming with *Continuous command* enabled and then spinning at the throttle specified.
 
 .. raw:: html
 
@@ -271,6 +274,7 @@ In order to reset your flight controller to default settings with Mission Planne
 and on the right side, locate *Reset to Default* outlined in red below. Click this, and then follow the directions on the windows that appear.
 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/mp_reset_to_default.png
+    :align: center
 
 Setting Frame Type
 ******************

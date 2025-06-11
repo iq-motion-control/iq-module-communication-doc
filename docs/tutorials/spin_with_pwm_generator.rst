@@ -22,7 +22,13 @@ All Vertiq modules accept PWM inputs on their RX/PWM In pins. You will need to c
 Module Configuration
 **********************
 
-We are going to configure our module exactly as we would for integration with a flight controller. So, we will follow the instructions found :ref:`here <hobby_fc_tutorial_motor_configuration>` 
+We are going to configure our module exactly as we would for integration with a flight controller with our module in :ref:`PWM mode <throttle_pwm_mode>`. To do this, first, ensure that 
+your module is running the latest supported firmware available on `our website <https://www.vertiq.co/>`_. Next, :ref:`revert your module to factory defaults <reset_to_defaults_manual>`. 
+Finally, configure your module's :ref:`control mode to PWM (battery percentage) <throttle_pwm_mode>`.
+
+
+
+ So, we will follow the instructions found :ref:`here <hobby_fc_tutorial_motor_configuration>` 
 through the *Testing the Module* section.
 
 ******************************

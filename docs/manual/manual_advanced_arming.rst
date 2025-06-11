@@ -730,6 +730,8 @@ normally, and throttle commands received over timer based PWM would be rejected.
 How the module determines the armed throttle source depends on how the arming transition is triggered. See the individual sections on types of arming transitions 
 in :ref:`arming_state_transitions` for more details.
 
+.. _consecutive_arming_disarming_throttle:
+
 Consecutive Arming and Disarming Throttles
 **********************************************
 Consecutive arming or disarming throttles must be from the same :ref:`throttle source <throttle_sources>`. A change in the source of 

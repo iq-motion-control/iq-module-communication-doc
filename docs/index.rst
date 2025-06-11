@@ -62,6 +62,7 @@
    :caption: Tutorials
 
    tutorials/pwm_control_flight_controller
+   tutorials/spin_with_pwm_generator
    tutorials/hobby_calibration
    tutorials/dronecan_flight_controller
    tutorials/ifci_px4_flight_controller
@@ -72,7 +73,6 @@
    tutorials/up12_initial_configuration
    tutorials/motor_noise_debugging
    tutorials/vibration_and_jittering
-   tutorials/spin_with_pwm_generator
 
 .. toctree::
    :hidden:
