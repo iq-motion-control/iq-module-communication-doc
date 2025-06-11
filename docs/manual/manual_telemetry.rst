@@ -210,7 +210,7 @@ timer based protocols or DSHOT. The sections below detail these procedures.
 Analog Timer Based Protocols
 -------------------------------
 Analog timer based protocols, most notably :ref:`Standard PWM <hobby_standard_pwm>`, but also several :ref:`other protocols <hobby_other_protocols>`, send throttle commands by sending pulses
-of varying widths. **Vertiq modules allow users to request telemetry when using analog hobby protocols by sending a 30 microsecond pulse to the module instead of a throttle command.** This
+of varying widths. **Vertiq modules allow users to request telemetry when using analog timer based protocols by sending a 30 microsecond pulse to the module instead of a throttle command.** This
 30 microsecond pulse should be sent in the same way as a typical throttle command pulse. A telemetry response will then be sent as a serial message from the module's telemetry pin.
 This is the same as the procedure outlined on the `KISS ESC telemetry standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
 

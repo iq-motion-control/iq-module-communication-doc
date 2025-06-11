@@ -127,7 +127,7 @@ will only listen for the first received protocol (if IQUART is received before a
 Module Configuration
 ======================
 The :ref:`hobby_fc_tutorial` tutorial details important configuration parameters to set on speed modules when using PWM and DSHOT. 
-Though that tutorial is focused on integration with flight controllers, the information on module configuration for using hobby protocols is applicable for any kind of setup.
+Though that tutorial is focused on integration with flight controllers, the information on module configuration for using timer based protocols is applicable for any kind of setup.
 
 Analog Protocol Calibration
 =============================

@@ -46,7 +46,7 @@ Each protocol priority can be adjusted through the Control Center's general tab:
 
 .. image:: ../_static/manual_images/redundant_throttle/control_center_params.png
 
-Vertiq's supported throttle sources are :ref:`DroneCAN <dronecan_protocol>`, :ref:`IQUART <uart_messaging>`, and :ref:`hobby protocols <timer_based_protocol>`. Please note that only priority values corresponding to protocols supported by 
+Vertiq's supported throttle sources are :ref:`DroneCAN <dronecan_protocol>`, :ref:`IQUART <uart_messaging>`, and :ref:`timer based protocols <timer_based_protocol>`. Please note that only priority values corresponding to protocols supported by 
 your module have any effect. See your module's family page to see what throttle sources are supported.
 
 Priorities can be valued from 0 to 3. Setting a priority of 0 indicates that the module will ignore all throttle messages received from the configured source. 

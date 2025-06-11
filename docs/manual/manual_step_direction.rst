@@ -34,7 +34,7 @@ The distance traveled on each received step pulse is defined by the *Step Angle 
 	Unlike :ref:`timer_based_protocol`, while using Step/Direction control with a Fortiq-42 module, serial communication through IQUART remains available. 
 
 .. note::
-	By using Step/Direction firmware, the motor can only be controlled via Step/Direction signals. Attempts to spin, stop, or otherwise control the motor via other protocols will fail. You can still communicate with the module via IQUART or CANOpen (if available), but cannot control the module. Hobby protocols are disabled when using Step/Direction firmware.
+	By using Step/Direction firmware, the motor can only be controlled via Step/Direction signals. Attempts to spin, stop, or otherwise control the motor via other protocols will fail. You can still communicate with the module via IQUART or CANOpen (if available), but cannot control the module. Timer based protocols are disabled when using Step/Direction firmware.
 
 Usage
 ==========
