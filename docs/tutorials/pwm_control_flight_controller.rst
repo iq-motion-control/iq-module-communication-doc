@@ -184,7 +184,7 @@ the modes available on the module, refer to the :ref:`throttle_mode_maximums_dir
 
 Timeout
 ########
-This determines the length of the module's timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below, 1s, it can be difficult to test with the Control Center. 
+This determines the length of the module's timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below 1s, it can be difficult to test with the Control Center. 
 So for this example, the **timeout should be set to 1.5s**. To do this, set the *Timeout* parameter to 1.5s, as shown in the image below. Depending on how frequently your flight controller sends throttle commands, 
 you may want to decrease the timeout when using the modules on a drone. For more information on the timeout feature of Vertiq modules, refer to the :ref:`manual_timeout` section of the Feature Reference Manual.
 
@@ -452,6 +452,9 @@ For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figur
 
     QGroundControl Airframe Setup
 
+.. note:: 
+  Make sure that the :ref:`module directions <throttle_direction>` are correctly set for your airframe.
+
 Setting PX4 PWM Parameters
 **************************
 Several parameters must be set properly to make sure the flight controller can communicate with your module using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
@@ -472,7 +475,7 @@ configured to disarm on throttle commands between 0 and 2%, and to arm between 2
 modules use a range of 1000us to 2000us for PWM throttle parsing, we can easily map our percentages to the correct Disarmed, Minimum, and Maximum values. When disarmed, we want the flight 
 controller to output a command that will disarm the module. So, we will set our Disarmed value to 1000us as it represents a 0% throttle. Now, we want to ensure the module arms when 
 the flight controller does, so we'll adjust our minimum flight controller output to fall inside of our :ref:`arming region <arming_throttle_regions>`. To ensure we fall inside of the 
-arming region, we will configure the flight controller to output a 2.5% throttle once armed. 2.5% of our 1000us range is 25, so we'll set our Minimum to 1025us. The maximum is 
+arming region, we will configure the flight controller to output a .5% throttle once armed. .5% of our 1000us range is 5, so we'll set our Minimum to 1005us. The maximum is 
 defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 
 .. warning::
