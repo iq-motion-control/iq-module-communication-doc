@@ -204,7 +204,7 @@ Assign ESC Functions in Actuators Tab
 .. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to set
     the functions of the actuator outputs. 
 
-After rebooting the flight contorller, QGroundControl's Actuators tab should present UAVCAN as an option.
+After rebooting the flight controller, QGroundControl's Actuators tab should present UAVCAN as an option.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_actuators_tab.png
     :align: center
