@@ -129,8 +129,8 @@ follow these steps:
     4. Click "Test All Motors" to start sending the 100% throttle commands.
     5. Power on the Vertiq Module, and wait for it to start playing the begin calibration song.
     6. Lower the Throttle % to 0% and click "Test All Motors." The module song should switch to the calibration-in-progress song.
-    7. Wait 5s, and then set the Throttle % to 10% and click "Test All Motors". The module should stop playing the calibration-in-progress song, indicating it completed calibration.
-    8. Lower the Throttle % to 0% and click "Test All Motors." Confirm that the module plays the arming song. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
+    7. Wait about 5s, and then set the Throttle % to 50% and click "Test All Motors". The module should stop playing the calibration-in-progress song, indicating it completed calibration.
+    8. Lower the Throttle % to 0% and click "Test All Motors." Confirm that the module plays the :ref:`arming song <arming_song>`. Note that if you have changed the arming parameters of the module from their default settings it may not arm on a 0% throttle command, see the :ref:`manual_advanced_arming` section of the Feature Reference Manual for more information.
     9. Try out different Throttle % settings to confirm the module spins when armed.
     10. Power cycle the module and check the Calibrated Protocol, high-end, and low-end duration settings in the Control Center as described in `Checking and Trimming Calibration with Control Center`_ to confirm the calibration was successful.
 
