@@ -164,7 +164,7 @@ Module, a flight controller with PX4, and a computer with QGroundControl.
 
 First, follow the steps laid out in :ref:`hobby_fc_tutorial` for setting up your Vertiq module and PX4 flight controller to communicate with each other using Standard PWM. Make sure to test
 that the flight controller can communicate with the module before proceeding. **It is important to pay attention to the set up of the PWM_MAIN_MIN and PWM_MAIN_MAX parameters in the linked tutorial.
-If the PWM_MAIN_MAX is too low it may fail to trigger the module to start calibration. For example, if PWM_MAIN_MIN is 1950 us, the calibration process may be difficult to start.**
+If the PWM_MAIN_MAX is too low it may fail to trigger the module to start calibration. For example, if PWM_MAIN_MAX is 1950 us, the calibration process may be difficult to start.**
 
 .. warning:: Ensure that the module is secured and there is no propeller attached before attempting calibration, as the module may spin.
 

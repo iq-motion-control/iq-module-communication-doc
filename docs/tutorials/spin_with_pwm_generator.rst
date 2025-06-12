@@ -26,10 +26,7 @@ We are going to configure our module exactly as we would for integration with a 
 your module is running the latest supported firmware available on `our website <https://www.vertiq.co/>`_. Next, :ref:`revert your module to factory defaults <reset_to_defaults_manual>`. 
 Finally, configure your module's :ref:`control mode to PWM (battery percentage) <throttle_pwm_mode>`.
 
-
-
- So, we will follow the instructions found :ref:`here <hobby_fc_tutorial_motor_configuration>` 
-through the *Testing the Module* section.
+.. image:: ../_static/tutorial_images/spin_with_maestro/mode_set_to_pwm.png
 
 ******************************
 Spinning With Pololu Maestro

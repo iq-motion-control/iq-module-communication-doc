@@ -7,7 +7,7 @@
 Timer Based Protocols - PWM, DSHOT, and More
 ***************************************************
 
-Timer based protocols (previously hobby protocols) refer to an array of different protocols commonly used by drone hobbyists for controlling ESCs. Vertiq modules support the following selection of the 
+Timer based protocols (previously hobby protocols) refer to an array of different protocols commonly used for controlling ESCs. Vertiq modules support the following selection of the 
 most popular of these protocols:
 
 * PWM (1000-2000us pulses)
