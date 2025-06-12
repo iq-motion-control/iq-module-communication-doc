@@ -184,7 +184,7 @@ the modes available on the module, refer to the :ref:`throttle_mode_maximums_dir
 
 Timeout
 ########
-This determines the length of the module's timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below, 1s, it can be difficult to test with the Control Center. 
+This determines the length of the module's timeout. If it does not hear any messages within that time, it will timeout and play its timeout song. If this is below 1s, it can be difficult to test with the Control Center. 
 So for this example, the **timeout should be set to 1.5s**. To do this, set the *Timeout* parameter to 1.5s, as shown in the image below. Depending on how frequently your flight controller sends throttle commands, 
 you may want to decrease the timeout when using the modules on a drone. For more information on the timeout feature of Vertiq modules, refer to the :ref:`manual_timeout` section of the Feature Reference Manual.
 
@@ -237,6 +237,8 @@ Ardupilot and Mission Planner Configuration and Testing
 .. note::
     If you are using PX4 firmware, please follow the :ref:`PX4 and QGroundControl Configuration and Testing <PX4_and_QGroundControl_Configuration>` tutorial.
 
+    Please review the `ArduPilot First Time Setup <https://ardupilot.org/copter/docs/initial-setup.html>`_ guide if this is your first time setting up ArduPilot with your flight controller.
+
 This tutorial was tested using Mission Planner 1.3.80 and ArduCopter v4.5.5, as shown in the figure below. These instructions assume you are starting from the default parameters, and cover how to test that the
 flight controller and module can communicate with no additional flight controller peripherals. See the `Hardware Setup`_ section for more details on the hardware and connections.
 
@@ -260,6 +262,11 @@ screen should appear. This tutorial was tested with the "X" quadcopter frame, un
     :align: center
 
     Mission Planner Frame Type Selection
+
+.. note:: 
+    The following sections will explain how to set up :ref:`PWM Parameters <setting_pwm_parameters>` and :ref:`DSHOT Parameters <setting_dshot_parameters>`. Please navigate to the appropriate section for your flight controller.
+
+.. _setting_pwm_parameters:
 
 Setting ArduCopter PWM Parameters
 *********************************
@@ -292,6 +299,7 @@ Reboot your flight controller to make sure the new parameters take effect. The i
 
     Important ArduCopter Standard PWM Parameters in Mission Planner
 
+.. _setting_dshot_parameters:
 
 Setting ArduCopter DSHOT Parameters
 ***********************************
@@ -452,6 +460,9 @@ For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figur
 
     QGroundControl Airframe Setup
 
+.. note:: 
+  Make sure that the :ref:`module directions <throttle_direction>` are correctly set for your airframe.
+
 Setting PX4 PWM Parameters
 **************************
 Several parameters must be set properly to make sure the flight controller can communicate with your module using PWM. Connect to your flight controller with QGroundControl, and under "Vehicle Setup" select
@@ -472,7 +483,7 @@ configured to disarm on throttle commands between 0 and 2%, and to arm between 2
 modules use a range of 1000us to 2000us for PWM throttle parsing, we can easily map our percentages to the correct Disarmed, Minimum, and Maximum values. When disarmed, we want the flight 
 controller to output a command that will disarm the module. So, we will set our Disarmed value to 1000us as it represents a 0% throttle. Now, we want to ensure the module arms when 
 the flight controller does, so we'll adjust our minimum flight controller output to fall inside of our :ref:`arming region <arming_throttle_regions>`. To ensure we fall inside of the 
-arming region, we will configure the flight controller to output a 2.5% throttle once armed. 2.5% of our 1000us range is 25, so we'll set our Minimum to 1025us. The maximum is 
+arming region, we will configure the flight controller to output a .5% throttle once armed. .5% of our 1000us range is 5, so we'll set our Minimum to 1005us. The maximum is 
 defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 
 .. warning::
@@ -483,6 +494,7 @@ defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 
 In the module configuration completed so far in this tutorial, there is no configured :ref:`disarming region <disarm_on_throttle>`. So, we will set our Disarmed output to 1000us and our 
 Minimum output to 1005us. Note that our Disarmed output should always be lower than the Minimum output. The Maximum value can remain 2000us.
+**It is highly recommended to configure your disarming region for safety purposes.**
 
 Once you have fully configured the output channel, you will see sliders appear under Actuator Testing. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
 you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (1000us) immediately on channel activation. By default, Vertiq modules 
