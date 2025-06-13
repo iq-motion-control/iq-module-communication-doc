@@ -90,15 +90,15 @@ A module with its power lines and capacitor attached should look as follows
 
 .. _23xx_comms:
 
-Communication - IQUART or Hobby Configuration
-====================================================
+Communication - IQUART or Timer Based Protocol Configuration
+===============================================================
 .. figure:: ../_static/module_pictures/23xx/23xx_comms_connection.png
     :width: 350
     :alt: 23-XX Communication Connections
 
     23-XX Communication Connections
 
-In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Hobby Protocols <hobby_protocol>` you will have to connect the supplied communication wire to your module. 
+In order to use either :ref:`IQUART <uart_messaging>` or any :ref:`Timer Based Protocols <timer_based_protocol>` you will have to connect the supplied communication wire to your module. 
 In any scenario, please ensure that the TX line of your module is connected to your controller's RX line, and the RX line 
 of your module is connected to your controller's TX line.
 

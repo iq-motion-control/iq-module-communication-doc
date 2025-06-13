@@ -46,15 +46,15 @@ Each protocol priority can be adjusted through the Control Center's general tab:
 
 .. image:: ../_static/manual_images/redundant_throttle/control_center_params.png
 
-Vertiq's supported throttle sources are :ref:`DroneCAN <dronecan_protocol>`, :ref:`IQUART <uart_messaging>`, and :ref:`hobby protocols <hobby_protocol>`. Please note that only priority values corresponding to protocols supported by 
+Vertiq's supported throttle sources are :ref:`DroneCAN <dronecan_protocol>`, :ref:`IQUART <uart_messaging>`, and :ref:`timer based protocols <timer_based_protocol>`. Please note that only priority values corresponding to protocols supported by 
 your module have any effect. See your module's family page to see what throttle sources are supported.
 
 Priorities can be valued from 0 to 3. Setting a priority of 0 indicates that the module will ignore all throttle messages received from the configured source. 
 Priority values [1, 3] define the priority of each protocol against the others where 3 defines the highest priority.
 
 .. note:: 
-    Due to Vertiq modules' hardware, it is not currently possible to use both IQUART and hobby protocols simultaneously. As such, it is only possible to use DroneCAN with one of IQUART 
-    or hobby as redundant throttle sources.
+    Due to Vertiq modules' hardware, it is not currently possible to use both IQUART and timer based protocols simultaneously. As such, it is only possible to use DroneCAN with one of IQUART 
+    or timer based protocols as redundant throttle sources.
 
 Configuration Example 1
 ##########################
@@ -80,7 +80,7 @@ once again able to successfully transmit DroneCAN throttles, and the received Dr
 Configuration Example 2
 ##########################
 
-Suppose your module supports DroneCAN, IQUART, and hobby inputs. 
+Suppose your module supports DroneCAN, IQUART, and timer based (hobby) inputs. 
 
 You configure the following:
 
@@ -101,7 +101,7 @@ IQUART throttles again at this point, the module will immediately start acceptin
 Configuration Example 3
 ##########################
 
-Suppose your module supports DroneCAN, IQUART, and hobby inputs. 
+Suppose your module supports DroneCAN, IQUART, and timer based (hobby) inputs. 
 
 You configure the following:
 

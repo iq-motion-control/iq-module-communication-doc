@@ -63,17 +63,17 @@ Supported Telemetry
 =====================
 The structure and triggering of supported telemetry messages varies between different protocols. The sections below cover these details for different protocols.
 
-Hobby Protocols
-****************
-ESC telemetry is available when using :ref:`Hobby Protocols <hobby_protocol>` with Vertiq modules. Telemetry messages are sent from the module as a serial
+Timer Based Protocols
+************************
+ESC telemetry is available when using :ref:`Timer Based Protocols <timer_based_protocol>` with Vertiq modules. Telemetry messages are sent from the module as a serial
 message at the baud rate configured on the module.
 
-The exact method for requesting telemetry varies depending on what type of hobby protocol is being used, but the structure and content of 
-the telemetry sent is the same across all hobby protocols.
+The exact method for requesting telemetry varies depending on what type of timer based protocol is being used, but the structure and content of 
+the telemetry sent is the same across all timer based protocols.
 
 Structure and Content
 ######################
-The structure and content of the ESC telemetry message available when using :ref:`Hobby Protocols <hobby_protocol>` is based on the `telemetry
+The structure and content of the ESC telemetry message available when using :ref:`Timer Based Protocols <timer_based_protocol>` is based on the `telemetry
 of KISS and BLHeli ESCs <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_. 
 
 **There is one key difference between the telemetry sent by Vertiq modules and the KISS standard. The KISS standard specifies sending ERPM data in the telemetry message. ERPM data
@@ -86,7 +86,7 @@ need to perform any conversion.** See the note below for details on how this con
     For detailed information on how ArduCopter flight controllers handle the conversion, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
     telemetry with flight controllers. For other types of flight controllers, refer to your flight controller's documentation.
 
-The telemetry sent by Vertiq modules when using :ref:`Hobby Protocols <hobby_protocol>` is specified in the table below. The message
+The telemetry sent by Vertiq modules when using :ref:`Timer Based Protocols <timer_based_protocol>` is specified in the table below. The message
 consists of 10 bytes:
 
 	+----------+-------------------------+-----------------------+
@@ -185,7 +185,7 @@ received units into more commonly used units.
 
 Hardware Setup
 ###############
-When using :ref:`Hobby Protocols <hobby_protocol>` with a Vertiq module, one line is used to connect ground to the module, one line is used to send throttle commands,
+When using :ref:`Timer Based Protocols <timer_based_protocol>` with a Vertiq module, one line is used to connect ground to the module, one line is used to send throttle commands,
 and one line can optionally be used to receive telemetry from the module. An example of this can be seen for the 81-08 module in the image below. The pin marked as "PWM" 
 is used to send throttle commands and telemetry requests to the module, and the pin marked as "Telemetry" is used by the module to send telemetry back to a flight controller.
 Refer to your module's datasheet for more details on how to set up the hardware on your module.
@@ -195,22 +195,22 @@ Refer to your module's datasheet for more details on how to set up the hardware 
     :width: 60%
     :alt: Connector Pins on Vertiq 81-08
 
-    Hobby Protocol Pins on the Vertiq 81-08 (PWM pin receives throttle commands, Telemetry pin sends telemetry messages)
+    Timer Based Protocol Pins on the Vertiq 81-08 (PWM pin receives throttle commands, Telemetry pin sends telemetry messages)
 
 Telemetry messages are sent from the module as a serial message at the baud rate configured on the module, so the telemetry line from your module
 should be connected to a serial port set to the correct baud rate on your flight controller.
 
-Requesting Telemetry with Hobby Protocols
-##########################################
-The procedure for requesting a telemetry message when using :ref:`Hobby Protocols <hobby_protocol>` varies depending on if you are using analog
-hobby protocols or DSHOT. The sections below detail these procedures.
+Requesting Telemetry with Timer Based Protocols
+##################################################
+The procedure for requesting a telemetry message when using :ref:`Timer Based Protocols <timer_based_protocol>` varies depending on if you are using analog
+timer based protocols or DSHOT. The sections below detail these procedures.
 
 .. _telemetry_analog_request:
 
-Analog Hobby Protocols
------------------------
-Analog hobby protocols, most notably :ref:`Standard PWM <hobby_standard_pwm>`, but also several :ref:`other protocols <hobby_other_protocols>`, send throttle commands by sending pulses
-of varying widths. **Vertiq modules allow users to request telemetry when using analog hobby protocols by sending a 30 microsecond pulse to the module instead of a throttle command.** This
+Analog Timer Based Protocols
+-------------------------------
+Analog timer based protocols, most notably :ref:`Standard PWM <hobby_standard_pwm>`, but also several :ref:`other protocols <hobby_other_protocols>`, send throttle commands by sending pulses
+of varying widths. **Vertiq modules allow users to request telemetry when using analog timer based protocols by sending a 30 microsecond pulse to the module instead of a throttle command.** This
 30 microsecond pulse should be sent in the same way as a typical throttle command pulse. A telemetry response will then be sent as a serial message from the module's telemetry pin.
 This is the same as the procedure outlined on the `KISS ESC telemetry standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
 

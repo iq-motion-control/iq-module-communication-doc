@@ -336,7 +336,7 @@ on the current armed state or manually transition the state as needed.
 
 DSHOT Disarm
 ##############
-The :ref:`DSHOT <hobby_dshot>` hobby protocol reserves one of its special values for commanding a disarm. Vertiq modules support this command, and will disarm if a DSHOT disarm 
+The :ref:`DSHOT <hobby_dshot>` timer based protocol reserves one of its special values for commanding a disarm. Vertiq modules support this command, and will disarm if a DSHOT disarm 
 command is received.
 
 .. _manual_arming_throttle_source:
@@ -451,8 +451,8 @@ These examples cover only the additional setup needed to support arming and assu
 For examples of the initial setup of a Vertiq module see the :ref:`speed_module_start_guide` tutorial and the :ref:`hobby_fc_tutorial` tutorial. 
 For information on setting up the mode and throttle configurations for a Vertiq module, see the :ref:`manual_throttle` section.
 
-Arming and Disarming with Hobby PWM and PX4
-********************************************
+Arming and Disarming with Timer Based Protocols on PWM and PX4
+*******************************************************************
 This example covers one way to set up a Vertiq module and a PX4 flight controller sending Standard PWM commands to properly arm and disarm in sync with each other 
 using arming and disarming throttle regions. This assumes that the flight controller and the Vertiq module are set up to use standard, non-reversible :ref:`hobby_standard_pwm` commands, 
 where 1000 microseconds commands 0% throttle in the module’s specified direction and 2000 microseconds commands 100% throttle in that same direction.
@@ -622,8 +622,8 @@ on integrating Vertiq modules with flight controllers when using DroneCAN, see t
 
     Flight Controller Configurations for DroneCAN in QGroundControl
 
-Arming and Disarming with ArduCopter for Hobby PWM and DroneCAN
-*****************************************************************
+Arming and Disarming with ArduCopter for Timer Based Protocols on PWM and DroneCAN
+***************************************************************************************
 This example covers one way to set up a Vertiq module and a flight controller programmed with ArduCopter to properly arm and disarm in sync with each other using 
 arming and disarming throttle regions. The same setup works for both PWM and DroneCAN control.
 
@@ -725,10 +725,12 @@ Armed Throttle Source Lockout
 **When armed, the module will always choose one throttle source as its armed throttle source, and reject incoming throttle commands from all other throttle sources.** 
 For an explanation on what is a throttle source, see the :ref:`throttle_sources` section. These rejected throttle commands will not affect how the module is spinning 
 and will not trigger disarming transitions. For example, if DroneCAN was the armed throttle source, throttle commands received over DroneCAN would be treated 
-normally, and throttle commands received over Hobby PWM would be rejected.
+normally, and throttle commands received over timer based PWM would be rejected.
 
 How the module determines the armed throttle source depends on how the arming transition is triggered. See the individual sections on types of arming transitions 
 in :ref:`arming_state_transitions` for more details.
+
+.. _consecutive_arming_disarming_throttle:
 
 Consecutive Arming and Disarming Throttles
 **********************************************
