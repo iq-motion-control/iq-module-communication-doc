@@ -22,9 +22,9 @@ All Vertiq modules accept PWM inputs on their RX/PWM In pins. You will need to c
 Module Configuration
 **********************
 
-We are going to configure our module exactly as we would for integration with a flight controller with our module in :ref:`PWM mode <throttle_pwm_mode>`. To do this, first, ensure that 
-your module is running the latest supported firmware available on `our website <https://www.vertiq.co/>`_. Next, :ref:`revert your module to factory defaults <reset_to_defaults_manual>`. 
-Finally, configure your module's :ref:`control mode to PWM (battery percentage) <throttle_pwm_mode>`.
+We are going to configure our module exactly as we would for integration with a flight controller with our module in :ref:`PWM (battery percentage) control mode <throttle_pwm_mode>`. The same 
+principles apply to both velocity and voltage control modes as well. To do this, first, ensure that your module is running the latest supported firmware available on `our website <https://www.vertiq.co/>`_. 
+Next, :ref:`revert your module to factory defaults <reset_to_defaults_manual>`. Finally, configure your module's :ref:`control mode to PWM (battery percentage) <throttle_pwm_mode>`.
 
 .. image:: ../_static/tutorial_images/spin_with_maestro/mode_set_to_pwm.png
 
