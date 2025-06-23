@@ -461,7 +461,8 @@ For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figur
     QGroundControl Airframe Setup
 
 .. note:: 
-  Make sure that the :ref:`module directions <throttle_direction>` are correctly set for your airframe.
+  Make sure that the :ref:`module directions <throttle_direction>` are correctly set for your airframe. In QGroundControl, a blue motor represents counter clockwise.
+  For example, if you are using the Generic Quadcopter, your front right and back left modules should generally be configured to 2D clockwise, and your front left and back right should be 2D counter-clockwise.
 
 Setting PX4 PWM Parameters
 **************************
@@ -494,7 +495,7 @@ defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 
 In the module configuration completed so far in this tutorial, there is no configured :ref:`disarming region <disarm_on_throttle>`. So, we will set our Disarmed output to 1000us and our 
 Minimum output to 1005us. Note that our Disarmed output should always be lower than the Minimum output. The Maximum value can remain 2000us.
-**It is highly recommended to enable the *Disarm On Throttle* parameter through Control Center and configure your disarming region for safety purposes.**
+**It is highly recommended to enable the Disarm On Throttle parameter through Control Center and configure your disarming region for safety purposes.**
 
 Once you have fully configured the output channel, you will see sliders appear under Actuator Testing. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
 you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (1000us) immediately on channel activation. By default, Vertiq modules 
