@@ -477,7 +477,7 @@ of the help for the actuator_test command, as well as this example command::
 
 Virtual Joysticks
 ---------------------
-For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html>`_ in PX4 can be used to control connected 
+For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html>`_ in QGroundControl can be used to control connected 
 modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html#enable-the-thumbsticks>`_ 
 as detailed in the PX4 documentation, and ensure that all Vertiq modules are powered on and connected to the CAN bus.
 
