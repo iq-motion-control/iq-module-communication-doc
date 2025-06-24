@@ -462,7 +462,7 @@ For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figur
 
 .. note:: 
   Make sure that the :ref:`module directions <throttle_direction>` are correctly set for your airframe. In QGroundControl, a blue motor represents counter clockwise.
-  For example, if you are using the Generic Quadcopter, your front right and back left modules should generally be configured to 2D clockwise, and your front left and back right should be 2D counter-clockwise.
+  For example, if you are using the Generic Quadcopter, your front right and back left modules should generally be configured to 2D counter-clockwise, and your front left and back right should be 2D clockwise.
 
 Setting PX4 PWM Parameters
 **************************
