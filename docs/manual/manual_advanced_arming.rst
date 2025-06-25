@@ -335,9 +335,12 @@ command is received.
 
 Timeout
 ********
-Timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout. Note that 
-whether the module performs its disarming behavior or not on a timeout depends on the timeout feature configurations. See the :ref:`manual_timeout` section, specifically the 
-:ref:`timeout_meaning` subsection, for more information.
+
+:ref:`Communication timeouts <manual_timeout>` can be configured to result in multiple options in regards to arming. You can read about these options in our 
+:ref:`timeout documentation <timeout_meaning>`.
+
+
+Please note that by default, timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout.
 
 .. _always_armed:
 
@@ -368,10 +371,12 @@ in :ref:`throttle_regions` is generally safer, as the module can be set to only 
 
 Arming Behavior
 ================
-When an arming transition (from disarmed to armed) occurs, the module executes its arming behavior. The arming behavior is not configurable, it will always be the same. 
-
-The module will play the :ref:`arming song <arming_song>`, which consists of 2 short, high-pitched notes. The end of this song indicates the module is armed. The module will then begin spinning 
+When an arming transition (from disarmed to armed) occurs, the module executes its arming behavior. The arming behavior has only one configuration parameter. If 
+the :ref:`arming handler's <arming_handler>` ``play_arming_song_on_arm`` parameter is true, the module will play the :ref:`arming song <arming_song>`, which consists of 2 short, high-pitched notes. The end of this song indicates the module is armed. The module will then begin spinning 
 at the throttle percentage commanded by its last throttle command, and will begin accepting new throttle commands.
+
+If ``play_arming_song_on_arm`` is set to false, however, the module **will not play** its arming song on arming. Once it receives the correct criteria required to arm, 
+the module will begin accepting new throttle commands without any audio feedback.
 
 .. _advanced_disarming_behavior:
 
