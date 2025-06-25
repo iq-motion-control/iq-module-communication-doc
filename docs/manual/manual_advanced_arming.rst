@@ -417,6 +417,8 @@ These options can all be configured through IQ Control Center through the *Disar
 
     Disarm Behavior Parameter in IQ Control Center
 
+.. _disarm_song_options:
+
 Disarming Song Playback Options
 *********************************
 The disarming song playback option determines if and how many times the module will play its disarm song after coming to a stop. There are 3 options:
@@ -433,6 +435,25 @@ These options can all be configured through IQ Control Center through the *Disar
     :alt: Disarm Song Playback Option Parameter
 
     Disarm Song Playback Option Parameter in Control Center
+
+Arming Configuration with DroneCAN
+====================================
+
+The parameters and behaviors described in the preceding sections can be configured using :ref:`DroneCAN GetSet <dronecan_getset>` messages. The values available over DroneCAN 
+are tied directly to those available over IQUART, so a change in one results in an overall system behavior update, not just for one protocol. The specific arming parameters 
+available over DroneCAN are:
+
+1. Arm on throttle
+2. :ref:`Arming throttle upper and lower limits <throttle_regions>`
+3. Disarm on throttle
+4. :ref:`Disarming upper and lower limits <throttle_regions>`
+5. :ref:`Disarm behavior <disarming_behavior_options>`
+6. :ref:`Disarm song option <disarm_song_options>`
+
+These parameters are visible in using the DroneCAN GUI below:
+
+.. image:: ../_static/manual_images/arming/dronecan_gui_params.png
+    :align: center
 
 Flight Controller Integration Examples
 ========================================
