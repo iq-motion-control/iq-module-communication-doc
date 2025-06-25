@@ -339,7 +339,6 @@ Timeout
 :ref:`Communication timeouts <manual_timeout>` can be configured to result in multiple options in regards to arming. You can read about these options in our 
 :ref:`timeout documentation <timeout_meaning>`.
 
-
 Please note that by default, timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout.
 
 .. _always_armed:
