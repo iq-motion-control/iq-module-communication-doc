@@ -236,6 +236,8 @@ and throttles cannot cause an disarming transition. Otherwise, disarming throttl
 
     Disarm on Throttle Parameter in IQ Control Center
 
+.. _disarm_on_throttle_example:
+
 Disarming with Throttle Example
 ---------------------------------
 An example of a possible disarming setup and procedure is outlined below.
@@ -443,13 +445,12 @@ These options can all be configured through IQ Control Center through the *Disar
 Arming Configuration with DroneCAN
 ====================================
 
-The parameters and behaviors described in the preceding sections can be configured using :ref:`DroneCAN GetSet <dronecan_getset>` messages. The values available over DroneCAN 
-are tied directly to those available over IQUART, so a change in one results in an overall system behavior update, not just for one protocol. The specific arming parameters 
+The parameters and behaviors described in the preceding sections can be configured using :ref:`DroneCAN GetSet <dronecan_getset>` messages. The specific arming parameters 
 available over DroneCAN are:
 
-1. Arm on throttle
+1. :ref:`Arm on throttle <arming_consecutive_throttles>`
 2. :ref:`Arming throttle upper and lower limits <throttle_regions>`
-3. Disarm on throttle
+3. :ref:`Disarm on throttle <disarm_on_throttle_example>`
 4. :ref:`Disarming upper and lower limits <throttle_regions>`
 5. :ref:`Disarm behavior <disarming_behavior_options>`
 6. :ref:`Disarm song option <disarm_song_options>`
@@ -458,6 +459,8 @@ These parameters are visible in using the DroneCAN GUI below:
 
 .. image:: ../_static/manual_images/arming/dronecan_gui_params.png
     :align: center
+
+For more information about DroneCAN parameters, please see :ref:`dronecan_configuration_parameters`.
 
 Flight Controller Integration Examples
 ========================================
