@@ -7,7 +7,7 @@
 Advanced Arming
 ***********************************************
 Vertiq modules can support an advanced arming feature. The advanced arming feature allows users to control the module's :ref:`armed state <advanced_arming_armed_states>` either manually 
-or with throttle commands, and to configure specific behaviors to occur on armed state transitions. Modules will not react to throttle messages until they have armed, providing improved safety. 
+or with throttle commands. It also allows users to configure specific behaviors to occur on armed state transitions. Modules will not react to throttle messages until they have armed, providing improved safety. 
 The configurable behaviors on armed state transitions allow users to easily integrate advanced behaviors into their setup just by controlling the throttle messages they send, 
 simplifying flight controller integration. 
 
@@ -291,6 +291,22 @@ Throttle Region Overlap
 Depending on the module's configuration, it is possible for the arming and disarming throttle regions to overlap. In this case, the disarming 
 throttle region will take precedence, and throttles in the overlapping region will be considered as disarming throttles. 
 
+The following example illustrates this behavior. In the video, you'll see the arming and disarming throttle upper limits shown in purple and green respectively. Both lower limits are 
+set to 0. This means that between 0 and 0.05, the two regions overlap. You'll see the user start raising throttle in the bottom right hand side, and you'll see that the armed state (in white) 
+does not become armed until the throttle is above 0.05. This is where we exit the overlapping region, and arming throttles apply. Then, you'll see that the module disarms immediately when the 
+throttle input hits 0.05. This is because the disarming region will always win out over the arming region when they overlap.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/manual_images/arming/arming_region_overlap_example.mp4" type="video/mp4"></video>
+
 User Commands
 **************
 
@@ -340,6 +356,12 @@ The :ref:`DSHOT <hobby_dshot>` timer based protocol reserves one of its special 
 command is received.
 
 .. _manual_arming_throttle_source:
+
+
+Arming with DroneCAN ArmingStatus
+***********************************
+Vertiq modules that support `DroneCAN's ArmingStatus message <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=uavcan.equipment.safety-,ArmingStatus,-Full%20name%3A>`_ can use the message to control their arming state. You can find more information about this in our :ref:`DroneCAN documentation <arm_with_armingstatus>`. 
+If you are using DroneCAN to control your module, we highly recommend using this method of controlling your module's arming state and disabling throttle based arming transitions.
 
 Timeout
 ********
