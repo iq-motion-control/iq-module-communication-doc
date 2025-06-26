@@ -583,7 +583,7 @@ Linux
         GenericInterface com;
 
         // Make a Temperature Estimator Client object with obj_id 0
-        TemperatureEstimatorClient temp(0);
+        CoilTemperatureEstimatorClient temp(0);
 
 
         while(true){
@@ -593,10 +593,10 @@ Linux
             *********************************************************************/
 
             // Forms a packet in the com interface with the following:
-            // type:        (77) Temperature Estimator ID Number
-            // subtype:     ( 0) temp
+            // type:        (83) Temperature Estimator ID Number
+            // subtype:     ( 0) t_coil_
             // obj/access   ( 0) get
-            temp.temp_.get(com);
+            temp.t_coil_.get(com);
 
             uint8_t packet_buf[64];
             uint8_t length = 0;
@@ -651,9 +651,9 @@ Linux
             com.DropPacket();
 
             //Let's see if we actually got a response
-            if(temp.temp_.IsFresh()){
+            if(temp.t_coil_.IsFresh()){
                 // Reads the data from the temperature client
-                float temperature = temp.temp_.get_reply();
+                float temperature = temp.t_coil_.get_reply();
                 printf("Temperature: %f\n", temperature);
             }else{
                 printf("Did not get a response\n");
