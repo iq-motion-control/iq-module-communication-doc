@@ -520,17 +520,22 @@ Manual. For more information on arming and disarming the module, refer to the :r
 Your flight controller and single module are now ready for :ref:`testing <testing_with_qgc>`. In order to add more PWM outputs, simply set the other MAIN outputs to the 
 correct motor output, and ensure each channel is using the PWM 400 Hz protocol.
 
-Optional Advanced Configuration Example
-###########################################
+.. tip::
 
-For advanced users making use of advanced arming features, we recommend that you coordinate your PX4 configuration with your module's :ref:`arming parameter settings <manual_advanced_arming>`. For example, suppose your module is 
-configured to disarm on throttle commands between 0 and 2%, and to arm between 2 and 12.5%. When the flight controller is disarmed, we want our module to be as well. Since Vertiq 
-modules use a range of 1000us to 2000us for PWM throttle parsing, we can easily map our percentages to the correct Disarmed, Minimum, and Maximum values. When disarmed, we want the flight 
-controller to output a command that will disarm the module. So, we will set our Disarmed value to 1000us as it represents a 0% throttle. Now, we want to ensure the module arms when 
-the flight controller does, so we'll adjust our minimum flight controller output to fall inside of our :ref:`arming region <arming_throttle_regions>`. To ensure we fall inside of the 
-arming region, we will configure the flight controller to output a 2.5% throttle once armed. 2.5% of our 1000us range is 25, so we'll set our Minimum to 1025us. The maximum is 
-defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
+  **Optional Advanced Configuration Example**
 
+  So far in this tutorial, we have performed a basic configuration that allows your module to arm and get spinning, but does not configure module disarming. It is 
+  possible to configure your flight controller and module to disarm in specific throttle regions as discussed in the :ref:`arming manual <disarm_on_throttle>`.
+
+  For example, suppose your module is configured to disarm on throttle commands :ref:`between 0 and 2% <disarm_on_throttle>`, and to arm between 2 and 12.5%. When the flight controller is disarmed, we want our module to be as well. Since Vertiq 
+  modules use a range of 1000us to 2000us for PWM throttle parsing, we can easily map our percentages to the correct Disarmed, Minimum, and Maximum values. When disarmed, we want the flight 
+  controller to output a command that will disarm the module. So, we will set our Disarmed value to 1000us as it represents a 0% throttle. Now, we want to ensure the module arms when 
+  the flight controller does, so we'll adjust our minimum flight controller output to fall inside of our :ref:`arming region <arming_throttle_regions>`. To ensure we fall inside of the 
+  arming region, we will configure the flight controller to output a 2.5% throttle once armed. 2.5% of our 1000us range is 25, so we'll set our Minimum to 1025us. The maximum is 
+  defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
+
+  The disarming example provided here differs from the configuration covered previously in this tutorial. It is only meant to illustrate a possible set of configurations 
+  that could be used to integrate disarming into this basic example.
 
 Setting PX4 DSHOT Parameters
 ****************************
