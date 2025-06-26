@@ -454,6 +454,7 @@ available over DroneCAN are:
 4. :ref:`Disarming upper and lower limits <throttle_regions>`
 5. :ref:`Disarm behavior <disarming_behavior_options>`
 6. :ref:`Disarm song option <disarm_song_options>`
+7. :ref:`Arming with DroneCAN ArmingStatus <arm_with_armingstatus>`
 
 These parameters are visible in using the DroneCAN GUI below:
 
