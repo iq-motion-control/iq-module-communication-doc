@@ -24,7 +24,6 @@ Supported IQUART Clients
         * :ref:`power_monitor`
         * :ref:`temperature_monitor_microcontroller`
         * :ref:`hobby_input`
-        * :ref:`temperature_estimator`
         * :ref:`coil_temperature_estimator`
         * :ref:`power_safety`
         * :ref:`arming_handler`
@@ -61,7 +60,6 @@ Supported IQUART Clients
         * :ref:`anticogging`
         * :ref:`temperature_monitor_microcontroller`
         * :ref:`hobby_input`
-        * :ref:`temperature_estimator`
         * :ref:`servo_input_parser_ref`
         * :ref:`coil_temperature_estimator`
         * :ref:`power_safety`

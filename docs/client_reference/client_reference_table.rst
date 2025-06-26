@@ -93,12 +93,6 @@ Type ID 76 | Hobby Input
 =================================================
 .. include:: ../clients/hobby_input.rst
 
-.. _temperature_estimator:
-
-Type ID 77 | Temperature Estimator
-=================================================
-.. include:: ../clients/temperature_estimator.rst
-
 .. _servo_input_parser_ref:
 
 Type ID 78 | Servo Input Parser
