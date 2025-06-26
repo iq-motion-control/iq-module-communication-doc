@@ -52,7 +52,7 @@ Mapping Throttle Control Values to Applied Spin Throttle
 -----------------------------------------------------------
 Before continuing, please familiarize yourself with the basics of your module's Modes, Maximums, and Direction found :ref:`here <throttle_mode_maximums_directions>`. 
 
-Throttle control values are subject to the same behaviors governing both Hobby and general IQUART throttle inputs. In fact, throttle control values are processed by the same 
+Throttle control values are subject to the same behaviors governing both timer based and general IQUART throttle inputs. In fact, throttle control values are processed by the same 
 pipeline as the :ref:`IQUART raw value <throttle_iquart_ref>`.
 
 In order to calculate the raw value that your module will apply, simply divide the received throttle control value by 65535. That value is then mapped to applied throttle based on your modes and directions.

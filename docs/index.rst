@@ -55,13 +55,14 @@
    communication_protocols/iquart_protocol
    communication_protocols/dronecan_protocol
    communication_protocols/canopen_protocol
-   communication_protocols/hobby_protocol
+   communication_protocols/timer_based_protocol
 
 .. toctree::
    :hidden:
    :caption: Tutorials
 
    tutorials/pwm_control_flight_controller
+   tutorials/spin_with_pwm_generator
    tutorials/hobby_calibration
    tutorials/dronecan_flight_controller
    tutorials/ifci_px4_flight_controller
