@@ -561,7 +561,7 @@ Linux
 
 
     #include "generic_interface.hpp"
-    #include "temperature_estimator_client.hpp"
+    #include "coil_temperature_estimator_client.hpp"
 
     #include "libserial/SerialPort.h"
     #include "libserial/SerialStream.h"
