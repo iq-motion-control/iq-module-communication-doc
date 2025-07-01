@@ -128,6 +128,8 @@ After 5 seconds, the module should now have a constant, 3V, drive voltage. The p
 
 .. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
 
+.. _vtt_custom_plotting:
+
 ==============================
 Customizing Plotted Metrics
 ==============================
