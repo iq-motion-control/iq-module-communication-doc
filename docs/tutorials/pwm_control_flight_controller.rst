@@ -263,9 +263,6 @@ screen should appear. This tutorial was tested with the "X" quadcopter frame, un
 
     Mission Planner Frame Type Selection
 
-.. note:: 
-    The following sections will explain how to set up :ref:`PWM Parameters <setting_pwm_parameters>` and :ref:`DSHOT Parameters <setting_dshot_parameters>`. Please navigate to the appropriate section for your flight controller if you are looking for additional information.
-
 .. _setting_pwm_parameters:
 
 Setting ArduCopter PWM Parameters
@@ -484,7 +481,7 @@ configured to disarm on throttle commands between 0 and 2%, and to arm between 2
 modules use a range of 1000us to 2000us for PWM throttle parsing, we can easily map our percentages to the correct Disarmed, Minimum, and Maximum values. When disarmed, we want the flight 
 controller to output a command that will disarm the module. So, we will set our Disarmed value to 1000us as it represents a 0% throttle. Now, we want to ensure the module arms when 
 the flight controller does, so we'll adjust our minimum flight controller output to fall inside of our :ref:`arming region <arming_throttle_regions>`. To ensure we fall inside of the 
-arming region, we will configure the flight controller to output a 0.5% throttle once armed. 0.5% of our 1000us range is 5, so we'll set our Minimum to 1005us. The maximum is 
+arming region, we will configure the flight controller to output a 2.5% throttle once armed. 2.5% of our 1000us range is 25, so we'll set our Minimum to 1025us. The maximum is 
 defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 
 .. warning::
@@ -495,7 +492,6 @@ defined by the longest pulse Vertiq modules accept as PWM throttles, 2000us.
 
 In the module configuration completed so far in this tutorial, there is no configured :ref:`disarming region <disarm_on_throttle>`. So, we will set our Disarmed output to 1000us and our 
 Minimum output to 1005us. Note that our Disarmed output should always be lower than the Minimum output. The Maximum value can remain 2000us.
-**It is highly recommended to enable the Disarm On Throttle parameter through Control Center and configure your disarming region for safety purposes.**
 
 Once you have fully configured the output channel, you will see sliders appear under Actuator Testing. Please note that if your module is powered on and connected to the MAIN 1 output when it is enabled, 
 you will hear the module play its :ref:`two tone arming song <arming_song>` as PX4 begins transmitting Disarmed throttle commands (1000us) immediately on channel activation. By default, Vertiq modules 
