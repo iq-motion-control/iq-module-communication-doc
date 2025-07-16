@@ -57,7 +57,21 @@ Frequently Asked Questions
 #. Can the modules stow at multiple angles?
     * Currently, there is no support for storing multiple stow angles. Your module can only save one stow angle with reference to the zero angle. To learn more about stowing, please refer to our :ref:`Stow Position <manual_stow_position>` documentation.
 
+#. What can I do to avoid FOD (foreign object debris) entering my module?
+    * The best methods for avoiding FOD are to avoid placing the module near small, ferrous materials. These materials are able to get between the module's stator teeth and rotor magnets.
 
+#. **What should I do if my module has FOD (foreign object debris) inside?**
+
+    There are multiple methods for removing FOD from your Vertiq module. Some possible methods are described below:
+
+    .. warning::
+        Please remove all propellers from any module you plan on spinning. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
+
+    * Without a propeller attached, spin your module forward and backwards at a high speed to attempt dislodging the FOD.
+    * Use a PTFE film in the module's airgap in order to remove the FOD. Your module's airgap should be 0.20mm, so ensure that your film is thin enough to enter the airgap.
+    * Use compressed air directed at the module's rotor magnets and stator teeth in order to dislodge any FOD.
+
+    When the FOD has been fully removed, you will no longer hear an audible indication (grind, click, etc.) that it is still present.
 
 .. _upf-23-12_frequently_asked_questions:
 

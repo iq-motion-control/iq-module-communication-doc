@@ -134,6 +134,12 @@ Before attempting to communicate with the flight controller, make sure that the 
 flight controller and all of the motors into one bus. There should also be a 120 ohm termination resistor between CANH and CANL on the bus. Refer to 
 your module's family page for pinout information.
 
+.. warning:: 
+        **To ensure the safe and reliable operation of this product, all electrical connections must be properly strain-relieved during aircraft assembly. Failure to do so may result in wire fatigue, breakage, or intermittent electrical contact, which can lead to system malfunction or in-flight failure.**
+          * **Strain Relief Required**: All wire harnesses connected to the motor, ESC, or any other component must be secured using appropriate strain relief methods to prevent mechanical stress on solder joints, connectors, and wire insulation.
+          * **Bend Radius Consideration**: When routing wires, maintain a minimum bend radius appropriate for the wire gauge and insulation type to avoid excessive stress and long-term degradation.
+          * **Dynamic Loading**: Consider vibration, movement, and thermal cycling in your design to ensure wires are not allowed to flex or tug under operational conditions.
+
 DroneCAN Integration with a PX4 Flight Controller
 ======================================================
 
@@ -204,7 +210,7 @@ Assign ESC Functions in Actuators Tab
 .. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to set
     the functions of the actuator outputs. 
 
-After rebooting the flight contorller, QGroundControl's Actuators tab should present UAVCAN as an option.
+After rebooting the flight controller, QGroundControl's Actuators tab should present UAVCAN as an option.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_actuators_tab.png
     :align: center
@@ -477,8 +483,8 @@ of the help for the actuator_test command, as well as this example command::
 
 Virtual Joysticks
 ---------------------
-For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html>`_ in PX4 can be used to control connected 
-modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html#enable-the-thumbsticks>`_ 
+For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html>`_ in QGroundControl can be used to control connected 
+modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html#enable-the-thumbsticks>`_ 
 as detailed in the PX4 documentation, and ensure that all Vertiq modules are powered on and connected to the CAN bus.
 
 Return to the home screen of PX4. If the flight controller is fully setup, it should say “Ready To Fly.” Lower the virtual throttle joystick to the bottom, click on where it 

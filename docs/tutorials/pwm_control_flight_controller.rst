@@ -54,6 +54,12 @@ pin. This is the PWM/DSHOT input for all Vertiq modules. In general, connection 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/connect_with_module.png
     :align: center
 
+.. warning:: 
+        **To ensure the safe and reliable operation of this product, all electrical connections must be properly strain-relieved during aircraft assembly. Failure to do so may result in wire fatigue, breakage, or intermittent electrical contact, which can lead to system malfunction or in-flight failure.**
+          * **Strain Relief Required**: All wire harnesses connected to the motor, ESC, or any other component must be secured using appropriate strain relief methods to prevent mechanical stress on solder joints, connectors, and wire insulation.
+          * **Bend Radius Consideration**: When routing wires, maintain a minimum bend radius appropriate for the wire gauge and insulation type to avoid excessive stress and long-term degradation.
+          * **Dynamic Loading**: Consider vibration, movement, and thermal cycling in your design to ensure wires are not allowed to flex or tug under operational conditions.
+
 Firmware and Software Versions
 ==============================
 
@@ -262,6 +268,7 @@ Ardupilot and Mission Planner Configuration and Testing
 .. note::
     If you are using PX4 firmware, please follow the :ref:`PX4 and QGroundControl Configuration and Testing <PX4_and_QGroundControl_Configuration>` tutorial.
 
+Please review the `ArduPilot First Time Setup <https://ardupilot.org/copter/docs/initial-setup.html>`_ guide if this is your first time setting up ArduPilot with your flight controller.
 This tutorial was tested using Mission Planner 1.3.80 and ArduCopter v4.5.5, as shown in the figure below. These instructions assume you are starting from the default ArduPilot parameters, and cover how to test that the
 flight controller and module can communicate with no additional flight controller peripherals. See the `Hardware Setup`_ section for more details on the hardware and connections.
 
@@ -286,6 +293,8 @@ screen should appear. This tutorial was tested with the "X" quadcopter frame, un
     :align: center
 
     Mission Planner Frame Type Selection
+
+.. _setting_pwm_parameters:
 
 Setting ArduCopter PWM Parameters
 *********************************
@@ -318,6 +327,7 @@ Reboot your flight controller to make sure the new parameters take effect. The i
 
     Important ArduCopter Standard PWM Parameters in Mission Planner
 
+.. _setting_dshot_parameters:
 
 Setting ArduCopter DSHOT Parameters
 ***********************************
@@ -477,6 +487,10 @@ For simplicity, this tutorial uses a Generic x Quadcopter, as shown in the figur
     :align: center
 
     QGroundControl Airframe Setup
+
+.. note:: 
+  Make sure that the :ref:`module directions <throttle_direction>` are correctly set for your airframe. In QGroundControl, a blue motor represents counter clockwise.
+  For example, if you are using the Generic Quadcopter, your front right and back left modules should generally be configured to 2D counter-clockwise, and your front left and back right should be 2D clockwise.
 
 Setting PX4 PWM Parameters
 **************************
