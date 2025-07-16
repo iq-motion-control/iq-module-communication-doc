@@ -59,6 +59,12 @@ More information about your module's electrical characteristics and connections 
 .. note::
         It is highly recommended for your and your module's safety that you shroud all connections with the supplied heat shrink.
 
+.. warning:: 
+        **To ensure the safe and reliable operation of this product, all electrical connections must be properly strain-relieved during aircraft assembly. Failure to do so may result in wire fatigue, breakage, or intermittent electrical contact, which can lead to system malfunction or in-flight failure.**
+          * **Strain Relief Required**: All wire harnesses connected to the motor, ESC, or any other component must be secured using appropriate strain relief methods to prevent mechanical stress on solder joints, connectors, and wire insulation.
+          * **Bend Radius Consideration**: When routing wires, maintain a minimum bend radius appropriate for the wire gauge and insulation type to avoid excessive stress and long-term degradation.
+          * **Dynamic Loading**: Consider vibration, movement, and thermal cycling in your design to ensure wires are not allowed to flex or tug under operational conditions.
+
 .. figure:: ../_static/module_pictures/23xx/23xx_final_with_heatshrink.png
     :width: 400
     :alt: Final 23-XX Connections with Heatshrink

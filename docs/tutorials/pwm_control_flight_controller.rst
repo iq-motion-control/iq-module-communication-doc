@@ -54,6 +54,12 @@ pin. This is the PWM/DSHOT input for all Vertiq modules. In general, connection 
 .. image:: ../_static/tutorial_images/pwm_flight_controller/connect_with_module.png
     :align: center
 
+.. warning:: 
+        **To ensure the safe and reliable operation of this product, all electrical connections must be properly strain-relieved during aircraft assembly. Failure to do so may result in wire fatigue, breakage, or intermittent electrical contact, which can lead to system malfunction or in-flight failure.**
+          * **Strain Relief Required**: All wire harnesses connected to the motor, ESC, or any other component must be secured using appropriate strain relief methods to prevent mechanical stress on solder joints, connectors, and wire insulation.
+          * **Bend Radius Consideration**: When routing wires, maintain a minimum bend radius appropriate for the wire gauge and insulation type to avoid excessive stress and long-term degradation.
+          * **Dynamic Loading**: Consider vibration, movement, and thermal cycling in your design to ensure wires are not allowed to flex or tug under operational conditions.
+
 Firmware and Software Versions
 ==============================
 
