@@ -1,0 +1,7 @@
+Command Frequency (Hz),Utilization of 1s @ 125Kbit (%),Utilization of 1s @ 250Kbit (%),Utilization of 1s @ 500Kbit (%),Utilization of 1s @ 1Mbit (%)
+1,0.2,0.1,0.05,0.025
+10,2,1,0.5,0.25
+50,10,5,2.5,1.25
+100,20,10,5,2.5
+300,60,30,15,7.5
+600,120,60,30,15
