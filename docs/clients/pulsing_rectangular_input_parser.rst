@@ -117,3 +117,6 @@ Type ID 89 | Pulsing Rectangular Input Parser
         +--------+-----------------------+----------------+-----------+----------------------+--------------------------------------------------------------------------------------------+
         | 1      | pulsing_scaling_limit | get, set, save | float     | :math:`V`            | This sets the max pulsing limit (voltage or velocity) when in Scaling Limit Mode.          |
         +--------+-----------------------+----------------+-----------+----------------------+--------------------------------------------------------------------------------------------+
+
+.. note:: 
+    When using velocity based pulsing firmware, ``pulsing_scaling_mode`` is set to ``Scaling Limit Mode`` by default, and cannot be changed.
