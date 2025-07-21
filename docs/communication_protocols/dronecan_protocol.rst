@@ -809,7 +809,7 @@ The following is performed on ArduCopter version v4.5.7
 6. Now, if you reboot your module, and check the DroneCAN configuration window again, you'll find that ArduPilot allocates the same ID again
 
 *************************************
-Calculating DroneCAN Utilization
+Calculating DroneCAN Bus Utilization
 *************************************
 
 Background
@@ -836,7 +836,7 @@ or
 
 With no data (and thus no tail byte), this is 67 bits and 134us, and with a full 7 bytes of data (plus tail byte), this is 131 bits or 256us.
 
-You can read more about the DroneCAN transport layer in the `DroneCAN spec <https://dronecan.github.io/Specification/4.1_CAN_bus_transport_layer/>`_.
+You can read more about the DroneCAN transport layer in the `DroneCAN specification <https://dronecan.github.io/Specification/4.1_CAN_bus_transport_layer/>`_.
 
 We can now easily apply this information to different types of DroneCAN messages. Shown here are the impacts of sending DroneCAN telemetry and RawCommands.
 
@@ -859,11 +859,11 @@ An example of a Vertiq module transmitting telemetry as viewed through the Drone
 
 In total, Vertiq module's DroneCAN telemetry requires:
 
-131 bits StatusExtended + 353 bits EscStatus = 484 bits.
+*131 bits StatusExtended + 353 bits EscStatus = 484 bits*
 
 So, we can find our utilization by:
 
-484 bit/telem * 1/500Kbps = 968us to transmit telemetry at 500kbit **per motor**. Assuming our time period of 1s, we find:
+*484 bit/telem * 1/500Kbps = 968us* to transmit telemetry at 500kbit **per module**. Assuming our time period of 1s, we find:
 
 .. csv-table:: DroneCAN Telemetry Bus Utilization
 	:file: ../_static/comms_protocols_pictures/dronecan/telem_breakdown.csv
@@ -871,7 +871,7 @@ So, we can find our utilization by:
 
 In general, the percentage of total bus utilization over one second for telemetry only can be best estimated by:
 
-Utilization (%) = (484 bit/telemetry) * (Transmission Frequency (Hz)) * 1/Bitrate * (Number of Motors) * 100%
+*Utilization (%) = (484 bit/telemetry) * (Transmission Frequency (Hz)) * 1/Bitrate * (Number of Module) * 100%*
 
 .. _raw_cmd_utilization:
 
@@ -895,22 +895,22 @@ The result is a 131 bit frame. The utilization of a one second period is summari
 
 When using 4 or fewer ESC commands, we require only one frame to send all commands, and the utilization can be calculated by:
 
-RawCommand Utilization (%) = (131 bit/command - ((4 - Number of Commands) * 8)) * (Command Frequency (Hz)) * 1/Bitrate * 100%
+*RawCommand Utilization (%) = (131 bit/command - ((4 - Number of Commands) * 8)) * (Command Frequency (Hz)) * 1/Bitrate * 100%*
 
 Once you extend beyond one frame, however, the calculation changes as the first frame of a multi-frame transfer requires a 2 byte CRC. So, suppose you are controlling 8 
-independent motors. Each individual command requires 14 bits, or 1.75 bytes. To transmit 8, we'll require 14 bytes. With the 2 byte CRC, we need to send a total of 16 data 
+independent modules. Each individual command requires 14 bits, or 1.75 bytes. To transmit 8, we'll require 14 bytes. With the 2 byte CRC, we need to send a total of 16 data 
 bytes (ignoring tail bytes). Now, we need to figure out how many full, 7 data byte, frames we will have in sending 16 bytes. We find this by:
 
-floor(16 bytes * (1 frame / 7 bytes)) = 2 full frames
+*floor(16 bytes * (1 frame / 7 bytes)) = 2 full frames*
 
 Then, we need to find how much data remains which we can find by taking:
 
-16 bytes - (2 full frames * 7 bytes/frame) = 2 data bytes remaining.
+*16 bytes - (2 full frames * 7 bytes/frame) = 2 data bytes remaining.*
 
 For this last frame, we need to account for the tail byte since we're not sending a full frame, so we'll have 3 total bytes of data in this final frame. Finding the total 
 number of bits is then done by:
 
-(131 bit/full frame * 2 full frame) + (67 bit/empty frame + (3 data bytes * 8 bit/byte)) = 353 bits
+*(131 bit/full frame * 2 full frame) + (67 bit/empty frame + (3 data bytes * 8 bit/byte)) = 353 bits*
 
 This example is visualized in the DroneCAN GUI Tool's bus monitor here:
 
@@ -918,7 +918,7 @@ This example is visualized in the DroneCAN GUI Tool's bus monitor here:
 
 Now, we can once again find our utilization of 1 second at 500kbit by:
 
-353 bit * 1/500Kbps * 100% = 0.071% Utilization
+*353 bit * 1/500Kbps * 100% = 0.071% Utilization*
 
 We can generalize utilization of RawCommands of more than 4 unique ESCs as the following steps:
 
@@ -964,5 +964,3 @@ After summing, we find the total utilization as:
 .. csv-table:: Quad Example Total Bus Utilization
 	:file: ../_static/comms_protocols_pictures/dronecan/quad_ex_total_utilization.csv
 	:header-rows: 1
-
-In general, our testing suggests keeping your utilization below 80% for the best possible performance.

@@ -1,4 +1,4 @@
-Transmission Frequency (Hz),Per Motor Utilization of 1s @ 125Kbit (%),Per Motor Utilization of 1s @ 250Kbit (%),Per Motor Utilization of 1s @ 500Kbit (%),Per Motor Utilization of 1s @ 1Mbit (%)
+Transmission Frequency (Hz),Per Module Utilization of 1s @ 125Kbit (%),Per Module Utilization of 1s @ 250Kbit (%),Per Module Utilization of 1s @ 500Kbit (%),Per Module Utilization of 1s @ 1Mbit (%)
 1,0.3872,0.1936,0.0968,0.0484
 10,3.872,1.936,0.968,0.484
 50,19.36,9.68,4.84,2.42
