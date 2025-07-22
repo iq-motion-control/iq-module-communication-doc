@@ -48,7 +48,7 @@ compliant RPM data.
 .. note:: If your flight controller expects to receive ERPM data from these telemetry messages, it may not interpret the RPM data sent by Vertiq modules correctly by default.
     Without changing your module's settings, additional configuration may be necessary on the flight controller to properly intepret the received RPM data as RPM and not as ERPM. For detailed information on how PX4 
     flight controllers handle ERPM to RPM conversion, as well as how to change your module's configuration, see :ref:`this section <fc_telemetry_erpm_to_rpm>` of the tutorial on integrating telemetry with flight controllers. 
-    For detailed information on how ArduCopter flight controllers handle the conversion, as well as how ot change your module's configuration, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
+    For detailed information on how ArduCopter flight controllers handle the conversion, as well as how to change your module's configuration, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
     telemetry with flight controllers. For other types of flight controllers, refer to your flight controller's documentation.
 
 The telemetry sent by Vertiq modules when using :ref:`Hobby Protocols <hobby_protocol>` is specified in the table below. The message
