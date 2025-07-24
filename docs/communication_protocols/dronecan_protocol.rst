@@ -893,9 +893,9 @@ The result is a 131 bit frame. The utilization of a one second period is summari
 	:file: ../_static/comms_protocols_pictures/dronecan/one_raw_cmd_util.csv
 	:header-rows: 1
 
-When using 4 or fewer ESC commands, we require only one frame to send all commands, and the utilization can be calculated by:
+When using 4 or fewer ESC commands, we require only one frame to send all commands, and the utilization can be best estimated by:
 
-*RawCommand Utilization (%) = (131 bit/command - ((4 - Number of Commands) * 8)) * (Command Frequency (Hz)) * 1/Bitrate * 100%*
+*RawCommand Utilization (%) = (131 bit/command - ((4 - Number of Commands) * (14 bits/command))) * (Command Frequency (Hz)) * 1/Bitrate * 100%*
 
 Once you extend beyond one frame, however, the calculation changes as the first frame of a multi-frame transfer requires a 2 byte CRC. So, suppose you are controlling 8 
 independent modules. Each individual command requires 14 bits, or 1.75 bytes. To transmit 8, we'll require 14 bytes. With the 2 byte CRC, we need to send a total of 16 data 
