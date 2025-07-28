@@ -170,6 +170,9 @@ Now that you have successfully wired your module for use, feel free to complete 
 
 Additional Mechanical/Electrical Information
 **********************************************
+
+**Number of pole pairs** - 14
+
 For more information about the Vertiq 60-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
 * `60-08 Module Page <https://www.vertiq.co/60-08-g2>`_

@@ -154,7 +154,7 @@ in the Control Center's advanced tab:
     :align: center
 
 .. note:: 
-    This parameter is only available on firmware versions 0.2.0 and up.
+    This parameter is only available on **speed firmware** versions 0.2.0 and up.
 
 Simply set this value to **eRPM/100**, and your module will automatically transmit the KISS ESC standard's form of telemetry, and your flight controller will manage it natively as it calculates RPM by:
 
@@ -166,7 +166,7 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
     ERPM to RPM Conversion
 
 Please note that you will still have to configure your flight controller to know the correct number of pole pairs present on your module. Using Mission Planner, you can set this value 
-under SERVO_BLH_POLES.
+under SERVO_BLH_POLES. You can find your module's number of pole pairs on its module family page.
 
 The second option is to convert from ERPM to RPM manually. The flight controller is expecting to receive ERPM/100, so when it receives telemetry it tries to calculate RPM using the following formula shown above. This calculation can also be
 seen in the `ArduCopter code for BLHeli telemetry parsing <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_BLHeli/AP_BLHeli.cpp#L1447>`_.
@@ -331,7 +331,7 @@ in the Control Center's advanced tab:
     :align: center
 
 .. note:: 
-    This parameter is only available on firmware versions 0.2.0 and up.
+    This parameter is only available on **speed firmware** versions 0.2.0 and up.
 
 Simply set this value to **eRPM/100**, and your module will automatically transmit the KISS ESC standard's form of telemetry, and your flight controller will manage it natively as it calculates RPM by:
 
@@ -343,7 +343,7 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
     ERPM to RPM Conversion
 
 In order for your flight controller to correctly parse the eRPM data, you must also properly configure the flight controller's expected number of pole pairs. You can configure this with 
-the MOT_POLE_COUNT parameter.
+the MOT_POLE_COUNT parameter. You can find your module's number of pole pairs on its module family page.
 
 The second option is to convert from ERPM to RPM manually. The ERPM value should be divided by the pole count of the motor divided by 2. The flight controller is expecting to receive 
 ERPM/100, so when it receives telemetry it tries to calculate RPM using the following formula shown above. This calculation can also be
