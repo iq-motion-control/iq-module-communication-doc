@@ -41,41 +41,42 @@ The structure and content of the ESC telemetry message available when using :ref
 of KISS and BLHeli ESCs <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_. 
 
 **There is one key difference between the telemetry sent by Vertiq modules and the KISS standard. The KISS standard specifies sending ERPM data in the telemetry message. ERPM data
-must be converted into RPM using the number of poles of the motor to be useful. Vertiq modules directly send RPM data, which eliminates the
-need to perform any conversion.** See the note below for details on how this conversion affects flight controller integration.
+must be converted into RPM using the number of poles of the motor to be useful. By default, Vertiq modules directly send RPM data, which eliminates the
+need to perform any conversion.** See the note below for details on how this conversion affects flight controller integration as well as how to configure your module to directly output KISS 
+compliant RPM data.
 
 .. note:: If your flight controller expects to receive ERPM data from these telemetry messages, it may not interpret the RPM data sent by Vertiq modules correctly by default.
-    Additional configuration may be necessary on the flight controller to properly intepret the received RPM data as RPM and not as ERPM. For detailed information on how PX4 
-    flight controllers handle ERPM to RPM conversion, see :ref:`this section <fc_telemetry_erpm_to_rpm>` of the tutorial on integrating telemetry with flight controllers. 
-    For detailed information on how ArduCopter flight controllers handle the conversion, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
+    Without changing your module's settings, additional configuration may be necessary on the flight controller to properly intepret the received RPM data as RPM and not as ERPM. For detailed information on how PX4 
+    flight controllers handle ERPM to RPM conversion, as well as how to change your module's configuration, see :ref:`this section <fc_telemetry_erpm_to_rpm>` of the tutorial on integrating telemetry with flight controllers. 
+    For detailed information on how ArduCopter flight controllers handle the conversion, as well as how to change your module's configuration, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
     telemetry with flight controllers. For other types of flight controllers, refer to your flight controller's documentation.
 
 The telemetry sent by Vertiq modules when using :ref:`Hobby Protocols <hobby_protocol>` is specified in the table below. The message
 consists of 10 bytes:
 
-	+----------+-------------------------+-----------------------+
-	| **Byte** | **Content**             | **Units**             |
-	+----------+-------------------------+-----------------------+
-	| 0        | Temperature             | :math:`^{\circ}C`     |
-	+----------+-------------------------+-----------------------+
-	| 1        | Voltage (High Byte)     | :math:`\text{cV}`     |
-	+----------+-------------------------+-----------------------+
-	| 2        | Voltage (Low Byte)      |                       |
-	+----------+-------------------------+-----------------------+
-	| 3        | Current (High Byte)     | :math:`\text{cA}`     |
-	+----------+-------------------------+-----------------------+
-	| 4        | Current (Low Byte)      |                       |
-	+----------+-------------------------+-----------------------+
-	| 5        | Consumption (High Byte) | :math:`\text{mAh}`    |
-	+----------+-------------------------+-----------------------+
-	| 6        | Consumption (Low Byte)  |                       |
-	+----------+-------------------------+-----------------------+
-	| 7        | RPM (High Byte)         | :math:`\text{RPM}`    |
-	+----------+-------------------------+-----------------------+
-	| 8        | RPM (Low Byte)          |                       |
-	+----------+-------------------------+-----------------------+
-	| 9        | 8-bit CRC               |                       |
-	+----------+-------------------------+-----------------------+
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| **Byte** | **Content**             | **Units**                                       | **Notes**                             |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 0        | Temperature             | :math:`^{\circ}C`                               |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 1        | Voltage (High Byte)     | :math:`\text{cV}`                               |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 2        | Voltage (Low Byte)      |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 3        | Current (High Byte)     | :math:`\text{cA}`                               |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 4        | Current (Low Byte)      |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 5        | Consumption (High Byte) | :math:`\text{mAh}`                              |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 6        | Consumption (Low Byte)  |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 7        | RPM (High Byte)         | :math:`\text{RPM}` or :math:`\text{ERPM/100}`   | See :ref:`fc_telemetry_erpm_to_rpm`   |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 8        | RPM (Low Byte)          |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 9        | 8-bit CRC               |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
 
 CRC Calculation
 ----------------
