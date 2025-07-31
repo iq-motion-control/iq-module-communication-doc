@@ -167,6 +167,7 @@ either ``Hobby Disabled`` or your specific throttle protocol (DSHOT, OneShot, et
 
   .. image:: ../_static/control_center_pics/servo_getting_started/servo_comms_param.png
 
+.. _dshot_dronecan_arming:
 
 DroneCAN and DSHOT Arming interaction
 #######################################
