@@ -668,10 +668,10 @@ Arm with ArmingStatus
 	+-----------------------+------------+
 	| **Name**              | **Type**   |
 	+-----------------------+------------+
-	| arm_with_armingstatus | integer    |
+	| arm_with_arming_status | Integer   |
 	+-----------------------+------------+
 
-Determines whether the module will arm and disarm based on the :ref:`DroneCAN Arming Status message <arming_status>`. A value of 0 disables arming with the ArmingStatus, and a value of 1 enables it.
+Determines whether the module will arm and disarm based on the :ref:`DroneCAN Arming Status message <arming_status>`. A value of 0 disables arming with the ArmingStatus message, and a value of 1 enables it.
 More information can be found at :ref:`arm_with_armingstatus`
 
 Communication Timeout
@@ -681,7 +681,7 @@ Communication Timeout
 	+-----------------------+------------+
 	| **Name**              | **Type**   |
 	+-----------------------+------------+
-	| communication_timeout | float      |
+	| communication_timeout | Float      |
 	+-----------------------+------------+
 
 Sets the :ref:`communication timeout period <timeout_period>` of the module. See :ref:`manual_timeout` for more information.
@@ -693,7 +693,7 @@ Arm on Throttle
 	+-----------------------+------------+
 	| **Name**              | **Type**   |
 	+-----------------------+------------+
-	| arm_on_throttle       | integer    |
+	| arm_on_throttle       | Integer    |
 	+-----------------------+------------+
 
 Determines whether the module will arm based on incoming throttles. A value of 0 disables arming on throttles, and a value of 1 enables arming on throttles.
@@ -706,10 +706,10 @@ Arming Throttle Upper Limit
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| arming_throttle_upper_limit       | float      |
+	| arming_throttle_upper_limit       | Float      |
 	+-----------------------------------+------------+
 
-Determines the upper limit of the :ref:`arming throttle region <arming_throttle_regions>`. 
+Determines the upper limit of the :ref:`arming throttle region <arming_throttle_regions>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
 
 Arming Throttle Lower Limit
@@ -719,10 +719,10 @@ Arming Throttle Lower Limit
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| arming_throttle_lower_limit       | float      |
+	| arming_throttle_lower_limit       | Float      |
 	+-----------------------------------+------------+
 
-Determines the lower limit of the :ref:`arming throttle region <arming_throttle_regions>`. 
+Determines the lower limit of the :ref:`arming throttle region <arming_throttle_regions>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
 
 Disarm on Throttle
@@ -732,10 +732,10 @@ Disarm on Throttle
 	+--------------------------+------------+
 	| **Name**                 | **Type**   |
 	+--------------------------+------------+
-	| disarm_on_throttle       | integer    |
+	| disarm_on_throttle       | Integer    |
 	+--------------------------+------------+
 
-Determines whether the module will disarm based on incoming throttles. A value of 0 disables disarming on throttles, and a value of 1 enables disarming on throttles.
+Determines whether the module will disarm based on incoming throttles. A value of 0 disables disarming on throttles, and a value of 1 enables disarming on throttles. 
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
 
 Disarming Throttle Upper Limit
@@ -745,10 +745,10 @@ Disarming Throttle Upper Limit
 	+--------------------------------------+------------+
 	| **Name**                             | **Type**   |
 	+--------------------------------------+------------+
-	| disarming_throttle_upper_limit       | float      |
+	| disarming_throttle_upper_limit       | Float      |
 	+--------------------------------------+------------+
 
-Determines the upper limit of the :ref:`disarming throttle region <disarm_on_throttle>`. 
+Determines the upper limit of the :ref:`disarming throttle region <disarm_on_throttle>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
 
 Disarming Throttle Lower Limit
@@ -758,10 +758,10 @@ Disarming Throttle Lower Limit
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| arming_throttle_lower_limit       | float      |
+	| arming_throttle_lower_limit       | Float      |
 	+-----------------------------------+------------+
 
-Determines the lower limit of the :ref:`disarming throttle region <disarm_on_throttle>`. 
+Determines the lower limit of the :ref:`disarming throttle region <disarm_on_throttle>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
 
 Disarm Behavior
@@ -771,17 +771,17 @@ Disarm Behavior
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| disarm_behavior                   | integer    |
+	| disarm_behavior                   | Integer    |
 	+-----------------------------------+------------+
 
 Determines how the module will stop when it disarms. For more information on this parameter and descriptions of how each behavior works, see :ref:`advanced_disarming_behavior`.
 
 To determine the disarm behavior, set this parameter to the proper integer for the desired behavior. Disarm behavior is enumerated as:
 
-1. Coast
-2. 0V to Coast
-3. 0V to Brake
-4. Stow
+0. Coast
+1. 0V to Coast
+2. 0V to Brake
+3. Stow
 
 Disarm Song Option
 --------------------
@@ -790,7 +790,7 @@ Disarm Song Option
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| disarm_song_option                | integer    |
+	| disarm_song_option                | Integer    |
 	+-----------------------------------+------------+
 
 Determines if and how many times the module will play its disarm song after coming to a stop. For more information on this parameter and its options, see :ref:`disarm_song_options`.
@@ -809,7 +809,7 @@ Hold Stow
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| hold_stow                         | integer    |
+	| hold_stow                         | Integer    |
 	+-----------------------------------+------------+
 
 Determines if and how the module will attempt to :ref:`hold its position <stow_holding_position>` after :ref:`stowing <manual_stow_position>`. For more information on this parameter and its options,
@@ -817,10 +817,10 @@ see :ref:`hold_stow_parameter`.
 
 To determine the hold stow behavior, set this parameter to the proper integer for the desired behavior. Hold stow behavior is enumerated as:
 
-1. Coast
-2. Hold Stow
-3. Brake
-4. Low Power Hold Stow
+0. Coast
+1. Hold Stow
+2. Brake
+3. Low Power Hold Stow
 
 Stow Target Angle
 --------------------
@@ -829,7 +829,7 @@ Stow Target Angle
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| stow_target_angle                 | float      |
+	| stow_target_angle                 | Float      |
 	+-----------------------------------+------------+
 
 Determines the stow target angle, as described in :ref:`stow_angle_parameters`. For more information on stowing and the effect of this parameter on the angle, see :ref:`manual_stow_position` and :ref:`stow_position_calculation`.
@@ -841,7 +841,7 @@ Sample Stow Zero Angle
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| sample_stow_zero_angle            | integer    |
+	| sample_stow_zero_angle            | Integer    |
 	+-----------------------------------+------------+
 
 Allows users to sample and save the stow zero angle. For more information on the stow zero angle and what it means to sample it, see :ref:`stow_angle_parameters` and :ref:`stow_position_calculation`.
@@ -856,10 +856,10 @@ Stow Target Acceleration
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
 	+-----------------------------------+------------+
-	| stow_target_acceleration          | float      |
+	| stow_target_acceleration          | Float      |
 	+-----------------------------------+------------+
 
-Determines the stow target acceleration of the module when stowing. For more information on the stow target acceleration, see :ref:`stow_movement_parameters`.
+Determines the stow target acceleration of the module when stowing. For more information on the stow target acceleration, see :ref:`stow_movement_parameters` .
 
 *********************************
 Flight Controller Integration
@@ -893,7 +893,7 @@ the Control Center's Advanced tab as ``Arming By DroneCAN ArmingStatus``.
 .. image:: ../_static/manual_images/dronecan/control_center_armingstatus.png
 	:align: center
 
-This parameter can also be configured over DroneCAN using the ``arm_with_arming_status`` DroneCAN configuration parameter, see the :ref:`configuration parameter support section for more information <dronecan_parameter_arming_status>`.
+This parameter can also be configured over DroneCAN using the ``arm_with_arming_status`` DroneCAN configuration parameter. See the :ref:`configuration parameter support section for more information <dronecan_parameter_arming_status>`.
 
 Further, if you are using the ArmingStatus to arm, we highly recommend disabling your module's ability to :ref:`arm on throttle <arming_throttle_regions>`. Suppose your module is configured to arm on throttle as well as arm on 
 ArmingStatus. Your flight controller may transmit throttle commands of 0% on boot-up while its ArmingState states disarmed. Then, your module's arming handler may attempt to arm on throttle, 

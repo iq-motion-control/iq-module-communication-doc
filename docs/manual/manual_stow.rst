@@ -80,9 +80,9 @@ This parameter can be configured under the General tab of the IQ Control Center,
 
     Hold Stow Parameter in IQ Control Center
 
-.. _stow_movement_parameters:
-
 *Hold Stow* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
+
+.. _stow_movement_parameters:
 
 Stow Movement Parameters
 **************************
