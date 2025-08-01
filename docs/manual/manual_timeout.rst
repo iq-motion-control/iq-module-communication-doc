@@ -48,6 +48,8 @@ a timeout will trigger. See the :ref:`triggering_timeout` section for more infor
 
     Timeout Parameter in IQ Control Center
 
+*Timeout* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
+
 .. _timeout_behavior:
 
 Timeout Behavior
