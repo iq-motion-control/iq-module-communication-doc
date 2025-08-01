@@ -330,8 +330,12 @@ on the current armed state or manually transition the state as needed.
 
 DSHOT Disarm
 ##############
-The :ref:`DSHOT <hobby_dshot>` hobby protocol reserves one of its special values for commanding a disarm. Vertiq modules support this command, and will disarm if a DSHOT disarm 
-command is received.
+The :ref:`DSHOT <hobby_dshot>` hobby protocol reserves one of its special values for commanding a disarm. Vertiq modules support this command. Whether or not the module will disarm on 
+reception of this message is determined by the value of the :ref:`allow_dshot_disarming_message <hobby_input>` parameter. If it is true, the module will perform a disarming transition on 
+reception. If it is false, the disarming command is ignored. **By default, this parameter is true.**
+
+Disabling the DSHOT disarming command can be especially useful when :ref:`leveraging redundant throttle inputs <dshot_dronecan_arming>` as it can help avoid arming loops while 
+disarming/arming on throttle.
 
 .. _manual_arming_throttle_source:
 
