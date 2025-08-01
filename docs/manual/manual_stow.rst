@@ -62,6 +62,10 @@ These parameters can be configured under the General tab in the IQ Control Cente
 
     Stow Angle Parameters in IQ Control Center
 
+The *Stow Zero Angle* can be sampled and the *Stow Target Angle* configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
+
+.. _hold_stow_parameter:
+
 Hold Stow
 ***********
 The *Hold Stow* parameter determines if the module will continue trying to actively hold its stow position or coast when it reaches the stow position. 
@@ -77,6 +81,8 @@ This parameter can be configured under the General tab of the IQ Control Center,
     Hold Stow Parameter in IQ Control Center
 
 .. _stow_movement_parameters:
+
+*Hold Stow* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
 
 Stow Movement Parameters
 **************************
@@ -95,6 +101,8 @@ The following parameters pertain to how the module will move as it transitions t
     :alt: Stow Target Acceleration Parameter
 
     Stow Target Acceleration Parameter in the IQ Control Center
+
+*Stow Target Acceleration* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
 
 *Stow Kp*, *Stow Ki*, and *Stow Kd* can all be found under the Tuning tab of the IQ Control Center, as shown below.
 
