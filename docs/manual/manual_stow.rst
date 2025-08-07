@@ -219,13 +219,15 @@ Refer to the :ref:`timeout_behavior` section for more information on how to conf
 
 Holding Position
 ==================
-Once the module reaches the stow position, it can transition to one of several different behaviors. Which behavior is controlled by the *Hold Stow* parameter, as mentioned in the :ref:`stow_parameter_summary` section above.
+Once the module reaches the stow position, it can transition to one of several different behaviors as defined by the *Hold Stow* parameter. You can read more about this :ref:`above <stow_parameter_summary>`.
 The possible behaviors are:
 
 * **Coast When Stowed**: The module will release the stow and coast, allowing itself to spin freely. It will not attempt to hold its stow position.
 * **Hold Stow Angle**: The module will attempt to actively hold its stow position using the position controller. This can be useful if you need the module to maintain its stowed position when external forces are acting on it, such as the wind. 
 * **Brake When Stowed**: The module will release the stow and brake. The module is not actively attempting to hold its stow position, but brake mode does provide more resistance to moving than coast.
 * **Low Power Hold**: The module will attempt to hold its stow target position, but it will swap between brake mode and actively using the position controller to try and move to the stow position depending on how far it is from the stow position. This is described in more detail below.
+
+.. _low_power_hold:
 
 Low Power Hold
 ****************
