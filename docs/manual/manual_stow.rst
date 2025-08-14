@@ -22,7 +22,8 @@ Stow Process Overview
 ======================
 When a module moves to its stow position, regardles of the reason for the stow, it follows a series of steps to stow properly. First, it begins either accelerating or decelerating
 in order to reach its stow position with its user-configured :ref:`stow acceleration <stow_movement_parameters>`. So if the module was still before, it will begin moving, but if it was 
-spinning rapdily, it will keep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then perform its :ref:`ending hold behavior <stow_holding_position>`, which has multiple options.
+spinning rapdily, it will keep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then perform its ending hold behavior, 
+which has multiple options :ref:`discussed below <stow_holding_position>`.
 
 The diagram below summarizes the stow position feature's state transitions. Note that the stow process may be interrupted at any time, and that certain state transitions are 
 configuration dependent.
@@ -223,9 +224,9 @@ Once the module reaches the stow position, it can transition to one of several d
 The possible behaviors are:
 
 * **Coast When Stowed**: The module will release the stow and coast, allowing itself to spin freely. It will not attempt to hold its stow position.
-* **Hold Stow Angle**: The module will attempt to actively hold its stow position using the position controller. This can be useful if you need the module to maintain its stowed position when external forces are acting on it, such as the wind. 
+* **Hold Stow Angle**: The module will attempt to actively hold its stow position using the position controller. This can be useful if you need the module to maintain its stowed position when external forces, such as the wind, are acting on it. 
 * **Brake When Stowed**: The module will release the stow and brake. The module is not actively attempting to hold its stow position, but brake mode does provide more resistance to moving than coast.
-* **Low Power Hold**: The module will attempt to hold its stow target position, but it will swap between brake mode and actively using the position controller to try and move to the stow position depending on how far it is from the stow position. This is described in more detail below.
+* **Low Power Hold**: The module will attempt to hold its stow target position, but it will swap between brake mode and actively using the position controller to try and move to the stow position depending on how far it is from the stow position. This is described in more detail :ref:`below <low_power_hold>`.
 
 .. _low_power_hold:
 
@@ -235,8 +236,9 @@ The Low Power Hold behavior is more complex than the other stow ending behaviors
 
 Low Power Hold reduces power consumption by switching between brake mode and actively attempting to hold the target position with the position controller depending on how far the module is from the target position.
 Brake mode consumes relatively little power, but only provides marginal resistance to moving out of position. Actively holding the position with the position controller forces the module back to its target position, but it consumes
-significantly more power in doing so. So, in Low Power Hold, the module goes into brake mode when it is close to its target position, and switches back to actively holding the target position when it is too far away from the target.
-Once the module is again close enough to its target, the module transitions back into brake mode. This trades off precisely maintaining the target position at all times for reduced power consumption.
+significantly more power in doing so. So, in Low Power Hold, the module goes into brake mode when it is close to its target position, and switches back to actively moving to the target position when it is too far away from the target.
+Once the module is again close enough to its target, the module transitions back into brake mode. This reduces overall power consumption by allowing the module to spend more time in brake mode, with its relatively low power consumption, 
+at the cost of allowing more possible error in the position at any given moment.
 
 This transitioning between braking and holding is defined by two configurable parameters: the *Low Power Hold Allowed Target Error* and the *Low Power Hold Max Brake Error*. 
 
@@ -247,6 +249,10 @@ mode when it is within 0.025 radians of the target. If this is too small, it can
 The *Low Power Hold Max Brake Error* defines how far away from the target position the module can be before transitioning from braking to actively holding the position. For example,
 if the *Low Power Hold Max Brake Error* is set to 0.2 radians, then if the module is braking, it will switch to actively holding its position once the error from the target is greater than or equal to 0.2 radians.
 The module will then actively move back towards its target position until it is within the *Low Power Hold Allowed Target Error*, at which point it will switch back to braking.
+
+It is important to consider the tradeoff between reduced power consumption and acceptable position error when using this feature. Swapping into brake mode reduces power consumption, but it allows the module to move more easily
+out of the stow target position, and the *Low Power Hold Max Brake Error* explicitly defines an acceptable amount of error from the target stow position. Therefore it is important to consider what level of position error
+is acceptable for any given application, and if no error is acceptable it may be better to use Hold Stow Angle as the stow ending behavior instead.
 
 This process of transitioning back and forth between actively holding the position and braking depending on the module's error from the target and its current state is summarized in the diagram below.
 
