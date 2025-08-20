@@ -295,7 +295,7 @@ The closed loop supply current limiter is a feature that can be used to limit th
 its drive voltage to an acceptable range at any instant based on the configured supply current limit using a combination of a feed-forward model and adjustments from a closed-loop controller
 based on the measured supply current. This aims to prevent the current drawn by or regenerated from the module exceeding the configured limits. 
 The current limit and controller gains can be configured separately for motoring (when the motor is sourcing current from the supply) and 
-regenerating (when the motor is sinking current into the supply). This is an advanced feature and it can result in reductions of the step response of the motor, so it should be used with care.
+regenerating (when the motor is sinking current into the supply). This is an advanced feature, and it can result in reductions of the step response of the motor, so it should be used with care.
 
 The entries for configuring the supply current limiter can be found in the :ref:`Brushless Drive client table <brushless_drive>`. To enable the supply current limiter,
 use the ``supply_current_limit_enable`` entry. By default, the limiter is disabled. 
@@ -308,10 +308,11 @@ always negative. Therefore, the ``motoring_supply_current_limit`` should always 
     Setting the supply current limit for either motoring or regenerating too low can cause the acceptable voltage window to meet that current limit to be extremely small, and can cause
     stability issues with the limiter. For this reason, the minimum current limit setting allowed is 1A for the ``motoring_supply_current_limit`` and -1A for the ``regen_supply_current_limit``.
 
-The supply current limiter attempts to use a feed-forward model to limit the supply current, but this model on its own cannot always achieve the desired accuracy. To help achieve greater
-supply current limiting accuracy when needed, the gains for closed loop controllers on the supply current limiting are also exposed. These adjust the otuput of the feed-forward model to help
+The supply current limiter uses a feed-forward model to attempt to limit the supply current, but this model on its own cannot always achieve the desired accuracy. To help achieve greater
+supply current limiting accuracy when needed, the gains for closed loop controllers on the supply current limiting are also exposed. These adjust the output of the feed-forward model to help
 it limit more accurately by measuring the supply current. Specifically, two separate `PI controllers <https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller>`_ 
-are available on the motoring and regenerating limiting, allowing the response to be tuned separately for motoring and regenerating. These can be `tuned <https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller#Loop_tuning>`_ 
-like any standard PI controller. **Generally, it is recommended to see if the desired behavior can be achieved with mostly the feed-forward supply current limiting and relativley limited usage of the closed loop controller,
-as properly tuning any closed loop controller can be involved.** The P and I gains for the motoring supply current limiter can be accessed using the ``motoring_limit_kp`` and ``motoring_limit_ki`` entries in the :ref:`Brushless Drive client table <brushless_drive>`. 
+are available on the motoring and regenerating limiting allowing the response to be tuned separately for motoring and regenerating. These can be `tuned <https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller#Loop_tuning>`_ 
+like any standard PI controller. **Generally, it is recommended to see if the desired behavior can be achieved with mostly the feed-forward supply current limiting and relatively limited usage of the closed loop controller,
+as properly tuning any closed loop controller can be involved.** Modules have a moderate P value set on their controllers by default, trying with this default P value is a good starting point. 
+The P and I gains for the motoring supply current limiter can be accessed using the ``motoring_limit_kp`` and ``motoring_limit_ki`` entries in the :ref:`Brushless Drive client table <brushless_drive>`.  
 The P and I gains for the regenerating supply current limiter can be accessed using the ``regen_limit_kp`` and ``regen_limit_ki`` entries.
