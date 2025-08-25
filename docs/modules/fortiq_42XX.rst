@@ -37,7 +37,7 @@ Supported Features
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
         * :ref:`canopen_protocol`
-        * :ref:`hobby_protocol`
+        * :ref:`timer_based_protocol`
         * :ref:`manual_timeout`
         * :ref:`manual_adc_interface`
         * :ref:`manual_high_power_pwm_`
@@ -56,7 +56,6 @@ Supported IQUART Clients
         * :ref:`anticogging`
         * :ref:`temperature_monitor_microcontroller`
         * :ref:`hobby_input`
-        * :ref:`temperature_estimator`
         * :ref:`servo_input_parser_ref`
         * :ref:`coil_temperature_estimator`
         * :ref:`power_safety`

@@ -7,7 +7,7 @@
 Advanced Arming
 ***********************************************
 Vertiq modules can support an advanced arming feature. The advanced arming feature allows users to control the module's :ref:`armed state <advanced_arming_armed_states>` either manually 
-or with throttle commands, and to configure specific behaviors to occur on armed state transitions. Modules will not react to throttle messages until they have armed, providing improved safety. 
+or with throttle commands. It also allows users to configure specific behaviors to occur on armed state transitions. Modules will not react to throttle messages until they have armed, providing improved safety. 
 The configurable behaviors on armed state transitions allow users to easily integrate advanced behaviors into their setup just by controlling the throttle messages they send, 
 simplifying flight controller integration. 
 
@@ -285,6 +285,22 @@ Throttle Region Overlap
 Depending on the module's configuration, it is possible for the arming and disarming throttle regions to overlap. In this case, the disarming 
 throttle region will take precedence, and throttles in the overlapping region will be considered as disarming throttles. 
 
+The following example illustrates this behavior. In the video, you'll see the arming and disarming throttle upper limits shown in purple and green respectively. Both lower limits are 
+set to 0. This means that between 0 and 0.05, the two regions overlap. You'll see the user start raising throttle in the bottom right hand side, and you'll see that the armed state (in white) 
+does not become armed until the throttle is above 0.05. This is where we exit the overlapping region, and arming throttles apply. Then, you'll see that the module disarms immediately when the 
+throttle input hits 0.05. This is because the disarming region will always win out over the arming region when they overlap.
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/manual_images/arming/arming_region_overlap_example.mp4" type="video/mp4"></video>
+
 User Commands
 **************
 
@@ -338,6 +354,12 @@ Disabling the DSHOT disarming command can be especially useful when :ref:`levera
 disarming/arming on throttle.
 
 .. _manual_arming_throttle_source:
+
+
+Arming with DroneCAN ArmingStatus
+***********************************
+Vertiq modules that support `DroneCAN's ArmingStatus message <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=uavcan.equipment.safety-,ArmingStatus,-Full%20name%3A>`_ can use the message to control their arming state. You can find more information about this in our :ref:`DroneCAN documentation <arm_with_armingstatus>`. 
+If you are using DroneCAN to control your module, we highly recommend using this method of controlling your module's arming state and disabling throttle based arming transitions.
 
 Timeout
 ********
@@ -476,8 +498,8 @@ These examples cover only the additional setup needed to support arming and assu
 For examples of the initial setup of a Vertiq module see the :ref:`speed_module_start_guide` tutorial and the :ref:`hobby_fc_tutorial` tutorial. 
 For information on setting up the mode and throttle configurations for a Vertiq module, see the :ref:`manual_throttle` section.
 
-Arming and Disarming with Hobby PWM and PX4
-********************************************
+Arming and Disarming with Timer Based Protocols on PWM and PX4
+*******************************************************************
 This example covers one way to set up a Vertiq module and a PX4 flight controller sending Standard PWM commands to properly arm and disarm in sync with each other 
 using arming and disarming throttle regions. This assumes that the flight controller and the Vertiq module are set up to use standard, non-reversible :ref:`hobby_standard_pwm` commands, 
 where 1000 microseconds commands 0% throttle in the module’s specified direction and 2000 microseconds commands 100% throttle in that same direction.
@@ -647,8 +669,8 @@ on integrating Vertiq modules with flight controllers when using DroneCAN, see t
 
     Flight Controller Configurations for DroneCAN in QGroundControl
 
-Arming and Disarming with ArduCopter for Hobby PWM and DroneCAN
-*****************************************************************
+Arming and Disarming with ArduCopter for Timer Based Protocols on PWM and DroneCAN
+***************************************************************************************
 This example covers one way to set up a Vertiq module and a flight controller programmed with ArduCopter to properly arm and disarm in sync with each other using 
 arming and disarming throttle regions. The same setup works for both PWM and DroneCAN control.
 
@@ -750,10 +772,12 @@ Armed Throttle Source Lockout
 **When armed, the module will always choose one throttle source as its armed throttle source, and reject incoming throttle commands from all other throttle sources.** 
 For an explanation on what is a throttle source, see the :ref:`throttle_sources` section. These rejected throttle commands will not affect how the module is spinning 
 and will not trigger disarming transitions. For example, if DroneCAN was the armed throttle source, throttle commands received over DroneCAN would be treated 
-normally, and throttle commands received over Hobby PWM would be rejected.
+normally, and throttle commands received over timer based PWM would be rejected.
 
 How the module determines the armed throttle source depends on how the arming transition is triggered. See the individual sections on types of arming transitions 
 in :ref:`arming_state_transitions` for more details.
+
+.. _consecutive_arming_disarming_throttle:
 
 Consecutive Arming and Disarming Throttles
 **********************************************

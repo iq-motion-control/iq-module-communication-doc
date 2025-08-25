@@ -93,12 +93,12 @@ To test trajectory controls with the Control Center:
 *******************************
 Communication Configuration
 *******************************
-Vertiq's servo firmware supports all supported :ref:`hobby_protocol`. Your module's target communication protocol can be configured in the 
+Vertiq's servo firmware supports all supported :ref:`timer_based_protocol`. Your module's target communication protocol can be configured in the 
 General tab under the *Communication* parameter.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_comms_param.png
 
-The module's behavior when controlled with hobby protocols is defined by the *Servo Mode*, *Unit maximum*, and *Unit minimum* parameters, 
+The module's behavior when controlled with timer based protocols is defined by the *Servo Mode*, *Unit maximum*, and *Unit minimum* parameters, 
 all available in the General tab.
 
 .. image:: ../_static/control_center_pics/servo_getting_started/servo_servo_config.png

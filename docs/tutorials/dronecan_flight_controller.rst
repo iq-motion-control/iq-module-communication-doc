@@ -14,7 +14,7 @@ Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
 .. note:: 
     
-    If you intend on using DroneCAN and a :ref:`hobby protocol <hobby_protocol>` or :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
+    If you intend on using DroneCAN and a :ref:`timer based protocol <timer_based_protocol>` or :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
     :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
 
 Module Configuration and Enumeration
@@ -40,7 +40,7 @@ For the purposes of this example, the bitrate is assumed to be 500000 bit/s.
 Mode, Direction, and Limits
 ------------------------------
 Descriptions of some important parameters for the module’s direction and mode and how to change them through IQ Control Center can be found in the :ref:`Motor Configuration section 
-of the tutorial for flight controller integration using hobby protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using hobby protocols, but the details on configuring 
+of the tutorial for flight controller integration using timer based protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using timer based protocols, but the details on configuring 
 the module are still accurate for DroneCAN.
 
 Node ID
@@ -204,7 +204,7 @@ Assign ESC Functions in Actuators Tab
 .. note:: This step is only required on versions of PX4 firmware greater than or equal to v1.13.3. On v1.13.2 and earlier, it is not necessary to set
     the functions of the actuator outputs. 
 
-After rebooting the flight contorller, QGroundControl's Actuators tab should present UAVCAN as an option.
+After rebooting the flight controller, QGroundControl's Actuators tab should present UAVCAN as an option.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_actuators_tab.png
     :align: center
@@ -477,8 +477,8 @@ of the help for the actuator_test command, as well as this example command::
 
 Virtual Joysticks
 ---------------------
-For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html>`_ in PX4 can be used to control connected 
-modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/master/en/SettingsView/VirtualJoystick.html#enable-the-thumbsticks>`_ 
+For a test that is closer to actual flight, the `Virtual Joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html>`_ in QGroundControl can be used to control connected 
+modules while the flight controller is connected to a computer. `Enable the virtual joysticks <https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html#enable-the-thumbsticks>`_ 
 as detailed in the PX4 documentation, and ensure that all Vertiq modules are powered on and connected to the CAN bus.
 
 Return to the home screen of PX4. If the flight controller is fully setup, it should say “Ready To Fly.” Lower the virtual throttle joystick to the bottom, click on where it 

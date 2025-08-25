@@ -185,8 +185,18 @@ Safety Parameters Handled by the Power Safety Client
 -------------------------------------------------------------
 The power safety client manages measurements regarding input power (voltage and current), internal reference power, motor current, microcontroller temperature, and coil temperature.
 
-The full listing of power safety parameters can be found in the :ref:`Power Safety Client table <power_safety>`. Each safety has a low end limit as well as a high end limit. 
-If the measured parameter drops below the low end or goes above the high end, a fault flag is raised, and can be viewed in the ``fault_now`` parameter. 
+The full listing of power safety parameters can be found in the :ref:`Power Safety Client table <power_safety_table>`. Each safety has a low end limit as well as a high end limit. 
+If the measured parameter drops below the low end or goes above the high end, a fault flag is raised, and can be viewed in the ``fault_now`` parameter. ``fault_now`` is 
+a bitmask used to show which flags are active, and is broken down as follows:
+
+* Bit 0: The microcontroller's Programmable Voltage Detector detected a voltage below acceptable limits
+* Bit 1: Power safety's input voltage reading has exceeded ``volt_input_high`` or has fallen below ``volt_input_low``
+* Bit 2: Power safety's reference voltage reading has exceeded ``vref_int_high`` or has fallen below ``vref_int_low``
+* Bit 3: Power safety's supply current reading has exceeded ``current_input_high`` or has fallen below ``current_input_low``
+* Bit 4: Power safety's motor current reading has exceeded ``motor_current_high`` or has fallen below ``motor_current_low``
+* Bit 5: Power safety's microcontroller temperature reading has exceeded ``temperature_uc_high`` or has fallen below ``temperature_uc_low``
+* Bit 6: Power safety's coil temperature reading has exceeded ``temperature_coil_high`` or has fallen below ``temperature_coil_low``
+
 The ``fault_now`` parameter is only set by hardware. All faults that have occurred since the module's start up can be viewed in the ``fault_ever`` parameter. 
 The value of ``fault_ever`` is generally set by the hardware and cleared by the user.
 
@@ -225,6 +235,11 @@ You can also find these parameters in the Control Center's Tuning tab as ``Volta
     :align: center
     :scale: 50%
 
+.. note:: 
+    
+    When adjusting your module's slew rate limit, it is possible that it may affect the module's :ref:`buzzer function <manual_buzzer_control>`. The module creates its buzzer tones by 
+    rapidly changing the motor's voltage, and not through any separate hardware (the modules do not have a separate buzzer). So, by lowering the slew limit specifically, you may 
+    cause your buzzer to sound quieter than expected as the module cannot generate the changes in voltages required to play a strong tone.
 
 The following examples are meant to illustrate the effect that slew limiting has on module control. All examples start with the module in coast followed by a voltage step command to 2V.
 

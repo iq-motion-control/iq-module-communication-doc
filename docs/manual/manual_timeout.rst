@@ -139,6 +139,3 @@ After performing its timeout behavior, the module can perform any of the followi
 * ``Timeout Error Remain Armed``
 
     - The module will perform its :ref:`timeout_behavior`, and the error is treated as a communication error only. After the timeout behavior, the module **remains armed**
-
-
-

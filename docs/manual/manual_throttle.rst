@@ -32,7 +32,7 @@ The details of these configurations are covered in the :ref:`throttle_mode_maxim
 
 Throttle Sources
 ==========================
-Vertiq modules suport three different throttle sources: :ref:`IQUART <throttle_iquart_ref>`, :ref:`DroneCAN <throttle_sources_dronecan>`, and :ref:`hobby protocols <throttle_sources_hobby>`. 
+Vertiq modules suport three different throttle sources: :ref:`IQUART <throttle_iquart_ref>`, :ref:`DroneCAN <throttle_sources_dronecan>`, and :ref:`timer based protocols <throttle_sources_hobby>`. 
 These sources correspond to different communication protocols that can send throttle commands to a Vertiq module. Each source uses different messages and mappings to send its 
 throttle commands, as covered in the sections below. 
 
@@ -44,7 +44,7 @@ The ESC Propeller Input Parser client's `raw_value <https://iqmotion.readthedocs
 
 Note that the range for inputs to this entry is only 0.0 to 1.0, but the definition of a throttle command previously described includes commands from -100% to 100%. 
 The full range of -100% to 100% throttle commands can be sent to this entry, but not directly as a -100% to 100% value. Instead, depending on the configuration 
-of your module the 0.0 to 1.0 value that this entry accepts will be re-mapped to the full -100% to 100% range. This entry uses the same mapping as the hobby protocols. 
+of your module the 0.0 to 1.0 value that this entry accepts will be re-mapped to the full -100% to 100% range. This entry uses the same mapping as the timer based protocols. 
 For more details on how this mapping works and how to configure it, see the :ref:`throttle_mapping` section.
 
 .. _throttle_sources_dronecan:
@@ -59,15 +59,15 @@ throttle command of -100%, and a raw command of 4096 corresponds to a throttle c
 
 .. _throttle_sources_hobby:
 
-Hobby Protocols
-****************
-The :ref:`hobby_protocol` section covers in more detail how each hobby protocol communicates with Vertiq modules. Generally, each type of hobby protocol 
+Timer Based Protocols
+************************
+The :ref:`timer_based_protocol` section covers in more detail how each timer based protocol communicates with Vertiq modules. Generally, each type of timer based protocol 
 sends a command that encodes a number from 0.0 to 1.0. For example, :ref:`Standard PWM <hobby_standard_pwm>` sends a pulse from 1000 microseconds to 2000 microseconds, where 1000 microseconds 
 corresponds to a 0.0 and 2000 microseconds corresponds to a 1.0.
 
 Similarly to the :ref:`throttle_iquart_ref` throttle command, these commands only encode a range from 0.0 to 1.0, while the definition of a throttle command specifies a range of -100% 
-to 100%. The full range of -100% to 100% throttle commands can be sent by hobby protocols, but not directly as a -1 to 1 value. Instead, depending on the 
-module's configuration, the 0.0 to 1.0 value sent through a hobby protocol will be re-mapped to the full -100% to 100% range. For more details on how this mapping 
+to 100%. The full range of -100% to 100% throttle commands can be sent by timer based protocols, but not directly as a -1 to 1 value. Instead, depending on the 
+module's configuration, the 0.0 to 1.0 value sent through a timer based protocol will be re-mapped to the full -100% to 100% range. For more details on how this mapping 
 works and how to configure it, see the :ref:`throttle_mapping` section.
 
 .. _throttle_mode_maximums_directions:
@@ -99,6 +99,8 @@ The mode of the module can be controlled using the *Mode* parameter in the Gener
     :alt: Mode Parameter
 
     Mode Parameter in IQ Control Center
+
+.. _throttle_pwm_mode:
 
 PWM
 ####
@@ -200,7 +202,7 @@ of the 2D/3D distinction is covered in the :ref:`throttle_mapping` section.
 
 Mapping to Throttle
 ==============================
-As mentioned in the :ref:`throttle_sources` section above, IQUART and hobby protocols send throttle commands as a number from 0.0 to 1.0.
+As mentioned in the :ref:`throttle_sources` section above, IQUART and timer based protocols send throttle commands as a number from 0.0 to 1.0.
 These must be mapped onto the full -100% to 100% range that a throttle command can take. This 0.0 to 1.0 number is referred to in the rest of this section as the “raw value.” 
 Note that DroneCAN does not require these mappings as DroneCAN throttle commands are sent with explicit signs.
 
