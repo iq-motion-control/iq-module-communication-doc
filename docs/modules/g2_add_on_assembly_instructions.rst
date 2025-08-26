@@ -8,7 +8,7 @@ Vertiq’s second generation (G2) motors and ESCs are designed to be modular, ac
 
 
 .. note::
-    Please see the :ref:`visual aids <_visual_aids>` at the bottom of this page for more information about the add-ons.
+    Please see the :ref:`visual aids <visual_aids>` at the bottom of this page for more information about the add-ons.
 
 Default Kit
 ===========

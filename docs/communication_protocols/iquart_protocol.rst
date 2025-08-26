@@ -13,17 +13,8 @@ the motor controllers in various object-oriented languages.
 
 Module Support
 ===============
-All Vertiq modules support IQUART, as summarized in the tables below.
 
-Speed Modules
-**************
-
-.. include:: ../manual/all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: ../manual/all_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 Language Support
 ==================

@@ -316,6 +316,9 @@ The 81-XX family has options for mounting with both M4 and M3 bolts in the follo
 
 Additional Mechanical/Electrical Information
 ***************************************************
+
+**Number of pole pairs** - 21
+
 For more information about the Vertiq 81-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
 * `81-08 G1 85Kv Datasheet <https://www.vertiq.co/s/VERT-M280-E160-Vertiq_81-08_85Kv_datasheet.pdf>`_
@@ -328,9 +331,3 @@ For more information about the Vertiq 81-XX family's mechanical and electrical c
 
 .. _81_getting_started:
 .. include:: get_started_text.rst
-
-.. note::
-
-        :ref:`manual_led_support` is only available on Gen 2 models.
-
-.. include:: advanced_speed_servo_info.rst

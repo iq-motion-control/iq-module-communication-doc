@@ -14,18 +14,8 @@ for more information on arming.
 
 Module Support
 ===============
-The throttle parsing and modes described here apply to speed modules. While servo modules can also receive commands to spin, they are not considered 
-throttle commands for the purposes of this documentation. Controlling servos will be covered in a separate section.
 
-Speed Modules
-**************
-
-.. include:: all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _throttle_def:
 

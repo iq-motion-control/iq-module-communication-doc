@@ -21,43 +21,7 @@ details on the structure of the telemetry messages supported by Vertiq modules a
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. table:: Module Support
-	:widths: 8 8 20
-	:class: tight-table
-
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Module       | Feature Supported                  |Notes                                                                                                           |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 81-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 60-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 40-XX | .. centered:: |:white_check_mark:| |                                                                                                                |
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:warning:|          | Vertiq 23-XX modules do not support DroneCAN, so the DroneCAN telemetry described below does not apply to them.|
-	+--------------+------------------------------------+----------------------------------------------------------------------------------------------------------------+
-
-Servo Modules
-**************
-
-.. table:: Module Support
-	:widths: 8 8 20
-	:class: tight-table
-
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Module       | Feature Supported                  | Notes                                                                                                                                                                              |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 81-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 60-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 40-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:x:|                | Servo modules do not support specialized telemetry messages such as those detailed here, but it is possible to access the same information using IQUART messages on servo modules. |
-	+--------------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 Supported Telemetry
 =====================
@@ -77,41 +41,42 @@ The structure and content of the ESC telemetry message available when using :ref
 of KISS and BLHeli ESCs <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_. 
 
 **There is one key difference between the telemetry sent by Vertiq modules and the KISS standard. The KISS standard specifies sending ERPM data in the telemetry message. ERPM data
-must be converted into RPM using the number of poles of the motor to be useful. Vertiq modules directly send RPM data, which eliminates the
-need to perform any conversion.** See the note below for details on how this conversion affects flight controller integration.
+must be converted into RPM using the number of poles of the motor to be useful. By default, Vertiq modules directly send RPM data, which eliminates the
+need to perform any conversion.** See the note below for details on how this conversion affects flight controller integration as well as how to configure your module to directly output KISS 
+compliant RPM data.
 
 .. note:: If your flight controller expects to receive ERPM data from these telemetry messages, it may not interpret the RPM data sent by Vertiq modules correctly by default.
-    Additional configuration may be necessary on the flight controller to properly intepret the received RPM data as RPM and not as ERPM. For detailed information on how PX4 
-    flight controllers handle ERPM to RPM conversion, see :ref:`this section <fc_telemetry_erpm_to_rpm>` of the tutorial on integrating telemetry with flight controllers. 
-    For detailed information on how ArduCopter flight controllers handle the conversion, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
+    Without changing your module's settings, additional configuration may be necessary on the flight controller to properly intepret the received RPM data as RPM and not as ERPM. For detailed information on how PX4 
+    flight controllers handle ERPM to RPM conversion, as well as how to change your module's configuration, see :ref:`this section <fc_telemetry_erpm_to_rpm>` of the tutorial on integrating telemetry with flight controllers. 
+    For detailed information on how ArduCopter flight controllers handle the conversion, as well as how to change your module's configuration, see :ref:`this section <arducopter_erpm_vs_rpm>` of the tutorial on integrating 
     telemetry with flight controllers. For other types of flight controllers, refer to your flight controller's documentation.
 
 The telemetry sent by Vertiq modules when using :ref:`Timer Based Protocols <timer_based_protocol>` is specified in the table below. The message
 consists of 10 bytes:
 
-	+----------+-------------------------+-----------------------+
-	| **Byte** | **Content**             | **Units**             |
-	+----------+-------------------------+-----------------------+
-	| 0        | Temperature             | :math:`^{\circ}C`     |
-	+----------+-------------------------+-----------------------+
-	| 1        | Voltage (High Byte)     | :math:`\text{cV}`     |
-	+----------+-------------------------+-----------------------+
-	| 2        | Voltage (Low Byte)      |                       |
-	+----------+-------------------------+-----------------------+
-	| 3        | Current (High Byte)     | :math:`\text{cA}`     |
-	+----------+-------------------------+-----------------------+
-	| 4        | Current (Low Byte)      |                       |
-	+----------+-------------------------+-----------------------+
-	| 5        | Consumption (High Byte) | :math:`\text{mAh}`    |
-	+----------+-------------------------+-----------------------+
-	| 6        | Consumption (Low Byte)  |                       |
-	+----------+-------------------------+-----------------------+
-	| 7        | RPM (High Byte)         | :math:`\text{RPM}`    |
-	+----------+-------------------------+-----------------------+
-	| 8        | RPM (Low Byte)          |                       |
-	+----------+-------------------------+-----------------------+
-	| 9        | 8-bit CRC               |                       |
-	+----------+-------------------------+-----------------------+
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| **Byte** | **Content**             | **Units**                                       | **Notes**                             |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 0        | Temperature             | :math:`^{\circ}C`                               |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 1        | Voltage (High Byte)     | :math:`\text{cV}`                               |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 2        | Voltage (Low Byte)      |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 3        | Current (High Byte)     | :math:`\text{cA}`                               |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 4        | Current (Low Byte)      |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 5        | Consumption (High Byte) | :math:`\text{mAh}`                              |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 6        | Consumption (Low Byte)  |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 7        | RPM (High Byte)         | :math:`\text{RPM}` or :math:`\text{ERPM/100}`   | See :ref:`fc_telemetry_erpm_to_rpm`   |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 8        | RPM (Low Byte)          |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
+	| 9        | 8-bit CRC               |                                                 |                                       |
+	+----------+-------------------------+-------------------------------------------------+---------------------------------------+
 
 CRC Calculation
 ----------------

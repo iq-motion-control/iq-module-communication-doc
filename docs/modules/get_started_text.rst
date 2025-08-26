@@ -15,6 +15,5 @@ Complete the correct "Getting Started Guide" for your module's style
 More Information
 ####################################
 
-Once you have completed the proper "Getting Started Guide," you can begin to dive deeper into your module's capabilities. Below, you will find
-a summary of all features supported on your module, IQUART Clients it can reach, as well as applicable tutorials. Please ensure that you are reading the feature
-summary for your module's style.
+Once you have completed the proper "Getting Started Guide," you can begin to dive deeper into your module's capabilities. To learn about all of the features supported 
+by your module, please review our :ref:`supported features table <supported_features_table>`.

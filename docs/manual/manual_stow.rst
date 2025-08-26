@@ -14,29 +14,16 @@ once it reaches the stow position. Note that incoming commands can cause interru
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: advanced_only_table.rst
-
-Servo Modules
-**************
-Servo modules do not support stow as a separate feature. Rather, they are intended to primarily serve as position modules, so controlling them to move to any desired
-position is a natural part of their base functionality. Trajectory commands can be used to achieve a similar behavior to stow on any servo module. 
-The stow position feature is useful on speed modules primarily as a way to easily allow integrating moving to a single stow position with a flight controller. So the 
-stow specific features described in this portion of the documentation are not relevant for servo modules.
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _stow_process_overview:
 
 Stow Process Overview
 ======================
 When a module moves to its stow position, regardles of the reason for the stow, it follows a series of steps to stow properly. First, it begins either accelerating or decelerating
-in order to reach its stow position with its user-configrued :ref:`stow acceleration <stow_movement_parameters>`. So if the module was still before, it will begin moving, but if it was 
-spinning rapdily, it will keep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then choose whether it should try to 
-actively :ref:`hold that position <stow_holding_position>` or coast itself, meaning that the module will not be driving itself and can spin freely. If the module is :ref:`interrupted <interrupting_stow>` at any time during 
-the stow process, it will stop trying to stow.
+in order to reach its stow position with its user-configured :ref:`stow acceleration <stow_movement_parameters>`. So if the module was still before, it will begin moving, but if it was 
+spinning rapdily, it will keep spinning and gradually slow down. Once the module has come to a stop at the stow position, it will then perform its ending hold behavior, 
+which has multiple options :ref:`discussed below <stow_holding_position>`.
 
 The diagram below summarizes the stow position feature's state transitions. Note that the stow process may be interrupted at any time, and that certain state transitions are 
 configuration dependent.
@@ -74,10 +61,16 @@ These parameters can be configured under the General tab in the IQ Control Cente
 
     Stow Angle Parameters in IQ Control Center
 
+The *Stow Zero Angle* can be sampled and the *Stow Target Angle* configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
+
+.. _hold_stow_parameter:
+
 Hold Stow
 ***********
-The *Hold Stow* parameter determines if the module will continue trying to actively hold its stow position or coast when it reaches the stow position. 
-Refer to the :ref:`stow_holding_position` section for more information.
+.. note:: In speed firmware versions prior to v0.2.0, the only options for Hold Stow are Coast When Stowed and Hold Stow. The Brake When Stowed and Low Power Hold options were introduced in v0.2.0.
+
+The *Hold Stow* parameter determines how the module will behave once it has reached its stow position. The module can coast, brake, or hold its position in two different ways. 
+Refer to the :ref:`stow_holding_position` section for more information on these different options.
 
 This parameter can be configured under the General tab of the IQ Control Center, as shown below.
 
@@ -87,6 +80,8 @@ This parameter can be configured under the General tab of the IQ Control Center,
     :alt: Hold Stow Parameter
 
     Hold Stow Parameter in IQ Control Center
+
+*Hold Stow* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
 
 .. _stow_movement_parameters:
 
@@ -107,6 +102,8 @@ The following parameters pertain to how the module will move as it transitions t
     :alt: Stow Target Acceleration Parameter
 
     Stow Target Acceleration Parameter in the IQ Control Center
+
+*Stow Target Acceleration* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
 
 *Stow Kp*, *Stow Ki*, and *Stow Kd* can all be found under the Tuning tab of the IQ Control Center, as shown below.
 
@@ -223,12 +220,68 @@ Refer to the :ref:`timeout_behavior` section for more information on how to conf
 
 Holding Position
 ==================
-Once the module reaches the stow position, it can either continue actively trying to hold that position or it can coast the motor and let it spin freely. This 
-behavior is controlled by the *Hold Stow* parameter, as mentioned in the :ref:`stow_parameter_summary` section above.
+Once the module reaches the stow position, it can transition to one of several different behaviors as defined by the *Hold Stow* parameter. You can read more about this :ref:`above <stow_parameter_summary>`.
+The possible behaviors are:
 
-When holding the stow angle is enabled, the closed loop position controller of the module will continue to try and hold the motor in the stow position even after 
-it has successfully stowed. The module will not rotate freely, maintaining its position. This can be useful if you need the module to maintain its stowed position 
-when external forces are acting on it, such as the wind. 
+* **Coast When Stowed**: The module will release the stow and coast, allowing itself to spin freely. It will not attempt to hold its stow position.
+* **Hold Stow Angle**: The module will attempt to actively hold its stow position using the position controller. This can be useful if you need the module to maintain its stowed position when external forces, such as the wind, are acting on it. 
+* **Brake When Stowed**: The module will release the stow and brake. The module is not actively attempting to hold its stow position, but brake mode does provide more resistance to moving than coast.
+* **Low Power Hold**: The module will attempt to hold its stow target position, but it will swap between brake mode and actively using the position controller to try and move to the stow position depending on how far it is from the stow position. This is described in more detail :ref:`below <low_power_hold>`.
+
+.. _low_power_hold:
+
+Low Power Hold
+****************
+The Low Power Hold behavior is more complex than the other stow ending behaviors and has several configurations of its own. This section describes the Low Power Hold behavior in detail.
+
+Low Power Hold reduces power consumption by switching between brake mode and actively attempting to hold the target position with the position controller depending on how far the module is from the target position.
+Brake mode consumes relatively little power, but only provides marginal resistance to moving out of position. Actively holding the position with the position controller forces the module back to its target position, but it consumes
+significantly more power in doing so. So, in Low Power Hold, the module goes into brake mode when it is close to its target position, and switches back to actively moving to the target position when it is too far away from the target.
+Once the module is again close enough to its target, the module transitions back into brake mode. This reduces overall power consumption by allowing the module to spend more time in brake mode, with its relatively low power consumption, 
+at the cost of allowing more possible error in the position at any given moment.
+
+This transitioning between braking and holding is defined by two configurable parameters: the *Low Power Hold Allowed Target Error* and the *Low Power Hold Max Brake Error*. 
+
+The *Low Power Hold Allowed Target Error* defines how close the module needs to be to the target position before transitioning from actively holding the postion to braking. For example,
+if the *Low Power Hold Allowed Target Error* is set to 0.025 radians, then if the module is using the position controller to move back to its target position, it will switch to brake
+mode when it is within 0.025 radians of the target. If this is too small, it can make it difficult for the motor to successfully swap into brake mode from the active hold.
+
+The *Low Power Hold Max Brake Error* defines how far away from the target position the module can be before transitioning from braking to actively holding the position. For example,
+if the *Low Power Hold Max Brake Error* is set to 0.2 radians, then if the module is braking, it will switch to actively holding its position once the error from the target is greater than or equal to 0.2 radians.
+The module will then actively move back towards its target position until it is within the *Low Power Hold Allowed Target Error*, at which point it will switch back to braking.
+
+It is important to consider the tradeoff between reduced power consumption and acceptable position error when using this feature. Swapping into brake mode reduces power consumption, but it allows the module to move more easily
+out of the stow target position, and the *Low Power Hold Max Brake Error* explicitly defines an acceptable amount of error from the target stow position. Therefore it is important to consider what level of position error
+is acceptable for any given application, and if no error is acceptable it may be better to use Hold Stow Angle as the stow ending behavior instead.
+
+This process of transitioning back and forth between actively holding the position and braking depending on the module's error from the target and its current state is summarized in the diagram below.
+
+.. figure:: ../_static/manual_images/stow/low_power_stow_flowchart.png
+    :align: center
+    :width: 60%
+    :alt: Low Power Hold State Transition Diagram
+
+    Low Power Hold State Transition Diagram
+
+The *Low Power Hold Max Brake Error* should typically always be larger than the *Low Power Hold Allowed Target Error*. The goal is to have the module move close to its target position when actively holding, and then
+to allow it to brake over a wider area to reduce power consumption. The diagram below illustrates an example of how these error ranges should generally compare, with the module moving close to its target position
+to get within the *Low Power Hold Allowed Target Error* range, and then being allowed to move further from its target when braking with a comparatively larger *Low Power Hold Max Brake Error*.
+
+.. figure:: ../_static/manual_images/stow/low_power_stow_diagram.png
+    :align: center
+    :width: 60%
+    :alt: Low Power Hold Example Error Comparison
+
+    Low Power Hold Example Error Comparison
+
+The *Low Power Hold Allowed Target Error* and *Low Power Hold Max Brake Error* can be configured from Control Center on the General tab, as shown below.
+
+.. figure:: ../_static/manual_images/stow/low_power_stow_control_center.png
+    :align: center
+    :width: 60%
+    :alt: Low Power Stow Control Center Configurations
+
+    Low Power Stow Control Center Configurations
 
 Stow Status Reporting
 =======================
@@ -244,7 +297,7 @@ Possible states are:
 
 * **Idle (Stow Status = 0)**: There is no stowing happening, the stow feature is idle and ready for new commands.
 * **In Progress (Stow Status = 1)**: A move to the stow position is in progress but the module has not yet reached its stow position.
-* **Holding (Stow Status = 2)**: The module is actively holding its stow position. See the :ref:`stow_holding_position` section for more information.
+* **Holding (Stow Status = 2)**: The module is attempting to hold its stow position. This applies to both the standard Hold and the Low Power Hold. See the :ref:`stow_holding_position` section for more information.
 
 The stow status can be queried over IQUART using the “stow_status” entry of the “stow_user_interface” client in the API. It can also be queried over DroneCAN using 
 the “stow_status” configuration parameter, as shown below in the DroneCAN GUI Tool at index 7.
