@@ -10,6 +10,11 @@
 Underactuated Propeller Torque Angle Correction
 ***********************************************
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
 Underactuated propellers can vector force, torque, or a combination of the two. The flapping blades on the |propeller_name| vectors both a force and torque vector. These two vectors are coupled, and always point the same direction relative to each other. In the case of the |propeller_name|, they are approximately 82° apart. This means that the torque vector and torque induced by the force vector happen at slightly different angles. Depending on the height of the propeller above the Center of Mass (CoM), the resulting torque will point in different directions. Some plots showing different heights above the center of mass show how the final torque direction and magnitude can change.
 
 .. figure:: ../_static/manual_images/pulsing_propeller/torque_angle_0.png

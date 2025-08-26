@@ -19,15 +19,7 @@ in the :ref:`interaction_with_advanced_arming` section.
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _applied_spin_percentage:
 

@@ -7,11 +7,17 @@
 IQUART Flight Controller Interface
 **********************************
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
+.. _ifci_cvs_example:
+
 About IFCI and Control Values
 =================================
 
-Vertiq modules may be controlled through the IQUART Flight Controller Interface (IFCI) when running applicable firmware. Please refer to your module's family page to see if 
-IFCI is supported. The IQUART Flight Controller Interface leverages Vertiq's :ref:`IQUART serial protocol <uart_messaging>` in order to send high speed controls to your modules. 
+Vertiq modules may be controlled through the IQUART Flight Controller Interface (IFCI) when running applicable firmware. The IQUART Flight Controller Interface leverages Vertiq's :ref:`IQUART serial protocol <uart_messaging>` in order to send high speed controls to your modules. 
 These controls are packed into a single message allowing one IFCI packet to send controls to multiple modules connected to the same serial line. 
 The basic structure of an IFCI packet is illustrated below:
 
@@ -84,6 +90,34 @@ In this mode -1.0 will map to ``-pulsing_voltage_limit`` and 1.0 will map to ``p
 between. For example if the battery voltage is 12V and ``pulsing_voltage_mode`` is set to 0 then -1.0 would map to -12V of pulsing, 0.0 would map to 0V, and 1.0 would map to 12V. 
 With the same battery voltage, but ``pulsing_voltage_mode`` set to 1, and ``pulsing_voltage_limit`` set to 4.0, -1.0 would map to -4V of pulsing, 0.0 would map to 0V and 1.0 would map 
 to 4V of pulsing.
+
+IFCI Telemetry
+==================
+
+There are two methods to request module telemetry with the IQUART Flight Controller Interface. First, :ref:`as mentioned above <ifci_cvs_example>`, simply fill the Telemetry ID Tail Byte of a IFCI packet 
+with the module ID whose telemetry you want. Second, you can perform a :ref:`Get request <api_interactions>` on the module's :ref:`IQUART Flight Controller's <iquart_flight_controller_interface>` telemetry entry. In 
+either case, the data returned by the telemetry endpoint contains 16 bytes. A struct called IFCITelemetryData is required to store this data.
+Here is a description of the IFCITelemetryData struct:
+
+.. code-block:: c++
+
+    struct IFCITelemetryData 
+    {
+        int16_t mcu_temp;       // Temperature of the microcontroller in centi °C
+        int16_t coil_temp;      // Temperature of the coils in centi °C
+        int16_t voltage;        // Supply voltage in centi-volts        
+        int16_t current;        // Supply current in centi-amps
+        int16_t consumption;    // Consumtion in mAh
+        int16_t speed;          // Velocity of the motor in rad/s
+        uint32_t uptime;        // Uptime in seconds 
+    };
+
+.. note:: 
+
+    Your module can be configured to report speed rather than velocity in its IFCI Telemetry response. To do so, simply set ``Report Telemetry as Speed`` in :ref:`IQ Control Center's <control_center_start_guide>` 
+    advanced tab to ``Enabled``.
+
+    .. image:: ../_static/manual_images/telemetry/report_telem_as_speed.png
 
 Connecting Modules for IFCI
 =================================

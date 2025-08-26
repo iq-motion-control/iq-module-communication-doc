@@ -128,6 +128,36 @@ After 5 seconds, the module should now have a constant, 3V, drive voltage. The p
 
 .. image:: ../_static/vertiq_testing_tool_pictures/voltage_input_command_example.png
 
+===============
+Exporting Plots
+===============
+In versions v0.2.4 and above, the plot data can be exported as a .csv file. 
+First, pause the plot by clicking the 'Pause plotting' button in the dashboard.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/pause_plotting_button.png
+
+Then right-click on the plot and navigate to Plot Options \> Export all curves to CSV.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/export_all_curves_to_csv.png
+
+Choose the location to save the .csv file and provide a name for the file. Then click Save.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/save_plot_data_csv.png
+
+Plots can also be exported as an image file.
+Right-click on the plot and select 'Export as Image'.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/export_as_image.png
+
+A window will be displayed. Make sure 'Plot' is selected under Item to export. Then click Export.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/export_as_image_window.png
+
+Provide a file name for the image and select the file type \(.png, .jpg, etc.\) . Then click Save.
+
+.. image:: ../_static/vertiq_testing_tool_pictures/save_plot_png.png
+
+
 .. _vtt_custom_plotting:
 
 ==============================

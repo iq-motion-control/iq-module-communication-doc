@@ -1,6 +1,8 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. _manual_stop_detection:
+
 **********************
 Stop Detection
 **********************
@@ -8,15 +10,7 @@ Stop Detection
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _stop_detection:
 

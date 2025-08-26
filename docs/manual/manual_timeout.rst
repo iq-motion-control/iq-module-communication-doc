@@ -15,29 +15,20 @@ disarm when a timeout occurs, leaving them in a safe state following a timeout.
 Module Support
 ===============
 
-Speed Modules
-**************
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
-.. include:: all_checked_table.rst
+.. _triggering_timeout:
 
-Servo Modules
-**************
-Servo modules do not support the full range of configurable timeout features described in this section. They do support a timeout, and the period of the timeout is configurable.
-The timeout behavior, timeout song playback options, and timeout meaning described in this section are not supported on servo modules. Servo modules will always coast when they timeout.
+Triggering Timeout
+=====================
+Timeouts occur when the module is spinning and has not received a new message or command within its :ref:`timeout period <timeout_period>`. If a module has just rebooted, is 
+coasting, or is braking, the timeout will not expire. The countdown only begins when the module receives a command that makes it start spinning or otherwise apply some drive voltage. 
 
-.. table:: Module Support
+After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
 
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Module       | Feature Supported                  | Notes                                                                   |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 81-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 60-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 40-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
-	| Vertiq 23-XX | .. centered:: |:warning:|          | A limited subset of timeout features are supported, see the note above. |
-	+--------------+------------------------------------+-------------------------------------------------------------------------+
+* Any :ref:`IQUART <uart_messaging>` message
+* Throttle commands over :ref:`hobby protocols <hobby_protocol>`
+* Any :ref:`DroneCAN <dronecan_protocol>` message or request that the module will listen to. For a list of supported messages, please see :ref:`standard_dronecan_support`
 
 Configuring Timeout
 ====================
@@ -57,6 +48,8 @@ a timeout will trigger. See the :ref:`triggering_timeout` section for more infor
 
     Timeout Parameter in IQ Control Center
 
+*Timeout* can be configured using DroneCAN as well, see the :ref:`DroneCAN configuration parameters documentation for details <dronecan_configuration_parameters>`.
+
 .. _timeout_behavior:
 
 Timeout Behavior
@@ -70,7 +63,9 @@ On modules with configurable timeout behavior, modules follow a multi-step timeo
 
 **This timeout process consists of 3 basic steps: The module switches how it is driving itself in order to try and come to a** :ref:`stop <stop_detection>` **, plays its timeout song as 
 specified by its playback option, and switches to its final drive state.** How the module tries to come to a stop, how many times it plays the timeout song, 
-and what final state it ends up in after playing the song are all configurable by the user. 
+and what final state it ends up in after playing the song are all configurable by the user.
+
+A sample of the timeout song playing only once can be found in our :ref:`status song manual <timeout_song>`.
 
 The image below summarizes this process and the options available at each stage. In the stopping state, the module will set itself to either coast, 
 actively try to stop the module by driving it with 0V, or start a stow. When the module is :ref:`stopped <stop_detection>`, the timeout song will play according to 
@@ -121,10 +116,8 @@ These options can all be configured through IQ Control Center through the *Timeo
 
 Timeout Meaning
 *****************
-Some users may wish to intentionally cause timeouts to trigger a disarming process on their module. To accommodate this behavior, it is possible to configure a 
-timeout to explicitly act just like a disarm using the *Timeout Meaning* parameter in IQ Control Center as shown below. When this parameter is set to *Disarm*, 
-a timeout will trigger the :ref:`disarming behavior <advanced_disarming_behavior>`, play the disarm song, and will act exactly as if a disarm had been triggered in all ways. 
-Note that no matter what the *Timeout Meaning* is set to, timeouts will always cause modules to disarm, so they are left in a safe state.
+Some users may wish to change the module state once the :ref:`timeout_behavior` is complete. This is configurable through the ``Timeout Meaning`` parameter available 
+in the IQ Control Center's advanced tab as shown below.
 
 .. figure:: ../_static/manual_images/timeout/timeout_meaning_parameter.png
     :align: center
@@ -133,17 +126,16 @@ Note that no matter what the *Timeout Meaning* is set to, timeouts will always c
 
     Timeout Meaning Parameter in Control Center
 
-.. _triggering_timeout:
+After performing its timeout behavior, the module can perform any of the following:
 
-Triggering Timeout
-=====================
-Timeouts occur when the module is spinning and has not received a new message or command within its :ref:`timeout period <timeout_period>`. If a module has just rebooted, is 
-coasting, or is braking, the timeout will not expire. The countdown only begins when the module receives a command that makes it start spinning or otherwise applying some drive voltage. 
+* ``Timeout Error Disarm``
 
-After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
+    - The module will perform its :ref:`timeout_behavior`, and the error is treated as a communication error only. After the timeout behavior, the module **is explicitly disarmed**
 
-* Any :ref:`IQUART <uart_messaging>` message
-* Throttle commands over :ref:`timer based protocols <timer_based_protocol>`
-* Any :ref:`DroneCAN <dronecan_protocol>` message or request that the module will listen to. This does not include heartbeats from other nodes or other messages on the bus that are not intended for the module.
+* ``Trigger Disarm Behavior``
 
+    - The module **will not** perform its :ref:`timeout_behavior`, but will instead perform only its :ref:`disarming behavior <advanced_disarming_behavior>`
 
+* ``Timeout Error Remain Armed``
+
+    - The module will perform its :ref:`timeout_behavior`, and the error is treated as a communication error only. After the timeout behavior, the module **remains armed**

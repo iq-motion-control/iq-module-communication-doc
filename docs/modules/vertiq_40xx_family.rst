@@ -199,6 +199,9 @@ Now that you have successfully wired your module for use, feel free to complete 
 
 Additional Mechanical/Electrical Information
 **********************************************
+
+**Number of pole pairs** - 12
+
 For more information about the Vertiq 40-XX family's mechanical and electrical characteristics please visit the correct datasheet for your module using the links below
 
 * `40-06 370Kv G2 Datasheet <https://www.vertiq.co/s/VERT-M341-E200-Vertiq_40-06_370Kv_datasheet.pdf>`_
@@ -208,5 +211,3 @@ For more information about the Vertiq 40-XX family's mechanical and electrical c
 
 .. _40_getting_started:
 .. include:: get_started_text.rst
-
-.. include:: advanced_speed_servo_info.rst

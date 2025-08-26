@@ -15,6 +15,13 @@ Vertiq's position control uses a closed loop PID controller in order to achieve 
 Also available is a :ref:`Control Velocity <manual_velocity_control_mechanisms>` which is driven by our angle controller. Information on angle based velocity control will be provided in an upcoming manual entry about velocity control.
 Position modules can also be controlled via duration based protocols such as 1-2ms PWM. These control mechanisms are explained below.
 
+Module Support
+===============
+
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+
+.. _advanced_arming_armed_states:
+
 ================================
 Angle Control Mechanisms
 ================================

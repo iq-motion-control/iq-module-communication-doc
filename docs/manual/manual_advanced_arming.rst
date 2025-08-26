@@ -22,15 +22,7 @@ The :ref:`arming_module_support` section below details which Vertiq modules curr
 Module Support
 ===============
 
-Speed Modules
-**************
-
-.. include:: all_checked_table.rst
-
-Servo Modules
-**************
-
-.. include:: none_checked_table.rst
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
 
 .. _advanced_arming_armed_states:
 
@@ -244,6 +236,8 @@ and throttles cannot cause an disarming transition. Otherwise, disarming throttl
 
     Disarm on Throttle Parameter in IQ Control Center
 
+.. _disarm_on_throttle_example:
+
 Disarming with Throttle Example
 ---------------------------------
 An example of a possible disarming setup and procedure is outlined below.
@@ -352,8 +346,12 @@ on the current armed state or manually transition the state as needed.
 
 DSHOT Disarm
 ##############
-The :ref:`DSHOT <hobby_dshot>` timer based protocol reserves one of its special values for commanding a disarm. Vertiq modules support this command, and will disarm if a DSHOT disarm 
-command is received.
+The :ref:`DSHOT <hobby_dshot>` hobby protocol reserves one of its special values for commanding a disarm. Vertiq modules support this command. Whether or not the module will disarm on 
+reception of this message is determined by the value of the :ref:`allow_dshot_disarming_message <hobby_input>` parameter. If it is true, the module will perform a disarming transition on 
+reception. If it is false, the disarming command is ignored. **By default, this parameter is true.**
+
+Disabling the DSHOT disarming command can be especially useful when :ref:`leveraging redundant throttle inputs <dshot_dronecan_arming>` as it can help avoid arming loops while 
+disarming/arming on throttle.
 
 .. _manual_arming_throttle_source:
 
@@ -365,9 +363,11 @@ If you are using DroneCAN to control your module, we highly recommend using this
 
 Timeout
 ********
-Timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout. Note that 
-whether the module performs its disarming behavior or not on a timeout depends on the timeout feature configurations. See the :ref:`manual_timeout` section, specifically the 
-:ref:`timeout_meaning` subsection, for more information.
+
+:ref:`Communication timeouts <manual_timeout>` can be configured to result in multiple options in regards to arming. You can read about these options in our 
+:ref:`timeout documentation <timeout_meaning>`.
+
+Please note that by default, timeouts will always trigger a disarming transition. If the module is armed just before a timeout occurs, it will be disarmed just after the timeout.
 
 .. _always_armed:
 
@@ -398,10 +398,12 @@ in :ref:`throttle_regions` is generally safer, as the module can be set to only 
 
 Arming Behavior
 ================
-When an arming transition (from disarmed to armed) occurs, the module executes its arming behavior. The arming behavior is not configurable, it will always be the same. 
-
-The module will play the :ref:`arming song <arming_song>`, which consists of 2 short, high-pitched notes. The end of this song indicates the module is armed. The module will then begin spinning 
+When an arming transition (from disarmed to armed) occurs, the module executes its arming behavior. The arming behavior has only one configuration parameter. If 
+the :ref:`arming handler's <arming_handler>` ``play_arming_song_on_arm`` parameter is true, the module will play the :ref:`arming song <arming_song>`, which consists of 2 short, high-pitched notes. The end of this song indicates the module is armed. The module will then begin spinning 
 at the throttle percentage commanded by its last throttle command, and will begin accepting new throttle commands.
+
+If ``play_arming_song_on_arm`` is set to false, however, the module **will not play** its arming song on arming. Once it receives the correct criteria required to arm, 
+the module will begin accepting new throttle commands without any audio feedback.
 
 .. _advanced_disarming_behavior:
 
@@ -447,6 +449,8 @@ These options can all be configured through IQ Control Center through the *Disar
 
     Disarm Behavior Parameter in IQ Control Center
 
+.. _disarm_song_options:
+
 Disarming Song Playback Options
 *********************************
 The disarming song playback option determines if and how many times the module will play its disarm song after coming to a stop. There are 3 options:
@@ -463,6 +467,27 @@ These options can all be configured through IQ Control Center through the *Disar
     :alt: Disarm Song Playback Option Parameter
 
     Disarm Song Playback Option Parameter in Control Center
+
+Arming Configuration with DroneCAN
+====================================
+
+The parameters and behaviors described in the preceding sections can be configured using :ref:`DroneCAN GetSet <dronecan_getset>` messages. The specific arming parameters 
+available over DroneCAN are:
+
+1. :ref:`Arm on throttle <arming_consecutive_throttles>`
+2. :ref:`Arming throttle upper and lower limits <throttle_regions>`
+3. :ref:`Disarm on throttle <disarm_on_throttle_example>`
+4. :ref:`Disarming upper and lower limits <throttle_regions>`
+5. :ref:`Disarm behavior <disarming_behavior_options>`
+6. :ref:`Disarm song option <disarm_song_options>`
+7. :ref:`Arming with DroneCAN ArmingStatus <arm_with_armingstatus>`
+
+These parameters are visible in using the DroneCAN GUI below:
+
+.. image:: ../_static/manual_images/arming/dronecan_gui_params.png
+    :align: center
+
+For more information about DroneCAN parameters, please see :ref:`dronecan_configuration_parameters`.
 
 Flight Controller Integration Examples
 ========================================
