@@ -8,7 +8,7 @@ Feature,23-XX Speed,23-XX Pulsing,All Other Speed,All Servo
 :ref:`manual_zero_spin`,X,X,X,
 :ref:`controlling_ifci`,X,X,X,
 :ref:`correcting_underactuated_torque`,,X,,
-:ref:`hobby_protocol`,X,,X,X
+:ref:`timer_based_protocol`,X,,X,X
 :ref:`manual_telemetry`,X,,X,
 :ref:`manual_advanced_arming`,X,,X,
 :ref:`manual_stop_detection`,X,,X,

@@ -665,11 +665,11 @@ Arm with ArmingStatus
 -----------------------
 .. table::
 
-	+-----------------------+------------+
-	| **Name**              | **Type**   |
-	+-----------------------+------------+
-	| arm_with_arming_status | Integer   |
-	+-----------------------+------------+
+	+------------------------+------------+
+	| **Name**               | **Type**   |
+	+------------------------+------------+
+	| arm_with_arming_status | Integer    |
+	+------------------------+------------+
 
 Determines whether the module will arm and disarm based on the :ref:`DroneCAN Arming Status message <arming_status>`. A value of 0 disables arming with the ArmingStatus message, and a value of 1 enables it.
 More information can be found at :ref:`arm_with_armingstatus`
