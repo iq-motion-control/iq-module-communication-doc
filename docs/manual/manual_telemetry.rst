@@ -151,7 +151,12 @@ received units into more commonly used units.
 Hardware Setup
 ###############
 When using :ref:`Timer Based Protocols <timer_based_protocol>` with a Vertiq module, one line is used to connect ground to the module, one line is used to send throttle commands,
-and one line can optionally be used to receive telemetry from the module. An example of this can be seen for the 81-08 module in the image below. The pin marked as "PWM" 
+and one line can optionally be used to receive telemetry from the module. In general, your module should be connected as below in order to both receive timer based commands and transmit telemetry data back to your flight controller:
+
+.. image:: ../_static/manual_images/telemetry/dshot_telem_wiring.png
+    :align: center
+
+A specific example of this can be seen for the 81-08 G1 module in the image below. The pin marked as "PWM" 
 is used to send throttle commands and telemetry requests to the module, and the pin marked as "Telemetry" is used by the module to send telemetry back to a flight controller.
 Refer to your module's datasheet for more details on how to set up the hardware on your module.
 
