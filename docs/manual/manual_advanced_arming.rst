@@ -405,6 +405,11 @@ at the throttle percentage commanded by its last throttle command, and will begi
 If ``play_arming_song_on_arm`` is set to false, however, the module **will not play** its arming song on arming. Once it receives the correct criteria required to arm, 
 the module will begin accepting new throttle commands without any audio feedback.
 
+You can access this parameter through the Control Center's Advanced tab as *Play Arming Song on Arm*:
+
+.. image:: ../_static/manual_images/arming/arming_song_control_center.png
+    :align: center
+
 .. _advanced_disarming_behavior:
 
 Disarming Behavior
