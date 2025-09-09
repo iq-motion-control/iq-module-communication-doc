@@ -357,10 +357,10 @@ telemetry sources. In IQ Control Center's Advanced tab, you'll find the ``DroneC
 .. image:: ../_static/manual_images/dronecan/legacy_telem_control_center.png
 
 Setting this to ``Use New-Style Telemetry`` will output ESC Status and ESC Status Extended as your telemetry. In this case, the reported temperature through ESC Status is 
-your module's coil temperature, and ESC Status Extended's reported temperature is the temperature of your module's microcontroller.
+your module's microcontroller temperature in Kelvin, and ESC Status Extended's reported temperature is the temperature of your module's coils in °C.
 
 Setting this to ``Use Old-Style Telemetry`` will output ESC Status and Device Temperature as your telemetry. In this case, the reported temperature through ESC Status 
-is your module's microcontroller temperature, and Device Temperature's reported temperature is the temperature of your module's coil.
+is your module's coil temperature in Kelvin, and Device Temperature's reported temperature is the temperature of your module's microcontroller in Kelvin.
 
 .. note:: 
 	We recommend using the ``Use New-Style Telemetry`` in order to receive the most telemetry data from your modules.
