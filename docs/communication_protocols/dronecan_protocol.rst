@@ -163,7 +163,7 @@ software that can emulate COM ports. In this example, we are using `com0com <htt
 system, though a similar approach can be taken on Linux/UNIX.
 
 .. note::
-	If com0com does not produce a numbered virtual COM port or if there is a warning in the device manager for the com0com serial port emulator, it is recommended to update your drivers 
+	If com0com does not produce a numbered virtual COM port (as shown below), or if there is a warning in the device manager for the com0com serial port emulator, it is recommended to update your drivers 
 	by following `this guide <https://www.chrisbarilla.com/2024/06/26/get-com0com-working-with-windows-11/>`_.
 
 	.. image:: ../_static/manual_images/dronecan/com0com_error_w11.png
