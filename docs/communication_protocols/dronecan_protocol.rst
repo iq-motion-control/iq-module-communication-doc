@@ -163,8 +163,10 @@ software that can emulate COM ports. In this example, we are using `com0com <htt
 system, though a similar approach can be taken on Linux/UNIX.
 
 .. note::
-    If com0com does not produce a numbered virtual COM port or if there is a warning in the device manager for the com0com serial port emulator, it is recommended to update your drivers 
-    by following `this guide <https://www.chrisbarilla.com/2024/06/26/get-com0com-working-with-windows-11/>`_.
+	If com0com does not produce a numbered virtual COM port or if there is a warning in the device manager for the com0com serial port emulator, it is recommended to update your drivers 
+	by following `this guide <https://www.chrisbarilla.com/2024/06/26/get-com0com-working-with-windows-11/>`_.
+
+	.. image:: ../_static/manual_images/dronecan/com0com_error_w11.png
 
 We will use the virtual COM ports in order to create the following connections:
 
@@ -612,11 +614,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-0. Unconfigured
-1. 3D Counter Clockwise
-2. 3D Clockwise
-3. 2D Counter Clockwise
-4. 2D Clockwise 
+1. Unconfigured
+2. 3D Counter Clockwise
+3. 3D Clockwise
+4. 2D Counter Clockwise
+5. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
