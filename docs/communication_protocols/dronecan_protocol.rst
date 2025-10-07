@@ -162,6 +162,10 @@ This example requires an SLCAN device such as the `Zubax Babel <https://zubax.co
 software that can emulate COM ports. In this example, we are using `com0com <https://com0com.sourceforge.net/>`_. Please note that the following example will only work on the Windows operating 
 system, though a similar approach can be taken on Linux/UNIX.
 
+.. note::
+    If com0com does not produce a numbered virtual COM port or if there is a warning in the device manager for the com0com serial port emulator, it is recommended to update your drivers 
+    by following `this guide <https://www.chrisbarilla.com/2024/06/26/get-com0com-working-with-windows-11/>`_.
+
 We will use the virtual COM ports in order to create the following connections:
 
 .. image:: ../_static/manual_images/dronecan/dronecan_tunnel_hardware.png
