@@ -211,3 +211,5 @@ For more information about the Vertiq 40-XX family's mechanical and electrical c
 
 .. _40_getting_started:
 .. include:: get_started_text.rst
+
+.. include:: advanced_speed_servo_info.rst

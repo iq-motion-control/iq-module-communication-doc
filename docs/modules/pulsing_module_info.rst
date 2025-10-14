@@ -1,15 +1,5 @@
 Pulsing Module
 ****************************
-Supported Features
-=============================
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`manual_throttle`
-        * :ref:`manual_advanced_arming`
-        * :ref:`manual_timeout`
-        * :ref:`manual_zero_spin`
-        * :ref:`controlling_ifci`
-        * :ref:`correcting_underactuated_torque`
 
 Supported IQUART Clients
 =============================
@@ -32,3 +22,4 @@ Supported Tutorials
 =============================
         * :ref:`up12_initial_configuration`
         * :ref:`up12_installation_tutorial`
+        * :ref:`ifci_px4_flight_controller`

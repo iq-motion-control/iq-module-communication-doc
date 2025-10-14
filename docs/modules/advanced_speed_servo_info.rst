@@ -1,21 +1,5 @@
 Speed Module
 ****************************
-Supported Features
-=================================
-        * :ref:`manual_angle_control_mechanisms`
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`dronecan_protocol`
-        * :ref:`timer_based_protocol`
-        * :ref:`manual_telemetry`
-        * :ref:`manual_throttle`
-        * :ref:`manual_advanced_arming`
-        * :ref:`manual_stow_position`
-        * :ref:`manual_timeout`
-        * :ref:`manual_zero_spin`
-        * :ref:`controlling_ifci`
-        * :ref:`manual_led_support`
-        * :ref:`redundant_throttle_manual` - v0.1.0 and above
         
 Supported IQUART Clients
 =================================
@@ -37,7 +21,7 @@ Supported IQUART Clients
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`
-        * :ref:`throttle_source_manager` - v0.1.0 and above
+        * :ref:`throttle_source_manager`
         
 Supported Tutorials
 =================================
@@ -51,16 +35,10 @@ Supported Tutorials
         * :ref:`protect_against_regen`
         * :ref:`dronecan_firmware_upgrade`
         * :ref:`ifci_px4_flight_controller`
+        * :ref:`spin_with_pwm_generator_tutorial`
 
 Servo Module
 ****************************
-Supported Features
-=================================
-        * :ref:`manual_angle_control_mechanisms`
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`timer_based_protocol`
-        * :ref:`manual_timeout`
 
 Supported IQUART Clients
 =================================
