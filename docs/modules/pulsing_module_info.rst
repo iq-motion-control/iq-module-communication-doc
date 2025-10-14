@@ -12,7 +12,7 @@ Supported IQUART Clients
         * :ref:`power_monitor`
         * :ref:`temperature_monitor_microcontroller`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`

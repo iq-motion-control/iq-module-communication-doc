@@ -16,7 +16,7 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`uavcan_node`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
         * :ref:`stow_user_interface`
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
@@ -54,7 +54,7 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`servo_input_parser_ref`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
 
 Supported Tutorials
 =================================
