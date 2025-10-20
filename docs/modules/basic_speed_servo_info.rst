@@ -1,5 +1,8 @@
 Speed Module
 ****************************
+Supported Features
+======================
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
 
 Supported IQUART Clients
 =================================
@@ -31,6 +34,9 @@ Supported Tutorials
 
 Servo Module
 ****************************
+Supported Features
+======================
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
 
 Supported IQUART Clients
 =================================
