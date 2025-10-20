@@ -25,7 +25,7 @@ Supported IQUART Clients
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`
-        * :ref:`throttle_source_manager`
+        * :ref:`throttle_source_manager` - v0.1.0 and above
         
 Supported Tutorials
 =================================
