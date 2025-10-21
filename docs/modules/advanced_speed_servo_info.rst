@@ -1,22 +1,10 @@
 Speed Module
 ****************************
+
 Supported Features
-=================================
-        * :ref:`manual_angle_control_mechanisms`
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`dronecan_protocol`
-        * :ref:`timer_based_protocol`
-        * :ref:`manual_telemetry`
-        * :ref:`manual_throttle`
-        * :ref:`manual_advanced_arming`
-        * :ref:`manual_stow_position`
-        * :ref:`manual_timeout`
-        * :ref:`manual_zero_spin`
-        * :ref:`controlling_ifci`
-        * :ref:`manual_led_support`
-        * :ref:`redundant_throttle_manual` - v0.1.0 and above
-        
+======================
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
+
 Supported IQUART Clients
 =================================
         * :ref:`system_control`
@@ -32,7 +20,7 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`uavcan_node`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
         * :ref:`stow_user_interface`
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
@@ -51,16 +39,13 @@ Supported Tutorials
         * :ref:`protect_against_regen`
         * :ref:`dronecan_firmware_upgrade`
         * :ref:`ifci_px4_flight_controller`
+        * :ref:`spin_with_pwm_generator_tutorial`
 
 Servo Module
 ****************************
 Supported Features
-=================================
-        * :ref:`manual_angle_control_mechanisms`
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`timer_based_protocol`
-        * :ref:`manual_timeout`
+======================
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
 
 Supported IQUART Clients
 =================================
@@ -76,7 +61,7 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`servo_input_parser_ref`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
 
 Supported Tutorials
 =================================

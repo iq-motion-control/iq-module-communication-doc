@@ -185,3 +185,5 @@ For more information about the Vertiq 60-XX family's mechanical and electrical c
 
 .. _60_getting_started:
 .. include:: get_started_text.rst
+
+.. include:: advanced_speed_servo_info.rst
