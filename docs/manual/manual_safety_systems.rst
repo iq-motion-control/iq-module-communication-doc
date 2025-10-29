@@ -243,6 +243,10 @@ You can also find these parameters in the Control Center's Tuning tab as ``Volta
 
 The following examples are meant to illustrate the effect that slew limiting has on module control. All examples start with the module in coast followed by a voltage step command to 2V.
 
+.. danger::
+
+    The following examples are meant for demonstration only. **We recommend using 100V/s as the minimum value for practical applications.**
+
 1. Slew limiting disabled
 
 .. image:: ../_static/manual_images/safety/slew_rate_off.png
