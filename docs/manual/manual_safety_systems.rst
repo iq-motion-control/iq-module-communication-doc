@@ -245,7 +245,8 @@ The following examples are meant to illustrate the effect that slew limiting has
 
 .. danger::
 
-    The following examples are meant for demonstration only. **We recommend using 100V/s as the minimum value for practical applications.**
+    The following examples are meant for demonstration only, practical slew rates are typically much higher. **Slew rates below 100 V/s should not generally be used for drone 
+    applications**. We recommend trying slew rates at or above 100 V/s if you are exploring using slew rates with a drone.
 
 1. Slew limiting disabled
 
