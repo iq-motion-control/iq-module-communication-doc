@@ -181,3 +181,7 @@ For more information about the Vertiq 23-XX family's mechanical and electrical c
 .. _23_getting_started:
 
 .. include:: get_started_text.rst
+
+.. include:: basic_speed_servo_info.rst
+
+.. include:: pulsing_module_info.rst

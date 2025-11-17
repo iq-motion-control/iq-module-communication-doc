@@ -1,16 +1,8 @@
 Speed Module
 ****************************
 Supported Features
-=================================
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`timer_based_protocol`
-        * :ref:`manual_telemetry`
-        * :ref:`manual_throttle`
-        * :ref:`manual_advanced_arming`
-        * :ref:`manual_timeout`
-        * :ref:`manual_zero_spin`
-        * :ref:`controlling_ifci`
+======================
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
 
 Supported IQUART Clients
 =================================
@@ -25,7 +17,7 @@ Supported IQUART Clients
         * :ref:`temperature_monitor_microcontroller`
         * :ref:`hobby_input`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`
@@ -37,16 +29,14 @@ Supported Tutorials
         * :ref:`fc_telemetry_tutorial`
         * :ref:`vibration_and_jittering`
         * :ref:`protect_against_regen`
+        * :ref:`spin_with_pwm_generator_tutorial`
+        * :ref:`ifci_px4_flight_controller`
 
 Servo Module
 ****************************
 Supported Features
-=================================
-        * :ref:`manual_angle_control_mechanisms`
-        * :ref:`manual_velocity_control_mechanisms`
-        * :ref:`uart_messaging`
-        * :ref:`timer_based_protocol`
-        * :ref:`manual_timeout`
+======================
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
 
 Supported IQUART Clients
 =================================
@@ -62,7 +52,7 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`servo_input_parser_ref`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
 
 Supported Tutorials
 =================================

@@ -243,6 +243,11 @@ You can also find these parameters in the Control Center's Tuning tab as ``Volta
 
 The following examples are meant to illustrate the effect that slew limiting has on module control. All examples start with the module in coast followed by a voltage step command to 2V.
 
+.. danger::
+
+    The following examples are meant for demonstration only, practical slew rates are typically much higher. **Slew rates below 100 V/s should not generally be used for drone 
+    applications**. We recommend trying slew rates at or above 100 V/s if you are exploring using slew rates with a drone.
+
 1. Slew limiting disabled
 
 .. image:: ../_static/manual_images/safety/slew_rate_off.png
