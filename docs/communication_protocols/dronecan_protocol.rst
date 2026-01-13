@@ -391,7 +391,7 @@ This message is used to control modules configured as actuators. This message sh
 will transmit. Each ArrayCommand message can contain up to 15 individual Command instances.
 
 All Command instances contain 3 important pieces of information: the target actuator ID, the type of command, and the command value. In order to control your module with 
-ArrayCommand messages, you must properly set its ``actuator_id`` parameter. You can find more information on this :ref:`below LINKY LINK`.
+ArrayCommand messages, you must properly set its ``actuator_id`` parameter. You can find more information on this :ref:`below <actuator_id_dronecan_parameter>`.
 
 .. warning::
 	When using ArrayCommands to control your module, we highly recommend disabling your module's ability to arm given standard flight controller controls. This is to avoid 
@@ -1238,7 +1238,7 @@ Unitless Control Minimum
 	| Servo - v0.1.0 or later  |
 	+--------------------------+
 
-Determines the minimum actuation value when controlling your module with :ref:`Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>` of the Unitless type. 
+Determines the minimum actuation value when controlling your module with `Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_ of the Unitless type. 
 The resulting action is dependent on your configured :ref:`unitless_control_mode_dronecan_param`. For example, suppose your control mode is set to position. If your unitless control minimum is set to -26, then an actuator 
 command of -1 will move your module to a displacement of -26 rad (26 rad in the clockwise direction).
 
@@ -1261,7 +1261,7 @@ Unitless Control Maximum
 	| Servo - v0.1.0 or later  |
 	+--------------------------+
 
-Determines the maximum actuation value when controlling your module with :ref:`Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>` of the Unitless type. 
+Determines the maximum actuation value when controlling your module with `Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_ of the Unitless type. 
 The resulting action is dependent on your configured :ref:`unitless_control_mode_dronecan_param`. For example, suppose your control mode is set to voltage. If your unitless control 
 maximum is set to 5, then an actuator command of 1 will spin your module counter clockwise with a 5V command.
 
