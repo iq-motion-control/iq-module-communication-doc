@@ -119,7 +119,7 @@ the ``uavcan.protocol.file.GetInfo`` message, and then finally, the transfer of 
 Firmware Update While Connected with a Flight Controller
 =============================================================
 An important feature of CAN is that it is a fully bussable protocol. As such, multiple DroneCAN devices can be connected to the same bus simultaneously without issue. 
-Suppose you have configured your DroneCAN hardware as recommended by `PX4's documentation <https://docs.px4.io/main/en/can/#wiring>`_.
+Suppose you have configured your DroneCAN hardware as recommended by `PX4's documentation <https://docs.px4.io/main/en/can/#wiring>`__.
 
 .. image:: ../_static/tutorial_images/dronecan_firmware_upgrade/px4_wiring_pic.png
     :scale: 70%

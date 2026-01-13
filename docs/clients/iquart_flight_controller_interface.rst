@@ -115,8 +115,6 @@ A minimal working example for the IQUART Flight Controller Interface Client is:
     telemetry = |variable_name|.get("iquart_flight_controller_interface", "telemetry") 
     print(f"Pulsing voltage mode: {telemetry}")
 
-.. _ifci_message_table:
-
 Message Table
 ~~~~~~~~~~~~~
 

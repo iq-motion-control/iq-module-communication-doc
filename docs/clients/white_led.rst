@@ -103,8 +103,6 @@ A minimal working example for the white LED Interface Client is:
     intensity = |variable_name|.get("white_led", "intensity") 
     print(f"Intensity: {intensity}")
 
-.. _white_led_message_table:
-
 Message Table
 ~~~~~~~~~~~~~
 

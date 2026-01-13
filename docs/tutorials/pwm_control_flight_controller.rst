@@ -13,8 +13,8 @@ that the flight controller can spin your modules with the appropriate protocol, 
 or a GPS. This tutorial takes you from a totally fresh module and flight controller to a :ref:`Standard PWM <hobby_standard_pwm>` or :ref:`DSHOT <hobby_dshot>` controllable module 
 through a flight controller.
 
-This tutorial covers setup and testing on `ArduCopter <https://ardupilot.org/copter/>`_ using `Mission Planner <https://ardupilot.org/planner/>`_ and 
-`PX4 <https://px4.io/>`_ using `QGroundControl <http://qgroundcontrol.com/>`_. It covers using both the :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`DSHOT <hobby_dshot>` 
+This tutorial covers setup and testing on `ArduCopter <https://ardupilot.org/copter/>`__ using `Mission Planner <https://ardupilot.org/planner/>`_ and 
+`PX4 <https://px4.io/>`__ using `QGroundControl <http://qgroundcontrol.com/>`_. It covers using both the :ref:`Standard PWM <hobby_standard_pwm>` and :ref:`DSHOT <hobby_dshot>` 
 protocols since each setup process is largely similar. In the places where there are differences, the proper steps for both protocols are explained.
 
 These instructions are applicable to any Vertiq module using speed firmware. Though they have different form factors and some different configuration parameters available, 
@@ -28,7 +28,7 @@ but it is not specific to the 81-08.
 
 Hardware Setup
 ==============
-This example uses a Vertiq 81-08 G2 and a `Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`_ as the flight controller. Since this tutorial is
+This example uses a Vertiq 81-08 G2 and a `Pixhawk 6C <https://docs.holybro.com/autopilot/pixhawk-6c/pixhawk-6c-ports#telem-2-port>`__ as the flight controller. Since this tutorial is
 focused specifically on setting up the Vertiq module, the only additional peripheral that is used along with the flight controller is a safety switch.
 
 The module is powered through its XT-60 connector from a bench-top power supply. For more information on how to properly power your module, refer to its
@@ -45,7 +45,7 @@ For this specific example using a Pixhawk 6C, the signal pin is I/O PWM OUT (MAI
 
 .. warning:: If you are using DSHOT and certain flight controllers, including Pixhawks, **you may need to use a different set of outputs than when using Standard PWM. These outputs may be labeled as AUX or FMU PWM**. 
     This is because not all outputs on all flight controllers support using DSHOT. See the `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
-    section of the Arducopter DSHOT setup instructions and the `PX4 DSHOT documentation <https://docs.px4.io/main/en/peripherals/dshot.html>`_ for more details. 
+    section of the Arducopter DSHOT setup instructions and the `PX4 DSHOT documentation <https://docs.px4.io/main/en/peripherals/dshot.html>`__ for more details. 
     Refer to your flight controller's documentation for details on what protocols its outputs support.
 
 For more details on the wiring for your module, refer to the module's family page. In the *Communication* section of *Pinout and Connectors*, locate the RX/PWM In 
@@ -268,7 +268,7 @@ Ardupilot and Mission Planner Configuration and Testing
 .. note::
     If you are using PX4 firmware, please follow the :ref:`PX4 and QGroundControl Configuration and Testing <PX4_and_QGroundControl_Configuration>` tutorial.
 
-Please review the `ArduPilot First Time Setup <https://ardupilot.org/copter/docs/initial-setup.html>`_ guide if this is your first time setting up ArduPilot with your flight controller.
+Please review the `ArduPilot First Time Setup <https://ardupilot.org/copter/docs/initial-setup.html>`__ guide if this is your first time setting up ArduPilot with your flight controller.
 This tutorial was tested using Mission Planner 1.3.80 and ArduCopter v4.5.5, as shown in the figure below. These instructions assume you are starting from the default ArduPilot parameters, and cover how to test that the
 flight controller and module can communicate with no additional flight controller peripherals. See the `Hardware Setup`_ section for more details on the hardware and connections.
 
@@ -306,7 +306,7 @@ the following parameters are set to the proper values and change them if necessa
 
 * **MOT_PWM_TYPE = 0**
   
-  * This selects the output PWM Type. 0 sets it to standard PWM. See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`_ for more details.
+  * This selects the output PWM Type. 0 sets it to standard PWM. See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`__ for more details.
   
 * **MOT_PWM_MAX = 2000**
   
@@ -360,11 +360,11 @@ Re-Configuring ArduCopter DSHOT Outputs
 #######################################
 .. note:: 
   
-  Only needed on some flight controllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ and `PX4 <https://docs.px4.io/main/en/peripherals/dshot.html>`_ documentation for more details on which
+  Only needed on some flight controllers, see the `ArduCopter <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`__ and `PX4 <https://docs.px4.io/main/en/peripherals/dshot.html>`__ documentation for more details on which
 
 Depending on the type of flight controller hardware you have, you may need to re-configure which outputs you are using to a DSHOT compatible pin. 
 The reason for this and the types of flight controllers it affects are discussed in `Mixing ESC Protocols <https://ardupilot.org/copter/docs/common-brushless-escs.html#mixing-esc-protocols>`_ 
-and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`_. This issue applies to the Pixhawk 6C that was used for this tutorial, and also
+and in this `Ardupilot forum post <https://discuss.ardupilot.org/t/flight-controllers-dshot-and-escs/53608>`__. This issue applies to the Pixhawk 6C that was used for this tutorial, and also
 applies to the popular Cube Orange flight controller. 
 
 For affected flight controllers, their main outputs can transmit PWM, but not DSHOT. One way to check for this issue is to check the "Messages" section of the "Data" tab in Mission Planner on reboot.
@@ -381,7 +381,7 @@ For the Pixhawk used to test this example, the module is connected with FMU PWM 
 on your flight controller. Refer to the flight controller's documentation for more information.
 
 Next, you need to tell ArduCopter to use AUX OUT 1 (or the equivalent pin on your flight controller) as the output for Motor 1 on your vehicle. ArduCopter uses SERVOX_FUNCTION variables to assign a function to each
-output. For the Pixhawk, AUX OUT 1 is controlled by SERVO9_FUNCTION. **Set SERVO9_FUNCTION = 33 to output the throttle commands for Motor 1 on AUX OUT 1.** See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`_ for details on what
+output. For the Pixhawk, AUX OUT 1 is controlled by SERVO9_FUNCTION. **Set SERVO9_FUNCTION = 33 to output the throttle commands for Motor 1 on AUX OUT 1.** See the `ArduCopter documentation <https://ardupilot.org/copter/docs/parameters.html>`__ for details on what
 settings to use for different functions. The figure below shows the proper setting for this parameter to assign DSHOT to AUX OUT 1 on the Pixhawk 6C.
 
 .. figure:: ../_static/tutorial_images/pwm_flight_controller/mp_servo9.JPG
@@ -404,7 +404,7 @@ By default, ArduCopter will not allow you to test spinning your modules unless a
 controller, then you can move on to testing the module. **If you do not have a safety switch but would still like to test your modules, this section will cover how to override the requirement 
 for a safety switch**.
 
-The `ArduCopter documentation <https://ardupilot.org/copter/docs/common-safety-switch-pixhawk.html>`_ provides details on how to configure the safety switch. To disable the switch,
+The `ArduCopter documentation <https://ardupilot.org/copter/docs/common-safety-switch-pixhawk.html>`__ provides details on how to configure the safety switch. To disable the switch,
 Set **BRD_SAFETY_DEFLT (also called BRD_SAFETYENABLE on older firmwares) to 0**. The image below shows BRD_SAFETY_DEFLT set to this value in Mission Planner. If your module is
 powered on and attached to the flight controller when you change this parameter, you may hear the module arm. That is because the flight controller will begin sending 0% throttle commands
 on its outputs once this is changed.
@@ -566,7 +566,7 @@ For this example, we will assign AUX 1 to Motor 1 using the DSHOT600 protocol. O
 
 .. note::
 
-  According to `PX4's documentation <https://docs.px4.io/main/en/peripherals/dshot.html>`_, DSHOT cannot be transmitted via your flight controller's MAIN outputs. These 
+  According to `PX4's documentation <https://docs.px4.io/main/en/peripherals/dshot.html>`__, DSHOT cannot be transmitted via your flight controller's MAIN outputs. These 
   may also be labeled I/O PWM OUT depending on your flight controller. You'll notice that on the PWM MAIN tab, DSHOT is not an option. DSHOT can only be transmitted through 
   your flight controllers AUX (FMU PWM OUT) output channels.
 

@@ -135,7 +135,7 @@ This configuration does not allow dual CAN redundancy.
 
 In this example, we will be using a DroneCAN Micro Connector based on a JST-GH 4-Pin connector soldered to one CANH CANL pair. We will not connect a 
 5V bus connection, but will solder the ground connection to common ground on the module's top side. More information about DroneCAN connections 
-can be found `here <https://dronecan.github.io/Specification/8._Hardware_design_recommendations/>`_.
+can be found `here <https://dronecan.github.io/Specification/8._Hardware_design_recommendations/>`__.
 
 
 .. figure:: ../_static/module_pictures/60xx/60xx_with_can_cable.png

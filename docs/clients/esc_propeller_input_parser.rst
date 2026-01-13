@@ -1,4 +1,3 @@
-.. _esc_propeller_input_parser:
 
 ESC Propeller Input Parser
 --------------------------
@@ -106,8 +105,6 @@ A minimal working example for the ESC Propeller Input Parser Client is:
     |variable_name| = iq.|module_name|(com, 0) |module_name_comment|
     
     |variable_name|.set("esc_propeller_input_parser", "velocity_max", 1000) # Set max Velocity to 1000rad/s
-
-.. _epip_message_table:
 
 Message Table
 ~~~~~~~~~~~~~

@@ -9,7 +9,7 @@ DroneCAN Integration with PX4 and ArduPilot
 
 This document provides a general procedure for integrating a Vertiq module with an ArduPilot or PX4 flight controller using DroneCAN, also known as UAVCANv0 or UAVCAN. 
 
-Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For information on DroneCAN support on 
+Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`__. For information on DroneCAN support on 
 Vertiq modules, refer to the :ref:`dronecan_protocol` section.
 
 .. note:: 
@@ -72,7 +72,7 @@ individually, each motor should have a unique ESC index. By default, the ESC ind
 **Vertiq modules do not currently support automatic ESC enumeration, it is necessary to manually assign an ESC index to each module on the bus.** Unlike the node IDs, it is not necessary to 
 reboot the module for a change to the ESC index to take effect.
 
-The `PX4 documentation <https://docs.px4.io/v1.11/en/peripherals/uavcan_escs.html#esc-setup>`_ provides some details on how to set up the ESC indices to integrate properly with your 
+The `PX4 documentation <https://docs.px4.io/v1.11/en/peripherals/uavcan_escs.html#esc-setup>`__ provides some details on how to set up the ESC indices to integrate properly with your 
 flight controller. Most importantly, the ESC indices should correspond with the motor numbers on the `Airframe Reference <https://docs.px4.io/v1.11/en/airframes/airframe_reference.html>`_ 
 for your airframe, though generally the ESC index will be one less than the motor number because the ESC indices start from 0. Generally, each module should have a unique ESC index, 
 and the indices should start at 0 and increment to the total number of modules minus one. 
@@ -153,7 +153,7 @@ Flight Controller Configuration
     differences that have been found during internal testing.
 
 Once the motor is configured and the CAN bus is set up properly, the flight controller needs to be configured. The configurations discussed here were performed on a 
-`Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`_ using PX4 v1.14.3 with `QGroundControl <http://qgroundcontrol.com/>`_. The image below shows the 
+`Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`__ using PX4 v1.14.3 with `QGroundControl <http://qgroundcontrol.com/>`_. The image below shows the 
 firmware version used when developing this tutorial in QGroundControl.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/qgc_fw_version.png
@@ -282,7 +282,7 @@ One other parameter of note is ``UAVCAN_NODE_ID``. This sets the flight controll
 modules on the bus have a node ID of 1.
 
 There are various other configurations available under the UAVCAN section of Parameters, but none of them are essential for using DroneCAN with a Vertiq module. 
-Refer to the `PX4 parameter reference documentation <https://docs.px4.io/main/en/advanced_config/parameter_reference.html>`_ for more information on each of these parameters, 
+Refer to the `PX4 parameter reference documentation <https://docs.px4.io/main/en/advanced_config/parameter_reference.html>`__ for more information on each of these parameters, 
 they may be useful in some applications.
 
 Testing
@@ -539,7 +539,7 @@ by using PX4 and QGroundControl. This same process is applicable to all Vertiq D
 
 .. note::
     If your module powers off or is otherwise disconnected from the DroneCAN bus, it will no longer be reachable through QGroundControl's DroneCAN configuration, even if 
-    reconnected. You must close and restart QGroundControl as in steps 3 and 4. For more information, see `PX4's DroneCAN configuration documentation <https://docs.px4.io/main/en/dronecan/#qgc-cannode-parameter-configuration>`_.
+    reconnected. You must close and restart QGroundControl as in steps 3 and 4. For more information, see `PX4's DroneCAN configuration documentation <https://docs.px4.io/main/en/dronecan/#qgc-cannode-parameter-configuration>`__.
 
 .. _dronecan_with_ardupilot:
 
@@ -550,7 +550,7 @@ Flight Controller Configuration
 --------------------------------------
 
 Once the motor is configured and the CAN bus is set up properly, the flight controller needs to be configured. The configurations discussed here were performed on a 
-`Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`_ using ArduCopter v4.5.5 with `Mission Planner <https://ardupilot.org/planner/>`_ v1.3.80.
+`Pixhawk 6C <https://docs.px4.io/main/en/flight_controller/pixhawk6c.html>`__ using ArduCopter v4.5.5 with `Mission Planner <https://ardupilot.org/planner/>`_ v1.3.80.
 
 Enabling DroneCAN
 -------------------

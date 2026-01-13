@@ -17,9 +17,7 @@ Here, we will discuss all possible “songs” your module may play during norma
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
-
-.. _advanced_arming_armed_states:
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 Standard Songs
 ==================

@@ -22,7 +22,7 @@ The :ref:`arming_module_support` section below details which Vertiq modules curr
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 .. _advanced_arming_armed_states:
 

@@ -14,7 +14,7 @@ once it reaches the stow position. Note that incoming commands can cause interru
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 .. _stow_process_overview:
 
