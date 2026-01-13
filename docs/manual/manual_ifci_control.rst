@@ -103,11 +103,13 @@ Like other control values, the raw value applied to unitless controls is calcula
 This value is passed to the :ref:`servo_input_parser_ref`, and is treated :ref:`identically as raw values sent over timer based protocols <servo_hobby_control>`.
 
 Suppose your ``unit_min`` is set to -20, your ``unit_max`` to 50, and your ``mode`` to 3 (angular displacement). Taking the same control value of 30000, we can find the target actuation 
-point by taking :math:`\text{unit_min} + (\text{raw_value} * (\text{unit_max} - \text{unit_min}))` or :math:`-20 + (\frac{30000}{65535} * (50 - (-20))) = 12.04`. When in angular displacement 
+point by taking :math:`\text{unit_min} + (\text{raw_value} * (\text{unit_max} - \text{unit_min}))` or :math:`-20 + (0.46 * (50 - (-20))) = 12.04`.
+
+When in angular displacement 
 mode, this means that your module will rotate to an angular displacement of :math:`12.04 rad`.
 
-Now, suppose you change your ``mode`` to 2 (velocity), and continue sending the same command. The commanded value remains :math:`12.04`, but the actuation is now a target 
-velocity of :math:`12.04 \frac{rad}{s}`
+.. Now, suppose you change your ``mode`` to 2 (velocity), and continue sending the same command. The commanded value remains :math:`12.04`, but the actuation is now a target 
+.. velocity of :math:`12.04 \frac{rad}{s}`
 
 IFCI Telemetry
 ==================
