@@ -317,6 +317,12 @@ With Standard PWM, a 1.25ms pulse equates to a raw value of 0.25, and an expecte
 Using the Python API, and requesting the observed angle from the Brushless Drive client with the command ``get("brushless_drive", "obs_angle")``, 
 we receive back -1.563, the expected value. 
 
+Position Control Using DroneCAN
+=================================
+
+Depending on your module's firmware, it is possible to execute similar behavior to :ref:`duration based controls <servo_hobby_control>` using DroneCAN. To learn more, please refer to 
+our :ref:`DroneCAN documentation about the ArrayCommand message <dronecan_messages_actuator_arraycommand>`.
+
 ================================
 Position Control Configurations
 ================================
