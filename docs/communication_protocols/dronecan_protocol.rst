@@ -1097,7 +1097,6 @@ To determine the disarm song option, set this parameter to the proper integer fo
 1. Play Once
 2. Play Continuously
 
-
 Hold Stow
 --------------------
 
