@@ -33,6 +33,8 @@ These are `broadcast messages <https://dronecan.github.io/Specification/2._Basic
 for any specific node on the bus, data is simply transferred over the bus and is available for any node that is interested. Since they are broadcast, 
 there is no response message sent. These messages typically make up the majority of communication on the bus during operation.
 
+.. _dronecan_nodestatus_message:
+
 uavcan.protocol.NodeStatus (Data Type ID = 341)
 ------------------------------------------------------------------------
 The DroneCAN protocol requires that all nodes on a DroneCAN network periodically publish their status using the Node Status message. Vertiq modules support this behavior to conform 
@@ -46,15 +48,21 @@ Please note that if any one condition is met, the module will enter that health 
 Error state. Also, please note that the list below is in order of health state priority. For example, if your module meets a condition for both Warning and Error, it will report 
 its health as Error.
 
+.. _dronecan_nodestatus_critical:
+
 Critical
 """"""""""
 #. The module's :ref:`total derate <derates>` reaches 0
 #. Your module's drive mode is in lockout due to :ref:`power safety <power_safety>`
 
+.. _dronecan_nodestatus_error:
+
 Error
 """"""""
 #. The module is actively in :ref:`timeout <manual_timeout>`
 #. The module's :ref:`total derate <derates>` is less than 1 but greater than 0
+
+.. _dronecan_nodestatus_warnings:
 
 Warning
 """"""""""
@@ -1092,6 +1100,7 @@ To determine the disarm song option, set this parameter to the proper integer fo
 
 Hold Stow
 --------------------
+
 .. table::
 
 	+-----------------------------------+------------+
@@ -1155,7 +1164,7 @@ Sample Stow Zero Angle
 	+==========================+
 	| Speed                    |
 	+--------------------------+
-	
+
 Allows users to sample and save the stow zero angle. For more information on the stow zero angle and what it means to sample it, see :ref:`stow_angle_parameters` and :ref:`stow_position_calculation`.
 
 Setting this parameter to 1 will trigger the module to sample and save its current angle as the zero angle. After setting it to 1 and sampling the angle, sample_stow_zero_angle will automatically reset itself to 0 to show that
@@ -1178,8 +1187,272 @@ Stow Target Acceleration
 	+==========================+
 	| Speed                    |
 	+--------------------------+
-	
+
 Determines the stow target acceleration of the module when stowing. For more information on the stow target acceleration, see :ref:`stow_movement_parameters` .
+
+.. _unitless_control_mode_dronecan_param:
+
+Unitless Control Mode
+-----------------------
+
+.. table::
+
+	+-------------------------------+----------+
+	| **Name**                      | **Type** |
+	+===============================+==========+
+	| unitless_control_mode         | Integer  |
+	+-------------------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines what type of control should be used when controlling your module with `Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_ of the **Unitless type**. 
+The options are voltage percentage, voltage, velocity, and position. Unitless commands are treated the same as Raw Value commands sent through the Servo Input parser. 
+You can read more about raw inputs to the Servo Input Parser :ref:`here <servo_hobby_control>`.
+
+An important difference from raw inputs is that ArrayCommand unitless commands are in the range [-1, 1] where raw commands are [0, 1]. In order to map correctly, ArrayCommand values are first mapped onto the [0, 1] range.
+
+Suppose that your control mode is set to velocity, your unitless control minimum to -10, and your unitless control maximum to 10. Your module receives a unitless command 
+with the value of -0.5. This is the equivalent of a raw command value of 0.25 which results in a velocity command of -5 rad/s.
+
+Unitless Control Minimum
+----------------------------
+
+.. table::
+
+	+-------------------------------+----------+
+	| **Name**                      | **Type** |
+	+===============================+==========+
+	| unitless_control_minimum      | Float    |
+	+-------------------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines the minimum actuation value when controlling your module with :ref:`Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>` of the Unitless type. 
+The resulting action is dependent on your configured :ref:`unitless_control_mode_dronecan_param`. For example, suppose your control mode is set to position. If your unitless control minimum is set to -26, then an actuator 
+command of -1 will move your module to a displacement of -26 rad (26 rad in the clockwise direction).
+
+Unitless Control Maximum
+---------------------------
+
+.. table::
+
+	+-------------------------------+----------+
+	| **Name**                      | **Type** |
+	+===============================+==========+
+	| unitless_control_maximum      | Float    |
+	+-------------------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines the maximum actuation value when controlling your module with :ref:`Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>` of the Unitless type. 
+The resulting action is dependent on your configured :ref:`unitless_control_mode_dronecan_param`. For example, suppose your control mode is set to voltage. If your unitless control 
+maximum is set to 5, then an actuator command of 1 will spin your module counter clockwise with a 5V command.
+
+Warning Status Enable Bitmask
+--------------------------------
+
+.. table::
+
+	+-------------------------------+----------+
+	| **Name**                      | **Type** |
+	+===============================+==========+
+	| warning_status_enable_bitmask | Integer  |
+	+-------------------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines which of the :ref:`warning health checks <dronecan_nodestatus_warnings>` should be used. Warning health checks are used to update the value of the ``node health`` field of your module's 
+reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_WARNING`` when your module is in neither an error nor critical state. Setting a bitmask value of 1 enables the warning check, 
+and a value of 0 disables the check.
+
+The bits are laid out as follows:
+
+* Bit 0: Enable coil temperature warning
+* Bit 1: Enable microcontroller temperature warning
+* Bit 2: Enable over voltage warning
+
+So, a value of 5 will have the coil temperature and over voltage warnings enabled, and the microcontroller temperature warning disabled.
+
+If a warning is disabled, it will not be checked, and will always return a healthy result. So, setting this bitmask to 0 effectively disables all warning health checks.
+
+Error Status Enable Bitmask
+--------------------------------
+
+.. table::
+
+	+-------------------------------+----------+
+	| **Name**                      | **Type** |
+	+===============================+==========+
+	| error_status_enable_bitmask   | Integer  |
+	+-------------------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines which of the :ref:`error health checks <dronecan_nodestatus_error>` should be used. Error health checks are used to update the value of the ``node health`` field of your module's 
+reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_ERROR`` when your module is not in a critical state. Setting a bitmask value of 1 enables the error check, and a value of 0 
+disables the check.
+
+The bits are laid out as follows:
+
+* Bit 0: Enable timeout error
+* Bit 1: Enable derate error
+
+So, a value of 1 will enable the timeout error check and disable the derate error check.
+
+If an error is disabled, it will not be checked, and will always return a healthy result. So, setting this bitmask to 0 effectively disables all error health checks.
+
+Critical Status Enable Bitmask
+------------------------------------
+
+.. table::
+
+	+---------------------------------+----------+
+	| **Name**                        | **Type** |
+	+=================================+==========+
+	| criticial_status_enable_bitmask | Integer  |
+	+---------------------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines which of the :ref:`critical health checks <dronecan_nodestatus_critical>` should be used. Critical health checks are used to update the value of the ``node health`` field of your module's 
+reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_CRITICAL``. Setting a bitmask value of 1 enables the critical check, and a value of 0 disables the check.
+
+The bits are laid out as follows:
+
+* Bit 0: Enable derate critical
+* Bit 1: Enable drive lockout critical
+
+So, a value of 2 will enable the drive lockout critical check and disable the derate critical check.
+
+If a critical check is disabled, it will not be checked, and will always return a healthy result. So, setting this bitmask to 0 effectively disables all critical health checks.
+
+Actuator ID
+--------------
+
+.. table::
+
+	+-----------------+----------+
+	| **Name**        | **Type** |
+	+=================+==========+
+	| actuator_id     | Integer  |
+	+-----------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
+
+Determines what actuator ID your module will accept Commands for when controlling your module with `Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_.
+
+Your module will only respond to commands when the provided actuator_id in the command matches your module's configured ID.
+
+An important note is that if multiple Commands are received in a single ArrayCommand with the same target actuator ID, the module will *only* respond to the command received last.
+
+.. THESE ARE NOT RELEASED YET! Putting them here so we have them when we need 
+.. Timeout Behavior
+.. --------------------
+
+.. .. table::
+
+.. 	+---------------------+------------+
+.. 	| **Name**            | **Type**   |
+.. 	+=====================+============+
+.. 	| timeout_behavior    | Integer    |
+.. 	+---------------------+------------+
+
+.. .. table::
+
+.. 	+--------------------------+
+.. 	| **Supported Firmwares**  |
+.. 	+==========================+
+.. 	| Speed                    |
+.. 	+--------------------------+
+
+.. Determines how your module will react after reaching a :ref:`communication timeout <manual_timeout>`.  You can read more about your choices in our :ref:`timeout 
+.. documentation <timeout_behavior>`.
+
+.. Timeout Song Playback Option
+.. -------------------------------
+
+.. .. table::
+
+.. 	+---------------------------------+------------+
+.. 	| **Name**                        | **Type**   |
+.. 	+=================================+============+
+.. 	| timeout_song_playback_option    | Integer    |
+.. 	+---------------------------------+------------+
+
+.. .. table::
+
+.. 	+--------------------------+
+.. 	| **Supported Firmwares**  |
+.. 	+==========================+
+.. 	| Speed                    |
+.. 	+--------------------------+
+
+
+.. Determines what kind of playback option your module will execute after reaching a :ref:`communication timeout <manual_timeout>`. You can read more about your choices in our :ref:`timeout 
+.. documentation <timeout_song_playback>`.
+
+.. Play Arming Song On Arm
+.. -------------------------
+
+.. .. table::
+
+.. 	+---------------------------------+------------+
+.. 	| **Name**                        | **Type**   |
+.. 	+=================================+============+
+.. 	| play_arming_song_on_arm         | Integer    |
+.. 	+---------------------------------+------------+
+
+.. .. table::
+
+.. 	+--------------------------+
+.. 	| **Supported Firmwares**  |
+.. 	+==========================+
+.. 	| Speed                    |
+.. 	+--------------------------+
+
+.. Determines whether or not your module will play its :ref:`arming song <arming_song>` on an arming transition. Setting this value to 0 disables the song playback, 1 enables it.
 
 *********************************
 Flight Controller Integration

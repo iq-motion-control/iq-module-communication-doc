@@ -95,6 +95,8 @@ These options can all be configured through IQ Control Center through the *Timeo
 
     Timeout Behavior Parameter in IQ Control Center
 
+.. _timeout_song_playback:
+
 Timeout Song Playback 
 ***********************
 The timeout song playback option determines if and how many times the module will play its timeout song after coming to a stop. There are 3 options:

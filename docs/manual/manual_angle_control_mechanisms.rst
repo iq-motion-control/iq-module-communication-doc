@@ -281,7 +281,7 @@ Vertiq's servo modules can handle duration based signals such as 1-2 ms PWM sign
 a *raw value* from [0, 1] that is scaled linearly based on the protocol itself. For example, standard PWM signals are scaled 
 based on the function :math:`\text{Raw Value} = \frac{\text{Signal Duration} - 1000}{1000}` with *Signal Duration* being in microseconds. The *raw value* is passed 
 through *Servo Input Parser*, and based on the *mode* value inside of Servo Input Parser, the module may react with a 
-controlled PWM, Voltage, Velocity, or Position. This parameter can be chosen through the :ref:`Servo Input Parser's mode <servo_input_parser_table>`. 
+controlled PWM, Voltage, Velocity, Angular Displacement, or Linear Displacement. This parameter can be chosen through the :ref:`Servo Input Parser's mode <servo_input_parser_table>`. 
 Depending on the mode, input signals are mapped directly as a control voltage, PWM, velocity, or position. 
 This guide will focus on only the Position mode. Other modes are covered more in an upcoming manual about our input parser clients.
 
