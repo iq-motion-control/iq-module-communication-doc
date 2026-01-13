@@ -13,7 +13,7 @@ Underactuated Propeller Torque Angle Correction
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 Underactuated propellers can vector force, torque, or a combination of the two. The flapping blades on the |propeller_name| vectors both a force and torque vector. These two vectors are coupled, and always point the same direction relative to each other. In the case of the |propeller_name|, they are approximately 82° apart. This means that the torque vector and torque induced by the force vector happen at slightly different angles. Depending on the height of the propeller above the Center of Mass (CoM), the resulting torque will point in different directions. Some plots showing different heights above the center of mass show how the final torque direction and magnitude can change.
 
@@ -40,7 +40,7 @@ Underactuated propellers can vector force, torque, or a combination of the two. 
 
 The graphs show that as the propeller is moved higher above the CoM, the more the force contributes to the final torque. Therefore, a correction factor must be introduced.
 
-The defaults files for each underactuated propeller include a calibrated parameter called 'propeller_torque_offset_angle'. This parameter is found in the :ref:`Voltage Superposition Client<vsp_message_table>`, and assumes that the propeller is at the aircraft's CoM. This is most likely incorrect for most aircraft as there is no standardized rotor height. To correct for this, the default calibrated parameter must be offset using the equation below:
+The defaults files for each underactuated propeller include a calibrated parameter called 'propeller_torque_offset_angle'. This parameter is found in the :ref:`Voltage Superposition Client<voltage_superposition>`, and assumes that the propeller is at the aircraft's CoM. This is most likely incorrect for most aircraft as there is no standardized rotor height. To correct for this, the default calibrated parameter must be offset using the equation below:
 
 .. math::
 

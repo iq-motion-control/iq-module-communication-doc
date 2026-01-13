@@ -10,7 +10,7 @@ IQUART Flight Controller Interface
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 .. _ifci_cvs_example:
 
@@ -148,7 +148,7 @@ While IFCI can work to control a single module connected to a single UART port o
 
     Bussed Serial Connection
 
-This will allow you to control the modules individually using control values and CVIs without changing the module IDs, but if telemetry is required you will need to set each module's module ID to a different value. This is done in the :ref:`system control client<sc_message_table>` with the 'module_id' parameter. **Each module on the bus should have a unique module ID**.
+This will allow you to control the modules individually using control values and CVIs without changing the module IDs, but if telemetry is required you will need to set each module's module ID to a different value. This is done in the :ref:`system control client<system_control>` with the 'module_id' parameter. **Each module on the bus should have a unique module ID**.
 
 To request telemetry via the packed control message, the Telemetry ID Tail Byte (TITB) must be set to the module ID of the module whose telemetry is desired. When this is set, the corresponding module will immediately reply with a telemetry packet. To get every modules's telemetry, the flight controller must ask each module for telemetry individually. If you are sending control messages on an aircraft with 4 motors at 400Hz, then you can receive telemetry from an individual module at a maximum of 100Hz. The telemetry data is packed in a standard IQUART message and the data structure is described in :ref:`IFCITelemetryData struct<ifcitelemetrydata_note>`.
 

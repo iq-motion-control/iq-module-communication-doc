@@ -22,18 +22,20 @@ Details on these protocols and how Vertiq modules support them is provided below
     Please note that no two timer based protocols can be used together as :ref:`redundant throttle sources <redundant_throttle_manual>`. Only one 
     timer based protocol can be accepted at any time.
 
+.. _supported_features:
+
 Module Support
 ===============
 
 Speed Modules
-**************
+----------------
 
-.. include:: ../manual/all_checked_table.rst
+.. include:: ../manual/manual_supported_features.rst
 
 Servo Modules
-**************
+----------------
 
-.. include:: ../manual/all_checked_table.rst
+.. include:: ../manual/manual_supported_features.rst
 
 Supported Timer Based Protocols
 =================================
@@ -41,7 +43,7 @@ Supported Timer Based Protocols
 .. _hobby_standard_pwm:
 
 Standard PWM
-*************
+-------------
 Standard PWM refers to a very commonly used analog protocol that uses a 1000 microsecond to 2000 microsecond pulse to send throttle commands. This pulse encodes a number 
 from 0.0 to 1.0, where typically, a 1000 microsecond pulse represents 0.0, a 1500 microsecond pulse represents 0.50, and a 2000 microsecond pulse represents 1.0.
 
@@ -64,7 +66,7 @@ The endpoints, 1000us to 2000us, can be calibrated to change how the module inte
 .. _hobby_dshot:
 
 DSHOT
-******
+------
 DSHOT is a digital protocol that is gaining in popularity and is supported by a wide range of flight controllers. For in depth details about the DSHOT protocol, please refer to 
 `“D-SHOT - The Missing Handbook” article from Chris Landa <https://brushlesswhoop.com/dshot-and-bidirectional-dshot/>`_.
 
@@ -84,7 +86,7 @@ DSHOT has various different speeds, currently Vertiq modules support:
 .. _hobby_other_protocols:
 
 Additional Protocols
-*********************
+---------------------
 Vertiq modules also support several other, less commonly used, timer based protocols:
 
 * OneShot125
@@ -116,7 +118,7 @@ Also, note that for modules that support DroneCAN, DroneCAN uses a separate phys
 .. _the_communication_parameter:
 
 The Communication Parameter
-******************************
+------------------------------
 
 As mentioned above, the *Communication* parameter can affect how the module reacts to receiving different protocols. This parameter is available in the Control Center's general tab:
 

@@ -14,7 +14,7 @@ and Ardupilot flight controllers. Refer to the `DroneCAN documentation <https://
 Module Support
 ****************
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 .. _standard_dronecan_support:
 
@@ -24,7 +24,7 @@ Standard DroneCAN Support
 This section details the standard DroneCAN messages supported across all Vertiq DroneCAN modules. The structure and contents of these messages are defined by the 
 DroneCAN specification. This section just provides details on how exactly Vertiq modules support them and some supplementary information. 
 
-Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`_. For a full listing of all standard messages 
+Details on the DroneCAN protocol can be found on the `DroneCAN specification <https://dronecan.github.io/Specification/1._Introduction/>`__. For a full listing of all standard messages 
 specified by DroneCAN, see the `List of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/>`_ in the DroneCAN specification.
 
 Broadcast Messages
@@ -324,7 +324,7 @@ uavcan.equipment.indication.LightsCommand (Data Type ID = 1081)
 Vertiq modules do not publish this broadcast message, but they do listen for it. The content of this message can be used to dynamically control the white and RGB LEDs
 on Vertiq's LED Boards. For more information on the LED Board, see :ref:`manual_led_support`.
 
-As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
+As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`__ this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
 to be handled by the nodes on the bus. Each SingleLightCommand contains a light ID to indicate which light that command is for and a field that indicates either the intensity of the white LED or the color of the RGB LED depending on the targeted LED. For Vertiq modules, 
 the light ID of each type of LED (RGB or White) is determined based on the ESC index (or :ref:`Actuator ID <actuator_id_dronecan_parameter>` if using servo firmware v0.1.0 or older). This allows the LEDs on each module on a bus to be uniquely addressable
 as long as each module has a unique ESC index (or Actuator ID). The light IDs on each module are calculated as described in the example code block below:
@@ -477,7 +477,7 @@ uavcan.protocol.dynamic_node_id.Allocation (Data Type ID = 1)
 ---------------------------------------------------------------
 
 This message is used by both the dynamic node allocator and allocatee. Vertiq modules can only act as the DNA allocatee. It is used to carry out the DNA process which is 
-covered in detail `here <https://dronecan.github.io/Specification/6._Application_level_functions/#:~:text=7%5D%20reason_text-,Dynamic%20node%20ID%20allocation,-In%20order%20to>`_. 
+covered in detail `here <https://dronecan.github.io/Specification/6._Application_level_functions/#:~:text=7%5D%20reason_text-,Dynamic%20node%20ID%20allocation,-In%20order%20to>`__. 
 More information about configuring your Vertiq module to use dynamic node ID allocation, please refer to :ref:`dronecan_plug_and_play`.
 
 Refer to `The uavcan.protocol.dynamic_node_id.Allocation section of the Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#getnodeinfo:~:text=uavcan.protocol.dynamic_node_id-,Allocation,-Full%20name%3A>`_ in the specification for more details on this message.
@@ -1615,7 +1615,7 @@ DroneCAN frames are broken down as follows:
 .. image:: ../_static/comms_protocols_pictures/dronecan/dronecan_packet.png
 
 Please note that the Data bytes may be split further depending on whether or not the current frame is the beginning of a multi frame transfer. As specified by the 
-`DroneCAN specification <https://dronecan.github.io/Specification/4.1_CAN_bus_transport_layer/#:~:text=is%20not%20suppressed.-,Payload,-The%20Data%20field>`_, the data may be broken down as either: 
+`DroneCAN specification <https://dronecan.github.io/Specification/4.1_CAN_bus_transport_layer/#:~:text=is%20not%20suppressed.-,Payload,-The%20Data%20field>`__, the data may be broken down as either: 
 
 .. image:: ../_static/comms_protocols_pictures/dronecan/single_frame_transfer.png
 
@@ -1625,7 +1625,7 @@ or
 
 With no data (and thus no tail byte), this is 67 bits and 134us, and with a full 7 bytes of data (plus tail byte), this is 131 bits or 256us.
 
-You can read more about the DroneCAN transport layer in the `DroneCAN specification <https://dronecan.github.io/Specification/4.1_CAN_bus_transport_layer/>`_.
+You can read more about the DroneCAN transport layer in the `DroneCAN specification <https://dronecan.github.io/Specification/4.1_CAN_bus_transport_layer/>`__.
 
 We can now easily apply this information to different types of DroneCAN messages. Shown here are the impacts of sending DroneCAN telemetry and RawCommands.
 

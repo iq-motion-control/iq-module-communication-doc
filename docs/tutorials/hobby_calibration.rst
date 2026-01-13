@@ -109,7 +109,7 @@ Calibration With ArduCopter and Mission Planner Motor Test
 ==========================================================
 
 .. note::
-    Please review the `ArduPilot First Time Setup <https://ardupilot.org/copter/docs/initial-setup.html>`_ guide to ensure that your flight controller is properly set up with ArduPilot, and that Mission Planner is installed.
+    Please review the `ArduPilot First Time Setup <https://ardupilot.org/copter/docs/initial-setup.html>`__ guide to ensure that your flight controller is properly set up with ArduPilot, and that Mission Planner is installed.
 
 If you are using a flight controller with the module, generally you will calibrate the flight controller using the RC transmitter you are using to interface with the flight controller. 
 The `Overview of Calibration Procedure`_ section above covers how you would move the throttle to run through the calibration process if your RC transmitter and flight controller are 

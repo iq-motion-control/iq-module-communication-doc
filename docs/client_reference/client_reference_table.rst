@@ -147,27 +147,13 @@ Type ID 89 | Pulsing Rectangular Input Parser
 =================================================
 .. include:: ../clients/pulsing_rectangular_input_parser.rst
 
-.. _gpio_controller:
-
-Type ID 90 | GPIO Controller
-=================================================
-.. include:: ../clients/gpio_controller.rst
-
-.. _adc_interface:
-
-Type ID 91 | ADC Interface
-=================================================
-.. include:: ../clients/adc_interface.rst
-
-.. _pwm_interface:
-
-Type ID 92 | PWM Interface
-=================================================
-.. include:: ../clients/pwm_interface.rst
+.. _rgb_led:
 
 Type ID 100 | RGB LED
 =================================================
 .. include:: ../clients/rgb_led.rst
+
+.. _white_led:
 
 Type ID 101 | White LED
 =================================================

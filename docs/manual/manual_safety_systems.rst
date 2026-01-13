@@ -12,7 +12,7 @@ and seek to protect your module from things like over-velocity mechanical issues
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 .. _protect_against_regen:
 

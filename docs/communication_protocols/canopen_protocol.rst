@@ -49,7 +49,7 @@ The *Resulting CAN-IDs* column represents the possible values for the resulting 
 
 Emergency Data Object Type (EMCY)
 ************************************
-The emergency object is responsible for reporting internal CANOpen node errors. There are several predefined error codes in the CANOpen standard. A summary of these errors can be found `here <https://www.ni.com/docs/en-US/bundle/ni-industrial-communications-canopen/page/canopenhelp/canopen_emergencies_emcy.html>`_. 
+The emergency object is responsible for reporting internal CANOpen node errors. There are several predefined error codes in the CANOpen standard. A summary of these errors can be found `here <https://www.ni.com/docs/en-US/bundle/ni-industrial-communications-canopen/page/canopenhelp/canopen_emergencies_emcy.html>`__. 
 
 Process Data Objects (PDO)
 *********************************

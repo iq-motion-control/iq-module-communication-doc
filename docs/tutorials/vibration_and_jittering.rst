@@ -25,7 +25,7 @@ and `Vibration Log Analysis <https://docs.px4.io/main/en/log/flight_review.html#
 
 Symptoms of Excessive Flight Controller Vibration
 ===================================================
-The `PX4 wiki <https://docs.px4.io/main/en/log/flight_review.html#vibration>`_ lists a range of possible issues that can result from excessive vibration, including:
+The `PX4 wiki <https://docs.px4.io/main/en/log/flight_review.html#vibration>`__ lists a range of possible issues that can result from excessive vibration, including:
 
 * Less efficient flight and reduced flight time
 * Overheating motors
@@ -160,7 +160,7 @@ to be related to vibrations affecting the outputs of the flight controller when 
 
 Suggested Solutions
 ====================
-`PX4 <https://docs.px4.io/main/en/assembly/vibration_isolation.html#vibration-isolation>`_ and `Ardupilot <https://ardupilot.org/copter/docs/common-vibration-damping.html#vibration-damping>`_ 
+`PX4 <https://docs.px4.io/main/en/assembly/vibration_isolation.html#vibration-isolation>`__ and `Ardupilot <https://ardupilot.org/copter/docs/common-vibration-damping.html#vibration-damping>`__ 
 both list some recommended solutions for handling vibration on their wikis, so those are good resources to start with.
 
 Some specific approaches that we have found useful in our previous testing and work with customers are covered below.
@@ -185,11 +185,11 @@ only show the value out to two decimal places.
         Reducing Vibration and Jittering By Adjusting Controller Gains
 
 The specific gains that are most likely to be effective in addressing these issues will depend on your vehicle. Consulting the log data from your flight controller can help 
-determine which controller is the most problematic. More information on tuning PID gains can be found on the `PX4 <https://docs.px4.io/main/en/config_mc/pid_tuning_guide_multicopter_basic.html>`_ 
-and `Ardupilot <https://ardupilot.org/copter/docs/common-tuning.html>`_ wikis. 
+determine which controller is the most problematic. More information on tuning PID gains can be found on the `PX4 <https://docs.px4.io/main/en/config_mc/pid_tuning_guide_multicopter_basic.html>`__ 
+and `Ardupilot <https://ardupilot.org/copter/docs/common-tuning.html>`__ wikis. 
 
 Software Filters
 *****************
-Both `PX4 <https://docs.px4.io/main/en/config_mc/filter_tuning.html>`_ and `Ardupilot <https://ardupilot.org/copter/docs/common-imu-notch-filtering.html#managing-gyro-noise-with-the-dynamic-harmonic-notch-filters>`_ 
+Both `PX4 <https://docs.px4.io/main/en/config_mc/filter_tuning.html>`__ and `Ardupilot <https://ardupilot.org/copter/docs/common-imu-notch-filtering.html#managing-gyro-noise-with-the-dynamic-harmonic-notch-filters>`__ 
 have software filters available to try and address these types of issues. Notch filters and `slew rates <https://docs.px4.io/main/en/advanced_config/parameter_reference.html#MOT_SLEW_MAX>`_ can be useful 
 for suppressing the effects of vibrations in software. Refer to the documentation on your flight controller’s available software filtering for more information. 
