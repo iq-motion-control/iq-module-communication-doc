@@ -273,7 +273,7 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
 .. _servo_hobby_control:
 
 Control With Duration Based Signals (PWM, DShot, OneShot, Etc.)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================================================================
 
 Vertiq's servo modules can handle duration based signals such as 1-2 ms PWM signals. All signals like standard PWM are converted to 
 a *raw value* from [0, 1] that is scaled linearly based on the protocol itself. For example, standard PWM signals are scaled 
@@ -301,7 +301,7 @@ In this case, we have a symmetric range, where [1000, 1500) ms represents the an
 [0, 3.14]. This does not need to be the case, as your unit_min and unit_max determine how raw values are to be mapped.
 
 Real-Life Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 The following example was performed on a Vertiq 40-06 with position firmware. 
 Its unit_min is set to -3.14, its unit_max to 3.14, and its mode to Position. Using a PWM generator, we input a 1.250 ms pulse at 50 Hz
 imitating the Standard PWM input protocol. A single pulse, as well as the full signal, can be found on the scope capture below:
