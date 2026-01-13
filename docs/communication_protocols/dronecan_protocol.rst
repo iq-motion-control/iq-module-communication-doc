@@ -326,18 +326,18 @@ on Vertiq's LED Boards. For more information on the LED Board, see :ref:`manual_
 
 As detailed by the `DroneCAN specification <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ this message contains an array of `SingleLightCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#singlelightcommand>`_
 to be handled by the nodes on the bus. Each SingleLightCommand contains a light ID to indicate which light that command is for and a field that indicates either the intensity of the white LED or the color of the RGB LED depending on the targeted LED. For Vertiq modules, 
-the light ID of each type of LED (RGB or White) is determined based on the ESC index. This allows the LEDs on each module on a bus to be uniquely addressable
-as long as each module has a unique ESC index. The light IDs on each module are calculated as described in the example code block below:
+the light ID of each type of LED (RGB or White) is determined based on the ESC index (or :ref:`Actuator ID <actuator_id_dronecan_parameter>` if using servo firmware v0.1.0 or older). This allows the LEDs on each module on a bus to be uniquely addressable
+as long as each module has a unique ESC index (or Actuator ID). The light IDs on each module are calculated as described in the example code block below:
 
 .. code-block:: python
 
 	#The base ID for an RGB LED is 1, and the base ID for a white LED is 2. From there, we can just apply the calculation below to determine 
-	#what the light IDs for a module with a given ESC index should be. For example, if my module has an ESC Index of 1, 
+	#what the light IDs for a module with a given ESC index (or Actuator ID) should be. For example, if my module has an ESC Index (or Actuator ID) of 1, 
 	#then the White LED's light ID will be 1*3 + 2 = 5. The RGB LED's light ID will be 1*3+1 = 4
 	RGB_LIGHT_TYPE_BASE_ID = 1
 	WHITE_LIGHT_TYPE_BASE_ID  = 2
 
-	light_id = (esc_index*3 + LIGHT_TYPE_BASE_ID)
+	light_id = (esc_index_actuator_id*3 + LIGHT_TYPE_BASE_ID)
 
 Refer to the `uavcan.equipment.indication.LightsCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#lightscommand>`_ in the specification for more details.
 
@@ -1360,6 +1360,8 @@ The bits are laid out as follows:
 So, a value of 2 will enable the drive lockout critical check and disable the derate critical check.
 
 If a critical check is disabled, it will not be checked, and will always return a healthy result. So, setting this bitmask to 0 effectively disables all critical health checks.
+
+.. _actuator_id_dronecan_parameter:
 
 Actuator ID
 --------------

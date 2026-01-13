@@ -31,8 +31,11 @@ Please note that an IFCI packet does not necessarily need to populate all 16 con
 
 Highlighted in orange are the bytes that are necessary in order to send valid IQUART messages, and are not specific to IFCI control.
 
-Highlighted in green are Control Values. A control value is an unsigned 16 bit value that defines a throttle, an X, or a Y command. X and Y commands are only applicable when 
-using Vertiq's :ref:`pulsing firmware <pulsing_module_start_guide>`. Any type of command can occupy any control value, and the location it occupies in an IFCI packet is called its Control 
+Highlighted in green are Control Values. A control value is an unsigned 16 bit value that defines a throttle, an X, a Y command, or a unitless servo command. X and Y commands are only applicable when 
+using Vertiq's :ref:`pulsing firmware <pulsing_module_start_guide>`. Unitless servo commands ar available when using servo firmware versioned 0.1.0 or later. More information 
+about controlling with unitless servo commands can be found in our :ref:`position documentation <servo_hobby_control>`.
+
+Any type of command can occupy any control value, and the location it occupies in an IFCI packet is called its Control 
 Value Index (CVI). For example, suppose you want to control a generic quadcopter. You may place the throttle commands for motor 1 in CVI 0, commands for motor 
 2 in CVI 1, and so on. Since the control values' order is fully configurable, however, it would be equally valid to place motor 4's throttle command in CVI 0.
 
@@ -90,6 +93,21 @@ In this mode -1.0 will map to ``-pulsing_voltage_limit`` and 1.0 will map to ``p
 between. For example if the battery voltage is 12V and ``pulsing_voltage_mode`` is set to 0 then -1.0 would map to -12V of pulsing, 0.0 would map to 0V, and 1.0 would map to 12V. 
 With the same battery voltage, but ``pulsing_voltage_mode`` set to 1, and ``pulsing_voltage_limit`` set to 4.0, -1.0 would map to -4V of pulsing, 0.0 would map to 0V and 1.0 would map 
 to 4V of pulsing.
+
+Mapping Unitless Servo Control Values to Applied Actuation
+--------------------------------------------------------------
+
+Like other control values, the raw value applied to unitless controls is calculated by taking the received control value and dividing 65535. For example, a control value of 
+30000 results in a raw command of :math:`\frac{30000}{65535} = 0.46`.
+
+This value is passed to the :ref:`servo_input_parser_ref`, and is treated :ref:`identically as raw values sent over timer based protocols <servo_hobby_control>`.
+
+Suppose your ``unit_min`` is set to -20, your ``unit_max`` to 50, and your ``mode`` to 3 (angular displacement). Taking the same control value of 30000, we can find the target actuation 
+point by taking :math:`\text{unit_min} + (\text{raw_value} * (\text{unit_max} - \text{unit_min}))` or :math:`-20 + (\frac{30000}{65535} * (50 - (-20))) = 12.04`. When in angular displacement 
+mode, this means that your module will rotate to an angular displacement of :math:`12.04 rad`.
+
+Now, suppose you change your ``mode`` to 2 (velocity), and continue sending the same command. The commanded value remains :math:`12.04`, but the actuation is now a target 
+velocity of :math:`12.04 \frac{rad}{s}`
 
 IFCI Telemetry
 ==================
