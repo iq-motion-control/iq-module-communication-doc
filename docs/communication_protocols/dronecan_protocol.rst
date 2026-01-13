@@ -371,6 +371,88 @@ is your module's coil temperature in Kelvin, and Device Temperature's reported t
 .. note:: 
 	We recommend using the ``Use New-Style Telemetry`` in order to receive the most telemetry data from your modules.
 
+.. _dronecan_messages_actuator_arraycommand:
+
+uavcan.equipment.actuator.ArrayCommand (Data Type ID: 1010)
+------------------------------------------------------------------------
+
+.. note::
+	This command is only supported by Vertiq modules using servo firmware with version 0.1.0 or later.
+
+This message is used to control modules configured as actuators. This message should be broadcast to your module(s), and is typically the message that a flight controller 
+will transmit. Each ArrayCommand message can contain up to 15 individual Command instances.
+
+All Command instances contain 3 important pieces of information: the target actuator ID, the type of command, and the command value. In order to control your module with 
+ArrayCommand messages, you must properly set its ``actuator_id`` parameter. You can find more information on this :ref:`below LINKY LINK`.
+
+.. warning::
+	When using ArrayCommands to control your module, we highly recommend disabling your module's ability to arm given standard flight controller controls. This is to avoid 
+	any interference between ArrayCommands and :ref:`RawCommands <dronecan_messages_raw_command>`. When receiving both, and configured to act on both, your module will attempt to perform both actuator 
+	and ESC movements causing unexpected and potentially dangerous behaviors.
+
+	To do so, set both ``arm_on_throttle`` and ``arm_with_arming_status`` to 0. This prevents the module from arming and spinning on RawCommands. Again, failure to do so can 
+	result in unexpected interactions between actuator and throttle controls.
+
+Vertiq modules accept 2 Command types: unitless and position. Unitless commands (type 0) are those most often used by flight controllers, and transmit values between [-1, 1]. 
+Vertiq modules can be configured to treat unitless commands as PWM, voltage, velocity, angular displacement, or linear displacement commands. This configuration is available 
+under ``unitless_control_mode`` which is explained in depth <below LINK>. 
+
+Once a type is selected, the actual response is defined by the ``unitless_control_minimum`` and ``unitless_control_maximum`` parameters. As an example, suppose you have 
+configured ``unitless_control_mode`` to 3 (angular displacement), your ``unitless_control_minimum`` to -3.14, and your ``unitless_control_maximum`` to 20. 
+This means that a unitless actuator command value of -1 will command your module to -3.14 rad, and a command value of 1 commands your module to 20 rad. Now, suppose 
+you change your control mode to 2 (velocity). A command value of -1 now maps to -3.14 rad/s, and 1 to 20 rad/s.
+
+The positional example is illustrated below, and uses the :ref:`DroneCAN GUI tool's <dronecan_gui_basics>` Actuator Panel to send commands. To access the Actuator Panel, navigate to *Panels > Actuator Panel*:
+
+.. raw:: html
+
+    <style type="text/css">
+    .center_vid {   margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                    width: 75%; 
+                }
+    </style>
+    <video class='center_vid' controls><source src="../_static/comms_protocols_pictures/dronecan/arraycommand_basic_example.mp4" type="video/mp4"></video>
+
+
+Direct position control actuator commands (type 1) directly send a control angular displacement value to the module. Suppose you transmit a Command for your module's actuator 
+ID with command type 1 and value -26. This will command your module to an angular displacement of -26 rad.
+
+This type is not generally transmitted by flight controllers. It can, however, be easily tested through the DroneCAN GUI Tool's Interactive Console. Navigate to *Tools > Interactive Console*.
+
+.. note::
+	Please note that this example can be similarly executed through the `PyDroneCAN <https://dronecan.github.io/Implementations/Pydronecan/>`_ library as the DroneCAN GUI's 
+	Interactive Console is simply a wrapper around a DroneCAN node created through PyDroneCAN.
+
+You can use the following commands in order to command your module to an angular displacement of 20 rad. Make sure to replace the actuator_id with your module's configured actuator ID, and command_value to the desired displacement:
+
+.. code-block:: python
+
+	cmd_message = dronecan.uavcan.equipment.actuator.ArrayCommand()
+	position = dronecan.uavcan.equipment.actuator.Command()
+	position.command_type = 1
+	position.command_value = 20
+	position.actuator_id = 0
+	cmd_message.commands = [position]
+	node.broadcast(cmd_message)
+
+Refer to the `uavcan.equipment.actuator.ArrayCommand <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_ section of Standard Data Types in the specification for more details.
+
+uavcan.equipment.actuator.Status (Data Type ID: 1011)
+------------------------------------------------------------------------
+
+.. note::
+	
+	This message is only transmitted by Vertiq's servo firmware versioned 0.1.0 or later. If you are using speed firmware your module will transmit :ref:`ESC Status <dronecan_support_esc_status>`.
+
+Actuator status is telemetry sent out by Vertiq actuators. It provides your module's current actuator ID, position as angular displacement, current velocity, and power rating. 
+This message is sent by your module at a rate as defined by ``telemetry_frequency``.
+
+Vertiq modules **do not** transmit force, and fill in NaN to the force field as specified by the DroneCAN standard.
+
+Refer to the `uavcan.equipment.actuator.Status <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=Status>`_ section of Standard Data Types in the specification for more details.
+
 Service Requests
 ========================
 Service requests are messages sent to a specific target node from another node, and to which the sending node expects to receive a response message.
@@ -447,9 +529,19 @@ Node ID
 
 	+----------------+----------+
 	| **Name**       | **Type** |
-	+----------------+----------+
+	+================+==========+
 	| uavcan_node_id | Integer  |
 	+----------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
 
 This parameter defines the node ID of the module on the UAVCAN network. This ID is how the node identifies itself when sending and receiving messages. No two nodes should have 
 the same node ID. ID 0 is reserved by the DroneCAN standard for unconfigured modules. A reboot is typically required after changing this parameter for the device to use the new node ID on the network.
@@ -464,9 +556,19 @@ Bitrate
 
 	+----------------+----------+
 	| **Name**       | **Type** |
-	+----------------+----------+
+	+================+==========+
 	| bit_rate       | Integer  |
 	+----------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
 
 This parameter determines the DroneCAN bitrate that the module will use in bit/s. This parameter takes effect immediately when changed, so if this is changed it 
 will most likely be necessary to reconnect to the bus as at the new bitrate to continue communicating with the module.
@@ -477,9 +579,17 @@ ESC Index
 
 	+----------------+----------+
 	| **Name**       | **Type** |
-	+----------------+----------+
+	+================+==========+
 	| esc_index      | Integer  |
 	+----------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 This parameter defines the ESC index of the module. The ESC index is used when a Raw Command message is received to determine which value in the Raw Command should be read by the module.
 
@@ -493,9 +603,17 @@ Zero Behavior
 
 	+----------------+----------+
 	| **Name**       | **Type** |
-	+----------------+----------+
+	+================+==========+
 	| zero_behavior  | Integer  |
 	+----------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 This parameter defines the behavior of the motor when it receives a zero setpoint in a Raw Command message, **but only if the module is** :ref:`bypassing arming on DroneCAN<dronecan_arming_and_bypass>`. 
 If the module is using :ref:`normal arming <manual_advanced_arming>` with DroneCAN, the Zero Behavior is not used, instead the :ref:`disarm behavior <advanced_disarming_behavior>` provides
@@ -520,9 +638,19 @@ Telemetry Frequency
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| telem_frequency  | Integer  |
 	+------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
 
 This parameter defines the frequency in Hz with which the telemetry messages (:ref:`uavcan.equipment.esc.Status <dronecan_support_esc_status>` 
 and :ref:`uavcan.equipment.device.Temperature <dronecan_support_device_temperature>`) are broadcast by the module. 
@@ -536,9 +664,17 @@ Motor Armed
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| motor_armed      | Integer  |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 This parameter is available on modules that support :ref:`manual_advanced_arming`. It can be used to query and control the armed state of the module. See the 
 section on :ref:`user arming commands over DroneCAN <arming_user_command_dronecan>` for more information.
@@ -549,9 +685,17 @@ Motor Stowed
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| motor_stowed     | Integer  |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 This parameter is available on modules that support :ref:`manual_stow_position`. It can be used to command and release stow on modules. See the section on
 :ref:`manual stow over DroneCAN <trigger_manual_stow_dronecan>` for more information.
@@ -562,9 +706,17 @@ Stow Status
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| stow_status      | Integer  |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 This parameter is available on modules that support :ref:`manual_stow_position`. It reports on the current state of the stow feature on the module. See the
 :ref:`stow_status` section for more information.
@@ -575,9 +727,17 @@ Stow Result
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| stow_result      | Integer  |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 This parameter is available on modules that support :ref:`manual_stow_position`. It reports on how the previous stow attempt ended. See the
 :ref:`stow_result` section for more information.
@@ -592,9 +752,19 @@ Module ID
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| module_id        | Integer  |
 	+------------------+----------+
+
+.. table::
+	
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
+	| Servo - v0.1.0 or later  |
+	+--------------------------+
 
 This parameter defines the **module ID** of the connected module. Please note that this is different than the DroneCAN Node ID. Your module's Module ID parameter defines 
 what IQUART messages to accept. You can find out more about IQUART at :ref:`uart_messaging`, and more about connecting to multiple modules via IQUART in our 
@@ -606,19 +776,27 @@ Motor Direction
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| motor_direction  | Integer  |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Your module's motor direction defines, in part, how your module will interpret and react to throttle commands. Motor direction is covered in detail :ref:`in our throttle documentation <throttle_direction>`.
 
 Motor direction is enumerated as:
 
-0. Unconfigured
-1. 3D Counter Clockwise
-2. 3D Clockwise
-3. 2D Counter Clockwise
-4. 2D Clockwise 
+1. Unconfigured
+2. 3D Counter Clockwise
+3. 3D Clockwise
+4. 2D Counter Clockwise
+5. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -629,9 +807,17 @@ Control Mode
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| control_mode     | Integer  |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Mode determines how the module interprets received throttle commands, and is covered in detail at :ref:`throttle_mode`.
 
@@ -647,9 +833,17 @@ Max Volts
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| max_volts        | Float    |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 When ``control_mode`` is configured to voltage, ``max_volts`` defines the maximum allowable driving voltage. More information can be found at :ref:`max_volts`.
 
@@ -659,9 +853,17 @@ Max Velocity
 
 	+------------------+----------+
 	| **Name**         | **Type** |
-	+------------------+----------+
+	+==================+==========+
 	| max_velocity     | Float    |
 	+------------------+----------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 When ``control_mode`` is configured to velocity, ``max_velocity`` defines the maximum allowable angular velocity in rad/s. More information can be found at :ref:`max_velo`.
 
@@ -673,9 +875,17 @@ Arm with ArmingStatus
 
 	+------------------------+------------+
 	| **Name**               | **Type**   |
-	+------------------------+------------+
+	+========================+============+
 	| arm_with_arming_status | Integer    |
 	+------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines whether the module will arm and disarm based on the :ref:`DroneCAN Arming Status message <arming_status>`. A value of 0 disables arming with the ArmingStatus message, and a value of 1 enables it.
 More information can be found at :ref:`arm_with_armingstatus`
@@ -686,9 +896,17 @@ Communication Timeout
 
 	+-----------------------+------------+
 	| **Name**              | **Type**   |
-	+-----------------------+------------+
+	+=======================+============+
 	| communication_timeout | Float      |
 	+-----------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Sets the :ref:`communication timeout period <timeout_period>` of the module. See :ref:`manual_timeout` for more information.
 
@@ -698,9 +916,17 @@ Arm on Throttle
 
 	+-----------------------+------------+
 	| **Name**              | **Type**   |
-	+-----------------------+------------+
+	+=======================+============+
 	| arm_on_throttle       | Integer    |
 	+-----------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines whether the module will arm based on incoming throttles. A value of 0 disables arming on throttles, and a value of 1 enables arming on throttles.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
@@ -711,9 +937,17 @@ Arming Throttle Upper Limit
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| arming_throttle_upper_limit       | Float      |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines the upper limit of the :ref:`arming throttle region <arming_throttle_regions>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
@@ -724,9 +958,17 @@ Arming Throttle Lower Limit
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| arming_throttle_lower_limit       | Float      |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines the lower limit of the :ref:`arming throttle region <arming_throttle_regions>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
@@ -737,9 +979,17 @@ Disarm on Throttle
 
 	+--------------------------+------------+
 	| **Name**                 | **Type**   |
-	+--------------------------+------------+
+	+==========================+============+
 	| disarm_on_throttle       | Integer    |
 	+--------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines whether the module will disarm based on incoming throttles. A value of 0 disables disarming on throttles, and a value of 1 enables disarming on throttles. 
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
@@ -750,9 +1000,17 @@ Disarming Throttle Upper Limit
 
 	+--------------------------------------+------------+
 	| **Name**                             | **Type**   |
-	+--------------------------------------+------------+
+	+======================================+============+
 	| disarming_throttle_upper_limit       | Float      |
 	+--------------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines the upper limit of the :ref:`disarming throttle region <disarm_on_throttle>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
@@ -763,9 +1021,17 @@ Disarming Throttle Lower Limit
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| arming_throttle_lower_limit       | Float      |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines the lower limit of the :ref:`disarming throttle region <disarm_on_throttle>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
@@ -776,9 +1042,17 @@ Disarm Behavior
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| disarm_behavior                   | Integer    |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines how the module will stop when it disarms. For more information on this parameter and descriptions of how each behavior works, see :ref:`advanced_disarming_behavior`.
 
@@ -795,9 +1069,17 @@ Disarm Song Option
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| disarm_song_option                | Integer    |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines if and how many times the module will play its disarm song after coming to a stop. For more information on this parameter and its options, see :ref:`disarm_song_options`.
 
@@ -814,9 +1096,17 @@ Hold Stow
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| hold_stow                         | Integer    |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines if and how the module will attempt to :ref:`hold its position <stow_holding_position>` after :ref:`stowing <manual_stow_position>`. For more information on this parameter and its options,
 see :ref:`hold_stow_parameter`.
@@ -834,9 +1124,17 @@ Stow Target Angle
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| stow_target_angle                 | Float      |
 	+-----------------------------------+------------+
+
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
 
 Determines the stow target angle, as described in :ref:`stow_angle_parameters`. For more information on stowing and the effect of this parameter on the angle, see :ref:`manual_stow_position` and :ref:`stow_position_calculation`.
 
@@ -846,10 +1144,18 @@ Sample Stow Zero Angle
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| sample_stow_zero_angle            | Integer    |
 	+-----------------------------------+------------+
 
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
+	
 Allows users to sample and save the stow zero angle. For more information on the stow zero angle and what it means to sample it, see :ref:`stow_angle_parameters` and :ref:`stow_position_calculation`.
 
 Setting this parameter to 1 will trigger the module to sample and save its current angle as the zero angle. After setting it to 1 and sampling the angle, sample_stow_zero_angle will automatically reset itself to 0 to show that
@@ -861,10 +1167,18 @@ Stow Target Acceleration
 
 	+-----------------------------------+------------+
 	| **Name**                          | **Type**   |
-	+-----------------------------------+------------+
+	+===================================+============+
 	| stow_target_acceleration          | Float      |
 	+-----------------------------------+------------+
 
+.. table::
+
+	+--------------------------+
+	| **Supported Firmwares**  |
+	+==========================+
+	| Speed                    |
+	+--------------------------+
+	
 Determines the stow target acceleration of the module when stowing. For more information on the stow target acceleration, see :ref:`stow_movement_parameters` .
 
 *********************************
