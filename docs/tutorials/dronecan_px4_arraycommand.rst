@@ -52,14 +52,14 @@ If desired, it is also possible to manually set your module's zero angle through
 .. .. image:: ../_static/tutorial_images/arraycommand_px4_tutorial/bypass_arming_control_center.png
 
 Now, we'll configure the module to respond to unitless ArrayCommands. First, we need to ensure that the module will accept provided Commands. To do so, we need to configure 
-a proper ``actuator_id``. This can be any value [0, 255], and in this example, we will use 0.
+a proper ``actuator_id``. This can be any value [0, 255], and in this example, we will use 0. As viewed in the DroneCAN GUI:
 
 .. image:: ../_static/tutorial_images/arraycommand_px4_tutorial/actuator_id_0_dronecan_gui.png
 
 Next, we'll configure our positional endpoints. Here, we are going to set our minimum angular displacement to -3.14 rad and our maximum to 3.14 rad. 
 These minimum and maximum configurations tell the module that it can move between [-3.14, 3.14] rad when receiving ArrayCommands. Find ``unitless_control_mode`` 
 and set it to 3 (this tells your module to treat unitless controls as positional commands). Set ``unitless_control_minimum`` to -3.14 and ``unitless_control_maximum`` 
-to 3.14 to set your desired positional bounds.
+to 3.14 to set your desired positional bounds. As viewed in the DroneCAN GUI:
 
 .. image:: ../_static/tutorial_images/arraycommand_px4_tutorial/unitless_min_max_dronecan_gui.png
 
@@ -72,7 +72,7 @@ In IQ Control Center, these parameters are available on the General tab as ``Ser
 Before integrating with a flight controller, we can verify basic operation through the DroneCAN GUI tool. Navigate to *Panels > Actuator Panel*. You will see the following: 
 
 .. image:: ../_static/tutorial_images/arraycommand_px4_tutorial/actuator_control_tab_dronecan_gui.png
-    :scale: 60
+    :scale: 80
 
 This panel allows you to send unitless commands to a specified Actuator ID. For this example, simply click the Enabled box under any of the sliders. You should see 
 your module move as you move the slider, and it should move between [-3.14, 3.14] rad as you move the slider up and down.
