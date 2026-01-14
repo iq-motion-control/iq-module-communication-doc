@@ -3,6 +3,10 @@
 
 .. _servo_module_start_guide:
 
+.. meta::
+    :description: Getting started guide for Vertiq's Servo Firmware. Learn to configure angle controls, trajectory planning, maximum angular velocity, and communication protocols (PWM/DSHOT) using IQ Control Center.
+    :keywords: Servo Firmware, IQ Control Center, Angle Control, Trajectory Control, Maximum Angular Velocity, Servo Mode, PWM, DSHOT, Configuration, Tutorial, Motor Control
+
 ####################################################################
 Getting Started with Vertiq's Servo Firmware with IQ Control Center
 ####################################################################

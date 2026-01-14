@@ -2,6 +2,9 @@ Speed Module
 ****************************
 Supported Features
 =================================
+
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
+
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
@@ -56,6 +59,9 @@ Servo Module
 ****************************
 Supported Features
 =================================
+
+You can find a listing of all supported features by each firmware style in :ref:`supported_features`.
+
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`

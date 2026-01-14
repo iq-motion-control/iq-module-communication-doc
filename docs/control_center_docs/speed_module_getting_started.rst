@@ -3,6 +3,10 @@
 
 .. _speed_module_start_guide:
 
+.. meta::
+    :description: Getting started guide for Vertiq's Speed Firmware using IQ Control Center. Learn to configure flight controller integration parameters (Mode, Direction, Communication), arming sequences, timeouts, and perform simulated ESC testing.
+    :keywords: Speed Firmware, IQ Control Center, Flight Controller Integration, Arming, Disarming, Throttle Mapping, ESC Testing, Max Velocity, Motor Direction, Timeout, Stow, DroneCAN, PWM, DShot, Configuration
+
 ####################################################################
 Getting Started with Vertiq's Speed Firmware with IQ Control Center
 ####################################################################

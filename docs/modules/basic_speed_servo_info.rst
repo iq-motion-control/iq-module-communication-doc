@@ -62,7 +62,7 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`servo_input_parser_ref`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
 
 Supported Tutorials
 =================================
