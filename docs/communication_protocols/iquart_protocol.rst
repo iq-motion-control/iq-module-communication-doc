@@ -1,10 +1,6 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-.. meta::
-    :description: Detailed documentation for Vertiq's IQUART serial communication protocol, covering supported APIs (Arduino, C++, Python, Matlab) and technical specifications for message packetization and frame structure.
-    :keywords: IQUART, serial protocol, UART, motor controller communication, packetization, CRC, Arduino API, C++ API, Python API, Matlab API, message structure
-
 .. _uart_messaging:
 
 ***************

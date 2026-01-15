@@ -3,10 +3,6 @@
 
 .. _dronecan_protocol:
 
-.. meta::
-    :description: Comprehensive guide to DroneCAN protocol support on Vertiq modules, covering standard messages, telemetry configuration, parameter setup, flight controller integration (PX4/ArduPilot), and bus utilization calculations.
-    :keywords: DroneCAN, UAVCAN, UAVCANv0, CAN bus, PX4, ArduPilot, ESC Status, NodeStatus, RawCommand, Telemetry, Dynamic Node ID, DNA, Arming, Configuration Parameters, Bus Utilization, Firmware Update, Tunnel, IQUART, Electronic Speed Controller
-
 ##########
 DroneCAN
 ##########
