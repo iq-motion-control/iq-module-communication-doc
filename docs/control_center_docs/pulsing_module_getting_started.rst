@@ -3,10 +3,6 @@
 
 .. _pulsing_module_start_guide:
 
-.. meta::
-    :description: Getting started guide for Vertiq's Pulsing Firmware. Learn to configure essential parameters for flight controller integration, IFCI, and pulsing specifics using IQ Control Center, and how to safely test pulsing functionality.
-    :keywords: Pulsing Firmware, IQ Control Center, IFCI, UP12, Underactuated Propeller, Pulsing Voltage, Pulsing Phase, Flight Controller, Configuration, Testing, Motor Direction, Max Velocity
-
 ########################################################################
 Getting Started with Vertiq's Pulsing Firmware with IQ Control Center
 ########################################################################

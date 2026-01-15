@@ -3,10 +3,6 @@
 
 .. _control_center_start_guide:
 
-.. meta::
-   :description: A comprehensive guide to the IQ Control Center software. Learn how to install, configure, test, and update firmware for your Vertiq modules on Windows, Mac, and Linux.
-   :keywords: IQ Control Center, Vertiq, install guide, setup, configure module, update firmware, flash firmware, test module, GUI, connect, hardware configuration, wiring, serial port, USB-to-UART, FTDI, baud rate, Module ID, Windows, Linux, Mac, factory reset, recovery mode
-
 #################################
 IQ Control Center Manual
 #################################
