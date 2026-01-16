@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta::
+    :description: Detailed guide to CANOpen implementation on Vertiq Fortiq-42 modules, complying with CiA 301 standards. Covers Object Dictionary definitions, SDO/PDO communication, Node ID configuration via LSS, and a Fullmo Kickdrive integration tutorial.
+    :keywords: CANOpen, Fortiq-42, CiA 301, SDO, PDO, Object Dictionary, LSS, Node ID, Fullmo Kickdrive, Motor Control, Automation, Network Management, EMCY
+
 .. _canopen_protocol:
 
 ***********************************************

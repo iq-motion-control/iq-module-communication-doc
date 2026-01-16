@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta::
+    :description: Guide to timer-based protocols (PWM, DSHOT, OneShot, Multishot) on Vertiq modules, including configuration, calibration, and interaction with serial communication/IQUART.
+    :keywords: PWM, DSHOT, OneShot, Multishot, ESC protocol, DSHOT150, DSHOT300, DSHOT600, DSHOT1200, Analog Protocol, Calibration, Arming, Flight Controller, Timer Based Protocols
+
 .. _timer_based_protocol:
 
 ***************************************************
