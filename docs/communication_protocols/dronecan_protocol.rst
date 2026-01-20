@@ -403,7 +403,7 @@ ArrayCommand messages, you must properly set its ``actuator_id`` parameter. You 
 
 Vertiq modules accept 2 Command types: unitless and position. Unitless commands (type 0) are those most often used by flight controllers, and transmit values between [-1, 1]. 
 Vertiq modules can be configured to treat unitless commands as PWM, voltage, velocity, angular displacement, or linear displacement commands. This configuration is available 
-under ``unitless_control_mode`` which is explained in depth <below LINK>. 
+under ``unitless_control_mode`` which is explained in depth :ref:`below <unitless_control_mode_dronecan_param>`. 
 
 Once a type is selected, the actual response is defined by the ``unitless_control_minimum`` and ``unitless_control_maximum`` parameters. As an example, suppose you have 
 configured ``unitless_control_mode`` to 3 (angular displacement), your ``unitless_control_minimum`` to -3.14, and your ``unitless_control_maximum`` to 20. 
@@ -800,11 +800,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-1. Unconfigured
-2. 3D Counter Clockwise
-3. 3D Clockwise
-4. 2D Counter Clockwise
-5. 2D Clockwise 
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
