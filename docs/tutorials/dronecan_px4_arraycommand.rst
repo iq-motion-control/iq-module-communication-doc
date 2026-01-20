@@ -27,7 +27,7 @@ In IQ Control Center, sampling can be done in the General tab through the ``Samp
 
 .. image:: ../_static/tutorial_images/arraycommand_px4_tutorial/sample_zero_angle_control_center.png
 
-Once set, the value will automatically reset to 0, and your zero angle will be set. All position commands will now be in relation to this point.
+Once set, the value will automatically reset to 0, and your zero angle will be set and saved. All position commands will now be in relation to this point.
 
 If desired, it is also possible to manually set your module's zero angle through ``Zero Angle``.
 

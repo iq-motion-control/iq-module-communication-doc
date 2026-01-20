@@ -1382,11 +1382,11 @@ Actuator ID
 	| Servo - v0.1.0 or later  |
 	+--------------------------+
 
-Determines what actuator ID your module will accept Commands for when controlling your module with `Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_.
+Determines what actuator ID your module will accept commands for when controlling your module with `Actuator ArrayCommands <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#:~:text=ArrayCommand>`_.
 
 Your module will only respond to commands when the provided actuator_id in the command matches your module's configured ID.
 
-An important note is that if multiple Commands are received in a single ArrayCommand with the same target actuator ID, the module will *only* respond to the command received last.
+An important note is that if multiple commands are received in a single ArrayCommand with the same target actuator ID, the module will *only* respond to the command received last.
 
 .. THESE ARE NOT RELEASED YET! Putting them here so we have them when we need 
 .. Timeout Behavior
