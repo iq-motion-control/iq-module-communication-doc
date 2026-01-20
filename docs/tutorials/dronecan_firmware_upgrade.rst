@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to update the firmware on your Vertiq modules using the DroneCAN protocol. This guide covers necessary hardware like SLCAN adapters, using the DroneCAN GUI Tool, setting node IDs, and the critical step of flashing the correct app.bin file. 
+    :keywords: DroneCAN, firmware upgrade, DroneCAN GUI Tool, SLCAN, Zubax Babel, CAN bus, node ID, app.bin, firmware flashing, bus monitor, PX4, flight controller integration
+
 .. _dronecan_firmware_upgrade:
 
 *****************************

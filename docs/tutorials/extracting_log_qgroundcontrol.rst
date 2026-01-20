@@ -1,3 +1,6 @@
+.. meta:: 
+    :description: Learn how to export and analyze motor telemetry logs from a PX4 flight controller using QGroundControl and PlotJuggler. This guide covers downloading .ulg files and visualizing ESC status data. 
+    :keywords: PX4, QGroundControl, flight controller logs, PlotJuggler, telemetry, .ulg, EscStatus, motor analysis, rpm logging, analyze tools
 
 .. include:: ../text_colors.rst
 .. toctree::
@@ -109,4 +112,3 @@ Additional Information About EscStatus Topic Numbering
 For firmware with IFCI enabled, the EscStatus topic values "esc.00", "esc.01", "esc.02", and "esc.03" map to the values selected for the VTQ_TELEM_IDS_1 or VTQ_TELEM_IDS_2 parameter in the firmware, starting with the lowest value.
 
 For firmware with DroneCAN enabled, the EscStatus topic values map to the ESC index values.
-

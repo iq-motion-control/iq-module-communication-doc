@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn about Vertiq's built-in safety systems designed to protect your module and power supply. Topics include regenerative voltage protection, thermal and speed derating, power safety faults, slew rate limiting, and current limiting configurations. 
+    :keywords: Safety Systems, Regenerative Voltage Protection, Back-EMF, Voltage Spikes, Derating, Speed Redline, Thermal Protection, Power Safety, Fault Latching, Slew Rate Limiter, Current Limiting, Motor Protection, Overheating, Supply Current Limit, Closed Loop Control
+
 .. _manual_safety:
 
 *****************

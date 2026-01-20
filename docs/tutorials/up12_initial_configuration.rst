@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to configure the Vertiq 23-06 motor for the UPF-23-12 underactuated propeller. This guide covers flashing firmware, setting baud rates, establishing forward direction, and sampling the zero angle using IQ Control Center. 
+    :keywords: UPF-23-12, Vertiq 23-06, underactuated propeller, pulsing firmware, motor configuration, baud rate, zero angle, IQ Control Center, firmware flashing, torque angle correction
+
 .. |propeller_name| replace:: UPF-23-12
 .. |motor_name| replace:: Vertiq 23-06
 

@@ -1,3 +1,7 @@
+.. meta:: 
+        :description: Discover the capabilities of Vertiq's Speed and Servo firmware. Explore a comprehensive list of supported features, available IQUART clients, and step-by-step tutorials for optimizing your motor control. 
+        :keywords: Speed Module, Servo Module, IQUART clients, firmware features, DroneCAN support, angle control mechanisms, velocity control, telemetry, advanced arming, motor tutorials, flight controller interface
+
 Speed Module
 ****************************
 Supported Features

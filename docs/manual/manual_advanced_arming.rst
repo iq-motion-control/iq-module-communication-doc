@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta::
+   :description: Learn how to configure safe and reliable motor arming behaviors using Advanced Arming features. This guide covers setting throttle regions, integrating with PX4 and ArduCopter, and managing disarm states like coast and brake over DroneCAN and PWM.
+   :keywords: Advanced Arming, arming state, disarming behavior, throttle regions, DroneCAN arming, PWM arming, PX4 integration, ArduCopter setup, DSHOT disarm, coast, brake, stow, safety features, arming song, consecutive throttles, redundant throttle, manual arming, IQUART control, motor configuration
+
 .. _manual_advanced_arming:
 
 ***********************************************

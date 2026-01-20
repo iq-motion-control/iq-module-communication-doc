@@ -1,3 +1,7 @@
+.. meta:: 
+        :description: Explore the capabilities of Vertiq's Pulsing Module firmware. This guide lists supported features such as underactuated torque correction and IFCI, detailed IQUART clients like the Pulsing Rectangular Input Parser, and essential tutorials for UP12 configuration. 
+        :keywords: Pulsing Module, Underactuated Torque, UP12, IQUART Clients, IFCI, Velocity Control, Pulsing Rectangular Input Parser, Flight Controller Interface, Arming Handler, Propeller Motor Controller, Firmware Features
+
 Pulsing Module
 ****************************
 Supported Features

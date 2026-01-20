@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to properly install the UPF-23-12 underactuated propeller onto a Vertiq 23-06 motor. This guide covers adapter mounting, re-attaching the propeller hub, and adjusting the main shoulder bolt for optimal performance. 
+    :keywords: UPF-23-12, 23-06, underactuated propeller, installation guide, propeller mounting, adapter setup, hub adjustment, M2x6 screws, propeller hub, motor assembly
+
 .. |propeller_name| replace:: UPF-23-12
 .. |motor_name| replace:: Vertiq 23-06
 
@@ -42,4 +46,3 @@ Re-attach the propeller hub to the adapter. When tightening the main shoulder bo
     :alt: |propeller_name| on |motor_name|
 
     |propeller_name| on |motor_name|
-

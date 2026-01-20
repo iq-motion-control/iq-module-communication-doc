@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Configure the Zero Spin Throttle feature to set custom dead zones and scale drive output. Learn how Zero Spin Throttle Percentage and Tolerance affect applied spin without impacting arming logic. 
+    :keywords: Zero Spin Throttle, Applied Spin Percentage, Throttle Scaling, Dead Zone, Throttle Tolerance, Throttle Region, IQ Control Center, Throttle Response, Neutral Range, Motor Control
+
 .. _manual_zero_spin:
 
 ***********************************************

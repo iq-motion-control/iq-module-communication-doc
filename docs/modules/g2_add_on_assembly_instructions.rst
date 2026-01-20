@@ -1,3 +1,7 @@
+.. meta:: 
+    :description: Step-by-step assembly instructions for Vertiq Gen 2 module add-ons. Learn how to assemble Performance and Pro Kits, including rotor covers, coil covers, stator seals, and LED attachments. 
+    :keywords: G2 Add-On, Assembly Instructions, Performance Kit, Pro Kit, Rotor Cover, Coil Cover, Stator Seal, IP Rating, Motor Accessories, RCM, CCM, Loctite 243, LED Board, Drone Motor Assembly, Hardware Setup
+
 .. _g2_add_on_assembly_instructions:
 
 ===============================

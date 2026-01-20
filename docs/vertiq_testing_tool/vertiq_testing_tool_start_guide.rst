@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Get started with the Vertiq Testing Tool, a comprehensive companion application to IQ Control Center for advanced motor control and analysis. Learn to configure ESC, Voltage, Velocity, and PWM inputs, visualize real-time data with live plotting, export performance metrics, and utilize API widgets for custom commands on Windows and Linux. 
+    :keywords: Vertiq Testing Tool, VTT, IQ Control Center, ESC control, motor testing, live plotting, IQUART, voltage input, velocity input, PWM input, data export, real-time metrics, API widget, module configuration, ramp to target, telemetry analysis, automated command
+
 .. _vertiq_testing_tool_guide:
 
 ########################################

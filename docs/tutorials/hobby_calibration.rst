@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to calibrate Vertiq modules for analog timer-based protocols like Standard PWM and DShot. This guide covers the calibration procedure, verification in IQ Control Center, and steps for ArduPilot and PX4 flight controllers. 
+    :keywords: calibration, Standard PWM, DShot, analog protocols, throttle endpoints, IQ Control Center, ArduPilot, Mission Planner, PX4, QGroundControl, ESC calibration, flight controller setup, motor test, actuator test
+
 .. _hobby_calibration_tutorial:
 
 *********************************************************

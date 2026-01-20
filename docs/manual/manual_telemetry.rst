@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Guide to configuring and interpreting ESC telemetry for Vertiq modules. Covers integration with PX4 and Ardupilot via DSHOT, PWM, and DroneCAN, including wiring, message structure, and RPM/ERPM settings. 
+    :keywords: ESC Telemetry, Flight Controller, PX4, Ardupilot, DSHOT, PWM, DroneCAN, RPM, ERPM, CRC Calculation, Wiring Diagram, Voltage Monitoring, Current Monitoring, KISS Protocol, BLHeli, Telemetry Frequency
+
 .. _manual_telemetry:
 
 ***********************************************

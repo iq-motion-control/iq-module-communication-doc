@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Comprehensive guide to utilizing Stock LED support on Vertiq Gen 2 modules. Learn about hardware connections, pinouts (LD3.0.0 vs LD3.1.0), RGB and white LED intensity control, and how to program custom strobing patterns using bitmasks and the Python API. 
+    :keywords: LED Control, RGB LED, White LED, Strobing Pattern, Gen 2 Modules, GPIO Configuration, Lighting Effects, IQ Control Center, Python API, Bitmask, Hardware Integration, LD3.0.0, LD3.1.0, Signal Indication
+
 .. _manual_led_support:
 
 ***********************************************

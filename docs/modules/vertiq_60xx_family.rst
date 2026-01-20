@@ -1,3 +1,7 @@
+.. meta:: 
+        :description: Complete hardware setup guide for the Vertiq 60-XX Gen 2 family, specifically the 60-08 module. Learn about pinouts, soldering for 12S power, IQUART and DroneCAN wiring, and mechanical installation. 
+        :keywords: Vertiq 60-XX, 60-08 G2, Generation 2, hardware setup, soldering guide, 12S motor, high voltage drone motor, DroneCAN wiring, IQUART configuration, module pinout, heavy lift propulsion, ESC integration
+
 .. _vertiq_60xx_family:
 
 ********************************

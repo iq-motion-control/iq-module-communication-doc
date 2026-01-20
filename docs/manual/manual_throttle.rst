@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Comprehensive guide to Vertiq throttle command interpretation. Covers throttle sources (IQUART, DroneCAN, PWM/DSHOT), operating modes (Voltage, Velocity, PWM), and configuring input mappings for 2D and 3D directional control. 
+    :keywords: Throttle Configuration, Throttle Modes, IQUART, DroneCAN, PWM, DSHOT, Velocity Control, Voltage Control, Throttle Mapping, 2D Flight, 3D Flight, Reversible Motor, Motor Direction, Max Velocity, Input Parsing
+
 .. _manual_throttle:
 
 ***********************************************

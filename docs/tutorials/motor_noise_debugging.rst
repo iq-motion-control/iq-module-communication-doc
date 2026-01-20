@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: A comprehensive guide on identifying and mitigating motor noise and electromagnetic interference (EMI) in UAV communication lines. Learn about frame grounding techniques, ground loops, and specific grounding procedures for Vertiq modules to prevent communication errors. 
+    :keywords: motor noise, electromagnetic interference, EMI mitigation, communication errors, frame grounding, drone grounding, internal ESC, stray capacitance, CAN bus noise, ground loops, parasitic capacitance, shielding, power supply grounding, Vertiq modules, UAV wiring
+
 .. _motor_noise_debugging:
 
 ***********************************************************************

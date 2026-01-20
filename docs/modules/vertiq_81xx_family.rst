@@ -1,3 +1,6 @@
+.. meta:: 
+        :description: Complete hardware setup guide for the Vertiq 81-XX family, covering 81-08 and 81-17 modules (Gen 1 and Gen 2). Learn about pinouts, power soldering, IQUART and DroneCAN wiring, propeller mounting, and electrical specifications. 
+        :keywords: Vertiq 81-XX, 81-08, 81-17, Generation 1, Generation 2, G1, G2, Hardware Setup, DroneCAN Wiring, IQUART, XT-60, 12S Motor, Heavy Lift Drone, Brushless Module, Propeller Mounting, JST-GH, 85Kv, 140Kv, 150Kv, 240Kv
 
 .. _vertiq_81xx_family:
 

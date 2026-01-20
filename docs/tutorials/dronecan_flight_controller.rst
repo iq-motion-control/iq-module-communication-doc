@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn to integrate Vertiq modules with PX4 and ArduPilot flight controllers via the DroneCAN (UAVCAN) protocol. This guide covers bitrate, node ID, and ESC index configuration, along with arming procedures and hardware setup for optimal drone performance. 
+    :keywords: DroneCAN, UAVCAN, PX4, ArduPilot, ArduCopter, QGroundControl, Mission Planner, flight controller, ESC setup, motor integration, CAN bus, node ID, ESC index, arming status, bitrate, dynamic node allocation, Pixhawk, MAVLink console
+
 .. _dronecan_fc_tutorial:
 
 ##############################################

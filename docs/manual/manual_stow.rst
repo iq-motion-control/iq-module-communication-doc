@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Configure your module to return to a specific angle upon disarming or command with the Stow Position feature. Learn to set zero angles, tune stow movement parameters, and select holding behaviors like Low Power Hold or Brake When Stowed for aerodynamic profiling and vehicle storage. 
+    :keywords: Stow Position, Zero Angle, Low Power Hold, DroneCAN, IQUART, Disarm Behavior, Timeout Behavior, Brake When Stowed, Stow Acceleration, Propeller Positioning, Aerodynamics, Motor Storage, PID Tuning, Stow Target Angle, Stow Status
+
 .. _manual_stow_position:
 
 ***********************************************

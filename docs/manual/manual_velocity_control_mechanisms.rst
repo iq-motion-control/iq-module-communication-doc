@@ -1,6 +1,9 @@
-
 .. include:: ../text_colors.rst
 .. toctree::
+
+.. meta:: 
+    :description: Comprehensive guide to velocity and voltage control mechanisms, covering Propeller Motor Controller and Multi Turn Angle Controller. Learn about closed-loop PID tuning, feed-forward parameters, and control via PWM, voltage, or velocity commands. 
+    :keywords: Velocity Control, Voltage Control, Propeller Motor Controller, Multi Turn Angle Controller, PID Tuning, Feed Forward, PWM Command, Closed Loop Control, Open Loop Control, IQUART, DroneCAN, Linear Velocity, speed module, servo module, python api
 
 .. _manual_velocity_control_mechanisms:
 

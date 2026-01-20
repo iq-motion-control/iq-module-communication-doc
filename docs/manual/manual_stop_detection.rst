@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how Vertiq modules determine a stopped state using configurable speed and duration thresholds. Understand how to adjust Stopping Speed and Stopping Time parameters in the IQ Control Center to optimize Disarming and Timeout behaviors. 
+    :keywords: Stop Detection, Stopping Speed, Stopping Time, Disarming Behavior, Timeout Behavior, IQ Control Center, Motor Status, Zero Velocity, Advanced Configuration, firmware settings, motion thresholds
+
 .. _manual_stop_detection:
 
 **********************

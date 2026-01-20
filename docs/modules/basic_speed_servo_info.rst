@@ -1,3 +1,7 @@
+.. meta:: 
+        :description: Explore the feature sets for Speed and Servo firmware on this Vertiq module. This page details supported control mechanisms, IQUART clients, and available tutorials for both firmware styles, including velocity and angle control. 
+        :keywords: Speed Module, Servo Module, Supported Features, IQUART Clients, Velocity Control, Angle Control, IFCI, Telemetry, Timer Based Protocol, Firmware Comparison, Anticogging, Advanced Arming, 81-08 Gen 1
+
 Speed Module
 ****************************
 Supported Features

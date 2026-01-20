@@ -1,3 +1,7 @@
+.. meta:: 
+    :description: Implement safety failovers using Redundant Throttle Support. This guide covers configuring signal priorities for DroneCAN, IQUART, and DSHOT, setting switchover timeouts, and managing complex arming interactions to ensure continuous motor control. 
+    :keywords: Redundant Throttle, Throttle Source Manager, Failover Protection, DroneCAN, IQUART, DSHOT, PWM, Signal Priority, Throttle Switchover, Arming Logic, Flight Controller Setup, Safety Feature, Multiprotocol Control
+
 .. _redundant_throttle_manual:
 
 ##############################

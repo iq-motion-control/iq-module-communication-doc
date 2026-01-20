@@ -2,6 +2,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Explore Vertiq's angle-based control mechanisms, including closed-loop position PID, trajectory planning, and linear displacement. Learn to configure PWM inputs, tune control parameters, and manage angular speed and zero angle settings. 
+    :keywords: Angle Based Control, Position Control, Control Trajectory, Minimum Jerk, PID Tuning, Linear Displacement, PWM, DShot, OneShot, Angular Speed Max, Zero Angle, Meter Per Radian, Trajectory Queue, Motion Planning, servo control
+
 .. _manual_angle_control_mechanisms:
 
 ********************************

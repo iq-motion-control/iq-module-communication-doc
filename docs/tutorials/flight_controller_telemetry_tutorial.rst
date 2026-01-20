@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to configure ESC telemetry for Vertiq modules with ArduPilot and PX4 flight controllers. This guide covers hardware connections, DSHOT and DroneCAN setup, and solving ERPM vs. RPM reporting issues using Mission Planner and QGroundControl. 
+    :keywords: ESC telemetry, flight controller integration, ArduPilot configuration, PX4 setup, DSHOT protocol, DroneCAN, UAVCAN, Mission Planner, QGroundControl, ERPM conversion, RPM reporting, Pixhawk 6C, motor status, serial port configuration, Vertiq 81-08 G2
+
 .. _fc_telemetry_tutorial:
 
 ****************************************************

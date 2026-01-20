@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+        :description: Learn how to identify and resolve motor jitter caused by flight controller vibrations using PX4 and ArduPilot log analysis, PID tuning, and vibration isolation techniques. 
+        :keywords: flight controller vibration, motor jitter, PX4, ArduPilot, log analysis, PID gains, vibration isolation, actuator oscillation, sensor noise, Mission Planner, QGroundControl, troubleshooting
+
 .. _vibration_and_jittering:
 
 ***********************************************************************

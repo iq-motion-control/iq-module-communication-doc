@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Configure safety timeout settings for your module. Learn how to set the timeout period, define behaviors like coasting, braking, or stowing upon signal loss, and manage disarm states and audio alerts. 
+    :keywords: Timeout, Safety Feature, Communication Loss, Timeout Period, Timeout Behavior, Coast, Brake, Stow, Disarm, Timeout Song, DroneCAN, IQUART, IQ Control Center, Failover, Signal Loss Protection, 0V to Brake, Timeout Meaning
+
 .. _manual_timeout:
 
 ***********************************************

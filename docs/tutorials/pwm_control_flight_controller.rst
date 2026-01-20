@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+  :description: Step-by-step guide for integrating Vertiq modules with ArduCopter and PX4 flight controllers via Standard PWM and DSHOT protocols. Covers hardware wiring, IQ Control Center configuration, and parameter setup in Mission Planner and QGroundControl. 
+  :keywords: Standard PWM, DSHOT, DSHOT600, ArduPilot, ArduCopter, PX4, QGroundControl, Mission Planner, flight controller setup, ESC integration, Pixhawk 6C, motor configuration, actuator testing, IQ Control Center, PWM parameters
+
 .. _hobby_fc_tutorial:
 
 ***********************************************

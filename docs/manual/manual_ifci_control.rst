@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to use the IQUART Flight Controller Interface (IFCI) for high-speed, multi-module control. This guide covers IFCI packet structure, Control Value Index (CVI) configuration, mapping throttle and pulsing commands, and accessing telemetry data via a bussed serial connection. 
+    :keywords: IQUART Flight Controller Interface, IFCI, Control Value Index, CVI, packed control message, throttle mapping, pulsing commands, telemetry struct, serial bus connection, multi-motor control, UAV communication, IFCITelemetryData, flight controller setup, X and Y commands
+
 .. _controlling_ifci:
 
 **********************************

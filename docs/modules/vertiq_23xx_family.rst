@@ -1,3 +1,6 @@
+.. meta:: 
+    :description: Hardware setup and specifications for the Vertiq 23-XX family (23-06, 23-14). Learn about wiring power and communication, soldering connections, attaching propellers, and accessing datasheets. 
+    :keywords: 23-XX Family, 23-06, 23-14, hardware setup, module wiring, power connection, IQUART, propeller adapter, 2200Kv, 920Kv, 220Kv, soldering guide, datasheet, brushless motor module, strain relief
 
 .. _vertiq_23xx_family:
 

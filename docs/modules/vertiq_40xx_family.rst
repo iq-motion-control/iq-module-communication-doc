@@ -1,3 +1,7 @@
+.. meta:: 
+        :description: Complete hardware setup guide for the Vertiq 40-XX family (40-06, 40-14). Learn about box contents, power and communication wiring for IQUART and DroneCAN, propeller installation, and electrical specifications. 
+        :keywords: Vertiq 40-XX, 40-06, 40-14, Hardware Setup, Module Wiring, Power Connection, IQUART Configuration, DroneCAN Setup, Propeller Adapter, Pinout, Datasheet, Generation 2, Electrical Specifications, Motor Installation
+
 .. _vertiq_40xx_family:
 
 ********************************

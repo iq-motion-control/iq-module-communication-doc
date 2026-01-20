@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Check feature compatibility for Vertiq modules and firmware versions. Access the supported features table to verify capabilities like LED control, communication protocols, and specific firmware functionalities for your hardware. 
+    :keywords: Supported Features, Firmware Compatibility, Module Capabilities, Vertiq Modules, Feature Table, Firmware Version, LED Support, Hardware Compatibility, Vertiq 81-08 Gen 1, Feature Matrix
+
 .. _supported_features:
 
 Supported Features

@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Guide on setting up PX4 firmware for Vertiq's IFCI (IQUART Flight Controller Interface). Covers toolchain, building with vertiq_io, flashing, and configuring parameters in QGroundControl. 
+    :keywords: IFCI, IQUART, PX4, firmware setup, QGroundControl, vertiq_io, boardconfig, UART, serial configuration, actuator setup, CVI, module ID, custom firmware, flashing, telemetry
+
 .. _ifci_px4_flight_controller:
 
 ****************************************************

@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta::
+   :description: Learn how to configure and test Vertiq Servo Firmware using IQ Control Center, covering angle controls, maximum angular velocity, trajectory queuing, and communication protocols.
+   :keywords: Servo Firmware, IQ Control Center, angle control, maximum angular velocity, trajectory control, trajectory queue, communication protocol, servo configuration, minimum jerk position planning
+
 .. _servo_module_start_guide:
 
 ####################################################################

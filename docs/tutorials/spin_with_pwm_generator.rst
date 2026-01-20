@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: A step-by-step tutorial on controlling and calibrating Vertiq modules using a generic PWM generator, specifically the Pololu USB Servo Controller. Includes hardware wiring diagrams, module configuration in IQ Control Center, and spinning/calibration procedures. 
+    :keywords: PWM generator, Pololu Maestro, servo controller, module control, calibration, Vertiq module, standard PWM, throttle control, arming, wiring, IQ Control Center
+
 .. _spin_with_pwm_generator_tutorial:
 
 ###############################################

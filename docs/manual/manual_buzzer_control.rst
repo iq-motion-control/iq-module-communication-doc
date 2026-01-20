@@ -2,6 +2,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Understand the audible status indicators and buzzer features of your module. Learn to identify startup, arming, and error songs, adjust volume, and program custom tones using the Python API. 
+    :keywords: Buzzer Controller, Status Songs, Audio Feedback, Startup Tone, Arming Sound, Error Alerts, Python API, Custom Melodies, Motor Vibrations, IQUART, Acoustic Signals, Tone Generation
+
 .. _manual_buzzer_control:
 
 **************************************

@@ -1,6 +1,10 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. meta:: 
+    :description: Learn how to calculate and apply the torque angle correction factor for underactuated propellers like the UPF-23-12. This guide explains the relationship between propeller height, center of mass (CoM), and resultant torque vectors to ensure accurate flight control. 
+    :keywords: Underactuated Propeller, Torque Angle Correction, UPF-23-12, Center of Mass, CoM, Force Vectoring, Torque Vectoring, Propeller Height, Voltage Superposition, Flight Dynamics, Calibration
+
 .. |propeller_name| replace:: UPF-23-12
 .. |motor_name| replace:: Vertiq 23-06
 
@@ -79,10 +83,3 @@ An example calculation where the blades are 50mm above the CoM is done below. Th
         1.75-0.2126 = 1.5374
 
     **Final 'propeller_torque_offset_angle' = 1.5374**
-
-
-
-
-
-
-
