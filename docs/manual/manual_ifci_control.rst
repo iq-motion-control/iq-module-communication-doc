@@ -32,7 +32,7 @@ Please note that an IFCI packet does not necessarily need to populate all 16 con
 Highlighted in orange are the bytes that are necessary in order to send valid IQUART messages, and are not specific to IFCI control.
 
 Highlighted in green are Control Values. A control value is an unsigned 16 bit value that defines a throttle, an X, a Y command, or a unitless servo command. X and Y commands are only applicable when 
-using Vertiq's :ref:`pulsing firmware <pulsing_module_start_guide>`. Unitless servo commands ar available when using servo firmware versioned 0.1.0 or later. More information 
+using Vertiq's :ref:`pulsing firmware <pulsing_module_start_guide>`. Unitless servo commands are available when using servo firmware versioned 0.1.0 or later. More information 
 about controlling with unitless servo commands can be found in our :ref:`position documentation <servo_hobby_control>`.
 
 Any type of command can occupy any control value, and the location it occupies in an IFCI packet is called its Control 
