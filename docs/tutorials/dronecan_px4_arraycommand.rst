@@ -1,11 +1,11 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
-####################################################################
-Controlling Your Module Using the DroneCAN ArrayCommand and PX4
-####################################################################
+#######################################################################
+Controlling Your Servo Module Using the DroneCAN ArrayCommand and PX4
+#######################################################################
 
-This tutorial walks you through the basic configuration of both a Vertiq module as well as a PX4 flight controller in order to control your module's angular 
+This tutorial walks you through the basic configuration of both a Vertiq module with servo firmware (v0.1.0 or later) as well as a PX4 flight controller in order to control your module's angular 
 displacement via DroneCAN ArrayCommands.
 
 ***********************
@@ -15,7 +15,7 @@ Module Configuration
 In this example, we are going to configure our module to act as a basic servo with the ability to move between [-pi, pi] radians as controlled by the flight controller. 
 This example uses Vertiq's servo firmware, and is replicable on all servo firmware versioned 0.1.0 or later.
 
-We are going to perform all configurations via the :ref:`DroneCAN GUI tool <dronecan_gui_basics>`. Please note that it is also possible to configure these options using the :ref:`IQ Control Center <control_center_start_guide>`. 
+We are going to perform all configurations via the `DroneCAN GUI tool <https://dronecan.github.io/GUI_Tool/Overview/>`_. Please note that it is also possible to configure these options using the :ref:`IQ Control Center <control_center_start_guide>`. 
 
 First, we're going to set our module's ``zero angle``. This is, basically, the angle that your module will treat as 0 rad of displacement. You can read more about zero 
 angle in our :ref:`angle control documentation <Zero Angle>`. To do so, manually rotate your module into the position you want as your 0 location. Then, in 
