@@ -7,9 +7,7 @@
 IQ Control Center Manual
 #################################
 
-.. meta::
-   :description: A comprehensive guide to the IQ Control Center software. Learn how to install, configure, test, and update firmware for your Vertiq modules on Windows, Mac, and Linux.
-   :keywords: IQ Control Center, Vertiq, install guide, setup, configure module, update firmware, flash firmware, test module, GUI, connect, hardware configuration, wiring, serial port, USB-to-UART, FTDI, baud rate, Module ID, Windows, Linux, Mac, factory reset, recovery mode
+
 
 ************************************
 About IQ Control Center
@@ -173,10 +171,10 @@ Connection with a Computer
 
 In order to communicate from your computer with a Vertiq module through the Control Center, you will need some form of USB-to-UART converter.
 
-We recommend using an CP2102 FTDI such as the one found `here <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`_.
+We recommend using an CP2102 FTDI such as the one found `here <https://www.amazon.com/Ximimark-Module-Serial-Converter-CP2102/dp/B07T1XR9FT?>`__.
 
 .. note::
-    If you are using the UART-to-Serial adapter we have recommended and are not seeing it as an available port, you may need to install the appropriate drivers from `here <https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=overview>`_.
+    If you are using the UART-to-Serial adapter we have recommended and are not seeing it as an available port, you may need to install the appropriate drivers from `here <https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=overview>`__.
 
 
 Once obtained, plug your USB-to-UART converter into your computer and install any necessary drivers (refer to the manufacturer's documentation for 
@@ -213,6 +211,7 @@ A module wired for both power and serial communication attached to the aforement
     :scale: 12%
 
 .. _multiple_module_wiring:
+
 Multiple Module Wiring
 ---------------------------
 If you plan on connecting several modules to the Control Center at once, you must connect all of the modules' serial ports together. 

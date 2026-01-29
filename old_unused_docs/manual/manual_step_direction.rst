@@ -25,7 +25,7 @@ Step/Direction Modules
 
 Description
 ============
-Step/Direction control is a two wire interface with two inputs: step and direction. On each low to high transition on the step line up to logic high, the module will move a set radial distance in the direction specified by the direction line. Setting the direction line high causes counter-clockwise movement, and setting the direction line low causes clockwise movement. More information on Step/Direction control can be found `here <https://www.probotix.com/downloads/step_and_direction_drives.pdf>`_. 
+Step/Direction control is a two wire interface with two inputs: step and direction. On each low to high transition on the step line up to logic high, the module will move a set radial distance in the direction specified by the direction line. Setting the direction line high causes counter-clockwise movement, and setting the direction line low causes clockwise movement. More information on Step/Direction control can be found `here <https://www.probotix.com/downloads/step_and_direction_drives.pdf>`__. 
 
 The distance traveled on each received step pulse is defined by the *Step Angle Size* parameter. This value is user configurable. 
 

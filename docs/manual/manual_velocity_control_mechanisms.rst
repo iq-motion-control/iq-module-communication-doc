@@ -11,7 +11,7 @@ Velocity and Voltage Based Control Mechanisms
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 ===================================
 About Velocity and Voltage Control
@@ -21,11 +21,11 @@ regardless of firmware style (speed or servo), can be controlled via velocity an
 underlying implementation of control varies depending on the controllers available on your firmware. Both our 
 velocity and position controllers support three methods of setting velocity targets: Control Velocity, Control Voltage, 
 and Control PWM. All modules also support control via standard :ref:`Analog Timer Based Protocols <timer_based_protocol>`, with options to map inputs to Control Velocity, Control Voltage, and Control PWM. The inputs are mapped by either the 
-:ref:`ESC Propeller Input Parser <esc_propeller_input_parser>` or :ref:`Servo Input Parser <servo_input_parser>`. Vertiq's speed modules 
+:ref:`ESC Propeller Input Parser <esc_propeller_input_parser_ref>` or :ref:`Servo Input Parser <servo_input_parser_ref>`. Vertiq's speed modules 
 larger than our 23XX family can also be driven with :ref:`DroneCAN <dronecan_protocol>`.
 
 Throughout this document, we will build up to, and explain our two full controllers in regards to velocity and voltage control.
-These controllers are the :ref:`Propeller Motor Controller <propeller_motor_control>` (left) and :ref:`Multi Turn Angle Controller <multi_turn_control_label>` (right).
+These controllers are the :ref:`Propeller Motor Controller <propeller_motor_controller>` (left) and :ref:`Multi Turn Angle Controller <multi_turn_angle_control>` (right).
 
 .. list-table:: Full Propeller Motor Controller Left and Full Multi Turn Angle Controller Right
     :class: borderless
@@ -38,13 +38,13 @@ Velocity and Voltage Control Mechanisms
 =========================================
 Control Velocity
 +++++++++++++++++++++
-Velocity Control Through :ref:`Propeller Motor Controller <propeller_motor_control>` v. :ref:`Multi Turn Angle Controller <multi_turn_control_label>`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Velocity Control Through :ref:`Propeller Motor Controller <propeller_motor_controller>` v. :ref:`Multi Turn Angle Controller <multi_turn_angle_control>`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 All *Control Velocity* commands use closed loop PID control in order to control either a target velocity or position. 
 The controllers available on each module are firmware dependent. In order to find what controllers are available with your 
 module and firmware, please see your module's page available on the left-hand side of this page.
 
-Our :ref:`Propeller Motor Controller <propeller_motor_control>`, available only while using speed firmware, uses a velocity PID controller in which the input target is 
+Our :ref:`Propeller Motor Controller <propeller_motor_controller>`, available only while using speed firmware, uses a velocity PID controller in which the input target is 
 a velocity, and error is calculated on the difference between the module's actual velocity and the target. 
 This is the default controller used when the module receives commands through :ref:`Analog Timer Based Protocols <timer_based_protocol>` or 
 :ref:`DroneCAN <dronecan_protocol>`. An important note is that while timer based and DroneCAN commands are passed into the Propeller Motor Controller, whether 
@@ -58,7 +58,7 @@ timer based protocols and DroneCAN, and the *mode* parameter.
 
     Propeller Motor Controller PID Loop
 
-Our :ref:`Multi Turn Angle Controller <multi_turn_control_label>` (available on all servo firmware and on select speed firmware) is generally meant for angle based control, 
+Our :ref:`Multi Turn Angle Controller <multi_turn_angle_control>` (available on all servo firmware and on select speed firmware) is generally meant for angle based control, 
 and is detailed more in our :ref:`Angle Control Mechanisms documentation <manual_angle_control_mechanisms>`. It can, however, also control the module's velocity, 
 with an important note that it always controls based on a target position. This means that when sent a velocity command, the *Multi Turn Angle Controller* 
 advances the displacement angle target at the commanded velocity.
@@ -81,7 +81,7 @@ to acceleration.
 Control with Propeller Motor Control
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 When passed into the *Propeller Motor Controller*, *Control Velocity* is a direct target input into the velocity PID control loop. 
-The parameter *ctrl_velocity* is available through the :ref:`Propeller Motor Control Client <prop_motor_control_table>`, and is expressed as a value in 
+The parameter *ctrl_velocity* is available through the :ref:`Propeller Motor Control Client <propeller_motor_controller>`, and is expressed as a value in 
 radians per second. Once set, the module attempts to reach the target velocity. The exact time it takes to reach the setpoint depends on the 
 :ref:`module's tuning <tuning_parameters>`.
 
@@ -230,7 +230,7 @@ is multiplied by your module's Kv producing a velocity target. For example, with
 2V would result (in the ideal case) in a rotational speed of :math:`300 \text{rpm}`, or :math:`31.41\frac{rad}{s}`. In reality, the output velocity will be close to, 
 but not exactly, :math:`31.41\frac{rad}{s}`. In general, the output velocity will be lower than expected due to drag.
 
-You can find *ctrl_volts* in either the :ref:`Propeller Motor Controller <prop_motor_control_table>` or :ref:`Multi Turn Angle Controller <multi_turn_table>` 
+You can find *ctrl_volts* in either the :ref:`Propeller Motor Controller <propeller_motor_controller>` or :ref:`Multi Turn Angle Controller <multi_turn_angle_control>` 
 depending on the features supported by your module.
 
 Choosing to control between either a *Control Velocity* or a *Control Voltage* is the same as choosing a multiplexed output of the following:
@@ -296,7 +296,7 @@ Control PWM
 ++++++++++++++++
 Spinning your module with a Control PWM is very similar in behavior to a :ref:`Control Voltage <control_voltage>`. 
 A Control PWM command must be a value [-1, 1], and can be found as *ctrl_pwm* in either the 
-:ref:`Propeller Motor Controller <prop_motor_control_table>` or :ref:`Multi Turn Angle Controller <multi_turn_table>` depending on your firmware's style. 
+:ref:`Propeller Motor Controller <propeller_motor_controller>` or :ref:`Multi Turn Angle Controller <multi_turn_angle_control>` depending on your firmware's style. 
 The commanded PWM value is multiplied by the supply voltage in order to create the voltage sent to the module's drive. 
 
 For example, if your module is powered by a 15V supply, and you set a Control PWM of 0.1, your module will apply a Control Voltage of 1.5V. 
@@ -380,7 +380,7 @@ Propeller Motor Control PID Tuning
 As mentioned :ref:`above <control_with_prop_motor_control>`, tuning the Propeller Motor Controller and Multi Turn Angle Controller differs due 
 to each controller's nature. For more information about tuning the Multi Turn Angle Controller please see :ref:`Position Control Tuning <position_control_tuning>`.
 
-Our velocity PID controller found in :ref:`Propeller Motor Controller <propeller_motor_control>` can be tuned as any standard PID controller. 
+Our velocity PID controller found in :ref:`Propeller Motor Controller <propeller_motor_controller>` can be tuned as any standard PID controller. 
 With this controller, the proportional term acts on a velocity, our integral term on position, and our derivative term on acceleration. 
 
 Velocity Kp

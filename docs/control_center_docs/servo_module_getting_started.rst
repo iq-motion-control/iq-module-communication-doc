@@ -9,7 +9,7 @@ Getting Started with Vertiq's Servo Firmware with IQ Control Center
 
 .. note::
     This guide focuses on setting parameters on your Vertiq modules. Please refer to your hardware's documentation (flight controller, radio, etc.) for more details on its specific configuration. 
-    For example, refer to the `PX4 documentation <https://docs.px4.io/main/en/flight_controller/>`_ for integrating with a PX4 flight controller. 
+    For example, refer to the `PX4 documentation <https://docs.px4.io/main/en/flight_controller/>`__ for integrating with a PX4 flight controller. 
 
 Before completing the following getting started guide, please ensure that you have read and completed our :ref:`IQ Control Center 
 guide <control_center_start_guide>`. It walks you through Control Center installation, module configuration, and basic testing options available 

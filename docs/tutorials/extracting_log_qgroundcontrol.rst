@@ -16,7 +16,7 @@ Exporting Logs
 ==============
 
 Motor telemetry data can be found in the flight controller logs if you are using PX4 firmware.  
-Also, your PX4 firmware must have the EscStatus topic enabled for logging. Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`_ on how to configure which topics are logged.
+Also, your PX4 firmware must have the EscStatus topic enabled for logging. Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`__ on how to configure which topics are logged.
 This tutorial covers how to extract and view motor telemetry logs from your flight controller's SD card using QGroundControl.
 
 Click the QGroundControl icon on the upper left-hand corner of the application.
@@ -68,7 +68,7 @@ Click the button and select the .ulg flight controller log file.
     PlotJuggler Load Data Button
 
 After your log file is loaded, the panel on the left-hand side will be populated with the topics that have been configured for logging.
-Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`_ on how to configure which topics are logged.
+Please refer to the `PX4 Logging documentation <https://docs.px4.io/main/en/dev_log/logging.html>`__ on how to configure which topics are logged.
 
 .. figure:: ../_static/tutorial_images/ifci_log/plotjuggler_loaded_data.png
     :align: center

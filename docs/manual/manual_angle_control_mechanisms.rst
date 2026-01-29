@@ -18,9 +18,7 @@ Position modules can also be controlled via duration based protocols such as 1-2
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
-
-.. _advanced_arming_armed_states:
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 ================================
 Angle Control Mechanisms
@@ -29,9 +27,9 @@ Angle Control Mechanisms
 .. _control_displacements:
 
 Control Displacements
-++++++++++++++++++++++++
+==============================
 The module's *Control Displacement* is a direct input target **displacement** into the position PID controller.
-*Control Displacements* can be set through the :ref:`Multi Turn Angle Control Client <multi_turn_control_label>`, and can be set in either module
+*Control Displacements* can be set through the :ref:`Multi Turn Angle Control Client <multi_turn_angle_control>`, and can be set in either module
 radians (*ctrl_angle*) or output meters (*ctrl_linear_displacement*) (assuming meters_per_radian is non-zero. See :ref:`Angular v. Linear Control`). 
 
 A reminder that Control Angle defines a *displacement*, not a position, and is, in general, measured relative to the 
@@ -50,7 +48,7 @@ positive displacement is measured in the counter-clockwise direction.
     Angular Displacement with Commanded Angle :math:`\frac{\pi}{2}`
 
 Control Displacement Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`. 
 
 This example illustrates the output of basic displacement commands. First, it sets the module to 0 radians of displacement, waits, 
@@ -92,7 +90,7 @@ and then sets the displacement to :math:`\frac{\pi}{2}`, exactly as described in
 .. _control_trajectory:
 
 Control Trajectory
-++++++++++++++++++++++++
+=======================
 
 All Vertiq servo modules support trajectory control, a method of position planning to provide a predetermined path from 
 position A to B over a period of time. All paths are generated in order to create minimum jerk trajectories. Trajectories are calculated based on the quintic function 
@@ -136,11 +134,11 @@ An invalid set of trajectory commands would be:
 
 Since the duration is given before the displacement, sending this trajectory will have no effect, and your module will not rotate.
 
-Trajectory command parameters are available through the :ref:`Multi Turn Angle Control Client <multi_turn_table>`, 
+Trajectory command parameters are available through the :ref:`Multi Turn Angle Control Client <multi_turn_angle_control>`, 
 and have the names all beginning with *trajectory_*, for example *trajectory_linear_displacement*.
 
 Visualizing Control Trajectories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 To help visualize what these parameters do, please refer to the following plots. 
 All figures show module angular displacement on the top, and angular velocity on the bottom. 
 
@@ -180,14 +178,14 @@ velocity of 25 :math:`\frac{rad}{s}`. This time, we see a non-zero slope at the 
 find an acceleration of 15 :math:`\frac{rad}{s^2}`.
 
 Trajectory Queue Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unlike other control mechanisms, trajectory commands can be queued. This means that you can send multiple trajectories to the module, 
 and while trajectory_queue_mode is set to append (0), the module will complete all trajectories in the order received without delay. 
 If trajectory_queue_mode is set to overwrite (1), then a second received trajectory will happen immediately, halting the progress of the first. 
 Vertiq servo modules can store up to 32 trajectories in the queue. 
 
 Trajectory Control Demonstrations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
 
 #. Trajectory Queueing with Append Mode
@@ -275,13 +273,13 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
 .. _servo_hobby_control:
 
 Control With Duration Based Signals (PWM, DShot, OneShot, Etc.)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==========================================================================
 
 Vertiq's servo modules can handle duration based signals such as 1-2 ms PWM signals. All signals like standard PWM are converted to 
 a *raw value* from [0, 1] that is scaled linearly based on the protocol itself. For example, standard PWM signals are scaled 
 based on the function :math:`\text{Raw Value} = \frac{\text{Signal Duration} - 1000}{1000}` with *Signal Duration* being in microseconds. The *raw value* is passed 
 through *Servo Input Parser*, and based on the *mode* value inside of Servo Input Parser, the module may react with a 
-controlled PWM, Voltage, Velocity, or Position. This parameter can be chosen through the :ref:`Servo Input Parser's mode <servo_input_parser_table>`. 
+controlled PWM, Voltage, Velocity, or Position. This parameter can be chosen through the :ref:`Servo Input Parser's mode <servo_input_parser_ref>`. 
 Depending on the mode, input signals are mapped directly as a control voltage, PWM, velocity, or position. 
 This guide will focus on only the Position mode. Other modes are covered more in an upcoming manual about our input parser clients.
 
@@ -303,7 +301,7 @@ In this case, we have a symmetric range, where [1000, 1500) ms represents the an
 [0, 3.14]. This does not need to be the case, as your unit_min and unit_max determine how raw values are to be mapped.
 
 Real-Life Example
-~~~~~~~~~~~~~~~~~~~~
+--------------------------
 The following example was performed on a Vertiq 40-06 with position firmware. 
 Its unit_min is set to -3.14, its unit_max to 3.14, and its mode to Position. Using a PWM generator, we input a 1.250 ms pulse at 50 Hz
 imitating the Standard PWM input protocol. A single pulse, as well as the full signal, can be found on the scope capture below:
@@ -326,7 +324,8 @@ Position Control Configurations
 .. _Angular v. Linear Control:
 
 Angular v. Linear Control
-++++++++++++++++++++++++++++
+================================
+
 With options to control modules through both angular and linear displacement commands, Vertiq's position modules provide flexibility 
 to drive any physical system. Linear control allows you to map the module's angular rotation to an output distance. For example, in 
 driving a belt or a lead screw where control of a physical distance is desired, you will want to know the distance traveled for every unit of 
@@ -344,7 +343,7 @@ This movement could be accomplished by setting *Control Angular Displacement* to
 Radian to 0.5 and setting *Control Linear Displacement* to 0.5m.
 
 Additionally, you can configure *Meters Per Radian* to properly drive a gear box. With a 5:1 gear ratio, for example, you may change the 
-*Meters Per Radian* parameter found in :ref:`the Multi Turn Angle Control Client <multi_turn_table>` to 1/5. When you command Control Linear Displacement to 
+*Meters Per Radian* parameter found in :ref:`the Multi Turn Angle Control Client <multi_turn_angle_control>` to 1/5. When you command Control Linear Displacement to 
 :math:`\frac{\pi}{5}` rad, you will see that the module completes :math:`\pi` revolutions where the output gear moves by :math:`\frac{\pi}{5}` rad. 
 The image below illustrates how this may work. The module is represented in black, the output shaft in purple, and an idler gear in red.
 
@@ -356,7 +355,7 @@ The image below illustrates how this may work. The module is represented in blac
     Linear Displacement with a Gear Box
 
 Meters Per Radian Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
 
 #. Gearbox Configuration with Meters Per Radian
@@ -410,8 +409,8 @@ First, if you have not already, please set up your computer to use Vertiq's Pyth
 .. _Maximum Angular Speed:
 
 Maximum Angular Speed
-++++++++++++++++++++++++++++
-Vertiq servo modules define a value called *Angular Max Speed* :ref:`in the Multi Turn Angle Control Client <multi_turn_table>` which is the maximum travel speed permitted during all commanded module motion. 
+---------------------------
+Vertiq servo modules define a value called *Angular Max Speed* :ref:`in the Multi Turn Angle Control Client <multi_turn_angle_control>` which is the maximum travel speed permitted during all commanded module motion. 
 All angle commands are bound by this value, and **will not** exceed it. *Angular Max Speed* is the angular speed at which the module will 
 attempt to complete Control Angle as well as Control Linear Displacement commands. For example, if *Angular Max Speed* is set to 50 rad/s, 
 then a Control Angle of 25 rad will take about 0.5 seconds (assuming that the module starts at 0 rad of displacement). 
@@ -429,7 +428,7 @@ well secured at all times to avoid damage to yourself and your module.
   regeneration voltage protection feature.
 
 Demos
-~~~~~~~~~
+----------
 
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
 
@@ -530,7 +529,7 @@ originally commanded, and are not modified by these limits.
 .. _Zero Angle:
 
 Zero Angle
-++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^
 The module's *Zero Angle* is the physical position to be treated as 0 radians of displacement 
 (assuming no explicit sets of *Observed Angular Displacement*. See :ref:`Setting Observed Displacement and its Relationship with Zero Angle`). 
 *Zero Angle* is a value bounded by [-:math:`\pi`, :math:`\pi`], giving a range of the entire circle around the module. Displacement is the 
@@ -551,7 +550,7 @@ if you set *Zero Angle* to 0.28 rad, your *Observed Angular Displacement* will b
 .. _Setting Observed Displacement and its Relationship with Zero Angle:
 
 Setting Observed Displacement and its Relationship with Zero Angle
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In general, *Observed Angular Displacement* and *Observed Linear Displacement* are defined as the total displacement measured 
 relative to the encoder position specified by Zero Angle. This behavior can change, however, if observed displacements are set directly. 
@@ -578,7 +577,7 @@ Important to note is that once the observed displacement is set, the *Zero Angle
 This is the case until the module is rebooted.
 
 Zero Angle v. Observed Linear Displacement Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 First, if you have not already, please set up your computer to use Vertiq's Python API with the instructions found :ref:`here <getting_started_python_api>`.
 
@@ -637,7 +636,6 @@ as the module would already be displaced by 3.14.
 
 .. _position_control_tuning:
 
-================================
 Position Control Tuning
 ================================
 
@@ -647,19 +645,19 @@ direct target position commands, the commanded position is set directly as the i
 The controller's PID values are all standard control metrics, and are described below. 
 
 Position Kp
-+++++++++++++++
+--------------
 
 The angle control's proportional gain. Kp helps to reduce steady state error, helping to ensure that your module hits its target angles. 
 Setting a higher proportional gain results in smaller steady state errors and faster rise time, but can lead to oscillations and overheating.
 
 Position Ki
-+++++++++++++++
+---------------
 
 The angle control's integral gain. Ki helps to correct steady state angle errors. Setting a higher Ki means quicker suppression of steady 
 state errors, but also increased oscillations, overheating, and faster windup.
 
 Position Kd
-+++++++++++++++
+----------------
 
 The angle control's derivative gain. Kd helps to reduce overshoot oscillations. A higher Kd results in less overshoot from Kp and Ki, but 
 can also introduce higher frequency oscillations and overheating.

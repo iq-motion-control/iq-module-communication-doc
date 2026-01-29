@@ -12,7 +12,7 @@ purchasing more LED add-on boards, please contact us at info@vertiq.co. Please r
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 Hardware Configuration
 =========================
@@ -121,7 +121,7 @@ RGB LED Configuration
 ***********************
 Your module has control over the RGB LED's red, green, and blue intensities as well as its strobing output. Strobing configuration is identical for both the RGB and 
 white LEDs, and is covered in :ref:`strobing_configuration`. By default, strobing is disabled for your RGB LED. RGB LED control parameters are found in 
-the :ref:`RGB LED client reference table <rgb_led_message_table>`.
+the :ref:`RGB LED client reference table <rgb_led>`.
 
 The pertinent control parameters for RGB LED control are ``red``, ``green``, ``blue``, and ``update_color``. ``red``, ``green``, and ``blue`` can be set, gotten, and 
 saved, and can be an integer [0, 255] where 255 indicates the maximum intensity. ``update_color`` is set only, and acts as a trigger mechanism that causes your module to command the LED 
@@ -229,7 +229,7 @@ White LED Configuration
 ==========================
 Your module has control over the two series white LEDs' intensity as well as their strobing output. Strobing configuration is identical for both the RGB and white LEDs, 
 and is covered in :ref:`strobing_configuration`. By default, the white LED intensity is 0% and strobing is enabled. White LED control parameters are 
-found in the :ref:`white LED message table <white_led_message_table>`.  The LED intensity can be an integer percentage [0, 100]% where 100% indicates the maximum intensity. Please note that the 
+found in the :ref:`white LED message table <white_led>`.  The LED intensity can be an integer percentage [0, 100]% where 100% indicates the maximum intensity. Please note that the 
 two white LEDs are controlled in series, and cannot be controlled individually.
 
 .. warning::

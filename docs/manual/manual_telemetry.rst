@@ -6,7 +6,7 @@
 ***********************************************
 ESC Telemetry
 ***********************************************
-Flight controllers, including flight controllers running `PX4 <https://px4.io/>`_ or `Ardupilot <https://ardupilot.org/>`_ firmware, often support receiving ESC telemetry messages from connected ESCs. These messages provide the flight controller with details
+Flight controllers, including flight controllers running `PX4 <https://px4.io/>`__ or `Ardupilot <https://ardupilot.org/>`__ firmware, often support receiving ESC telemetry messages from connected ESCs. These messages provide the flight controller with details
 about the state of the ESC and the motor(s) it is controlling. Vertiq modules support a range of these telemetry messages across different protocols. This section provides
 details on the structure of the telemetry messages supported by Vertiq modules and how to use them.
 
@@ -21,7 +21,7 @@ details on the structure of the telemetry messages supported by Vertiq modules a
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 Supported Telemetry
 =====================
