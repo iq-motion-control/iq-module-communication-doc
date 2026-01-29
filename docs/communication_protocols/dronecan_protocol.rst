@@ -455,13 +455,13 @@ will transmit. Each ArrayCommand message can contain up to 15 individual Command
 All Command instances contain 3 important pieces of information: the target actuator ID, the type of command, and the command value. In order to control your module with 
 ArrayCommand messages, you must properly set its ``actuator_id`` parameter. You can find more information on this :ref:`below <actuator_id_dronecan_parameter>`.
 
-.. warning::
-	When using ArrayCommands to control your module, we highly recommend disabling your module's ability to arm given standard flight controller controls. This is to avoid 
-	any interference between ArrayCommands and :ref:`RawCommands <dronecan_messages_raw_command>`. When receiving both, and configured to act on both, your module will attempt to perform both actuator 
-	and ESC movements causing unexpected and potentially dangerous behaviors.
+.. .. warning::
+.. 	When using ArrayCommands to control your module, we highly recommend disabling your module's ability to arm given standard flight controller controls. This is to avoid 
+.. 	any interference between ArrayCommands and :ref:`RawCommands <dronecan_messages_raw_command>`. When receiving both, and configured to act on both, your module will attempt to perform both actuator 
+.. 	and ESC movements causing unexpected and potentially dangerous behaviors.
 
-	To do so, set both ``arm_on_throttle`` and ``arm_with_arming_status`` to 0. This prevents the module from arming and spinning on RawCommands. Again, failure to do so can 
-	result in unexpected interactions between actuator and throttle controls.
+.. 	To do so, set both ``arm_on_throttle`` and ``arm_with_arming_status`` to 0. This prevents the module from arming and spinning on RawCommands. Again, failure to do so can 
+.. 	result in unexpected interactions between actuator and throttle controls.
 
 Vertiq modules accept 2 Command types: unitless and position. Unitless commands (type 0) are those most often used by flight controllers, and transmit values between [-1, 1]. 
 Vertiq modules can be configured to treat unitless commands as PWM, voltage, velocity, angular displacement, or linear displacement commands. This configuration is available 
@@ -774,11 +774,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-1. Unconfigured
-2. 3D Counter Clockwise
-3. 3D Clockwise
-4. 2D Counter Clockwise
-5. 2D Clockwise 
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -795,9 +795,9 @@ Mode determines how the module interprets received throttle commands, and is cov
 
 Control mode is enumerated as:
 
-1. PWM
-2. Voltage
-3. Velocity
+0. PWM
+1. Voltage
+2. Velocity
  
 Max Volts
 -----------------------
@@ -920,10 +920,10 @@ Determines how the module will stop when it disarms. For more information on thi
 
 To determine the disarm behavior, set this parameter to the proper integer for the desired behavior. Disarm behavior is enumerated as:
 
-1. Coast
-2. 0V to Coast
-3. 0V to Brake
-4. Stow
+0. Coast
+1. 0V to Coast
+2. 0V to Brake
+3. Stow
 
 Disarm Song Option
 --------------------
@@ -937,9 +937,9 @@ Determines if and how many times the module will play its disarm song after comi
 
 To determine the disarm song option, set this parameter to the proper integer for the desired option. Disarm song option is enumerated as:
 
-1. Never Play
-2. Play Once
-3. Play Continuously
+0. Never Play
+1. Play Once
+2. Play Continuously
 
 Hold Stow
 --------------------
@@ -954,10 +954,10 @@ see :ref:`hold_stow_parameter`.
 
 To determine the hold stow behavior, set this parameter to the proper integer for the desired behavior. Hold stow behavior is enumerated as:
 
-1. Coast
-2. Hold Stow
-3. Brake
-4. Low Power Hold Stow
+0. Coast
+1. Hold Stow
+2. Brake
+3. Low Power Hold Stow
 
 Stow Target Angle
 --------------------
