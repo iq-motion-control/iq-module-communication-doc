@@ -6,10 +6,10 @@
 ****************************************************
 Setting up PX4 Firmware for Use with IFCI
 ****************************************************
-.. Converted from Jordan's google docs tutorial
+
 This tutorial covers how to configure and build `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ for use with Vertiq’s :ref:`IQUART protocol <uart_messaging>`, and then set up the PX4 firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
-.. note:: 
+.. note::
     
     If you intend on using DroneCAN and a :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
     :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
@@ -17,7 +17,7 @@ This tutorial covers how to configure and build `PX4 Autopilot <https://github.c
 Setting Up the PX4 Toolchain
 =============================
 
-In order to build PX4, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`_ in order to install the toolchain for your specific device.
+In order to build PX4, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`__ in order to install the toolchain for your specific device.
 
 .. once we are in px4, this whole section can be replaced with install px4 toolchain as described by them
 
@@ -92,7 +92,7 @@ When all of your desired configuration options are selected, press ``Q`` and the
 
     Save the Configuration
 
-Build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<Setting Up the PX4 Toolchain>`.
+Build the firmware with the following command, replacing ``your-flight-control-board`` with the name of your flight control board. This will be the same name as used in the :ref:`previous steps<ifci_px4_flight_controller>`.
 
 .. code-block:: bash
 

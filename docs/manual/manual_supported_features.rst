@@ -1,9 +1,10 @@
+.. include:: ../text_colors.rst
+.. toctree::
 
 .. _supported_features:
 
-*****************************************
 Supported Features
-*****************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This manual is divided into sections based on individual features. A listing of modules and their supported features is found below. 
 
@@ -16,8 +17,6 @@ This manual is divided into sections based on individual features. A listing of 
         :align: center
         :file: ../_static/manual_images/latest_versions_for_rtd_csv.csv
         :header-rows: 1
-
-.. _supported_features_table:
 
 .. csv-table::
     :class: tight-table

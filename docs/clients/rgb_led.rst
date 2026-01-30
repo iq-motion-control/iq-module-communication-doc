@@ -103,8 +103,6 @@ A minimal working example for the RGB LED Interface Client is:
     red = |variable_name|.get("rgb_led", "red") 
     print(f"Red Intensity: {red}")
 
-.. _rgb_led_message_table:
-
 Message Table
 ~~~~~~~~~~~~~
 

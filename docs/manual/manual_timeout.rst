@@ -15,7 +15,7 @@ disarm when a timeout occurs, leaving them in a safe state following a timeout.
 Module Support
 ===============
 
-To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features_table>`.
+To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
 .. _triggering_timeout:
 
@@ -27,7 +27,7 @@ coasting, or is braking, the timeout will not expire. The countdown only begins 
 After the countdown begins, any kind of message that the module receives can reset the timeout. A non-exhaustive list of messages that can reset the timeout countdown includes:
 
 * Any :ref:`IQUART <uart_messaging>` message
-* Throttle commands over :ref:`hobby protocols <hobby_protocol>`
+* Throttle commands over :ref:`hobby protocols <timer_based_protocol>`
 * Any :ref:`DroneCAN <dronecan_protocol>` message or request that the module will listen to. For a list of supported messages, please see :ref:`standard_dronecan_support`
 
 Configuring Timeout
