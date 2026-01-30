@@ -96,7 +96,7 @@ set SERIAL2_BAUD to 115 as shown below.
 
     Setting SERIAL2_BAUD for 115200 Baudrate
 
-The `ArduCopter documentation on setting up telemetry for BLHeli ESCs <hhttps://ardupilot.org/copter/docs/common-blheli32-passthru.html#esc-telemetry>`__
+The `ArduCopter documentation on setting up telemetry for BLHeli ESCs <https://ardupilot.org/copter/docs/common-blheli32-passthru.html#esc-telemetry>`__
 mentions configuring SERVO_BLH_TRATE and SERVO_BLH_POLES. These can be left at their defaults for a basic telemetry test setup. If you want a
 higher telemetry update rate, you can change the SERVO_BLH_TRATE. For details on the effect of SERVO_BLH_POLES, see the :ref:`arducopter_erpm_vs_rpm`
 section below.

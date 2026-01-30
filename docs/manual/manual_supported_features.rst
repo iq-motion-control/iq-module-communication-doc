@@ -1,3 +1,8 @@
+.. include:: ../text_colors.rst
+.. toctree::
+
+.. _supported_features:
+
 Supported Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

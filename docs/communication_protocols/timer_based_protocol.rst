@@ -22,20 +22,18 @@ Details on these protocols and how Vertiq modules support them is provided below
     Please note that no two timer based protocols can be used together as :ref:`redundant throttle sources <redundant_throttle_manual>`. Only one 
     timer based protocol can be accepted at any time.
 
-.. _supported_features:
-
 Module Support
 ===============
 
 Speed Modules
 ----------------
 
-.. include:: ../manual/manual_supported_features.rst
+To learn about the features supported by your module, please refer to :ref:`supported_features`.
 
 Servo Modules
 ----------------
 
-.. include:: ../manual/manual_supported_features.rst
+To learn about the features supported by your module, please refer to :ref:`supported_features`.
 
 Supported Timer Based Protocols
 =================================
