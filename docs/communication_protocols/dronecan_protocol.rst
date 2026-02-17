@@ -114,7 +114,12 @@ uavcan.equipment.esc.Status (Data Type ID = 1034)
 
 This message is published periodically and provides telemetry updates on the state of the motor and its inputs. Specifically it contains information on:
 
-* **Error Count**: This is a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
+* **Error Count**: This is a counter of CAN bus errors that reports either the number of TX errors, RX errors, maximum of TX and RX errors, a logical OR of TX | RX errors, or 
+  the cumulative number of both TX and RX errors since power on. You can configure what is reported through the **Error Count** field either via the :ref:`DroneCAN parameter esc_status_error_meaning <esc_error_count_meaning>` or 
+  with ``DroneCAN ESC Status Error Count Meaning`` in IQ Control Center's Advanced tab.
+
+.. image:: ../_static/comms_protocols_pictures/dronecan/control_center_error_count_meaning.png
+
 * **Voltage**: The input voltage to the motor in volts
 * **Current**: The current draw of the motor in amps
 * **Temperature**: The temperature of the motor's coils in Kelvin or the motor's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
@@ -417,10 +422,11 @@ This message is published periodically, and acts as an extension of uavcan.equip
 * **Motor Angle**: Measured angle of connected angle sensor, in degrees. Range is 0 to 360
 * **Status Flags**: Manufacturer-specific status flags currently active
      * Bit 0: Indicates the module's current arming state (see :ref:`manual_advanced_arming` for more information)
-     * Bits[3:1]: Indicate the module's drive mode (see :ref:`brushless drive's <brushless_drive>` ``drive_mode`` for more information)
+     * Bits [3:1]: Indicate the module's drive mode (see :ref:`brushless drive's <brushless_drive>` ``drive_mode`` for more information)
      * Bit 4: Indicates if the module is timed out (see :ref:`manual_timeout` for more)
      * Bit 5: Indicates if the last stow attempt was successful (see :ref:`manual_stow_position` for more information)
      * Bit 6: Indicates if the module is holding stow (see :ref:`manual_stow_position` for more information)
+     * Bits [8:7]: Indicates the throttle source currently driving the motor (see :ref:`monitoring_active_throttle_source` for more information)
 * **ESC Index**: The ESC index of the motor that is broadcasting this update
 
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
@@ -774,11 +780,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-0. Unconfigured
-1. 3D Counter Clockwise
-2. 3D Clockwise
-3. 2D Counter Clockwise
-4. 2D Clockwise 
+1. Unconfigured
+2. 3D Counter Clockwise
+3. 3D Clockwise
+4. 2D Counter Clockwise
+5. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -1167,6 +1173,8 @@ DroneCAN Telemetry Style
 
 Specifies the style of telemetry that your DroneCAN node will report. If set to 0, your module will transmit the :ref:`ESC Status <dronecan_support_esc_status>` and :ref:`ESC Status Extended <status_extended>` messages. When set to 1,
 your module will transmit ESC Status and :ref:`Device Temperature <dronecan_support_device_temperature>`. More information on the different telemetry styles is :ref:`discussed below <status_extended>`.
+
+.. _esc_error_count_meaning:
 
 ESC Status Error Count Meaning
 ----------------------------------
