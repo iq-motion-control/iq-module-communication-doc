@@ -1114,38 +1114,141 @@ Your module will only respond to commands when the provided actuator_id in the c
 
 An important note is that if multiple commands are received in a single ArrayCommand with the same target actuator ID, the module will *only* respond to the command received last.
 
-.. THESE ARE NOT RELEASED YET! Putting them here so we have them when we need 
-.. Timeout Behavior
-.. --------------------
+Timeout Behavior
+--------------------
 
-.. .. csv-table::
-.. 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-.. 	"timeout_behavior", "Integer", "Yes", "No"
+	"timeout_behavior", "Integer", "Yes", "No"
 
-.. Determines how your module will react after reaching a :ref:`communication timeout <manual_timeout>`.  You can read more about your choices in our :ref:`timeout 
-.. documentation <timeout_behavior>`.
+Determines how your module will react after reaching a :ref:`communication timeout <manual_timeout>`.  You can read more about your choices in our :ref:`timeout 
+documentation <timeout_behavior>`.
 
-.. Timeout Song Playback Option
-.. -------------------------------
+Timeout Song Playback Option
+-------------------------------
 
-.. .. csv-table::
-.. 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-.. 	"timeout_song_playback_option", "Integer", "Yes", "No"
+	"timeout_song_playback_option", "Integer", "Yes", "No"
 
-.. Determines what kind of playback option your module will execute after reaching a :ref:`communication timeout <manual_timeout>`. You can read more about your choices in our :ref:`timeout 
-.. documentation <timeout_song_playback>`.
+Determines what kind of playback option your module will execute after reaching a :ref:`communication timeout <manual_timeout>`. You can read more about your choices in our :ref:`timeout 
+documentation <timeout_song_playback>`.
 
-.. Play Arming Song On Arm
-.. -------------------------
+Play Arming Song On Arm
+-------------------------
 
-.. .. csv-table::
-.. 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-.. 	"play_arming_song_on_arm", "Integer", "Yes", "No"
+	"play_arming_song_on_arm", "Integer", "Yes", "No"
 
-.. Determines whether or not your module will play its :ref:`arming song <arming_song>` on an arming transition. Setting this value to 0 disables the song playback, 1 enables it.
+Determines whether or not your module will play its :ref:`arming song <arming_song>` on an arming transition. Setting this value to 0 disables the song playback, 1 enables it.
+
+DroneCAN Bypass Arming
+------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"dronecan_bypass_arming", "Integer", "Yes", "No"
+
+Determines whether or not your module is subject to arming as defined by the :ref:`arming handler <manual_advanced_arming>`. If this value is set to 1, then all :ref:`DroneCAN Raw Commands <dronecan_messages_raw_command>` 
+are applied to spin your module without regards for the module's arming state. You can read more about this in :ref:`dronecan_arming_and_bypass`.
+
+DroneCAN Telemetry Style
+----------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"dronecan_telemetry_style", "Integer", "Yes", "No"
+
+Specifies the style of telemetry that your DroneCAN node will report. If set to 0, your module will transmit the :ref:`ESC Status <dronecan_support_esc_status>` and :ref:`ESC Status Extended <status_extended>` messages. When set to 1,
+your module will transmit ESC Status and :ref:`Device Temperature <dronecan_support_device_temperature>`. More information on the different telemetry styles is :ref:`discussed below <status_extended>`.
+
+ESC Status Error Count Meaning
+----------------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"esc_status_error_meaning", "Integer", "Yes", "No"
+
+Defines how the module calculates the reported error count in its :ref:`ESC Status <dronecan_support_esc_status>` telemetry data. There are 5 options:
+
+0. Active CAN TX errors
+1. Active CAN RX errors
+2. Maximum of the CAN TX errors or RX errors
+3. A logical OR combination of CAN TX errors | CAN RX errors. Combined, the value is a 32-bit number whose top 16 bits represent CAN TX errors, and the bottom 16 CAN RX errors
+4. The cumulative number of both CAN TX and CAN RX errors since module power on
+
+Please note that CAN TX or RX errors are defined at the CAN bus protocol level, and are not directly related to DroneCAN. They are used to monitor your CAN bus's fidelity.
+
+RGB LED Strobe Enable
+----------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"rgb_led_strobe_active", "boolean", "Yes", "No"
+
+Defines whether or not the RGB LED on your connected :ref:`Vertiq LED board <manual_led_support>` should strobe according to its strobing settings or should remain on statically. 
+Set this value to true to enable strobing, false otherwise. You can read more about strobing and its configurations in our :ref:`LED documentation <strobing_configuration>`.
+
+RGB LED Strobe Period
+------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"rgb_led_strobe_period", "float", "Yes", "No"
+
+Defines, in seconds, the length of your configured RGB LED strobing pattern. You can find more information about LED strobing period configuration in :ref:`strobing_period`.
+
+RGB LED Strobe Pattern
+-------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"rgb_led_strobe_pattern", "Integer", "Yes", "No"
+
+Defines the strobing pattern of your RGB LED as a 32-bit bitmask. Each bit represents 1/32 of the total LED strobing period. A 1 in the bitmask represents that the LED should 
+be on during that portion of the strobing pattern, a 0 turns off the LED. More information about strobing patterns is found in :ref:`strobing_pattern`.
+
+White LED Strobe Enable
+------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"white_led_strobe_active", "boolean", "Yes", "No"
+
+Defines whether or not the white LED on your connected :ref:`Vertiq LED board <manual_led_support>` should strobe according to its strobing settings or should remain on statically. 
+Set this value to true to enable strobing, false otherwise. You can read more about strobing and its configurations in our :ref:`LED documentation <strobing_configuration>`.
+
+White LED Strobe Period
+------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"white_led_strobe_period", "float", "Yes", "No"
+
+Defines, in seconds, the length of your configured white LED strobing pattern. You can find more information about LED strobing period configuration in :ref:`strobing_period`.
+
+White LED Strobe Pattern
+-------------------------
+
+.. csv-table::
+	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
+
+	"white_led_strobe_pattern", "Integer", "Yes", "No"
+
+Defines the strobing pattern of your white LED as a 32-bit bitmask. Each bit represents 1/32 of the total LED strobing period. A 1 in the bitmask represents that the LED should 
+be on during that portion of the strobing pattern, a 0 turns off the LED. More information about strobing patterns is found in :ref:`strobing_pattern`.
 
 *********************************
 Flight Controller Integration
