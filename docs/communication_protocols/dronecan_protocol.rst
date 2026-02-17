@@ -780,11 +780,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-1. Unconfigured
-2. 3D Counter Clockwise
-3. 3D Clockwise
-4. 2D Counter Clockwise
-5. 2D Clockwise 
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -1126,7 +1126,7 @@ Timeout Behavior
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"timeout_behavior", "Integer", "Yes", "No"
+	"timeout_behavior", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Determines how your module will react after reaching a :ref:`communication timeout <manual_timeout>`.  You can read more about your choices in our :ref:`timeout 
 documentation <timeout_behavior>`.
@@ -1137,7 +1137,7 @@ Timeout Song Playback Option
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"timeout_song_playback_option", "Integer", "Yes", "No"
+	"timeout_song_playback_option", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Determines what kind of playback option your module will execute after reaching a :ref:`communication timeout <manual_timeout>`. You can read more about your choices in our :ref:`timeout 
 documentation <timeout_song_playback>`.
@@ -1148,7 +1148,7 @@ Play Arming Song On Arm
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"play_arming_song_on_arm", "Integer", "Yes", "No"
+	"play_arming_song_on_arm", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Determines whether or not your module will play its :ref:`arming song <arming_song>` on an arming transition. Setting this value to 0 disables the song playback, 1 enables it.
 
