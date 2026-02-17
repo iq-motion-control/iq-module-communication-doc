@@ -1152,7 +1152,7 @@ DroneCAN Bypass Arming
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"dronecan_bypass_arming", "Integer", "Yes", "No"
+	"dronecan_bypass_arming", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Determines whether or not your module is subject to arming as defined by the :ref:`arming handler <manual_advanced_arming>`. If this value is set to 1, then all :ref:`DroneCAN Raw Commands <dronecan_messages_raw_command>` 
 are applied to spin your module without regards for the module's arming state. You can read more about this in :ref:`dronecan_arming_and_bypass`.
@@ -1163,7 +1163,7 @@ DroneCAN Telemetry Style
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"dronecan_telemetry_style", "Integer", "Yes", "No"
+	"dronecan_telemetry_style", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Specifies the style of telemetry that your DroneCAN node will report. If set to 0, your module will transmit the :ref:`ESC Status <dronecan_support_esc_status>` and :ref:`ESC Status Extended <status_extended>` messages. When set to 1,
 your module will transmit ESC Status and :ref:`Device Temperature <dronecan_support_device_temperature>`. More information on the different telemetry styles is :ref:`discussed below <status_extended>`.
@@ -1174,7 +1174,7 @@ ESC Status Error Count Meaning
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"esc_status_error_meaning", "Integer", "Yes", "No"
+	"esc_status_error_meaning", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Defines how the module calculates the reported error count in its :ref:`ESC Status <dronecan_support_esc_status>` telemetry data. There are 5 options:
 
@@ -1192,7 +1192,7 @@ RGB LED Strobe Enable
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"rgb_led_strobe_active", "boolean", "Yes", "No"
+	"rgb_led_strobe_active", "boolean", "Yes (v0.3.0 and later)", "No"
 
 Defines whether or not the RGB LED on your connected :ref:`Vertiq LED board <manual_led_support>` should strobe according to its strobing settings or should remain on statically. 
 Set this value to true to enable strobing, false otherwise. You can read more about strobing and its configurations in our :ref:`LED documentation <strobing_configuration>`.
@@ -1203,7 +1203,7 @@ RGB LED Strobe Period
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"rgb_led_strobe_period", "float", "Yes", "No"
+	"rgb_led_strobe_period", "float", "Yes (v0.3.0 and later)", "No"
 
 Defines, in seconds, the length of your configured RGB LED strobing pattern. You can find more information about LED strobing period configuration in :ref:`strobing_period`.
 
@@ -1213,7 +1213,7 @@ RGB LED Strobe Pattern
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"rgb_led_strobe_pattern", "Integer", "Yes", "No"
+	"rgb_led_strobe_pattern", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Defines the strobing pattern of your RGB LED as a 32-bit bitmask. Each bit represents 1/32 of the total LED strobing period. A 1 in the bitmask represents that the LED should 
 be on during that portion of the strobing pattern, a 0 turns off the LED. More information about strobing patterns is found in :ref:`strobing_pattern`.
@@ -1224,7 +1224,7 @@ White LED Strobe Enable
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"white_led_strobe_active", "boolean", "Yes", "No"
+	"white_led_strobe_active", "boolean", "Yes (v0.3.0 and later)", "No"
 
 Defines whether or not the white LED on your connected :ref:`Vertiq LED board <manual_led_support>` should strobe according to its strobing settings or should remain on statically. 
 Set this value to true to enable strobing, false otherwise. You can read more about strobing and its configurations in our :ref:`LED documentation <strobing_configuration>`.
@@ -1235,7 +1235,7 @@ White LED Strobe Period
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"white_led_strobe_period", "float", "Yes", "No"
+	"white_led_strobe_period", "float", "Yes (v0.3.0 and later)", "No"
 
 Defines, in seconds, the length of your configured white LED strobing pattern. You can find more information about LED strobing period configuration in :ref:`strobing_period`.
 
@@ -1245,7 +1245,7 @@ White LED Strobe Pattern
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"white_led_strobe_pattern", "Integer", "Yes", "No"
+	"white_led_strobe_pattern", "Integer", "Yes (v0.3.0 and later)", "No"
 
 Defines the strobing pattern of your white LED as a 32-bit bitmask. Each bit represents 1/32 of the total LED strobing period. A 1 in the bitmask represents that the LED should 
 be on during that portion of the strobing pattern, a 0 turns off the LED. More information about strobing patterns is found in :ref:`strobing_pattern`.
