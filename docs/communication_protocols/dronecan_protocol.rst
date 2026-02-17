@@ -1041,7 +1041,7 @@ Warning Status Enable Bitmask
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"warning_status_enable_bitmask", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"warning_status_enable_bitmask", "Integer", "No", "Yes (v0.1.0 and later)"
 
 Determines which of the :ref:`warning health checks <dronecan_nodestatus_warnings>` should be used. Warning health checks are used to update the value of the ``node health`` field of your module's 
 reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_WARNING`` when your module is in neither an error nor critical state. Setting a bitmask value of 1 enables the warning check, 
@@ -1063,7 +1063,7 @@ Error Status Enable Bitmask
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"error_status_enable_bitmask", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"error_status_enable_bitmask", "Integer", "No", "Yes (v0.1.0 and later)"
 
 Determines which of the :ref:`error health checks <dronecan_nodestatus_error>` should be used. Error health checks are used to update the value of the ``node health`` field of your module's 
 reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_ERROR`` when your module is not in a critical state. Setting a bitmask value of 1 enables the error check, and a value of 0 
@@ -1084,7 +1084,7 @@ Critical Status Enable Bitmask
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"criticial_status_enable_bitmask", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"criticial_status_enable_bitmask", "Integer", "No", "Yes (v0.1.0 and later)"
 
 Determines which of the :ref:`critical health checks <dronecan_nodestatus_critical>` should be used. Critical health checks are used to update the value of the ``node health`` field of your module's 
 reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_CRITICAL``. Setting a bitmask value of 1 enables the critical check, and a value of 0 disables the check.
