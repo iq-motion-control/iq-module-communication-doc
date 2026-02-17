@@ -147,7 +147,7 @@ The possible active sources are enumerated as:
 
 So, suppose you send your module throttle commands through both DroneCAN and DSHOT, and you have configured DroneCAN as the higher priority. Under normal operation, the 
 active throttle source should be DroneCAN (2) as the module will accept DroneCAN's throttles for control. Should DroneCAN stop sending throttles for longer than your module's configured :ref:`switchover time <redundant_throttle_config>`, 
-and and DSHOT takes over control, the active throttle source will now report 1.
+and DSHOT takes over control, the active throttle source will now report 1.
 
 .. _redundant_arming_interactions:
 
