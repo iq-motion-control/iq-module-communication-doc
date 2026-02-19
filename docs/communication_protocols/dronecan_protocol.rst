@@ -752,17 +752,13 @@ Stow Result
 This parameter is available on modules that support :ref:`manual_stow_position`. It reports on how the previous stow attempt ended. See the
 :ref:`stow_result` section for more information.
 
-.. note::
-	The following parameters are not yet available on all modules that support DroneCAN. If you do not see these parameters, check `vertiq.co <https://www.vertiq.co/>`_ for a new firmware release for 
-	your module. If you are on the latest release and do not have access to these parameters, future updates for your module may add support for these messages.
-
 Module ID
 -----------------------
 
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"module_id", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"module_id", "Integer", "Yes (v0.2.1 and later)", "Yes (v0.1.0 and later)"
 
 This parameter defines the **module ID** of the connected module. Please note that this is different than the DroneCAN Node ID. Your module's Module ID parameter defines 
 what IQUART messages to accept. You can find out more about IQUART at :ref:`uart_messaging`, and more about connecting to multiple modules via IQUART in our 
@@ -774,17 +770,17 @@ Motor Direction
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"motor_direction", "Integer", "Yes", "No"
+	"motor_direction", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Your module's motor direction defines, in part, how your module will interpret and react to throttle commands. Motor direction is covered in detail :ref:`in our throttle documentation <throttle_direction>`.
 
 Motor direction is enumerated as:
 
-0. Unconfigured
-1. 3D Counter Clockwise
-2. 3D Clockwise
-3. 2D Counter Clockwise
-4. 2D Clockwise 
+1. Unconfigured
+2. 3D Counter Clockwise
+3. 3D Clockwise
+4. 2D Counter Clockwise
+5. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -795,7 +791,7 @@ Control Mode
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"control_mode", "Integer", "Yes", "No"
+	"control_mode", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Mode determines how the module interprets received throttle commands, and is covered in detail at :ref:`throttle_mode`.
 
@@ -811,7 +807,7 @@ Max Volts
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"max_volts", "Float", "Yes", "No"
+	"max_volts", "Float", "Yes (v0.2.1 and later)", "No"
 
 When ``control_mode`` is configured to voltage, ``max_volts`` defines the maximum allowable driving voltage. More information can be found at :ref:`max_volts`.
 
@@ -821,7 +817,7 @@ Max Velocity
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"max_velocity", "Float", "Yes", "No"
+	"max_velocity", "Float", "Yes (v0.2.1 and later)", "No"
 
 When ``control_mode`` is configured to velocity, ``max_velocity`` defines the maximum allowable angular velocity in rad/s. More information can be found at :ref:`max_velo`.
 
@@ -833,7 +829,7 @@ Arm with ArmingStatus
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"arm_with_arming_status", "Integer", "Yes", "No"
+	"arm_with_arming_status", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Determines whether the module will arm and disarm based on the :ref:`DroneCAN Arming Status message <arming_status>`. A value of 0 disables arming with the ArmingStatus message, and a value of 1 enables it.
 More information can be found at :ref:`arm_with_armingstatus`
@@ -844,7 +840,7 @@ Communication Timeout
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"communication_timeout", "Float", "Yes", "No"
+	"communication_timeout", "Float", "Yes (v0.2.1 and later)", "No"
 
 Sets the :ref:`communication timeout period <timeout_period>` of the module. See :ref:`manual_timeout` for more information.
 
@@ -854,7 +850,7 @@ Arm on Throttle
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"arm_on_throttle", "Integer", "Yes", "No"
+	"arm_on_throttle", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Determines whether the module will arm based on incoming throttles. A value of 0 disables arming on throttles, and a value of 1 enables arming on throttles.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
@@ -865,7 +861,7 @@ Arming Throttle Upper Limit
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"arming_throttle_upper_limit", "Float", "Yes", "No"
+	"arming_throttle_upper_limit", "Float", "Yes (v0.2.1 and later)", "No"
 
 Determines the upper limit of the :ref:`arming throttle region <arming_throttle_regions>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
@@ -876,7 +872,7 @@ Arming Throttle Lower Limit
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"arming_throttle_lower_limit", "Float", "Yes", "No"
+	"arming_throttle_lower_limit", "Float", "Yes (v0.2.1 and later)", "No"
 
 Determines the lower limit of the :ref:`arming throttle region <arming_throttle_regions>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and arming with throttles, see :ref:`arming_throttle_regions`.
@@ -887,7 +883,7 @@ Disarm on Throttle
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"disarm_on_throttle", "Integer", "Yes", "No"
+	"disarm_on_throttle", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Determines whether the module will disarm based on incoming throttles. A value of 0 disables disarming on throttles, and a value of 1 enables disarming on throttles. 
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
@@ -898,7 +894,7 @@ Disarming Throttle Upper Limit
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"disarming_throttle_upper_limit", "Float", "Yes", "No"
+	"disarming_throttle_upper_limit", "Float", "Yes (v0.2.1 and later)", "No"
 
 Determines the upper limit of the :ref:`disarming throttle region <disarm_on_throttle>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
@@ -909,7 +905,7 @@ Disarming Throttle Lower Limit
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"disarming_throttle_lower_limit", "Float", "Yes", "No"
+	"disarming_throttle_lower_limit", "Float", "Yes (v0.2.1 and later)", "No"
 
 Determines the lower limit of the :ref:`disarming throttle region <disarm_on_throttle>`. This parameter is defined in terms of per-unit of throttle. For example, a value of 0.05 corresponds to 5% throttle.
 For more information on this parameter and disarming with throttles, see :ref:`disarm_on_throttle`.
@@ -920,7 +916,7 @@ Disarm Behavior
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"disarm_behavior", "Integer", "Yes", "No"
+	"disarm_behavior", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Determines how the module will stop when it disarms. For more information on this parameter and descriptions of how each behavior works, see :ref:`advanced_disarming_behavior`.
 
@@ -937,7 +933,7 @@ Disarm Song Option
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"disarm_song_option", "Integer", "Yes", "No"
+	"disarm_song_option", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Determines if and how many times the module will play its disarm song after coming to a stop. For more information on this parameter and its options, see :ref:`disarm_song_options`.
 
@@ -953,7 +949,7 @@ Hold Stow
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"hold_stow", "Integer", "Yes", "No"
+	"hold_stow", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Determines if and how the module will attempt to :ref:`hold its position <stow_holding_position>` after :ref:`stowing <manual_stow_position>`. For more information on this parameter and its options,
 see :ref:`hold_stow_parameter`.
@@ -971,7 +967,7 @@ Stow Target Angle
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"stow_target_angle", "Float", "Yes", "No"
+	"stow_target_angle", "Float", "Yes (v0.2.1 and later)", "No"
 
 Determines the stow target angle, as described in :ref:`stow_angle_parameters`. For more information on stowing and the effect of this parameter on the angle, see :ref:`manual_stow_position` and :ref:`stow_position_calculation`.
 
@@ -981,7 +977,7 @@ Sample Stow Zero Angle
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"sample_stow_zero_angle", "Integer", "Yes", "No"
+	"sample_stow_zero_angle", "Integer", "Yes (v0.2.1 and later)", "No"
 
 Allows users to sample and save the stow zero angle. For more information on the stow zero angle and what it means to sample it, see :ref:`stow_angle_parameters` and :ref:`stow_position_calculation`.
 
@@ -994,7 +990,7 @@ Stow Target Acceleration
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"stow_target_acceleration", "Float", "Yes", "No"
+	"stow_target_acceleration", "Float", "Yes (v0.2.1 and later)", "No"
 
 Determines the stow target acceleration of the module when stowing. For more information on the stow target acceleration, see :ref:`stow_movement_parameters` .
 
@@ -1047,7 +1043,7 @@ Warning Status Enable Bitmask
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"warning_status_enable_bitmask", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"warning_status_enable_bitmask", "Integer", "Yes (v0.3.0 and later)", "Yes (v0.1.0 and later)"
 
 Determines which of the :ref:`warning health checks <dronecan_nodestatus_warnings>` should be used. Warning health checks are used to update the value of the ``node health`` field of your module's 
 reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_WARNING`` when your module is in neither an error nor critical state. Setting a bitmask value of 1 enables the warning check, 
@@ -1069,7 +1065,7 @@ Error Status Enable Bitmask
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"error_status_enable_bitmask", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"error_status_enable_bitmask", "Integer", "Yes (v0.3.0 and later)", "Yes (v0.1.0 and later)"
 
 Determines which of the :ref:`error health checks <dronecan_nodestatus_error>` should be used. Error health checks are used to update the value of the ``node health`` field of your module's 
 reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_ERROR`` when your module is not in a critical state. Setting a bitmask value of 1 enables the error check, and a value of 0 
@@ -1090,7 +1086,7 @@ Critical Status Enable Bitmask
 .. csv-table::
 	:header: "Name", "Type", "Speed Firmware Support", "Servo Firmware Support"
 
-	"criticial_status_enable_bitmask", "Integer", "Yes", "Yes (v0.1.0 and later)"
+	"criticial_status_enable_bitmask", "Integer", "Yes (v0.3.0 and later)", "Yes (v0.1.0 and later)"
 
 Determines which of the :ref:`critical health checks <dronecan_nodestatus_critical>` should be used. Critical health checks are used to update the value of the ``node health`` field of your module's 
 reported :ref:`Node Status <dronecan_nodestatus_message>` to ``HEALTH_CRITICAL``. Setting a bitmask value of 1 enables the critical check, and a value of 0 disables the check.
@@ -1184,15 +1180,18 @@ ESC Status Error Count Meaning
 
 	"esc_status_error_meaning", "Integer", "Yes (v0.3.0 and later)", "No"
 
-Defines how the module calculates the reported error count in its :ref:`ESC Status <dronecan_support_esc_status>` telemetry data. There are 5 options:
+Defines how the module calculates the reported error count in its :ref:`ESC Status <dronecan_support_esc_status>` telemetry data. 
 
-0. Active CAN TX errors
-1. Active CAN RX errors
-2. Maximum of the CAN TX errors or RX errors
-3. A logical OR combination of CAN TX errors | CAN RX errors. Combined, the value is a 32-bit number whose top 16 bits represent CAN TX errors, and the bottom 16 CAN RX errors
-4. The cumulative number of both CAN TX and CAN RX errors since module power on
+.. note::
+	CAN TX or RX errors are defined at the CAN bus protocol level, and are not directly related to DroneCAN. They are used to monitor your CAN bus's fidelity.
 
-Please note that CAN TX or RX errors are defined at the CAN bus protocol level, and are not directly related to DroneCAN. They are used to monitor your CAN bus's fidelity.
+There are 5 error count options:
+
+1. Active CAN TX errors
+2. Active CAN RX errors
+3. Maximum of the CAN TX errors or RX errors
+4. A logical OR combination of CAN TX errors | CAN RX errors. Combined, the value is a 32-bit number whose top 16 bits represent CAN TX errors, and the bottom 16 CAN RX errors
+5. The cumulative number of both CAN TX and CAN RX errors since module power on
 
 RGB LED Strobe Enable
 ----------------------
