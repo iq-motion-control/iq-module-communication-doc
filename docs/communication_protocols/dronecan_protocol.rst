@@ -114,11 +114,15 @@ uavcan.equipment.esc.Status (Data Type ID = 1034)
 
 This message is published periodically and provides telemetry updates on the state of the motor and its inputs. Specifically it contains information on:
 
-* **Error Count**: This is a counter of CAN bus errors that reports either the number of TX errors, RX errors, maximum of TX and RX errors, a logical OR of TX | RX errors, or 
-  the cumulative number of both TX and RX errors since power on. You can configure what is reported through the **Error Count** field either via the :ref:`DroneCAN parameter esc_status_error_meaning <esc_error_count_meaning>` or 
-  with ``DroneCAN ESC Status Error Count Meaning`` in IQ Control Center's Advanced tab.
+* **Error Count**: This is either:
+  
+a. Firmware v0.3.0 and later: a counter of CAN bus errors that reports either the number of TX errors, RX errors, maximum of TX and RX errors, a logical OR of TX | RX 
+errors, or the cumulative number of both TX and RX errors since power on. You can configure what is reported through the **Error Count** field either via the 
+:ref:`DroneCAN parameter esc_status_error_meaning <esc_error_count_meaning>` or with ``DroneCAN ESC Status Error Count Meaning`` in IQ Control Center's Advanced tab.
 
 .. image:: ../_static/comms_protocols_pictures/dronecan/control_center_error_count_meaning.png
+
+b. All firmware before v0.3.0: a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
 
 * **Voltage**: The input voltage to the motor in volts
 * **Current**: The current draw of the motor in amps
@@ -776,11 +780,11 @@ Your module's motor direction defines, in part, how your module will interpret a
 
 Motor direction is enumerated as:
 
-1. Unconfigured
-2. 3D Counter Clockwise
-3. 3D Clockwise
-4. 2D Counter Clockwise
-5. 2D Clockwise 
+0. Unconfigured
+1. 3D Counter Clockwise
+2. 3D Clockwise
+3. 2D Counter Clockwise
+4. 2D Clockwise 
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
@@ -1170,6 +1174,10 @@ DroneCAN Telemetry Style
 Specifies the style of telemetry that your DroneCAN node will report. If set to 0, your module will transmit the :ref:`ESC Status <dronecan_support_esc_status>` and :ref:`ESC Status Extended <status_extended>` messages. When set to 1,
 your module will transmit ESC Status and :ref:`Device Temperature <dronecan_support_device_temperature>`. More information on the different telemetry styles is :ref:`discussed below <status_extended>`.
 
+.. tip::
+
+	We recommend setting this parameter to 0 (using ESC Status and ESC Status Extended) unless the use of the Device Temperature message is absolutely necessary.
+
 .. _esc_error_count_meaning:
 
 ESC Status Error Count Meaning
@@ -1183,15 +1191,16 @@ ESC Status Error Count Meaning
 Defines how the module calculates the reported error count in its :ref:`ESC Status <dronecan_support_esc_status>` telemetry data. 
 
 .. note::
-	CAN TX or RX errors are defined at the CAN bus protocol level, and are not directly related to DroneCAN. They are used to monitor your CAN bus's fidelity.
+	CAN TX or RX errors are defined at the CAN bus protocol level, and are not directly related to DroneCAN. They are used to monitor your CAN bus's fidelity. More information about 
+	CAN bus errors and how they are updated by the hardware can be found `here <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial>`__.
 
 There are 5 error count options:
 
-1. Active CAN TX errors
-2. Active CAN RX errors
-3. Maximum of the CAN TX errors or RX errors
-4. A logical OR combination of CAN TX errors | CAN RX errors. Combined, the value is a 32-bit number whose top 16 bits represent CAN TX errors, and the bottom 16 CAN RX errors
-5. The cumulative number of both CAN TX and CAN RX errors since module power on
+0. Active CAN TX errors (the value of `TEC <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial#can-node-states:~:text=How%20do%20the%20error%20counters%20change%3F>`__)
+1. Active CAN RX errors (the value of `REC <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial#can-node-states:~:text=How%20do%20the%20error%20counters%20change%3F>`__)
+2. Maximum of TEC and REC
+3. A logical OR combination of TEC | REC. Combined, the value is a 32-bit number whose top 16 bits represent TECE, and the bottom 16 REC
+4. The cumulative number of both TEC and REC errors since module power on
 
 RGB LED Strobe Enable
 ----------------------
