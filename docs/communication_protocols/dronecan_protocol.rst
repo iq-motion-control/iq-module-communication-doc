@@ -122,12 +122,12 @@ This message is published periodically and provides telemetry updates on the sta
 
 	* **All firmware before v0.3.0**: a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
 
-		* **Voltage**: The input voltage to the motor in volts
-		* **Current**: The current draw of the motor in amps
-		* **Temperature**: The temperature of the motor's coils in Kelvin or the motor's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
-		* **RPM**: The current speed of the motor in RPM
-		* **Power Rating Percentage**: The PWM duty cycle percentage being applied to the motor, from 0% to 100%. Maximum power draw occurs at 100% duty cycle
-		* **ESC Index**: The ESC index of the motor that is broadcasting this update
+* **Voltage**: The input voltage to the motor in volts
+* **Current**: The current draw of the motor in amps
+* **Temperature**: The temperature of the motor's coils in Kelvin or the motor's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
+* **RPM**: The current speed of the motor in RPM
+* **Power Rating Percentage**: The PWM duty cycle percentage being applied to the motor, from 0% to 100%. Maximum power draw occurs at 100% duty cycle
+* **ESC Index**: The ESC index of the motor that is broadcasting this update
 
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
