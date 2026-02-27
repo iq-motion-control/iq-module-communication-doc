@@ -1194,8 +1194,8 @@ Defines how the module calculates the reported error count in its :ref:`ESC Stat
 
 There are 5 error count options:
 
-0. Active CAN TX errors (the value of `TEC <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial#can-node-states:~:text=How%20do%20the%20error%20counters%20change%3F>`__)
-1. Active CAN RX errors (the value of `REC <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial#can-node-states:~:text=How%20do%20the%20error%20counters%20change%3F>`__)
+0. Active CAN TX errors (the value of `TEC <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial#can-node-states>`__)
+1. Active CAN RX errors (the value of `REC <https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial#can-node-states>`__)
 2. Maximum of TEC and REC
 3. A logical OR combination of TEC | REC. Combined, the value is a 32-bit number whose top 16 bits represent TECE, and the bottom 16 REC
 4. The cumulative number of both TEC and REC errors since module power on
