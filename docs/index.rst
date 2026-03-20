@@ -73,6 +73,7 @@
    tutorials/motor_noise_debugging
    tutorials/vibration_and_jittering
    tutorials/dronecan_px4_arraycommand
+   tutorials/coil_cover_installation_instructions
 
 .. toctree::
    :hidden:
