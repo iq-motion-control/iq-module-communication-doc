@@ -29,7 +29,7 @@ These instructions are relevant for the following parts numbers:
 All future references to the, “Gap” in the coil cover assembly refer to the area highlighted in the image below:
 
 .. image:: ../_static/tutorial_images/coil_cover_pictures/gap_visualization.png
-    :width: 40%
+    :width: 45%
 
 *******************************
 Case 1 (Correct Installation)
