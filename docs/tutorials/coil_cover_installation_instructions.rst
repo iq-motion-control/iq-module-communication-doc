@@ -1,6 +1,8 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. _coil_cover_assembly_instructions:
+
 ###############################################
 Coil Cover Assembly Instructions
 ###############################################
@@ -11,16 +13,9 @@ information about purchasing more coil cover add-ons, please contact us at info@
 When mounting Vertiq's coil covers, it is important that the cover clamps securely onto the motor. The following instructions are meant to guide you through proper 
 coil cover installation along with examples of improper installation.
 
-These instructions are relevant for the following parts numbers:
-
-* CCM1.1.4
-* CCM3.0.3
-* CCM5.1.3
-* CCM7.0.1
-
 .. note::
 
-    Identification of your coil cover's part number can be found by the presence of a tab as highlighted in the image below. 
+    These instructions do not apply to all Vertiq coil covers. The following document only applies to coil covers with the tab highlighted in the image below. 
 
     .. image:: ../_static/tutorial_images/coil_cover_pictures/tab_visualization.png
 

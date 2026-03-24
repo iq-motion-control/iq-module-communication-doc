@@ -129,6 +129,11 @@ Coil Cover
 ~~~~~~~~~~
 **Description**: The coil cover is fastened around the motor and underneath the coils. It is designed to protect the underside of the coils from foreign object debris. The parts that make up the Pro Kit’s Coil Cover include:
 
+.. note::
+    If your coil cover has the tab highlighted in the image below, please refer to the instructions :ref:`here <coil_cover_assembly_instructions>`.
+
+    .. image:: ../_static/tutorial_images/coil_cover_pictures/tab_visualization.png
+
 - CCM (Qty. 2) - plastic part made of PA 12 glass-filled nylon designed to protect from >1mm debris. Two of these parts are needed for the coil cover.
 - SCR (Qty. 2) - M2 screws to fasten the two CCMs together around the motor
 
