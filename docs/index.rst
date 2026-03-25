@@ -103,6 +103,12 @@
 
    client_reference/client_reference_table
 
+.. toctree::
+   :caption: Fortiq
+   :maxdepth: 2
+
+   fortiq_index
+
 Welcome to Vertiq's Documentation
 ============================================
 The purpose of this site is to get your module spinning as quickly as possible, and to provide
