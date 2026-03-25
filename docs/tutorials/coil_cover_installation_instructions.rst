@@ -15,7 +15,7 @@ coil cover installation along with examples of improper installation.
 
 .. note::
 
-    These instructions do not apply to all Vertiq coil covers. The following document only applies to coil covers with the tab highlighted in the image below. 
+    These instructions do not apply to all Vertiq coil covers. The following document only applies to coil covers with the tab highlighted in the image below:
 
     .. image:: ../_static/tutorial_images/coil_cover_pictures/tab_visualization.png
 
@@ -38,7 +38,7 @@ Case 1 (Correct Installation)
 #. Screw in one half of the coil cover until the thread engages into the other coil cover half
 #. Switch to the other side and do the same
 #. :red:`While following this step, tighten the screws slowly and with care to avoid overtightening:` Keep alternating sides until the coil cover can no longer freely rotate on the motor
-#. Both sides should be identical and should look similar to the image below
+#. Both sides should have the same width and should look similar to the image below:
 
     .. note::
         The gap on your specific coil cover may be wider or narrower than those illustrated in the images below. **This is OK** as long as tightening stops just as the covers are fully 
