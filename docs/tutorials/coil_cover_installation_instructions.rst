@@ -19,7 +19,7 @@ coil cover installation along with examples of improper installation.
 
     .. image:: ../_static/tutorial_images/coil_cover_pictures/tab_visualization.png
 
-    This guide applies to all coil covers **that include this tab (regardless of motor size)**. If your coil cover **does not have the tab**, simply install the coil covers until the parts touch, with a torque spec of 10Ncm.
+    This guide applies to all coil covers **that include this tab (regardless of motor size)**. If your coil cover **does not have the tab**, simply install the coil covers until the parts touch, with a torque spec of 10Ncm using the provided M2 thread forming screws.
 
 All future references to the, “Gap” in the coil cover assembly refer to the area highlighted in the image below:
 
@@ -35,7 +35,7 @@ Case 1 (Correct Installation)
     .. image:: ../_static/tutorial_images/coil_cover_pictures/lip_picture.png
         :width: 50%
 
-#. Screw in one half of the coil cover until the thread engages into the other coil cover half
+#. Screw in one half of the coil cover using the provided M2 thread forming screws until the thread engages into the other coil cover half
 #. Switch to the other side and do the same
 #. :red:`While following this step, tighten the screws slowly and with care to avoid overtightening:` Keep alternating sides until the coil cover can no longer freely rotate on the motor
 #. Both sides should have the same width and should look similar to the image below:
