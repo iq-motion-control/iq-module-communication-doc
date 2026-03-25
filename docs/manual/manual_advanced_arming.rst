@@ -443,7 +443,10 @@ The disarming behavior determines how the module will try to come to a stop and 
 * **Coast**: The module will coast itself when it begins disarming. This means it will spin freely and let drag and friction slow it down. After the song, its final state will be to  remain coasting.
 * **0V to Coast**: The module will drive itself to 0V when it begins disarming, actively trying to come to rapid stop. After the song, its final state will be to coast.
 * **0V to Brake**: The module will drive itself to 0V when it begins disarming, actively trying to come to rapid stop. After the song, its final state will be to brake.
-* **Stow**: The module will trigger a move to the :ref:`stow position <manual_stow_position>` when it begins disarming. After the song, its final state will be determined by whatever the stow position feature is configured to do after completing a stow. 
+* **Stow**: The module will trigger a move to the :ref:`stow position <manual_stow_position>` when it begins disarming. After the song, its final state will be determined by whatever the stow position feature is configured to do after completing a stow.
+* **Coast to Stow**: The module will coast itself when it begins disarming. After the song, the module will trigger a move to the :ref:`stow position <manual_stow_position>`, and its final state will be determined by whatever the stow position feature is configured to do after completing a stow.
+* **Coast to Brake**: The module will coast itself when it begins disarming. After the song, its final state will be to brake.
+* **0V to Stow**: The module will drive itself to 0V when it begins disarming, actively trying to come to rapid stop. After the song, the module will trigger a move to the :ref:`stow position <manual_stow_position>`, and its final state will be determined by whatever the stow position feature is configured to do after completing a stow.
 
 These options can all be configured through IQ Control Center through the *Disarm Behavior* parameter, as shown below.
 

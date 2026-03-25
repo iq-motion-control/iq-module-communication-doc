@@ -4,8 +4,9 @@
 Redundant Throttle Support
 ##############################
 
+********************
 Module Support
-===============
+********************
 
 To see if your module and firmware style supports this feature, please see our :ref:`supported features table <supported_features>`.
 
@@ -127,6 +128,26 @@ You configure the following:
 In this example, the module is configured to ignore all hobby and IQUART throttle messages. So, all received DSHOT throttles are dropped, and throttles are only applied once DroneCAN 
 throttles are received. An important note from this example is that the module will reach its :ref:`propeller motor control timeout <manual_timeout>` even if the 
 flight controller continues to send DSHOT throttles. As they are not processed by the throttle source manager, DSHOT throttles cannot be used to reset the timeout timer.
+
+.. _monitoring_active_throttle_source:
+
+***************************************
+Monitoring the Active Throttle Source
+***************************************
+
+It is possible to monitor the throttle source that is actively driving your module (i.e. the protocol whose commands the module is actively responding to). You can get this data either directly from the 
+:ref:`throttle_source_manager` IQUART client or via DroneCAN's :ref:`Status Extended telemetry message<status_extended>`.
+
+The possible active sources are enumerated as:
+
+0. No active source
+1. Timer based protocol (PWM, DSHOT, etc.)
+2. DroneCAN
+3. IQUART
+
+So, suppose you send your module throttle commands through both DroneCAN and DSHOT, and you have configured DroneCAN as the higher priority. Under normal operation, the 
+active throttle source should be DroneCAN (2) as the module will accept DroneCAN's throttles for control. Should DroneCAN stop sending throttles for longer than your module's configured :ref:`switchover time <redundant_throttle_config>`, 
+and DSHOT takes over control, the active throttle source will now report 1.
 
 .. _redundant_arming_interactions:
 
