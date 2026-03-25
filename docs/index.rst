@@ -104,6 +104,7 @@
    client_reference/client_reference_table
 
 .. toctree::
+   :hidden:
    :caption: Fortiq
    :maxdepth: 2
 
