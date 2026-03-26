@@ -38,7 +38,7 @@ Case 1 (Correct Installation)
 #. Screw in one half of the coil cover using the provided M2 thread forming screws until the thread engages into the other coil cover half
 #. Switch to the other side and do the same
 #. :red:`While following this step, tighten the screws slowly and with care to avoid overtightening:` Keep alternating sides until the coil cover can no longer freely rotate on the motor
-#. Both sides should have the same width and should look similar to the image below:
+#. The gaps on both sides should have the same width and should look similar to the image below:
 
     .. note::
         The gap on your specific coil cover may be wider or narrower than those illustrated in the images below. **This is OK** as long as tightening stops just as the covers are fully 
@@ -73,7 +73,7 @@ Case 3 (Incorrect Installation - Uneven Tightening: Not IP Rated)
 In this example, one side was tightened until the gap disappeared and the other side's gap was left too wide. Avoid this as this will lead to a non-IP rated motor. 
 Note that to achieve IP4X, you must properly attach the coil covers, blower fan, and mesh screen to your module.
 
-.. list-table::
+.. list-table:: Coil Cover Installed Unevenly
    :class: borderless
    :align: left
 
