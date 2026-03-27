@@ -85,6 +85,9 @@ Note that not every combination of the options is possible, e.g. stopping with c
 * **0V to Coast**: The module will drive itself to 0V when a timeout occurs, actively trying to come to rapid stop. After the song, its final state will be to coast.
 * **0V to Brake**: The module will drive itself to 0V when a timeout occurs, actively trying to come to rapid stop. After the song, its final state will be to brake.
 * **Stow**: The module will trigger a stow when a timeout occurs. After the song, its final state will be determined by whatever the stow feature is configured to do after completing a stow. 
+* **Coast to Stow**: The module will coast itself when it begins disarming. After the song, the module will trigger a move to the :ref:`stow position <manual_stow_position>`, and its final state will be determined by whatever the stow position feature is configured to do after completing a stow.
+* **Coast to Brake**: The module will coast itself when it begins disarming. After the song, its final state will be to brake.
+* **0V to Stow**: The module will drive itself to 0V when it begins disarming, actively trying to come to rapid stop. After the song, the module will trigger a move to the :ref:`stow position <manual_stow_position>`, and its final state will be determined by whatever the stow position feature is configured to do after completing a stow.
 
 These options can all be configured through IQ Control Center through the *Timeout Behavior* parameter, as shown below.
 
