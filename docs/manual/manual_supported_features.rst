@@ -18,6 +18,8 @@ This manual is divided into sections based on individual features. A listing of 
         :file: ../_static/manual_images/latest_versions_for_rtd_csv.csv
         :header-rows: 1
 
+X indicates a supported feature.
+
 .. csv-table::
     :class: tight-table
     :align: center

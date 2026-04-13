@@ -7,10 +7,8 @@
 Appendix
 ***********************************************
 
-Useful Resources
-=================
-`Detailed Tutorials from Vertiq <https://iqmotion.readthedocs.io/en/latest/tutorials/testing_with_control_center.html#>`_
+Additional Useful Resources
+==================================
 
-`DroneCAN Documentation <https://dronecan.github.io/>`_
-
-`Article From Chris Landa Explaining DSHOT <https://brushlesswhoop.com/dshot-and-bidirectional-dshot/>`_
+* `DroneCAN Standard Documentation <https://dronecan.github.io/>`_
+* `Article From Chris Landa Explaining DSHOT <https://brushlesswhoop.com/dshot-and-bidirectional-dshot/>`_

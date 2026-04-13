@@ -53,7 +53,6 @@
 
    communication_protocols/iquart_protocol
    communication_protocols/dronecan_protocol
-   communication_protocols/canopen_protocol
    communication_protocols/timer_based_protocol
 
 .. toctree::
@@ -110,6 +109,7 @@
    :maxdepth: 2
 
    fortiq_index
+   communication_protocols/canopen_protocol
 
 Welcome to Vertiq's Documentation
 ============================================
