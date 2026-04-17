@@ -27,6 +27,10 @@ to work best for a specific use case with the Vertiq teetering and flapping prop
 
 These propellers and the modules also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change it's angle appropriately.
 
+When using a propeller the zero angle is the positive direction of the X coordinate system. The zero angle works to ensure that the X axis is along the front of your vehicle. To 
+accomplish this, we can change the zero angle such that X is calibrated to face the front of your vehicle allowing for a postive X value to tilt a propeller toward the front of your 
+vehicle.
+
 .. note::
 
     To take advantage of the pulsing firmware, you must use a tilting or teering Vertiq propeller.

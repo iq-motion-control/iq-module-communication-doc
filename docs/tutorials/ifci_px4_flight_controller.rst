@@ -7,7 +7,7 @@
 Building and Flashing PX4 and ArduPilot Firmware with IQUART Flight Controller Interface
 ********************************************************************************************
 
-This tutorial covers how to configure and build `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ and `ArduPilot <https://github.com/ArduPilot/ardupilot>`_ for use with Vertiq’s :ref:`IQUART protocol <uart_messaging>`, and then set up the PX4 and ArduPilot firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+This tutorial covers how to build and configure `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ and `ArduPilot <https://github.com/ArduPilot/ardupilot>`_ for use with Vertiq’s :ref:`IQUART protocol <uart_messaging>`, and then set up the PX4 and ArduPilot firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
 .. note::
     
@@ -16,6 +16,8 @@ This tutorial covers how to configure and build `PX4 Autopilot <https://github.c
 
 Building and Flashing PX4 Flight Controller Firmware
 ====================================================
+
+The benefits of PX4 include: !!!
 
 Setting Up the PX4 Toolchain
 -----------------------------
@@ -185,12 +187,12 @@ Now your Vertiq modules must be configured for proper communication with the fli
 Building and Flashing ArduPilot Flight Controller Firmware
 ==========================================================
 
+Go here to set up ArduPilot following the `developer instructions <https://ardupilot.org/dev/>`_.
+
+
 Building ArduPilot Flight Controller Firmware
 ----------------------------------------------
-
-.. note::
-
-    Go here to set up ArduPilot following the `developer instructions <https://ardupilot.org/dev/>`_.
+ 
 
 Vertiq's ArduPilot fork includes all of the necessary updates needed to control your Vertiq modules over IFCI. To access it, first make sure you've set up an `SSH key for GitHub <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`__,
 and then go to the `Vertiq ArduPilot repository <https://github.com/iq-motion-control/vertiq_ardupilot>`_.

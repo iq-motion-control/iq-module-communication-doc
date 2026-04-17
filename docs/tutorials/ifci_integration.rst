@@ -18,6 +18,8 @@ The following tutorial will walk you through module and flight controller config
 .. note::
     If you have not already built PX4 or ArduPilot and flashed it to your flight controller, please complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI intragration <ifci_px4_flight_controller>` before proceeding.
 
+.. _configuring_modules:
+
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ---------------------------------------------------------
 To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. For this, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. To apply any new Module IDs, reboot the flight controller. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
@@ -194,26 +196,9 @@ For this example, we will connect the PX4 flight controller to the motor over UA
 
 .. note::
 
-    Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
+    Be sure to complete :ref"`configuring your motor modules <configuring_modules>` and :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
 In QGroundControl, go to Parameters then Vertiq IO. Set VTQ_NUM_CVS to 3 to account for the command value indices for throttle, x, and y that were previously set in Control Center :ref:`ifci_integration`.
-
-
-PX4 with Pulsing Module Zero Angle Calibration
-----------------------------------------------
-
-.. note::
-
-    The desired angle for the zero angle will be chosen based on your vehicle specific set up.
-
-To adjust the forward tilt angle, we will adjust the VTQ_ZERO_ANGLE parameter in the QGroundControl parameter menu where the units are radians. Increasing VTQ_ZERO_ANGLE rotates the propeller's tilt in the counterclockwise direction whereas decreasing VTQ_ZERO_ANGLE will rotate the propeller's tilt in the clockwise direction. If your propeller was rotated clockwise X radians, you add that to the current VTQ_ZERO_ANGLE parameter. In this example case, the current angle is Z as shown below.
-
-Image of current VTQ_ZERO_ANGLE.
-Y is then added to Z which is then written to the VTQ_ZERO_ANGLE parameter.
-
-!!!Image of new VTQ_ZERO_ANGLE!!!
-
-Now, go back to the QGroundControl's actuator tab, and we will perform the previous test again. Enable the testing slider and then increase the Motor 1 slider until it is near hover speed. Increase the Motor 2 slider so that you can observe the rotor tilting over a bit. The rotor should now be much closer to pointing forwards. If it is at your desired angle, you have calibrated the propeller angle properly. If it is not, then repeat the previous steps. Repeat the zero angle calibration steps until you have reached your desired angle
 
 In the video below you can see a demonstration of using the Actuator tab in QGroundControl to spin and pulse a motor.
 
@@ -228,6 +213,24 @@ In the video below you can see a demonstration of using the Actuator tab in QGro
     </style>
     <video class='center_vid' controls><source src="../_static/tutorial_images/ifci_integration/qgc_pulse_example.mp4" type="video/mp4"></video>
 
+PX4 with Pulsing Module Zero Angle Calibration
+----------------------------------------------
+
+.. note::
+
+    The desired angle for the zero angle will be chosen based on your vehicle specific set up.
+
+Using the following instructions, set your zero angle so your X is facing forward.
+
+To adjust the forward tilt angle, we will adjust the VTQ_ZERO_ANGLE parameter in the QGroundControl parameter menu where the units are radians. Increasing VTQ_ZERO_ANGLE rotates 
+the propeller's tilt in the counterclockwise direction whereas decreasing VTQ_ZERO_ANGLE will rotate the propeller's tilt in the clockwise direction. If your propeller was rotated 
+clockwise X radians, you add that to the current VTQ_ZERO_ANGLE parameter.
+
+.. Image of current VTQ_ZERO_ANGLE.
+.. Y is then added to Z which is then written to the VTQ_ZERO_ANGLE parameter.
+
+.. Now, go back to the QGroundControl's actuator tab, and we will perform the previous test again. Enable the testing slider and then increase the Motor 1 slider until it is near hover speed. Increase the Motor 2 slider so that you can observe the rotor tilting over a bit. The rotor should now be much closer to pointing forwards. If it is at your desired angle, you have calibrated the propeller angle properly. If it is not, then repeat the previous steps. Repeat the zero angle calibration steps until you have reached your desired angle
+
 
 ArduPilot Set Up
 ================
@@ -239,7 +242,7 @@ Configuring Your Vertiq Modules for Use with ArduPilot
 
     Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
-First, connect to Mission Planner. Reset all settings to default using `these instructions <https://ardupilot.org/copter/docs/common-parameter-reset.html>`__. This will automatically reboot the flight controller. When it’s completed its bootup, reconnect with Mission Planner. For this throttle only test, set the Frame Type to X:
+First, connect to Mission Planner. Reset all settings to default using `these instructions <https://ardupilot.org/copter/docs/common-parameter-reset.html>`_. This will automatically reboot the flight controller. When it’s completed its bootup, reconnect with Mission Planner. For this throttle only test, set the Frame Type to X:
 
 .. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_frame.png
     :align: center
@@ -262,9 +265,9 @@ Now, go to CONFIG, and select the Full Parameter List. In the Search bar, enter 
     Set your module’s CVIs to match this example. If this is your first time configuring CVI values on a quadrotor, it is highly recommended to use values 0, 1, 2, 3 as the CVI values.
     Please refer to the :ref:`IFCI documentation <controlling_ifci>` to understand the difference between CVI values and Module IDs.
 
-For this basic throttle only test, only 1 Control Value is needed for the throttle output to the one connected module. Since there is only 1 CV, it is placed in index 0. Set SERVO_VIQ_CVS to 1, this parameter sets the number of control value indices where each index is needed to control a throttle value for a module. Since this module will not be pulsing, we only need a throttle index. We will also configure our flight controller to receive telemetry from our connected module. Since for this example, the module was reset to its factory default settings, the module currently has a `Module ID <https://iqmotion.readthedocs.io/en/latest/control_center_docs/control_center_start_guide.html#required-configuration-before-connecting-with-multiple-modules>`_ of 0. The lowest bit in the bitmask represents Module ID 0, so set SERVO_VIQ_TEL_BM to 1 :ref:`building ArduPilot <ifci_px4_flight_controller>`. Write these parameters..
+For this basic throttle only test, only 1 Control Value is needed for the throttle output to the one connected module. Since there is only 1 CV, it is placed in index 0. Set SERVO_VIQ_CVS to 1, this parameter sets the number of control value indices where each index is needed to control a throttle value for a module. Since this module will not be pulsing, we only need a throttle index. We will also configure our flight controller to receive telemetry from our connected module. Since for this example, the module was reset to its factory default settings, the module currently has a `Module ID <https://iqmotion.readthedocs.io/en/latest/control_center_docs/control_center_start_guide.html#required-configuration-before-connecting-with-multiple-modules>`_ of 0. The lowest bit in the bitmask represents Module ID 0, so set SERVO_VIQ_TEL_BM to 1. Write these parameters.
 
-Lastly, we must configure one of the flight controller’s UART peripherals to communicate using our :ref:`IQUART <uart_messaging>`. On the PixHawk 6C for this example we are going to connect to the TELEM2 port (which maps to `ArduPilot’s SERIAL2 <https://ardupilot.org/copter/docs/common-holybro-pixhawk6C.html#uart-mapping>`_). IQUART is protocol 47 in ArduPilot, so set SERIAL2_PROTOCOL (or the corresponding SERIALx port if SERIAL2 is not being used) to 47. You need to set this to match your module, and for this example, configure the serial port’s baud rate to 921600. Set SERIAL2_BAUD to 921:
+Lastly, we must configure one of the flight controller’s UART peripherals to communicate using Vertiq's :ref:`IQUART protocol <uart_messaging>`. On the PixHawk 6C used for this example we are going to connect to the TELEM2 port which maps to `ArduPilot’s SERIAL2 <https://ardupilot.org/copter/docs/common-holybro-pixhawk6C.html#uart-mapping>`_. IQUART is protocol 47 in ArduPilot, so set SERIAL2_PROTOCOL (or the corresponding SERIALx port if SERIAL2 is not being used) to 47. You need to set this to match your module, and for this example we configure the serial port’s baud rate to 921600. Set SERIAL2_BAUD to 921:
 
 .. figure:: ../_static/tutorial_images/ifci_integration/serial_param_list.png
     :align: center
@@ -295,6 +298,15 @@ ArduPilot has safety settings that may stop the module from spinning unless vari
 
     ArduPilot safety options
 
+Be sure that your module is wired as illustrated below.
+
+.. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_wire_diagram.png
+    :align: center
+    :scale: 100
+    :alt: ArduPilot motor test wiring diagram
+
+    ArduPilot motor test wiring diagram
+
 .. warning::
 
     Before spinning, make sure there are no propellers on the module.
@@ -303,19 +315,12 @@ In Mission Planner, navigate to SETUP, Optional Hardware, and find Motor Test.
 
 .. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_motor_test.png
     :align: center
-    :scale: 75
+    :scale: 50
     :alt: ArduPilot motor test
 
     ArduPilot motor test
 
-Click Test Motor A, and the motor should spin. Be sure that your module is wired as illustrated below.
-
-.. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_wire_diagram.png
-    :align: center
-    :scale: 100
-    :alt: ArduPilot motor test wiring diagram
-
-    ArduPilot motor test wiring diagram
+Click Test Motor A, and the motor should spin.
 
 ArduPilot with Pulsing a Module for Teetering or Flapping Propeller
 -------------------------------------------------------------------
