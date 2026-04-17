@@ -36,7 +36,7 @@ as well as their associated X and Y commands are explained in the diagram below.
 
     Vectors that define pulsing
 
-When using a propeller, the zero angle is the positive direction of the X coordinate system. 
+When using a propeller, the zero angle is the X basis vector of the coordinate system. 
 
 .. figure:: ../_static/manual_images/pulsing/altered_pulsing_zero_angle.png
     :align: center
@@ -45,7 +45,7 @@ When using a propeller, the zero angle is the positive direction of the X coordi
 
     Altered pulsing zero angle
 
-The zero angle works to ensure that the X axis is along the front of your vehicle as seen in the figure below. 
+The zero angle can be used to ensure that the X basis vector is aligned along the front of your vehicle as seen in the figure below. 
 
 .. figure:: ../_static/manual_images/pulsing/pulsing_basic_vehicle_shapes.png
     :align: center
@@ -54,8 +54,7 @@ The zero angle works to ensure that the X axis is along the front of your vehicl
 
     Pulsing with vehicle shape
 
-To accomplish this, we can change the zero angle such that X is calibrated to face the front of your vehicle allowing for a postive X value to tilt a propeller toward the front of your 
-vehicle. 
+With your zero angle calibrated to align the X basis vector with the front of your vehicle, a positive X command will tilt your propeller forward.
 
 .. figure:: ../_static/manual_images/pulsing/pulsing_vehicle_zero_angle.png
     :align: center
