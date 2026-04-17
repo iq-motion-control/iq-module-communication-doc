@@ -335,3 +335,5 @@ Go to Mission Planner, and then go to the Full Parameter List, search viq\_, and
     :alt: ArduPilot command value indices
 
     ArduPilot command value indices
+
+After, set the zero angles appropriately based on tuning for your specific vehicle.

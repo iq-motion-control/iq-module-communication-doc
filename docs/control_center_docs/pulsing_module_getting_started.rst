@@ -85,6 +85,18 @@ Pulsing Voltage Limit
 This parameter is available through the Tuning tab, and determines the maximum voltage to be applied to pulsing when *Pulsing Voltage Mode* is set to *Voltage Limit Mode*. 
 To learn more please read :ref:`controlling_ifci`.
 
+************************************
+Pulsing Velocity Mode
+************************************
+This parameter is available through the General tab, and determines how the module decides on its maximum pulsing velocity for scaling incoming pulsing commands.
+To learn more please read :ref:`controlling_ifci`.
+
+************************************
+Pulsing Velocity Cutoff
+************************************
+This parameter is available through the Tuning tab, and determines when the module will not allow pulsing below a specified velocity.
+To learn more please read :ref:`controlling_ifci`.
+
 *****************************************************************************************
 Example Module Flight Controller and Pulsing Configuration with the Control Center
 *****************************************************************************************
@@ -123,44 +135,46 @@ To configure your module to meet these requirements:
 
 .. image:: ../_static/control_center_pics/pulsing_getting_started/configed_cvis.png
 
-7. Still in the General tab, find the *Pulsing Voltage Mode* parameter. Set it to *Voltage Limit*
+.. 7. Still in the General tab, find the *Pulsing Voltage Mode* parameter. Set it to *Voltage Limit*
 
-.. image:: ../_static/control_center_pics/pulsing_getting_started/voltage_limit.png
+.. .. image:: ../_static/control_center_pics/pulsing_getting_started/voltage_limit.png
 
-8. To meet the final requirement, navigate back to Tuning, and set *Pulsing Voltage Limit* to 5.00V
+.. 8. To meet the final requirement, navigate back to Tuning, and set *Pulsing Voltage Limit* to 5.00V
 
-.. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_volt_lim.png
+.. .. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_volt_lim.png
 
-******************************************************
-Testing Pulsing Functionality with IQ Control Center
-******************************************************
+.. ******************************************************
+.. Testing Pulsing Functionality with IQ Control Center
+.. ******************************************************
 
-The Control Center provides a simple method for verifying that your module can apply pulsing properly. In the Testing tab, you will find the *Pulsing Phase* 
-and *Pulsing Voltage* parameters.
+.. The Control Center provides a simple method for verifying that your module can apply pulsing properly. In the Testing tab, you will find the *Pulsing Phase* 
+.. and *Pulsing Voltage* parameters.
 
-.. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_testing_tab.png
+.. .. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_testing_tab.png
 
-**Pulsing Phase** defines the phase added to the zero angle to set where the pulse occurs :math:`[-2\pi, 2\pi]` in terms of the rotor.
+.. **Pulsing Phase** defines the phase added to the zero angle to set where the pulse occurs :math:`[-2\pi, 2\pi]` in terms of the rotor.
 
-**Pulsing Voltage** represents the strength of the pulse in volts. Setting the amplitude too high at lower speeds can cause the pulsing to overcome the inertia of the motor spinning, causing it to stop.
+.. **Pulsing Voltage** represents the strength of the pulse in volts. Setting the amplitude too high at lower speeds can cause the pulsing to overcome the inertia of the motor spinning, causing it to stop.
 
-.. note::
-    Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s as the Control Center
-    sends heartbeat checks only once per second. This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected. When 
-    you are finished testing your module, please remember to reset your module's timeout value to your desired value. 
+.. .. note::
+..     Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s as the Control Center
+..     sends heartbeat checks only once per second. This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected. When 
+..     you are finished testing your module, please remember to reset your module's timeout value to your desired value. 
 
-.. warning::
-    Please remove all propellers before interacting with any testing parameters. Failure to do so is dangerous.
+.. .. warning::
+..     Please remove all propellers before interacting with any testing parameters. Failure to do so is dangerous.
 
-.. warning::
-    If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
-    This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
-    voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
+.. .. warning::
+..     If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
+..     This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
+..     voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
 
-#. Set *Pulsing Phase* to 0 rad
-#. Set *Pulsing Voltage* to 1V
-#. Set *Velocity* to 200 rad/s. This will start your module spinning with pulsing active
-#. Now, set *Pulsing Voltage* to 0V, and you should hear that pulsing is no longer active
+.. #. Set *Pulsing Phase* to 0 rad
+.. #. Set *Pulsing Voltage* to 1V
+.. #. Set *Velocity* to 200 rad/s. This will start your module spinning with pulsing active
+.. #. Now, set *Pulsing Voltage* to 0V, and you should hear that pulsing is no longer active
+
+To test the parameters you set with pulsing, please refer to `Pulsing Based Control Mechanisms <manual_pulsing>`_.
 
 Next Steps
 ==========
