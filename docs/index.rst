@@ -85,7 +85,6 @@
    manual/manual_throttle
    manual/manual_advanced_arming
    manual/manual_velocity_control_mechanisms
-   manual/manual_pulsing
    manual/manual_safety_systems
    manual/manual_timeout
    manual/manual_telemetry
@@ -95,6 +94,7 @@
    manual/manual_ifci_control
    manual/manual_buzzer_control
    manual/manual_angle_control_mechanisms
+   manual/manual_pulsing
    manual/manual_underactuated_torque_correction
    manual/manual_stop_detection
    manual/manual_zero_spin

@@ -162,11 +162,13 @@ and *Pulsing Voltage* parameters.
 #. Set *Velocity* to 200 rad/s. This will start your module spinning with pulsing active
 #. Now, set *Pulsing Voltage* to 0V, and you should hear that pulsing is no longer active
 
-Next steps
+Next Steps
 ==========
+
+Now that you have learned about the basic pulsing set up, you can continue to learn to integrate with a flight controller.
 
 To set up a pulsing module follow these steps:
 
-#. :ref:`Pulsing Based Control Mechanisms <manual_pulsing>`
-#. :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Intregration <ifci_px4_flight_controller>`
-#. :ref:`IFCI Integration with PX4 and ArduPilot <ifci_integration>`
+* :ref:`Pulsing Based Control Mechanisms <manual_pulsing>`
+* :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Intregration <ifci_px4_flight_controller>`
+* :ref:`IFCI Integration with PX4 and ArduPilot <ifci_integration>`

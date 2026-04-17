@@ -3,26 +3,29 @@
 
 .. _ifci_px4_flight_controller:
 
-***********************************************************
-Setting Up PX4 and ArduPilot Firmware with IFCI Integration
-***********************************************************
+********************************************************************************************
+Building and Flashing PX4 and ArduPilot Firmware Using IQUART Flight Controller Interface
+********************************************************************************************
 
-This tutorial covers how to configure and build `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ for use with Vertiq’s :ref:`IQUART protocol <uart_messaging>`, and then set up the PX4 firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
+This tutorial covers how to configure and build `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ and `ArduPilot <https://github.com/ArduPilot/ardupilot>`_ for use with Vertiq’s :ref:`IQUART protocol <uart_messaging>`, and then set up the PX4 and ArduPilot firmware to communicate with Vertiq's modules. With IQUART integrated into your flight controller, you gain the ability to control, configure, and receive telemetry from all connected modules through a single serial port. Please note that in order to control your module with IFCI through PX4, your module must support the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>`. The features supported by your module and firmware style can be found on your module’s family page.
 
 .. note::
     
     If you intend on using DroneCAN and a :ref:`IFCI <controlling_ifci>` as :ref:`redundant sources <redundant_throttle_manual>`, please first read 
     :ref:`redundant_arming_interactions` in order to fully understand the arming interactions that may occur between the protocols.
 
+Building and Flashing PX4 Flight Controller Firmware
+====================================================
+
 Setting Up the PX4 Toolchain
-=============================
+-----------------------------
 
 In order to build PX4, you must install the PX4 toolchain. We recommend that you follow `PX4's guides <https://docs.px4.io/main/en/dev_setup/dev_env.html>`__ in order to install the toolchain for your specific device.
 
 .. once we are in px4, this whole section can be replaced with install px4 toolchain as described by them
 
 Setting Up PX4 for IQUART and Building
-=========================================
+--------------------------------------
 
 Once the toolchain is set up, you must change the settings for your board to turn on Vertiq IQUART integrations. To do this, enter your PX4 directory and use the command below, but replace ``<your-flight-control-board>`` with your flight control board's name.
 
@@ -135,7 +138,7 @@ Your firmware file should appear in the ``PX4-Autopilot/build/your-flight-contro
         Trimmed Code
 
 Flashing PX4 to Your Flight Controller
-======================================
+--------------------------------------
 
 Now you will need to flash your flight controller with the newly compiled ``.px4`` file. To do this, open QGroundControl, go to the vehicle settings menu, and enter the 'Firmware' menu. Once there, plug in your board, select the 'Advanced Settings' checkbox, and then the 'Custom Firmware' option. If QGroundControl does not show a pop-up, try unplugging all other USB devices that QGroundControl might confuse as a flight control board before attempting to plug your flight control board in again.
 
@@ -148,9 +151,42 @@ Now you will need to flash your flight controller with the newly compiled ``.px4
 
 Pressing 'Ok' will cause a file explorer to appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
+PX4 IFCI Integration
+---------------------
+
+.. note::
+
+    Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
+
+
+Enabling IFCI on Your PX4 Flight Controller
+-------------------------------------------
+
+Once the flashing is complete, connect to your flight controller with QGroundControl and go to the parameters menu. In the parameters menu :red:`search for 'vertiq'`. The parameter ``VERTIQ_IO_CFG`` :blue:`should appear`. Select this parameter, :green:`set it to the serial port that you plan on using`, save, and reboot the flight controller as instructed by QGroundControl.
+
+.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_enable.png
+    :align: center
+    :scale: 50
+    :alt: Enabling Vertiq IO
+
+    Enabling Vertiq IO
+
+After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VTQ_BAUD` parameter to match what your modules will be using. In this tutorial we will be using a baud rate of 921600 which is what we recommend.
+
+.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_settings.png
+    :align: center
+    :scale: 50
+    :alt: Vertiq IO Submenu
+
+    Vertiq IO Submenu
+
+Now your Vertiq modules must be configured for proper communication with the flight controller.
+
+Building and Flashing ArduPilot Flight Controller Firmware
+==========================================================
 
 Building ArduPilot Flight Controller Firmware
-=============================================
+----------------------------------------------
 
 .. note::
 
@@ -180,7 +216,11 @@ Now build with:
     ./waf copter
 
 Flashing ArduPilot to Your Flight Controller
-============================================
+--------------------------------------------
+
+.. note::
+
+    If you have not done so already, please download and install `Mission Planner <https://ardupilot.org/planner/docs/mission-planner-installation.html>`_.
 
 Open Mission Planner, navigate to Setup, and Install Firmware
 

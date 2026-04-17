@@ -11,10 +11,13 @@ Vertiq offers pulsing firmware available for the :ref:`23-XX family <vertiq_23xx
 
 There are two styles of Vertiq’s pulsing control firmware:
 
-#. Velocity based (all firmware versions 0.1.0 and later)
-#. Voltage based (all firmware 0.0.27 and earlier)
+#. Velocity based (all pulsing firmware versions 0.1.0 and later)
+#. Voltage based (all pulsing firmware 0.0.27 and earlier)
 
-We highly recommend using velocity based pulsing firmware. You can find all pulsing firmware on the Vertiq website as `v0.1.0 or later <https://www.vertiq.co/23-06-g1>`_.
+We highly recommend using velocity based pulsing firmware. You can find all pulsing firmware on the Vertiq website on your module's `product page <https://www.vertiq.co>`_ under firmware.
+
+Veloctiy Based Pulsing
+======================
 
 For more of a background on velocity control, please refer to :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>`.
 
@@ -36,15 +39,21 @@ Velocity based pulsing works by commanding the module to a baseline velocity and
 
 .. note:: When using velocity based pulsing, only velocities can be used to command a pulse.
 
+Voltage Based Pulsing
+=====================
+
 For more of a background on voltage control, please refer to :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>`.
 
 Voltage based pulsing works by commanding the module to a baseline voltage and then adding a sine wave of a specified pulsing voltage that increases and decreases the voltage at a moment in time which tilts the propeller.
 
 .. note:: When using voltage based pulsing, only voltage can be used to command a pulse.
 
+Velocity Pulsing Demo
+=====================
+
 .. warning:: Only do this without a proppeller.
 
-For this example, we are using `23-06 pulsing firmware v0.2.0 <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below.
+For this example, we are using 23-06 pulsing firmware v0.2.0 which can be found on the `23-06 product page <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below.
 
 .. figure:: ../_static/manual_images/pulsing/control_center_pulse_example.png
     :align: center
