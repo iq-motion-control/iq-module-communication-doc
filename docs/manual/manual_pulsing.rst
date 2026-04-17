@@ -26,7 +26,8 @@ will spin slower. A change in amplitude will change the strength of the pulse wh
 to work best for a specific use case with the Vertiq teetering and flapping propellers.
 
 The pulsing magnitude and pulsing phase angle also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change its angle appropriately.
-It is also possible to change the pulsing magnitude and pulsing phase to alter the position and strength of the pulse. This is illustrated below to explain the vectors that define pulsing.
+It is also possible to change the pulsing magnitude and pulsing phase to alter the position and strength of the pulse. The X and Y coordinate system with the pulsign magnitude and pulsing phase angle
+as well as their associated X and Y commands are explained in the diagram below.
 
 .. figure:: ../_static/manual_images/pulsing/pulsing_vectors.png
     :align: center
@@ -35,7 +36,7 @@ It is also possible to change the pulsing magnitude and pulsing phase to alter t
 
     Vectors that define pulsing
 
-When using a propeller the zero angle is the positive direction of the X coordinate system. 
+When using a propeller, the zero angle is the positive direction of the X coordinate system. 
 
 .. figure:: ../_static/manual_images/pulsing/altered_pulsing_zero_angle.png
     :align: center
