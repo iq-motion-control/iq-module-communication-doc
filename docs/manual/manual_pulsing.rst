@@ -16,6 +16,22 @@ There are two styles of Vertiq’s pulsing control firmware:
 
 We highly recommend using velocity based pulsing firmware. You can find all pulsing firmware on the Vertiq website on your module's `product page <https://www.vertiq.co>`_ under firmware.
 
+What is Pulsing?
+================
+
+A regular module can be controlled by commanding a velocity or voltage for the module to spin it. With Vertiq's pulsing firmware, a module can spin at a baseline velocity or voltage
+with increases and decreases in the velocity or voltage. The pulsing is applied as a sinusoidal wave with an amplitude and frequency that affects the velocity and voltage applied to
+the motor. As the pulsing velocity or voltage increases above the baseline, the module will spin faster and as the pulsing velocity or voltage decreases below the baseline, the module
+will spin slower. A change in amplitude will change the strength of the pulse while a change in frequency will change how often the module pulses. Both of these factors can be adjusted
+to work best for a specific use case with the Vertiq teetering and flapping proppelers.
+
+These propellers and the modules also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change it's angle appropriately.
+
+.. note::
+
+    To take advantage of the pulsing firmware, you must use a tilting or teering Vertiq propeller.
+
+
 Velocity Based Pulsing
 ======================
 
@@ -33,11 +49,13 @@ Velocity based pulsing works by commanding the module to a baseline velocity and
 .. figure:: ../_static/manual_images/pulsing/result.png
     :align: center
     :scale: 75
-    :alt: The resulting velocity with reference to the module velocity
+    :alt: The resulting actuation caused by the sum of the target velocity and pulsing sine wave
 
-    The resulting velocity with reference to the module velocity
+    The resulting actuation caused by the sum of the target velocity and pulsing sine wave
 
-.. note:: When using velocity based pulsing, only velocities can be used to command a pulse.
+.. note:: 
+    
+    When using velocity based pulsing, only velocities can be used to command a pulse. If the mode is set to voltage by throttle commands or ctrl_voltage, the module will not pulse no matter what commands are sent.
 
 Voltage Based Pulsing
 =====================
@@ -51,11 +69,11 @@ Voltage based pulsing works by commanding the module to a baseline voltage and t
 Velocity Pulsing Demo
 =====================
 
-    .. warning::
-        Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your 
-        module is secured to a stationary platform or surface before attempting to spin it. 
+.. warning::
+        Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
 
-For this example, we are using 23-06 pulsing firmware v0.2.0 which can be found on the `23-06 product page <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below.
+
+For this example, we are using 23-06 pulsing firmware v0.2.0 which can be found on the `23-06 product page <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below. When the pulsing velocity is 0, you will hear the module spinning normally. When the pulsing velocity increases or decreses from 0, you will hear a stuttering or pulsing of the module.
 
 .. figure:: ../_static/manual_images/pulsing/control_center_pulse_example.png
     :align: center
