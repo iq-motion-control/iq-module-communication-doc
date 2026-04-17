@@ -237,7 +237,7 @@ Configuring Your Vertiq Modules for Use with ArduPilot
 
     Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
-First, connect to Mission Planner. Reset all settings to default using these instructions. This will automatically reboot the flight controller. When it’s completed its bootup, reconnect with Mission Planner. For this throttle only test, set the Frame Type to X:
+First, connect to Mission Planner. Reset all settings to default using `these instructions <https://ardupilot.org/copter/docs/common-parameter-reset.html>`__. This will automatically reboot the flight controller. When it’s completed its bootup, reconnect with Mission Planner. For this throttle only test, set the Frame Type to X:
 
 .. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_frame.png
     :align: center
