@@ -65,6 +65,7 @@
    tutorials/hobby_calibration
    tutorials/dronecan_flight_controller
    tutorials/ifci_px4_flight_controller
+   tutorials/ifci_integration.rst
    tutorials/extracting_log_qgroundcontrol
    tutorials/dronecan_firmware_upgrade
    tutorials/flight_controller_telemetry_tutorial
@@ -84,6 +85,7 @@
    manual/manual_throttle
    manual/manual_advanced_arming
    manual/manual_velocity_control_mechanisms
+   manual/manual_pulsing
    manual/manual_safety_systems
    manual/manual_timeout
    manual/manual_telemetry
