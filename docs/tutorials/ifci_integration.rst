@@ -186,15 +186,17 @@ If the modules are incorrectly mapped you can rearrange the motor function assoc
 PX4 with Pulsing a Module for Teetering or Flapping Propeller
 -------------------------------------------------------------
 
-First for this example, we will connect the PX4 flight controller to the motor over UART and connect the flight controller to QGroundControl. 
+.. note::
+
+    This will only work with Vertiq's pulsing firmware. Please reference :ref:`Pulsing Based Control Mechanisms <manual_pulsing>` for more background information.
+
+For this example, we will connect the PX4 flight controller to the motor over UART and connect the flight controller to QGroundControl. 
 
 .. note::
 
     Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
 In QGroundControl, go to Parameters then Vertiq IO. Set VTQ_NUM_CVS to 3 to account for the command value indices for throttle, x, and y that were previously set in Control Center :ref:`ifci_integration`.
-
-Now, in Vertiq IO, set VTQ_VELO_CUTOFF to the desired velocity that prevents pulsing below the specified velocity. For the Control Value Indices (CVIs), set VTQ_THROTTLE_CIV to 0, VTQ_X_CVI to 1, and VTQ_Y_CVI to 2.
 
 
 PX4 with Pulsing Module Zero Angle Calibration
@@ -204,14 +206,14 @@ PX4 with Pulsing Module Zero Angle Calibration
 
     The desired angle for the zero angle will be chosen based on your vehicle specific set up.
 
-To adjust the forward tilt angle, we will adjust the VTQ_ZERO_ANGLE parameter in the QGroundControl parameter menu where the units are radians. Increasing VTQ_ZERO_ANGLE rotates the propeller's tilt in the counterclockwise direction whereas decreasing VTQ_ZERO_ANGLE will rotate the propeller's tilt in the clockwise direction. If your propeller was rotated clockwise X degrees, you would first convert the X degrees to radians (X * 3.14159 / 180) = Y, resulting in Y radians. then add that to the current VTQ_ZERO_ANGLE parameter. In this example case, the current angle is Z as shown below.
+To adjust the forward tilt angle, we will adjust the VTQ_ZERO_ANGLE parameter in the QGroundControl parameter menu where the units are radians. Increasing VTQ_ZERO_ANGLE rotates the propeller's tilt in the counterclockwise direction whereas decreasing VTQ_ZERO_ANGLE will rotate the propeller's tilt in the clockwise direction. If your propeller was rotated clockwise X radians, you add that to the current VTQ_ZERO_ANGLE parameter. In this example case, the current angle is Z as shown below.
+
 Image of current VTQ_ZERO_ANGLE.
 Y is then added to Z which is then written to the VTQ_ZERO_ANGLE parameter.
 
 !!!Image of new VTQ_ZERO_ANGLE!!!
 
 Now, go back to the QGroundControl's actuator tab, and we will perform the previous test again. Enable the testing slider and then increase the Motor 1 slider until it is near hover speed. Increase the Motor 2 slider so that you can observe the rotor tilting over a bit. The rotor should now be much closer to pointing forwards. If it is at your desired angle, you have calibrated the propeller angle properly. If it is not, then repeat the previous steps. Repeat the zero angle calibration steps until you have reached your desired angle
-
 
 In the video below you can see a demonstration of using the Actuator tab in QGroundControl to spin and pulse a motor.
 
