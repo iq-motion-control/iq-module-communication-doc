@@ -74,7 +74,7 @@ Velocity Based Pulsing
 
 For more of a background on velocity control, please refer to :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>`.
 
-Velocity based pulsing works by commanding the module to a baseline velocity and then adding a sine wave of a specified pulsing velocity that increases and decreases the velocity at a moment in time which tilts the propeller.
+Velocity based pulsing works by commanding the module to a baseline velocity using our :ref:`velocity controller <control_velocity>` and then adding a sine wave of a specified pulsing velocity that increases and decreases the velocity at a moment in time which tilts the propeller.
 
 .. figure:: ../_static/manual_images/pulsing/components.png
     :align: center
