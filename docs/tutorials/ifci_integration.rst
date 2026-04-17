@@ -4,25 +4,23 @@
 .. _ifci_integration:
 
 ######################################################################################
-Module Control with PX4 and Ardupilot Using the IQUART Flight Controller Interface
+Module Control with PX4 and ArduPilot Using the IQUART Flight Controller Interface
 ######################################################################################
 
 The following tutorial will walk you through module and flight controller configuration in order to control your module using the :ref:`IQUART Flight Controller Interface <controlling_ifci>`. 
-Provided are examples for both PX4 and ArduPilot flight controllers. THe PX4 example will also show the motor set up for a quadrotor.
+Provided are examples for both PX4 and ArduPilot flight controllers. The PX4 example will also show the module setup for a quadrotor.
 
-PX4 Set Up
+PX4 Setup
 ==========
 
-The following tutorial will walk you through module and flight controller configuration in order to control your module using the :ref:`IQUART Flight Controller Interface <controlling_ifci>`. Provided are examples for both PX4 and ArduPilot flight controllers.
-
 .. note::
-    If you have not already built PX4 or ArduPilot and flashed it to your flight controller, please complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI intragration <ifci_px4_flight_controller>` before proceeding.
+    If you have not already built PX4 and flashed it to your flight controller, please complete :ref:`Setting Up PX4 Firmware with IFCI integration <ifci_px4_flight_controller>` before proceeding.
 
 .. _configuring_modules:
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ---------------------------------------------------------
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. For this, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. To apply any new Module IDs, reboot the flight controller. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. For this, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason, we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. To apply any new Module IDs, reboot the module. Once all of the modules have different IDs and matching baud rates, they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
@@ -39,10 +37,13 @@ To use your Vertiq modules properly with IFCI, your modules must be flashed with
     Setting Baud Rate
 
 .. note::
-    Required Configuration Before Connecting with Multiple Modules
-    https://iqmotion.readthedocs.io/en/latest/control_center_docs/control_center_start_guide.html#multi-module-config
 
-With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a common ground between the flight controller and each module.
+    For more information on connecting multiple modules, please refer to `multiple module configuration <multi_module_config>`.
+
+
+With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, select a 
+serial port on your flight controller, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a common 
+ground between the flight controller and each module.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_wiring.png
     :align: center
@@ -57,7 +58,7 @@ Integration Setup
 .. warning::
     Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your modules are secured to a stationary platform or surface before attempting to spin them.
 
-Connect your flight controller and motors as shown in the diagram above. Ensure that both the motors and flight controller are receiving power.  :ref:`A short set of tones<startup_song>` should play from each motor when powered on. Connect the flight controller to QGroundControl, navigate to the :red:`parameters menu`, and select the :blue:`Vertiq IO` subsection as shown below.
+Connect your flight controller and modules as shown in the diagram above. Ensure that both the modules and flight controller are receiving power.  :ref:`A short set of tones<startup_song>` should play from each motor when powered on. Connect the flight controller to QGroundControl, navigate to the :red:`parameters menu`, and select the :blue:`Vertiq IO` subsection as shown below.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_parameters.png
     :align: center
@@ -93,7 +94,7 @@ Sometimes if the link from your computer to your flight controller is slow, ``VT
 
     Refreshing parameters when ``VTQ_REDO_READ`` is stuck
 
-In this example, we will set the module's input parser to Velocity mode. This means that received throttle commands are applied as a target velocity for the module to spin at. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadrotor is set up as in the diagram below.
+In this example, we will set the module's input parser to Velocity mode. This means that received throttle commands are applied as a target velocity for the module to spin at. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the modules to work as if the quadrotor is set up as in the diagram below.
 
 .. _quad_image:
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/QuadcopterModules.png
@@ -103,7 +104,7 @@ In this example, we will set the module's input parser to Velocity mode. This me
 
     Module Organization on quadrotor
 
-now, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``VTQ_DISARM_TRIG`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``VTQ_TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VTQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
+Now, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``VTQ_DISARM_TRIG`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``VTQ_TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VTQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/px4_settings.png
     :align: center
@@ -174,7 +175,7 @@ Now that the modules and flight controller have been configured, the modules can
 Enable the actuator testing slider. The modules should arm when the testing slider is enabled. See the note below for more information on how arming works and how to confirm if the modules have armed. Now the sliders will control the modules that they correspond to. Slide each motor slider up individually and confirm that it corresponds to the expected module in the geometry picture. Additionally, confirm that it is spinning in the correct direction.
 
 .. note::
-    For testing, it is important to understand if your module is using :ref:`Advanced Arming <manual_advanced_arming>` with IFCI. If your module is using Advanced Arming with IFCI, then it will need to arm before it can spin for any of these tests. By default, Vertiq modules will arm after 10 consecutive throttle commands between 0% and 12.5% throttle. PX4 sends packets at 400Hz by default, so it will take 2.5ms for the motors to arm once the actuator testing slider is engaged and the motor sliders have remained at the bottom. Because of that, for the general default settings used on Vertiq modules, arming should not be a concern when running these tests. It should be apparent when your module arms because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming configurations on your module.
+    For testing, it is important to understand if your module is using :ref:`Advanced Arming <manual_advanced_arming>` with IFCI. If your module is using Advanced Arming with IFCI, then it will need to arm before it can spin for any of these tests. By default, Vertiq modules will arm after 10 consecutive throttle commands between 0% and 12.5% throttle. PX4 sends packets at 400Hz by default, so it will take 2.5ms for the modules to arm once the actuator testing slider is engaged and the motor sliders have remained at the bottom. Because of that, for the general default settings used on Vertiq modules, arming should not be a concern when running these tests. It should be apparent when your module arms because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming configurations on your module.
  
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_test.png
     :align: center
@@ -218,7 +219,7 @@ PX4 with Pulsing Module Zero Angle Calibration
 
 .. note::
 
-    The desired angle for the zero angle will be chosen based on your vehicle specific set up.
+    The desired angle for the zero angle will be chosen based on your vehicle specific setup.
 
 Using the following instructions, set your zero angle so your X is facing forward.
 
@@ -232,7 +233,7 @@ clockwise X radians, you add that to the current VTQ_ZERO_ANGLE parameter.
 .. Now, go back to the QGroundControl's actuator tab, and we will perform the previous test again. Enable the testing slider and then increase the Motor 1 slider until it is near hover speed. Increase the Motor 2 slider so that you can observe the rotor tilting over a bit. The rotor should now be much closer to pointing forwards. If it is at your desired angle, you have calibrated the propeller angle properly. If it is not, then repeat the previous steps. Repeat the zero angle calibration steps until you have reached your desired angle
 
 
-ArduPilot Set Up
+ArduPilot Setup
 ================
 
 Configuring Your Vertiq Modules for Use with ArduPilot
@@ -240,7 +241,7 @@ Configuring Your Vertiq Modules for Use with ArduPilot
 
 .. note::
 
-    Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
+    Be sure to complete :ref:`Setting Up ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
 First, connect to Mission Planner. Reset all settings to default using `these instructions <https://ardupilot.org/copter/docs/common-parameter-reset.html>`_. This will automatically reboot the flight controller. When it’s completed its bootup, reconnect with Mission Planner. For this throttle only test, set the Frame Type to X:
 
