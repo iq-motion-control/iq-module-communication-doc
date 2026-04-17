@@ -9,7 +9,7 @@ Building and Flashing PX4 and ArduPilot Firmware with IQUART Flight Controller I
 
 This tutorial covers how to build and configure `PX4 Autopilot <https://github.com/PX4/PX4-Autopilot>`_ and `ArduPilot <https://github.com/ArduPilot/ardupilot>`_ for use with Vertiq’s
 :ref:`IQUART protocol <uart_messaging>`. With IQUART integrated into your flight controller, you gain the ability to control and receive telemetry from all connected modules through 
-a single serial port. If you are using PX4, you also gain the ability to configure your modules directly through the flight controller. Please note, that in order to control your module 
+a single serial port. If you are using PX4, you also gain the ability to configure your modules directly through the flight controller. Please note that in order to control your module 
 with the :ref:`IQUART Flight Controller Interface (IFCI)<controlling_ifci>` through PX4 or ArduPilot, your module must support IFCI. The features supported by your module and firmware 
 style can be found on your module’s family page.
 
