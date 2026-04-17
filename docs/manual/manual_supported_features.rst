@@ -28,4 +28,4 @@ X indicates a supported feature.
     
 \(1\) LED control is not available on the :ref:`Vertiq 81-08 Gen 1 <vertiq_81xx_family>`.
 
-\(2\) LED control only available on servo versions v0.1.1 and later.
+\(2\) Available on servo versions v0.1.1 and later.

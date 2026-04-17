@@ -9,7 +9,7 @@ Feature,23-XX Speed,23-XX Pulsing,All Other Speed,All Servo
 :ref:`manual_throttle`,X,X,X,
 :ref:`manual_zero_spin`,X,X,X,
 :ref:`timer_based_protocol`,X,,X,X
-:ref:`dronecan_protocol`,,,X,X
+:ref:`dronecan_protocol`,,,X,X :sup:`(2)`
 :ref:`manual_angle_control_mechanisms`,,,X,X
 :ref:`manual_led_support`,,,X :sup:`(1)`,X :sup:`(1)` :sup:`(2)`
 :ref:`manual_telemetry`,X,,X,

@@ -67,9 +67,12 @@ You can find a listing of all supported features by each firmware style in :ref:
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
+        * :ref:`dronecan_protocol`
         * :ref:`timer_based_protocol`
         * :ref:`manual_timeout`
-
+        * :ref:`controlling_ifci`
+        * :ref:`manual_led_support`
+        
 Supported IQUART Clients
 =================================
         * :ref:`system_control`
