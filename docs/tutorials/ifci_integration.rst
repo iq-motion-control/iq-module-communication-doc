@@ -8,7 +8,7 @@ Module Control with PX4 and Ardupilot Using the IQUART Flight Controller Interfa
 ######################################################################################
 
 The following tutorial will walk you through module and flight controller configuration in order to control your module using the :ref:`IQUART Flight Controller Interface <controlling_ifci>`. 
-Provided are examples for both PX4 and ArduPilot flight controllers.
+Provided are examples for both PX4 and ArduPilot flight controllers. THe PX4 example will also show the motor set up for a quadrotor.
 
 PX4 Set Up
 ==========
@@ -40,7 +40,7 @@ To use your Vertiq modules properly with IFCI, your modules must be flashed with
     Required Configuration Before Connecting with Multiple Modules
     https://iqmotion.readthedocs.io/en/latest/control_center_docs/control_center_start_guide.html#multi-module-config
 
-With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port that you configured to run Vertiq IO, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a common ground between the flight controller and each module.
+With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, find the flight controller's serial port, and connect the TX of the serial port to each module's RX port. Connect the RX of the serial port to each module's TX port. Connect a common ground between the flight controller and each module.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_wiring.png
     :align: center
@@ -91,15 +91,15 @@ Sometimes if the link from your computer to your flight controller is slow, ``VT
 
     Refreshing parameters when ``VTQ_REDO_READ`` is stuck !!!change to velocity!!!
 
-In this example, we will set the module's input parser to Velocity mode. This means that received throttle commands are applied as a target velocity for the module to spin at. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadcopter is set up as in the diagram below.
+In this example, we will set the module's input parser to Velocity mode. This means that received throttle commands are applied as a target velocity for the module to spin at. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadrotor is set up as in the diagram below.
 
 .. _quad_image:
-.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/QuadcopterModules.png
+.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/quadrotorModules.png
     :align: center
     :scale: 50
-    :alt: Modules on Quadcopter
+    :alt: Modules on quadrotor
 
-    Module Organization on Quadcopter
+    Module Organization on quadrotor
 
 now, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``VTQ_DISARM_TRIG`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``VTQ_TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VTQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
 
@@ -110,7 +110,7 @@ now, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` c
 
     PX4 Module Parameters
 
-Next, the module parameters will be set. First the ``VTQ_TRGT_MOD_ID`` parameter will be set to 0. This means that we are interacting with the module with module ID 0. When ``VTQ_TRGT_MOD_ID`` is set, the Module Params should be reloaded. The ``VTQ_CONTROL_MODE`` parameter will be set to PWM. The ``VTQ_MAX_VELOCITY`` and ``VTQ_MAX_VOLTS`` parameters can be ignored because we are not controlling the motor with velocity or voltage mode. If ``VTQ_CONTROL_MODE`` is set to one of those, the MAX\_ parameter that it corresponds to needs to be set appropriately. More information about control mode and the related MAX\_ parameter can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. ``VTQ_FC_DIR`` should be set to 2D. All of these parameters will be the same for all of the modules. The last two parameters ``VTQ_THROTTLE_CVI``, and ``VTQ_MOTOR_DIR`` will vary with each module. In our example, ``VTQ_THROTTLE_CVI`` will be set to match the module ID. Since we are currently setting module ID 0’s settings, we will set ``VTQ_THROTTLE_CVI`` to 0. CVI stands for Control Value Index and more information can be found in the :ref:`IFCI documentation<controlling_ifci>`. The CVI we set here indicates which CVI the motor is listening for in the IFCI control packet. ``VTQ_MOTOR_DIR`` will be set to 2D Counter Clockwise to match the :ref:`diagram of the quadcopter above<quad_image>`. Ensure the ``VTQ_MOTOR_DIR`` parameter matches the direction shown in the diagram for each module ID. This is then repeated for each module ID by selecting a new ``VTQ_TRGT_MOD_ID``. The resulting parameters for each module are shown below. Blue boxes are the parameters that match between modules, red are the ones that vary, and yellow is the module ID. After setting all of the parameters for one module, we recommend setting the ``VTQ_REDO_READ`` parameter to confirm that all of the Module Params have been set correctly. 
+Next, the module parameters will be set. First the ``VTQ_TRGT_MOD_ID`` parameter will be set to 0. This means that we are interacting with the module with module ID 0. When ``VTQ_TRGT_MOD_ID`` is set, the Module Params should be reloaded. The ``VTQ_CONTROL_MODE`` parameter will be set to PWM. The ``VTQ_MAX_VELOCITY`` and ``VTQ_MAX_VOLTS`` parameters can be ignored because we are not controlling the motor with velocity or voltage mode. If ``VTQ_CONTROL_MODE`` is set to one of those, the MAX\_ parameter that it corresponds to needs to be set appropriately. More information about control mode and the related MAX\_ parameter can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. ``VTQ_FC_DIR`` should be set to 2D. All of these parameters will be the same for all of the modules. The last two parameters ``VTQ_THROTTLE_CVI``, and ``VTQ_MOTOR_DIR`` will vary with each module. In our example, ``VTQ_THROTTLE_CVI`` will be set to match the module ID. Since we are currently setting module ID 0’s settings, we will set ``VTQ_THROTTLE_CVI`` to 0. CVI stands for Control Value Index and more information can be found in the :ref:`IFCI documentation<controlling_ifci>`. The CVI we set here indicates which CVI the motor is listening for in the IFCI control packet. ``VTQ_MOTOR_DIR`` will be set to 2D Counter Clockwise to match the :ref:`diagram of the quadrotor above<quad_image>`. Ensure the ``VTQ_MOTOR_DIR`` parameter matches the direction shown in the diagram for each module ID. This is then repeated for each module ID by selecting a new ``VTQ_TRGT_MOD_ID``. The resulting parameters for each module are shown below. Blue boxes are the parameters that match between modules, red are the ones that vary, and yellow is the module ID. After setting all of the parameters for one module, we recommend setting the ``VTQ_REDO_READ`` parameter to confirm that all of the Module Params have been set correctly. 
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/module_settings.png
     :align: center
@@ -123,7 +123,7 @@ Next, the module parameters will be set. First the ``VTQ_TRGT_MOD_ID`` parameter
 Actuator Setup
 --------------
 
-Now, we will configure PX4's internal representation of the quadcopter's geometry to match the IFCI outputs. Navigate to the :red:`actuator tab` of QGroundControl and ensure that the :blue:`Vertiq IO tab` shows up.
+Now, we will configure PX4's internal representation of the quadrotor's geometry to match the IFCI outputs. Navigate to the :red:`actuator tab` of QGroundControl and ensure that the :blue:`Vertiq IO tab` shows up.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_vertiq_tab.png
     :align: center
@@ -135,7 +135,7 @@ Now, we will configure PX4's internal representation of the quadcopter's geometr
 The geometry section determines where the flight controller expects each motor on the aircraft, and what direction the flight controller expects that motor to be spinning. The Actuator Outputs section determines which motor defined in the geometry section is connected to which actuator. In this case, we want to associate Motors from the geometry section with our Modules. The CVIs in the Vertiq IO section of Actuator Outputs correspond to the CVIs set on each motor module in the previous section. In this example, we have set the CVIs such that we can associate Motor 1 with CVI 0, Motor 2 with CVI 1, Motor 3 with CVI 2, and Motor 4 with CVI 3.
 
 .. note::
-    If this is your first time configuring CVI values on a quadcopter, it is highly recommended to use values 0, 1, 2, 3 as the CVI values.
+    If this is your first time configuring CVI values on a quadrotor, it is highly recommended to use values 0, 1, 2, 3 as the CVI values.
     Please refer to the :ref:`IFCI documentation <controlling_ifci>` to understand the difference between CVI values and Module IDs.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_associations.png
@@ -186,7 +186,7 @@ If the modules are incorrectly mapped you can rearrange the motor function assoc
 PX4 with Pulsing a Module for Teetering or Flapping Propeller
 -------------------------------------------------------------
 
-First for this example, we will connect the PX4 flight controller to the motor over UART and connect the flight controller to a computer over USB. 
+First for this example, we will connect the PX4 flight controller to the motor over UART and connect the flight controller to QGroundControl. 
 
 .. note::
 
@@ -257,7 +257,7 @@ Now, go to CONFIG, and select the Full Parameter List. In the Search bar, enter 
 
 .. note::
 
-    Set your module’s CVIs to match this example. If this is your first time configuring CVI values on a quadcopter, it is highly recommended to use values 0, 1, 2, 3 as the CVI values.
+    Set your module’s CVIs to match this example. If this is your first time configuring CVI values on a quadrotor, it is highly recommended to use values 0, 1, 2, 3 as the CVI values.
     Please refer to the :ref:`IFCI documentation <controlling_ifci>` to understand the difference between CVI values and Module IDs.
 
 For this basic throttle only test, only 1 Control Value is needed for the throttle output to the one connected module. Since there is only 1 CV, it is placed in index 0. Set SERVO_VIQ_CVS to 1, this parameter sets the number of control value indices where each index is needed to control a throttle value for a module. Since this module will not be pulsing, we only need a throttle index. We will also configure our flight controller to receive telemetry from our connected module. Since for this example, the module was reset to its factory default settings, the module currently has a `Module ID <https://iqmotion.readthedocs.io/en/latest/control_center_docs/control_center_start_guide.html#required-configuration-before-connecting-with-multiple-modules>`_ of 0. The lowest bit in the bitmask represents Module ID 0, so set SERVO_VIQ_TEL_BM to 1 :ref:`building ArduPilot <ifci_px4_flight_controller>`. Write these parameters..
