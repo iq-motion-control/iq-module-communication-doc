@@ -96,7 +96,7 @@ Sometimes if the link from your computer to your flight controller is slow, ``VT
 In this example, we will set the module's input parser to Velocity mode. This means that received throttle commands are applied as a target velocity for the module to spin at. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up the motors to work as if the quadrotor is set up as in the diagram below.
 
 .. _quad_image:
-.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/quadrotorModules.png
+.. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/QuadcopterModules.png
     :align: center
     :scale: 50
     :alt: Modules on quadrotor

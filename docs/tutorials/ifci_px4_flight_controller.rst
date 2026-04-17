@@ -17,8 +17,6 @@ This tutorial covers how to build and configure `PX4 Autopilot <https://github.c
 Building and Flashing PX4 Flight Controller Firmware
 ====================================================
 
-The benefits of PX4 include: !!!
-
 Setting Up the PX4 Toolchain
 -----------------------------
 
@@ -192,7 +190,7 @@ Go here to set up ArduPilot following the `developer instructions <https://ardup
 
 Building ArduPilot Flight Controller Firmware
 ----------------------------------------------
- 
+
 
 Vertiq's ArduPilot fork includes all of the necessary updates needed to control your Vertiq modules over IFCI. To access it, first make sure you've set up an `SSH key for GitHub <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`__,
 and then go to the `Vertiq ArduPilot repository <https://github.com/iq-motion-control/vertiq_ardupilot>`_.
