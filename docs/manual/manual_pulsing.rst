@@ -16,6 +16,10 @@ There are two styles of Vertiq’s pulsing control firmware:
 
 We highly recommend using velocity based pulsing firmware. You can find all pulsing firmware on the Vertiq website on your module's `product page <https://www.vertiq.co>`_ under firmware.
 
+.. tip::
+
+    To take advantage of the pulsing firmware, you must use a flapping or teetering Vertiq propeller.
+
 What is Pulsing?
 ================
 
@@ -64,11 +68,6 @@ With your zero angle calibrated to align the X basis vector with the front of yo
     Pulsing with vehicle zero angle
 
 |
-
-.. note::
-
-    To take advantage of the pulsing firmware, you must use a tilting or teering Vertiq propeller.
-
 
 Velocity Based Pulsing
 ======================
