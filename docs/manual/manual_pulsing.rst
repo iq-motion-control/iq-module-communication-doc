@@ -23,9 +23,9 @@ A regular module can be controlled by commanding a velocity or voltage for the m
 with increases and decreases in the velocity or voltage. The pulsing is applied as a sinusoidal wave with an amplitude and frequency that affects the velocity and voltage applied to
 the motor. As the pulsing velocity or voltage increases above the baseline, the module will spin faster and as the pulsing velocity or voltage decreases below the baseline, the module
 will spin slower. A change in amplitude will change the strength of the pulse while a change in frequency will change how often the module pulses. Both of these factors can be adjusted
-to work best for a specific use case with the Vertiq teetering and flapping proppelers.
+to work best for a specific use case with the Vertiq teetering and flapping propellers.
 
-These propellers and the modules also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change it's angle appropriately.
+The pulsing magnitude and pulsing phase angle also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change its angle appropriately.
 It is also possible to change the pulsing magnitude and pulsing phase to alter the position and strength of the pulse. This is illustrated below to explain the vectors that define pulsing.
 
 .. figure:: ../_static/manual_images/pulsing/pulsing_vectors.png
