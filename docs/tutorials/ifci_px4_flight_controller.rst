@@ -235,9 +235,7 @@ Plug in your flight controller and Mission Planner should say that it found your
 Select Load Custom Firmware, and select the .apj file you just built.
 Once flashed, select Connect in the top right to connect with your flight controller.
 
-Next steps
+Next Steps
 ==========
 
-To continue setting up a pulsing module follow the next steps:
-
-#. :ref:`IFCI Integration with PX4 and ArduPilot <ifci_integration>`
+* :ref:`ifci_integration`
