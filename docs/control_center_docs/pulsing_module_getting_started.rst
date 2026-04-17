@@ -7,6 +7,8 @@
 Getting Started with Vertiq's Pulsing Firmware with IQ Control Center
 ########################################################################
 
+To learn more about pulsing, please read the manual `Pulsing Based Control Mechanisms <manual_pulsing>`_ to gain a background before continuing to get started with pulsing.
+
 .. note::
     This guide focuses on setting parameters on your Vertiq modules. Please refer to your hardware's documentation (flight controller, radio, etc.) for more details on its specific configuration. 
     For example, refer to the `PX4 documentation <https://docs.px4.io/main/en/flight_controller/>`__ for integrating with a PX4 flight controller. 

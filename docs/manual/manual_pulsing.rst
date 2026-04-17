@@ -26,10 +26,44 @@ will spin slower. A change in amplitude will change the strength of the pulse wh
 to work best for a specific use case with the Vertiq teetering and flapping proppelers.
 
 These propellers and the modules also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change it's angle appropriately.
+It is also possible to change the pulsing magnitude and pulsing phase to alter the position and strength of the pulse. This is illustrated below to explain the vectors that define pulsing.
 
-When using a propeller the zero angle is the positive direction of the X coordinate system. The zero angle works to ensure that the X axis is along the front of your vehicle. To 
-accomplish this, we can change the zero angle such that X is calibrated to face the front of your vehicle allowing for a postive X value to tilt a propeller toward the front of your 
-vehicle.
+.. figure:: ../_static/manual_images/pulsing/pulsing_vectors.png
+    :align: center
+    :scale: 75
+    :alt: Vectors that define pulsing
+
+    Vectors that define pulsing
+
+When using a propeller the zero angle is the positive direction of the X coordinate system. 
+
+.. figure:: ../_static/manual_images/pulsing/altered_pulsing_zero_angle.png
+    :align: center
+    :scale: 75
+    :alt: Altered pulsing zero angle
+
+    Altered pulsing zero angle
+
+The zero angle works to ensure that the X axis is along the front of your vehicle as seen in the figure below. 
+
+.. figure:: ../_static/manual_images/pulsing/pulsing_basic_vehicle_shapes.png
+    :align: center
+    :scale: 75
+    :alt: Pulsing with vehicle shape
+
+    Pulsing with vehicle shape
+
+To accomplish this, we can change the zero angle such that X is calibrated to face the front of your vehicle allowing for a postive X value to tilt a propeller toward the front of your 
+vehicle. 
+
+.. figure:: ../_static/manual_images/pulsing/pulsing_vehicle_zero_angle.png
+    :align: center
+    :scale: 75
+    :alt: Pulsing with vehicle zero angle
+
+    Pulsing with vehicle zero angle
+
+|
 
 .. note::
 
