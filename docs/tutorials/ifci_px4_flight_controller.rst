@@ -175,7 +175,7 @@ Once the flashing is complete, connect to your flight controller with QGroundCon
 
     Enabling Vertiq IO
 
-After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VTQ_BAUD` parameter to match what your modules will be using. In this tutorial we will be using a baud rate of 921600 which is what we recommend.
+After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO` submenu in the QGroundControl parameter settings. Adjust the :red:`VTQ_BAUD` parameter to match what your modules will be using. In this tutorial, we will be using a baud rate of 921600 which is what we recommend.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/vertiq_io_settings.png
     :align: center
@@ -184,12 +184,12 @@ After reboot, and with Vertiq IO enabled, you should now see a :blue:`Vertiq IO`
 
     Vertiq IO Submenu
 
-Now your Vertiq modules must be configured for proper communication with the flight controller.
+Now your Vertiq modules must be configured for proper communication with the flight controller and you can find these instructions `here <ifci_integration>`.
 
 Building and Flashing ArduPilot Flight Controller Firmware
 ==========================================================
 
-Go here to set up ArduPilot following the `developer instructions <https://ardupilot.org/dev/>`_.
+In order to build ArduPilot, you must install the ArduPilot toolchain. We recommend that you follow the `developer instructions <https://ardupilot.org/dev/>`_.
 
 
 Building ArduPilot Flight Controller Firmware
