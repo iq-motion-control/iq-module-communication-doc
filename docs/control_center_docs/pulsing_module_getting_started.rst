@@ -96,7 +96,7 @@ To learn more please read :ref:`controlling_ifci`.
 ************************************
 Pulsing Velocity Cutoff
 ************************************
-This parameter is available through the Tuning tab, and determines when the module will not allow pulsing below a specified velocity.
+This parameter is available through the Tuning tab, and determines the minimum required velocity to allow pulsing.
 To learn more please read :ref:`controlling_ifci`.
 
 *****************************************************************************************
@@ -180,10 +180,6 @@ To test the parameters you set with pulsing, please refer to `Pulsing Based Cont
 
 Next Steps
 ==========
-
-Now that you have learned about the basic pulsing set up, you can continue to learn to integrate with a flight controller.
-
-To set up a pulsing module follow these steps:
 
 * :ref:`Pulsing Based Control Mechanisms <manual_pulsing>`
 * :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Intregration <ifci_px4_flight_controller>`
