@@ -4,7 +4,7 @@
 .. _ifci_integration:
 
 ######################################################################################
-Module Integration with PX4 and Ardupilot Using IQUART Flight Controller Interface
+Module Control with PX4 and Ardupilot Using the IQUART Flight Controller Interface
 ######################################################################################
 
 The following tutorial will walk you through module and flight controller configuration in order to control your module using the :ref:`IQUART Flight Controller Interface <controlling_ifci>`. 
@@ -13,14 +13,14 @@ Provided are examples for both PX4 and ArduPilot flight controllers.
 PX4 Set Up
 ==========
 
-This example uses the Pixhawk 6C with a Vertiq 23-06 module on pulsing firmware v0.2.0. This will be used to demonstrate how to pulse a module with firmware and a flight controller. There are examples for both PX4 and ArduPilot.
+The following tutorial will walk you through module and flight controller configuration in order to control your module using the :ref:`IQUART Flight Controller Interface <controlling_ifci>`. Provided are examples for both PX4 and ArduPilot flight controllers.
 
 .. note::
     If you have not already built PX4 or ArduPilot and flashed it to your flight controller, please complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI intragration <ifci_px4_flight_controller>` before proceeding.
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ---------------------------------------------------------
-To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. As stated previously, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
+To use your Vertiq modules properly with IFCI, your modules must be flashed with a compatible firmware version. Please consult your module's family page to find if your module supports IFCI. After flashing the appropriate firmware, connect each module **individually** to IQ Control Center and set the :blue:`UART Baud Rate` and the :red:`Module ID`. For this, we recommend that you use a baud rate of 921600. Both of these parameters will cause the motor to disconnect when set, so make sure you reconnect to the motor after each one is set. When the baud rate is changed you will have to adjust the baud rate in the IQ Control Center to be able to reconnect to the motor. For this reason we recommend changing the module ID and then changing the baud rate. This avoids needing to change the baud rate of IQ Control Center at all. Ensure that each module connected to the flight controller is set to a unique module ID. For this tutorial, we will be using the module IDs 0, 1, 2, and 3. To apply any new Module IDs, reboot the flight controller. Once all of the modules have different IDs and matching baud rates they can all be connected to IQ Control Center using a single USB port with the wiring diagram shown in the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/control_center_settings_module_id.png
     :align: center
