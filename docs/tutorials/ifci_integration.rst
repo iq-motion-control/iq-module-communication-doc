@@ -196,7 +196,7 @@ For this example, we will connect the PX4 flight controller to the motor over UA
 
 .. note::
 
-    Be sure to complete :ref"`configuring your motor modules <configuring_modules>` and :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
+    Be sure to complete :ref:`configuring your motor modules <configuring_modules>` and :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
 In QGroundControl, go to Parameters then Vertiq IO. Set VTQ_NUM_CVS to 3 to account for the command value indices for throttle, x, and y that were previously set in Control Center :ref:`ifci_integration`.
 
