@@ -7,13 +7,16 @@
 Module Integration with PX4 and Ardupilot Using IQUART Flight Controller Interface
 ######################################################################################
 
+The following tutorial will walk you through module and flight controller configuration in order to control your module using the :ref:`IQUART Flight Controller Interface <controlling_ifci>`. 
+Provided are examples for both PX4 and ArduPilot flight controllers.
+
 PX4 Set Up
 ==========
 
-This example uses the Pixhawk 6C with a Vertiq 23-06 module on pulsing v0.2.0 firmware. This will be used to demonstrate how to pulse a module with firmware and a flight controller. There are examples for both PX4 and ArduPilot.
+This example uses the Pixhawk 6C with a Vertiq 23-06 module on pulsing firmware v0.2.0. This will be used to demonstrate how to pulse a module with firmware and a flight controller. There are examples for both PX4 and ArduPilot.
 
 .. note::
-    If you have not already built PX4 or ArduPilot and flashed it to your flight controller, please complete `Setting Up PX4 and ArduPilot Firmware with IFCI intragration :ref:<ifci_px4_flight_controller>` before proceeding.
+    If you have not already built PX4 or ArduPilot and flashed it to your flight controller, please complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI intragration <ifci_px4_flight_controller>` before proceeding.
 
 Configuring Your Vertiq Modules for Use with IFCI and PX4
 ---------------------------------------------------------
@@ -98,7 +101,7 @@ In this example, we will set the module's input parser to Velocity mode. This me
 
     Module Organization on Quadcopter
 
-First, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``VTQ_DISARM_TRIG`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``VTQ_TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VTQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
+now, we will set the flight controller specific parameters. ``VTQ_ARM_BEHAVE`` can be left as the default “Use Motor Arm Behavior”. ``VTQ_DISARM_TRIG`` will be set to “Coast Motors”. This will turn the motor controllers off and allow the motors to spin freely. In ``VTQ_TELEM_IDS_1`` select 0, 1, 2, and 3 to indicate that the flight controller should request telemetry from those module IDs (because this is a bitset parameter, the actual number that is set will be 15). Set ``VTQ_NUM_CVS`` to 4. This means that your IFCI packet will be filled with 4 control signals and that the available control value indices will be 0, 1, 2, and 3. More can be read about this in the :ref:`IFCI documentation<controlling_ifci>`. After setting these parameters, reboot the flight controller.
 
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/px4_settings.png
     :align: center
@@ -169,9 +172,8 @@ Now that the modules and flight controller have been configured, the modules can
 Enable the actuator testing slider. The modules should arm when the testing slider is enabled. See the note below for more information on how arming works and how to confirm if the modules have armed. Now the sliders will control the modules that they correspond to. Slide each motor slider up individually and confirm that it corresponds to the expected module in the geometry picture. Additionally, confirm that it is spinning in the correct direction.
 
 .. note::
-    For testing, it is important to understand if your module is using :ref:`Advanced Arming <manual_advanced_arming>` with IFCI. If your module is using Advanced Arming with IFCI, then it will need to arm before it can spin for any of these tests. By default, Vertiq modules will typically arm after 10 consecutive packets of commands between 0% and 12.5% throttle. PX4 sends packets at 400Hz by default, so it will take 2.5ms for the motors to arm once the actuator testing slider is engaged and the motor sliders have remained at the bottom. Because of that, for the general default settings used on Vertiq modules, arming should not be a concern when running these tests. It should be apparent when your module arms because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming configurations on your module.
+    For testing, it is important to understand if your module is using :ref:`Advanced Arming <manual_advanced_arming>` with IFCI. If your module is using Advanced Arming with IFCI, then it will need to arm before it can spin for any of these tests. By default, Vertiq modules will arm after 10 consecutive throttle commands between 0% and 12.5% throttle. PX4 sends packets at 400Hz by default, so it will take 2.5ms for the motors to arm once the actuator testing slider is engaged and the motor sliders have remained at the bottom. Because of that, for the general default settings used on Vertiq modules, arming should not be a concern when running these tests. It should be apparent when your module arms because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming configurations on your module.
  
-
 .. figure:: ../_static/tutorial_images/ifci_px4_flight_controller/actuator_test.png
     :align: center
     :scale: 50
@@ -192,7 +194,6 @@ First for this example, we will connect the PX4 flight controller to the motor o
 
 In QGroundControl, go to Parameters then Vertiq IO. Set VTQ_NUM_CVS to 3 to account for the command value indices for throttle, x, and y that were previously set in Control Center :ref:`ifci_integration`.
 
-
 Now, in Vertiq IO, set VTQ_VELO_CUTOFF to the desired velocity that prevents pulsing below the specified velocity. For the Control Value Indices (CVIs), set VTQ_THROTTLE_CIV to 0, VTQ_X_CVI to 1, and VTQ_Y_CVI to 2.
 
 
@@ -203,13 +204,13 @@ PX4 with Pulsing Module Zero Angle Calibration
 
     The desired angle for the zero angle will be chosen based on your vehicle specific set up.
 
-To adjust the forward tilt angle, we will adjust the VTQ_ZERO_ANGLE parameter in the QGroundControl parameter menu where the units are radians. Increasing VTQ_ZERO_ANGLE rotates the propeller’s tilt in the counterclockwise direction whereas decreasing VTQ_ZERO_ANGLE will rotate the propeller’s tilt in the clockwise direction. If your propeller was rotated clockwise X degrees, you would first convert the X degrees to radians (X * 3.14159 / 180) = Y, resulting in Y radians. then add that to the current VTQ_ZERO_ANGLE parameter. In this example case, the current angle is Z as shown below.
+To adjust the forward tilt angle, we will adjust the VTQ_ZERO_ANGLE parameter in the QGroundControl parameter menu where the units are radians. Increasing VTQ_ZERO_ANGLE rotates the propeller's tilt in the counterclockwise direction whereas decreasing VTQ_ZERO_ANGLE will rotate the propeller's tilt in the clockwise direction. If your propeller was rotated clockwise X degrees, you would first convert the X degrees to radians (X * 3.14159 / 180) = Y, resulting in Y radians. then add that to the current VTQ_ZERO_ANGLE parameter. In this example case, the current angle is Z as shown below.
 Image of current VTQ_ZERO_ANGLE.
 Y is then added to Z which is then written to the VTQ_ZERO_ANGLE parameter.
 
 !!!Image of new VTQ_ZERO_ANGLE!!!
 
-Now, go back to the QGroundControl’s actuator tab, and we will perform the previous test again. Enable the testing slider and then increase the Motor 1 slider until it is near hover speed. Increase the Motor 2 slider so that you can observe the rotor tilting over a bit. The rotor should now be much closer to pointing forwards. If it is at your desired angle, you have calibrated the propeller angle properly. If it is not, then repeat the previous steps. Repeat the zero angle calibration steps until you have reached your desired angle
+Now, go back to the QGroundControl's actuator tab, and we will perform the previous test again. Enable the testing slider and then increase the Motor 1 slider until it is near hover speed. Increase the Motor 2 slider so that you can observe the rotor tilting over a bit. The rotor should now be much closer to pointing forwards. If it is at your desired angle, you have calibrated the propeller angle properly. If it is not, then repeat the previous steps. Repeat the zero angle calibration steps until you have reached your desired angle
 
 
 In the video below you can see a demonstration of using the Actuator tab in QGroundControl to spin and pulse a motor.
