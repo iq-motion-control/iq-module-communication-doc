@@ -192,8 +192,8 @@ Building ArduPilot Flight Controller Firmware
 
     Go here to set up ArduPilot following the `developer instructions <https://ardupilot.org/dev/>`_.
 
-We will build our ArduPilot fork for your flight controller using the Master branch. Make sure you’ve set up an SSH key for GitHub,
-then go to the `Vertiq ArduPilot repository <https://github.com/iq-motion-control/vertiq_ardupilot>`_.
+Vertiq's ArduPilot fork includes all of the necessary updates needed to control your Vertiq modules over IFCI. To access it, first make sure you've set up an `SSH key for GitHub <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`__,
+and then go to the `Vertiq ArduPilot repository <https://github.com/iq-motion-control/vertiq_ardupilot>`_.
 
 In a WSL terminal, run the following:
 
