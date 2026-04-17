@@ -75,6 +75,7 @@ Velocity Based Pulsing
 For more of a background on velocity control, please refer to :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>`.
 
 Velocity based pulsing works by commanding the module to a baseline velocity using our :ref:`velocity controller <control_velocity>` and then adding a sine wave of a specified pulsing velocity that increases and decreases the velocity at a moment in time which tilts the propeller.
+The images below show how the pulsing velocity is added to the baseline velocity to result in the final target velocity.
 
 .. figure:: ../_static/manual_images/pulsing/components.png
     :align: center
@@ -92,25 +93,21 @@ Velocity based pulsing works by commanding the module to a baseline velocity usi
 
 .. note:: 
     
-    When using velocity based pulsing, only velocities can be used to command a pulse. If the mode is set to voltage by throttle commands or ctrl_voltage, the module will not pulse no matter what commands are sent.
-
-Voltage Based Pulsing
-=====================
-
-For more of a background on voltage control, please refer to :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>`.
-
-Voltage based pulsing works by commanding the module to a baseline voltage and then adding a sine wave of a specified pulsing voltage that increases and decreases the voltage at a moment in time which tilts the propeller.
-
-.. note:: When using voltage based pulsing, only voltage can be used to command a pulse.
+    When using velocity based pulsing, only velocities can be used to command a pulse. If the module is not in `velocity mode <throttle_mode>` or directly set with a control velocity 
+    the module will not pulse.
 
 Velocity Pulsing Demo
-=====================
+---------------------
 
 .. warning::
-        Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module is secured to a stationary platform or surface before attempting to spin it. 
+        Please remove all propellers from any module you plan on testing. Failure to do so can result in harm to you or others around you. Further, please ensure that your module 
+        is secured to a stationary platform or surface before attempting to spin it. 
 
 
-For this example, we are using 23-06 pulsing firmware v0.2.0 which can be found on the `23-06 product page <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below. When the pulsing velocity is 0, you will hear the module spinning normally. When the pulsing velocity increases or decreses from 0, you will hear a stuttering or pulsing of the module.
+For this example, we are using 23-06 pulsing firmware v0.2.0 which can be found on the `23-06 product page <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the
+module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, 
+set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below. When the pulsing velocity is 0, you will hear the module spinning normally. When the pulsing velocity 
+increases or decreses from 0, you will hear a stuttering or pulsing of the module.
 
 .. figure:: ../_static/manual_images/pulsing/control_center_pulse_example.png
     :align: center
@@ -131,6 +128,20 @@ You should now hear a difference in the module as it adjusts its velocity to pul
                 }
     </style>
     <video class='center_vid' controls><source src="../_static/manual_images/pulsing/control_center_pulse_example.mp4" type="video/mp4"></video>
+
+|
+
+Voltage Based Pulsing
+=====================
+
+For more of a background on voltage control, please refer to :ref:`Velocity and Voltage Based Control Mechanisms <manual_velocity_control_mechanisms>`.
+
+Voltage based pulsing works by commanding the module to a baseline voltage and then adding a sine wave of a specified pulsing voltage that increases and decreases the voltage at a moment in time which tilts the propeller.
+
+.. note:: 
+    
+    When using voltage based pulsing, only voltages can be used to command a pulse. If the module is not in `voltage mode <throttle_mode>` or directly set with a control voltage 
+    the module will not pulse.
 
 Next steps
 ==========
