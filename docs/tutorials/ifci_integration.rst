@@ -39,7 +39,7 @@ the :ref:`Multiple Module Wiring guide<multiple_module_wiring>` if desired.
 
 .. note::
 
-    For more information on connecting multiple modules, please refer to `multiple module configuration <multi_module_config>`.
+    For more information on connecting multiple modules, please refer to :ref:`multiple module configuration <multi_module_config>`.
 
 
 With the modules set to unique module IDs, and the baud rate set to match the flight controller's, you can now connect your modules to the flight controller. To do this, select a 
@@ -101,7 +101,7 @@ Sometimes, if the link from your computer to your flight controller is slow, ``V
 
     Refreshing parameters when ``VTQ_REDO_READ`` is stuck
 
-In this example, we will set each modules' input parser to `Velocity mode <throttle_mode_maximums_directions>`. This means that received throttle commands are applied as each modules' 
+In this example, we will set each modules' input parser to :ref:`Velocity mode <throttle_mode_maximums_directions>`. This means that received throttle commands are applied as each modules' 
 target angular velocity. More information about the different throttle modes can be found in the :ref:`Throttle Mode documentation<throttle_mode>`. We will be setting up 
 the modules to work as if the quadrotor is set up as in the diagram below.
 
@@ -210,7 +210,7 @@ For this example, we will connect the PX4 flight controller to the motor over UA
     Be sure to complete :ref:`configuring your motor modules <configuring_modules>` and :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
 
 In QGroundControl, go to Parameters then Vertiq IO. Set VTQ_NUM_CVS to 3 to account for the command value indices for throttle, x, and y that were previously set in Control Center 
-:ref:`ifci_integration`. Set VTQ_X to 1 and VTQ_Y to 2 to assign CVIs to them. !!!
+:ref:`ifci_integration`. Set VTQ_X to 1 and VTQ_Y to 2 to assign CVIs to them.
 
 In the video below you can see a demonstration of using the Actuator tab in QGroundControl to spin and pulse a module.
 
@@ -342,11 +342,11 @@ Now that we can perform basic control of, and telemetry reception from our modul
 
 Go to Mission Planner, and then go to the Full Parameter List, search viq\_, and set SERVO_VIQ_CVS to 3. For full pulsing control, each module requires 3 control values, one for throttle, one for X, and one for Y.
 
-.. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_cvis.png
-    :align: center
-    :scale: 75
-    :alt: ArduPilot command value indices
+.. .. figure:: ../_static/tutorial_images/ifci_integration/ardupilot_cvis.png
+..     :align: center
+..     :scale: 75
+..     :alt: ArduPilot command value indices
 
-    ArduPilot command value indices
+..     ArduPilot command value indices
 
 After, set the zero angles appropriately based on tuning for your specific vehicle.

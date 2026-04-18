@@ -155,14 +155,6 @@ Now you will need to flash your flight controller with the newly compiled ``.px4
 
 Pressing 'Ok' will cause a file explorer to appear. Find the ``your-flight-control-board_default.px4`` file that you built and select it. The flashing process should begin. 
 
-PX4 IFCI Integration
----------------------
-
-.. note::
-
-    Be sure to complete :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Integration <ifci_px4_flight_controller>` if you have not already done so before proceeding.
-
-
 Enabling IFCI on Your PX4 Flight Controller
 -------------------------------------------
 
