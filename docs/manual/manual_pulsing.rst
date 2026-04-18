@@ -30,7 +30,7 @@ will spin slower. A change in amplitude will change the strength of the pulse wh
 to work best for a specific use case with the Vertiq teetering and flapping propellers.
 
 The pulsing magnitude and pulsing phase angle also exist in an X and Y coordinate system. By adjusting the value of X and Y in the coordinate system, the propeller will change its angle appropriately.
-It is also possible to change the pulsing magnitude and pulsing phase to alter the position and strength of the pulse. The X and Y coordinate system with the pulsign magnitude and pulsing phase angle
+It is also possible to change the pulsing magnitude and pulsing phase to alter the position and strength of the pulse. The X and Y coordinate system with the pulsing magnitude and pulsing phase angle
 as well as their associated X and Y commands are explained in the diagram below.
 
 .. figure:: ../_static/manual_images/pulsing/pulsing_vectors.png
@@ -93,7 +93,7 @@ The images below show how the pulsing velocity is added to the baseline velocity
 
 .. note:: 
     
-    When using velocity based pulsing, only velocities can be used to command a pulse. If the module is not in `velocity mode <throttle_mode>` or directly set with a control velocity 
+    When using velocity based pulsing, only velocities can be used to command a pulse. If the module is not in :ref:`velocity mode <throttle_mode>` or directly set with a control velocity 
     the module will not pulse.
 
 Velocity Pulsing Demo
@@ -107,7 +107,7 @@ Velocity Pulsing Demo
 For this example, we are using 23-06 pulsing firmware v0.2.0 which can be found on the `23-06 product page <https://www.vertiq.co/23-06-g1>`_. To observe the difference with the
 module spinning with velocity based pulsing, connect your module without a propeller to Control Center. Go to the Testing tab and set Velocity to 100 rad/s. Then in the same tab, 
 set Pulsing Velocity to 30 rad/s. This can be seen in the screenshot below. When the pulsing velocity is 0, you will hear the module spinning normally. When the pulsing velocity 
-increases or decreses from 0, you will hear a stuttering or pulsing of the module.
+increases or decreases from 0, you will hear a stuttering or pulsing of the module.
 
 .. figure:: ../_static/manual_images/pulsing/control_center_pulse_example.png
     :align: center
@@ -140,7 +140,7 @@ Voltage based pulsing works by commanding the module to a baseline voltage and t
 
 .. note:: 
     
-    When using voltage based pulsing, only voltages can be used to command a pulse. If the module is not in `voltage mode <throttle_mode>` or directly set with a control voltage 
+    When using voltage based pulsing, only voltages can be used to command a pulse. If the module is not in :ref:`voltage mode <throttle_mode>` or directly set with a control voltage 
     the module will not pulse.
 
 Next steps

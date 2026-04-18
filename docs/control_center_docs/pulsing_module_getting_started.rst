@@ -108,7 +108,6 @@ Suppose that your module has the following requirements to function properly on 
 #. The module must spin clockwise at all times
 #. The module must spin proportionally to a target velocity, with a maximum of 500 rad/s
 #. The module must use IFCI index 0 for throttle, index 1 for X, and index 2 for Y commands
-#. The module must apply at most 5V towards pulsing
 
 To configure your module to meet these requirements:
 
