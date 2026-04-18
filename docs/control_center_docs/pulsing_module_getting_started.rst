@@ -7,6 +7,8 @@
 Getting Started with Vertiq's Pulsing Firmware with IQ Control Center
 ########################################################################
 
+To learn more about pulsing, please read the manual `Pulsing Based Control Mechanisms <manual_pulsing>`_ to gain a background before continuing to get started with pulsing.
+
 .. note::
     This guide focuses on setting parameters on your Vertiq modules. Please refer to your hardware's documentation (flight controller, radio, etc.) for more details on its specific configuration. 
     For example, refer to the `PX4 documentation <https://docs.px4.io/main/en/flight_controller/>`__ for integrating with a PX4 flight controller. 
@@ -85,6 +87,18 @@ Pulsing Voltage Limit
 This parameter is available through the Tuning tab, and determines the maximum voltage to be applied to pulsing when *Pulsing Voltage Mode* is set to *Voltage Limit Mode*. 
 To learn more please read :ref:`controlling_ifci`.
 
+************************************
+Pulsing Velocity Mode
+************************************
+This parameter is available through the General tab, and determines how the module decides on its maximum pulsing velocity for scaling incoming pulsing commands.
+To learn more please read :ref:`controlling_ifci`.
+
+************************************
+Pulsing Velocity Cutoff
+************************************
+This parameter is available through the Tuning tab, and determines the minimum required velocity to allow pulsing.
+To learn more please read :ref:`controlling_ifci`.
+
 *****************************************************************************************
 Example Module Flight Controller and Pulsing Configuration with the Control Center
 *****************************************************************************************
@@ -94,7 +108,6 @@ Suppose that your module has the following requirements to function properly on 
 #. The module must spin clockwise at all times
 #. The module must spin proportionally to a target velocity, with a maximum of 500 rad/s
 #. The module must use IFCI index 0 for throttle, index 1 for X, and index 2 for Y commands
-#. The module must apply at most 5V towards pulsing
 
 To configure your module to meet these requirements:
 
@@ -123,41 +136,50 @@ To configure your module to meet these requirements:
 
 .. image:: ../_static/control_center_pics/pulsing_getting_started/configed_cvis.png
 
-7. Still in the General tab, find the *Pulsing Voltage Mode* parameter. Set it to *Voltage Limit*
+.. 7. Still in the General tab, find the *Pulsing Voltage Mode* parameter. Set it to *Voltage Limit*
 
-.. image:: ../_static/control_center_pics/pulsing_getting_started/voltage_limit.png
+.. .. image:: ../_static/control_center_pics/pulsing_getting_started/voltage_limit.png
 
-8. To meet the final requirement, navigate back to Tuning, and set *Pulsing Voltage Limit* to 5.00V
+.. 8. To meet the final requirement, navigate back to Tuning, and set *Pulsing Voltage Limit* to 5.00V
 
-.. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_volt_lim.png
+.. .. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_volt_lim.png
 
-******************************************************
-Testing Pulsing Functionality with IQ Control Center
-******************************************************
+.. ******************************************************
+.. Testing Pulsing Functionality with IQ Control Center
+.. ******************************************************
 
-The Control Center provides a simple method for verifying that your module can apply pulsing properly. In the Testing tab, you will find the *Pulsing Phase* 
-and *Pulsing Voltage* parameters.
+.. The Control Center provides a simple method for verifying that your module can apply pulsing properly. In the Testing tab, you will find the *Pulsing Phase* 
+.. and *Pulsing Voltage* parameters.
 
-.. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_testing_tab.png
+.. .. image:: ../_static/control_center_pics/pulsing_getting_started/pulsing_testing_tab.png
 
-**Pulsing Phase** defines the phase added to the zero angle to set where the pulse occurs :math:`[-2\pi, 2\pi]` in terms of the rotor.
+.. **Pulsing Phase** defines the phase added to the zero angle to set where the pulse occurs :math:`[-2\pi, 2\pi]` in terms of the rotor.
 
-**Pulsing Voltage** represents the strength of the pulse in volts. Setting the amplitude too high at lower speeds can cause the pulsing to overcome the inertia of the motor spinning, causing it to stop.
+.. **Pulsing Voltage** represents the strength of the pulse in volts. Setting the amplitude too high at lower speeds can cause the pulsing to overcome the inertia of the motor spinning, causing it to stop.
 
-.. note::
-    Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s as the Control Center
-    sends heartbeat checks only once per second. This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected. When 
-    you are finished testing your module, please remember to reset your module's timeout value to your desired value. 
+.. .. note::
+..     Before using the Control Center's testing functionality, we recommend that you increase your module's timeout parameter to 1.5s as the Control Center
+..     sends heartbeat checks only once per second. This parameter is available through the tuning tab. If you do not increase the timeout value, your module may fail to spin as expected. When 
+..     you are finished testing your module, please remember to reset your module's timeout value to your desired value. 
 
-.. warning::
-    Please remove all propellers before interacting with any testing parameters. Failure to do so is dangerous.
+.. .. warning::
+..     Please remove all propellers before interacting with any testing parameters. Failure to do so is dangerous.
 
-.. warning::
-    If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
-    This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
-    voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
+.. .. warning::
+..     If you are using a power supply to power your module, it is possible to damage or destroy your module with aggressive commands, e.g. quickly switching from spinning at full speed to stopping. 
+..     This is because Vertiq modules can also act as generators. In general, power supplies, unlike batteries, cannot absorb the energy generated by the module. As such, aggressive commands can lead to dangerous 
+..     voltage spikes when connected to a power supply. To prevent damage to the module when commanding it aggressively on a power supply, it is recommended to turn on the regeneration voltage protection feature.
 
-#. Set *Pulsing Phase* to 0 rad
-#. Set *Pulsing Voltage* to 1V
-#. Set *Velocity* to 200 rad/s. This will start your module spinning with pulsing active
-#. Now, set *Pulsing Voltage* to 0V, and you should hear that pulsing is no longer active
+.. #. Set *Pulsing Phase* to 0 rad
+.. #. Set *Pulsing Voltage* to 1V
+.. #. Set *Velocity* to 200 rad/s. This will start your module spinning with pulsing active
+.. #. Now, set *Pulsing Voltage* to 0V, and you should hear that pulsing is no longer active
+
+To test the parameters you set with pulsing, please refer to `Pulsing Based Control Mechanisms <manual_pulsing>`_.
+
+Next Steps
+==========
+
+* :ref:`Pulsing Based Control Mechanisms <manual_pulsing>`
+* :ref:`Setting Up PX4 and ArduPilot Firmware with IFCI Intregration <ifci_px4_flight_controller>`
+* :ref:`IFCI Integration with PX4 and ArduPilot <ifci_integration>`

@@ -12,6 +12,8 @@ provides greater detail on what exactly a throttle command is and how Vertiq mod
 Note that generally a module needs to be :ref:`armed <manual_advanced_arming>` in order to spin when it receives a throttle command. Refer to the :ref:`manual_advanced_arming` section 
 for more information on arming.
 
+A pulsing velocity cutoff can also be specified that does not allow pulsing when the baseline velocity is below the specified value.
+
 Module Support
 ===============
 
