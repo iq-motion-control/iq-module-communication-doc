@@ -1,6 +1,8 @@
 .. include:: ../text_colors.rst
 .. toctree::
 
+.. _servo_array_command_px4_tutorial:
+
 #######################################################################
 Controlling Your Servo Module Using the DroneCAN ArrayCommand and PX4
 #######################################################################

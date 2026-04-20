@@ -35,12 +35,14 @@ Supported IQUART Clients
         * :ref:`hobby_input`
         * :ref:`uavcan_node`
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
         * :ref:`stow_user_interface`
         * :ref:`arming_handler`
         * :ref:`stopping_handler`
         * :ref:`iquart_flight_controller_interface`
-        * :ref:`throttle_source_manager` - v0.1.0 and above
+        * :ref:`rgb_led`
+        * :ref:`white_led`
+        * :ref:`throttle_source_manager` - v0.1.0 and later
         
 Supported Tutorials
 =================================
@@ -65,9 +67,12 @@ You can find a listing of all supported features by each firmware style in :ref:
         * :ref:`manual_angle_control_mechanisms`
         * :ref:`manual_velocity_control_mechanisms`
         * :ref:`uart_messaging`
+        * :ref:`dronecan_protocol`
         * :ref:`timer_based_protocol`
         * :ref:`manual_timeout`
-
+        * :ref:`controlling_ifci`
+        * :ref:`manual_led_support`
+        
 Supported IQUART Clients
 =================================
         * :ref:`system_control`
@@ -81,8 +86,14 @@ Supported IQUART Clients
         * :ref:`temperature_monitor_microcontroller`
         * :ref:`hobby_input`
         * :ref:`servo_input_parser_ref`
+        * :ref:`uavcan_node` - v0.1.1 and later
         * :ref:`coil_temperature_estimator`
-        * :ref:`power_safety`
+        * :ref:`power_safety_table`
+        * :ref:`iquart_flight_controller_interface` - v0.1.1 and later
+        * :ref:`rgb_led` - v0.1.1 and later
+        * :ref:`white_led` - v0.1.1 and later
+
 
 Supported Tutorials
 =================================
+* :ref:`servo_array_command_px4_tutorial`
