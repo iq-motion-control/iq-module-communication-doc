@@ -7,7 +7,7 @@
 Pulsing Based Control Mechanisms
 ***********************************************
 
-Vertiq offers pulsing firmware available for the :ref:`23-XX family <vertiq_23xx_family>` which can be used with the following propellers: UPT-23-10, `UPF-23-12 <https://www.vertiq.co/upf-23-12>`_
+Vertiq offers pulsing firmware available for the :ref:`23-XX family <vertiq_23xx_family>` which can be used with the following propellers: `UPT-23-10 <https://www.vertiq.co/upt-23-10>`_, `UPF-23-12 <https://www.vertiq.co/upf-23-12>`_
 
 There are two styles of Vertiq’s pulsing control firmware:
 
