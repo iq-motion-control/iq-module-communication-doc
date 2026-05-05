@@ -36,7 +36,7 @@ Protecting Against Dangerous Regeneration Voltage Spikes
 Regenerative voltage spikes can pose a threat to your modules and power supply if not properly controlled. As such, all Vertiq modules can limit their regeneration current to limit the magnitude of voltage spikes on power supplies. 
 Vertiq modules have two main parameters to protect against dangerous regeneration voltage spikes. They are available through IQ Control Center's advanced tab as *Volts Limit* and *Volts Limit Starting Voltage*.
 
-For example, by default on modules rated to 14S, you will see:
+For example, by default on modules rated to 12S, you will see:
 
 .. image:: ../_static/control_center_pics/regen_params.png
         :align: center
