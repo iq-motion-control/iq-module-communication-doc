@@ -53,7 +53,6 @@
 
    communication_protocols/iquart_protocol
    communication_protocols/dronecan_protocol
-   communication_protocols/canopen_protocol
    communication_protocols/timer_based_protocol
 
 .. toctree::
@@ -65,6 +64,7 @@
    tutorials/hobby_calibration
    tutorials/dronecan_flight_controller
    tutorials/ifci_px4_flight_controller
+   tutorials/ifci_integration.rst
    tutorials/extracting_log_qgroundcontrol
    tutorials/dronecan_firmware_upgrade
    tutorials/flight_controller_telemetry_tutorial
@@ -93,6 +93,7 @@
    manual/manual_ifci_control
    manual/manual_buzzer_control
    manual/manual_angle_control_mechanisms
+   manual/manual_pulsing
    manual/manual_underactuated_torque_correction
    manual/manual_stop_detection
    manual/manual_zero_spin
@@ -110,6 +111,7 @@
    :maxdepth: 2
 
    fortiq_index
+   communication_protocols/canopen_protocol
 
 Welcome to Vertiq's Documentation
 ============================================

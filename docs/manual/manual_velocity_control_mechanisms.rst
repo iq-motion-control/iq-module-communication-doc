@@ -36,6 +36,9 @@ These controllers are the :ref:`Propeller Motor Controller <propeller_motor_cont
 =========================================
 Velocity and Voltage Control Mechanisms
 =========================================
+
+.. _control_velocity:
+
 Control Velocity
 +++++++++++++++++++++
 Velocity Control Through :ref:`Propeller Motor Controller <propeller_motor_controller>` v. :ref:`Multi Turn Angle Controller <multi_turn_angle_control>`
