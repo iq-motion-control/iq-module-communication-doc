@@ -33,6 +33,12 @@
    faq/frequently_asked_questions
 
 .. toctree::
+   :caption: Maintenance
+   :hidden: 
+
+   maintenance/maintenance_guidelines
+
+.. toctree::
    :caption: IQ Control Center
    :hidden:
 
