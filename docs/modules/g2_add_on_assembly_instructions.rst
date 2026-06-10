@@ -72,11 +72,6 @@ Assembly Instructions:
 
 Pro Kit
 =======
-.. warning::
-    To ensure the safe and reliable operation of this product, a centering pin must be properly utilized when mounting propellers during propulsion assembly, and you must ensure all propellers are 
-    properly balanced. Failure to adhere to these practices may result in significant mechanical vibrations, which can severely impact overall vehicle performance and drastically reduce the 
-    operational lifetime of critical vehicle components, including the motor and ESC.
-
 Vertiq’s Pro Kits are designed to give customers the ability to optimize their propulsion system for their vehicle.
 Different combinations of these add-ons will result in higher performance, increased IP rating, and/or new functionality. 
 Vertiq’s Pro Module has an IP-sealable stator cover and downward-eject wires already attached to the module.
@@ -93,6 +88,10 @@ Rotor Cover
 - SCR (Qty. 3) - M2 screws to fasten the RCM to the motor’s rotor
 - SCN (Qty. 1) - mesh screen to protect from >1mm debris
 
+.. warning::
+    To ensure the safe and reliable operation of this product, a centering pin must be properly utilized when mounting propellers during propulsion assembly, and you must ensure all propellers are 
+    properly balanced. Failure to adhere to these practices may result in significant mechanical vibrations, which can severely impact overall vehicle performance and drastically reduce the 
+    operational lifetime of critical vehicle components, including the motor and ESC.
 
 Assembly Instructions:
 ~~~~~~~~~~~~~~~~~~~~~~
