@@ -147,8 +147,8 @@ ERPM vs. RPM
 As of v4.5.5, ArduCopter flight controllers expect the DSHOT telemetry messages to match the `KISS ESC standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
 That means that it expects the module to send ERPM/100. Vertiq modules by default, however, directly send RPM as covered in :ref:`ESC Telemetry <manual_telemetry>`.
 
-There are two methods to deal with this. The first, and recommended, option is to configure your module to transmit the ERPM/100 value directly through its telemetry responses. This can be done by changing the value of **Timer Based Protocol RPM Reporting Style** 
-in the Control Center's advanced tab:
+There are two methods to deal with this. The first, and recommended option is to configure your module to transmit the ERPM/100 value directly through its telemetry responses. This can be done by changing the value of **Timer Based Protocol RPM Reporting Style** 
+in the :ref:`Control Center's <control_center_start_guide>` advanced tab:
 
 .. image:: ../_static/tutorial_images/fc_telemetry_tutorial/erpm_config.png
     :align: center
@@ -156,7 +156,7 @@ in the Control Center's advanced tab:
 .. note:: 
     This parameter is only available on **speed firmware** versions 0.2.0 and up.
 
-Simply set this value to **eRPM/100**, and your module will automatically transmit the KISS ESC standard's form of telemetry, and your flight controller will manage it natively as it calculates RPM by:
+Simply set this value to **eRPM/100**, and your module will automatically transmit the KISS ESC form of telemetry, and your flight controller will manage it natively as it calculates RPM by:
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/px4_erpm_to_rpm_formula.png
     :align: center
@@ -166,7 +166,7 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
     ERPM to RPM Conversion
 
 Please note that you will still have to configure your flight controller to know the correct number of poles present on your module. Using Mission Planner, you can set this value 
-under SERVO_BLH_POLES. Please note that in order for the conversion to work properly, you must configure SERVO_BLH_POLES to your module's **number of pole pairs** not the number of independent poles. 
+under SERVO_BLH_POLES. In order for the conversion to work properly, you must configure SERVO_BLH_POLES to your module's **number of pole pairs not the number of independent poles**. 
 You can find your module's number of pole pairs on its module family page.
 
 For example, if you are using a module in the Vertiq 81-XX family, you would configure SERVO_BLH_POLES to 21.
@@ -327,8 +327,8 @@ Converting ERPM to RPM Workarounds
 As of v1.14.3, PX4 flight controllers expect the DSHOT telemetry messages to match the `KISS ESC standard <https://www.rcgroups.com/forums/showatt.php?attachmentid=8524039&d=1450424877>`_.
 That means that it expects the module to send ERPM/100, while Vertiq modules, by default, directly send RPM as covered in :ref:`ESC Telemetry <manual_telemetry>`.
 
-There are two methods to deal with this. The first, and recommended, option is to configure your module to transmit the ERPM/100 value directly through its telemetry responses. This can be done by changing the value of **Timer Based Protocol RPM Reporting Style** 
-in the Control Center's advanced tab:
+There are two methods to deal with this. The first, and recommended option is to configure your module to transmit the ERPM/100 value directly through its telemetry responses. This can be done by changing the value of **Timer Based Protocol RPM Reporting Style** 
+in the :ref:`Control Center's <control_center_start_guide>` advanced tab:
 
 .. image:: ../_static/tutorial_images/fc_telemetry_tutorial/erpm_config.png
     :align: center
@@ -336,7 +336,7 @@ in the Control Center's advanced tab:
 .. note:: 
     This parameter is only available on **speed firmware** versions 0.2.0 and up.
 
-Simply set this value to **eRPM/100**, and your module will automatically transmit the KISS ESC standard's form of telemetry, and your flight controller will manage it natively as it calculates RPM by:
+Simply set this value to **eRPM/100**, and your module will automatically transmit the KISS ESC form of telemetry, and your flight controller will manage it natively as it calculates RPM by:
 
 .. figure:: ../_static/tutorial_images/fc_telemetry_tutorial/px4_erpm_to_rpm_formula.png
     :align: center
@@ -346,7 +346,7 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
     ERPM to RPM Conversion
 
 In order for your flight controller to correctly parse the eRPM data, you must also properly configure the flight controller's expected number of motor poles. You can configure this with 
-the MOT_POLE_COUNT parameter. Please note that in order for the conversion to work properly, you must configure MOT_POLE_COUNT to your module's **number of pole pairs** not the number of independent poles. 
+the MOT_POLE_COUNT parameter. Please note that in order for the conversion to work properly, you must configure MOT_POLE_COUNT to your module's **number of pole pairs not the number of independent poles**. 
 You can find your module's number of pole pairs on its module family page.
 
 For example, if you are using a module in the Vertiq 81-XX family, you would configure MOT_POLE_COUNT to 21.
