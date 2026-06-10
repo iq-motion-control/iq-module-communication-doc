@@ -165,8 +165,11 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
 
     ERPM to RPM Conversion
 
-Please note that you will still have to configure your flight controller to know the correct number of pole pairs present on your module. Using Mission Planner, you can set this value 
-under SERVO_BLH_POLES. You can find your module's number of pole pairs on its module family page.
+Please note that you will still have to configure your flight controller to know the correct number of poles present on your module. Using Mission Planner, you can set this value 
+under SERVO_BLH_POLES. Please note that in order for the conversion to work properly, you must configure SERVO_BLH_POLES to your module's **number of pole pairs** not the number of independent poles. 
+You can find your module's number of pole pairs on its module family page.
+
+For example, if you are using a module in the Vertiq 81-XX family, you would configure SERVO_BLH_POLES to 21.
 
 The second option is to convert from ERPM to RPM manually. The flight controller is expecting to receive ERPM/100, so when it receives telemetry it tries to calculate RPM using the following formula shown above. This calculation can also be
 seen in the `ArduCopter code for BLHeli telemetry parsing <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_BLHeli/AP_BLHeli.cpp#L1447>`__.
@@ -342,8 +345,11 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
 
     ERPM to RPM Conversion
 
-In order for your flight controller to correctly parse the eRPM data, you must also properly configure the flight controller's expected number of pole pairs. You can configure this with 
-the MOT_POLE_COUNT parameter. You can find your module's number of pole pairs on its module family page.
+In order for your flight controller to correctly parse the eRPM data, you must also properly configure the flight controller's expected number of motor poles. You can configure this with 
+the MOT_POLE_COUNT parameter. Please note that in order for the conversion to work properly, you must configure MOT_POLE_COUNT to your module's **number of pole pairs** not the number of independent poles. 
+You can find your module's number of pole pairs on its module family page.
+
+For example, if you are using a module in the Vertiq 81-XX family, you would configure MOT_POLE_COUNT to 21.
 
 The second option is to convert from ERPM to RPM manually. The ERPM value should be divided by the pole count of the motor divided by 2. The flight controller is expecting to receive 
 ERPM/100, so when it receives telemetry it tries to calculate RPM using the following formula shown above. This calculation can also be
