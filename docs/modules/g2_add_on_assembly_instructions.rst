@@ -12,6 +12,9 @@ Vertiq’s second generation (G2) motors and ESCs are designed to be modular, ac
 
 Default Kit
 ===========
+.. note:: 
+    Please review the "Warnings" below in the Pro Kit section, as they may be applicable to your product as well.
+
 Vertiq’s Default Modules allow customers to test and integrate their modules quickly and easily.
 These modules are characterized by a side-eject connector board with solder pads that can accept a wide range of power, communication, and LED wires.
 
@@ -22,6 +25,9 @@ For Default Kits, please follow standard propeller adapter instructions provided
 
 Performance Kit
 ===============
+.. note:: 
+    Please review the "Warnings" below in the Pro Kit section, as they may be applicable to your product as well.
+
 Vertiq’s Performance Kits showcase the module’s peak performance. These are Default Modules that come with a separate rotor cover. Below is a brief description of the rotor cover and assembly instructions. For electrical interface instructions, please visit the Hardware Setup Walkthrough on your product’s page in ReadTheDocs.
 
 **Description**: The rotor cover is fastened to the top of the motor to increase airflow through the rotor and protect the motor from foreign object debris. The parts that make up the Performance Kit’s Rotor Cover include:
@@ -82,6 +88,10 @@ Rotor Cover
 - SCR (Qty. 3) - M2 screws to fasten the RCM to the motor’s rotor
 - SCN (Qty. 1) - mesh screen to protect from >1mm debris
 
+.. warning::
+    To ensure the safe and reliable operation of this product, a centering pin must be properly utilized when mounting propellers during propulsion assembly, and you must ensure all propellers are 
+    properly balanced. Failure to adhere to these practices may result in significant mechanical vibrations, which can severely impact overall vehicle performance and drastically reduce the 
+    operational lifetime of critical vehicle components, including the motor and ESC.
 
 Assembly Instructions:
 ~~~~~~~~~~~~~~~~~~~~~~
