@@ -345,7 +345,7 @@ Simply set this value to **eRPM/100**, and your module will automatically transm
 
     ERPM to RPM Conversion
 
-In order for your flight controller to correctly parse the eRPM data, you must also properly configure the flight controller's expected number of motor poles. You can configure this with 
+In order for your flight controller to correctly parse the ERPM data, you must also properly configure the flight controller's expected number of motor poles. You can configure this with 
 the MOT_POLE_COUNT parameter. Please note that in order for the conversion to work properly, you must configure MOT_POLE_COUNT to your module's **number of pole pairs not the number of independent poles**. 
 You can find your module's number of pole pairs on its module family page.
 
