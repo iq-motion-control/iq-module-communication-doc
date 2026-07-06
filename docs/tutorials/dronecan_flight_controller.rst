@@ -738,3 +738,11 @@ There are a few common ways that your modules may not spin exactly as expected. 
     If your module is spinning either the wrong direction or at an unexpected speed, the most likely issue is that its mode and/or maximum setting is configured incorrectly.
 
     You can learn about mode configurations in :ref:`throttle_mode_maximums_directions`.
+
+My Modules All Appear Over DroneCAN, but Not the IQ Control Center
+--------------------------------------------------------------------
+
+If you are able to connect with and view all of your DroneCAN nodes over DroneCAN, but cannot connect all to the :ref:`Control Center <control_center_start_guide>` simultaneously 
+as described :ref:`here <multiple_module_wiring>`, the issue is likely that you have conflicting :ref:`module IDs <multi_module_config>`. An important note is that 
+your module's DroneCAN Node ID and its IQUART Module ID are independent variables. The DroneCAN Node ID is used to identify your module's DroneCAN Node on the CAN bus, and 
+its IQUART Module ID to identify it when connected to an IQUART chain.
