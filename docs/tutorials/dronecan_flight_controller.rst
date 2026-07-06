@@ -714,4 +714,27 @@ are discussed here.
 My Modules Aren't Spinning as Expected
 ----------------------------------------
 
+There are a few common ways that your modules may not spin exactly as expected. Examples include:
 
+#. When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), multiple modules spin on the same motor command
+
+    If, when sending individual throttle commands with your flight controller's testing feature, multiple modules start spinning, the most likely problem is that 
+    at least one of your module's :ref:`DroneCAN ESC indexes <esc_index_parameter>` is configured incorrectly. If you would like to individually command each connected 
+    module, each module must have a unique ESC Index.
+
+    .. note::
+
+        Your module's ESC Index **is not** the same as its :ref:`Node ID <node_id_parameter>`. A Node ID is used to individually identify nodes connected to the 
+        DroneCAN bus. A module's ESC Index is used to dermine which command out of a received :ref:`RawCommand <dronecan_messages_raw_command>` should be applied 
+        as a module's throttle.
+
+#. When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), the wrong module starts spinning
+
+    If a given output channel controls the wrong module, the most likely issue is your flight controller's output mapping. If you are using PX4, refer to `this page <https://docs.px4.io/main/en/config/actuators>`__ 
+    to learn more about configuring your outputs. If using Ardupilot, refer to `this page <https://ardupilot.org/copter/docs/common-rcoutput-mapping.html>`__.
+
+#. My module is spinning the wrong direction or an unexpected speed
+
+    If your module is spinning either the wrong direction or at an unexpected speed, the most likely issue is that its mode and/or maximum setting is configured incorrectly.
+
+    You can learn about mode configurations in :ref:`throttle_mode_maximums_directions`.
