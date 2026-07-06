@@ -700,7 +700,7 @@ are discussed here.
 #. Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus
 
     If you have configured your modules :ref:`to arm using DroneCAN's ArmingStatus message <dronecan_parameter_arming_status>` rather than :ref:`arming with throttles <manual_advanced_arming>` 
-    your flight controller must be configued to transmit ArmingStatus. By default, Ardupilot based flight controllers transmit this message, and no additional configuraiton 
+    your flight controller must be configured to transmit ArmingStatus. By default, Ardupilot based flight controllers transmit this message, and no additional configuration 
     is necessary. If you are using a PX4 based flight controller, you must enable ArmingStatus publication using the :ref:`instructions above <px4_enable_arming_status>`.
 
     Additionally, if arming with ArmingStatus, it is highly recommended that you disable the ability to arm and disarm on throttle. This avoids any unexpected interactions between the two arming methods.
@@ -725,7 +725,7 @@ There are a few common ways that your modules may not spin exactly as expected. 
     .. note::
 
         Your module's ESC Index **is not** the same as its :ref:`Node ID <node_id_parameter>`. A Node ID is used to individually identify nodes connected to the 
-        DroneCAN bus. A module's ESC Index is used to dermine which command out of a received :ref:`RawCommand <dronecan_messages_raw_command>` should be applied 
+        DroneCAN bus. A module's ESC Index is used to determine which command out of a received :ref:`RawCommand <dronecan_messages_raw_command>` should be applied 
         as a module's throttle.
 
 #. When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), the wrong module starts spinning
