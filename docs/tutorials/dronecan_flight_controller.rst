@@ -22,6 +22,8 @@ Module Configuration and Enumeration
 Before interfacing your module with a flight controller via DroneCAN, it must be configured through :ref:`IQ Control Center <control_center_start_guide>`. The 
 next sections describe the parameters that must be configured..
 
+.. _bitrate:
+
 Bitrate
 --------
 Currently, Vertiq modules use a default DroneCAN bitrate of 500000 bit/s. It is possible to change this bitrate using the *DroneCAN Bitrate* parameter in 
@@ -42,6 +44,8 @@ Mode, Direction, and Limits
 Descriptions of some important parameters for the module’s direction and mode and how to change them through IQ Control Center can be found in the :ref:`Motor Configuration section 
 of the tutorial for flight controller integration using timer based protocols <hobby_fc_tutorial_motor_configuration>`. That tutorial is focused on using timer based protocols, but the details on configuring 
 the module are still accurate for DroneCAN.
+
+.. _node_id:
 
 Node ID
 ---------
@@ -256,6 +260,8 @@ in the image below.
 The minimums and maximums set the range of values that will be sent in the :ref:`uavcan.equipment.esc.RawCommand <dronecan_messages_raw_command>` message to control the modules. Generally,
 the default minimum and maximum are fine and should not need to be changed.
 
+.. _px4_enable_arming_status:
+
 Enabling ArmingStatus
 --------------------------
 If your module's arming state is configured to be :ref:`driven by DroneCAN's ArmingStatus message <dronecan_arming_and_bypass>`, your flight controller must broadcast the ArmingStatus 
@@ -285,6 +291,8 @@ There are various other configurations available under the UAVCAN section of Par
 Refer to the `PX4 parameter reference documentation <https://docs.px4.io/main/en/advanced_config/parameter_reference.html>`__ for more information on each of these parameters, 
 they may be useful in some applications.
 
+.. _qgc_testing:
+
 Testing
 ---------
 QGroundControl provides multiple helpful tools for testing if your motor is properly integrated with the flight controller over DroneCAN. 
@@ -299,6 +307,10 @@ The sections below describe some of these testing methods.
     Because of that, for the general default settings used on Vertiq modules arming should not be a concern when running these tests. It should be apparent when your module arms
     because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming 
     configurations on your module. If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never need to arm to spin when using DroneCAN.
+
+.. tip::
+
+    If you experience any issues or unexpected behaviors while testing your flight controller integration, please refer to the :ref:`dronecan_tutorial_troubleshooting` section below.
 
 Slider Setup Tests
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -360,6 +372,8 @@ is powered on and is connected to the flight controller’s CAN bus. The image b
     :alt: MAVLink Console
 
     MAVLink Console in QGroundControl
+
+.. _check_node_status:
 
 Check Node Status
 ^^^^^^^^^^^^^^^^^^^^
@@ -604,6 +618,8 @@ As viewed through the DroneCAN GUI tool:
         :align: center
 
 
+.. _test_with_ardupilot:
+
 Testing DroneCAN with your Module
 ---------------------------------------
 
@@ -662,3 +678,40 @@ Now, to interact with your module, and other DroneCAN devices:
         :align: center
 
 4. To change a value, simply enter a new value under Value, and select Write Params
+
+.. _dronecan_tutorial_troubleshooting:
+
+Troubleshooting
+===================
+
+My Modules Aren't Arming When Connected to my Flight Controller
+-----------------------------------------------------------------------
+
+There are several factors that may cause your modules not to arm when connected with your flight controller. Some of the most common causes, and how to fix them, 
+are discussed here.
+
+#. Module configuration is incorrect or conflicting
+
+    When connecting your modules to the DroneCAN bus, all nodes must have a unique :ref:`node_id` and must have matching :ref:`bitrates <bitrate>`. If any two nodes share 
+    a node id, or just one module has a mismatched bitrate, the DroneCAN bus will not act as expected. In order to verify that all of your modules are properly configured 
+    to act as an individual on the bus, you can use :ref:`the PX4 uavcan status message <check_node_status>` or :ref:`Ardupilot's DroneCAN/UAVCAN view <configuring_with_ardupilot>` 
+    in order to verify that all of your expected nodes appear. If you have missing nodes, you should verify that all nodes are configured with unique Node IDs and matching bitrates.
+
+#. Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus
+
+    If you have configured your modules :ref:`to arm using DroneCAN's ArmingStatus message <dronecan_parameter_arming_status>` rather than :ref:`arming with throttles <manual_advanced_arming>` 
+    your flight controller must be configued to transmit ArmingStatus. By default, Ardupilot based flight controllers transmit this message, and no additional configuraiton 
+    is necessary. If you are using a PX4 based flight controller, you must enable ArmingStatus publication using the :ref:`instructions above <px4_enable_arming_status>`.
+
+    Additionally, if arming with ArmingStatus, it is highly recommended that you disable the ability to arm and disarm on throttle. This avoids any unexpected interactions between the two arming methods.
+
+#. Modules are configured to arm on throttle, but the throttle regions are configured incorrectly
+
+    If you have configured your modules to :ref:`arm with throttles <manual_advanced_arming>`, your flight controller must transmit throttles within all of your modules' :ref:`arming throttle region <arming_throttle_regions>`. 
+    If your arming region begins above 0%, you may need to use your flight controller's motor testing feature or your external controller to output non-zero throttles. Information about PX4's testing feature can be found :ref:`here <qgc_testing>` and 
+    Ardupilot's :ref:`here <test_with_ardupilot>`
+
+My Modules Aren't Spinning as Expected
+----------------------------------------
+
+
