@@ -684,7 +684,7 @@ Now, to interact with your module, and other DroneCAN devices:
 Troubleshooting
 ===================
 
-My Modules Aren't Arming When Connected to my Flight Controller
+My Modules Aren't Arming When Connected to My Flight Controller
 -----------------------------------------------------------------------
 
 There are several factors that may cause your modules not to arm when connected with your flight controller. Some of the most common causes, and how to fix them, 
