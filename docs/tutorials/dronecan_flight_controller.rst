@@ -739,7 +739,7 @@ There are a few common ways that your modules may not spin exactly as expected. 
 
     You can learn about mode configurations in :ref:`throttle_mode_maximums_directions`.
 
-My Modules All Appear Over DroneCAN, but Not the IQ Control Center
+My Modules All Appear Over DroneCAN but Not the IQ Control Center
 --------------------------------------------------------------------
 
 If you are able to connect with and view all of your DroneCAN nodes over DroneCAN, but cannot connect all to the :ref:`Control Center <control_center_start_guide>` simultaneously 
