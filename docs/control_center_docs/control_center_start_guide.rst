@@ -504,6 +504,8 @@ For example, you will find a default file called Vertiq2306_2200Kv_speed_APC6x4.
 Vertiq 23-06 2200Kv module with speed firmware with an APC 6x4 propeller. In order to set these parameters, simply select the file that you would 
 like to use, then click Set.
 
+.. _user_generated_control_center_defaults:
+
 Using User Generated Default Settings
 -----------------------------------------
 User generated default settings allow you to easily share identical module configurations between multiple modules. For example, if you have parameters 
