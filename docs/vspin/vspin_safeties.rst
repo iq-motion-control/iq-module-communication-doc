@@ -29,7 +29,7 @@ VSpin has various different safeties that can each produce a derate. Some of the
 
 .. figure:: ../_static/vspin_images/safeties/vspin_derate_diagram.png
     :align: center
-    :width: 40%
+    :width: 70%
     :alt: VSpin Derate Sources Diagram
 
     VSpin Derate Sources Diagram
@@ -57,7 +57,7 @@ The configuration process for this safety on VSpin is similar to the process on 
 
 .. figure:: ../_static/vspin_images/safeties/vspin_supply_voltage_limit_cc.png
     :align: center
-    :width: 40%
+    :width: 50%
     :alt: VSpin Supply Voltage Regeneration Limit Parameters
 
     VSpin Supply Voltage Regeneration Limit Parameters
@@ -77,7 +77,7 @@ The motor current slew limit can be configured through the Tuning tab of Control
 
 .. figure:: ../_static/vspin_images/safeties/vspin_motor_current_slew_limit_parameters.png
     :align: center
-    :width: 40%
+    :width: 50%
     :alt: VSpin Motor Current Slew Limit Parameters
 
     VSpin Motor Current Slew Limit Parameters
@@ -94,7 +94,7 @@ The ``Speed Redline Start`` and ``Speed Redline End`` parameters, shown below, s
 
 .. figure:: ../_static/vspin_images/safeties/vspin_speed_limiter_parameters.png
     :align: center
-    :width: 40%
+    :width: 50%
     :alt: VSpin Speed Limiter Parameters
 
     VSpin Speed Limiter Parameters
@@ -111,9 +111,9 @@ Motor Current Limiter
     Generally, we recommend not altering this limit without directly consulting with the Vertiq engineering team, as that could potentially damage your module. 
 
 The overall motor current limiter is functionally the same on VSpin firmware as it is on stock speed and servo firmwares. It limits the maximum motor current that can be drawn at any time to protect against dangerous current surges, which is primarily applicable on hard steps or when the motor is stalled. See our :ref:`existing documentation <bd_motor_current_limit>` for more information. The primary difference is that it can no longer be configured through the :ref:`Brushless Drive client <brushless_drive>` on VSpin firmware. 
-It has moved to the Current Safeties client **<LINK AFTER PAGES ARE IN>**. 
+It has moved to the :ref:`Current Safeties client <current_safeties_api>`. 
 
 ******************************************************
 Closed Loop Supply Current Limiter
 ******************************************************
-The Closed Loop Supply Current Limiter is functionally the same on VSpin firmware as it is on stock speed and servo firmwares. See our :ref:`existing documentation <bd_closed_loop_supply_limiter>` for more information. The primary difference is that it can no longer be configured through the :ref:`Brushless Drive client <brushless_drive>` on VSpin firmware. All of the pertinent entries to the Current Safeties client **<LINK AFTER PAGES ARE IN>**. 
+The Closed Loop Supply Current Limiter is functionally the same on VSpin firmware as it is on stock speed and servo firmwares. See our :ref:`existing documentation <bd_closed_loop_supply_limiter>` for more information. The primary difference is that it can no longer be configured through the :ref:`Brushless Drive client <brushless_drive>` on VSpin firmware. All of the pertinent entries to the :ref:`Current Safeties client <current_safeties_api>`. 

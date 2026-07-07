@@ -39,4 +39,4 @@ Refer to this :ref:`documentation <throttle_mapping>` for more information on ma
 ******************************************************
 Direct API Commands
 ******************************************************
-It is also possible to directly command the motor to torque or motor current setpoints using the API. See the ctrl_torque entry **<LINK WHEN AVAILABLE>** of the Propeller Motor Control client and the torque_target entry of the Drive Control Interface client **<LINK WHEN AVAILABLE>** for details on the relevant API entries.
+It is also possible to directly command the motor to torque or motor current setpoints using the API. See the :ref:`ctrl_torque entry <propeller_motor_controller>` of the Propeller Motor Control client and the torque_target entry of the :ref:`Drive Control Interface client <drive_control_interface_api>` for details on the relevant API entries.

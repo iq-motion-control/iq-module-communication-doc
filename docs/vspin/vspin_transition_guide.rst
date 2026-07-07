@@ -8,6 +8,8 @@ VSpin Transition Guidance
 #################################
 This documentation is meant to help users who are transitioning from using the stock firmware to the VSpin firmware. It highlights key considerations that may affect you as you test VSpin if you have already set up your modules with the stock firmware.
 
+.. _vspin_tuning_changes:
+
 ******************************************************
 VSpin Velocity and Position Gain Tuning Changes
 ******************************************************
@@ -17,6 +19,8 @@ The :ref:`closed loop velocity controller <manual_velocity_control_mechanisms>` 
 .. note::
     If you are transitioning from using a module that was previously configured on the stock speed or servo firmware, you may want to consider :ref:`resetting to defaults <reset_to_defaults_manual>`. This resets your module’s gains to the default settings as a starting point, but would also reset any other parameters that were previously configured, such as arming ranges, 
     so it is recommended to take note of your existing configuration to be able to replicate any parameters that you do want to carry over before resetting to defaults.
+
+.. _vspin_api_transition:
 
 ******************************************************
 VSpin API Usage
@@ -30,15 +34,13 @@ Make sure you have the latest version of the `Python API <https://pypi.org/proje
 Drive Control Interface
 ============================================================
 The Drive Control Interface is a newly introduced client that allows for direct control of the underlying drive. This client allows for sending commands directly to the drive in the same way that it was previously possible to directly command the :ref:`Brushless Drive client <brushless_drive>`, so it can serve to simplify the transition to 
-VSpin if you were previously commanding Brushless Drive. This interface also makes it possible to send the module torque and motor current commands for modules that use VSpin. For more information on what entries are available for the Drive Control Interface, see the Drive Control Interface message table **<LINK WHEN AVAILABLE>**.
+VSpin if you were previously commanding Brushless Drive. This interface also makes it possible to send the module torque and motor current commands for modules that use VSpin. For more information on what entries are available for the Drive Control Interface, see the :ref:`Drive Control Interface message table <drive_control_interface_api>`.
 
 Querying Motor Model and State Information With VSpin
 ============================================================
-With the removal of the :ref:`Brushless Drive client <brushless_drive>`, several API entries that could be used to gather basic information on the module's state will no longer be available. This includes information on the module's current velocity and details about its model's tuning. Substitutes for these entries can generally be found in the newly added Motor Model client **<LINK WHEN AVAILABLE>**, Current Safeties client **<LINK WHEN AVAILABLE>**, and Motor Driver client **<LINK WHEN AVAILABLE>**.
+With the removal of the :ref:`Brushless Drive client <brushless_drive>`, several API entries that could be used to gather basic information on the module's state will no longer be available. This includes information on the module's current velocity and details about its model's tuning. Substitutes for these entries can generally be found in the newly added :ref:`Motor Model client <motor_model_api>`, :ref:`Current Safeties client <current_safeties_api>`, and :ref:`Motor Driver client <motor_driver_api>`.
 
 The tables below provides guidance on how to transition some of the most commonly used entries from Brushless Drive:
-
-**<LINKS FOR EVERYTHING BELOW WHEN THE API TABLES ARE IN>**
 
 Motor Velocity
 --------------------------------------
