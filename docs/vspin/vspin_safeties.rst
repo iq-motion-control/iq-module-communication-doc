@@ -29,7 +29,7 @@ VSpin has various different safeties that can each produce a derate. Some of the
 
 .. figure:: ../_static/vspin_images/safeties/vspin_derate_diagram.png
     :align: center
-    :width: 70%
+    :width: 80%
     :alt: VSpin Derate Sources Diagram
 
     VSpin Derate Sources Diagram
@@ -57,7 +57,7 @@ The configuration process for this safety on VSpin is similar to the process on 
 
 .. figure:: ../_static/vspin_images/safeties/vspin_supply_voltage_limit_cc.png
     :align: center
-    :width: 50%
+    :width: 80%
     :alt: VSpin Supply Voltage Regeneration Limit Parameters
 
     VSpin Supply Voltage Regeneration Limit Parameters
@@ -77,7 +77,7 @@ The motor current slew limit can be configured through the Tuning tab of Control
 
 .. figure:: ../_static/vspin_images/safeties/vspin_motor_current_slew_limit_parameters.png
     :align: center
-    :width: 50%
+    :width: 80%
     :alt: VSpin Motor Current Slew Limit Parameters
 
     VSpin Motor Current Slew Limit Parameters
@@ -94,7 +94,7 @@ The ``Speed Redline Start`` and ``Speed Redline End`` parameters, shown below, s
 
 .. figure:: ../_static/vspin_images/safeties/vspin_speed_limiter_parameters.png
     :align: center
-    :width: 50%
+    :width: 80%
     :alt: VSpin Speed Limiter Parameters
 
     VSpin Speed Limiter Parameters
