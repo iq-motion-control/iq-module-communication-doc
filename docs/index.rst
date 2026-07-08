@@ -113,6 +113,17 @@
 
 .. toctree::
    :hidden:
+   :caption: VSpin
+
+   vspin/vspin_intro
+   vspin/vspin_safeties
+   vspin/vspin_automatic_field_weakening
+   vspin/vspin_command_current_and_torque
+   vspin/vspin_transition_guide
+   vspin/vspin_api_reference_tables
+
+.. toctree::
+   :hidden:
    :caption: Fortiq
    :maxdepth: 2
 
