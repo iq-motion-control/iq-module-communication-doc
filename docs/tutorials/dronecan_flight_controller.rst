@@ -703,7 +703,9 @@ are discussed here.
     your flight controller must be configured to transmit ArmingStatus. By default, Ardupilot based flight controllers transmit this message, and no additional configuration 
     is necessary. If you are using a PX4 based flight controller, you must enable ArmingStatus publication using the :ref:`instructions above <px4_enable_arming_status>`.
 
-    Additionally, if arming with ArmingStatus, it is highly recommended that you disable the ability to arm and disarm on throttle. This avoids any unexpected interactions between the two arming methods.
+    .. tip::
+    
+        If arming with ArmingStatus, it is highly recommended that you disable the ability to arm and disarm on throttle. This avoids any unexpected interactions between the two arming methods.
 
 #. Modules are configured to arm on throttle, but the throttle regions are configured incorrectly
 
@@ -718,7 +720,7 @@ There are a few common ways that your modules may not spin exactly as expected. 
 
 #. When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), multiple modules spin on the same motor command
 
-    If, when sending individual throttle commands with your flight controller's testing feature, multiple modules start spinning, the most likely problem is that 
+    When sending individual throttle commands with your flight controller's testing feature, if multiple modules start spinning, the most likely problem is that 
     at least one of your module's :ref:`DroneCAN ESC indexes <esc_index_parameter>` is configured incorrectly. If you would like to individually command each connected 
     module, each module must have a unique ESC Index.
 
@@ -743,6 +745,6 @@ My Modules All Appear Over DroneCAN but Not the IQ Control Center
 --------------------------------------------------------------------
 
 If you are able to connect with and view all of your DroneCAN nodes over DroneCAN, but cannot connect all to the :ref:`Control Center <control_center_start_guide>` simultaneously 
-as described :ref:`here <multiple_module_wiring>`, the issue is likely that you have conflicting :ref:`module IDs <multi_module_config>`. An important note is that 
+as described :ref:`in the diagram here <multiple_module_wiring>`, the issue is likely that you have conflicting :ref:`module IDs <multi_module_config>`. An important note is that 
 your module's DroneCAN Node ID and its IQUART Module ID are independent variables. The DroneCAN Node ID is used to identify your module's DroneCAN Node on the CAN bus, and 
 its IQUART Module ID to identify it when connected to an IQUART chain.
