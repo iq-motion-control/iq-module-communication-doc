@@ -688,18 +688,18 @@ My Modules Aren't Arming When Connected to My Flight Controller
 -----------------------------------------------------------------------
 
 There are several factors that may cause your modules not to arm when connected with your flight controller. Some of the most common causes, and how to fix them, 
-are discussed here.
+are discussed below:
 
 #. Module configuration is incorrect or conflicting
 
     When connecting your modules to the DroneCAN bus, all nodes must have a unique :ref:`node_id` and must have matching :ref:`bitrates <bitrate>`. If any two nodes share 
-    a node id, or just one module has a mismatched bitrate, the DroneCAN bus will not act as expected. In order to verify that all of your modules are properly configured 
+    a Node ID, or just one module has a mismatched bitrate, the DroneCAN bus will not act as expected. In order to verify that all of your modules are properly configured 
     to act as an individual on the bus, you can use :ref:`the PX4 uavcan status message <check_node_status>` or :ref:`Ardupilot's DroneCAN/UAVCAN view <configuring_with_ardupilot>` 
     in order to verify that all of your expected nodes appear. If you have missing nodes, you should verify that all nodes are configured with unique Node IDs and matching bitrates.
 
 #. Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus
 
-    If you have configured your modules :ref:`to arm using DroneCAN's ArmingStatus message <dronecan_parameter_arming_status>` rather than :ref:`arming with throttles <manual_advanced_arming>` 
+    If you have configured your modules :ref:`to arm using DroneCAN's ArmingStatus message <dronecan_parameter_arming_status>` rather than :ref:`arming with throttles, <manual_advanced_arming>` 
     your flight controller must be configured to transmit ArmingStatus. By default, Ardupilot based flight controllers transmit this message, and no additional configuration 
     is necessary. If you are using a PX4 based flight controller, you must enable ArmingStatus publication using the :ref:`instructions above <px4_enable_arming_status>`.
 
