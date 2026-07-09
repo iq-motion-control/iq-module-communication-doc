@@ -123,13 +123,13 @@ Arming with Throttle
 The default settings for Vertiq modules generally allow them to arm when they receive throttle commands between 0% and 12.5%, and by default both PX4 and ArduPilot send 0% commands when 
 properly configured and disarmed. So, the default settings on Vertiq modules should allow them to arm immediately when they are connected to a properly configured flight controller on a DroneCAN bus. 
 
-**Because of this, there is no need to change any arming parmeters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
+**Because of this, there is no need to change any arming parameters to complete a basic integration with a PX4 or ArduPilot flight controller.** If you wish to take advantage of these arming
 features for more complex integrations, refer to the :ref:`Advanced Arming <manual_advanced_arming>` section for more details.
 
 Bypassing Arming
 ^^^^^^^^^^^^^^^^^^^
 
-If do not want to use the arming feature at all (not recommended), you can configure your module to immediately apply all DroneCAN throttles to spinning.
+If you do not want to use the arming feature at all (not recommended), you can configure your module to immediately apply all DroneCAN throttles to spinning.
 If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then arming is not required for the module to spin when receiving DroneCAN commands.
 
 CAN Bus Hardware Setup
@@ -237,10 +237,10 @@ For example, if you had a module that you wanted to be motor 1 on the airframe, 
 you should set its :ref:`ESC index <dronecan_px4_tutorial_esc_index>` to 0 in IQ Control Center. Then on the actuators tab, you should set ESC 1 to the Motor 1 function.
 For the module you want to be motor 2, set its ESC index to be 1, and set ESC 2 to the Motor 2 function, and so on for the remaining modules.
 
-.. note:: Depdending on your modules :ref:`arming <manual_advanced_arming>` configurations, you may hear the module play its :ref:`arming song <arming_song>` when you
+.. note:: Depending on your modules :ref:`arming <manual_advanced_arming>` configurations, you may hear the module play its :ref:`arming song <arming_song>` when you
     set the function for its ESC, if the module is connected to the bus. See the note in :ref:`dronecan_px4_fc_configuration` for more details on this.
 
-For this example, only 1 motor was used during testing, with an ESC index of 0. The image below shows how the actuator tab was set up to accomodate this.
+For this example, only 1 motor was used during testing, with an ESC index of 0. The image below shows how the actuator tab was set up to accommodate this.
 
 .. figure:: ../_static/tutorial_images/dronecan_px4_tutorial/px4_dronecan_actuator_tab_esc_function_example.png
     :align: center
@@ -306,7 +306,7 @@ The sections below describe some of these testing methods.
     Arming with DroneCAN, then it will need to arm before it can spin for any of these tests. By default, Vertiq modules typically will arm on commands from 0% to 7.5%, 
     and by default PX4 will send 0% commands to its connected ESCs over DroneCAN when it is disarmed. So it is likely when
     using the default arming configurations the module will immediately arm as soon as the flight controller is properly configured and on the same bus as the module. 
-    Because of that, for the general default settings used on Vertiq modules arming should not be a concern when running these tests. It should be apparent when your module arms
+    Because of that, for the general default settings used on Vertiq modules, arming should not be a concern when running these tests. It should be apparent when your module arms
     because it will play a :ref:`short arming song <arming_song>`. If you do experience issues where the module will not spin but you believe your configurations are correct, check the arming 
     configurations on your module. If your module is set to :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never need to arm to spin when using DroneCAN.
 
@@ -698,7 +698,7 @@ are discussed below:
     a Node ID, or just one module has a mismatched bitrate, the DroneCAN bus will not act as expected. In order to verify that all of your modules are properly configured 
     to act as an individual on the bus, you can use :ref:`the PX4 uavcan status message <check_node_status>` or :ref:`Ardupilot's DroneCAN/UAVCAN view <configuring_with_ardupilot>` 
     in order to verify that all of your expected nodes appear. If you have missing nodes, you should verify that all nodes are configured with unique Node IDs and matching bitrates. Additionally, 
-    your configued :ref:`ESC indexes <dronecan_px4_tutorial_esc_index>` must be in range of the number of commands sent with each flight controller transmitted :ref:`raw command <dronecan_messages_raw_command>`. For example, 
+    your configured :ref:`ESC indexes <dronecan_px4_tutorial_esc_index>` must be in range of the number of commands sent with each flight controller transmitted :ref:`raw command <dronecan_messages_raw_command>`. For example, 
     if your flight controller transmits 4 commands per RawCommand, but your ESC index is set to 4, your module will not arm since there is no index 4 in the received RawCommand. 
 
 #. **Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus**
