@@ -698,7 +698,7 @@ are discussed below:
     a Node ID, or just one module has a mismatched bitrate, the DroneCAN bus will not act as expected. In order to verify that all of your modules are properly configured 
     to act as an individual on the bus, you can use :ref:`the PX4 uavcan status message <check_node_status>` or :ref:`Ardupilot's DroneCAN/UAVCAN view <configuring_with_ardupilot>` 
     in order to verify that all of your expected nodes appear. If you have missing nodes, you should verify that all nodes are configured with unique Node IDs and matching bitrates. Additionally, 
-    your configued :ref:`ESC indexes <esc_index_parameter>` must be in range of the number of commands sent with each flight controller tranmitted :ref:`raw command <dronecan_messages_raw_command>`. For example, 
+    your configued :ref:`ESC indexes <dronecan_px4_tutorial_esc_index>` must be in range of the number of commands sent with each flight controller transmitted :ref:`raw command <dronecan_messages_raw_command>`. For example, 
     if your flight controller transmits 4 commands per RawCommand, but your ESC index is set to 4, your module will not arm since there is no index 4 in the received RawCommand. 
 
 #. **Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus**
