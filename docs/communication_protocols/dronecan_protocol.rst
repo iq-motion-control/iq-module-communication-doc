@@ -630,6 +630,8 @@ Configuration Parameters
 Configuration parameters are parameters that can configure the behavior of a Vertiq module and are available to read and modify over DroneCAN. The :ref:`uavcan.protocol.param.GetSet <dronecan_getset>` 
 request can be used to access configuration parameters. The sections below cover the stadard configuration parameters available on Vertiq modules.
 
+.. _node_id_parameter:
+
 Node ID
 -----------------------
 
@@ -656,6 +658,8 @@ Bitrate
 
 This parameter determines the DroneCAN bitrate that the module will use in bit/s. This parameter takes effect immediately when changed, so if this is changed it 
 will most likely be necessary to reconnect to the bus as at the new bitrate to continue communicating with the module.
+
+.. _esc_index_parameter:
 
 ESC Index
 -----------------------
