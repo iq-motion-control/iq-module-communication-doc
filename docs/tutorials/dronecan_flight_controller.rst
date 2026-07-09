@@ -173,6 +173,8 @@ firmware version used when developing this tutorial in QGroundControl.
     using the default arming configurations the module may arm as soon as the flight controller is properly configured. If your module is set to 
     :ref:`bypass arming on DroneCAN <dronecan_arming_and_bypass>`, then it will never play its arming song and does not need to arm to spin. 
 
+.. _ardupilot_enabling_dronecan:
+
 Enabling DroneCAN
 ---------------------
 In QGroundControl, under Parameters in the Vehicle Setup menu, there is a parameter section labeled UAVCAN. If the ``UAVCAN_ENABLE`` is set to *Disabled*, it will be the only parameter available. For this example, 
@@ -690,16 +692,18 @@ My Modules Aren't Arming When Connected to My Flight Controller
 There are several factors that may cause your modules not to arm when connected with your flight controller. Some of the most common causes, and how to fix them, 
 are discussed below:
 
-#. Module configuration is incorrect or conflicting
+#. **Module configuration is incorrect or conflicting**
 
-    When connecting your modules to the DroneCAN bus, all nodes must have a unique :ref:`node_id` and must have matching :ref:`bitrates <bitrate>`. If any two nodes share 
+    When connecting your modules to the DroneCAN bus, all nodes (modules, flight controller, other peripherals, etc.) must have a unique :ref:`node_id` and must have matching :ref:`bitrates <bitrate>`. If any two nodes share 
     a Node ID, or just one module has a mismatched bitrate, the DroneCAN bus will not act as expected. In order to verify that all of your modules are properly configured 
     to act as an individual on the bus, you can use :ref:`the PX4 uavcan status message <check_node_status>` or :ref:`Ardupilot's DroneCAN/UAVCAN view <configuring_with_ardupilot>` 
-    in order to verify that all of your expected nodes appear. If you have missing nodes, you should verify that all nodes are configured with unique Node IDs and matching bitrates.
+    in order to verify that all of your expected nodes appear. If you have missing nodes, you should verify that all nodes are configured with unique Node IDs and matching bitrates. Additionally, 
+    your configued :ref:`ESC indexes <esc_index_parameter>` must be in range of the number of commands sent with each flight controller tranmitted :ref:`raw command <dronecan_messages_raw_command>`. For example, 
+    if your flight controller transmits 4 commands per RawCommand, but your ESC index is set to 4, your module will not arm since there is no index 4 in the received RawCommand. 
 
-#. Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus
+#. **Modules are configured to use the ArmingStatus message for arming transitions, but your flight controller is not publishing ArmingStatus**
 
-    If you have configured your modules :ref:`to arm using DroneCAN's ArmingStatus message <dronecan_parameter_arming_status>` rather than :ref:`arming with throttles, <manual_advanced_arming>` 
+    If you have configured your modules :ref:`to arm using DroneCAN's ArmingStatus message <arm_with_armingstatus>` rather than :ref:`arming with throttles, <manual_advanced_arming>` 
     your flight controller must be configured to transmit ArmingStatus. By default, Ardupilot based flight controllers transmit this message, and no additional configuration 
     is necessary. If you are using a PX4 based flight controller, you must enable ArmingStatus publication using the :ref:`instructions above <px4_enable_arming_status>`.
 
@@ -707,7 +711,7 @@ are discussed below:
     
         If arming with ArmingStatus, it is highly recommended that you disable the ability to arm and disarm on throttle. This avoids any unexpected interactions between the two arming methods.
 
-#. Modules are configured to arm on throttle, but the throttle regions are configured incorrectly
+#. **Modules are configured to arm on throttle, but the throttle regions are configured incorrectly**
 
     If you have configured your modules to :ref:`arm with throttles <manual_advanced_arming>`, your flight controller must transmit throttles within all of your modules' :ref:`arming throttle region <arming_throttle_regions>`. 
     If your arming region begins above 0%, you may need to use your flight controller's motor testing feature or your external controller to output non-zero throttles. Information about PX4's testing feature can be found :ref:`here <qgc_testing>` and 
@@ -718,10 +722,10 @@ My Modules Aren't Spinning as Expected
 
 There are a few common ways that your modules may not spin exactly as expected. Examples include:
 
-#. When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), multiple modules spin on the same motor command
+#. **When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), multiple modules spin on the same motor command**
 
     When sending individual throttle commands with your flight controller's testing feature, if multiple modules start spinning, the most likely problem is that 
-    at least one of your module's :ref:`DroneCAN ESC indexes <esc_index_parameter>` is configured incorrectly. If you would like to individually command each connected 
+    at least one of your module's :ref:`DroneCAN ESC indexes <dronecan_px4_tutorial_esc_index>` is configured incorrectly. If you would like to individually command each connected 
     module, each module must have a unique ESC Index.
 
     .. note::
@@ -730,21 +734,13 @@ There are a few common ways that your modules may not spin exactly as expected. 
         DroneCAN bus. A module's ESC Index is used to determine which command out of a received :ref:`RawCommand <dronecan_messages_raw_command>` should be applied 
         as a module's throttle.
 
-#. When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), the wrong module starts spinning
+#. **When using my flight controller's motor testing feature, the wrong module starts spinning**
 
-    If a given output channel controls the wrong module, the most likely issue is your flight controller's output mapping. If you are using PX4, refer to `this page <https://docs.px4.io/main/en/config/actuators>`__ 
-    to learn more about configuring your outputs. If using Ardupilot, refer to `this page <https://ardupilot.org/copter/docs/common-rcoutput-mapping.html>`__.
+    If a given output channel controls the wrong module, the most likely issue is your flight controller's output mapping. If you are using PX4, refer to `this page <https://docs.px4.io/main/en/config/actuators>`__ as well as 
+    :ref:`above <assign_esc_functions>` to learn more about configuring your outputs. If using Ardupilot, refer to `this page <https://ardupilot.org/copter/docs/common-rcoutput-mapping.html>`__ as well as :ref:`ardupilot_enabling_dronecan`.
 
-#. My module is spinning the wrong direction or an unexpected speed
+#. **My module is spinning the wrong direction or an unexpected speed**
 
     If your module is spinning either the wrong direction or at an unexpected speed, the most likely issue is that its mode and/or maximum setting is configured incorrectly.
 
     You can learn about mode configurations in :ref:`throttle_mode_maximums_directions`.
-
-My Modules All Appear Over DroneCAN but Not the IQ Control Center
---------------------------------------------------------------------
-
-If you are able to connect with and view all of your DroneCAN nodes over DroneCAN, but cannot connect all to the :ref:`Control Center <control_center_start_guide>` simultaneously 
-as described :ref:`in the diagram here <multiple_module_wiring>`, the issue is likely that you have conflicting :ref:`module IDs <multi_module_config>`. An important note is that 
-your module's DroneCAN Node ID and its IQUART Module ID are independent variables. The DroneCAN Node ID is used to identify your module's DroneCAN Node on the CAN bus, and 
-its IQUART Module ID to identify it when connected to an IQUART chain.
