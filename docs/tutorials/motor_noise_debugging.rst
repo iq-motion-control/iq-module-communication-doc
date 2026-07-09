@@ -240,8 +240,9 @@ and 81 sized modules and their connector boards are provided below. The nonpopul
 
     Figure 15: 81 sized module with CN10.2.0 Connector
 	
-To ground the module's frame, a PTC or 0 ohm resistor should be soldered to the footprint pads labeled 1 and 2 in the relevant image above. One pad of the component footprint 
-is connected directly to the V- ground input while the other pad is tied to an exposed grounding pad underneath the nearby mounting screw (3). The mounting screw will provide an 
+To ground the module's frame, a PTC or 0 ohm resistor should be soldered to the footprint pads labeled 1 and 2 in the relevant image above. 
+**Use of a fuse is recommended. A fuse will prevent excessive current draw in case of a fault. A 0 Ω resistor will not open circuit during a fault, which could damage the airframe or cause a fire.**
+One pad of the component footprint is connected directly to the V- ground input while the other pad is tied to an exposed grounding pad underneath the nearby mounting screw (3). The mounting screw will provide an 
 electrical path from the grounding pad to the module’s frame. The standard footprint sizes of the component pads and recommended part numbers can be found below:
 
 * 40-XX
