@@ -722,9 +722,9 @@ My Modules Aren't Spinning as Expected
 
 There are a few common ways that your modules may not spin exactly as expected. Examples include:
 
-#. **When using my flight controller's motor testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), multiple modules spin on the same motor command**
+#. **When using my flight controller's motor testing feature, multiple modules spin on the same motor command**
 
-    When sending individual throttle commands with your flight controller's testing feature, if multiple modules start spinning, the most likely problem is that 
+    When sending individual throttle commands with your flight controller's testing feature (:ref:`PX4 testing <qgc_testing>` or :ref:`Ardupilot testing <test_with_ardupilot>`), if multiple modules start spinning, the most likely problem is that 
     at least one of your module's :ref:`DroneCAN ESC indexes <dronecan_px4_tutorial_esc_index>` is configured incorrectly. If you would like to individually command each connected 
     module, each module must have a unique ESC Index.
 
