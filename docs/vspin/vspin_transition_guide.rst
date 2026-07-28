@@ -10,7 +10,7 @@ This documentation is meant to help users who are transitioning from using the s
 
 .. note:: 
     Before using Control Center with VSpin, we recommend updating your Control Center to v1.11.0 or later for full support
-    
+
 .. _vspin_tuning_changes:
 
 ******************************************************
@@ -47,44 +47,33 @@ The tables below provides guidance on how to transition some of the most commonl
 
 Motor Velocity
 --------------------------------------
-.. table:: Motor Velocity API Entries for VSpin
+.. csv-table:: Motor Velocity API Entries for VSpin
+        :header: "Firmware Style", "Client", "Entry"
     
-        ==============  ===============  ====================
-        Firmware Style  Client           Entry               
-        ==============  ===============  ====================
-        Stock           brushless_drive  obs_velocity          
-        VSpin           motor_model      mechanical_velocity   
-        ==============  ===============  ====================
+        "Stock", "brushless_drive", "obs_velocity"          
+        "VSpin", "motor_model", "mechanical_velocity"   
+
 
 Drive Voltage
 --------------------------------------
-.. table:: Drive Voltage API Entries for VSpin
-    
-        ==============  ===============  ====================
-        Firmware Style  Client           Entry               
-        ==============  ===============  ====================
-        Stock           brushless_drive  drive_volts          
-        VSpin           motor_driver     stator_magnitude   
-        ==============  ===============  ====================
+.. csv-table:: Drive Voltage API Entries for VSpin
+        :header: "Firmware Style", "Client", "Entry"
+
+        "Stock", "brushless_drive", "drive_volts"          
+        "VSpin", "motor_driver", "stator_magnitude"   
 
 Estimated Motor Current
 --------------------------------------
-.. table:: Estimated Motor Current API Entries for VSpin
+.. csv-table:: Estimated Motor Current API Entries for VSpin
+        :header: "Firmware Style", "Client", "Entry"
     
-        ==============  ===============  ====================
-        Firmware Style  Client           Entry               
-        ==============  ===============  ====================
-        Stock           brushless_drive  est_motor_amps          
-        VSpin           motor_driver     estimated_motor_amps
-        ==============  ===============  ====================
+        "Stock", "brushless_drive", "est_motor_amps"          
+        "VSpin", "motor_driver", "estimated_motor_amps"
 
 Drive Mode
 --------------------------------------
-.. table:: Drive Mode API Entries for VSpin
+.. csv-table:: Drive Mode API Entries for VSpin
+        :header: "Firmware Style", "Client", "Entry"
 
-        ==============  ===============  ====================
-        Firmware Style  Client           Entry               
-        ==============  ===============  ====================
-        Stock           brushless_drive  drive_mode          
-        VSpin           motor_driver     driver_mode
-        ==============  ===============  ====================
+        "Stock", "brushless_drive", "drive_mode"          
+        "VSpin", "motor_driver", "driver_mode"
