@@ -16,6 +16,9 @@ This page covers some of the basics of commanding torque and motor current setpo
 ******************************************************
 Torque Mode
 ******************************************************
+.. note:: 
+    Before using Control Center with VSpin, we recommend updating your Control Center to v1.11.0 or later for full support
+    
 For commanding torque setpoints using a typical :ref:`throttle command <manual_throttle>` sent using a protocol such as :ref:`PWM <timer_based_protocol>` or :ref:`DroneCAN <dronecan_protocol>`, VSpin firmware introduces a new Torque :ref:`mode <throttle_mode>`. This can be configured in a similar way to Voltage or Velocity mode. 
 First, set the module’s mode to Torque as shown below on the General tab of the Control Center.
 

@@ -8,6 +8,9 @@ VSpin Safeties
 #################################
 This page provides information on how safeties function and what has changed for VSpin firmware.
 
+.. note:: 
+    Before using Control Center with VSpin, we recommend updating your Control Center to v1.11.0 or later for full support
+    
 ******************************************************
 Derating Motor Current
 ******************************************************

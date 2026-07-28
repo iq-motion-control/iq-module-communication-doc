@@ -16,6 +16,9 @@ The documentation below will provide a brief overview of some of the changes tha
     for evaluation and feedback for customers who may benefit from these specific changes. **This is not simply a drop-in upgrade for any systems using the current stock speed or servo firmware as parameter and 
     tuning changes may be required to achieve identical performance.**
 
+.. note:: 
+    Before using Control Center with VSpin, we recommend updating your Control Center to v1.11.0 or later for full support
+
 ******************************************************
 Is VSpin Meant To Replace The Existing G2 Firmwares?
 ******************************************************

@@ -32,6 +32,9 @@ Note how when field weakening is disabled, in blue, the module does not go any f
 ******************************************************
 How To Use Field Weakening
 ******************************************************
+.. note:: 
+    Before using Control Center with VSpin, we recommend updating your Control Center to v1.11.0 or later for full support
+    
 When enabled, Vertiq modules using VSpin firmware can automatically field weaken as necessary based on user commands. To enable this feature through IQ Control Center, set the ``Field Weakening`` parameter to ``Enabled`` on the General tab as shown below.
 
 .. figure:: ../_static/vspin_images/field_weakening/vspin_field_weaken_enable.png

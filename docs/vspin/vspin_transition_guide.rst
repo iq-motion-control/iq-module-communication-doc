@@ -8,6 +8,9 @@ VSpin Transition Guidance
 #################################
 This documentation is meant to help users who are transitioning from using the stock firmware to the VSpin firmware. It highlights key considerations that may affect you as you test VSpin if you have already set up your modules with the stock firmware.
 
+.. note:: 
+    Before using Control Center with VSpin, we recommend updating your Control Center to v1.11.0 or later for full support
+    
 .. _vspin_tuning_changes:
 
 ******************************************************
