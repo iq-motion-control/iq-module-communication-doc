@@ -31,6 +31,8 @@ If the module's power source can absorb the regenerated current without allowing
 When connected to a power source that cannot absorb this regenerated current, which is generally the case with benchtop power supplies, the output voltage of the source will often increase during regeneration. 
 These spikes can result in voltages above the module's and your supply's maximum rated operating voltage. When this happens, you can permanently damage the module, the power supply, or both.
 
+.. _bd_regen_limiter_configuration:
+
 Protecting Against Dangerous Regeneration Voltage Spikes
 ------------------------------------------------------------
 Regenerative voltage spikes can pose a threat to your modules and power supply if not properly controlled. As such, all Vertiq modules can limit their regeneration current to limit the magnitude of voltage spikes on power supplies. 
@@ -281,6 +283,8 @@ The following examples are meant to illustrate the effect that slew limiting has
 As you can see, the slew limit parameter helps protect against sudden changes in commanded voltage. This can be especially useful in :ref:`noisy/vibration heavy 
 environments <vibration_and_jittering>`. The amount of slew filtering that is necessary (if any) is completely application specific, and will require manual tuning.
 
+.. _bd_motor_current_limit:
+
 Brushless Drive Current Limiter
 ====================================
 :ref:`Brushless Drive's <brushless_drive>` ``motor_I_max`` defines the maximum allowable drive current. In general, this current limit protects your module against extreme current surges (e.g. step commands and stalls), and ensures that the current moving through the motor is always in a safe region.
@@ -304,6 +308,8 @@ the time it takes to get there. This current limit is not meant to limit the rat
 your module is spinning, but is caught in a tree and can no longer spin. Assuming that your flight controller continues to send commands, your module will continue to 
 attempt spinning, but if it cannot, then it will end up with a surge of current going through its coils. In this case, ``motor_I_max`` would protect the module by 
 limiting the drive voltage, and subsequently limiting the current.
+
+.. _bd_closed_loop_supply_limiter:
 
 Closed Loop Supply Current Limiter
 ====================================
