@@ -29,7 +29,7 @@ specified by DroneCAN, see the `List of Standard Data Types <https://dronecan.gi
 
 Broadcast Messages
 =======================
-These are `broadcast messages <https://dronecan.github.io/Specification/2._Basic_concepts/#message-broadcasting>`_ that are sent to or from the motors. Broadcast messages are not intended
+These are `broadcast messages <https://dronecan.github.io/Specification/2._Basic_concepts/#message-broadcasting>`_ that are sent to or from the modules. Broadcast messages are not intended
 for any specific node on the bus, data is simply transferred over the bus and is available for any node that is interested. Since they are broadcast, 
 there is no response message sent. These messages typically make up the majority of communication on the bus during operation.
 
@@ -86,7 +86,7 @@ Vertiq's Vendor Specific NodeStatus Code Breakdown
 Vertiq's vendor specific NodeStatus bits are used to indicate the state of various possible module errors. The bits are broken down as follows:
 
 * Bits [0, 7]: Indicate the value of :ref:`Power Safety's fault_now <power_safety_client_params>` value. Please refer to the linked documentation for an additional breakdown of these bits
-* Bit 8: Indicates that the module's :ref:`speed derate <speed_derate>` is less than 1 but greater than 0. This means the motor is approaching an over-speed condition
+* Bit 8: Indicates that the module's :ref:`speed derate <speed_derate>` is less than 1 but greater than 0. This means the module is approaching an over-speed condition
 * Bit 9: Indicates that the module's :ref:`microcontroller temperature derate <microcontroller_derate>` is less than 1 but greater than 0. This means that the microcontroller's temperature is getting dangerously high
 * Bit 10: Indicates that the module's :ref:`coil temperature derate <coil_temp_derate>` is less than 1 but greater than 0. This means that the coil temperature is getting dangerously high
 * Bit 11: Indicates that the module's measured voltage is greater than your drive's :ref:`Volts Limit Starting Voltage <manual_safety>`. This typically indicates that the module is regenerating into a supply that cannot handle regenerated current, such as a typical benchtop power supply, and is limiting how much it regenerates to protect itself
@@ -112,7 +112,7 @@ uavcan.equipment.esc.Status (Data Type ID = 1034)
 
 	"Yes", "No"
 
-This message is published periodically and provides telemetry updates on the state of the motor and its inputs. Specifically it contains information on:
+This message is published periodically and provides telemetry updates on the state of the module and its inputs. Specifically it contains information on:
 
 * **Error Count**: This is either:
   
@@ -120,14 +120,14 @@ This message is published periodically and provides telemetry updates on the sta
 
 	.. image:: ../_static/comms_protocols_pictures/dronecan/control_center_error_count_meaning.png
 
-	* **All firmware before v0.3.0**: a counter of CAN bus errors, specifically it details the number of transmit errors the motor has encountered.
+	* **All firmware before v0.3.0**: a counter of CAN bus errors, specifically it details the number of transmit errors the module has encountered.
 
-* **Voltage**: The input voltage to the motor in volts
-* **Current**: The current draw of the motor in amps
-* **Temperature**: The temperature of the motor's coils in Kelvin or the motor's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
-* **RPM**: The current speed of the motor in RPM
-* **Power Rating Percentage**: The PWM duty cycle percentage being applied to the motor, from 0% to 100%. Maximum power draw occurs at 100% duty cycle
-* **ESC Index**: The ESC index of the motor that is broadcasting this update
+* **Voltage**: The input supply voltage to the module in volts. This is the voltage supplied by the power supply or battery to the module.
+* **Current**: The input supply current draw of the module in amps. This is the current drawn from the power supply or battery by the module.
+* **Temperature**: The temperature of the module's coils in Kelvin or the module's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
+* **RPM**: The current speed or velocity of the module in RPM, depending on your module's :ref:`configuration <telemetry_dronecan>`.
+* **Power Rating Percentage**: The PWM duty cycle percentage being applied to the module, from 0% to 100%. Maximum power draw occurs at 100% duty cycle.
+* **ESC Index**: The ESC index of the module that is broadcasting this update.
 
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
@@ -149,9 +149,9 @@ uavcan.equipment.device.Temperature (Data Type ID = 1110)
 
 This message is published periodically and provides updates on the temperature of the microcontroller used on the controller. The fields contained in this message are:
 
-* **Device ID**: The ESC index of the motor sending this broadcast
+* **Device ID**: The ESC index of the module sending this broadcast
 * **Temperature**: The temperature of the microcontroller in Kelvin. Note that this is different from the temperature in the ESC status message, as that is the temperature of the coils.
-* **Error Flags**: Indicates if the motor is overheating with the standard ERROR_FLAG_OVERHEATING flag. See the `error flag definitions <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#temperature>`_ on the DroneCAN documentation.
+* **Error Flags**: Indicates if the module is overheating with the standard ERROR_FLAG_OVERHEATING flag. See the `error flag definitions <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#temperature>`_ on the DroneCAN documentation.
 
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
@@ -168,11 +168,11 @@ uavcan.equipment.esc.RawCommand (Data Type ID = 1030)
 
 	"Yes", "No"
 
-Used to control the speed and direction of the motor. This message should be sent from the flight controller to the motors. The payload consists of a list of up to 20 values, 
-with each value interpreted as a 14 bit signed integer. Each entry in the list corresponds to a motor with the given ESC index. E.g. The first entry in the list of raw commands 
-will be read by the motor that has been assigned ESC index 0, the second entry will be read by the motor with ESC index 1, and so on. 
+Used to control the speed and direction of the module. This message should be sent from the flight controller to the modules. The payload consists of a list of up to 20 values, 
+with each value interpreted as a 14 bit signed integer. Each entry in the list corresponds to a module with the given ESC index. E.g. The first entry in the list of raw commands 
+will be read by the module that has been assigned ESC index 0, the second entry will be read by the module with ESC index 1, and so on. 
 
-The values represent the speed and direction to command the motor to, normalized over a range of [-8192, 8191], with -8192 being full speed in reverse and 8191 being full speed forward.
+The values represent the speed and direction to command the module to, normalized over a range of [-8192, 8191], with -8192 being full speed in reverse and 8191 being full speed forward.
 
 Refer to the `uavcan.equipment.esc.RawCommand section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#rawcommand>`_ in the specification 
 for more details
@@ -420,7 +420,7 @@ This message is published periodically, and acts as an extension of uavcan.equip
 
 * **Input Percent**: Input command to ESC, in percent, which is commanded using the setpoint messages. Range 0% to 100%
 * **Output Percent**: Output command from ESC to motor, in percent. Range 0% to 100%
-* **Motor Temperature °C**: Temperature of connected motor, in Celsius. Range is -256 to +255 C
+* **Motor Temperature °C**: Temperature of the motor's coils, in Celsius. Range is -256 to +255 C
 * **Motor Angle**: Measured angle of connected angle sensor, in degrees. Range is 0 to 360
 * **Status Flags**: Manufacturer-specific status flags currently active
      * Bit 0: Indicates the module's current arming state (see :ref:`manual_advanced_arming` for more information)
@@ -428,8 +428,8 @@ This message is published periodically, and acts as an extension of uavcan.equip
      * Bit 4: Indicates if the module is timed out (see :ref:`manual_timeout` for more)
      * Bit 5: Indicates if the last stow attempt was successful (see :ref:`manual_stow_position` for more information)
      * Bit 6: Indicates if the module is holding stow (see :ref:`manual_stow_position` for more information)
-     * Bits [8:7]: Indicates the throttle source currently driving the motor (see :ref:`monitoring_active_throttle_source` for more information)
-* **ESC Index**: The ESC index of the motor that is broadcasting this update
+     * Bits [8:7]: Indicates the throttle source currently driving the module (see :ref:`monitoring_active_throttle_source` for more information)
+* **ESC Index**: The ESC index of the module that is broadcasting this update
 
 The frequency that this message is published at is determined by the :ref:`dronecan_support_telemetry_frequency` configuration parameter.
 
@@ -600,7 +600,7 @@ which allows it to be programmed with new firmware. The numbers for each are:
 * Normal Reboot Magic Number = 0xACCE551B1E
 * Reboot to Bootloader Magic Number = 0xBEEFCAFE
 
-The response to this request contains one boolean field. This field will be true if the number received was a valid magic number and the motor is restarting, and false if the 
+The response to this request contains one boolean field. This field will be true if the number received was a valid magic number and the module is restarting, and false if the 
 number received was not one of the valid numbers.
 
 Refer to the `uavcan.protocol.RestartNode section of Standard Data Types <https://dronecan.github.io/Specification/7._List_of_standard_data_types/#restartnode>`_ in the specification 
@@ -683,7 +683,7 @@ Zero Behavior
 
 	"zero_behavior", "Integer", "Yes", "No"
 
-This parameter defines the behavior of the motor when it receives a zero setpoint in a Raw Command message, **but only if the module is** :ref:`bypassing arming on DroneCAN<dronecan_arming_and_bypass>`. 
+This parameter defines the behavior of the module when it receives a zero setpoint in a Raw Command message, **but only if the module is** :ref:`bypassing arming on DroneCAN<dronecan_arming_and_bypass>`. 
 If the module is using :ref:`normal arming <manual_advanced_arming>` with DroneCAN, the Zero Behavior is not used, instead the :ref:`disarm behavior <advanced_disarming_behavior>` provides
 a similar functionality that integrates with arming and disarming.
 
@@ -786,7 +786,7 @@ Motor direction is enumerated as:
 1. 3D Counter Clockwise
 2. 3D Clockwise
 3. 2D Counter Clockwise
-4. 2D Clockwise 
+4. 2D Clockwise
 
 Please note that if you are controlling your module with DroneCAN throttle commands, the 3D-2D distinction has no effect. All DroneCAN throttles are taken to be signed (3D), 
 and ``motor_direction`` affects only whether positive throttles specify clockwise or counter clockwise spinning. For more on throttle mapping, see :ref:`throttle_mapping`.
