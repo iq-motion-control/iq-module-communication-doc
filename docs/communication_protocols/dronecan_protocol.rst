@@ -125,7 +125,7 @@ This message is published periodically and provides telemetry updates on the sta
 * **Voltage**: The input supply voltage to the module in volts. This is the voltage supplied by the power supply or battery to the module.
 * **Current**: The input supply current draw of the module in amps. This is the current drawn from the power supply or battery by the module.
 * **Temperature**: The temperature of the module's coils in Kelvin or the module's microcontroller temperature in Kelvin depending on the value of ``DroneCAN Telemetry Style``. Please see :ref:`status_extended` for more information.
-* **RPM**: The current speed of the module in RPM.
+* **RPM**: The current speed or velocity of the module in RPM, depending on your module's :ref:`configuration <telemetry_dronecan>`.
 * **Power Rating Percentage**: The PWM duty cycle percentage being applied to the module, from 0% to 100%. Maximum power draw occurs at 100% duty cycle.
 * **ESC Index**: The ESC index of the module that is broadcasting this update.
 
@@ -420,7 +420,7 @@ This message is published periodically, and acts as an extension of uavcan.equip
 
 * **Input Percent**: Input command to ESC, in percent, which is commanded using the setpoint messages. Range 0% to 100%
 * **Output Percent**: Output command from ESC to motor, in percent. Range 0% to 100%
-* **Coil Temperature °C**: Temperature of the motor's coils, in Celsius. Range is -256 to +255 C
+* **Motor Temperature °C**: Temperature of the motor's coils, in Celsius. Range is -256 to +255 C
 * **Motor Angle**: Measured angle of connected angle sensor, in degrees. Range is 0 to 360
 * **Status Flags**: Manufacturer-specific status flags currently active
      * Bit 0: Indicates the module's current arming state (see :ref:`manual_advanced_arming` for more information)
