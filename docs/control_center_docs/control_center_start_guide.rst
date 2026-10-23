@@ -759,6 +759,7 @@ Store this .zip file in a location that is easily accessible. The process for in
 
 .. image:: ../_static/control_center_pics/windows/windows_application_restart_required_popup.png
 
-5. If the provided resource .zip file includes `default files <#configuration-with-defaults>`_, you will find them in the dropdown menu in the General tab next to MODULE PRE-SETTINGS. The other resource files will include additional configuration options based on your connected module.
+5. If the provided resource .zip file includes `default files <#configuration-with-defaults>`_, you will find them in the dropdown menu in the General tab next to MODULE PRE-SETTINGS. The parameters for each tab will be populated with the appropriate values from the imported resource files once your module is connected.
+
 
 .. image:: ../_static/control_center_pics/windows/windows_custom_default_file_example.png
